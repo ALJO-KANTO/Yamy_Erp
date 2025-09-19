@@ -1165,6 +1165,12 @@
     <Compile Include="UI\Inventory\InventoryManagement\MasterInventory.Designer.cs">
       <DependentUpon>MasterInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.Designer.cs">
+      <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2825,6 +2831,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Inventory\InventoryManagement\MasterInventory.resx">
       <DependentUpon>MasterInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.resx">
+      <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.resx">
       <DependentUpon>frmChequeLinkedToPaymentReceipt.cs</DependentUpon>

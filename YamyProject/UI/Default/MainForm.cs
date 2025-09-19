@@ -1067,7 +1067,7 @@ namespace YamyProject
 
         private void wareHouseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterWarehouse());
+            openChildForm(new MasterWarehouseNew());
         }
 
         private void iNVENTORYCENTERToolStripMenuItem_Click(object sender, EventArgs e)

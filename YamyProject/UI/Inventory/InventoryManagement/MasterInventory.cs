@@ -97,8 +97,6 @@ namespace YamyProject
                 return;
 
             frmLogin.frmMain.openChildForm(new frmViewItem(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
-            if (dgvCustomer.Rows.Count == 0)
-                return;
         }
         private void dgvCustomer_MouseHover(object sender, EventArgs e)
         {
