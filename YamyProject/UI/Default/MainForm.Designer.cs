@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.guna2Button15 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button12 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnManufacture = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnRestaurant = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnCRM = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.btnInventory = new Guna.UI2.WinForms.Guna2Button();
             this.btnBank = new Guna.UI2.WinForms.Guna2Button();
             this.btnHr = new Guna.UI2.WinForms.Guna2Button();
             this.btnVendor = new Guna.UI2.WinForms.Guna2Button();
             this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCompanyProfile = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
@@ -55,8 +55,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.btnLanguage = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button14 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLanguage = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button13 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -88,7 +88,6 @@
             this.chartOfAccountToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.costCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.journalTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedAssetsItemListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedAssetsCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addFixedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,6 +212,7 @@
             this.pettyCashToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.journalTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generalLedgerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costCenterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vATReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -284,6 +284,7 @@
             this.panel20 = new System.Windows.Forms.Panel();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlLeft.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -301,7 +302,18 @@
             // 
             // pnlLeft
             // 
-            this.pnlLeft.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.pnlLeft.Controls.Add(this.BtnManufacture);
+            this.pnlLeft.Controls.Add(this.BtnRestaurant);
+            this.pnlLeft.Controls.Add(this.BtnCRM);
+            this.pnlLeft.Controls.Add(this.guna2Button5);
+            this.pnlLeft.Controls.Add(this.btnInventory);
+            this.pnlLeft.Controls.Add(this.btnBank);
+            this.pnlLeft.Controls.Add(this.btnHr);
+            this.pnlLeft.Controls.Add(this.btnVendor);
+            this.pnlLeft.Controls.Add(this.btnCustomer);
+            this.pnlLeft.Controls.Add(this.btnCompanyProfile);
+            this.pnlLeft.Controls.Add(this.guna2Button3);
             this.pnlLeft.Controls.Add(this.panel8);
             this.pnlLeft.Controls.Add(this.guna2Button10);
             this.pnlLeft.Controls.Add(this.panel3);
@@ -323,355 +335,380 @@
             this.pnlLeft.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseMove);
             this.pnlLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseUp);
             // 
-            // panel8
+            // BtnManufacture
             // 
-            this.panel8.AutoScroll = true;
-            this.panel8.AutoSize = true;
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.guna2Button15);
-            this.panel8.Controls.Add(this.guna2Button12);
-            this.panel8.Controls.Add(this.guna2Button11);
-            this.panel8.Controls.Add(this.guna2Button5);
-            this.panel8.Controls.Add(this.btnInventory);
-            this.panel8.Controls.Add(this.btnBank);
-            this.panel8.Controls.Add(this.btnHr);
-            this.panel8.Controls.Add(this.btnVendor);
-            this.panel8.Controls.Add(this.btnCustomer);
-            this.panel8.Controls.Add(this.guna2Button4);
-            this.panel8.Controls.Add(this.guna2Button3);
-            this.panel8.Controls.Add(this.btnAccount);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 69);
-            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(223, 422);
-            this.panel8.TabIndex = 31;
+            this.BtnManufacture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.BtnManufacture.BorderColor = System.Drawing.Color.Silver;
+            this.BtnManufacture.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnManufacture.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnManufacture.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnManufacture.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnManufacture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnManufacture.FillColor = System.Drawing.Color.Transparent;
+            this.BtnManufacture.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnManufacture.ForeColor = System.Drawing.Color.SteelBlue;
+            this.BtnManufacture.Image = global::YamyProject.Properties.Resources.Supplier;
+            this.BtnManufacture.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnManufacture.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.BtnManufacture.ImageSize = new System.Drawing.Size(22, 22);
+            this.BtnManufacture.Location = new System.Drawing.Point(0, 496);
+            this.BtnManufacture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnManufacture.Name = "BtnManufacture";
+            this.BtnManufacture.Size = new System.Drawing.Size(223, 35);
+            this.BtnManufacture.TabIndex = 53;
+            this.BtnManufacture.Tag = "Manufacture System";
+            this.BtnManufacture.Text = "Manufacture System";
+            this.BtnManufacture.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.BtnManufacture, "Manufacture System");
+            this.BtnManufacture.Visible = false;
+            this.BtnManufacture.Click += new System.EventHandler(this.guna2Button15_Click);
             // 
-            // guna2Button15
+            // BtnRestaurant
             // 
-            this.guna2Button15.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button15.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button15.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button15.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button15.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button15.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button15.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button15.ForeColor = System.Drawing.Color.White;
-            this.guna2Button15.Image = global::YamyProject.Properties.Resources.Manufacturing;
-            this.guna2Button15.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button15.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button15.ImageSize = new System.Drawing.Size(22, 22);
-            this.guna2Button15.Location = new System.Drawing.Point(0, 385);
-            this.guna2Button15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button15.Name = "guna2Button15";
-            this.guna2Button15.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button15.TabIndex = 31;
-            this.guna2Button15.Tag = "";
-            this.guna2Button15.Text = "Manufacture System";
-            this.guna2Button15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button15.Click += new System.EventHandler(this.guna2Button15_Click);
+            this.BtnRestaurant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.BtnRestaurant.BorderColor = System.Drawing.Color.Silver;
+            this.BtnRestaurant.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnRestaurant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnRestaurant.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnRestaurant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnRestaurant.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnRestaurant.FillColor = System.Drawing.Color.Transparent;
+            this.BtnRestaurant.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRestaurant.ForeColor = System.Drawing.Color.SteelBlue;
+            this.BtnRestaurant.Image = global::YamyProject.Properties.Resources.Restaurant1;
+            this.BtnRestaurant.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnRestaurant.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.BtnRestaurant.ImageSize = new System.Drawing.Size(22, 22);
+            this.BtnRestaurant.Location = new System.Drawing.Point(0, 461);
+            this.BtnRestaurant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnRestaurant.Name = "BtnRestaurant";
+            this.BtnRestaurant.Size = new System.Drawing.Size(223, 35);
+            this.BtnRestaurant.TabIndex = 52;
+            this.BtnRestaurant.Tag = "Restaurant System";
+            this.BtnRestaurant.Text = "Restaurant System";
+            this.BtnRestaurant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.BtnRestaurant, "Restaurant System");
+            this.BtnRestaurant.Visible = false;
+            this.BtnRestaurant.Click += new System.EventHandler(this.guna2Button12_Click);
             // 
-            // guna2Button12
+            // BtnCRM
             // 
-            this.guna2Button12.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button12.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button12.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button12.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button12.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button12.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button12.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button12.ForeColor = System.Drawing.Color.White;
-            this.guna2Button12.Image = global::YamyProject.Properties.Resources.Restaurant1;
-            this.guna2Button12.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button12.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button12.ImageSize = new System.Drawing.Size(22, 22);
-            this.guna2Button12.Location = new System.Drawing.Point(0, 350);
-            this.guna2Button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button12.Name = "guna2Button12";
-            this.guna2Button12.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button12.TabIndex = 30;
-            this.guna2Button12.Tag = "";
-            this.guna2Button12.Text = "Restaurant System";
-            this.guna2Button12.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button12.Click += new System.EventHandler(this.guna2Button12_Click);
-            // 
-            // guna2Button11
-            // 
-            this.guna2Button11.BackColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button11.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button11.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button11.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button11.ForeColor = System.Drawing.Color.White;
-            this.guna2Button11.Image = global::YamyProject.Properties.Resources.CRM;
-            this.guna2Button11.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button11.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button11.ImageSize = new System.Drawing.Size(22, 22);
-            this.guna2Button11.Location = new System.Drawing.Point(0, 315);
-            this.guna2Button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button11.Name = "guna2Button11";
-            this.guna2Button11.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button11.TabIndex = 29;
-            this.guna2Button11.Tag = "Inventory";
-            this.guna2Button11.Text = "CRM";
-            this.guna2Button11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button11.Click += new System.EventHandler(this.guna2Button11_Click);
+            this.BtnCRM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.BtnCRM.BorderColor = System.Drawing.Color.Silver;
+            this.BtnCRM.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCRM.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCRM.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnCRM.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnCRM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnCRM.FillColor = System.Drawing.Color.Transparent;
+            this.BtnCRM.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCRM.ForeColor = System.Drawing.Color.SteelBlue;
+            this.BtnCRM.Image = global::YamyProject.Properties.Resources.CRM;
+            this.BtnCRM.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnCRM.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.BtnCRM.ImageSize = new System.Drawing.Size(22, 22);
+            this.BtnCRM.Location = new System.Drawing.Point(0, 426);
+            this.BtnCRM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCRM.Name = "BtnCRM";
+            this.BtnCRM.Size = new System.Drawing.Size(223, 35);
+            this.BtnCRM.TabIndex = 51;
+            this.BtnCRM.Tag = "CRM";
+            this.BtnCRM.Text = "CRM";
+            this.BtnCRM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.BtnCRM, "CRM");
+            this.BtnCRM.Visible = false;
+            this.BtnCRM.Click += new System.EventHandler(this.guna2Button11_Click);
             // 
             // guna2Button5
             // 
-            this.guna2Button5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button5.BorderColor = System.Drawing.Color.Silver;
             this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button5.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Image = global::YamyProject.Properties.Resources.Graph_Report2;
+            this.guna2Button5.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button5.ForeColor = System.Drawing.Color.SteelBlue;
+            this.guna2Button5.Image = global::YamyProject.Properties.Resources.Business_Report;
             this.guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button5.ImageOffset = new System.Drawing.Point(-5, 0);
             this.guna2Button5.ImageSize = new System.Drawing.Size(22, 22);
-            this.guna2Button5.Location = new System.Drawing.Point(0, 280);
+            this.guna2Button5.Location = new System.Drawing.Point(0, 391);
             this.guna2Button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button5.TabIndex = 27;
-            this.guna2Button5.Tag = "Inventory";
+            this.guna2Button5.Size = new System.Drawing.Size(223, 35);
+            this.guna2Button5.TabIndex = 50;
+            this.guna2Button5.Tag = "Report";
             this.guna2Button5.Text = "Report";
             this.guna2Button5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.guna2Button5, "Report");
+            this.guna2Button5.Visible = false;
+            this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // btnInventory
             // 
-            this.btnInventory.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnInventory.BorderColor = System.Drawing.Color.Silver;
             this.btnInventory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnInventory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnInventory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnInventory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInventory.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnInventory.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnInventory.ForeColor = System.Drawing.Color.White;
-            this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
+            this.btnInventory.FillColor = System.Drawing.Color.Transparent;
+            this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnInventory.Image = global::YamyProject.Properties.Resources.Invoice1;
             this.btnInventory.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnInventory.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnInventory.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnInventory.Location = new System.Drawing.Point(0, 245);
+            this.btnInventory.Location = new System.Drawing.Point(0, 356);
             this.btnInventory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(221, 35);
-            this.btnInventory.TabIndex = 12;
+            this.btnInventory.Size = new System.Drawing.Size(223, 35);
+            this.btnInventory.TabIndex = 48;
             this.btnInventory.Tag = "Inventory";
             this.btnInventory.Text = "Inventory";
             this.btnInventory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.btnInventory, "Inventory");
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
-            this.btnInventory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnInventory.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             // 
             // btnBank
             // 
-            this.btnBank.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnBank.BorderColor = System.Drawing.Color.Silver;
             this.btnBank.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnBank.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBank.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnBank.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnBank.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBank.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnBank.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBank.ForeColor = System.Drawing.Color.White;
-            this.btnBank.Image = global::YamyProject.Properties.Resources.Bank;
+            this.btnBank.FillColor = System.Drawing.Color.Transparent;
+            this.btnBank.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBank.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnBank.Image = global::YamyProject.Properties.Resources.Bank_Building;
             this.btnBank.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBank.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnBank.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnBank.Location = new System.Drawing.Point(0, 210);
+            this.btnBank.Location = new System.Drawing.Point(0, 321);
             this.btnBank.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBank.Name = "btnBank";
-            this.btnBank.Size = new System.Drawing.Size(221, 35);
-            this.btnBank.TabIndex = 22;
+            this.btnBank.Size = new System.Drawing.Size(223, 35);
+            this.btnBank.TabIndex = 49;
             this.btnBank.Tag = "Banking";
             this.btnBank.Text = "Banking";
             this.btnBank.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.btnBank, "Banking");
             this.btnBank.Click += new System.EventHandler(this.btnBank_Click);
-            this.btnBank.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnBank.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             // 
             // btnHr
             // 
-            this.btnHr.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnHr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnHr.BorderColor = System.Drawing.Color.Silver;
             this.btnHr.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnHr.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnHr.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnHr.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnHr.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHr.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnHr.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnHr.ForeColor = System.Drawing.Color.White;
-            this.btnHr.Image = ((System.Drawing.Image)(resources.GetObject("btnHr.Image")));
+            this.btnHr.FillColor = System.Drawing.Color.Transparent;
+            this.btnHr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHr.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnHr.Image = global::YamyProject.Properties.Resources.Staff2;
             this.btnHr.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnHr.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnHr.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnHr.Location = new System.Drawing.Point(0, 175);
+            this.btnHr.Location = new System.Drawing.Point(0, 286);
             this.btnHr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHr.Name = "btnHr";
-            this.btnHr.Size = new System.Drawing.Size(221, 35);
-            this.btnHr.TabIndex = 26;
+            this.btnHr.Size = new System.Drawing.Size(223, 35);
+            this.btnHr.TabIndex = 47;
             this.btnHr.Tag = "HR";
             this.btnHr.Text = "HR";
             this.btnHr.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnHr.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.toolTip1.SetToolTip(this.btnHr, "HR");
             this.btnHr.Click += new System.EventHandler(this.btnHr_Click);
-            this.btnHr.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnHr.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             // 
             // btnVendor
             // 
-            this.btnVendor.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnVendor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnVendor.BorderColor = System.Drawing.Color.Silver;
             this.btnVendor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnVendor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnVendor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnVendor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnVendor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVendor.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnVendor.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnVendor.ForeColor = System.Drawing.Color.White;
-            this.btnVendor.Image = ((System.Drawing.Image)(resources.GetObject("btnVendor.Image")));
+            this.btnVendor.FillColor = System.Drawing.Color.Transparent;
+            this.btnVendor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVendor.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnVendor.Image = global::YamyProject.Properties.Resources.Conference_Skin_Type_7;
             this.btnVendor.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnVendor.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnVendor.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnVendor.Location = new System.Drawing.Point(0, 140);
+            this.btnVendor.Location = new System.Drawing.Point(0, 251);
             this.btnVendor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVendor.Name = "btnVendor";
-            this.btnVendor.Size = new System.Drawing.Size(221, 35);
-            this.btnVendor.TabIndex = 10;
-            this.btnVendor.Tag = "Vendors && Purchases";
+            this.btnVendor.Size = new System.Drawing.Size(223, 35);
+            this.btnVendor.TabIndex = 40;
+            this.btnVendor.Tag = "Vendors";
             this.btnVendor.Text = "Vendors";
             this.btnVendor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.btnVendor, "Vendors");
             this.btnVendor.Click += new System.EventHandler(this.btnVendor_Click);
-            this.btnVendor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnVendor.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             // 
             // btnCustomer
             // 
-            this.btnCustomer.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnCustomer.BorderColor = System.Drawing.Color.Silver;
             this.btnCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCustomer.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnCustomer.Image = global::YamyProject.Properties.Resources.Vendor;
+            this.btnCustomer.FillColor = System.Drawing.Color.Transparent;
+            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnCustomer.Image = global::YamyProject.Properties.Resources.Conference_Skin_Type_71;
             this.btnCustomer.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCustomer.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnCustomer.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnCustomer.Location = new System.Drawing.Point(0, 105);
+            this.btnCustomer.Location = new System.Drawing.Point(0, 216);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(221, 35);
-            this.btnCustomer.TabIndex = 8;
-            this.btnCustomer.Tag = "Customers && Sales";
+            this.btnCustomer.Size = new System.Drawing.Size(223, 35);
+            this.btnCustomer.TabIndex = 38;
+            this.btnCustomer.Tag = "Customers";
             this.btnCustomer.Text = "Customers";
             this.btnCustomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.btnCustomer, "Customers");
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
-            this.btnCustomer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnCustomer.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             // 
-            // guna2Button4
+            // btnCompanyProfile
             // 
-            this.guna2Button4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button4.BorderColor = System.Drawing.Color.Silver;
-            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button4.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Image = global::YamyProject.Properties.Resources.Company1;
-            this.guna2Button4.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button4.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button4.Location = new System.Drawing.Point(0, 70);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button4.TabIndex = 8;
-            this.guna2Button4.Tag = "Accountant";
-            this.guna2Button4.Text = "My Company";
-            this.guna2Button4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button4.TextOffset = new System.Drawing.Point(0, 3);
+            this.btnCompanyProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.btnCompanyProfile.BorderColor = System.Drawing.Color.Silver;
+            this.btnCompanyProfile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCompanyProfile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCompanyProfile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCompanyProfile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCompanyProfile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCompanyProfile.FillColor = System.Drawing.Color.Transparent;
+            this.btnCompanyProfile.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompanyProfile.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnCompanyProfile.Image = global::YamyProject.Properties.Resources.Company1;
+            this.btnCompanyProfile.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCompanyProfile.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.btnCompanyProfile.Location = new System.Drawing.Point(0, 181);
+            this.btnCompanyProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCompanyProfile.Name = "btnCompanyProfile";
+            this.btnCompanyProfile.Size = new System.Drawing.Size(223, 35);
+            this.btnCompanyProfile.TabIndex = 39;
+            this.btnCompanyProfile.Tag = "My Company";
+            this.btnCompanyProfile.Text = "My Company";
+            this.btnCompanyProfile.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCompanyProfile.TextOffset = new System.Drawing.Point(0, 3);
+            this.toolTip1.SetToolTip(this.btnCompanyProfile, "My Company");
+            this.btnCompanyProfile.Click += new System.EventHandler(this.btnCompanyProfile_Click);
             // 
             // guna2Button3
             // 
-            this.guna2Button3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button3.BorderColor = System.Drawing.Color.Silver;
             this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button3.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.ForeColor = System.Drawing.Color.SteelBlue;
             this.guna2Button3.Image = global::YamyProject.Properties.Resources.Home3;
             this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button3.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button3.Location = new System.Drawing.Point(0, 35);
+            this.guna2Button3.Location = new System.Drawing.Point(0, 139);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(221, 35);
-            this.guna2Button3.TabIndex = 7;
-            this.guna2Button3.Tag = "Accountant";
+            this.guna2Button3.Size = new System.Drawing.Size(223, 42);
+            this.guna2Button3.TabIndex = 37;
+            this.guna2Button3.Tag = "Home";
             this.guna2Button3.Text = "Home";
             this.guna2Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button3.TextOffset = new System.Drawing.Point(0, 3);
+            this.toolTip1.SetToolTip(this.guna2Button3, "Home");
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.AutoScroll = true;
+            this.panel8.AutoSize = true;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.panel8.Controls.Add(this.btnAccount);
+            this.panel8.Controls.Add(this.BtnDashboard);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 69);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(223, 70);
+            this.panel8.TabIndex = 31;
             // 
             // btnAccount
             // 
-            this.btnAccount.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnAccount.BorderColor = System.Drawing.Color.Silver;
             this.btnAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAccount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccount.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnAccount.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAccount.Image = global::YamyProject.Properties.Resources.Collaborator_2Male;
+            this.btnAccount.FillColor = System.Drawing.Color.Transparent;
+            this.btnAccount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnAccount.Image = global::YamyProject.Properties.Resources.Customer2;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccount.ImageOffset = new System.Drawing.Point(-5, 0);
             this.btnAccount.ImageSize = new System.Drawing.Size(22, 22);
-            this.btnAccount.Location = new System.Drawing.Point(0, 0);
+            this.btnAccount.Location = new System.Drawing.Point(0, 35);
             this.btnAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(221, 35);
-            this.btnAccount.TabIndex = 6;
+            this.btnAccount.Size = new System.Drawing.Size(223, 35);
+            this.btnAccount.TabIndex = 34;
             this.btnAccount.Tag = "Accountant";
             this.btnAccount.Text = "Accountant";
             this.btnAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccount.TextOffset = new System.Drawing.Point(0, 3);
+            this.toolTip1.SetToolTip(this.btnAccount, "Accountant");
             this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
-            this.btnAccount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseClick);
-            this.btnAccount.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
+            // 
+            // BtnDashboard
+            // 
+            this.BtnDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.BtnDashboard.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnDashboard.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnDashboard.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnDashboard.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnDashboard.FillColor = System.Drawing.Color.Transparent;
+            this.BtnDashboard.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDashboard.ForeColor = System.Drawing.Color.SteelBlue;
+            this.BtnDashboard.Image = global::YamyProject.Properties.Resources.Categorize2;
+            this.BtnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnDashboard.ImageOffset = new System.Drawing.Point(-5, 0);
+            this.BtnDashboard.ImageSize = new System.Drawing.Size(22, 22);
+            this.BtnDashboard.Location = new System.Drawing.Point(0, 0);
+            this.BtnDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDashboard.Name = "BtnDashboard";
+            this.BtnDashboard.Size = new System.Drawing.Size(223, 35);
+            this.BtnDashboard.TabIndex = 33;
+            this.BtnDashboard.Tag = "Dashboard";
+            this.BtnDashboard.Text = "Dashboard";
+            this.BtnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnDashboard.TextOffset = new System.Drawing.Point(0, 3);
+            this.toolTip1.SetToolTip(this.BtnDashboard, "Dashboard");
+            this.BtnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
             // 
             // guna2Button10
             // 
+            this.guna2Button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button10.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Button10.CheckedState.FillColor = System.Drawing.Color.Black;
             this.guna2Button10.CustomBorderColor = System.Drawing.Color.DimGray;
@@ -681,7 +718,7 @@
             this.guna2Button10.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button10.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button10.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button10.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button10.FocusedColor = System.Drawing.Color.Black;
             this.guna2Button10.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button10.ForeColor = System.Drawing.Color.Silver;
@@ -699,7 +736,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.guna2Button9);
             this.panel3.Controls.Add(this.guna2Button7);
@@ -723,7 +760,7 @@
             this.guna2Button9.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button9.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button9.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button9.FocusedColor = System.Drawing.Color.Black;
             this.guna2Button9.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button9.ForeColor = System.Drawing.Color.Silver;
@@ -739,6 +776,7 @@
             this.guna2Button9.Tag = "Inventory";
             this.guna2Button9.Text = "Run Favorite Reports";
             this.guna2Button9.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button9.Visible = false;
             // 
             // guna2Button7
             // 
@@ -752,7 +790,7 @@
             this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button7.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button7.FocusedColor = System.Drawing.Color.Black;
             this.guna2Button7.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button7.ForeColor = System.Drawing.Color.Silver;
@@ -768,6 +806,7 @@
             this.guna2Button7.Tag = "Inventory";
             this.guna2Button7.Text = "View Balance";
             this.guna2Button7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button7.Visible = false;
             // 
             // guna2Button6
             // 
@@ -781,7 +820,7 @@
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button6.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button6.FocusedColor = System.Drawing.Color.Black;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.Silver;
@@ -797,6 +836,7 @@
             this.guna2Button6.Tag = "Inventory";
             this.guna2Button6.Text = "Inventory";
             this.guna2Button6.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button6.Visible = false;
             // 
             // panel9
             // 
@@ -835,7 +875,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.guna2HtmlLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -864,10 +904,10 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(230)))));
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel10.Controls.Add(this.btnLanguage);
             this.panel10.Controls.Add(this.guna2Button14);
+            this.panel10.Controls.Add(this.btnLanguage);
             this.panel10.Controls.Add(this.guna2Button13);
             this.panel10.Controls.Add(this.guna2Button8);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -877,31 +917,6 @@
             this.panel10.Size = new System.Drawing.Size(223, 82);
             this.panel10.TabIndex = 21;
             // 
-            // btnLanguage
-            // 
-            this.btnLanguage.BorderColor = System.Drawing.Color.Silver;
-            this.btnLanguage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLanguage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLanguage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLanguage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLanguage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLanguage.FillColor = System.Drawing.Color.Transparent;
-            this.btnLanguage.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLanguage.ForeColor = System.Drawing.Color.White;
-            this.btnLanguage.Image = global::YamyProject.Properties.Resources.globe;
-            this.btnLanguage.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLanguage.ImageOffset = new System.Drawing.Point(-7, 0);
-            this.btnLanguage.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnLanguage.Location = new System.Drawing.Point(0, 69);
-            this.btnLanguage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLanguage.Name = "btnLanguage";
-            this.btnLanguage.Size = new System.Drawing.Size(219, 23);
-            this.btnLanguage.TabIndex = 23;
-            this.btnLanguage.Tag = "Setting";
-            this.btnLanguage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLanguage.TextOffset = new System.Drawing.Point(-5, 0);
-            this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
-            // 
             // guna2Button14
             // 
             this.guna2Button14.BorderColor = System.Drawing.Color.Silver;
@@ -909,24 +924,45 @@
             this.guna2Button14.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button14.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button14.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button14.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Button14.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button14.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button14.ForeColor = System.Drawing.Color.White;
             this.guna2Button14.Image = global::YamyProject.Properties.Resources.Maintenance;
-            this.guna2Button14.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button14.ImageOffset = new System.Drawing.Point(-7, 0);
-            this.guna2Button14.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button14.Location = new System.Drawing.Point(0, 46);
+            this.guna2Button14.ImageSize = new System.Drawing.Size(40, 40);
+            this.guna2Button14.Location = new System.Drawing.Point(107, 3);
             this.guna2Button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button14.Name = "guna2Button14";
-            this.guna2Button14.Size = new System.Drawing.Size(219, 23);
-            this.guna2Button14.TabIndex = 22;
-            this.guna2Button14.Tag = "Setting";
-            this.guna2Button14.Text = "Help Disk";
+            this.guna2Button14.Size = new System.Drawing.Size(46, 73);
+            this.guna2Button14.TabIndex = 24;
+            this.guna2Button14.Tag = "User Guide";
             this.guna2Button14.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button14.TextOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button14.Visible = false;
+            this.toolTip1.SetToolTip(this.guna2Button14, "User Guide");
+            // 
+            // btnLanguage
+            // 
+            this.btnLanguage.BorderColor = System.Drawing.Color.Silver;
+            this.btnLanguage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLanguage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLanguage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLanguage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLanguage.FillColor = System.Drawing.Color.Transparent;
+            this.btnLanguage.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLanguage.ForeColor = System.Drawing.Color.White;
+            this.btnLanguage.Image = global::YamyProject.Properties.Resources.globe;
+            this.btnLanguage.ImageOffset = new System.Drawing.Point(-7, 0);
+            this.btnLanguage.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLanguage.Location = new System.Drawing.Point(159, 3);
+            this.btnLanguage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLanguage.Name = "btnLanguage";
+            this.btnLanguage.Size = new System.Drawing.Size(46, 73);
+            this.btnLanguage.TabIndex = 23;
+            this.btnLanguage.Tag = "Language";
+            this.btnLanguage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLanguage.TextOffset = new System.Drawing.Point(-5, 0);
+            this.toolTip1.SetToolTip(this.btnLanguage, "Language");
+            this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
             // 
             // guna2Button13
             // 
@@ -935,23 +971,21 @@
             this.guna2Button13.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button13.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button13.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button13.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Button13.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button13.ForeColor = System.Drawing.Color.White;
             this.guna2Button13.Image = global::YamyProject.Properties.Resources.Untitled_design__2__removebg_preview;
-            this.guna2Button13.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button13.ImageOffset = new System.Drawing.Point(-8, 0);
-            this.guna2Button13.ImageSize = new System.Drawing.Size(28, 28);
-            this.guna2Button13.Location = new System.Drawing.Point(0, 23);
+            this.guna2Button13.ImageSize = new System.Drawing.Size(40, 40);
+            this.guna2Button13.Location = new System.Drawing.Point(56, 3);
             this.guna2Button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button13.Name = "guna2Button13";
-            this.guna2Button13.Size = new System.Drawing.Size(219, 23);
+            this.guna2Button13.Size = new System.Drawing.Size(46, 73);
             this.guna2Button13.TabIndex = 21;
-            this.guna2Button13.Tag = "Setting";
-            this.guna2Button13.Text = "Yamy Technology";
+            this.guna2Button13.Tag = "yamy Group";
             this.guna2Button13.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button13.TextOffset = new System.Drawing.Point(-8, 0);
+            this.toolTip1.SetToolTip(this.guna2Button13, "yamy Group");
             this.guna2Button13.Click += new System.EventHandler(this.guna2Button13_Click);
             // 
             // guna2Button8
@@ -961,28 +995,27 @@
             this.guna2Button8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Button8.FillColor = System.Drawing.Color.Transparent;
             this.guna2Button8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button8.ForeColor = System.Drawing.Color.White;
-            this.guna2Button8.Image = global::YamyProject.Properties.Resources.Settings1;
-            this.guna2Button8.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button8.Image = global::YamyProject.Properties.Resources.Gear;
             this.guna2Button8.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2Button8.Location = new System.Drawing.Point(0, 0);
+            this.guna2Button8.ImageSize = new System.Drawing.Size(40, 40);
+            this.guna2Button8.Location = new System.Drawing.Point(4, 3);
             this.guna2Button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button8.Name = "guna2Button8";
-            this.guna2Button8.Size = new System.Drawing.Size(219, 23);
+            this.guna2Button8.Size = new System.Drawing.Size(46, 73);
             this.guna2Button8.TabIndex = 20;
             this.guna2Button8.Tag = "Setting";
-            this.guna2Button8.Text = "Setting";
             this.guna2Button8.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.toolTip1.SetToolTip(this.guna2Button8, "Setting");
             this.guna2Button8.Click += new System.EventHandler(this.guna2Button8_Click);
             this.guna2Button8.MouseEnter += new System.EventHandler(this.guna2Button8_MouseEnter);
             this.guna2Button8.MouseHover += new System.EventHandler(this.btnMain_MouseHover);
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel7.Controls.Add(this.btnExpand);
             this.panel7.Controls.Add(this.guna2Button2);
             this.panel7.Controls.Add(this.comboBox1);
@@ -996,14 +1029,14 @@
             // 
             // btnExpand
             // 
-            this.btnExpand.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnExpand.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnExpand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.btnExpand.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnExpand.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnExpand.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnExpand.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnExpand.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnExpand.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExpand.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnExpand.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.btnExpand.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpand.ForeColor = System.Drawing.Color.White;
             this.btnExpand.Image = global::YamyProject.Properties.Resources.Back;
@@ -1018,8 +1051,8 @@
             // 
             // guna2Button2
             // 
-            this.guna2Button2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button2.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.guna2Button2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button2.BorderRadius = 10;
             this.guna2Button2.BorderThickness = 1;
             this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -1027,7 +1060,7 @@
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Button2.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = global::YamyProject.Properties.Resources.Search1;
@@ -1044,6 +1077,45 @@
             // 
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Attendance Sheet Center",
+            "Bank Card Center",
+            "Bank Center",
+            "Change Current Password",
+            "Chart Of Account",
+            "Cheques Center",
+            "Company Profile",
+            "Cost Center",
+            "Create Sales",
+            "Create Purchases",
+            "Credit Note",
+            "Customer Center",
+            "Debit Note",
+            "Employee Center",
+            "End Of Services",
+            "Final Settlement",
+            "Fixed Assets",
+            "Inventory Center",
+            "Leave Salary",
+            "Loan Center",
+            "Open Bank Card",
+            "Payment Voucher",
+            "PDC Center",
+            "Petty Cash Center",
+            "Prepaid Expense Center",
+            "Purchase Order",
+            "Purchases Invoice",
+            "Purchases Return",
+            "Receipt Voucher",
+            "Salary Sheet",
+            "Sales Order",
+            "Sales Quotation",
+            "Sales Proforma",
+            "Sales Return",
+            "Stock Management",
+            "Transactions Journal",
+            "Vendor Center",
+            "Warehouse Center"});
             this.comboBox1.Location = new System.Drawing.Point(0, 3);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(161, 21);
@@ -1174,7 +1246,7 @@
             // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel12.Controls.Add(this.menuStrip1);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 21);
@@ -1189,6 +1261,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(63)))));
+            this.menuStrip1.BackgroundImage = global::YamyProject.Properties.Resources.Login;
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1212,6 +1286,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(1032, 24);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
@@ -1223,6 +1298,8 @@
             this.backUpCompanyToolStripMenuItem,
             this.restoreCompanyToolStripMenuItem,
             this.exitToolStripMenuItem});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.DarkGray;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
@@ -1264,6 +1341,8 @@
             this.itemVatListToolStripMenuItem,
             this.itemUnitListToolStripMenuItem,
             this.fixedAssetItemListToolStripMenuItem});
+            this.listToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
             this.listToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.listToolStripMenuItem.Text = "Lists";
@@ -1314,11 +1393,12 @@
             // 
             this.accountantToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chartOfAccountToolStripMenuItem1,
-            this.journalTransactionsToolStripMenuItem,
             this.fixedAssetsItemListToolStripMenuItem,
             this.payBillsToolStripMenuItem1,
             this.prepaidExpenseToolStripMenuItem,
             this.pettyCashToolStripMenuItem});
+            this.accountantToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accountantToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.accountantToolStripMenuItem.Name = "accountantToolStripMenuItem";
             this.accountantToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.accountantToolStripMenuItem.Text = "Accountant";
@@ -1329,7 +1409,7 @@
             this.toolStripMenuItem2,
             this.costCenterToolStripMenuItem});
             this.chartOfAccountToolStripMenuItem1.Name = "chartOfAccountToolStripMenuItem1";
-            this.chartOfAccountToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.chartOfAccountToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
             this.chartOfAccountToolStripMenuItem1.Text = "Account Center";
             // 
             // toolStripMenuItem2
@@ -1346,13 +1426,6 @@
             this.costCenterToolStripMenuItem.Text = "Cost Center";
             this.costCenterToolStripMenuItem.Click += new System.EventHandler(this.costCenterToolStripMenuItem_Click);
             // 
-            // journalTransactionsToolStripMenuItem
-            // 
-            this.journalTransactionsToolStripMenuItem.Name = "journalTransactionsToolStripMenuItem";
-            this.journalTransactionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.journalTransactionsToolStripMenuItem.Text = "Transactions Journal";
-            this.journalTransactionsToolStripMenuItem.Click += new System.EventHandler(this.journalTransactionsToolStripMenuItem_Click);
-            // 
             // fixedAssetsItemListToolStripMenuItem
             // 
             this.fixedAssetsItemListToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1360,7 +1433,7 @@
             this.addFixedAssetsToolStripMenuItem,
             this.fixedAssetsCategoryToolStripMenuItem});
             this.fixedAssetsItemListToolStripMenuItem.Name = "fixedAssetsItemListToolStripMenuItem";
-            this.fixedAssetsItemListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fixedAssetsItemListToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.fixedAssetsItemListToolStripMenuItem.Text = "Fixed Assets List";
             // 
             // fixedAssetsCenterToolStripMenuItem
@@ -1392,7 +1465,7 @@
             this.journalVoucherToolStripMenuItem1,
             this.journalVoucherToolStripMenuItem});
             this.payBillsToolStripMenuItem1.Name = "payBillsToolStripMenuItem1";
-            this.payBillsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.payBillsToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
             this.payBillsToolStripMenuItem1.Text = "Voucher";
             // 
             // paymentVoucherToolStripMenuItem
@@ -1430,7 +1503,7 @@
             this.addPrepaidExpenseToolStripMenuItem,
             this.prepaidExpenseCategoryListToolStripMenuItem});
             this.prepaidExpenseToolStripMenuItem.Name = "prepaidExpenseToolStripMenuItem";
-            this.prepaidExpenseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prepaidExpenseToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.prepaidExpenseToolStripMenuItem.Text = "Prepaid Expense List";
             // 
             // prepaidExpenseCenterToolStripMenuItem
@@ -1459,20 +1532,20 @@
             this.pettyCashCenterToolStripMenuItem,
             this.addAccountToolStripMenuItem});
             this.pettyCashToolStripMenuItem.Name = "pettyCashToolStripMenuItem";
-            this.pettyCashToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pettyCashToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.pettyCashToolStripMenuItem.Text = "Petty Cash List";
             // 
             // pettyCashCenterToolStripMenuItem
             // 
             this.pettyCashCenterToolStripMenuItem.Name = "pettyCashCenterToolStripMenuItem";
-            this.pettyCashCenterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pettyCashCenterToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.pettyCashCenterToolStripMenuItem.Text = "Petty Cash Center";
             this.pettyCashCenterToolStripMenuItem.Click += new System.EventHandler(this.pettyCashCenterToolStripMenuItem_Click);
             // 
             // addAccountToolStripMenuItem
             // 
             this.addAccountToolStripMenuItem.Name = "addAccountToolStripMenuItem";
-            this.addAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addAccountToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.addAccountToolStripMenuItem.Text = "Add Account";
             this.addAccountToolStripMenuItem.Click += new System.EventHandler(this.addAccountToolStripMenuItem_Click);
             // 
@@ -1481,6 +1554,8 @@
             this.companyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem,
             this.remindersToolStripMenuItem});
+            this.companyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.companyToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.companyToolStripMenuItem.Name = "companyToolStripMenuItem";
             this.companyToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.companyToolStripMenuItem.Text = "Company Profile";
@@ -1508,6 +1583,8 @@
             this.inventoryCenterToolStripMenuItem1,
             this.warehouseToolStripMenuItem,
             this.itemTransferToolStripMenuItem});
+            this.inventoryToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryToolStripMenuItem1.ForeColor = System.Drawing.Color.DarkGray;
             this.inventoryToolStripMenuItem1.Name = "inventoryToolStripMenuItem1";
             this.inventoryToolStripMenuItem1.Size = new System.Drawing.Size(90, 20);
             this.inventoryToolStripMenuItem1.Text = "Inventory Doc";
@@ -1590,6 +1667,8 @@
             this.createInvoiceToolStripMenuItem,
             this.receivePaymentsToolStripMenuItem,
             this.creditNoteToolStripMenuItem});
+            this.customerToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
             this.customerToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.customerToolStripMenuItem.Text = "Customers";
@@ -1667,6 +1746,8 @@
             this.purchaseReceiptToolStripMenuItem,
             this.payBillsToolStripMenuItem,
             this.debitNoteToolStripMenuItem1});
+            this.vendorToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vendorToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.vendorToolStripMenuItem.Name = "vendorToolStripMenuItem";
             this.vendorToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.vendorToolStripMenuItem.Text = "Vendors";
@@ -1727,6 +1808,8 @@
             this.purchasesCenterToolStripMenuItem1,
             this.createPurchaseToolStripMenuItem,
             this.paymentVoucherToolStripMenuItem1});
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.DarkGray;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(92, 20);
             this.toolStripMenuItem6.Text = "Subcontractor";
@@ -1770,6 +1853,8 @@
             this.loansToolStripMenuItem,
             this.finalSettlementToolStripMenuItem,
             this.paymentToolStripMenuItem});
+            this.employeesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeesToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
             this.employeesToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.employeesToolStripMenuItem.Text = "HR";
@@ -1838,6 +1923,8 @@
             this.chequesToolStripMenuItem,
             this.pDCToolStripMenuItem,
             this.reconciliationToolStripMenuItem});
+            this.bankingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bankingToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.bankingToolStripMenuItem.Name = "bankingToolStripMenuItem";
             this.bankingToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.bankingToolStripMenuItem.Text = "Banking";
@@ -1889,6 +1976,8 @@
             this.projectDashBoardToolStripMenuItem,
             this.projectProgressToolStripMenuItem,
             this.ganttChartToolStripMenuItem});
+            this.constructionToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.constructionToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.constructionToolStripMenuItem.Name = "constructionToolStripMenuItem";
             this.constructionToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.constructionToolStripMenuItem.Text = "Construction";
@@ -2084,6 +2173,8 @@
             this.vatToolStripMenuItem,
             this.bankToolStripMenuItem,
             this.listsToolStripMenuItem});
+            this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "Reports";
@@ -2304,6 +2395,7 @@
             this.accountantToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trialBalanceToolStripMenuItem,
             this.pettyCashToolStripMenuItem1,
+            this.journalTransactionsToolStripMenuItem,
             this.generalLedgerToolStripMenuItem,
             this.costCenterToolStripMenuItem1,
             this.vATReportToolStripMenuItem,
@@ -2317,7 +2409,7 @@
             // trialBalanceToolStripMenuItem
             // 
             this.trialBalanceToolStripMenuItem.Name = "trialBalanceToolStripMenuItem";
-            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.trialBalanceToolStripMenuItem.Text = "Trial Balance";
             this.trialBalanceToolStripMenuItem.Click += new System.EventHandler(this.trialBalanceToolStripMenuItem_Click);
             // 
@@ -2327,7 +2419,7 @@
             this.summaryToolStripMenuItem,
             this.detailToolStripMenuItem});
             this.pettyCashToolStripMenuItem1.Name = "pettyCashToolStripMenuItem1";
-            this.pettyCashToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
+            this.pettyCashToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
             this.pettyCashToolStripMenuItem1.Text = "Petty Cash";
             this.pettyCashToolStripMenuItem1.Click += new System.EventHandler(this.pettyCashToolStripMenuItem1_Click);
             // 
@@ -2345,45 +2437,52 @@
             this.detailToolStripMenuItem.Text = "Detail";
             this.detailToolStripMenuItem.Click += new System.EventHandler(this.detailToolStripMenuItem_Click);
             // 
+            // journalTransactionsToolStripMenuItem
+            // 
+            this.journalTransactionsToolStripMenuItem.Name = "journalTransactionsToolStripMenuItem";
+            this.journalTransactionsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.journalTransactionsToolStripMenuItem.Text = "Transactions Journal";
+            this.journalTransactionsToolStripMenuItem.Click += new System.EventHandler(this.journalTransactionsToolStripMenuItem_Click);
+            // 
             // generalLedgerToolStripMenuItem
             // 
             this.generalLedgerToolStripMenuItem.Name = "generalLedgerToolStripMenuItem";
-            this.generalLedgerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.generalLedgerToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.generalLedgerToolStripMenuItem.Text = "General Ledger";
             this.generalLedgerToolStripMenuItem.Click += new System.EventHandler(this.generalLedgerToolStripMenuItem_Click);
             // 
             // costCenterToolStripMenuItem1
             // 
             this.costCenterToolStripMenuItem1.Name = "costCenterToolStripMenuItem1";
-            this.costCenterToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
+            this.costCenterToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
             this.costCenterToolStripMenuItem1.Text = "Cost Center";
             this.costCenterToolStripMenuItem1.Click += new System.EventHandler(this.costCenterToolStripMenuItem1_Click);
             // 
             // vATReportToolStripMenuItem
             // 
             this.vATReportToolStripMenuItem.Name = "vATReportToolStripMenuItem";
-            this.vATReportToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.vATReportToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.vATReportToolStripMenuItem.Text = "VAT Report";
             this.vATReportToolStripMenuItem.Click += new System.EventHandler(this.vATReportToolStripMenuItem_Click);
             // 
             // fixedAssetToolStripMenuItem
             // 
             this.fixedAssetToolStripMenuItem.Name = "fixedAssetToolStripMenuItem";
-            this.fixedAssetToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.fixedAssetToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.fixedAssetToolStripMenuItem.Text = "Fixed Asset";
             this.fixedAssetToolStripMenuItem.Click += new System.EventHandler(this.fixedAssetToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(178, 22);
             this.toolStripMenuItem4.Text = "Prepaid Expense";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // vatCategoryReportToolStripMenuItem
             // 
             this.vatCategoryReportToolStripMenuItem.Name = "vatCategoryReportToolStripMenuItem";
-            this.vatCategoryReportToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.vatCategoryReportToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.vatCategoryReportToolStripMenuItem.Text = "Vat Category Report";
             this.vatCategoryReportToolStripMenuItem.Click += new System.EventHandler(this.vatCategoryReportToolStripMenuItem_Click);
             // 
@@ -2705,6 +2804,8 @@
             this.themeColorToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.licenseActivatedToolStripMenuItem});
+            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsToolStripMenuItem.ForeColor = System.Drawing.Color.DarkGray;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -2765,6 +2866,8 @@
             this.cascadeAllToolStripMenuItem,
             this.showSideBySideToolStripMenuItem,
             this.closeAllToolStripMenuItem});
+            this.windowToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.windowToolStripMenuItem.ForeColor = System.Drawing.Color.LightGray;
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.windowToolStripMenuItem.Text = "Window";
@@ -2794,7 +2897,8 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.pnlHeader.BackgroundImage = global::YamyProject.Properties.Resources.Login;
             this.pnlHeader.Controls.Add(this.btnUser);
             this.pnlHeader.Controls.Add(this.btnMinimize);
             this.pnlHeader.Controls.Add(this.btnMazimize);
@@ -2814,15 +2918,15 @@
             // 
             // btnUser
             // 
-            this.btnUser.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnUser.BorderColor = System.Drawing.Color.CornflowerBlue;
-            this.btnUser.BorderRadius = 5;
+            this.btnUser.BorderRadius = 50;
             this.btnUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnUser.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnUser.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnUser.FillColor = System.Drawing.Color.Transparent;
             this.btnUser.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
             this.btnUser.ForeColor = System.Drawing.Color.White;
             this.btnUser.Image = global::YamyProject.Properties.Resources.user;
@@ -2838,6 +2942,7 @@
             // 
             // btnMinimize
             // 
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.BorderColor = System.Drawing.Color.LightSlateGray;
             this.btnMinimize.BorderRadius = 1;
             this.btnMinimize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -2859,6 +2964,7 @@
             // 
             // btnMazimize
             // 
+            this.btnMazimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMazimize.BorderColor = System.Drawing.Color.LightSlateGray;
             this.btnMazimize.BorderRadius = 1;
             this.btnMazimize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -2880,6 +2986,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BorderColor = System.Drawing.Color.LightSlateGray;
             this.btnClose.BorderRadius = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -2964,7 +3071,7 @@
             // 
             // panel18
             // 
-            this.panel18.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel18.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel18.Location = new System.Drawing.Point(0, 47);
             this.panel18.Margin = new System.Windows.Forms.Padding(2);
@@ -3044,11 +3151,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel panel10;
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
-        private Guna.UI2.WinForms.Guna2Button btnInventory;
-        private Guna.UI2.WinForms.Guna2Button btnVendor;
-        private Guna.UI2.WinForms.Guna2Button btnCustomer;
-        private Guna.UI2.WinForms.Guna2Button btnBank;
-        private Guna.UI2.WinForms.Guna2Button btnAccount;
         private System.Windows.Forms.Panel panel12;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnMinimize;
@@ -3064,7 +3166,6 @@
         private System.Windows.Forms.Panel panel13;
         private Guna.UI2.WinForms.Guna2Button btnSignout;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button btnHr;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel17;
@@ -3110,7 +3211,6 @@
         private System.Windows.Forms.ToolStripMenuItem empToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeCenterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankCenterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem journalTransactionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemCategoryListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemVatListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemUnitListToolStripMenuItem;
@@ -3173,9 +3273,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.Panel panel8;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel3;
@@ -3202,13 +3299,10 @@
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectEstimateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button11;
         private Guna.UI2.WinForms.Guna2Button guna2Button7;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button12;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Button guna2Button13;
-        private Guna.UI2.WinForms.Guna2Button guna2Button14;
         private System.Windows.Forms.ToolStripMenuItem vendorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendorCenterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem1;
@@ -3225,7 +3319,6 @@
         private System.Windows.Forms.ToolStripMenuItem siteCenterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newSiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectWorkDoneToolStripMenuItem;
-        private Guna.UI2.WinForms.Guna2Button guna2Button15;
         private System.Windows.Forms.ToolStripMenuItem projectManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectSummaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectAssignSummaryToolStripMenuItem;
@@ -3294,6 +3387,22 @@
         private System.Windows.Forms.ToolStripMenuItem purchasesCenterToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem purchaseBySubcontractorSummaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licenseActivatedToolStripMenuItem;
+        private Guna.UI2.WinForms.Guna2Button guna2Button14;
+        private System.Windows.Forms.ToolStripMenuItem journalTransactionsToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private Guna.UI2.WinForms.Guna2Button btnHr;
+        private Guna.UI2.WinForms.Guna2Button btnVendor;
+        private Guna.UI2.WinForms.Guna2Button btnCustomer;
+        private Guna.UI2.WinForms.Guna2Button btnCompanyProfile;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button btnAccount;
+        private Guna.UI2.WinForms.Guna2Button BtnDashboard;
+        private Guna.UI2.WinForms.Guna2Button BtnManufacture;
+        private Guna.UI2.WinForms.Guna2Button BtnRestaurant;
+        private Guna.UI2.WinForms.Guna2Button BtnCRM;
+        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button btnInventory;
+        private Guna.UI2.WinForms.Guna2Button btnBank;
     }
 }
 

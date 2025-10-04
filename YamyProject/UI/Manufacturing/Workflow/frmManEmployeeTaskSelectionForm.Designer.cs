@@ -60,17 +60,18 @@ namespace YamyProject.UI.Manufacturing.Viewform
             // 
             this.clbTasks.FormattingEnabled = true;
             this.clbTasks.Location = new System.Drawing.Point(15, 65);
-            this.clbTasks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbTasks.Margin = new System.Windows.Forms.Padding(2);
             this.clbTasks.Name = "clbTasks";
             this.clbTasks.Size = new System.Drawing.Size(301, 154);
             this.clbTasks.TabIndex = 2;
             // 
             // btnStartSelected
             // 
+            this.btnStartSelected.BorderRadius = 5;
             this.btnStartSelected.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnStartSelected.ForeColor = System.Drawing.Color.White;
             this.btnStartSelected.Location = new System.Drawing.Point(15, 244);
-            this.btnStartSelected.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartSelected.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartSelected.Name = "btnStartSelected";
             this.btnStartSelected.Size = new System.Drawing.Size(112, 32);
             this.btnStartSelected.TabIndex = 3;
@@ -79,17 +80,18 @@ namespace YamyProject.UI.Manufacturing.Viewform
             // 
             // btnComplete
             // 
+            this.btnComplete.BorderRadius = 5;
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnComplete.ForeColor = System.Drawing.Color.White;
-            this.btnComplete.Location = new System.Drawing.Point(142, 244);
-            this.btnComplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnComplete.Location = new System.Drawing.Point(186, 244);
+            this.btnComplete.Margin = new System.Windows.Forms.Padding(2);
             this.btnComplete.Name = "btnComplete";
-            this.btnComplete.Size = new System.Drawing.Size(112, 32);
+            this.btnComplete.Size = new System.Drawing.Size(129, 32);
             this.btnComplete.TabIndex = 4;
             this.btnComplete.Text = "Mark as Complete";
             this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
-            // frmEmployeeTaskSelectionForm
+            // frmManEmployeeTaskSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,8 +102,8 @@ namespace YamyProject.UI.Manufacturing.Viewform
             this.Controls.Add(this.btnStartSelected);
             this.Controls.Add(this.btnComplete);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "frmEmployeeTaskSelectionForm";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "frmManEmployeeTaskSelectionForm";
             this.Text = "Task List";
             this.Load += new System.EventHandler(this.frmManEmployeeTaskSelectionForm_Load);
             this.ResumeLayout(false);

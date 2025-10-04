@@ -343,7 +343,7 @@ namespace YamyProject
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmAddAccount());
+            new frmAddAccount().ShowDialog();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -353,7 +353,7 @@ namespace YamyProject
                 MessageBox.Show("Select Level 4 First");
                 return;
             }
-            frmLogin.frmMain.openChildForm(new frmEditLevel4(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmEditLevel4(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
     }
 }

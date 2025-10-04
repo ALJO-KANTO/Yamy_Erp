@@ -67,7 +67,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            this.dgvCustomer.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
@@ -111,7 +110,7 @@
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvCustomer.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvCustomer.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -149,7 +148,7 @@
             this.RadReceivable.AutoSize = true;
             this.RadReceivable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadReceivable.Location = new System.Drawing.Point(101, 20);
-            this.RadReceivable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RadReceivable.Margin = new System.Windows.Forms.Padding(2);
             this.RadReceivable.Name = "RadReceivable";
             this.RadReceivable.Size = new System.Drawing.Size(96, 21);
             this.RadReceivable.TabIndex = 18;
@@ -163,7 +162,7 @@
             this.radPayable.Checked = true;
             this.radPayable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radPayable.Location = new System.Drawing.Point(17, 20);
-            this.radPayable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radPayable.Margin = new System.Windows.Forms.Padding(2);
             this.radPayable.Name = "radPayable";
             this.radPayable.Size = new System.Drawing.Size(77, 21);
             this.radPayable.TabIndex = 18;
@@ -175,16 +174,15 @@
             // dtTo
             // 
             this.dtTo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtTo.Checked = true;
-            this.dtTo.Enabled = false;
             this.dtTo.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtTo.Enabled = false;
             this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTo.Location = new System.Drawing.Point(560, 12);
             this.dtTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(160, 29);
+            this.dtTo.Size = new System.Drawing.Size(160, 23);
             this.dtTo.TabIndex = 15;
             this.dtTo.ValueChanged += new System.EventHandler(this.redPayable_CheckedChanged);
             // 
@@ -204,16 +202,15 @@
             // dtFrom
             // 
             this.dtFrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtFrom.Checked = true;
-            this.dtFrom.Enabled = false;
             this.dtFrom.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtFrom.Enabled = false;
             this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFrom.Location = new System.Drawing.Point(360, 12);
             this.dtFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(160, 29);
+            this.dtFrom.Size = new System.Drawing.Size(160, 23);
             this.dtFrom.TabIndex = 16;
             this.dtFrom.ValueChanged += new System.EventHandler(this.redPayable_CheckedChanged);
             // 
@@ -265,6 +262,7 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
@@ -288,7 +286,7 @@
             this.Name = "MasterPDC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";
-            this.Text = "Bank Card Center";
+            this.Text = "PDC Center";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterCheque_FormClosing);
             this.Load += new System.EventHandler(this.MasterPDC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();

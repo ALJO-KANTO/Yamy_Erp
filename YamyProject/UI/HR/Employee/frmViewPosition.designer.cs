@@ -62,10 +62,10 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(217, 4);
+            this.btnClose.Location = new System.Drawing.Point(263, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(137, 27);
+            this.btnClose.Size = new System.Drawing.Size(91, 27);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -82,18 +82,20 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(74, 4);
+            this.btnSave.Location = new System.Drawing.Point(166, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(137, 27);
+            this.btnSave.Size = new System.Drawing.Size(91, 27);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
@@ -102,6 +104,7 @@
             // 
             // txtName
             // 
+            this.txtName.BorderRadius = 5;
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtName.DefaultText = "";
             this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -114,7 +117,6 @@
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtName.Location = new System.Drawing.Point(12, 122);
             this.txtName.Name = "txtName";
-            this.txtName.PasswordChar = '\0';
             this.txtName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtName.PlaceholderText = "";
             this.txtName.SelectedText = "";
@@ -135,6 +137,7 @@
             // cmbDepartments
             // 
             this.cmbDepartments.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDepartments.BorderRadius = 5;
             this.cmbDepartments.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartments.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));

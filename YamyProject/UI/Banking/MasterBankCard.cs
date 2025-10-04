@@ -32,7 +32,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewBankCard());
+            new frmViewBankCard().ShowDialog();
         }
         private void MasterBankCard_Load(object sender, EventArgs e)
         {
@@ -84,13 +84,13 @@ namespace YamyProject
         {
             if (dgvBankCard.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewBankCard(int.Parse(dgvBankCard.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewBankCard(int.Parse(dgvBankCard.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvBankCard.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewBankCard(int.Parse(dgvBankCard.CurrentRow.Cells["id"].Value.ToString())));
+            new frmViewBankCard(int.Parse(dgvBankCard.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_MouseHover(object sender, EventArgs e)
         {

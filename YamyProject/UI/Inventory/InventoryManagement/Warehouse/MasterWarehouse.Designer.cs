@@ -141,7 +141,7 @@
             this.cmbWarehouse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWarehouse.ItemHeight = 20;
+            this.cmbWarehouse.ItemHeight = 18;
             this.cmbWarehouse.Location = new System.Drawing.Point(747, 4);
             this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbWarehouse.Name = "cmbWarehouse";
@@ -203,7 +203,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel9.Controls.Add(this.guna2Button3);
             this.panel9.Controls.Add(this.guna2ControlBox1);
             this.panel9.Controls.Add(this.Lbheader);
@@ -237,7 +237,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(1018, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";

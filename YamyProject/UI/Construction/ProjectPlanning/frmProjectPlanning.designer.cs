@@ -50,17 +50,17 @@
             this.cmbProjectName = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tabActivity = new System.Windows.Forms.TabPage();
             this.panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dtTo = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtFrom = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chkDate = new Guna.UI2.WinForms.Guna2CheckBox();
             this.tabResources = new System.Windows.Forms.TabPage();
             this.tabBudget = new System.Windows.Forms.TabPage();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.tabTimeline = new System.Windows.Forms.TabPage();
-            this.panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.chkDate = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dtFrom = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtTo = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabProjects.SuspendLayout();
@@ -82,49 +82,50 @@
             this.timelineToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1805, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // projectToolStripMenuItem
             // 
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.projectToolStripMenuItem.Text = "Project";
             this.projectToolStripMenuItem.Click += new System.EventHandler(this.projectToolStripMenuItem_Click);
             // 
             // activityToolStripMenuItem
             // 
             this.activityToolStripMenuItem.Name = "activityToolStripMenuItem";
-            this.activityToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.activityToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.activityToolStripMenuItem.Text = "Activity";
             this.activityToolStripMenuItem.Click += new System.EventHandler(this.TasksToolStripMenuItem_Click);
             // 
             // materialToolStripMenuItem
             // 
             this.materialToolStripMenuItem.Name = "materialToolStripMenuItem";
-            this.materialToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
+            this.materialToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.materialToolStripMenuItem.Text = "Request Material";
             this.materialToolStripMenuItem.Click += new System.EventHandler(this.ResourcesToolStripMenuItem_Click);
             // 
             // budgetToolStripMenuItem
             // 
             this.budgetToolStripMenuItem.Name = "budgetToolStripMenuItem";
-            this.budgetToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.budgetToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
             this.budgetToolStripMenuItem.Text = "Received Material";
             this.budgetToolStripMenuItem.Click += new System.EventHandler(this.BudgetToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.reportsToolStripMenuItem.Text = "Issue Material";
             this.reportsToolStripMenuItem.Click += new System.EventHandler(this.ReportsToolStripMenuItem_Click);
             // 
             // timelineToolStripMenuItem
             // 
             this.timelineToolStripMenuItem.Name = "timelineToolStripMenuItem";
-            this.timelineToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.timelineToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.timelineToolStripMenuItem.Text = "Timeline";
             this.timelineToolStripMenuItem.Click += new System.EventHandler(this.TimelineToolStripMenuItem_Click);
             // 
@@ -138,9 +139,10 @@
             this.tabControl1.Controls.Add(this.tabTimeline);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1805, 661);
+            this.tabControl1.Size = new System.Drawing.Size(1354, 537);
             this.tabControl1.TabIndex = 3;
             // 
             // tabProjects
@@ -153,10 +155,11 @@
             this.tabProjects.Controls.Add(this.label16);
             this.tabProjects.Controls.Add(this.label1);
             this.tabProjects.Controls.Add(this.cmbProjectName);
-            this.tabProjects.Location = new System.Drawing.Point(4, 25);
+            this.tabProjects.Location = new System.Drawing.Point(4, 22);
+            this.tabProjects.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabProjects.Name = "tabProjects";
-            this.tabProjects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProjects.Size = new System.Drawing.Size(1797, 632);
+            this.tabProjects.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabProjects.Size = new System.Drawing.Size(1346, 511);
             this.tabProjects.TabIndex = 0;
             this.tabProjects.Text = "Projects";
             this.tabProjects.UseVisualStyleBackColor = true;
@@ -164,15 +167,17 @@
             // btnAddTender
             // 
             this.btnAddTender.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAddTender.BorderRadius = 5;
             this.btnAddTender.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddTender.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddTender.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddTender.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddTender.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddTender.ForeColor = System.Drawing.Color.White;
-            this.btnAddTender.Location = new System.Drawing.Point(1121, 58);
+            this.btnAddTender.Location = new System.Drawing.Point(841, 47);
+            this.btnAddTender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddTender.Name = "btnAddTender";
-            this.btnAddTender.Size = new System.Drawing.Size(47, 29);
+            this.btnAddTender.Size = new System.Drawing.Size(35, 24);
             this.btnAddTender.TabIndex = 129;
             this.btnAddTender.Text = "+";
             this.btnAddTender.Click += new System.EventHandler(this.btnAddTender_Click);
@@ -181,17 +186,18 @@
             // 
             this.cmbProjectSite.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbProjectSite.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectSite.BorderRadius = 5;
             this.cmbProjectSite.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectSite.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectSite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectSite.ItemHeight = 23;
-            this.cmbProjectSite.Location = new System.Drawing.Point(729, 58);
-            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProjectSite.ItemHeight = 18;
+            this.cmbProjectSite.Location = new System.Drawing.Point(547, 47);
+            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProjectSite.Name = "cmbProjectSite";
-            this.cmbProjectSite.Size = new System.Drawing.Size(386, 29);
+            this.cmbProjectSite.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectSite.TabIndex = 128;
             this.cmbProjectSite.SelectedIndexChanged += new System.EventHandler(this.cmbProjectSite_SelectedIndexChanged);
             // 
@@ -201,9 +207,10 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label12.Location = new System.Drawing.Point(726, 17);
+            this.label12.Location = new System.Drawing.Point(544, 14);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(180, 36);
+            this.label12.Size = new System.Drawing.Size(135, 29);
             this.label12.TabIndex = 127;
             this.label12.Text = "Project Site";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,11 +238,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvItems.Location = new System.Drawing.Point(20, 113);
+            this.dgvItems.Location = new System.Drawing.Point(15, 92);
+            this.dgvItems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowTemplate.Height = 24;
-            this.dgvItems.Size = new System.Drawing.Size(856, 499);
+            this.dgvItems.Size = new System.Drawing.Size(642, 405);
             this.dgvItems.TabIndex = 126;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -262,17 +270,18 @@
             // cmbTenderName
             // 
             this.cmbTenderName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTenderName.BorderRadius = 5;
             this.cmbTenderName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTenderName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenderName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbTenderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbTenderName.ItemHeight = 23;
-            this.cmbTenderName.Location = new System.Drawing.Point(21, 57);
-            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbTenderName.ItemHeight = 18;
+            this.cmbTenderName.Location = new System.Drawing.Point(16, 46);
+            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbTenderName.Name = "cmbTenderName";
-            this.cmbTenderName.Size = new System.Drawing.Size(283, 29);
+            this.cmbTenderName.Size = new System.Drawing.Size(213, 24);
             this.cmbTenderName.TabIndex = 49;
             this.cmbTenderName.SelectedIndexChanged += new System.EventHandler(this.cmbTenderName_SelectedIndexChanged);
             // 
@@ -281,9 +290,10 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label16.Location = new System.Drawing.Point(17, 17);
+            this.label16.Location = new System.Drawing.Point(13, 14);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(131, 36);
+            this.label16.Size = new System.Drawing.Size(98, 29);
             this.label16.TabIndex = 48;
             this.label16.Text = "Tender Name";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,9 +304,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(322, 17);
+            this.label1.Location = new System.Drawing.Point(242, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 36);
+            this.label1.Size = new System.Drawing.Size(102, 29);
             this.label1.TabIndex = 19;
             this.label1.Text = "Project Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,27 +316,29 @@
             // 
             this.cmbProjectName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbProjectName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectName.BorderRadius = 5;
             this.cmbProjectName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectName.ItemHeight = 23;
-            this.cmbProjectName.Location = new System.Drawing.Point(325, 58);
-            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProjectName.ItemHeight = 18;
+            this.cmbProjectName.Location = new System.Drawing.Point(244, 47);
+            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProjectName.Name = "cmbProjectName";
-            this.cmbProjectName.Size = new System.Drawing.Size(386, 29);
+            this.cmbProjectName.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectName.TabIndex = 18;
             this.cmbProjectName.SelectedIndexChanged += new System.EventHandler(this.cmbProjectName_SelectedIndexChanged);
             // 
             // tabActivity
             // 
             this.tabActivity.Controls.Add(this.panel1);
-            this.tabActivity.Location = new System.Drawing.Point(4, 25);
+            this.tabActivity.Location = new System.Drawing.Point(4, 22);
+            this.tabActivity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabActivity.Name = "tabActivity";
-            this.tabActivity.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActivity.Size = new System.Drawing.Size(1797, 632);
+            this.tabActivity.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabActivity.Size = new System.Drawing.Size(1346, 511);
             this.tabActivity.TabIndex = 0;
             this.tabActivity.Text = "Activity";
             this.tabActivity.UseVisualStyleBackColor = true;
@@ -335,58 +348,88 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1791, 626);
+            this.panel1.Size = new System.Drawing.Size(1342, 507);
             this.panel1.TabIndex = 0;
-            // 
-            // tabResources
-            // 
-            this.tabResources.Location = new System.Drawing.Point(4, 25);
-            this.tabResources.Name = "tabResources";
-            this.tabResources.Padding = new System.Windows.Forms.Padding(3);
-            this.tabResources.Size = new System.Drawing.Size(1797, 632);
-            this.tabResources.TabIndex = 1;
-            this.tabResources.Text = "Resources";
-            this.tabResources.UseVisualStyleBackColor = true;
-            // 
-            // tabBudget
-            // 
-            this.tabBudget.Location = new System.Drawing.Point(4, 25);
-            this.tabBudget.Name = "tabBudget";
-            this.tabBudget.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBudget.Size = new System.Drawing.Size(1797, 632);
-            this.tabBudget.TabIndex = 2;
-            this.tabBudget.Text = "Budget";
-            this.tabBudget.UseVisualStyleBackColor = true;
-            // 
-            // tabReports
-            // 
-            this.tabReports.Location = new System.Drawing.Point(4, 25);
-            this.tabReports.Name = "tabReports";
-            this.tabReports.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReports.Size = new System.Drawing.Size(1797, 632);
-            this.tabReports.TabIndex = 3;
-            this.tabReports.Text = "Reports";
-            this.tabReports.UseVisualStyleBackColor = true;
-            // 
-            // tabTimeline
-            // 
-            this.tabTimeline.Location = new System.Drawing.Point(4, 25);
-            this.tabTimeline.Name = "tabTimeline";
-            this.tabTimeline.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTimeline.Size = new System.Drawing.Size(1797, 632);
-            this.tabTimeline.TabIndex = 4;
-            this.tabTimeline.Text = "Timeline";
-            this.tabTimeline.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Location = new System.Drawing.Point(0, 51);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1791, 563);
+            this.panel3.Size = new System.Drawing.Size(1342, 456);
             this.panel3.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dtTo);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.dtFrom);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.chkDate);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1342, 51);
+            this.panel2.TabIndex = 0;
+            // 
+            // dtTo
+            // 
+            this.dtTo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtTo.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtTo.Enabled = false;
+            this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtTo.Location = new System.Drawing.Point(657, 13);
+            this.dtTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.Size = new System.Drawing.Size(161, 23);
+            this.dtTo.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label2.Location = new System.Drawing.Point(630, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 20);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "To";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtFrom.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtFrom.Enabled = false;
+            this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFrom.Location = new System.Drawing.Point(434, 13);
+            this.dtFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.Size = new System.Drawing.Size(161, 23);
+            this.dtFrom.TabIndex = 16;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label11.Location = new System.Drawing.Point(392, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 20);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "From";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkDate
             // 
@@ -400,10 +443,9 @@
             this.chkDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDate.ForeColor = System.Drawing.Color.Black;
-            this.chkDate.Location = new System.Drawing.Point(1096, 24);
-            this.chkDate.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDate.Location = new System.Drawing.Point(822, 20);
             this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(45, 21);
+            this.chkDate.Size = new System.Drawing.Size(37, 17);
             this.chkDate.TabIndex = 12;
             this.chkDate.Text = "All";
             this.chkDate.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -412,87 +454,60 @@
             this.chkDate.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkDate.UseVisualStyleBackColor = false;
             // 
-            // label11
+            // tabResources
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label11.Location = new System.Drawing.Point(522, 20);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 25);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "From";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabResources.Location = new System.Drawing.Point(4, 22);
+            this.tabResources.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabResources.Name = "tabResources";
+            this.tabResources.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabResources.Size = new System.Drawing.Size(1346, 511);
+            this.tabResources.TabIndex = 1;
+            this.tabResources.Text = "Resources";
+            this.tabResources.UseVisualStyleBackColor = true;
             // 
-            // dtFrom
+            // tabBudget
             // 
-            this.dtFrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtFrom.Checked = true;
-            this.dtFrom.Enabled = false;
-            this.dtFrom.BackColor = System.Drawing.Color.Gainsboro;
-            this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFrom.Location = new System.Drawing.Point(578, 16);
-            this.dtFrom.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(213, 36);
-            this.dtFrom.TabIndex = 16;
+            this.tabBudget.Location = new System.Drawing.Point(4, 22);
+            this.tabBudget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBudget.Name = "tabBudget";
+            this.tabBudget.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBudget.Size = new System.Drawing.Size(1346, 511);
+            this.tabBudget.TabIndex = 2;
+            this.tabBudget.Text = "Budget";
+            this.tabBudget.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tabReports
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(840, 20);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 25);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "To";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabReports.Location = new System.Drawing.Point(4, 22);
+            this.tabReports.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabReports.Name = "tabReports";
+            this.tabReports.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabReports.Size = new System.Drawing.Size(1346, 511);
+            this.tabReports.TabIndex = 3;
+            this.tabReports.Text = "Reports";
+            this.tabReports.UseVisualStyleBackColor = true;
             // 
-            // dtTo
+            // tabTimeline
             // 
-            this.dtTo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtTo.Checked = true;
-            this.dtTo.Enabled = false;
-            this.dtTo.BackColor = System.Drawing.Color.Gainsboro;
-            this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtTo.Location = new System.Drawing.Point(876, 16);
-            this.dtTo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(213, 36);
-            this.dtTo.TabIndex = 15;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dtTo);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dtFrom);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.chkDate);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1791, 63);
-            this.panel2.TabIndex = 0;
+            this.tabTimeline.Location = new System.Drawing.Point(4, 22);
+            this.tabTimeline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabTimeline.Name = "tabTimeline";
+            this.tabTimeline.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabTimeline.Size = new System.Drawing.Size(1346, 511);
+            this.tabTimeline.TabIndex = 4;
+            this.tabTimeline.Text = "Timeline";
+            this.tabTimeline.UseVisualStyleBackColor = true;
             // 
             // frmProjectPlanning
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1805, 661);
+            this.ClientSize = new System.Drawing.Size(1354, 537);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmProjectPlanning";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";

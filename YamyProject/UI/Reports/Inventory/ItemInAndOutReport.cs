@@ -21,10 +21,7 @@ namespace YamyProject
             type = _type;
             LbHeader.Text = this.Text;
         }
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewItem());
-        }
+
         private void ItemInAndOutReport_Load(object sender, EventArgs e)
         {
             BindData();
@@ -244,12 +241,6 @@ namespace YamyProject
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindData();
-        }
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dgvCustomer.Rows.Count == 0)
-                return;
-            frmLogin.frmMain.openChildForm(new frmViewItem( int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

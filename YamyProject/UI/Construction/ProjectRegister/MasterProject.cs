@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -15,6 +16,8 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             projectUpdatedHandler  = (sender, args) => ProjectData();
             EventHub.Project += projectUpdatedHandler;
+            this.Text = "Project Center";
+            headerUC1.FormText = this.Text;
         }
         private void MasterProject_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -357,6 +357,7 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="DAL\AppTheme.cs" />
     <Compile Include="DAL\BindCombos.cs" />
     <Compile Include="DAL\BindDataTable.cs" />
     <Compile Include="DAL\CalendarColumn.cs" />
@@ -398,6 +399,12 @@
     </Compile>
     <Compile Include="UCs\HeaderUC.designer.cs">
       <DependentUpon>HeaderUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\UcHeaderBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\UcHeaderBar.Designer.cs">
+      <DependentUpon>UcHeaderBar.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accountant\ChartOfAccount\frmAddAccount.cs">
       <SubType>Form</SubType>
@@ -839,6 +846,13 @@
     <Compile Include="UI\Customer\MasterCustomer.designer.cs">
       <DependentUpon>MasterCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Default\Dashboard\FrmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Default\Dashboard\FrmDashboard.Designer.cs">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Default\Dashboard\Domain\DashboardModel.cs" />
     <Compile Include="UI\Default\frmAccountantCenter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2420,6 +2434,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\yamy.bmp" />
+    <None Include="Resources\graph.png" />
     <Content Include="Resources\yamy.ico" />
     <Content Include="yamy.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -2445,6 +2460,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UCs\HeaderUC.resx">
       <DependentUpon>HeaderUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\UcHeaderBar.resx">
+      <DependentUpon>UcHeaderBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\ChartOfAccount\frmAddAccount.resx">
       <DependentUpon>frmAddAccount.cs</DependentUpon>
@@ -2664,6 +2682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Customer\MasterCustomer.resx">
       <DependentUpon>MasterCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Default\Dashboard\FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Default\frmAccountantCenter.resx">
       <DependentUpon>frmAccountantCenter.cs</DependentUpon>

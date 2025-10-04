@@ -1225,7 +1225,7 @@ namespace YamyProject
                         JOIN tbl_employee emp ON CAST(pcc.name AS UNSIGNED) = emp.id WHERE emp.id = @id",
                         DBClass.CreateParameter("id", cmbPettyCash.SelectedValue.ToString())
                     );
-            string ret = retResult != DBNull.Value ? retResult.ToString() : "0";
+            string ret = retResult != null ? retResult.ToString() : "0";
 
             txtCode.Text = ret.ToString();
         }

@@ -58,10 +58,10 @@
             this.btnNew.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnNew.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(13, 6);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnNew.Location = new System.Drawing.Point(10, 5);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(183, 33);
+            this.btnNew.Size = new System.Drawing.Size(137, 27);
             this.btnNew.TabIndex = 4;
             this.btnNew.Tag = "";
             this.btnNew.Text = "New Settlement";
@@ -72,10 +72,10 @@
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 602);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 489);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1383, 44);
+            this.panel1.Size = new System.Drawing.Size(1037, 36);
             this.panel1.TabIndex = 5;
             // 
             // btnDelete
@@ -90,10 +90,10 @@
             this.btnDelete.FillColor = System.Drawing.Color.White;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnDelete.ForeColor = System.Drawing.Color.Maroon;
-            this.btnDelete.Location = new System.Drawing.Point(1171, 6);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnDelete.Location = new System.Drawing.Point(878, 5);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(196, 33);
+            this.btnDelete.Size = new System.Drawing.Size(147, 27);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Employee";
             this.btnDelete.Visible = false;
@@ -131,14 +131,13 @@
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.Location = new System.Drawing.Point(0, 0);
-            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvCustomer.MultiSelect = false;
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowTemplate.Height = 30;
-            this.dgvCustomer.Size = new System.Drawing.Size(1383, 497);
+            this.dgvCustomer.Size = new System.Drawing.Size(1037, 404);
             this.dgvCustomer.TabIndex = 6;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -170,30 +169,30 @@
             this.panel2.Controls.Add(this.cmbState);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 46);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1383, 59);
+            this.panel2.Size = new System.Drawing.Size(1037, 48);
             this.panel2.TabIndex = 7;
             // 
             // cmbState
             // 
             this.cmbState.BackColor = System.Drawing.Color.Transparent;
+            this.cmbState.BorderRadius = 5;
             this.cmbState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbState.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbState.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbState.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbState.ItemHeight = 23;
+            this.cmbState.ItemHeight = 18;
             this.cmbState.Items.AddRange(new object[] {
             "All",
             "Active",
             "Inactive"});
-            this.cmbState.Location = new System.Drawing.Point(63, 11);
-            this.cmbState.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cmbState.Location = new System.Drawing.Point(47, 9);
+            this.cmbState.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(212, 29);
+            this.cmbState.Size = new System.Drawing.Size(160, 24);
             this.cmbState.StartIndex = 0;
             this.cmbState.TabIndex = 6;
             this.cmbState.SelectedIndexChanged += new System.EventHandler(this.cmbState_SelectedIndexChanged);
@@ -203,10 +202,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(9, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(7, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 36);
+            this.label2.Size = new System.Drawing.Size(136, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "State";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -215,34 +213,35 @@
             // 
             this.panel3.Controls.Add(this.dgvCustomer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 105);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(0, 85);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1383, 497);
+            this.panel3.Size = new System.Drawing.Size(1037, 404);
             this.panel3.TabIndex = 8;
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1383, 46);
+            this.headerUC1.Size = new System.Drawing.Size(1037, 37);
             this.headerUC1.TabIndex = 0;
             // 
             // MasterFinalSettlement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1383, 646);
+            this.ClientSize = new System.Drawing.Size(1037, 525);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MasterFinalSettlement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";

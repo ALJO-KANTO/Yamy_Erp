@@ -821,11 +821,11 @@ namespace YamyProject
                     //else if(_type.Contains("Opening Balance"))
                     //{
                     //    if (_type == "Customer Opening Balance")
-                    //        frmLogin.frmMain.openChildForm(new frmViewCustomer(_id));
+                    //        new frmViewCustomer(_id));
                     //    else if (_type == "Vendor Opening Balance")
-                    //        frmLogin.frmMain.openChildForm(new frmViewVendor(_id));
+                    //        new frmViewVendor(_id));
                     //    else if (_type == "General Ledger Opening Balance")
-                    //        frmLogin.frmMain.openChildForm(new frmEditLevel4(_id));
+                    //        new frmEditLevel4(_id);
                     //}
                     //else if (_type == "Debit Note")
                     //{

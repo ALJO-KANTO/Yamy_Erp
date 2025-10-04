@@ -132,10 +132,10 @@ namespace YamyProject
             this.panel1.Controls.Add(this.btnSaveNew);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 828);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 673);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1799, 41);
+            this.panel1.Size = new System.Drawing.Size(1350, 33);
             this.panel1.TabIndex = 2;
             // 
             // btnClose
@@ -151,10 +151,10 @@ namespace YamyProject
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(1657, 4);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Location = new System.Drawing.Point(1244, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 33);
+            this.btnClose.Size = new System.Drawing.Size(104, 27);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -172,10 +172,10 @@ namespace YamyProject
             this.btnSaveNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(70)))), ((int)(((byte)(97)))));
             this.btnSaveNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveNew.ForeColor = System.Drawing.Color.White;
-            this.btnSaveNew.Location = new System.Drawing.Point(1513, 4);
-            this.btnSaveNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveNew.Location = new System.Drawing.Point(1136, 3);
+            this.btnSaveNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(138, 33);
+            this.btnSaveNew.Size = new System.Drawing.Size(104, 27);
             this.btnSaveNew.TabIndex = 6;
             this.btnSaveNew.Text = "Save && New";
             this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
@@ -193,10 +193,10 @@ namespace YamyProject
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1369, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Location = new System.Drawing.Point(1028, 3);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(138, 33);
+            this.btnSave.Size = new System.Drawing.Size(104, 27);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -210,12 +210,12 @@ namespace YamyProject
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(3, 274);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(2, 223);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.ShadowDecoration.BorderRadius = 0;
             this.guna2GroupBox4.ShadowDecoration.Depth = 0;
-            this.guna2GroupBox4.Size = new System.Drawing.Size(1799, 554);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(1350, 450);
             this.guna2GroupBox4.TabIndex = 10;
             // 
             // gunaPanel1
@@ -226,17 +226,19 @@ namespace YamyProject
             this.gunaPanel1.Controls.Add(this.gunaPanel2);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 0);
+            this.gunaPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(1799, 554);
+            this.gunaPanel1.Size = new System.Drawing.Size(1350, 450);
             this.gunaPanel1.TabIndex = 8;
             // 
             // gunaPanel4
             // 
             this.gunaPanel4.Controls.Add(this.dgvItems);
             this.gunaPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaPanel4.Location = new System.Drawing.Point(392, 0);
+            this.gunaPanel4.Location = new System.Drawing.Point(294, 0);
+            this.gunaPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.gunaPanel4.Name = "gunaPanel4";
-            this.gunaPanel4.Size = new System.Drawing.Size(607, 554);
+            this.gunaPanel4.Size = new System.Drawing.Size(456, 450);
             this.gunaPanel4.TabIndex = 10;
             // 
             // dgvItems
@@ -280,7 +282,7 @@ namespace YamyProject
             this.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.Location = new System.Drawing.Point(0, 0);
-            this.dgvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvItems.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
@@ -292,7 +294,7 @@ namespace YamyProject
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvItems.Size = new System.Drawing.Size(607, 554);
+            this.dgvItems.Size = new System.Drawing.Size(456, 450);
             this.dgvItems.TabIndex = 7;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
@@ -369,10 +371,8 @@ namespace YamyProject
             // 
             // gunaPanel3
             // 
-            //this.gunaPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gunaPanel3.BorderColor = System.Drawing.Color.Gainsboro;
             this.gunaPanel3.BorderThickness = 1;
-            this.gunaPanel3.BorderColor = System.Drawing.Color.Gainsboro; // Or any border color you want
-            this.gunaPanel3.FillColor = System.Drawing.Color.White;
             this.gunaPanel3.Controls.Add(this.txtItemCode);
             this.gunaPanel3.Controls.Add(this.txtItemSr);
             this.gunaPanel3.Controls.Add(this.txtItemId);
@@ -385,13 +385,16 @@ namespace YamyProject
             this.gunaPanel3.Controls.Add(this.guna2HtmlLabel3);
             this.gunaPanel3.Controls.Add(this.guna2HtmlLabel2);
             this.gunaPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gunaPanel3.Location = new System.Drawing.Point(999, 0);
+            this.gunaPanel3.FillColor = System.Drawing.Color.White;
+            this.gunaPanel3.Location = new System.Drawing.Point(750, 0);
+            this.gunaPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.gunaPanel3.Name = "gunaPanel3";
-            this.gunaPanel3.Size = new System.Drawing.Size(800, 554);
+            this.gunaPanel3.Size = new System.Drawing.Size(600, 450);
             this.gunaPanel3.TabIndex = 9;
             // 
             // txtItemCode
             // 
+            this.txtItemCode.BorderRadius = 5;
             this.txtItemCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtItemCode.DefaultText = "";
             this.txtItemCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -401,17 +404,18 @@ namespace YamyProject
             this.txtItemCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtItemCode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtItemCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtItemCode.Location = new System.Drawing.Point(142, 260);
-            this.txtItemCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtItemCode.Location = new System.Drawing.Point(106, 211);
+            this.txtItemCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.PlaceholderText = "";
             this.txtItemCode.ReadOnly = true;
             this.txtItemCode.SelectedText = "";
-            this.txtItemCode.Size = new System.Drawing.Size(148, 36);
+            this.txtItemCode.Size = new System.Drawing.Size(111, 25);
             this.txtItemCode.TabIndex = 19;
             // 
             // txtItemSr
             // 
+            this.txtItemSr.BorderRadius = 5;
             this.txtItemSr.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtItemSr.DefaultText = "";
             this.txtItemSr.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -422,21 +426,22 @@ namespace YamyProject
             this.txtItemSr.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtItemSr.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtItemSr.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtItemSr.Location = new System.Drawing.Point(142, 201);
-            this.txtItemSr.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtItemSr.Location = new System.Drawing.Point(106, 163);
+            this.txtItemSr.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtItemSr.Name = "txtItemSr";
             this.txtItemSr.PlaceholderText = "";
             this.txtItemSr.ReadOnly = true;
             this.txtItemSr.SelectedText = "";
-            this.txtItemSr.Size = new System.Drawing.Size(147, 36);
+            this.txtItemSr.Size = new System.Drawing.Size(110, 25);
             this.txtItemSr.TabIndex = 17;
             // 
             // txtItemId
             // 
             this.txtItemId.BackColor = System.Drawing.Color.Transparent;
-            this.txtItemId.Location = new System.Drawing.Point(143, 391);
+            this.txtItemId.Location = new System.Drawing.Point(107, 318);
+            this.txtItemId.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemId.Name = "txtItemId";
-            this.txtItemId.Size = new System.Drawing.Size(10, 18);
+            this.txtItemId.Size = new System.Drawing.Size(9, 15);
             this.txtItemId.TabIndex = 16;
             this.txtItemId.Text = "0";
             this.txtItemId.Visible = false;
@@ -455,9 +460,10 @@ namespace YamyProject
             this.guna2GroupBox2.Controls.Add(this.txtIssuedQty);
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(328, 191);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(246, 155);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(463, 277);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(347, 225);
             this.guna2GroupBox2.TabIndex = 15;
             this.guna2GroupBox2.Text = "Qty Details";
             // 
@@ -467,14 +473,16 @@ namespace YamyProject
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(10, 228);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(8, 185);
+            this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(220, 34);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(165, 28);
             this.guna2HtmlLabel10.TabIndex = 15;
             this.guna2HtmlLabel10.Text = "Used Qty";
             // 
             // txtUsedQty
             // 
+            this.txtUsedQty.BorderRadius = 5;
             this.txtUsedQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsedQty.DefaultText = "";
             this.txtUsedQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -484,16 +492,17 @@ namespace YamyProject
             this.txtUsedQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsedQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtUsedQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsedQty.Location = new System.Drawing.Point(303, 230);
-            this.txtUsedQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUsedQty.Location = new System.Drawing.Point(227, 187);
+            this.txtUsedQty.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtUsedQty.Name = "txtUsedQty";
             this.txtUsedQty.PlaceholderText = "";
             this.txtUsedQty.SelectedText = "";
-            this.txtUsedQty.Size = new System.Drawing.Size(148, 36);
+            this.txtUsedQty.Size = new System.Drawing.Size(111, 25);
             this.txtUsedQty.TabIndex = 14;
             // 
             // txtBoqQty
             // 
+            this.txtBoqQty.BorderRadius = 5;
             this.txtBoqQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBoqQty.DefaultText = "";
             this.txtBoqQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -503,13 +512,13 @@ namespace YamyProject
             this.txtBoqQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoqQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoqQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoqQty.Location = new System.Drawing.Point(303, 54);
-            this.txtBoqQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBoqQty.Location = new System.Drawing.Point(227, 44);
+            this.txtBoqQty.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtBoqQty.Name = "txtBoqQty";
             this.txtBoqQty.PlaceholderText = "";
             this.txtBoqQty.ReadOnly = true;
             this.txtBoqQty.SelectedText = "";
-            this.txtBoqQty.Size = new System.Drawing.Size(148, 36);
+            this.txtBoqQty.Size = new System.Drawing.Size(111, 25);
             this.txtBoqQty.TabIndex = 6;
             // 
             // guna2HtmlLabel5
@@ -518,9 +527,10 @@ namespace YamyProject
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(10, 54);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(8, 44);
+            this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(216, 36);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(162, 29);
             this.guna2HtmlLabel5.TabIndex = 7;
             this.guna2HtmlLabel5.Text = "BOQ Qty";
             // 
@@ -530,14 +540,16 @@ namespace YamyProject
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(10, 184);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(8, 150);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(246, 34);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(184, 28);
             this.guna2HtmlLabel1.TabIndex = 13;
             this.guna2HtmlLabel1.Text = "Received Qty";
             // 
             // txtRequestedQty
             // 
+            this.txtRequestedQty.BorderRadius = 5;
             this.txtRequestedQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRequestedQty.DefaultText = "";
             this.txtRequestedQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -547,17 +559,18 @@ namespace YamyProject
             this.txtRequestedQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRequestedQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRequestedQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtRequestedQty.Location = new System.Drawing.Point(303, 98);
-            this.txtRequestedQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRequestedQty.Location = new System.Drawing.Point(227, 80);
+            this.txtRequestedQty.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtRequestedQty.Name = "txtRequestedQty";
             this.txtRequestedQty.PlaceholderText = "";
             this.txtRequestedQty.ReadOnly = true;
             this.txtRequestedQty.SelectedText = "";
-            this.txtRequestedQty.Size = new System.Drawing.Size(148, 36);
+            this.txtRequestedQty.Size = new System.Drawing.Size(111, 25);
             this.txtRequestedQty.TabIndex = 8;
             // 
             // txtReceivedQty
             // 
+            this.txtReceivedQty.BorderRadius = 5;
             this.txtReceivedQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtReceivedQty.DefaultText = "";
             this.txtReceivedQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -567,13 +580,13 @@ namespace YamyProject
             this.txtReceivedQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtReceivedQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtReceivedQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtReceivedQty.Location = new System.Drawing.Point(303, 186);
-            this.txtReceivedQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtReceivedQty.Location = new System.Drawing.Point(227, 151);
+            this.txtReceivedQty.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtReceivedQty.Name = "txtReceivedQty";
             this.txtReceivedQty.PlaceholderText = "";
             this.txtReceivedQty.ReadOnly = true;
             this.txtReceivedQty.SelectedText = "";
-            this.txtReceivedQty.Size = new System.Drawing.Size(148, 36);
+            this.txtReceivedQty.Size = new System.Drawing.Size(111, 25);
             this.txtReceivedQty.TabIndex = 12;
             // 
             // guna2HtmlLabel4
@@ -582,9 +595,10 @@ namespace YamyProject
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(10, 96);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(8, 78);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(254, 34);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(190, 28);
             this.guna2HtmlLabel4.TabIndex = 9;
             this.guna2HtmlLabel4.Text = "Requested Qty";
             // 
@@ -594,14 +608,16 @@ namespace YamyProject
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(10, 140);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(8, 114);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(227, 34);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(170, 28);
             this.guna2HtmlLabel6.TabIndex = 11;
             this.guna2HtmlLabel6.Text = "Issued Qty";
             // 
             // txtIssuedQty
             // 
+            this.txtIssuedQty.BorderRadius = 5;
             this.txtIssuedQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtIssuedQty.DefaultText = "";
             this.txtIssuedQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -611,13 +627,13 @@ namespace YamyProject
             this.txtIssuedQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIssuedQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtIssuedQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIssuedQty.Location = new System.Drawing.Point(303, 142);
-            this.txtIssuedQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtIssuedQty.Location = new System.Drawing.Point(227, 115);
+            this.txtIssuedQty.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtIssuedQty.Name = "txtIssuedQty";
             this.txtIssuedQty.PlaceholderText = "";
             this.txtIssuedQty.ReadOnly = true;
             this.txtIssuedQty.SelectedText = "";
-            this.txtIssuedQty.Size = new System.Drawing.Size(148, 36);
+            this.txtIssuedQty.Size = new System.Drawing.Size(111, 25);
             this.txtIssuedQty.TabIndex = 10;
             // 
             // guna2HtmlLabel7
@@ -625,15 +641,17 @@ namespace YamyProject
             this.guna2HtmlLabel7.AutoSize = false;
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(5, 19);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(4, 15);
+            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(791, 40);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(593, 32);
             this.guna2HtmlLabel7.TabIndex = 14;
             this.guna2HtmlLabel7.Text = "Work Details";
             this.guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtUnit
             // 
+            this.txtUnit.BorderRadius = 5;
             this.txtUnit.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUnit.DefaultText = "";
             this.txtUnit.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -643,17 +661,18 @@ namespace YamyProject
             this.txtUnit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUnit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtUnit.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUnit.Location = new System.Drawing.Point(141, 317);
-            this.txtUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUnit.Location = new System.Drawing.Point(106, 258);
+            this.txtUnit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.PlaceholderText = "";
             this.txtUnit.ReadOnly = true;
             this.txtUnit.SelectedText = "";
-            this.txtUnit.Size = new System.Drawing.Size(148, 36);
+            this.txtUnit.Size = new System.Drawing.Size(111, 25);
             this.txtUnit.TabIndex = 4;
             // 
             // txtDescription
             // 
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -664,13 +683,13 @@ namespace YamyProject
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(142, 138);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDescription.Location = new System.Drawing.Point(106, 112);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PlaceholderText = "";
             this.txtDescription.ReadOnly = true;
             this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(649, 36);
+            this.txtDescription.Size = new System.Drawing.Size(487, 25);
             this.txtDescription.TabIndex = 2;
             // 
             // guna2HtmlLabel9
@@ -678,9 +697,10 @@ namespace YamyProject
             this.guna2HtmlLabel9.AutoSize = false;
             this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel9.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(33, 269);
+            this.guna2HtmlLabel9.Location = new System.Drawing.Point(25, 219);
+            this.guna2HtmlLabel9.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(120, 41);
+            this.guna2HtmlLabel9.Size = new System.Drawing.Size(90, 33);
             this.guna2HtmlLabel9.TabIndex = 20;
             this.guna2HtmlLabel9.Text = "Code";
             // 
@@ -689,9 +709,10 @@ namespace YamyProject
             this.guna2HtmlLabel8.AutoSize = false;
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(33, 207);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(25, 168);
+            this.guna2HtmlLabel8.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(103, 30);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(77, 24);
             this.guna2HtmlLabel8.TabIndex = 18;
             this.guna2HtmlLabel8.Text = "Sr";
             // 
@@ -700,9 +721,10 @@ namespace YamyProject
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(33, 331);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(25, 269);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(110, 34);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(82, 28);
             this.guna2HtmlLabel3.TabIndex = 5;
             this.guna2HtmlLabel3.Text = "Unit";
             // 
@@ -711,9 +733,10 @@ namespace YamyProject
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(33, 152);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(25, 124);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(169, 42);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(127, 34);
             this.guna2HtmlLabel2.TabIndex = 3;
             this.guna2HtmlLabel2.Text = "Description";
             // 
@@ -722,8 +745,9 @@ namespace YamyProject
             this.gunaPanel2.Controls.Add(this.dgvPlanning);
             this.gunaPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.gunaPanel2.Location = new System.Drawing.Point(0, 0);
+            this.gunaPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.gunaPanel2.Name = "gunaPanel2";
-            this.gunaPanel2.Size = new System.Drawing.Size(392, 554);
+            this.gunaPanel2.Size = new System.Drawing.Size(294, 450);
             this.gunaPanel2.TabIndex = 8;
             // 
             // dgvPlanning
@@ -763,7 +787,7 @@ namespace YamyProject
             this.dgvPlanning.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvPlanning.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPlanning.Location = new System.Drawing.Point(0, 0);
-            this.dgvPlanning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvPlanning.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvPlanning.MultiSelect = false;
             this.dgvPlanning.Name = "dgvPlanning";
             this.dgvPlanning.ReadOnly = true;
@@ -775,7 +799,7 @@ namespace YamyProject
             this.dgvPlanning.RowTemplate.Height = 25;
             this.dgvPlanning.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPlanning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPlanning.Size = new System.Drawing.Size(392, 554);
+            this.dgvPlanning.Size = new System.Drawing.Size(294, 450);
             this.dgvPlanning.TabIndex = 8;
             this.dgvPlanning.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvPlanning.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
@@ -819,17 +843,18 @@ namespace YamyProject
             // cmbProject
             // 
             this.cmbProject.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProject.BorderRadius = 5;
             this.cmbProject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProject.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProject.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProject.ItemHeight = 23;
-            this.cmbProject.Location = new System.Drawing.Point(307, 75);
-            this.cmbProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProject.ItemHeight = 18;
+            this.cmbProject.Location = new System.Drawing.Point(230, 61);
+            this.cmbProject.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProject.Name = "cmbProject";
-            this.cmbProject.Size = new System.Drawing.Size(283, 29);
+            this.cmbProject.Size = new System.Drawing.Size(213, 24);
             this.cmbProject.TabIndex = 4;
             this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbProject_SelectedIndexChanged);
             // 
@@ -838,9 +863,10 @@ namespace YamyProject
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label7.Location = new System.Drawing.Point(305, 50);
+            this.label7.Location = new System.Drawing.Point(229, 41);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 20);
+            this.label7.Size = new System.Drawing.Size(97, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Project";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -865,10 +891,10 @@ namespace YamyProject
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(3, 28);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 23);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1799, 246);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1350, 200);
             this.guna2GroupBox1.TabIndex = 7;
             this.guna2GroupBox1.Text = "Project Status";
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
@@ -876,17 +902,18 @@ namespace YamyProject
             // cmbProjectSite
             // 
             this.cmbProjectSite.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectSite.BorderRadius = 5;
             this.cmbProjectSite.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectSite.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectSite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectSite.ItemHeight = 23;
-            this.cmbProjectSite.Location = new System.Drawing.Point(628, 91);
-            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProjectSite.ItemHeight = 18;
+            this.cmbProjectSite.Location = new System.Drawing.Point(471, 74);
+            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectSite.Name = "cmbProjectSite";
-            this.cmbProjectSite.Size = new System.Drawing.Size(386, 29);
+            this.cmbProjectSite.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectSite.TabIndex = 52;
             this.cmbProjectSite.SelectedIndexChanged += new System.EventHandler(this.cmbProjectSite_SelectedIndexChanged);
             // 
@@ -895,9 +922,10 @@ namespace YamyProject
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label12.Location = new System.Drawing.Point(625, 50);
+            this.label12.Location = new System.Drawing.Point(469, 41);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(180, 36);
+            this.label12.Size = new System.Drawing.Size(135, 29);
             this.label12.TabIndex = 51;
             this.label12.Text = "Project Site";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -905,17 +933,18 @@ namespace YamyProject
             // cmbTenderName
             // 
             this.cmbTenderName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTenderName.BorderRadius = 5;
             this.cmbTenderName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTenderName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenderName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbTenderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbTenderName.ItemHeight = 23;
-            this.cmbTenderName.Location = new System.Drawing.Point(308, 144);
-            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbTenderName.ItemHeight = 18;
+            this.cmbTenderName.Location = new System.Drawing.Point(231, 117);
+            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTenderName.Name = "cmbTenderName";
-            this.cmbTenderName.Size = new System.Drawing.Size(283, 29);
+            this.cmbTenderName.Size = new System.Drawing.Size(213, 24);
             this.cmbTenderName.TabIndex = 21;
             this.cmbTenderName.SelectedIndexChanged += new System.EventHandler(this.cmbTenderName_SelectedIndexChanged);
             // 
@@ -923,46 +952,47 @@ namespace YamyProject
             // 
             this.cmbAccountName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbAccountName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccountName.BorderRadius = 5;
             this.cmbAccountName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccountName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccountName.ItemHeight = 23;
-            this.cmbAccountName.Location = new System.Drawing.Point(1340, 75);
-            this.cmbAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbAccountName.ItemHeight = 18;
+            this.cmbAccountName.Location = new System.Drawing.Point(1006, 61);
+            this.cmbAccountName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAccountName.Name = "cmbAccountName";
-            this.cmbAccountName.Size = new System.Drawing.Size(396, 29);
+            this.cmbAccountName.Size = new System.Drawing.Size(298, 24);
             this.cmbAccountName.TabIndex = 4;
             // 
             // dtpt
             // 
-            this.dtpt.Checked = true;
             this.dtpt.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpt.Location = new System.Drawing.Point(37, 75);
-            this.dtpt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpt.Location = new System.Drawing.Point(28, 61);
+            this.dtpt.Margin = new System.Windows.Forms.Padding(2);
             this.dtpt.Name = "dtpt";
-            this.dtpt.Size = new System.Drawing.Size(251, 36);
+            this.dtpt.Size = new System.Drawing.Size(189, 23);
             this.dtpt.TabIndex = 6;
             // 
             // cmbWarehouse
             // 
             this.cmbWarehouse.BackColor = System.Drawing.Color.Transparent;
+            this.cmbWarehouse.BorderRadius = 5;
             this.cmbWarehouse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWarehouse.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWarehouse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWarehouse.ItemHeight = 23;
-            this.cmbWarehouse.Location = new System.Drawing.Point(37, 139);
-            this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbWarehouse.ItemHeight = 18;
+            this.cmbWarehouse.Location = new System.Drawing.Point(28, 117);
+            this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(252, 29);
+            this.cmbWarehouse.Size = new System.Drawing.Size(190, 24);
             this.cmbWarehouse.TabIndex = 4;
             this.cmbWarehouse.Visible = false;
             this.cmbWarehouse.SelectedIndexChanged += new System.EventHandler(this.cmbWarehouse_SelectedIndexChanged);
@@ -972,9 +1002,10 @@ namespace YamyProject
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(33, 106);
+            this.label14.Location = new System.Drawing.Point(25, 86);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(95, 36);
+            this.label14.Size = new System.Drawing.Size(71, 29);
             this.label14.TabIndex = 5;
             this.label14.Text = "Warehouse";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -985,9 +1016,10 @@ namespace YamyProject
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(304, 106);
+            this.label2.Location = new System.Drawing.Point(228, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 36);
+            this.label2.Size = new System.Drawing.Size(98, 29);
             this.label2.TabIndex = 5;
             this.label2.Text = "Tender Name";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -997,9 +1029,10 @@ namespace YamyProject
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label11.Location = new System.Drawing.Point(32, 50);
+            this.label11.Location = new System.Drawing.Point(24, 41);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(93, 20);
+            this.label11.Size = new System.Drawing.Size(70, 16);
             this.label11.TabIndex = 5;
             this.label11.Text = "Date";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1010,9 +1043,10 @@ namespace YamyProject
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label10.Location = new System.Drawing.Point(1340, 42);
+            this.label10.Location = new System.Drawing.Point(1006, 34);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 36);
+            this.label10.Size = new System.Drawing.Size(98, 29);
             this.label10.TabIndex = 5;
             this.label10.Text = "Account Name";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1021,30 +1055,30 @@ namespace YamyProject
             // 
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 869);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(2, 706);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1799, 2);
+            this.panel5.Size = new System.Drawing.Size(1350, 2);
             this.panel5.TabIndex = 14;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1802, 28);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(1352, 23);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 843);
+            this.panel4.Size = new System.Drawing.Size(2, 685);
             this.panel4.TabIndex = 13;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 28);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(0, 23);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 843);
+            this.panel3.Size = new System.Drawing.Size(2, 685);
             this.panel3.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn1
@@ -1163,16 +1197,15 @@ namespace YamyProject
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.Lbheader);
             this.panel6.Controls.Add(this.guna2ControlBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1805, 28);
+            this.panel6.Size = new System.Drawing.Size(1354, 23);
             this.panel6.TabIndex = 19;
             // 
             // guna2Button2
@@ -1190,10 +1223,9 @@ namespace YamyProject
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Image = global::YamyProject.Properties.Resources.Subtract;
             this.guna2Button2.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button2.Location = new System.Drawing.Point(1725, 5);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button2.Location = new System.Drawing.Point(1294, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(20, 18);
+            this.guna2Button2.Size = new System.Drawing.Size(15, 15);
             this.guna2Button2.TabIndex = 21;
             // 
             // guna2Button1
@@ -1211,10 +1243,9 @@ namespace YamyProject
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::YamyProject.Properties.Resources.Restore_Down1;
             this.guna2Button1.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button1.Location = new System.Drawing.Point(1753, 5);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button1.Location = new System.Drawing.Point(1315, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(20, 18);
+            this.guna2Button1.Size = new System.Drawing.Size(15, 15);
             this.guna2Button1.TabIndex = 20;
             // 
             // Lbheader
@@ -1223,30 +1254,28 @@ namespace YamyProject
             this.Lbheader.BackColor = System.Drawing.Color.Transparent;
             this.Lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbheader.ForeColor = System.Drawing.Color.White;
-            this.Lbheader.Location = new System.Drawing.Point(853, 0);
-            this.Lbheader.Margin = new System.Windows.Forms.Padding(4);
+            this.Lbheader.Location = new System.Drawing.Point(640, 0);
             this.Lbheader.Name = "Lbheader";
-            this.Lbheader.Size = new System.Drawing.Size(163, 27);
+            this.Lbheader.Size = new System.Drawing.Size(134, 22);
             this.Lbheader.TabIndex = 19;
             this.Lbheader.Text = "Project Word Done";
             // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1780, 5);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1335, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(20, 18);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
             // frmViewProjectWorkDone
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1805, 871);
+            this.ClientSize = new System.Drawing.Size(1354, 708);
             this.Controls.Add(this.guna2GroupBox4);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.panel1);
@@ -1255,7 +1284,7 @@ namespace YamyProject
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmViewProjectWorkDone";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";

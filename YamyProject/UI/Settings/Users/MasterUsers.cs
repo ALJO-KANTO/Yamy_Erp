@@ -95,13 +95,13 @@ namespace YamyProject
         }
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewUser());
+            new frmViewUser().ShowDialog();
         }
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dgvUsers.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewUser(int.Parse(dgvUsers.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewUser(int.Parse(dgvUsers.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -116,19 +116,19 @@ namespace YamyProject
         {
             if (dgvUsers.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewUser(int.Parse(dgvUsers.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewUser(int.Parse(dgvUsers.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewRole());
+            new frmViewRole().ShowDialog();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             if (dgvUsers.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewRole(int.Parse(dgvUsers.SelectedRows[0].Cells["role_id"].Value.ToString())));
+            new frmViewRole(int.Parse(dgvUsers.SelectedRows[0].Cells["role_id"].Value.ToString())).ShowDialog();
         }
 
         private void manageUserRoleToolStripMenuItem_Click(object sender, EventArgs e)

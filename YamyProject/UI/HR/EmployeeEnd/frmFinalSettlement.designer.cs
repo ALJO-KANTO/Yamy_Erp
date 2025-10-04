@@ -95,10 +95,10 @@
             this.panel1.Controls.Add(this.btnSaveClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 755);
+            this.panel1.Location = new System.Drawing.Point(0, 589);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(642, 33);
+            this.panel1.Size = new System.Drawing.Size(1252, 33);
             this.panel1.TabIndex = 2;
             this.panel1.Click += new System.EventHandler(this.frmFinalSettlement_Click);
             // 
@@ -115,10 +115,10 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(289, 4);
+            this.btnClose.Location = new System.Drawing.Point(1113, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(137, 27);
+            this.btnClose.Size = new System.Drawing.Size(127, 27);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -126,20 +126,20 @@
             // btnSaveClose
             // 
             this.btnSaveClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(70)))), ((int)(((byte)(97)))));
-            this.btnSaveClose.BorderRadius = 5;
+            this.btnSaveClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSaveClose.BorderRadius = 2;
             this.btnSaveClose.BorderThickness = 3;
             this.btnSaveClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSaveClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSaveClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(70)))), ((int)(((byte)(97)))));
+            this.btnSaveClose.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSaveClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSaveClose.ForeColor = System.Drawing.Color.White;
-            this.btnSaveClose.Location = new System.Drawing.Point(146, 4);
+            this.btnSaveClose.Location = new System.Drawing.Point(970, 2);
             this.btnSaveClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveClose.Name = "btnSaveClose";
-            this.btnSaveClose.Size = new System.Drawing.Size(137, 27);
+            this.btnSaveClose.Size = new System.Drawing.Size(127, 27);
             this.btnSaveClose.TabIndex = 6;
             this.btnSaveClose.Text = "Save && New";
             // 
@@ -156,10 +156,10 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(4, 4);
+            this.btnSave.Location = new System.Drawing.Point(828, 2);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(137, 27);
+            this.btnSave.Size = new System.Drawing.Size(127, 27);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -174,12 +174,14 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(642, 720);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1252, 554);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // guna2GroupBox1
             // 
-            this.guna2GroupBox1.BorderThickness = 0;
+            this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.guna2GroupBox1.BorderRadius = 5;
+            this.guna2GroupBox1.BorderThickness = 3;
             this.guna2GroupBox1.Controls.Add(this.label4);
             this.guna2GroupBox1.Controls.Add(this.label3);
             this.guna2GroupBox1.Controls.Add(this.dtpLastWorkDay);
@@ -192,7 +194,7 @@
             this.guna2GroupBox1.Controls.Add(this.txtEmpCode);
             this.guna2GroupBox1.Controls.Add(this.txtCode);
             this.guna2GroupBox1.Controls.Add(this.label14);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
@@ -304,22 +306,24 @@
             // cmbEmployeeName
             // 
             this.cmbEmployeeName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEmployeeName.BorderRadius = 5;
             this.cmbEmployeeName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEmployeeName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEmployeeName.ItemHeight = 23;
+            this.cmbEmployeeName.ItemHeight = 18;
             this.cmbEmployeeName.Location = new System.Drawing.Point(158, 121);
             this.cmbEmployeeName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployeeName.Name = "cmbEmployeeName";
-            this.cmbEmployeeName.Size = new System.Drawing.Size(336, 29);
+            this.cmbEmployeeName.Size = new System.Drawing.Size(336, 24);
             this.cmbEmployeeName.TabIndex = 4;
             this.cmbEmployeeName.SelectedIndexChanged += new System.EventHandler(this.cmbEmployeeName_SelectedIndexChanged);
             // 
             // txtEmpCode
             // 
+            this.txtEmpCode.BorderRadius = 5;
             this.txtEmpCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmpCode.DefaultText = "";
             this.txtEmpCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -335,11 +339,12 @@
             this.txtEmpCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtEmpCode.PlaceholderText = "";
             this.txtEmpCode.SelectedText = "";
-            this.txtEmpCode.Size = new System.Drawing.Size(153, 29);
+            this.txtEmpCode.Size = new System.Drawing.Size(153, 24);
             this.txtEmpCode.TabIndex = 3;
             // 
             // txtCode
             // 
+            this.txtCode.BorderRadius = 5;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DefaultText = "";
             this.txtCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -356,7 +361,7 @@
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCode.PlaceholderText = "";
             this.txtCode.SelectedText = "";
-            this.txtCode.Size = new System.Drawing.Size(153, 29);
+            this.txtCode.Size = new System.Drawing.Size(153, 24);
             this.txtCode.TabIndex = 3;
             // 
             // label14
@@ -373,7 +378,9 @@
             // 
             // guna2GroupBox2
             // 
-            this.guna2GroupBox2.BorderThickness = 0;
+            this.guna2GroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.guna2GroupBox2.BorderRadius = 5;
+            this.guna2GroupBox2.BorderThickness = 3;
             this.guna2GroupBox2.Controls.Add(this.label10);
             this.guna2GroupBox2.Controls.Add(this.label9);
             this.guna2GroupBox2.Controls.Add(this.label8);
@@ -384,15 +391,15 @@
             this.guna2GroupBox2.Controls.Add(this.txtOthers);
             this.guna2GroupBox2.Controls.Add(this.txtTransportationAllowance);
             this.guna2GroupBox2.Controls.Add(this.txtBasicSalary);
-            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(3, 307);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(629, 2);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(620, 239);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(620, 301);
             this.guna2GroupBox2.TabIndex = 9;
             this.guna2GroupBox2.Text = "Salary Information";
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, -6);
@@ -459,6 +466,7 @@
             // 
             // txtHousingAllowance
             // 
+            this.txtHousingAllowance.BorderRadius = 5;
             this.txtHousingAllowance.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHousingAllowance.DefaultText = "";
             this.txtHousingAllowance.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -475,12 +483,13 @@
             this.txtHousingAllowance.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtHousingAllowance.PlaceholderText = "";
             this.txtHousingAllowance.SelectedText = "";
-            this.txtHousingAllowance.Size = new System.Drawing.Size(167, 29);
+            this.txtHousingAllowance.Size = new System.Drawing.Size(167, 24);
             this.txtHousingAllowance.TabIndex = 3;
             this.txtHousingAllowance.TextChanged += new System.EventHandler(this.txtHousingAllowance_TextChanged);
             // 
             // txtTotalSalary
             // 
+            this.txtTotalSalary.BorderRadius = 5;
             this.txtTotalSalary.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalSalary.DefaultText = "";
             this.txtTotalSalary.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -496,13 +505,14 @@
             this.txtTotalSalary.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotalSalary.PlaceholderText = "";
             this.txtTotalSalary.SelectedText = "";
-            this.txtTotalSalary.Size = new System.Drawing.Size(167, 29);
+            this.txtTotalSalary.Size = new System.Drawing.Size(167, 24);
             this.txtTotalSalary.TabIndex = 3;
             this.txtTotalSalary.TextChanged += new System.EventHandler(this.txtTotalSalary_TextChanged);
             this.txtTotalSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalSalary_KeyPress);
             // 
             // txtOthers
             // 
+            this.txtOthers.BorderRadius = 5;
             this.txtOthers.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOthers.DefaultText = "";
             this.txtOthers.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -519,12 +529,13 @@
             this.txtOthers.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtOthers.PlaceholderText = "";
             this.txtOthers.SelectedText = "";
-            this.txtOthers.Size = new System.Drawing.Size(167, 29);
+            this.txtOthers.Size = new System.Drawing.Size(167, 24);
             this.txtOthers.TabIndex = 3;
             this.txtOthers.TextChanged += new System.EventHandler(this.txtOthers_TextChanged);
             // 
             // txtTransportationAllowance
             // 
+            this.txtTransportationAllowance.BorderRadius = 5;
             this.txtTransportationAllowance.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTransportationAllowance.DefaultText = "";
             this.txtTransportationAllowance.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -541,12 +552,13 @@
             this.txtTransportationAllowance.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTransportationAllowance.PlaceholderText = "";
             this.txtTransportationAllowance.SelectedText = "";
-            this.txtTransportationAllowance.Size = new System.Drawing.Size(167, 29);
+            this.txtTransportationAllowance.Size = new System.Drawing.Size(167, 24);
             this.txtTransportationAllowance.TabIndex = 3;
             this.txtTransportationAllowance.TextChanged += new System.EventHandler(this.txtTransportationAllowance_TextChanged);
             // 
             // txtBasicSalary
             // 
+            this.txtBasicSalary.BorderRadius = 5;
             this.txtBasicSalary.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBasicSalary.DefaultText = "";
             this.txtBasicSalary.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -563,13 +575,15 @@
             this.txtBasicSalary.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtBasicSalary.PlaceholderText = "";
             this.txtBasicSalary.SelectedText = "";
-            this.txtBasicSalary.Size = new System.Drawing.Size(166, 29);
+            this.txtBasicSalary.Size = new System.Drawing.Size(166, 24);
             this.txtBasicSalary.TabIndex = 3;
             this.txtBasicSalary.TextChanged += new System.EventHandler(this.txtBasicSalary_TextChanged);
             // 
             // guna2GroupBox4
             // 
-            this.guna2GroupBox4.BorderThickness = 0;
+            this.guna2GroupBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.guna2GroupBox4.BorderRadius = 5;
+            this.guna2GroupBox4.BorderThickness = 3;
             this.guna2GroupBox4.Controls.Add(this.label15);
             this.guna2GroupBox4.Controls.Add(this.txtLeaveSalary);
             this.guna2GroupBox4.Controls.Add(this.txtEndOfService);
@@ -580,15 +594,15 @@
             this.guna2GroupBox4.Controls.Add(this.label12);
             this.guna2GroupBox4.Controls.Add(this.label13);
             this.guna2GroupBox4.Controls.Add(this.label11);
-            this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(3, 550);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(3, 307);
             this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
-            this.guna2GroupBox4.Size = new System.Drawing.Size(620, 230);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(620, 245);
             this.guna2GroupBox4.TabIndex = 13;
             this.guna2GroupBox4.Text = "Additions";
             this.guna2GroupBox4.TextOffset = new System.Drawing.Point(0, -6);
@@ -607,6 +621,7 @@
             // 
             // txtLeaveSalary
             // 
+            this.txtLeaveSalary.BorderRadius = 5;
             this.txtLeaveSalary.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtLeaveSalary.DefaultText = "";
             this.txtLeaveSalary.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -623,13 +638,14 @@
             this.txtLeaveSalary.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtLeaveSalary.PlaceholderText = "";
             this.txtLeaveSalary.SelectedText = "";
-            this.txtLeaveSalary.Size = new System.Drawing.Size(166, 29);
+            this.txtLeaveSalary.Size = new System.Drawing.Size(166, 24);
             this.txtLeaveSalary.TabIndex = 3;
             this.txtLeaveSalary.TextChanged += new System.EventHandler(this.txtLeaveSalary_TextChanged);
             this.txtLeaveSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLeaveSalary_KeyPress);
             // 
             // txtEndOfService
             // 
+            this.txtEndOfService.BorderRadius = 5;
             this.txtEndOfService.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEndOfService.DefaultText = "";
             this.txtEndOfService.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -646,13 +662,14 @@
             this.txtEndOfService.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtEndOfService.PlaceholderText = "";
             this.txtEndOfService.SelectedText = "";
-            this.txtEndOfService.Size = new System.Drawing.Size(166, 29);
+            this.txtEndOfService.Size = new System.Drawing.Size(166, 24);
             this.txtEndOfService.TabIndex = 3;
             this.txtEndOfService.TextChanged += new System.EventHandler(this.txtEndOfService_TextChanged);
             this.txtEndOfService.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEndOfService_KeyPress);
             // 
             // txtTotalAdditions
             // 
+            this.txtTotalAdditions.BorderRadius = 5;
             this.txtTotalAdditions.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalAdditions.DefaultText = "";
             this.txtTotalAdditions.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -668,13 +685,14 @@
             this.txtTotalAdditions.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotalAdditions.PlaceholderText = "";
             this.txtTotalAdditions.SelectedText = "";
-            this.txtTotalAdditions.Size = new System.Drawing.Size(166, 29);
+            this.txtTotalAdditions.Size = new System.Drawing.Size(166, 24);
             this.txtTotalAdditions.TabIndex = 3;
             this.txtTotalAdditions.TextChanged += new System.EventHandler(this.txtTotalAdditions_TextChanged);
             this.txtTotalAdditions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalAdditions_KeyPress);
             // 
             // txtOtherAdditions
             // 
+            this.txtOtherAdditions.BorderRadius = 5;
             this.txtOtherAdditions.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOtherAdditions.DefaultText = "";
             this.txtOtherAdditions.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -690,7 +708,7 @@
             this.txtOtherAdditions.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtOtherAdditions.PlaceholderText = "";
             this.txtOtherAdditions.SelectedText = "";
-            this.txtOtherAdditions.Size = new System.Drawing.Size(166, 29);
+            this.txtOtherAdditions.Size = new System.Drawing.Size(166, 24);
             this.txtOtherAdditions.TabIndex = 3;
             this.txtOtherAdditions.TextChanged += new System.EventHandler(this.txtOtherAdditions_TextChanged);
             this.txtOtherAdditions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOtherAdditions_KeyPress);
@@ -709,6 +727,7 @@
             // 
             // txtSalaries
             // 
+            this.txtSalaries.BorderRadius = 5;
             this.txtSalaries.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSalaries.DefaultText = "";
             this.txtSalaries.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -725,7 +744,7 @@
             this.txtSalaries.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSalaries.PlaceholderText = "";
             this.txtSalaries.SelectedText = "";
-            this.txtSalaries.Size = new System.Drawing.Size(166, 29);
+            this.txtSalaries.Size = new System.Drawing.Size(166, 24);
             this.txtSalaries.TabIndex = 3;
             this.txtSalaries.TextChanged += new System.EventHandler(this.txtSalaries_TextChanged_1);
             this.txtSalaries.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaries_KeyPress);
@@ -768,6 +787,9 @@
             // 
             // guna2GroupBox3
             // 
+            this.guna2GroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.guna2GroupBox3.BorderRadius = 5;
+            this.guna2GroupBox3.BorderThickness = 3;
             this.guna2GroupBox3.Controls.Add(this.label18);
             this.guna2GroupBox3.Controls.Add(this.label17);
             this.guna2GroupBox3.Controls.Add(this.label20);
@@ -778,12 +800,12 @@
             this.guna2GroupBox3.Controls.Add(this.txtOtherDeductions);
             this.guna2GroupBox3.Controls.Add(this.txtPayments);
             this.guna2GroupBox3.Controls.Add(this.txtEmployeeAdvances);
-            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(3, 784);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(629, 307);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(620, 245);
@@ -853,6 +875,7 @@
             // 
             // txtNetAccruals
             // 
+            this.txtNetAccruals.BorderRadius = 5;
             this.txtNetAccruals.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNetAccruals.DefaultText = "";
             this.txtNetAccruals.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -868,13 +891,14 @@
             this.txtNetAccruals.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtNetAccruals.PlaceholderText = "";
             this.txtNetAccruals.SelectedText = "";
-            this.txtNetAccruals.Size = new System.Drawing.Size(166, 29);
+            this.txtNetAccruals.Size = new System.Drawing.Size(166, 24);
             this.txtNetAccruals.TabIndex = 3;
             this.txtNetAccruals.TextChanged += new System.EventHandler(this.txtNetAccruals_TextChanged);
             this.txtNetAccruals.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNetAccruals_KeyPress);
             // 
             // txtTotalDeductions
             // 
+            this.txtTotalDeductions.BorderRadius = 5;
             this.txtTotalDeductions.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalDeductions.DefaultText = "";
             this.txtTotalDeductions.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -890,13 +914,14 @@
             this.txtTotalDeductions.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotalDeductions.PlaceholderText = "";
             this.txtTotalDeductions.SelectedText = "";
-            this.txtTotalDeductions.Size = new System.Drawing.Size(166, 29);
+            this.txtTotalDeductions.Size = new System.Drawing.Size(166, 24);
             this.txtTotalDeductions.TabIndex = 3;
             this.txtTotalDeductions.TextChanged += new System.EventHandler(this.txtTotalDeductions_TextChanged_1);
             this.txtTotalDeductions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalDeductions_KeyPress);
             // 
             // txtOtherDeductions
             // 
+            this.txtOtherDeductions.BorderRadius = 5;
             this.txtOtherDeductions.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtOtherDeductions.DefaultText = "";
             this.txtOtherDeductions.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -912,13 +937,14 @@
             this.txtOtherDeductions.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtOtherDeductions.PlaceholderText = "";
             this.txtOtherDeductions.SelectedText = "";
-            this.txtOtherDeductions.Size = new System.Drawing.Size(166, 29);
+            this.txtOtherDeductions.Size = new System.Drawing.Size(166, 24);
             this.txtOtherDeductions.TabIndex = 3;
             this.txtOtherDeductions.TextChanged += new System.EventHandler(this.txtOtherDeductions_TextChanged);
             this.txtOtherDeductions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOtherDeductions_KeyPress);
             // 
             // txtPayments
             // 
+            this.txtPayments.BorderRadius = 5;
             this.txtPayments.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPayments.DefaultText = "";
             this.txtPayments.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -934,13 +960,14 @@
             this.txtPayments.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtPayments.PlaceholderText = "";
             this.txtPayments.SelectedText = "";
-            this.txtPayments.Size = new System.Drawing.Size(166, 29);
+            this.txtPayments.Size = new System.Drawing.Size(166, 24);
             this.txtPayments.TabIndex = 3;
             this.txtPayments.TextChanged += new System.EventHandler(this.txtOtherDeductions_TextChanged);
             this.txtPayments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayments_KeyPress);
             // 
             // txtEmployeeAdvances
             // 
+            this.txtEmployeeAdvances.BorderRadius = 5;
             this.txtEmployeeAdvances.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmployeeAdvances.DefaultText = "";
             this.txtEmployeeAdvances.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -957,7 +984,7 @@
             this.txtEmployeeAdvances.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtEmployeeAdvances.PlaceholderText = "";
             this.txtEmployeeAdvances.SelectedText = "";
-            this.txtEmployeeAdvances.Size = new System.Drawing.Size(166, 29);
+            this.txtEmployeeAdvances.Size = new System.Drawing.Size(166, 24);
             this.txtEmployeeAdvances.TabIndex = 3;
             this.txtEmployeeAdvances.TextChanged += new System.EventHandler(this.txtEmployeeAdvances_TextChanged);
             this.txtEmployeeAdvances.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmployeeAdvances_KeyPress);
@@ -967,10 +994,11 @@
             this.headerUC2.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC2.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC2.FormText = "";
+            this.headerUC2.HeaderText = "";
             this.headerUC2.Location = new System.Drawing.Point(0, 0);
             this.headerUC2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.headerUC2.Name = "headerUC2";
-            this.headerUC2.Size = new System.Drawing.Size(642, 35);
+            this.headerUC2.Size = new System.Drawing.Size(1252, 35);
             this.headerUC2.TabIndex = 11;
             // 
             // frmFinalSettlement
@@ -978,7 +1006,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(642, 788);
+            this.ClientSize = new System.Drawing.Size(1252, 622);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerUC2);

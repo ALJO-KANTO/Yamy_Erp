@@ -75,7 +75,6 @@
             this.CorporateTaxNo = new System.Windows.Forms.Label();
             this.txtCorporateTaxNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.TRNIssueDate = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.dtpQuarterOneDueDate = new System.Windows.Forms.DateTimePicker();
             this.dtpQuarterFourDueDate = new System.Windows.Forms.DateTimePicker();
@@ -112,6 +111,7 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.label16 = new System.Windows.Forms.Label();
             this.tbC.SuspendLayout();
             this.tbpCompany.SuspendLayout();
             this.guna2ShadowPanel2.SuspendLayout();
@@ -238,6 +238,7 @@
             this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Location = new System.Drawing.Point(649, 340);
@@ -293,11 +294,11 @@
             this.cmbCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountry.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCountry.ItemHeight = 23;
+            this.cmbCountry.ItemHeight = 18;
             this.cmbCountry.Location = new System.Drawing.Point(114, 369);
             this.cmbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(271, 29);
+            this.cmbCountry.Size = new System.Drawing.Size(271, 24);
             this.cmbCountry.TabIndex = 65;
             // 
             // label18
@@ -319,6 +320,7 @@
             this.btnBrows.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBrows.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnBrows.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBrows.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnBrows.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBrows.ForeColor = System.Drawing.Color.White;
             this.btnBrows.Location = new System.Drawing.Point(649, 135);
@@ -349,7 +351,7 @@
             this.txtCompanyPhone2.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyPhone2.PlaceholderText = "";
             this.txtCompanyPhone2.SelectedText = "";
-            this.txtCompanyPhone2.Size = new System.Drawing.Size(195, 29);
+            this.txtCompanyPhone2.Size = new System.Drawing.Size(195, 25);
             this.txtCompanyPhone2.TabIndex = 59;
             // 
             // txtAddress
@@ -373,7 +375,7 @@
             this.txtAddress.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAddress.PlaceholderText = "";
             this.txtAddress.SelectedText = "";
-            this.txtAddress.Size = new System.Drawing.Size(451, 29);
+            this.txtAddress.Size = new System.Drawing.Size(451, 25);
             this.txtAddress.TabIndex = 56;
             // 
             // txtCompanyTrn
@@ -397,7 +399,7 @@
             this.txtCompanyTrn.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyTrn.PlaceholderText = "";
             this.txtCompanyTrn.SelectedText = "";
-            this.txtCompanyTrn.Size = new System.Drawing.Size(451, 29);
+            this.txtCompanyTrn.Size = new System.Drawing.Size(451, 25);
             this.txtCompanyTrn.TabIndex = 55;
             // 
             // txtCompanyWebsite
@@ -421,7 +423,7 @@
             this.txtCompanyWebsite.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyWebsite.PlaceholderText = "";
             this.txtCompanyWebsite.SelectedText = "";
-            this.txtCompanyWebsite.Size = new System.Drawing.Size(451, 29);
+            this.txtCompanyWebsite.Size = new System.Drawing.Size(451, 25);
             this.txtCompanyWebsite.TabIndex = 53;
             // 
             // txtCompanyMobile
@@ -445,7 +447,7 @@
             this.txtCompanyMobile.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyMobile.PlaceholderText = "";
             this.txtCompanyMobile.SelectedText = "";
-            this.txtCompanyMobile.Size = new System.Drawing.Size(195, 29);
+            this.txtCompanyMobile.Size = new System.Drawing.Size(195, 25);
             this.txtCompanyMobile.TabIndex = 51;
             // 
             // txtCompanyGmail
@@ -469,7 +471,7 @@
             this.txtCompanyGmail.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyGmail.PlaceholderText = "";
             this.txtCompanyGmail.SelectedText = "";
-            this.txtCompanyGmail.Size = new System.Drawing.Size(195, 29);
+            this.txtCompanyGmail.Size = new System.Drawing.Size(195, 25);
             this.txtCompanyGmail.TabIndex = 49;
             // 
             // txtCompanyPhone1
@@ -493,7 +495,7 @@
             this.txtCompanyPhone1.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyPhone1.PlaceholderText = "";
             this.txtCompanyPhone1.SelectedText = "";
-            this.txtCompanyPhone1.Size = new System.Drawing.Size(195, 29);
+            this.txtCompanyPhone1.Size = new System.Drawing.Size(195, 25);
             this.txtCompanyPhone1.TabIndex = 47;
             // 
             // txtCompanyDescription
@@ -517,7 +519,7 @@
             this.txtCompanyDescription.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyDescription.PlaceholderText = "";
             this.txtCompanyDescription.SelectedText = "";
-            this.txtCompanyDescription.Size = new System.Drawing.Size(451, 29);
+            this.txtCompanyDescription.Size = new System.Drawing.Size(451, 25);
             this.txtCompanyDescription.TabIndex = 45;
             // 
             // txtCompanyName
@@ -541,7 +543,7 @@
             this.txtCompanyName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyName.PlaceholderText = "";
             this.txtCompanyName.SelectedText = "";
-            this.txtCompanyName.Size = new System.Drawing.Size(451, 29);
+            this.txtCompanyName.Size = new System.Drawing.Size(451, 25);
             this.txtCompanyName.TabIndex = 43;
             // 
             // panel1
@@ -577,7 +579,7 @@
             this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(594, 3);
@@ -865,6 +867,7 @@
             // 
             // txtCorporateTaxNo
             // 
+            this.txtCorporateTaxNo.BorderRadius = 5;
             this.txtCorporateTaxNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCorporateTaxNo.DefaultText = "";
             this.txtCorporateTaxNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -881,7 +884,7 @@
             this.txtCorporateTaxNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCorporateTaxNo.PlaceholderText = "";
             this.txtCorporateTaxNo.SelectedText = "";
-            this.txtCorporateTaxNo.Size = new System.Drawing.Size(271, 29);
+            this.txtCorporateTaxNo.Size = new System.Drawing.Size(271, 25);
             this.txtCorporateTaxNo.TabIndex = 26;
             // 
             // TRNIssueDate
@@ -895,18 +898,6 @@
             this.TRNIssueDate.Name = "TRNIssueDate";
             this.TRNIssueDate.Size = new System.Drawing.Size(153, 23);
             this.TRNIssueDate.TabIndex = 29;
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label16.Location = new System.Drawing.Point(581, 326);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 29);
-            this.label16.TabIndex = 27;
-            this.label16.Text = "TRN Issue Date";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox8
             // 
@@ -1190,6 +1181,7 @@
             // 
             // txtRegistrationNo
             // 
+            this.txtRegistrationNo.BorderRadius = 5;
             this.txtRegistrationNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRegistrationNo.DefaultText = "";
             this.txtRegistrationNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1206,7 +1198,7 @@
             this.txtRegistrationNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtRegistrationNo.PlaceholderText = "";
             this.txtRegistrationNo.SelectedText = "";
-            this.txtRegistrationNo.Size = new System.Drawing.Size(271, 29);
+            this.txtRegistrationNo.Size = new System.Drawing.Size(271, 25);
             this.txtRegistrationNo.TabIndex = 18;
             // 
             // label15
@@ -1307,7 +1299,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -1377,7 +1369,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(750, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
@@ -1391,6 +1383,18 @@
             this.guna2DragControl1.DragEndTransparencyValue = 0.1D;
             this.guna2DragControl1.TargetControl = this.panel6;
             this.guna2DragControl1.TransparentWhileDrag = false;
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label16.Location = new System.Drawing.Point(581, 326);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 29);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "TRN Issue Date";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MasterCompany
             // 
@@ -1493,7 +1497,6 @@
         private System.Windows.Forms.Label CorporateTaxNo;
         private Guna.UI2.WinForms.Guna2TextBox txtCorporateTaxNo;
         private System.Windows.Forms.DateTimePicker TRNIssueDate;
-        private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2Button btnBrows;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
@@ -1515,5 +1518,6 @@
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
         private Guna.UI2.WinForms.Guna2PictureBox imgStamp;
         private Guna.UI2.WinForms.Guna2CheckBox ChB_Default;
+        private System.Windows.Forms.Label label16;
     }
 }

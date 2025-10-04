@@ -25,7 +25,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewItemTaxCodes());
+            new frmViewItemTaxCodes().ShowDialog();
         }
         private void MasterTax_Load(object sender, EventArgs e)
         {
@@ -93,13 +93,13 @@ namespace YamyProject
         {
             if (dgvTax.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewItemTaxCodes(int.Parse(dgvTax.CurrentRow.Cells["id"].Value.ToString())));
+            new frmViewItemTaxCodes(int.Parse(dgvTax.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvTax.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewItemTaxCodes(int.Parse(dgvTax.CurrentRow.Cells["id"].Value.ToString())));
+            new frmViewItemTaxCodes(int.Parse(dgvTax.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_MouseHover(object sender, EventArgs e)
         {

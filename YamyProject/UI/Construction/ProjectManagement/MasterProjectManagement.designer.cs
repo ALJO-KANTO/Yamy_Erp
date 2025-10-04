@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNew = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRestore = new Guna.UI2.WinForms.Guna2Button();
@@ -39,7 +39,9 @@
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.dgView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPrint = new Guna.UI2.WinForms.Guna2TileButton();
             this.chkProjectType = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.btnExcel = new Guna.UI2.WinForms.Guna2TileButton();
             this.cmbProjectType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkProjectStatus = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -58,8 +60,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.headerUC1 = new YamyProject.HeaderUC();
-            this.btnPrint = new Guna.UI2.WinForms.Guna2TileButton();
-            this.btnExcel = new Guna.UI2.WinForms.Guna2TileButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -167,42 +167,42 @@
             // 
             this.dgView.AllowUserToAddRows = false;
             this.dgView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.dgView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgView.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgView.Location = new System.Drawing.Point(0, 0);
             this.dgView.MultiSelect = false;
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgView.RowHeadersVisible = false;
             this.dgView.RowTemplate.Height = 30;
             this.dgView.Size = new System.Drawing.Size(1211, 473);
@@ -259,6 +259,34 @@
             this.panel2.Size = new System.Drawing.Size(1211, 54);
             this.panel2.TabIndex = 7;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrint.BorderColor = System.Drawing.Color.Transparent;
+            this.btnPrint.BorderRadius = 10;
+            this.btnPrint.BorderThickness = 2;
+            this.btnPrint.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrint.FillColor = System.Drawing.Color.Transparent;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnPrint.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.btnPrint.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.btnPrint.Image = global::YamyProject.Properties.Resources.Print;
+            this.btnPrint.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPrint.ImageOffset = new System.Drawing.Point(-10, 10);
+            this.btnPrint.Location = new System.Drawing.Point(385, 19);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(22, 23);
+            this.btnPrint.TabIndex = 46;
+            this.btnPrint.Text = " ";
+            this.btnPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPrint.TextOffset = new System.Drawing.Point(10, -12);
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // chkProjectType
             // 
             this.chkProjectType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -284,17 +312,46 @@
             this.chkProjectType.UseVisualStyleBackColor = false;
             this.chkProjectType.CheckedChanged += new System.EventHandler(this.chkProjectType_CheckedChanged);
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcel.BorderColor = System.Drawing.Color.Transparent;
+            this.btnExcel.BorderRadius = 10;
+            this.btnExcel.BorderThickness = 2;
+            this.btnExcel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExcel.FillColor = System.Drawing.Color.Transparent;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnExcel.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.btnExcel.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.btnExcel.Image = global::YamyProject.Properties.Resources.Clipboard_Approve;
+            this.btnExcel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnExcel.ImageOffset = new System.Drawing.Point(-10, 10);
+            this.btnExcel.Location = new System.Drawing.Point(357, 19);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(22, 23);
+            this.btnExcel.TabIndex = 45;
+            this.btnExcel.Text = " ";
+            this.btnExcel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnExcel.TextOffset = new System.Drawing.Point(10, -12);
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // cmbProjectType
             // 
             this.cmbProjectType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProjectType.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectType.BorderRadius = 5;
             this.cmbProjectType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectType.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectType.ItemHeight = 23;
+            this.cmbProjectType.ItemHeight = 18;
             this.cmbProjectType.Items.AddRange(new object[] {
             "Residential",
             "Commercial",
@@ -308,7 +365,7 @@
             this.cmbProjectType.Location = new System.Drawing.Point(799, 21);
             this.cmbProjectType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbProjectType.Name = "cmbProjectType";
-            this.cmbProjectType.Size = new System.Drawing.Size(154, 29);
+            this.cmbProjectType.Size = new System.Drawing.Size(154, 24);
             this.cmbProjectType.StartIndex = 1;
             this.cmbProjectType.TabIndex = 15;
             this.cmbProjectType.SelectedIndexChanged += new System.EventHandler(this.cmbOption_SelectedIndexChanged);
@@ -354,13 +411,14 @@
             // 
             this.cmbProjectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProjectStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectStatus.BorderRadius = 5;
             this.cmbProjectStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectStatus.ItemHeight = 23;
+            this.cmbProjectStatus.ItemHeight = 18;
             this.cmbProjectStatus.Items.AddRange(new object[] {
             "Planning",
             "Mobilizing",
@@ -376,7 +434,7 @@
             this.cmbProjectStatus.Location = new System.Drawing.Point(1013, 20);
             this.cmbProjectStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbProjectStatus.Name = "cmbProjectStatus";
-            this.cmbProjectStatus.Size = new System.Drawing.Size(154, 29);
+            this.cmbProjectStatus.Size = new System.Drawing.Size(154, 24);
             this.cmbProjectStatus.StartIndex = 0;
             this.cmbProjectStatus.TabIndex = 12;
             this.cmbProjectStatus.SelectedIndexChanged += new System.EventHandler(this.cmbOption_SelectedIndexChanged);
@@ -499,6 +557,7 @@
             // cmbProject
             // 
             this.cmbProject.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProject.BorderRadius = 5;
             this.cmbProject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.Enabled = false;
@@ -506,11 +565,11 @@
             this.cmbProject.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProject.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProject.ItemHeight = 23;
+            this.cmbProject.ItemHeight = 18;
             this.cmbProject.Location = new System.Drawing.Point(10, 20);
             this.cmbProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbProject.Name = "cmbProject";
-            this.cmbProject.Size = new System.Drawing.Size(285, 29);
+            this.cmbProject.Size = new System.Drawing.Size(285, 24);
             this.cmbProject.TabIndex = 6;
             this.cmbProject.SelectedIndexChanged += new System.EventHandler(this.cmbOption_SelectedIndexChanged);
             // 
@@ -540,7 +599,7 @@
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 600);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1211, 2);
             this.panel5.TabIndex = 14;
@@ -550,7 +609,7 @@
             this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1213, 37);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(2, 565);
             this.panel6.TabIndex = 13;
@@ -560,7 +619,7 @@
             this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 37);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(2, 565);
             this.panel7.TabIndex = 12;
@@ -570,67 +629,12 @@
             this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(1215, 37);
             this.headerUC1.TabIndex = 0;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrint.BorderColor = System.Drawing.Color.Transparent;
-            this.btnPrint.BorderRadius = 10;
-            this.btnPrint.BorderThickness = 2;
-            this.btnPrint.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrint.FillColor = System.Drawing.Color.Transparent;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnPrint.HoverState.BorderColor = System.Drawing.Color.Silver;
-            this.btnPrint.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.btnPrint.Image = global::YamyProject.Properties.Resources.Print;
-            this.btnPrint.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPrint.ImageOffset = new System.Drawing.Point(-10, 10);
-            this.btnPrint.Location = new System.Drawing.Point(385, 19);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(22, 23);
-            this.btnPrint.TabIndex = 46;
-            this.btnPrint.Text = " ";
-            this.btnPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPrint.TextOffset = new System.Drawing.Point(10, -12);
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcel.BorderColor = System.Drawing.Color.Transparent;
-            this.btnExcel.BorderRadius = 10;
-            this.btnExcel.BorderThickness = 2;
-            this.btnExcel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.btnExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExcel.FillColor = System.Drawing.Color.Transparent;
-            this.btnExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnExcel.HoverState.BorderColor = System.Drawing.Color.Silver;
-            this.btnExcel.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.btnExcel.Image = global::YamyProject.Properties.Resources.Clipboard_Approve;
-            this.btnExcel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnExcel.ImageOffset = new System.Drawing.Point(-10, 10);
-            this.btnExcel.Location = new System.Drawing.Point(357, 19);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(22, 23);
-            this.btnExcel.TabIndex = 45;
-            this.btnExcel.Text = " ";
-            this.btnExcel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnExcel.TextOffset = new System.Drawing.Point(10, -12);
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // MasterProjectManagement
             // 

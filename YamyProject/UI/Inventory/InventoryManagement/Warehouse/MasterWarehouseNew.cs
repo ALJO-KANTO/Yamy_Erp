@@ -99,7 +99,7 @@ namespace YamyProject
             if (dgvCustomer.Rows.Count == 0)
                 return;
 
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewWarehouse(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
             if (dgvCustomer.Rows.Count == 0)
                 return;
         }
@@ -188,7 +188,7 @@ namespace YamyProject
 
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse());
+            new frmViewWarehouse().ShowDialog();
         }
 
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace YamyProject
             if (dgvCustomer.Rows.Count == 0)
                 return;
 
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewWarehouse(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
 
         private void deleteCustomerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -453,7 +453,7 @@ namespace YamyProject
 
         private void newWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse());
+            new frmViewWarehouse().ShowDialog();
         }
 
         private void editWarehouseToolStripMenuItem_Click(object sender, EventArgs e)

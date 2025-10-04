@@ -31,33 +31,33 @@ namespace YamyProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBarcodeScan = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSaveClose = new Guna.UI2.WinForms.Guna2Button();
@@ -111,6 +111,8 @@ namespace YamyProject
             this.txtShipTo = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtBillTo = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.richTextDescription = new System.Windows.Forms.RichTextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.txtTotalVat = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTotalBefore = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTotal = new Guna.UI2.WinForms.Guna2TextBox();
@@ -206,6 +208,7 @@ namespace YamyProject
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel1.Controls.Add(this.txtBarcodeScan);
             this.panel1.Controls.Add(this.btnSaveClose);
             this.panel1.Controls.Add(this.btnClose);
@@ -219,6 +222,7 @@ namespace YamyProject
             // 
             // txtBarcodeScan
             // 
+            this.txtBarcodeScan.BorderRadius = 5;
             this.txtBarcodeScan.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBarcodeScan.DefaultText = "";
             this.txtBarcodeScan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -246,10 +250,10 @@ namespace YamyProject
             this.btnSaveClose.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSaveClose.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveClose.ForeColor = System.Drawing.Color.White;
-            this.btnSaveClose.Location = new System.Drawing.Point(835, 4);
+            this.btnSaveClose.Location = new System.Drawing.Point(932, 7);
             this.btnSaveClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveClose.Name = "btnSaveClose";
-            this.btnSaveClose.Size = new System.Drawing.Size(129, 35);
+            this.btnSaveClose.Size = new System.Drawing.Size(129, 30);
             this.btnSaveClose.TabIndex = 4;
             this.btnSaveClose.Text = "Save && Close";
             this.btnSaveClose.Click += new System.EventHandler(this.btnSaveNew_Click);
@@ -263,10 +267,10 @@ namespace YamyProject
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(1081, 4);
+            this.btnClose.Location = new System.Drawing.Point(1162, 7);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(160, 35);
+            this.btnClose.Size = new System.Drawing.Size(79, 30);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -280,10 +284,10 @@ namespace YamyProject
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(970, 4);
+            this.btnSave.Location = new System.Drawing.Point(1070, 7);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 35);
+            this.btnSave.Size = new System.Drawing.Size(84, 30);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -310,21 +314,21 @@ namespace YamyProject
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AllowUserToResizeColumns = false;
             this.dgvItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle55;
             this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle56.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle56;
             this.dgvItems.ColumnHeadersHeight = 18;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -344,14 +348,14 @@ namespace YamyProject
             this.type,
             this.cost_center,
             this.delete});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle69.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle69.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle69.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle69.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle69;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -360,18 +364,18 @@ namespace YamyProject
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle70.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle70.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle70.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle70.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle70;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle71.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle71;
             this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -426,8 +430,8 @@ namespace YamyProject
             // code
             // 
             this.code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.code.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code.DefaultCellStyle = dataGridViewCellStyle57;
             this.code.HeaderText = "Item Code";
             this.code.MinimumWidth = 100;
             this.code.Name = "code";
@@ -443,8 +447,8 @@ namespace YamyProject
             // qty
             // 
             this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle58;
             this.qty.FillWeight = 75F;
             this.qty.HeaderText = "Qty";
             this.qty.MinimumWidth = 55;
@@ -454,10 +458,10 @@ namespace YamyProject
             // cost_price
             // 
             this.cost_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.cost_price.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle59.Format = "N2";
+            dataGridViewCellStyle59.NullValue = "0";
+            this.cost_price.DefaultCellStyle = dataGridViewCellStyle59;
             this.cost_price.HeaderText = "Cost Price";
             this.cost_price.MinimumWidth = 100;
             this.cost_price.Name = "cost_price";
@@ -465,10 +469,10 @@ namespace YamyProject
             // 
             // price
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.price.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle60.Format = "N2";
+            dataGridViewCellStyle60.NullValue = "0";
+            this.price.DefaultCellStyle = dataGridViewCellStyle60;
             this.price.HeaderText = "Price";
             this.price.MinimumWidth = 6;
             this.price.Name = "price";
@@ -477,10 +481,10 @@ namespace YamyProject
             // discount
             // 
             this.discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.discount.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle61.Format = "N2";
+            dataGridViewCellStyle61.NullValue = "0";
+            this.discount.DefaultCellStyle = dataGridViewCellStyle61;
             this.discount.HeaderText = "Disc";
             this.discount.MinimumWidth = 100;
             this.discount.Name = "discount";
@@ -489,10 +493,10 @@ namespace YamyProject
             // net_price
             // 
             this.net_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.net_price.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle62.Format = "N2";
+            dataGridViewCellStyle62.NullValue = "0";
+            this.net_price.DefaultCellStyle = dataGridViewCellStyle62;
             this.net_price.HeaderText = "Net Price";
             this.net_price.MinimumWidth = 110;
             this.net_price.Name = "net_price";
@@ -502,8 +506,8 @@ namespace YamyProject
             // vat
             // 
             this.vat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.vat.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.vat.DefaultCellStyle = dataGridViewCellStyle63;
             this.vat.FillWeight = 75F;
             this.vat.HeaderText = "Vat";
             this.vat.MinimumWidth = 75;
@@ -514,10 +518,10 @@ namespace YamyProject
             // VatP
             // 
             this.VatP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.VatP.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle64.Format = "N2";
+            dataGridViewCellStyle64.NullValue = "0";
+            this.VatP.DefaultCellStyle = dataGridViewCellStyle64;
             this.VatP.HeaderText = "~";
             this.VatP.MinimumWidth = 100;
             this.VatP.Name = "VatP";
@@ -526,10 +530,10 @@ namespace YamyProject
             // total
             // 
             this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0";
-            this.total.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle65.Format = "N2";
+            dataGridViewCellStyle65.NullValue = "0";
+            this.total.DefaultCellStyle = dataGridViewCellStyle65;
             this.total.HeaderText = "Amount";
             this.total.MinimumWidth = 110;
             this.total.Name = "total";
@@ -539,8 +543,8 @@ namespace YamyProject
             // method
             // 
             this.method.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.method.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.method.DefaultCellStyle = dataGridViewCellStyle66;
             this.method.HeaderText = "method";
             this.method.MinimumWidth = 100;
             this.method.Name = "method";
@@ -550,8 +554,8 @@ namespace YamyProject
             // type
             // 
             this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.type.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle67;
             this.type.HeaderText = "type";
             this.type.MinimumWidth = 100;
             this.type.Name = "type";
@@ -561,8 +565,8 @@ namespace YamyProject
             // cost_center
             // 
             this.cost_center.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.cost_center.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.cost_center.DefaultCellStyle = dataGridViewCellStyle68;
             this.cost_center.HeaderText = "Cost Center";
             this.cost_center.MinimumWidth = 100;
             this.cost_center.Name = "cost_center";
@@ -581,6 +585,7 @@ namespace YamyProject
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox1.BorderThickness = 0;
             this.guna2GroupBox1.Controls.Add(this.cmbFixedAssetCategory);
             this.guna2GroupBox1.Controls.Add(this.dtPaymentTerms);
@@ -629,11 +634,11 @@ namespace YamyProject
             this.cmbFixedAssetCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbFixedAssetCategory.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFixedAssetCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbFixedAssetCategory.ItemHeight = 23;
+            this.cmbFixedAssetCategory.ItemHeight = 18;
             this.cmbFixedAssetCategory.Location = new System.Drawing.Point(775, 79);
             this.cmbFixedAssetCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFixedAssetCategory.Name = "cmbFixedAssetCategory";
-            this.cmbFixedAssetCategory.Size = new System.Drawing.Size(189, 29);
+            this.cmbFixedAssetCategory.Size = new System.Drawing.Size(189, 24);
             this.cmbFixedAssetCategory.TabIndex = 59;
             this.cmbFixedAssetCategory.Visible = false;
             // 
@@ -662,7 +667,7 @@ namespace YamyProject
             this.cmbPurchasetype.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchasetype.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.cmbPurchasetype.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPurchasetype.ItemHeight = 23;
+            this.cmbPurchasetype.ItemHeight = 18;
             this.cmbPurchasetype.Items.AddRange(new object[] {
             "Inventory ",
             "Fixed Assets",
@@ -670,7 +675,7 @@ namespace YamyProject
             this.cmbPurchasetype.Location = new System.Drawing.Point(642, 79);
             this.cmbPurchasetype.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPurchasetype.Name = "cmbPurchasetype";
-            this.cmbPurchasetype.Size = new System.Drawing.Size(126, 29);
+            this.cmbPurchasetype.Size = new System.Drawing.Size(126, 24);
             this.cmbPurchasetype.TabIndex = 57;
             this.cmbPurchasetype.SelectedIndexChanged += new System.EventHandler(this.cmbPurchasetype_SelectedIndexChanged);
             // 
@@ -686,7 +691,7 @@ namespace YamyProject
             this.cmbPaymentTerms.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPaymentTerms.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentTerms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPaymentTerms.ItemHeight = 23;
+            this.cmbPaymentTerms.ItemHeight = 18;
             this.cmbPaymentTerms.Items.AddRange(new object[] {
             "30",
             "60",
@@ -703,7 +708,7 @@ namespace YamyProject
             this.cmbPaymentTerms.Location = new System.Drawing.Point(405, 26);
             this.cmbPaymentTerms.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPaymentTerms.Name = "cmbPaymentTerms";
-            this.cmbPaymentTerms.Size = new System.Drawing.Size(152, 29);
+            this.cmbPaymentTerms.Size = new System.Drawing.Size(152, 24);
             this.cmbPaymentTerms.TabIndex = 41;
             this.cmbPaymentTerms.SelectedIndexChanged += new System.EventHandler(this.cmbPaymentTerms_SelectedIndexChanged_1);
             // 
@@ -711,13 +716,13 @@ namespace YamyProject
             // 
             this.cmbAccountCashName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbAccountCashName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbAccountCashName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAccountCashName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAccountCashName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccountCashName.ItemHeight = 19;
+            this.cmbAccountCashName.ItemHeight = 15;
             this.cmbAccountCashName.Location = new System.Drawing.Point(405, 79);
             this.cmbAccountCashName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAccountCashName.Name = "cmbAccountCashName";
-            this.cmbAccountCashName.Size = new System.Drawing.Size(230, 27);
+            this.cmbAccountCashName.Size = new System.Drawing.Size(230, 23);
             this.cmbAccountCashName.TabIndex = 42;
             this.cmbAccountCashName.SelectedIndexChanged += new System.EventHandler(this.cmbAccountCashName_SelectedIndexChanged);
             // 
@@ -733,14 +738,14 @@ namespace YamyProject
             this.cmbPaymentMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.cmbPaymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPaymentMethod.ItemHeight = 23;
+            this.cmbPaymentMethod.ItemHeight = 18;
             this.cmbPaymentMethod.Items.AddRange(new object[] {
             "Cash",
             "Credit"});
             this.cmbPaymentMethod.Location = new System.Drawing.Point(10, 24);
             this.cmbPaymentMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(147, 29);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(147, 24);
             this.cmbPaymentMethod.TabIndex = 43;
             this.cmbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.cmbPaymentMethod_SelectedIndexChanged);
             // 
@@ -779,13 +784,13 @@ namespace YamyProject
             this.txtNextCode.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNextCode.ForeColor = System.Drawing.Color.Black;
             this.txtNextCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNextCode.Location = new System.Drawing.Point(1089, 17);
+            this.txtNextCode.Location = new System.Drawing.Point(1128, 23);
             this.txtNextCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNextCode.Name = "txtNextCode";
             this.txtNextCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtNextCode.PlaceholderText = "";
             this.txtNextCode.SelectedText = "";
-            this.txtNextCode.Size = new System.Drawing.Size(150, 35);
+            this.txtNextCode.Size = new System.Drawing.Size(110, 24);
             this.txtNextCode.TabIndex = 40;
             // 
             // label4
@@ -793,9 +798,9 @@ namespace YamyProject
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(1088, 0);
+            this.label4.Location = new System.Drawing.Point(1127, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 18);
+            this.label4.Size = new System.Drawing.Size(104, 18);
             this.label4.TabIndex = 39;
             this.label4.Text = "Invoice #";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -818,7 +823,7 @@ namespace YamyProject
             this.txtPONO.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtPONO.PlaceholderText = "P.O No";
             this.txtPONO.SelectedText = "";
-            this.txtPONO.Size = new System.Drawing.Size(190, 30);
+            this.txtPONO.Size = new System.Drawing.Size(75, 24);
             this.txtPONO.TabIndex = 35;
             // 
             // txtSalesMan
@@ -838,7 +843,7 @@ namespace YamyProject
             this.txtSalesMan.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSalesMan.PlaceholderText = "Sales Man";
             this.txtSalesMan.SelectedText = "";
-            this.txtSalesMan.Size = new System.Drawing.Size(162, 31);
+            this.txtSalesMan.Size = new System.Drawing.Size(162, 24);
             this.txtSalesMan.TabIndex = 28;
             // 
             // dtInv
@@ -846,10 +851,10 @@ namespace YamyProject
             this.dtInv.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtInv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtInv.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtInv.Location = new System.Drawing.Point(1090, 79);
+            this.dtInv.Location = new System.Drawing.Point(1129, 85);
             this.dtInv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtInv.Name = "dtInv";
-            this.dtInv.Size = new System.Drawing.Size(150, 22);
+            this.dtInv.Size = new System.Drawing.Size(110, 22);
             this.dtInv.TabIndex = 29;
             this.dtInv.ValueChanged += new System.EventHandler(this.dtInv_ValueChanged);
             // 
@@ -865,11 +870,11 @@ namespace YamyProject
             this.cmbWarehouse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWarehouse.ItemHeight = 23;
+            this.cmbWarehouse.ItemHeight = 18;
             this.cmbWarehouse.Location = new System.Drawing.Point(160, 24);
             this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(162, 29);
+            this.cmbWarehouse.Size = new System.Drawing.Size(162, 24);
             this.cmbWarehouse.TabIndex = 30;
             // 
             // label21
@@ -877,10 +882,10 @@ namespace YamyProject
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label21.Location = new System.Drawing.Point(1089, 55);
+            this.label21.Location = new System.Drawing.Point(1128, 61);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 21);
+            this.label21.Size = new System.Drawing.Size(59, 21);
             this.label21.TabIndex = 33;
             this.label21.Text = "Date";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -932,7 +937,7 @@ namespace YamyProject
             this.cmbCity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCity.ItemHeight = 23;
+            this.cmbCity.ItemHeight = 18;
             this.cmbCity.Items.AddRange(new object[] {
             "Abu Dhabi",
             "Dubai",
@@ -943,7 +948,7 @@ namespace YamyProject
             this.cmbCity.Location = new System.Drawing.Point(7, 81);
             this.cmbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(150, 29);
+            this.cmbCity.Size = new System.Drawing.Size(150, 24);
             this.cmbCity.StartIndex = 0;
             this.cmbCity.TabIndex = 49;
             // 
@@ -1021,16 +1026,16 @@ namespace YamyProject
             this.cmbShipVia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbShipVia.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbShipVia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbShipVia.ItemHeight = 23;
+            this.cmbShipVia.ItemHeight = 18;
             this.cmbShipVia.Items.AddRange(new object[] {
             "DHL",
             "MAIL",
             "On Site",
             "Other"});
-            this.cmbShipVia.Location = new System.Drawing.Point(1127, 7);
+            this.cmbShipVia.Location = new System.Drawing.Point(1127, 10);
             this.cmbShipVia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbShipVia.Name = "cmbShipVia";
-            this.cmbShipVia.Size = new System.Drawing.Size(112, 29);
+            this.cmbShipVia.Size = new System.Drawing.Size(112, 24);
             this.cmbShipVia.TabIndex = 55;
             // 
             // dtShip
@@ -1039,10 +1044,10 @@ namespace YamyProject
             this.dtShip.Font = new System.Drawing.Font("Segoe UI Semibold", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtShip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtShip.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtShip.Location = new System.Drawing.Point(941, 8);
+            this.dtShip.Location = new System.Drawing.Point(982, 9);
             this.dtShip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtShip.Name = "dtShip";
-            this.dtShip.Size = new System.Drawing.Size(147, 23);
+            this.dtShip.Size = new System.Drawing.Size(106, 23);
             this.dtShip.TabIndex = 53;
             // 
             // txtShipTo
@@ -1057,13 +1062,13 @@ namespace YamyProject
             this.txtShipTo.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.txtShipTo.ForeColor = System.Drawing.Color.Black;
             this.txtShipTo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtShipTo.Location = new System.Drawing.Point(721, 6);
+            this.txtShipTo.Location = new System.Drawing.Point(721, 10);
             this.txtShipTo.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.txtShipTo.Name = "txtShipTo";
             this.txtShipTo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtShipTo.PlaceholderText = "Ship To";
             this.txtShipTo.SelectedText = "";
-            this.txtShipTo.Size = new System.Drawing.Size(155, 31);
+            this.txtShipTo.Size = new System.Drawing.Size(155, 24);
             this.txtShipTo.TabIndex = 51;
             // 
             // txtBillTo
@@ -1077,26 +1082,32 @@ namespace YamyProject
             this.txtBillTo.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBillTo.ForeColor = System.Drawing.Color.Black;
             this.txtBillTo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBillTo.Location = new System.Drawing.Point(483, 6);
+            this.txtBillTo.Location = new System.Drawing.Point(483, 10);
             this.txtBillTo.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.txtBillTo.Name = "txtBillTo";
             this.txtBillTo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtBillTo.PlaceholderText = "Bill To";
             this.txtBillTo.SelectedText = "";
-            this.txtBillTo.Size = new System.Drawing.Size(200, 31);
+            this.txtBillTo.Size = new System.Drawing.Size(200, 24);
             this.txtBillTo.TabIndex = 38;
             // 
             // guna2GroupBox3
             // 
+            this.guna2GroupBox3.BackColor = System.Drawing.Color.Gainsboro;
+            this.guna2GroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2GroupBox3.BorderThickness = 2;
+            this.guna2GroupBox3.Controls.Add(this.richTextDescription);
+            this.guna2GroupBox3.Controls.Add(this.label29);
             this.guna2GroupBox3.Controls.Add(this.txtTotalVat);
             this.guna2GroupBox3.Controls.Add(this.txtTotalBefore);
             this.guna2GroupBox3.Controls.Add(this.txtTotal);
             this.guna2GroupBox3.Controls.Add(this.label1);
             this.guna2GroupBox3.Controls.Add(this.label17);
             this.guna2GroupBox3.Controls.Add(this.label16);
-            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.guna2GroupBox3.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox3.Location = new System.Drawing.Point(3, 609);
@@ -1106,9 +1117,36 @@ namespace YamyProject
             this.guna2GroupBox3.TabIndex = 9;
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -5);
             // 
+            // richTextDescription
+            // 
+            this.richTextDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextDescription.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextDescription.Location = new System.Drawing.Point(3, 22);
+            this.richTextDescription.Name = "richTextDescription";
+            this.richTextDescription.Size = new System.Drawing.Size(749, 69);
+            this.richTextDescription.TabIndex = 9;
+            this.richTextDescription.Text = "";
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label29.Location = new System.Drawing.Point(7, 4);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(214, 18);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "Notes";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtTotalVat
             // 
             this.txtTotalVat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalVat.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotalVat.BorderRadius = 5;
             this.txtTotalVat.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalVat.DefaultText = "";
             this.txtTotalVat.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1117,23 +1155,26 @@ namespace YamyProject
             this.txtTotalVat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotalVat.Enabled = false;
             this.txtTotalVat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalVat.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalVat.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalVat.ForeColor = System.Drawing.Color.Black;
             this.txtTotalVat.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalVat.Location = new System.Drawing.Point(1030, 33);
-            this.txtTotalVat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTotalVat.Location = new System.Drawing.Point(1098, 33);
+            this.txtTotalVat.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTotalVat.Name = "txtTotalVat";
             this.txtTotalVat.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotalVat.PlaceholderText = "Total Vat";
             this.txtTotalVat.ReadOnly = true;
             this.txtTotalVat.SelectedText = "";
-            this.txtTotalVat.Size = new System.Drawing.Size(204, 23);
+            this.txtTotalVat.Size = new System.Drawing.Size(141, 24);
             this.txtTotalVat.TabIndex = 3;
+            this.txtTotalVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalVat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesPrice_KeyPress);
             // 
             // txtTotalBefore
             // 
             this.txtTotalBefore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalBefore.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotalBefore.BorderRadius = 5;
             this.txtTotalBefore.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalBefore.DefaultText = "";
             this.txtTotalBefore.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1142,23 +1183,26 @@ namespace YamyProject
             this.txtTotalBefore.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotalBefore.Enabled = false;
             this.txtTotalBefore.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalBefore.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalBefore.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalBefore.ForeColor = System.Drawing.Color.Black;
             this.txtTotalBefore.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalBefore.Location = new System.Drawing.Point(1028, 4);
-            this.txtTotalBefore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTotalBefore.Location = new System.Drawing.Point(1097, 4);
+            this.txtTotalBefore.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTotalBefore.Name = "txtTotalBefore";
             this.txtTotalBefore.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotalBefore.PlaceholderText = "Total Before Vat";
             this.txtTotalBefore.ReadOnly = true;
             this.txtTotalBefore.SelectedText = "";
-            this.txtTotalBefore.Size = new System.Drawing.Size(204, 23);
+            this.txtTotalBefore.Size = new System.Drawing.Size(142, 24);
             this.txtTotalBefore.TabIndex = 3;
+            this.txtTotalBefore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalBefore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesPrice_KeyPress);
             // 
             // txtTotal
             // 
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotal.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotal.BorderRadius = 5;
             this.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotal.DefaultText = "";
             this.txtTotal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -1167,58 +1211,59 @@ namespace YamyProject
             this.txtTotal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTotal.Enabled = false;
             this.txtTotal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.ForeColor = System.Drawing.Color.Black;
             this.txtTotal.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotal.Location = new System.Drawing.Point(1031, 62);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtTotal.Location = new System.Drawing.Point(1098, 63);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTotal.PlaceholderText = "Net Amount";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.SelectedText = "";
-            this.txtTotal.Size = new System.Drawing.Size(204, 23);
+            this.txtTotal.Size = new System.Drawing.Size(142, 24);
             this.txtTotal.TabIndex = 3;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesPrice_KeyPress);
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(905, 4);
+            this.label1.Location = new System.Drawing.Point(977, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 23);
             this.label1.TabIndex = 5;
             this.label1.Text = "Total Before Vat";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label17.Location = new System.Drawing.Point(907, 34);
+            this.label17.Location = new System.Drawing.Point(979, 34);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(116, 23);
             this.label17.TabIndex = 5;
             this.label17.Text = "Total Vat";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label16.Location = new System.Drawing.Point(905, 63);
+            this.label16.Location = new System.Drawing.Point(977, 63);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(116, 23);
             this.label16.TabIndex = 5;
             this.label16.Text = "Net Amount";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel5
             // 
@@ -1252,7 +1297,7 @@ namespace YamyProject
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2Button4);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -1429,11 +1474,11 @@ namespace YamyProject
             this.txtInvoiceId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInvoiceId.Enabled = false;
             this.txtInvoiceId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtInvoiceId.Location = new System.Drawing.Point(38, 19);
+            this.txtInvoiceId.Location = new System.Drawing.Point(38, 26);
             this.txtInvoiceId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtInvoiceId.Multiline = true;
             this.txtInvoiceId.Name = "txtInvoiceId";
-            this.txtInvoiceId.Size = new System.Drawing.Size(77, 38);
+            this.txtInvoiceId.Size = new System.Drawing.Size(77, 24);
             this.txtInvoiceId.TabIndex = 16;
             this.txtInvoiceId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -2025,7 +2070,7 @@ namespace YamyProject
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.panel7.Controls.Add(this.txtBillTo);
             this.panel7.Controls.Add(this.cmbShipVia);
             this.panel7.Controls.Add(this.label6);
@@ -2051,7 +2096,7 @@ namespace YamyProject
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(1092, 11);
+            this.label6.Location = new System.Drawing.Point(1096, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 21);
             this.label6.TabIndex = 54;
@@ -2063,7 +2108,7 @@ namespace YamyProject
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(455, 14);
+            this.label18.Location = new System.Drawing.Point(459, 15);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(25, 21);
             this.label18.TabIndex = 39;
@@ -2074,13 +2119,13 @@ namespace YamyProject
             // 
             this.cmbVendor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbVendor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbVendor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbVendor.ItemHeight = 17;
-            this.cmbVendor.Location = new System.Drawing.Point(222, 6);
+            this.cmbVendor.ItemHeight = 15;
+            this.cmbVendor.Location = new System.Drawing.Point(166, 10);
             this.cmbVendor.Margin = new System.Windows.Forms.Padding(4);
             this.cmbVendor.Name = "cmbVendor";
-            this.cmbVendor.Size = new System.Drawing.Size(204, 25);
+            this.cmbVendor.Size = new System.Drawing.Size(260, 23);
             this.cmbVendor.TabIndex = 4;
             this.cmbVendor.SelectedIndexChanged += new System.EventHandler(this.cmbVendor_SelectedIndexChanged);
             // 
@@ -2092,7 +2137,7 @@ namespace YamyProject
             this.lnkNewVendor.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkNewVendor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lnkNewVendor.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lnkNewVendor.Location = new System.Drawing.Point(410, 10);
+            this.lnkNewVendor.Location = new System.Drawing.Point(409, 10);
             this.lnkNewVendor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkNewVendor.Name = "lnkNewVendor";
             this.lnkNewVendor.Size = new System.Drawing.Size(59, 20);
@@ -2112,13 +2157,13 @@ namespace YamyProject
             this.txtVendorCode.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.txtVendorCode.ForeColor = System.Drawing.Color.Black;
             this.txtVendorCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVendorCode.Location = new System.Drawing.Point(42, 5);
+            this.txtVendorCode.Location = new System.Drawing.Point(38, 9);
             this.txtVendorCode.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.txtVendorCode.Name = "txtVendorCode";
             this.txtVendorCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtVendorCode.PlaceholderText = "";
             this.txtVendorCode.SelectedText = "";
-            this.txtVendorCode.Size = new System.Drawing.Size(115, 32);
+            this.txtVendorCode.Size = new System.Drawing.Size(90, 24);
             this.txtVendorCode.TabIndex = 3;
             this.txtVendorCode.TextChanged += new System.EventHandler(this.txtVendorCode_TextChanged);
             this.txtVendorCode.Leave += new System.EventHandler(this.txtVendorCode_Leave);
@@ -2128,7 +2173,7 @@ namespace YamyProject
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(3, 13);
+            this.label11.Location = new System.Drawing.Point(9, 13);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 17);
@@ -2141,7 +2186,7 @@ namespace YamyProject
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label14.Location = new System.Drawing.Point(163, 11);
+            this.label14.Location = new System.Drawing.Point(136, 10);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 21);
             this.label14.TabIndex = 5;
@@ -2153,7 +2198,7 @@ namespace YamyProject
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(880, 11);
+            this.label10.Location = new System.Drawing.Point(916, 14);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 21);
             this.label10.TabIndex = 52;
@@ -2165,7 +2210,7 @@ namespace YamyProject
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(687, 11);
+            this.label7.Location = new System.Drawing.Point(693, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 21);
             this.label7.TabIndex = 40;
@@ -2296,8 +2341,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle72.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle72;
             this.dataGridViewTextBoxColumn3.HeaderText = "Item Code";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -2315,9 +2360,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = "0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle73.Format = "N2";
+            dataGridViewCellStyle73.NullValue = "0";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle73;
             this.dataGridViewTextBoxColumn5.FillWeight = 75F;
             this.dataGridViewTextBoxColumn5.HeaderText = "cost_price";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
@@ -2327,9 +2372,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = "0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle74.Format = "N2";
+            dataGridViewCellStyle74.NullValue = "0";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle74;
             this.dataGridViewTextBoxColumn6.HeaderText = "Price";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -2338,9 +2383,9 @@ namespace YamyProject
             // 
             // dataGridViewTextBoxColumn7
             // 
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.NullValue = "0";
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle75.Format = "N2";
+            dataGridViewCellStyle75.NullValue = "0";
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle75;
             this.dataGridViewTextBoxColumn7.HeaderText = "Disc";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
@@ -2350,9 +2395,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Format = "N2";
-            dataGridViewCellStyle22.NullValue = "0";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle76.Format = "N2";
+            dataGridViewCellStyle76.NullValue = "0";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle76;
             this.dataGridViewTextBoxColumn8.HeaderText = "Net Price";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
@@ -2362,9 +2407,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.NullValue = "0";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle77.Format = "N2";
+            dataGridViewCellStyle77.NullValue = "0";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle77;
             this.dataGridViewTextBoxColumn9.HeaderText = "~";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
@@ -2374,9 +2419,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.NullValue = "0";
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle78.Format = "N2";
+            dataGridViewCellStyle78.NullValue = "0";
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle78;
             this.dataGridViewTextBoxColumn10.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -2386,10 +2431,10 @@ namespace YamyProject
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = "0";
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle79.Format = "N2";
+            dataGridViewCellStyle79.NullValue = "0";
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle79;
             this.dataGridViewTextBoxColumn11.HeaderText = "method";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
@@ -2400,8 +2445,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle80;
             this.dataGridViewTextBoxColumn12.HeaderText = "type";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
@@ -2411,8 +2456,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle81;
             this.dataGridViewTextBoxColumn13.HeaderText = "type";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -2596,5 +2641,7 @@ namespace YamyProject
         private DataGridViewButtonColumn delete;
         private Guna.UI2.WinForms.Guna2TextBox txtBarcodeScan;
         private Guna.UI2.WinForms.Guna2CheckBox CbSubcontractors;
+        private RichTextBox richTextDescription;
+        private Label label29;
     }
 }

@@ -144,9 +144,9 @@ namespace YamyProject
                             END AS Status
                             From tbl_petty_cash p
                             INNER JOIN 
-                            tbl_petty_cash_card c ON p.employee_id = c.id
+                            tbl_petty_cash_card c ON p.employee_id = c.name
                             INNER JOIN 
-                            tbl_employee e ON e.id = c.name
+                            tbl_employee e ON e.id = p.employee_id
                             WHERE e.code = @empCode;";
                 DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
                 dgvInvoiceCash.DataSource = dt;
@@ -321,21 +321,21 @@ namespace YamyProject
 
         private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new MasterPettyCashCategory());
+            new MasterPettyCashCategory().ShowDialog();
         }
         private void addAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashCard());
+            new frmPettyCashCard().ShowDialog();
         }
 
         private void addCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new MasterPettyCashCategory());
+            new MasterPettyCashCategory().ShowDialog();
         }
 
         private void addRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashRequest(0));
+            new frmPettyCashRequest(0).ShowDialog();
         }
 
         private void approvalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -350,18 +350,18 @@ namespace YamyProject
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashCard());
+            new frmPettyCashCard().ShowDialog();
         
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashCategory());
+            new frmPettyCashCategory().ShowDialog();
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashRequest(0));
+            new frmPettyCashRequest(0).ShowDialog();
         }
         private void dgvInvoice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -570,7 +570,7 @@ namespace YamyProject
                     }
                     else
                     {
-                        frmLogin.frmMain.openChildForm(new frmPettyCashCard(pId));
+                        new frmPettyCashCard(pId).ShowDialog();
                     }
                 }
             }

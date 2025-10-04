@@ -158,7 +158,7 @@ namespace YamyProject
 
         private void lnkNewRole_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewRole());
+            new frmViewRole().ShowDialog();
         }
 
         private void lnkNewEmp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

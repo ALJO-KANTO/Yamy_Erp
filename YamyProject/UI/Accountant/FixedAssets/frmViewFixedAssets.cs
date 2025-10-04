@@ -24,7 +24,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             FixedAssetCategoryUpdatedHandler = (sender, args) => setComboBoxCategory();
             this.id = id;
-            Lbheader.Text = id == 0 ? "Fixed Asset - New" : "Fixed Asset - Edit";
+            //Lbheader.Text = id == 0 ? "Fixed Asset - New" : "Fixed Asset - Edit";
             EventHub.FixedAssetsCategory += FixedAssetCategoryUpdatedHandler;
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -477,7 +477,7 @@ namespace YamyProject
 
         private void lnkCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new frmViewFixedAssetsCategory());
+            //new frmViewFixedAssetsCategory().Show();
             new frmViewFixedAssetsCategory().Show();
         }
         private void cmbAccountName_SelectedIndexChanged(object sender, EventArgs e)
@@ -602,18 +602,6 @@ namespace YamyProject
              DBClass.CreateParameter("code", txtExpenceAccount.Text)))
                 if (reader.Read())
                     cmbExpenceAccount.SelectedValue = int.Parse(reader["id"].ToString());
-        }
-
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal; // Restore down
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized; // Maximize
-            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

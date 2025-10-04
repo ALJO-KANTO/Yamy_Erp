@@ -20,6 +20,8 @@ namespace YamyProject
             headerUC1.FormText = this.Text;
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
+            this.Text = "Project Tender Center";
+            headerUC1.FormText = this.Text;
             LoadCategories();
         }
 

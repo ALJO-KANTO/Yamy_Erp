@@ -21,7 +21,7 @@ namespace YamyProject
             EventHub.lvl1Account += lvl1;
             EventHub.lvl2Account += lvl2;
             EventHub.lvl3Account += lvl3;
-            LbHeader.Text = "COA - New Account";
+            this.Text = "COA - New Account";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -200,7 +200,7 @@ namespace YamyProject
 
         private void lnkNewCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewLevel1(0));
+            new frmViewLevel1(0).ShowDialog();
         }
 
 
@@ -211,7 +211,7 @@ namespace YamyProject
                 MessageBox.Show("Select Level 1 First.");
                 return;
             }
-            frmLogin.frmMain.openChildForm(new frmViewLevel1(int.Parse(cmbLevel1.SelectedValue.ToString())));
+            new frmViewLevel1(int.Parse(cmbLevel1.SelectedValue.ToString())).ShowDialog();
         }
 
         private void lnkLvl2Edit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -221,7 +221,7 @@ namespace YamyProject
                 MessageBox.Show("Select Level 2 First.");
                 return;
             }
-            frmLogin.frmMain.openChildForm(new frmViewLevel2(int.Parse(cmbLevel2.SelectedValue.ToString())));
+            new frmViewLevel2(int.Parse(cmbLevel2.SelectedValue.ToString())).ShowDialog();
         }
 
         private void lnkLvl3Edit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -231,11 +231,11 @@ namespace YamyProject
                 MessageBox.Show("Select Level 3 First.");
                 return;
             }
-            frmLogin.frmMain.openChildForm(new frmViewLevel3(int.Parse(cmbLevel3.SelectedValue.ToString())));
+            new frmViewLevel3(int.Parse(cmbLevel3.SelectedValue.ToString())).ShowDialog();
         }
         private void lnkLvl3Add_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewLevel3(0, int.Parse(cmbLevel1.SelectedValue.ToString()), int.Parse(cmbLevel2.SelectedValue.ToString())));
+            new frmViewLevel3(0, int.Parse(cmbLevel1.SelectedValue.ToString()), int.Parse(cmbLevel2.SelectedValue.ToString())).ShowDialog();
         }
 
         private void lnkLvl1Delete_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -361,18 +361,6 @@ namespace YamyProject
             this.BringToFront();
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal; // Restore down
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized; // Maximize
-            }
-        }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -393,7 +381,7 @@ namespace YamyProject
 
         private void lnlLvl2Add_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewLevel2(0, int.Parse(cmbLevel1.SelectedValue.ToString())));
+            new frmViewLevel2(0, int.Parse(cmbLevel1.SelectedValue.ToString())).ShowDialog();
         }
     }
 }

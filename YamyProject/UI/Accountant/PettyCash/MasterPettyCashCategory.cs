@@ -102,7 +102,7 @@ namespace YamyProject
 
         private void btnNewRequest_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmPettyCashCategory());
+            new frmPettyCashCategory().ShowDialog();
         }
     }
 }

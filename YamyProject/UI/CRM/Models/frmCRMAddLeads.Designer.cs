@@ -76,7 +76,7 @@
             // 
             // txtname
             // 
-            this.txtname.BorderRadius = 3;
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -97,7 +97,7 @@
             // 
             // guna2GradientPanel1
             // 
-            this.guna2GradientPanel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.guna2GradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.guna2GradientPanel1.Controls.Add(this.CRM);
             this.guna2GradientPanel1.Controls.Add(this.guna2Button2);
             this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
@@ -218,7 +218,7 @@
             // cmbstage
             // 
             this.cmbstage.BackColor = System.Drawing.Color.Transparent;
-            this.cmbstage.BorderRadius = 3;
+            this.cmbstage.BorderRadius = 5;
             this.cmbstage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbstage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbstage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(226)))));
@@ -244,7 +244,7 @@
             // 
             // txtamount
             // 
-            this.txtamount.BorderRadius = 3;
+            this.txtamount.BorderRadius = 5;
             this.txtamount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtamount.DefaultText = "";
             this.txtamount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -266,7 +266,7 @@
             // 
             // guna2TextBox2
             // 
-            this.guna2TextBox2.BorderRadius = 3;
+            this.guna2TextBox2.BorderRadius = 5;
             this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox2.DefaultText = "";
             this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -338,7 +338,7 @@
             // cmbAssig
             // 
             this.cmbAssig.BackColor = System.Drawing.Color.Transparent;
-            this.cmbAssig.BorderRadius = 3;
+            this.cmbAssig.BorderRadius = 5;
             this.cmbAssig.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAssig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssig.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(226)))));
@@ -369,7 +369,7 @@
             // cmbCust
             // 
             this.cmbCust.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCust.BorderRadius = 3;
+            this.cmbCust.BorderRadius = 5;
             this.cmbCust.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCust.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(226)))));
@@ -387,9 +387,9 @@
             // txtnotes
             // 
             this.txtnotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtnotes.Location = new System.Drawing.Point(137, 277);
+            this.txtnotes.Location = new System.Drawing.Point(137, 279);
             this.txtnotes.Name = "txtnotes";
-            this.txtnotes.Size = new System.Drawing.Size(256, 96);
+            this.txtnotes.Size = new System.Drawing.Size(254, 91);
             this.txtnotes.TabIndex = 48;
             this.txtnotes.Text = "";
             // 

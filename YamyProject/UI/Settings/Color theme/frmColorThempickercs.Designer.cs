@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.COLORPICKERHEADER = new PdfSharp.Forms.ColorComboBox();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.COLORPICKERTEXT = new PdfSharp.Forms.ColorComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -55,17 +54,10 @@
             this.COLORPICKERHEADER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.COLORPICKERHEADER.FormattingEnabled = true;
             this.COLORPICKERHEADER.Location = new System.Drawing.Point(112, 63);
-            this.COLORPICKERHEADER.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.COLORPICKERHEADER.Margin = new System.Windows.Forms.Padding(2);
             this.COLORPICKERHEADER.Name = "COLORPICKERHEADER";
             this.COLORPICKERHEADER.Size = new System.Drawing.Size(236, 21);
             this.COLORPICKERHEADER.TabIndex = 0;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 5;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // COLORPICKERTEXT
             // 
@@ -73,7 +65,7 @@
             this.COLORPICKERTEXT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.COLORPICKERTEXT.FormattingEnabled = true;
             this.COLORPICKERTEXT.Location = new System.Drawing.Point(112, 95);
-            this.COLORPICKERTEXT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.COLORPICKERTEXT.Margin = new System.Windows.Forms.Padding(2);
             this.COLORPICKERTEXT.Name = "COLORPICKERTEXT";
             this.COLORPICKERTEXT.Size = new System.Drawing.Size(236, 21);
             this.COLORPICKERTEXT.TabIndex = 1;
@@ -83,7 +75,7 @@
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 186);
             this.panel3.TabIndex = 20;
@@ -93,7 +85,7 @@
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 186);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(371, 4);
             this.panel5.TabIndex = 22;
@@ -103,14 +95,14 @@
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(371, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 190);
             this.panel4.TabIndex = 21;
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2ControlBox1);
@@ -190,7 +182,7 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(5, 66);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(65, 15);
             this.guna2HtmlLabel1.TabIndex = 237;
@@ -200,7 +192,7 @@
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(20, 99);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(51, 15);
             this.guna2HtmlLabel2.TabIndex = 238;
@@ -272,6 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(373, 190);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.btnClose);
@@ -285,7 +278,7 @@
             this.Controls.Add(this.COLORPICKERTEXT);
             this.Controls.Add(this.COLORPICKERHEADER);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmColorThempickercs";
             this.Text = "frmColorThempickercs";
             this.Load += new System.EventHandler(this.frmColorThempickercs_Load);
@@ -299,7 +292,6 @@
 
         private PdfSharp.Forms.ColorComboBox COLORPICKERHEADER;
         private Guna.UI2.WinForms.Guna2ResizeForm guna2ResizeForm1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private PdfSharp.Forms.ColorComboBox COLORPICKERTEXT;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;

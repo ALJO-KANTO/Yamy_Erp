@@ -83,7 +83,6 @@
             this.guna2Shapes6 = new Guna.UI2.WinForms.Guna2Shapes();
             this.guna2Shapes7 = new Guna.UI2.WinForms.Guna2Shapes();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel8.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -125,7 +124,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.guna2Button1);
             this.panel8.Controls.Add(this.guna2Button4);
             this.panel8.Controls.Add(this.guna2HtmlLabel2);
@@ -1004,13 +1003,6 @@
             this.guna2DragControl1.TargetControl = this.panel8;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 15;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1027,7 +1019,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHome";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmHome";
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
@@ -1094,7 +1086,6 @@
         private Guna.UI2.WinForms.Guna2Shapes guna2Shapes8;
         private Guna.UI2.WinForms.Guna2Shapes guna2Shapes9;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
     }

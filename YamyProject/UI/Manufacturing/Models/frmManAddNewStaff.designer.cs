@@ -95,7 +95,7 @@
             // 
             // guna2GradientPanel1
             // 
-            this.guna2GradientPanel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.guna2GradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.guna2GradientPanel1.Controls.Add(this.CRM);
             this.guna2GradientPanel1.Controls.Add(this.guna2Button2);
             this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
@@ -176,7 +176,7 @@
             // 
             // txtname
             // 
-            this.txtname.BorderRadius = 3;
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -209,7 +209,7 @@
             this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(278, 104);
+            this.guna2TextBox2.Location = new System.Drawing.Point(278, 144);
             this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PlaceholderText = "";
@@ -223,8 +223,8 @@
             this.cbMachin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbMachin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbMachin.FormattingEnabled = true;
-            this.cbMachin.Location = new System.Drawing.Point(283, 107);
-            this.cbMachin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMachin.Location = new System.Drawing.Point(283, 147);
+            this.cbMachin.Margin = new System.Windows.Forms.Padding(2);
             this.cbMachin.Name = "cbMachin";
             this.cbMachin.Size = new System.Drawing.Size(162, 21);
             this.cbMachin.TabIndex = 56;
@@ -234,7 +234,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(226, 109);
+            this.label5.Location = new System.Drawing.Point(226, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 57;
@@ -252,7 +252,7 @@
             // 
             // txtcode
             // 
-            this.txtcode.BorderRadius = 3;
+            this.txtcode.BorderRadius = 5;
             this.txtcode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtcode.DefaultText = "";
             this.txtcode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -282,7 +282,7 @@
             this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
             this.guna2ToggleSwitch1.Location = new System.Drawing.Point(10, 3);
-            this.guna2ToggleSwitch1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2ToggleSwitch1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
             this.guna2ToggleSwitch1.Size = new System.Drawing.Size(39, 20);
             this.guna2ToggleSwitch1.TabIndex = 62;
@@ -295,7 +295,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(-1, 109);
+            this.label7.Location = new System.Drawing.Point(-1, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 63;
@@ -307,8 +307,8 @@
             this.CbDpartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CbDpartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CbDpartment.FormattingEnabled = true;
-            this.CbDpartment.Location = new System.Drawing.Point(68, 106);
-            this.CbDpartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CbDpartment.Location = new System.Drawing.Point(68, 146);
+            this.CbDpartment.Margin = new System.Windows.Forms.Padding(2);
             this.CbDpartment.Name = "CbDpartment";
             this.CbDpartment.Size = new System.Drawing.Size(125, 21);
             this.CbDpartment.TabIndex = 68;
@@ -327,7 +327,7 @@
             this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Location = new System.Drawing.Point(67, 104);
+            this.guna2TextBox5.Location = new System.Drawing.Point(67, 144);
             this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox5.Name = "guna2TextBox5";
             this.guna2TextBox5.PlaceholderText = "";
@@ -342,7 +342,7 @@
             this.guna2Panel1.Controls.Add(this.label10);
             this.guna2Panel1.Controls.Add(this.guna2ToggleSwitch1);
             this.guna2Panel1.Location = new System.Drawing.Point(507, 47);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(130, 25);
             this.guna2Panel1.TabIndex = 71;
@@ -366,7 +366,7 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(556, 104);
+            this.btnClose.Location = new System.Drawing.Point(556, 185);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(81, 27);
             this.btnClose.TabIndex = 72;
@@ -382,7 +382,7 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(477, 104);
+            this.btnSave.Location = new System.Drawing.Point(477, 185);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(77, 27);
             this.btnSave.TabIndex = 73;
@@ -400,7 +400,7 @@
             this.btnaddNewDepartment.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaddNewDepartment.ForeColor = System.Drawing.Color.White;
             this.btnaddNewDepartment.Image = global::YamyProject.Properties.Resources.ASD;
-            this.btnaddNewDepartment.Location = new System.Drawing.Point(449, 104);
+            this.btnaddNewDepartment.Location = new System.Drawing.Point(449, 144);
             this.btnaddNewDepartment.Name = "btnaddNewDepartment";
             this.btnaddNewDepartment.Size = new System.Drawing.Size(22, 24);
             this.btnaddNewDepartment.TabIndex = 74;
@@ -417,7 +417,7 @@
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = global::YamyProject.Properties.Resources.ASD;
-            this.guna2Button3.Location = new System.Drawing.Point(199, 105);
+            this.guna2Button3.Location = new System.Drawing.Point(199, 145);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(22, 24);
             this.guna2Button3.TabIndex = 75;
@@ -431,7 +431,7 @@
             // 
             // guna2TextBox1
             // 
-            this.guna2TextBox1.BorderRadius = 3;
+            this.guna2TextBox1.BorderRadius = 5;
             this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox1.DefaultText = "";
             this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -463,7 +463,7 @@
             // 
             // guna2TextBox3
             // 
-            this.guna2TextBox3.BorderRadius = 3;
+            this.guna2TextBox3.BorderRadius = 5;
             this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox3.DefaultText = "";
             this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -474,7 +474,7 @@
             this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(230, 76);
+            this.guna2TextBox3.Location = new System.Drawing.Point(258, 76);
             this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox3.Name = "guna2TextBox3";
             this.guna2TextBox3.PlaceholderText = "";
@@ -486,17 +486,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(195, 81);
+            this.label3.Location = new System.Drawing.Point(217, 81);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 79;
-            this.label3.Text = "Email:";
+            this.label3.Text = "Email  :";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(384, 80);
+            this.label8.Location = new System.Drawing.Point(21, 113);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 83;
@@ -504,7 +504,7 @@
             // 
             // guna2TextBox6
             // 
-            this.guna2TextBox6.BorderRadius = 3;
+            this.guna2TextBox6.BorderRadius = 5;
             this.guna2TextBox6.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox6.DefaultText = "";
             this.guna2TextBox6.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -515,12 +515,12 @@
             this.guna2TextBox6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox6.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox6.Location = new System.Drawing.Point(429, 76);
+            this.guna2TextBox6.Location = new System.Drawing.Point(66, 109);
             this.guna2TextBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox6.Name = "guna2TextBox6";
             this.guna2TextBox6.PlaceholderText = "";
             this.guna2TextBox6.SelectedText = "";
-            this.guna2TextBox6.Size = new System.Drawing.Size(208, 25);
+            this.guna2TextBox6.Size = new System.Drawing.Size(436, 25);
             this.guna2TextBox6.TabIndex = 84;
             // 
             // dataGridViewTextBoxColumn1
@@ -721,7 +721,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(642, 135);
+            this.ClientSize = new System.Drawing.Size(642, 216);
             this.Controls.Add(this.guna2TextBox6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.guna2TextBox3);
@@ -745,7 +745,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmManAddNewStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmManAddBatch";

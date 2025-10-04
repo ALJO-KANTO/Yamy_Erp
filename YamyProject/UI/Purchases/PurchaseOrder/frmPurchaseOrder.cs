@@ -81,6 +81,7 @@ namespace YamyProject
                     dtPaymentTerms.Value = DateTime.Parse(reader["payment_date"].ToString());
                 }
                 cmbShipVia.Text = reader["ship_via"].ToString();
+                richTextDescription.Text = reader["description"].ToString();
                 cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
                 invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                 invId = id;
@@ -263,7 +264,7 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, project_id = @projectId,
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city WHERE id = @id;",
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description WHERE id = @id;",
                  DBClass.CreateParameter("id", id),
                   DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
@@ -283,6 +284,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                 DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
                 DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
                DBClass.CreateParameter("projectId", cmbProject.SelectedValue != null ? cmbProject.SelectedValue : 0),
@@ -303,9 +305,9 @@ namespace YamyProject
 
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_purchase_order (date, vendor_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-               total,vat,net, pay, `change`, created_by, created_date, state, project_id) VALUES (@DATE, @vendor_id, @invoice_id,@warehouse_id,
+               total,vat,net, pay, `change`, created_by, created_date, state, project_id,description) VALUES (@DATE, @vendor_id, @invoice_id,@warehouse_id,
                @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @projectId);
+               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @projectId,@description);
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
@@ -325,6 +327,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
                DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)),
                DBClass.CreateParameter("created_by", frmLogin.userId),
@@ -1037,7 +1040,7 @@ namespace YamyProject
         {
             if (cmbAccountCashName.Focused && int.Parse(cmbAccountCashName.SelectedValue.ToString()) == -1)
             {
-                frmLogin.frmMain.openChildForm(new frmAddAccount());
+                new frmAddAccount().ShowDialog();
             }
             else
             {
@@ -1569,7 +1572,7 @@ namespace YamyProject
 
             if (result == DialogResult.Yes)
             {
-                frmLogin.frmMain.openChildForm(new frmViewItem());
+                new frmViewItem().ShowDialog();
             }
 
             DataGridViewRow row = dgvItems.CurrentRow;

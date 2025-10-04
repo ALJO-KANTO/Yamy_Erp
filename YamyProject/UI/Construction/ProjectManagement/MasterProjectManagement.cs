@@ -23,6 +23,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             //_mainForm = mainForm;
+            this.Text = "Project Management";
             headerUC1.FormText = this.Text;
         }
         private void btnNew_Click(object sender, EventArgs e)

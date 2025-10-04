@@ -47,10 +47,9 @@
             // 
             this.lblTotalProjects.AutoSize = true;
             this.lblTotalProjects.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTotalProjects.Location = new System.Drawing.Point(27, 74);
-            this.lblTotalProjects.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalProjects.Location = new System.Drawing.Point(20, 60);
             this.lblTotalProjects.Name = "lblTotalProjects";
-            this.lblTotalProjects.Size = new System.Drawing.Size(191, 29);
+            this.lblTotalProjects.Size = new System.Drawing.Size(155, 22);
             this.lblTotalProjects.TabIndex = 0;
             this.lblTotalProjects.Text = "Total Project : 0";
             // 
@@ -58,10 +57,9 @@
             // 
             this.lblTotalEstimates.AutoSize = true;
             this.lblTotalEstimates.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTotalEstimates.Location = new System.Drawing.Point(758, 74);
-            this.lblTotalEstimates.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalEstimates.Location = new System.Drawing.Point(568, 60);
             this.lblTotalEstimates.Name = "lblTotalEstimates";
-            this.lblTotalEstimates.Size = new System.Drawing.Size(222, 29);
+            this.lblTotalEstimates.Size = new System.Drawing.Size(180, 22);
             this.lblTotalEstimates.TabIndex = 1;
             this.lblTotalEstimates.Text = "Total Estimates : 0";
             // 
@@ -71,12 +69,11 @@
             this.dgvProjects.AllowUserToDeleteRows = false;
             this.dgvProjects.BackgroundColor = System.Drawing.Color.White;
             this.dgvProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProjects.Location = new System.Drawing.Point(13, 154);
-            this.dgvProjects.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvProjects.Location = new System.Drawing.Point(10, 125);
             this.dgvProjects.Name = "dgvProjects";
             this.dgvProjects.ReadOnly = true;
             this.dgvProjects.RowHeadersVisible = false;
-            this.dgvProjects.Size = new System.Drawing.Size(1255, 416);
+            this.dgvProjects.Size = new System.Drawing.Size(941, 338);
             this.dgvProjects.TabIndex = 2;
             // 
             // dgvProjectTenders
@@ -85,12 +82,11 @@
             this.dgvProjectTenders.AllowUserToDeleteRows = false;
             this.dgvProjectTenders.BackgroundColor = System.Drawing.Color.White;
             this.dgvProjectTenders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProjectTenders.Location = new System.Drawing.Point(13, 592);
-            this.dgvProjectTenders.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvProjectTenders.Location = new System.Drawing.Point(10, 481);
             this.dgvProjectTenders.Name = "dgvProjectTenders";
             this.dgvProjectTenders.ReadOnly = true;
             this.dgvProjectTenders.RowHeadersVisible = false;
-            this.dgvProjectTenders.Size = new System.Drawing.Size(1255, 381);
+            this.dgvProjectTenders.Size = new System.Drawing.Size(941, 310);
             this.dgvProjectTenders.TabIndex = 3;
             // 
             // projectStatusChart
@@ -98,20 +94,18 @@
             this.projectStatusChart.BorderlineColor = System.Drawing.Color.Black;
             this.projectStatusChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.projectStatusChart.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Raised;
-            this.projectStatusChart.Location = new System.Drawing.Point(1320, 154);
-            this.projectStatusChart.Margin = new System.Windows.Forms.Padding(4);
+            this.projectStatusChart.Location = new System.Drawing.Point(990, 125);
             this.projectStatusChart.Name = "projectStatusChart";
-            this.projectStatusChart.Size = new System.Drawing.Size(591, 463);
+            this.projectStatusChart.Size = new System.Drawing.Size(443, 376);
             this.projectStatusChart.TabIndex = 4;
             // 
             // lblTotalTenders
             // 
             this.lblTotalTenders.AutoSize = true;
             this.lblTotalTenders.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTotalTenders.Location = new System.Drawing.Point(412, 74);
-            this.lblTotalTenders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalTenders.Location = new System.Drawing.Point(309, 60);
             this.lblTotalTenders.Name = "lblTotalTenders";
-            this.lblTotalTenders.Size = new System.Drawing.Size(201, 29);
+            this.lblTotalTenders.Size = new System.Drawing.Size(166, 22);
             this.lblTotalTenders.TabIndex = 5;
             this.lblTotalTenders.Text = "Total Tenders : 0";
             // 
@@ -119,17 +113,18 @@
             // 
             this.cmbProjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProjectName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectName.BorderRadius = 5;
             this.cmbProjectName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectName.ItemHeight = 23;
-            this.cmbProjectName.Location = new System.Drawing.Point(1344, 74);
-            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProjectName.ItemHeight = 18;
+            this.cmbProjectName.Location = new System.Drawing.Point(1008, 60);
+            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbProjectName.Name = "cmbProjectName";
-            this.cmbProjectName.Size = new System.Drawing.Size(370, 29);
+            this.cmbProjectName.Size = new System.Drawing.Size(278, 24);
             this.cmbProjectName.TabIndex = 17;
             this.cmbProjectName.SelectedIndexChanged += new System.EventHandler(this.cmbProjectName_SelectedIndexChanged);
             // 
@@ -139,9 +134,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(1256, 74);
+            this.label1.Location = new System.Drawing.Point(942, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 36);
+            this.label1.Size = new System.Drawing.Size(58, 29);
             this.label1.TabIndex = 18;
             this.label1.Text = "Project";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,10 +153,9 @@
             this.chkProject.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkProject.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkProject.ForeColor = System.Drawing.Color.Black;
-            this.chkProject.Location = new System.Drawing.Point(1721, 79);
-            this.chkProject.Margin = new System.Windows.Forms.Padding(4);
+            this.chkProject.Location = new System.Drawing.Point(1291, 64);
             this.chkProject.Name = "chkProject";
-            this.chkProject.Size = new System.Drawing.Size(45, 21);
+            this.chkProject.Size = new System.Drawing.Size(37, 17);
             this.chkProject.TabIndex = 19;
             this.chkProject.Text = "All";
             this.chkProject.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -172,22 +167,24 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1942, 57);
+            this.headerUC1.Size = new System.Drawing.Size(1456, 46);
             this.headerUC1.TabIndex = 0;
             // 
             // frmViewProjectDashBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1942, 1043);
+            this.ClientSize = new System.Drawing.Size(1456, 847);
             this.Controls.Add(this.chkProject);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbProjectName);
@@ -199,7 +196,7 @@
             this.Controls.Add(this.lblTotalEstimates);
             this.Controls.Add(this.lblTotalProjects);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmViewProjectDashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Project Management Dashboard";

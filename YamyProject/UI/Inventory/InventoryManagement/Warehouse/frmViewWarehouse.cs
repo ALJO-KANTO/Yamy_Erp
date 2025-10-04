@@ -126,7 +126,7 @@ namespace YamyProject
 
         private void addCity_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new frmViewCity());
+            //(new frmViewCity());
             frmViewCity emp = new frmViewCity();
             emp.ShowDialog();
         }

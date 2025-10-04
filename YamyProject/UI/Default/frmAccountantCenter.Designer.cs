@@ -119,7 +119,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTools2)).BeginInit();
@@ -155,10 +154,9 @@
             this.panel1.Controls.Add(this.refresh);
             this.panel1.Controls.Add(this.dgvTools);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(5, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(4, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 308);
+            this.panel1.Size = new System.Drawing.Size(615, 250);
             this.panel1.TabIndex = 137;
             // 
             // pictureBox2
@@ -166,10 +164,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 33);
+            this.pictureBox2.Size = new System.Drawing.Size(22, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 145;
             this.pictureBox2.TabStop = false;
@@ -179,10 +176,9 @@
             this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.guna2Separator1.Location = new System.Drawing.Point(4, 30);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Separator1.Location = new System.Drawing.Point(3, 24);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(807, 12);
+            this.guna2Separator1.Size = new System.Drawing.Size(605, 10);
             this.guna2Separator1.TabIndex = 148;
             // 
             // dgvTools2
@@ -216,8 +212,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTools2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTools2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvTools2.Location = new System.Drawing.Point(417, 46);
-            this.dgvTools2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvTools2.Location = new System.Drawing.Point(313, 37);
+            this.dgvTools2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvTools2.MultiSelect = false;
             this.dgvTools2.Name = "dgvTools2";
             this.dgvTools2.ReadOnly = true;
@@ -234,7 +230,7 @@
             this.dgvTools2.RowHeadersWidth = 51;
             this.dgvTools2.RowTemplate.Height = 30;
             this.dgvTools2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvTools2.Size = new System.Drawing.Size(403, 262);
+            this.dgvTools2.Size = new System.Drawing.Size(302, 213);
             this.dgvTools2.TabIndex = 147;
             this.dgvTools2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvTools2.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -266,10 +262,9 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label30.Location = new System.Drawing.Point(41, 0);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Location = new System.Drawing.Point(31, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(69, 32);
+            this.label30.Size = new System.Drawing.Size(55, 25);
             this.label30.TabIndex = 146;
             this.label30.Text = "Tools";
             // 
@@ -279,10 +274,9 @@
             this.customize.AutoSize = true;
             this.customize.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customize.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.customize.Location = new System.Drawing.Point(743, 12);
-            this.customize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.customize.Location = new System.Drawing.Point(557, 10);
             this.customize.Name = "customize";
-            this.customize.Size = new System.Drawing.Size(73, 19);
+            this.customize.Size = new System.Drawing.Size(60, 13);
             this.customize.TabIndex = 142;
             this.customize.Text = "Customize";
             this.customize.Click += new System.EventHandler(this.customize_Click);
@@ -295,10 +289,9 @@
             this.refresh.AutoSize = true;
             this.refresh.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refresh.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.refresh.Location = new System.Drawing.Point(653, 12);
-            this.refresh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.refresh.Location = new System.Drawing.Point(490, 10);
             this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(54, 19);
+            this.refresh.Size = new System.Drawing.Size(46, 13);
             this.refresh.TabIndex = 142;
             this.refresh.Text = "Refresh";
             this.refresh.Click += new System.EventHandler(this.refresh_Click);
@@ -336,8 +329,8 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTools.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvTools.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvTools.Location = new System.Drawing.Point(0, 46);
-            this.dgvTools.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvTools.Location = new System.Drawing.Point(0, 37);
+            this.dgvTools.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvTools.MultiSelect = false;
             this.dgvTools.Name = "dgvTools";
             this.dgvTools.ReadOnly = true;
@@ -354,7 +347,7 @@
             this.dgvTools.RowHeadersWidth = 51;
             this.dgvTools.RowTemplate.Height = 30;
             this.dgvTools.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvTools.Size = new System.Drawing.Size(412, 262);
+            this.dgvTools.Size = new System.Drawing.Size(309, 213);
             this.dgvTools.TabIndex = 8;
             this.dgvTools.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvTools.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -389,9 +382,8 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(820, 42);
+            this.label2.Size = new System.Drawing.Size(615, 34);
             this.label2.TabIndex = 141;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -399,11 +391,10 @@
             // 
             this.panel2.Controls.Add(this.guna2ShadowPanel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(838, 80);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(629, 65);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(420, 655);
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.panel2.Size = new System.Drawing.Size(315, 532);
             this.panel2.TabIndex = 137;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -417,11 +408,10 @@
             this.guna2ShadowPanel3.Controls.Add(this.guna2Separator3);
             this.guna2ShadowPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel3.Location = new System.Drawing.Point(0, 5);
-            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(0, 4);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel3.Size = new System.Drawing.Size(420, 431);
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(315, 350);
             this.guna2ShadowPanel3.TabIndex = 150;
             // 
             // label31
@@ -429,10 +419,9 @@
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.label31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label31.Location = new System.Drawing.Point(60, 16);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Location = new System.Drawing.Point(45, 13);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(228, 32);
+            this.label31.Size = new System.Drawing.Size(181, 25);
             this.label31.TabIndex = 148;
             this.label31.Text = "Memorized Reports";
             // 
@@ -450,10 +439,9 @@
             this.panel6.Controls.Add(this.pnlCompany);
             this.panel6.Controls.Add(this.pnlEmployee);
             this.panel6.Controls.Add(this.pnlBanking);
-            this.panel6.Location = new System.Drawing.Point(13, 59);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Location = new System.Drawing.Point(10, 48);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(394, 354);
+            this.panel6.Size = new System.Drawing.Size(296, 288);
             this.panel6.TabIndex = 149;
             // 
             // pnlNonProfit
@@ -466,20 +454,18 @@
             this.pnlNonProfit.Controls.Add(this.label22);
             this.pnlNonProfit.Controls.Add(this.label19);
             this.pnlNonProfit.Controls.Add(this.label21);
-            this.pnlNonProfit.Location = new System.Drawing.Point(11, 62);
-            this.pnlNonProfit.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlNonProfit.Location = new System.Drawing.Point(8, 50);
             this.pnlNonProfit.Name = "pnlNonProfit";
-            this.pnlNonProfit.Size = new System.Drawing.Size(376, 274);
+            this.pnlNonProfit.Size = new System.Drawing.Size(282, 223);
             this.pnlNonProfit.TabIndex = 151;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label27.Location = new System.Drawing.Point(23, 242);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Location = new System.Drawing.Point(17, 197);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(240, 16);
+            this.label27.Size = new System.Drawing.Size(195, 13);
             this.label27.TabIndex = 142;
             this.label27.Text = "Statement of Functional Expenses (990)";
             // 
@@ -487,10 +473,9 @@
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label26.Location = new System.Drawing.Point(23, 212);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Location = new System.Drawing.Point(17, 172);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(189, 16);
+            this.label26.Size = new System.Drawing.Size(152, 13);
             this.label26.TabIndex = 142;
             this.label26.Text = "Statement of Financial Position";
             // 
@@ -498,10 +483,9 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label25.Location = new System.Drawing.Point(23, 182);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Location = new System.Drawing.Point(17, 148);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(267, 16);
+            this.label25.Size = new System.Drawing.Size(215, 13);
             this.label25.TabIndex = 142;
             this.label25.Text = "Statement of Financial Income and Expense";
             // 
@@ -509,10 +493,9 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label24.Location = new System.Drawing.Point(23, 151);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(17, 123);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(163, 16);
+            this.label24.Size = new System.Drawing.Size(129, 13);
             this.label24.TabIndex = 142;
             this.label24.Text = "Programs/Projects Report";
             // 
@@ -520,10 +503,9 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label23.Location = new System.Drawing.Point(23, 121);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(17, 98);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(138, 16);
+            this.label23.Size = new System.Drawing.Size(112, 13);
             this.label23.TabIndex = 142;
             this.label23.Text = "Donors/Grants Report";
             // 
@@ -531,10 +513,9 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label22.Location = new System.Drawing.Point(23, 87);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(17, 71);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(236, 16);
+            this.label22.Size = new System.Drawing.Size(190, 13);
             this.label22.TabIndex = 142;
             this.label22.Text = "Budget vs. Actual by Program/Projects";
             // 
@@ -542,10 +523,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label19.Location = new System.Drawing.Point(23, 55);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(17, 45);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(218, 16);
+            this.label19.Size = new System.Drawing.Size(178, 13);
             this.label19.TabIndex = 142;
             this.label19.Text = "Budget vs. Actual by Donors/Grants";
             // 
@@ -553,10 +533,9 @@
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label21.Location = new System.Drawing.Point(23, 26);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(17, 21);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(143, 16);
+            this.label21.Size = new System.Drawing.Size(115, 13);
             this.label21.TabIndex = 142;
             this.label21.Text = "Biggest Donors/Grants";
             // 
@@ -568,20 +547,18 @@
             this.pnlAccounting.Controls.Add(this.label6);
             this.pnlAccounting.Controls.Add(this.label36);
             this.pnlAccounting.Controls.Add(this.label5);
-            this.pnlAccounting.Location = new System.Drawing.Point(9, 52);
-            this.pnlAccounting.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAccounting.Location = new System.Drawing.Point(7, 42);
             this.pnlAccounting.Name = "pnlAccounting";
-            this.pnlAccounting.Size = new System.Drawing.Size(376, 229);
+            this.pnlAccounting.Size = new System.Drawing.Size(282, 186);
             this.pnlAccounting.TabIndex = 148;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label9.Location = new System.Drawing.Point(23, 181);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(17, 147);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 16);
+            this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 142;
             this.label9.Text = "Profit Loss";
             // 
@@ -589,10 +566,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label8.Location = new System.Drawing.Point(23, 149);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(17, 121);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(244, 16);
+            this.label8.Size = new System.Drawing.Size(194, 13);
             this.label8.TabIndex = 142;
             this.label8.Text = "Journal Entries Entered/Modified Today";
             // 
@@ -600,10 +576,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label7.Location = new System.Drawing.Point(23, 116);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(17, 94);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 16);
+            this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 142;
             this.label7.Text = "General Ledger";
             // 
@@ -611,10 +586,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label6.Location = new System.Drawing.Point(23, 85);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(17, 69);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 142;
             this.label6.Text = "Balance Sheet";
             // 
@@ -622,10 +596,9 @@
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label36.Location = new System.Drawing.Point(23, 25);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Location = new System.Drawing.Point(17, 20);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(143, 16);
+            this.label36.Size = new System.Drawing.Size(113, 13);
             this.label36.TabIndex = 142;
             this.label36.Text = "Adjusted Trial Balance";
             // 
@@ -633,10 +606,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(23, 55);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(17, 45);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 16);
+            this.label5.Size = new System.Drawing.Size(122, 13);
             this.label5.TabIndex = 142;
             this.label5.Text = "Adjusting Journal Entries";
             // 
@@ -652,11 +624,11 @@
             this.cmbMemorized.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbMemorized.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMemorized.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbMemorized.ItemHeight = 23;
-            this.cmbMemorized.Location = new System.Drawing.Point(108, 10);
-            this.cmbMemorized.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMemorized.ItemHeight = 18;
+            this.cmbMemorized.Location = new System.Drawing.Point(81, 8);
+            this.cmbMemorized.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMemorized.Name = "cmbMemorized";
-            this.cmbMemorized.Size = new System.Drawing.Size(273, 29);
+            this.cmbMemorized.Size = new System.Drawing.Size(206, 24);
             this.cmbMemorized.TabIndex = 147;
             // 
             // label4
@@ -664,9 +636,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(3, 18);
+            this.label4.Location = new System.Drawing.Point(2, 15);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 19);
+            this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 146;
             this.label4.Text = "Select Group";
             // 
@@ -676,20 +649,18 @@
             this.pnlVendor.Controls.Add(this.label33);
             this.pnlVendor.Controls.Add(this.label34);
             this.pnlVendor.Controls.Add(this.label35);
-            this.pnlVendor.Location = new System.Drawing.Point(4, 53);
-            this.pnlVendor.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlVendor.Location = new System.Drawing.Point(3, 43);
             this.pnlVendor.Name = "pnlVendor";
-            this.pnlVendor.Size = new System.Drawing.Size(376, 158);
+            this.pnlVendor.Size = new System.Drawing.Size(282, 128);
             this.pnlVendor.TabIndex = 154;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label32.Location = new System.Drawing.Point(23, 121);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Location = new System.Drawing.Point(17, 98);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(164, 16);
+            this.label32.Size = new System.Drawing.Size(129, 13);
             this.label32.TabIndex = 142;
             this.label32.Text = "Vendor Balance Summary";
             // 
@@ -697,10 +668,9 @@
             // 
             this.label33.AutoSize = true;
             this.label33.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label33.Location = new System.Drawing.Point(23, 87);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Location = new System.Drawing.Point(17, 71);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(142, 16);
+            this.label33.Size = new System.Drawing.Size(113, 13);
             this.label33.TabIndex = 142;
             this.label33.Text = "Vendor Balance Detail";
             // 
@@ -708,10 +678,9 @@
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label34.Location = new System.Drawing.Point(23, 55);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Location = new System.Drawing.Point(17, 45);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(117, 16);
+            this.label34.Size = new System.Drawing.Size(92, 13);
             this.label34.TabIndex = 142;
             this.label34.Text = "Unpaid Bills Detail";
             // 
@@ -719,10 +688,9 @@
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label35.Location = new System.Drawing.Point(23, 26);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Location = new System.Drawing.Point(17, 21);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(127, 16);
+            this.label35.Size = new System.Drawing.Size(102, 13);
             this.label35.TabIndex = 142;
             this.label35.Text = "A/P Aging Summary";
             // 
@@ -732,20 +700,18 @@
             this.pnlCustomers.Controls.Add(this.label18);
             this.pnlCustomers.Controls.Add(this.label10);
             this.pnlCustomers.Controls.Add(this.label11);
-            this.pnlCustomers.Location = new System.Drawing.Point(7, 65);
-            this.pnlCustomers.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCustomers.Location = new System.Drawing.Point(5, 53);
             this.pnlCustomers.Name = "pnlCustomers";
-            this.pnlCustomers.Size = new System.Drawing.Size(376, 158);
+            this.pnlCustomers.Size = new System.Drawing.Size(282, 128);
             this.pnlCustomers.TabIndex = 152;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label12.Location = new System.Drawing.Point(23, 116);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(17, 94);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 16);
+            this.label12.Size = new System.Drawing.Size(76, 13);
             this.label12.TabIndex = 143;
             this.label12.Text = "Open Invoices";
             // 
@@ -753,10 +719,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label18.Location = new System.Drawing.Point(23, 86);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(17, 70);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(177, 16);
+            this.label18.Size = new System.Drawing.Size(139, 13);
             this.label18.TabIndex = 144;
             this.label18.Text = "Customer Balance Summary";
             // 
@@ -764,10 +729,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label10.Location = new System.Drawing.Point(23, 55);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(17, 45);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(155, 16);
+            this.label10.Size = new System.Drawing.Size(123, 13);
             this.label10.TabIndex = 142;
             this.label10.Text = "Customer Balance Detail";
             // 
@@ -775,10 +739,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label11.Location = new System.Drawing.Point(23, 26);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(17, 21);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 16);
+            this.label11.Size = new System.Drawing.Size(103, 13);
             this.label11.TabIndex = 142;
             this.label11.Text = "A/R Aging Summary";
             // 
@@ -787,20 +750,18 @@
             this.pnlCompany.Controls.Add(this.label13);
             this.pnlCompany.Controls.Add(this.label16);
             this.pnlCompany.Controls.Add(this.label17);
-            this.pnlCompany.Location = new System.Drawing.Point(7, 58);
-            this.pnlCompany.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCompany.Location = new System.Drawing.Point(5, 47);
             this.pnlCompany.Name = "pnlCompany";
-            this.pnlCompany.Size = new System.Drawing.Size(376, 133);
+            this.pnlCompany.Size = new System.Drawing.Size(282, 108);
             this.pnlCompany.TabIndex = 150;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label13.Location = new System.Drawing.Point(23, 85);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(17, 69);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(153, 16);
+            this.label13.Size = new System.Drawing.Size(124, 13);
             this.label13.TabIndex = 142;
             this.label13.Text = "Statement of Cash Flows";
             // 
@@ -808,10 +769,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label16.Location = new System.Drawing.Point(23, 55);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(17, 45);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 16);
+            this.label16.Size = new System.Drawing.Size(56, 13);
             this.label16.TabIndex = 142;
             this.label16.Text = "Profit Loss";
             // 
@@ -819,30 +779,27 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label17.Location = new System.Drawing.Point(23, 26);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(17, 21);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(95, 16);
+            this.label17.Size = new System.Drawing.Size(77, 13);
             this.label17.TabIndex = 142;
             this.label17.Text = "Balance Sheet";
             // 
             // pnlEmployee
             // 
             this.pnlEmployee.Controls.Add(this.label20);
-            this.pnlEmployee.Location = new System.Drawing.Point(16, 59);
-            this.pnlEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlEmployee.Location = new System.Drawing.Point(12, 48);
             this.pnlEmployee.Name = "pnlEmployee";
-            this.pnlEmployee.Size = new System.Drawing.Size(376, 95);
+            this.pnlEmployee.Size = new System.Drawing.Size(282, 77);
             this.pnlEmployee.TabIndex = 153;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label20.Location = new System.Drawing.Point(23, 26);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(17, 21);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(84, 16);
+            this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 142;
             this.label20.Text = "Salary Sheet";
             // 
@@ -850,20 +807,18 @@
             // 
             this.pnlBanking.Controls.Add(this.label14);
             this.pnlBanking.Controls.Add(this.label15);
-            this.pnlBanking.Location = new System.Drawing.Point(11, 53);
-            this.pnlBanking.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlBanking.Location = new System.Drawing.Point(8, 43);
             this.pnlBanking.Name = "pnlBanking";
-            this.pnlBanking.Size = new System.Drawing.Size(376, 118);
+            this.pnlBanking.Size = new System.Drawing.Size(282, 96);
             this.pnlBanking.TabIndex = 149;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label14.Location = new System.Drawing.Point(23, 55);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(17, 45);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(92, 16);
+            this.label14.Size = new System.Drawing.Size(73, 13);
             this.label14.TabIndex = 142;
             this.label14.Text = "Deposit Detail";
             // 
@@ -871,10 +826,9 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label15.Location = new System.Drawing.Point(23, 26);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(17, 21);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(83, 16);
+            this.label15.Size = new System.Drawing.Size(68, 13);
             this.label15.TabIndex = 142;
             this.label15.Text = "Check Detail";
             // 
@@ -883,10 +837,9 @@
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(19, 10);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(14, 8);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox3.Size = new System.Drawing.Size(29, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 147;
             this.pictureBox3.TabStop = false;
@@ -896,10 +849,9 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(8, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 37);
+            this.label1.Size = new System.Drawing.Size(288, 30);
             this.label1.TabIndex = 7;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -908,10 +860,9 @@
             this.guna2Separator3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator3.FillStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.guna2Separator3.Location = new System.Drawing.Point(7, 41);
-            this.guna2Separator3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Separator3.Location = new System.Drawing.Point(5, 33);
             this.guna2Separator3.Name = "guna2Separator3";
-            this.guna2Separator3.Size = new System.Drawing.Size(401, 12);
+            this.guna2Separator3.Size = new System.Drawing.Size(301, 10);
             this.guna2Separator3.TabIndex = 150;
             this.guna2Separator3.Click += new System.EventHandler(this.guna2Separator3_Click);
             // 
@@ -925,10 +876,9 @@
             this.panel3.Controls.Add(this.dgvReconcile);
             this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.label28);
-            this.panel3.Location = new System.Drawing.Point(7, 11);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(5, 9);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(815, 282);
+            this.panel3.Size = new System.Drawing.Size(611, 229);
             this.panel3.TabIndex = 139;
             // 
             // label38
@@ -937,10 +887,9 @@
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label38.Location = new System.Drawing.Point(753, 16);
-            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Location = new System.Drawing.Point(565, 13);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(54, 19);
+            this.label38.Size = new System.Drawing.Size(46, 13);
             this.label38.TabIndex = 150;
             this.label38.Text = "Refresh";
             // 
@@ -949,10 +898,9 @@
             this.guna2Separator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator2.FillStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.guna2Separator2.Location = new System.Drawing.Point(-3, 34);
-            this.guna2Separator2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Separator2.Location = new System.Drawing.Point(-2, 28);
             this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(821, 12);
+            this.guna2Separator2.Size = new System.Drawing.Size(616, 10);
             this.guna2Separator2.TabIndex = 149;
             // 
             // pictureBox1
@@ -960,10 +908,9 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(22, 25);
             this.pictureBox1.TabIndex = 143;
             this.pictureBox1.TabStop = false;
             // 
@@ -1001,8 +948,8 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvReconcile.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvReconcile.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
-            this.dgvReconcile.Location = new System.Drawing.Point(5, 49);
-            this.dgvReconcile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvReconcile.Location = new System.Drawing.Point(4, 40);
+            this.dgvReconcile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dgvReconcile.MultiSelect = false;
             this.dgvReconcile.Name = "dgvReconcile";
             this.dgvReconcile.ReadOnly = true;
@@ -1018,7 +965,7 @@
             this.dgvReconcile.RowHeadersVisible = false;
             this.dgvReconcile.RowHeadersWidth = 51;
             this.dgvReconcile.RowTemplate.Height = 30;
-            this.dgvReconcile.Size = new System.Drawing.Size(807, 214);
+            this.dgvReconcile.Size = new System.Drawing.Size(605, 174);
             this.dgvReconcile.TabIndex = 145;
             this.dgvReconcile.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.White;
             this.dgvReconcile.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1077,10 +1024,9 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.label29.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label29.Location = new System.Drawing.Point(27, 4);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Location = new System.Drawing.Point(20, 3);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(165, 32);
+            this.label29.Size = new System.Drawing.Size(132, 25);
             this.label29.TabIndex = 144;
             this.label29.Text = "Reconciliation";
             // 
@@ -1092,24 +1038,22 @@
             this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label28.Location = new System.Drawing.Point(0, 0);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(815, 46);
+            this.label28.Size = new System.Drawing.Size(611, 37);
             this.label28.TabIndex = 142;
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.guna2Button1);
             this.panel8.Controls.Add(this.guna2Button4);
             this.panel8.Controls.Add(this.guna2ControlBox1);
             this.panel8.Controls.Add(this.Lbheader);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(3, 0);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
+            this.panel8.Location = new System.Drawing.Point(2, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1255, 28);
+            this.panel8.Size = new System.Drawing.Size(942, 23);
             this.panel8.TabIndex = 141;
             this.panel8.Click += new System.EventHandler(this.panel8_Click);
             // 
@@ -1128,10 +1072,9 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = global::YamyProject.Properties.Resources.Subtract;
             this.guna2Button1.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button1.Location = new System.Drawing.Point(1172, 4);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button1.Location = new System.Drawing.Point(880, 3);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(20, 18);
+            this.guna2Button1.Size = new System.Drawing.Size(15, 15);
             this.guna2Button1.TabIndex = 32;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
@@ -1150,10 +1093,9 @@
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
             this.guna2Button4.Image = global::YamyProject.Properties.Resources.Restore_Down1;
             this.guna2Button4.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button4.Location = new System.Drawing.Point(1202, 4);
-            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button4.Location = new System.Drawing.Point(903, 3);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(20, 18);
+            this.guna2Button4.Size = new System.Drawing.Size(15, 15);
             this.guna2Button4.TabIndex = 31;
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
@@ -1163,10 +1105,9 @@
             this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1230, 5);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(923, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(20, 18);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
             // Lbheader
@@ -1177,9 +1118,8 @@
             this.Lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbheader.ForeColor = System.Drawing.Color.White;
             this.Lbheader.Location = new System.Drawing.Point(0, 0);
-            this.Lbheader.Margin = new System.Windows.Forms.Padding(4);
             this.Lbheader.Name = "Lbheader";
-            this.Lbheader.Size = new System.Drawing.Size(1255, 28);
+            this.Lbheader.Size = new System.Drawing.Size(942, 23);
             this.Lbheader.TabIndex = 19;
             this.Lbheader.Text = "Accountant Center";
             this.Lbheader.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1192,11 +1132,10 @@
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Controls.Add(this.panel1);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(7, 84);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(5, 68);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(833, 338);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(625, 275);
             this.guna2ShadowPanel1.TabIndex = 142;
             // 
             // label3
@@ -1205,10 +1144,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 28);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(2, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1255, 52);
+            this.label3.Size = new System.Drawing.Size(942, 42);
             this.label3.TabIndex = 128;
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1216,12 +1154,11 @@
             // 
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label37.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.Gray;
-            this.label37.Location = new System.Drawing.Point(16, 34);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Location = new System.Drawing.Point(12, 28);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(468, 46);
+            this.label37.Size = new System.Drawing.Size(351, 37);
             this.label37.TabIndex = 143;
             this.label37.Text = "Accountant Center";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1233,11 +1170,10 @@
             this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel2.Controls.Add(this.panel3);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(5, 425);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(4, 345);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(833, 298);
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(625, 242);
             this.guna2ShadowPanel2.TabIndex = 144;
             // 
             // guna2DragControl1
@@ -1250,20 +1186,20 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 735);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(2, 597);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1255, 2);
+            this.panel5.Size = new System.Drawing.Size(942, 2);
             this.panel5.TabIndex = 147;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1258, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(944, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 737);
+            this.panel4.Size = new System.Drawing.Size(2, 599);
             this.panel4.TabIndex = 146;
             // 
             // panel7
@@ -1271,25 +1207,18 @@
             this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(3, 737);
+            this.panel7.Size = new System.Drawing.Size(2, 599);
             this.panel7.TabIndex = 145;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 15;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // frmAccountantCenter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1261, 737);
+            this.ClientSize = new System.Drawing.Size(946, 599);
             this.Controls.Add(this.guna2ShadowPanel2);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.guna2ShadowPanel1);
@@ -1300,7 +1229,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAccountantCenter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer - Add New Category";
@@ -1420,6 +1349,5 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

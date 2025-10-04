@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.UI.Default;
@@ -74,111 +75,6 @@ namespace YamyProject
             string dbName = GenerateNextDbId();
             try
             {
-                //var service = new CompanyService(DBClass.GetConnectionString());
-                //var model = new CompanyModel { Name = dbName };
-                //service.CreateCompanyDatabase(model.DatabaseName);
-
-                //string query = "";
-                //// Step 4: Execute all your table creation queries
-                //query = @" USE " + dbName + @";
-                //INSERT INTO `tbl_company` ( `name`, `descriptions`, `phone1`, `phone2`, `gmail`, `mobile_number`, `website`, `address`, `trn_no`, `logoComp`) VALUES
-	               // ( '" + txtcompany.Text.Trim() + "', '" + txtdescription.Text.Trim() + "', '" + txtphone1.Text.Trim() + "','','" + txtemail.Text.Trim() + "', '', '', '', '', NULL); ";
-                //DBClass.ExecuteNonQuery(query);
-                //string salt = "";
-                //DBClass.ExecuteNonQuery(@" USE " + dbName + @";insert into tbl_sec_users (user_name,passwordhash,salt,emp_id,first_name,last_name,role_id,active,state)values 
-                //                         (@user_name,@passwordhash,@salt,@emp_id,@first_name,@last_name,@role_id,@active,0)",
-                //  DBClass.CreateParameter("user_name", guna2TextBox3.Text),
-                //  DBClass.CreateParameter("passwordhash", PasswordHelper.HashPassword(guna2TextBox4.Text, out salt)),
-                //    DBClass.CreateParameter("emp_id", 0),
-                //    DBClass.CreateParameter("first_name", guna2TextBox3.Text),
-                //    DBClass.CreateParameter("salt", salt),
-                //    DBClass.CreateParameter("last_name", ""),
-                //    DBClass.CreateParameter("role_id", 1),
-                //    DBClass.CreateParameter("active", 0));
-
-                //string customerCode = Environment.GetEnvironmentVariable("yamy_company_code", EnvironmentVariableTarget.User);
-
-                //object resultId = DBClass.ExecuteScalar("USE " + dbName + "; SELECT id FROM tbl_sec_users ORDER BY id DESC LIMIT 1");
-
-                //int recordId = 0;
-                //if (resultId != null && resultId != DBNull.Value)
-                //    recordId = Convert.ToInt32(resultId);
-
-                //if (recordId > 0)
-                //{
-                //    DBClass.ExecuteNonQuery(@"USE " + dbName + @";
-                //        INSERT INTO `tbl_user_permissions` (`user_id`, `sub_menu_id`, `can_view`, `can_edit`, `can_delete`) VALUES
-	               //         (@last_user_id, 1, 1, 1, 1),
-	               //         (@last_user_id, 2, 1, 1, 1),
-	               //         (@last_user_id, 3, 1, 1, 1),
-	               //         (@last_user_id, 4, 1, 1, 1),
-	               //         (@last_user_id, 5, 1, 1, 1),
-	               //         (@last_user_id, 0, 1, 1, 1),
-	               //         (@last_user_id, 7, 1, 1, 1),
-	               //         (@last_user_id, 8, 1, 1, 1),
-	               //         (@last_user_id, 9, 1, 1, 1),
-	               //         (@last_user_id, 10, 1, 1, 1),
-	               //         (@last_user_id, 11, 1, 1, 1),
-	               //         (@last_user_id, 12, 1, 1, 1),
-	               //         (@last_user_id, 13, 1, 1, 1),
-	               //         (@last_user_id, 14, 1, 1, 1),
-	               //         (@last_user_id, 15, 1, 1, 1),
-	               //         (@last_user_id, 16, 1, 1, 1),
-	               //         (@last_user_id, 17, 1, 1, 1),
-	               //         (@last_user_id, 18, 1, 1, 1),
-	               //         (@last_user_id, 19, 1, 1, 1),
-	               //         (@last_user_id, 20, 1, 1, 1),
-	               //         (@last_user_id, 21, 1, 1, 1),
-	               //         (@last_user_id, 22, 1, 1, 1),
-	               //         (@last_user_id, 23, 1, 0, 0),
-	               //         (@last_user_id, 24, 1, 0, 0),
-	               //         (@last_user_id, 25, 1, 1, 1),
-	               //         (@last_user_id, 26, 1, 1, 1),
-	               //         (@last_user_id, 27, 1, 1, 1),
-	               //         (@last_user_id, 28, 1, 1, 1),
-	               //         (@last_user_id, 29, 1, 1, 1),
-	               //         (@last_user_id, 30, 1, 0, 0),
-	               //         (@last_user_id, 31, 1, 0, 0),
-	               //         (@last_user_id, 32, 1, 0, 0),
-	               //         (@last_user_id, 33, 1, 1, 1),
-	               //         (@last_user_id, 34, 1, 1, 1),
-	               //         (@last_user_id, 36, 1, 0, 1),
-	               //         (@last_user_id, 37, 1, 1, 1),
-	               //         (@last_user_id, 38, 1, 0, 0),
-	               //         (@last_user_id, 39, 1, 0, 0),
-	               //         (@last_user_id, 40, 1, 0, 0),
-	               //         (@last_user_id, 41, 1, 0, 0),
-	               //         (@last_user_id, 42, 1, 0, 0),
-	               //         (@last_user_id, 43, 1, 0, 0),
-	               //         (@last_user_id, 44, 1, 0, 0),
-	               //         (@last_user_id, 45, 1, 0, 0),
-	               //         (@last_user_id, 46, 1, 0, 0),
-	               //         (@last_user_id, 47, 1, 0, 0),
-	               //         (@last_user_id, 48, 1, 0, 0),
-	               //         (@last_user_id, 49, 1, 0, 0),
-	               //         (@last_user_id, 50, 1, 0, 0),
-	               //         (@last_user_id, 51, 1, 0, 0),
-	               //         (@last_user_id, 52, 1, 0, 0),
-	               //         (@last_user_id, 53, 1, 0, 0),
-	               //         (@last_user_id, 54, 1, 0, 0),
-	               //         (@last_user_id, 55, 1, 0, 0),
-	               //         (@last_user_id, 6, 1, 1, 1),
-	               //         (@last_user_id, 56, 1, 0, 0),
-	               //         (@last_user_id, 57, 1, 0, 0),
-	               //         (@last_user_id, 58, 1, 0, 0),
-	               //         (@last_user_id, 59, 1, 0, 0);", DBClass.CreateParameter("last_user_id", recordId));
-                //}
-                //query = @"USE yamycompany ;
-                //                          INSERT INTO `tbl_company` (
-                //    `database_name`, `name`, `code`, `descriptions`,
-                //    `phone1`, `phone2`, `gmail`, `mobile_number`,
-                //    `website`, `address`, `trn_no`, `logoComp`,
-                //    `default_company`,`customer_code`
-                //)
-                //VALUES (
-                //    '" + dbName + "', '" + txtcompany.Text.Trim() + "','" + dbcode + "', '" + txtdescription.Text.Trim() + "', '" + txtphone1.Text.Trim() + "','','" + txtemail.Text.Trim() + "', '', '', '' , '' , NULL,' " + (guna2CustomCheckBox1.Checked ? 1 : 0) + "','" + customerCode + "'); ";
-
-                //DBClass.ExecuteNonQuery(query);
                 createDataBase(dbName);
                 MessageBox.Show("The new company was successfully created!");
             }
@@ -420,22 +316,6 @@ namespace YamyProject
 	                        ('Washington D.C.', 51),
 	                        ('Hanoi', 52),
 	                        ('Harare', 53);
-
-                        CREATE TABLE IF NOT EXISTS `tbl_coa` (
-                          `id` int NOT NULL AUTO_INCREMENT,
-                          `company_id` int NOT NULL,
-                          `account_code` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                          `account_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                          `parent_id` int DEFAULT NULL,
-                          `account_type` enum('Asset','Liability','Equity','Revenue','Expense') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                          `level` int NOT NULL,
-                          `account_category` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-                          `is_group` tinyint(1) DEFAULT '1',
-                          PRIMARY KEY (`id`),
-                          UNIQUE KEY `account_code` (`account_code`),
-                          KEY `parent_id` (`parent_id`),
-                          CONSTRAINT `tbl_coa_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `tbl_coa` (`id`) ON DELETE CASCADE
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_coa_config` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -1177,26 +1057,6 @@ namespace YamyProject
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        CREATE TABLE IF NOT EXISTS `tbl_ledger` (
-                          `ledger_id` int NOT NULL AUTO_INCREMENT,
-                          `code` int NOT NULL DEFAULT '0',
-                          `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `balance` decimal(20,4) DEFAULT '0.0000',
-                          `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `mobile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `website` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0',
-                          `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0',
-                          `region` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `active` int NOT NULL DEFAULT '0',
-                          `created_by` int DEFAULT '0',
-                          `created_date` date DEFAULT NULL,
-                          `state` int DEFAULT '0',
-                          `entity_type` enum('vendor','bank','level4','customer','employee') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                          PRIMARY KEY (`ledger_id`) USING BTREE
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
                         CREATE TABLE IF NOT EXISTS `tbl_loan` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -1393,14 +1253,6 @@ namespace YamyProject
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        CREATE TABLE IF NOT EXISTS `tbl_print_config` (
-                          `table_border` int DEFAULT '0',
-                          `company_name` int DEFAULT '0',
-                          `portrait` int DEFAULT '0',
-                          `landscape` int DEFAULT '0',
-                          `orientation` int DEFAULT '1'
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
                         CREATE TABLE IF NOT EXISTS `tbl_purchase` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `date` date NOT NULL,
@@ -1431,6 +1283,7 @@ namespace YamyProject
                           `purchase_type` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'utf8mb4_general_ci',
                           `fixed_asset_category_id` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1480,6 +1333,7 @@ namespace YamyProject
                           `tranfer_status` int NOT NULL DEFAULT '0',
                           `purchase_id` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1527,6 +1381,7 @@ namespace YamyProject
                           `modified_date` date DEFAULT NULL,
                           `state` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1687,6 +1542,7 @@ namespace YamyProject
                           `discount` decimal(20,6) NOT NULL DEFAULT '0.000000',
                           `cost_center_id` decimal(20,6) NOT NULL DEFAULT '0.000000',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
 
@@ -1740,6 +1596,7 @@ namespace YamyProject
                           `tranfer_status` int NOT NULL DEFAULT '0',
                           `sales_id` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1789,6 +1646,7 @@ namespace YamyProject
                           `tranfer_status` int DEFAULT '0',
                           `sales_id` int DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1838,6 +1696,7 @@ namespace YamyProject
                           `tranfer_status` int DEFAULT '0',
                           `sales_id` int DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1885,6 +1744,7 @@ namespace YamyProject
                           `modified_date` date DEFAULT NULL,
                           `state` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -2030,11 +1890,12 @@ namespace YamyProject
                         CREATE TABLE IF NOT EXISTS `tbl_sub_cost_center` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `code` int DEFAULT NULL,
-                          `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                          `name` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `main_id` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
                         CREATE TABLE IF NOT EXISTS `tbl_tax` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -2047,7 +1908,8 @@ namespace YamyProject
 
                         INSERT INTO `tbl_tax` (`id`, `name`, `value`, `description`, `state`) VALUES
 	                        (1, 'TAX', 5, '', 0),
-	                        (2, 'TAX', 0, '', 0);
+	                        (2, 'TAX', 0, '', 0),
+	                        (3, 'TAX', 15, '', 0);
 
                         CREATE TABLE IF NOT EXISTS `tbl_tools` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -2082,7 +1944,7 @@ namespace YamyProject
                           `account_id` int DEFAULT NULL,
                           `debit` decimal(20,4) DEFAULT NULL,
                           `credit` decimal(20,4) DEFAULT NULL,
-                          `transaction_id` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                          `transaction_id` INT NOT NULL DEFAULT 0,
                           `hum_id` int DEFAULT '0',
                           `type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `t_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -2750,7 +2612,6 @@ namespace YamyProject
                         TRUNCATE TABLE tbl_final_settlement;
                         TRUNCATE TABLE tbl_fixed_assets;
                         TRUNCATE TABLE tbl_fixed_assets_category;
-                        TRUNCATE TABLE tbl_general_config;
                         TRUNCATE TABLE tbl_items;
                         TRUNCATE TABLE tbl_items_unit;
                         TRUNCATE TABLE tbl_items_warehouse;
@@ -2920,9 +2781,21 @@ namespace YamyProject
 
         }
 
-        private void btnSignup_Click(object sender, EventArgs e)
+        private void btnLearnMore_Click(object sender, EventArgs e)
         {
-
+            string url = "https://yamyco.co/yamy-software";
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true // This is required for .NET Core and .NET 5+
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening link: " + ex.Message);
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)

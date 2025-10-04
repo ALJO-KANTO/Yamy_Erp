@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,7 @@ namespace YamyProject.UI.Default
         {
             progressValue = 0;
             gunaProgressBar.Value = 0;
+            guna2CircleProgressBar1.Value = 60;
             lblStatus.Text = "Initializing...";
 
             progressTimer = new Timer();

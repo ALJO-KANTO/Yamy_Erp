@@ -17,6 +17,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            this.Text = "Project DashBoard";
             headerUC1.FormText = this.Text;
         }
 

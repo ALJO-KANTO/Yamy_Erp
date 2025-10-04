@@ -11,6 +11,12 @@ namespace YamyProject
     {
         private EventHandler vendorUpdatedHandler;
         private EventHandler invoiceUpdatedHandler;
+
+        int _currentPage = 1;
+        int _pageSize = 50; // Or any default rows per page
+        int _totalRecords = 0;
+        int _totalPages = 0;
+
         public MasterPurchaseOrder()
         {
             InitializeComponent();
@@ -94,29 +100,62 @@ namespace YamyProject
             if (!chkDate.Checked)
                 query += " and tbl_purchase_order.date >= @dateFrom and tbl_purchase_order.date <= @dateTo";
             if (cmbSelectionMethod.Text == "Default")
-                query += " GROUP BY tbl_purchase_order.id, tbl_purchase_order.date, tbl_purchase_order.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_order.total; ";
+                query += " GROUP BY tbl_purchase_order.id, tbl_purchase_order.date, tbl_purchase_order.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_order.total ";
 
             else
-                query += " GROUP BY tbl_purchase_order.id, tbl_purchase_order.date, tbl_purchase_order.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_order.total,ti.code,ti.name,ts.qty,ts.cost_price,ts.vat,ts.total; ";
+                query += " GROUP BY tbl_purchase_order.id, tbl_purchase_order.date, tbl_purchase_order.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_order.total,ti.code,ti.name,ts.qty,ts.cost_price,ts.vat,ts.total ";
             parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
             parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
-            dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
-            dgvCustomer.DataSource = dt;
-            dgvCustomer.Columns["Vendor Name"].MinimumWidth = 200;
-            dgvCustomer.Columns["Vendor Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["id"].Visible = false;
-            if (dgvCustomer.Rows.Count > 0 && cmbSelectionMethod.Text == "Default")
-                bindInvoiceItems();
-            else
-                dgvItems.DataSource = null;
 
-            if (dgvCustomer.Rows.Count > 0)
+            int offset = (_currentPage - 1) * _pageSize;
+            query += $" LIMIT @_limit OFFSET @_offset";
+
+            parameters.Add(DBClass.CreateParameter("_limit", _pageSize));
+            parameters.Add(DBClass.CreateParameter("_offset", offset));
+            string countQuery = "SELECT COUNT(*) FROM tbl_purchase_order " +
+                    "INNER JOIN tbl_vendor ON tbl_purchase_order.vendor_id = tbl_vendor.id " +
+                    "WHERE tbl_purchase_order.state = 0";
+
+            if (cmbCustomer.Text != "" && !chkCustomer.Checked)
             {
-                btnEdit.Enabled = UserPermissions.canEdit("Purchase Order");
-                btnDelete.Enabled = btnRecycle.Enabled = UserPermissions.canDelete("Purchase Order");
+                countQuery += " AND tbl_purchase_order.vendor_id = @id";
             }
 
-            LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+            if (cmbPaymentMethod.Text != "" && !chkPayment.Checked)
+            {
+                countQuery += " AND tbl_purchase_order.payment_method = @payment";
+            }
+
+            if (!chkDate.Checked)
+                countQuery += " AND tbl_purchase_order.date >= @dateFrom AND tbl_purchase_order.date <= @dateTo";
+
+            _totalRecords = Convert.ToInt32(DBClass.ExecuteScalar(countQuery, parameters.ToArray()));
+            _totalPages = (_totalRecords + _pageSize - 1) / _pageSize;
+
+            dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
+            if (dt != null)
+            {
+                dgvCustomer.DataSource = dt;
+                dgvCustomer.Columns["Vendor Name"].MinimumWidth = 200;
+                dgvCustomer.Columns["Vendor Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["id"].Visible = false;
+                if (dgvCustomer.Rows.Count > 0 && cmbSelectionMethod.Text == "Default")
+                    bindInvoiceItems();
+                else
+                    dgvItems.DataSource = null;
+
+                if (dgvCustomer.Rows.Count > 0)
+                {
+                    btnEdit.Enabled = UserPermissions.canEdit("Purchase Order");
+                    btnDelete.Enabled = btnRecycle.Enabled = UserPermissions.canDelete("Purchase Order");
+                }
+
+                LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+            }
+
+            lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+            btnPrev.Enabled = btnFirst.Enabled = _currentPage > 1;
+            btnNext.Enabled = btnLast.Enabled = _currentPage < _totalPages;
         }
 
         private void bindInvoiceItems()
@@ -132,6 +171,7 @@ namespace YamyProject
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _currentPage = 1;
             BindInvoices();
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -161,6 +201,8 @@ namespace YamyProject
                 cmbCustomer.Enabled = false;
             else
                 cmbCustomer.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void chkPayment_CheckedChanged(object sender, EventArgs e)
@@ -169,6 +211,8 @@ namespace YamyProject
                 cmbPaymentMethod.Enabled = false;
             else
                 cmbPaymentMethod.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void chkDate_CheckedChanged(object sender, EventArgs e)
@@ -177,6 +221,8 @@ namespace YamyProject
                 dtFrom.Enabled = dtTo.Enabled = false;
             else
                 dtFrom.Enabled = dtTo.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
 
@@ -210,6 +256,8 @@ namespace YamyProject
             DBClass.ExecuteNonQuery("UPDATE tbl_purchase_order SET state = -1 WHERE id = @id ",
                                           DBClass.CreateParameter("id", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
             Utilities.LogAudit(frmLogin.userId, "Delete Purchase Order", "Purchase Order", int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()), "Deleted Purchase Order: " + dgvCustomer.SelectedRows[0].Cells["INV NO"].Value.ToString());
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void btnRecycle_Click(object sender, EventArgs e)
@@ -220,6 +268,7 @@ namespace YamyProject
         }
         private void RestoreForm_DataRestored(object sender, EventArgs e)
         {
+            _currentPage = 1;
             BindInvoices();
         }
     }

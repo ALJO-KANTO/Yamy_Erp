@@ -138,7 +138,7 @@
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 518);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1234, 2);
             this.panel5.TabIndex = 14;
@@ -148,7 +148,7 @@
             this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1236, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(2, 520);
             this.panel6.TabIndex = 13;
@@ -158,7 +158,7 @@
             this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(2, 520);
             this.panel7.TabIndex = 12;
@@ -217,7 +217,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel4.Controls.Add(this.guna2Button2);
             this.panel4.Controls.Add(this.guna2ControlBox1);
             this.panel4.Controls.Add(this.Lbheader);
@@ -308,29 +308,26 @@
             // 
             // dtTo
             // 
-            this.dtTo.BackColor = System.Drawing.Color.Silver;
-            this.dtTo.Checked = true;
-            this.dtTo.Enabled = false;
             this.dtTo.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtTo.Enabled = false;
             this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTo.Location = new System.Drawing.Point(233, 3);
-            this.dtTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtTo.Margin = new System.Windows.Forms.Padding(2);
             this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(160, 20);
+            this.dtTo.Size = new System.Drawing.Size(160, 23);
             this.dtTo.TabIndex = 11;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // chkDate
             // 
             this.chkDate.AutoSize = true;
             this.chkDate.BackColor = System.Drawing.Color.Gainsboro;
-            this.chkDate.Checked = true;
             this.chkDate.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkDate.CheckedState.BorderRadius = 0;
             this.chkDate.CheckedState.BorderThickness = 0;
             this.chkDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDate.ForeColor = System.Drawing.Color.Black;
             this.chkDate.Location = new System.Drawing.Point(399, 7);
             this.chkDate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -343,6 +340,7 @@
             this.chkDate.UncheckedState.BorderThickness = 0;
             this.chkDate.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkDate.UseVisualStyleBackColor = false;
+            this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
             // 
             // label1
             // 
@@ -359,18 +357,17 @@
             // 
             // dtFrom
             // 
-            this.dtFrom.BackColor = System.Drawing.Color.LightGray;
-            this.dtFrom.Checked = true;
-            this.dtFrom.Enabled = false;
             this.dtFrom.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtFrom.Enabled = false;
             this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFrom.Location = new System.Drawing.Point(46, 3);
-            this.dtFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(160, 20);
+            this.dtFrom.Size = new System.Drawing.Size(160, 23);
             this.dtFrom.TabIndex = 11;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label3
             // 

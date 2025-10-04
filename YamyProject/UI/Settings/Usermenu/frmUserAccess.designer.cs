@@ -628,6 +628,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -644,14 +645,14 @@
             this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSearch.PlaceholderText = "Search By Name, Code";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(223, 22);
+            this.txtSearch.Size = new System.Drawing.Size(223, 25);
             this.txtSearch.TabIndex = 7;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cmbState
             // 
             this.cmbState.BackColor = System.Drawing.Color.Transparent;
-            this.cmbState.BorderRadius = 1;
+            this.cmbState.BorderRadius = 5;
             this.cmbState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbState.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -664,7 +665,7 @@
             "Active User",
             "Inactive User"});
             this.cmbState.Location = new System.Drawing.Point(16, 8);
-            this.cmbState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbState.Margin = new System.Windows.Forms.Padding(2);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(256, 24);
             this.cmbState.StartIndex = 1;
@@ -718,7 +719,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(86)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 638);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1036, 2);
             this.panel5.TabIndex = 14;
@@ -728,7 +729,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(86)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1038, 23);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(2, 617);
             this.panel6.TabIndex = 13;
@@ -738,7 +739,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(86)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 23);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(2, 617);
             this.panel7.TabIndex = 12;
@@ -797,6 +798,7 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Catch Log Report";
             this.linkLabel1.Visible = false;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label10
             // 
@@ -1056,7 +1058,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel9.Controls.Add(this.guna2Button3);
             this.panel9.Controls.Add(this.guna2HtmlLabel2);
             this.panel9.Controls.Add(this.guna2ControlBox1);
@@ -6208,7 +6210,7 @@
             this.Controls.Add(this.panel9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmUserAccess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";

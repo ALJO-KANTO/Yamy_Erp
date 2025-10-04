@@ -1454,5 +1454,10 @@ namespace YamyProject
         {
             this.BringToFront();
         }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

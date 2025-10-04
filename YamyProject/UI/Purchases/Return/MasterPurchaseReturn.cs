@@ -17,7 +17,11 @@ namespace YamyProject
     {
         private EventHandler vendorUpdatedHandler;
         private EventHandler invoiceUpdatedHandler;
-       
+
+        int _currentPage = 1;
+        int _pageSize = 50; // Or any default rows per page
+        int _totalRecords = 0;
+        int _totalPages = 0;
 
         public MasterPurchaseReturn()
         {
@@ -73,9 +77,37 @@ namespace YamyProject
             }
             if (!chkDate.Checked)
                 query += " and tbl_purchase_return.date >= @dateFrom and tbl_purchase_return.date <= @dateTo";
-            query+= " GROUP BY tbl_purchase_return.id, tbl_purchase_return.date, tbl_purchase_return.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_return.total; ";
+            query+= " GROUP BY tbl_purchase_return.id, tbl_purchase_return.date, tbl_purchase_return.invoice_id, tbl_vendor.code, tbl_vendor.name, tbl_purchase_return.total ";
             parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
             parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
+
+            int offset = (_currentPage - 1) * _pageSize;
+            query += $" LIMIT @_limit OFFSET @_offset";
+
+            parameters.Add(DBClass.CreateParameter("_limit", _pageSize));
+            parameters.Add(DBClass.CreateParameter("_offset", offset));
+
+            string countQuery = "SELECT COUNT(*) FROM tbl_purchase_return " +
+                    "INNER JOIN tbl_vendor ON tbl_purchase_return.vendor_id = tbl_vendor.id " +
+                    "WHERE tbl_purchase_return.state = 0";
+
+            if (cmbCustomer.Text != "" && !chkCustomer.Checked)
+            {
+                countQuery += " AND tbl_purchase_return.vendor_id = @id";
+                // Add param if not already
+            }
+
+            if (cmbPaymentMethod.Text != "" && !chkPayment.Checked)
+            {
+                countQuery += " AND tbl_purchase_return.payment_method = @payment";
+            }
+
+            if (!chkDate.Checked)
+                countQuery += " AND tbl_purchase_return.date >= @dateFrom AND tbl_purchase_return.date <= @dateTo";
+
+            _totalRecords = Convert.ToInt32(DBClass.ExecuteScalar(countQuery, parameters.ToArray()));
+            _totalPages = (_totalRecords + _pageSize - 1) / _pageSize;
+
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["Vendor Name"].MinimumWidth = 200;
@@ -87,10 +119,15 @@ namespace YamyProject
                 btnDelete.Enabled = btnRestore.Enabled = UserPermissions.canDelete("Purchase Return");
             }
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+
+            lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
+            btnPrev.Enabled = btnFirst.Enabled = _currentPage > 1;
+            btnNext.Enabled = btnLast.Enabled = _currentPage < _totalPages;
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _currentPage = 1;
             BindInvoices();
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -125,6 +162,8 @@ namespace YamyProject
                                           DBClass.CreateParameter("id", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
             CommonInsert.DeleteItemTransaction("Purchase Return", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString());
             Utilities.LogAudit(frmLogin.userId, "Delete Purchase Return", "Purchase Return", int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()), "Deleted Purchase Return: " + dgvCustomer.SelectedRows[0].Cells["INV NO"].Value.ToString());
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void btnRestore_Click(object sender, EventArgs e)
@@ -136,6 +175,7 @@ namespace YamyProject
         }
         private void RestoreForm_DataRestored(object sender, EventArgs e)
         {
+            _currentPage = 1;
             BindInvoices();
         }
         private void chkCustomer_CheckedChanged(object sender, EventArgs e)
@@ -144,6 +184,8 @@ namespace YamyProject
                 cmbCustomer.Enabled = false;
             else
                 cmbCustomer.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void chkPayment_CheckedChanged(object sender, EventArgs e)
@@ -152,6 +194,8 @@ namespace YamyProject
                 cmbPaymentMethod.Enabled = false;
             else
                 cmbPaymentMethod.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
         private void chkDate_CheckedChanged(object sender, EventArgs e)
@@ -160,6 +204,8 @@ namespace YamyProject
                 dtFrom.Enabled = dtTo.Enabled = false;
             else
                 dtFrom.Enabled = dtTo.Enabled = true;
+
+            _currentPage = 1;
             BindInvoices();
         }
 

@@ -15,6 +15,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            this.Text = "Project WorkDone Center";
             headerUC1.FormText = this.Text;
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;

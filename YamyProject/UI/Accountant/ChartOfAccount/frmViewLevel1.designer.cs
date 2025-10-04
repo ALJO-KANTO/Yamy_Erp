@@ -42,7 +42,6 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.LbHeader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.labelName = new System.Windows.Forms.Label();
             this.comboCategoryCode = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
@@ -54,7 +53,7 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 93);
+            this.panel1.Location = new System.Drawing.Point(2, 102);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(342, 33);
@@ -63,7 +62,7 @@
             // btnClose
             // 
             this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.BorderRadius = 5;
+            this.btnClose.BorderRadius = 7;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -83,7 +82,7 @@
             // btnSave
             // 
             this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.BorderRadius = 5;
+            this.btnSave.BorderRadius = 7;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -102,6 +101,7 @@
             // 
             // txtLevel1
             // 
+            this.txtLevel1.BorderRadius = 7;
             this.txtLevel1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtLevel1.DefaultText = "";
             this.txtLevel1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -118,15 +118,15 @@
             this.txtLevel1.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtLevel1.PlaceholderText = "Enter Level 1 Name";
             this.txtLevel1.SelectedText = "";
-            this.txtLevel1.Size = new System.Drawing.Size(321, 29);
+            this.txtLevel1.Size = new System.Drawing.Size(321, 24);
             this.txtLevel1.TabIndex = 6;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(2, 126);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Location = new System.Drawing.Point(2, 135);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(342, 2);
             this.panel5.TabIndex = 14;
@@ -136,9 +136,9 @@
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(344, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 128);
+            this.panel4.Size = new System.Drawing.Size(2, 137);
             this.panel4.TabIndex = 13;
             // 
             // panel3
@@ -146,14 +146,14 @@
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 128);
+            this.panel3.Size = new System.Drawing.Size(2, 137);
             this.panel3.TabIndex = 12;
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.guna2Button1);
             this.panel8.Controls.Add(this.guna2Button4);
             this.panel8.Controls.Add(this.guna2ControlBox1);
@@ -238,13 +238,6 @@
             this.guna2DragControl1.TargetControl = this.LbHeader;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 5;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // labelName
             // 
             this.labelName.AutoSize = true;
@@ -266,8 +259,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(346, 128);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(346, 137);
             this.Controls.Add(this.comboCategoryCode);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.panel8);
@@ -303,7 +296,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel LbHeader;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ComboBox comboCategoryCode;
     }

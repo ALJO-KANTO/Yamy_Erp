@@ -45,10 +45,10 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 168);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 136);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(465, 41);
+            this.panel1.Size = new System.Drawing.Size(349, 33);
             this.panel1.TabIndex = 2;
             // 
             // btnClose
@@ -64,10 +64,10 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(276, 6);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnClose.Location = new System.Drawing.Point(207, 5);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(183, 33);
+            this.btnClose.Size = new System.Drawing.Size(137, 27);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -85,16 +85,18 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(86, 6);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnSave.Location = new System.Drawing.Point(64, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(183, 33);
+            this.btnSave.Size = new System.Drawing.Size(137, 27);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtCategoryName
             // 
+            this.txtCategoryName.BackColor = System.Drawing.Color.Transparent;
+            this.txtCategoryName.BorderRadius = 5;
             this.txtCategoryName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCategoryName.DefaultText = "";
             this.txtCategoryName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -105,14 +107,13 @@
             this.txtCategoryName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCategoryName.ForeColor = System.Drawing.Color.Black;
             this.txtCategoryName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCategoryName.Location = new System.Drawing.Point(16, 98);
-            this.txtCategoryName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCategoryName.Location = new System.Drawing.Point(12, 80);
+            this.txtCategoryName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.PasswordChar = '\0';
             this.txtCategoryName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCategoryName.PlaceholderText = "";
             this.txtCategoryName.SelectedText = "";
-            this.txtCategoryName.Size = new System.Drawing.Size(443, 36);
+            this.txtCategoryName.Size = new System.Drawing.Size(332, 25);
             this.txtCategoryName.TabIndex = 6;
             // 
             // label1
@@ -120,60 +121,61 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(16, 65);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 30);
+            this.label1.Size = new System.Drawing.Size(94, 24);
             this.label1.TabIndex = 18;
             this.label1.Text = "Category Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(471, 46);
+            this.headerUC1.Size = new System.Drawing.Size(353, 37);
             this.headerUC1.TabIndex = 21;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 209);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(2, 169);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(465, 2);
+            this.panel5.Size = new System.Drawing.Size(349, 2);
             this.panel5.TabIndex = 24;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(468, 46);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(351, 37);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 165);
+            this.panel4.Size = new System.Drawing.Size(2, 134);
             this.panel4.TabIndex = 23;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 46);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 165);
+            this.panel3.Size = new System.Drawing.Size(2, 134);
             this.panel3.TabIndex = 22;
             // 
             // frmViewPrepaidExpenseCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(471, 211);
+            this.ClientSize = new System.Drawing.Size(353, 171);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCategoryName);
             this.Controls.Add(this.panel1);
@@ -182,7 +184,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmViewPrepaidExpenseCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Customer - Add New Category";

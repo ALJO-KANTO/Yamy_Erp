@@ -38,7 +38,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.pnlHeader.Controls.Add(this.btnMaximize);
             this.pnlHeader.Controls.Add(this.btnMinimize);
             this.pnlHeader.Controls.Add(this.btnClose);
@@ -55,7 +55,7 @@
             this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
             this.btnMaximize.BorderColor = System.Drawing.Color.White;
-            this.btnMaximize.BorderRadius = 1;
+            this.btnMaximize.BorderRadius = 5;
             this.btnMaximize.BorderThickness = 1;
             this.btnMaximize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnMaximize.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -75,8 +75,9 @@
             // btnMinimize
             // 
             this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.BorderColor = System.Drawing.Color.White;
-            this.btnMinimize.BorderRadius = 1;
+            this.btnMinimize.BorderRadius = 5;
             this.btnMinimize.BorderThickness = 1;
             this.btnMinimize.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnMinimize.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -96,8 +97,9 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BorderColor = System.Drawing.Color.White;
-            this.btnClose.BorderRadius = 1;
+            this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -116,15 +118,15 @@
             // 
             // lblFormName
             // 
-            this.lblFormName.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblFormName.BackColor = System.Drawing.Color.Transparent;
             this.lblFormName.BorderColor = System.Drawing.Color.White;
-            this.lblFormName.BorderRadius = 1;
             this.lblFormName.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.lblFormName.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.lblFormName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.lblFormName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.lblFormName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFormName.FillColor = System.Drawing.Color.Transparent;
+            this.lblFormName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblFormName.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold);
             this.lblFormName.ForeColor = System.Drawing.Color.White;
             this.lblFormName.HoverState.FillColor = System.Drawing.Color.RoyalBlue;
@@ -133,13 +135,14 @@
             this.lblFormName.Name = "lblFormName";
             this.lblFormName.Size = new System.Drawing.Size(633, 35);
             this.lblFormName.TabIndex = 3;
+            this.lblFormName.Text = ".";
             this.lblFormName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblFormName_MouseDoubleClick);
             // 
             // HeaderUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.Controls.Add(this.pnlHeader);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HeaderUC";

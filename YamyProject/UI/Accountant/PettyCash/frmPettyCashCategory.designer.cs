@@ -75,7 +75,7 @@
             this.btnClose.Location = new System.Drawing.Point(230, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 27);
+            this.btnClose.Size = new System.Drawing.Size(63, 25);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -95,7 +95,7 @@
             this.btnSave.Location = new System.Drawing.Point(161, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 27);
+            this.btnSave.Size = new System.Drawing.Size(63, 25);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -197,7 +197,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2Button4);
             this.panel6.Controls.Add(this.guna2ControlBox1);

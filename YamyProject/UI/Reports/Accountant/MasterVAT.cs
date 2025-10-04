@@ -15,10 +15,6 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             lbheader.Text = this.Text;
         }
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewItem());
-        }
         private void MasterVAT_Load(object sender, EventArgs e)
         {
             BindItems();

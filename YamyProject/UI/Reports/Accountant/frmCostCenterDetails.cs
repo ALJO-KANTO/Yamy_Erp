@@ -155,15 +155,15 @@ namespace YamyProject
                 //    var _type = dgvSales.Rows[e.RowIndex].Cells["Type"].Value.ToString();
                 //    if (_type.Contains("Sales"))
                 //    {
-                //        frmLogin.frmMain.openChildForm(new frmAddSales(_id, "", id));
+                //        new frmAddSales(_id, "", id);
                 //    }
                 //    else if(_type == "Customer Receipt")
                 //    {
-                //        frmLogin.frmMain.openChildForm(new frmViewReceiptVoucher(id));
+                //        new frmViewReceiptVoucher(id);
                 //    }
                 //    else if (_type == "Customer Opening Balance")
                 //    {
-                //        frmLogin.frmMain.openChildForm(new frmTransactionJournal(_id, _type, _id.ToString()));
+                //        new frmTransactionJournal(_id, _type, _id.ToString());
                 //    }
                 //}
             }

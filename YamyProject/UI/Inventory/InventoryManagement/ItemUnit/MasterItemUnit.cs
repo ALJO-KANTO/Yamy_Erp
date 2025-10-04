@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using YamyProject.Localization;
 
@@ -18,15 +20,17 @@ namespace YamyProject
             itemUnitUpdatedHandler = (sender, args) => BindItems();
             LbHeader.Text = this.Text;
         }
+
         private void MasterItemUnit_FormClosing(object sender, FormClosingEventArgs e)
         {
             EventHub.ItemUnit -= itemUnitUpdatedHandler;
             //EventHub.SalesInv -= invoiceUpdatedHandler;
             //EventHub.PurchaseInv -= purchaseUpdatedHandler;
         }
+
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewItemUnit());
+            new frmViewItemUnit().ShowDialog();
         }
         private void MasterItemUnit_Load(object sender, EventArgs e)
         {
@@ -55,14 +59,14 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewItemUnit(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewItemUnit(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
           
-                frmLogin.frmMain.openChildForm(new frmViewItemUnit(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+                new frmViewItemUnit(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
             if (dgvCustomer.Rows.Count == 0)
                 return;
         }

@@ -32,17 +32,22 @@ namespace YamyProject.UI.Default
                 MessageBox.Show("Enter user name");
                 return;
             }
-            if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
-            {
-                MessageBox.Show("Enter password");
-                return;
-            }
+            //if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
+            //{
+            //    MessageBox.Show("Enter password");
+            //    return;
+            //}
             string server = txtServerName.Text.Trim();
             string db = txtDataBaseName.Text.Trim();
             string user = txtUserName.Text.Trim();
             string pass = txtPassword.Text.Trim();
 
-            string connStr = $"Server={server};Database={db};Uid={user};Pwd={pass};Max Pool Size=1000;charset=utf8mb4;";
+            string connStr = $"Server={server};Database={db};Uid={user};";
+            if (!string.IsNullOrEmpty(pass))
+            {
+                connStr += $"Pwd={pass};";
+            }
+            connStr += "Max Pool Size=1000;charset=utf8mb4;";
 
             Environment.SetEnvironmentVariable("yamy_connection", CryptoHelper.Encrypt(connStr), EnvironmentVariableTarget.User);
             Environment.SetEnvironmentVariable("yamy_company_code", txtCompanyCode.Text.Trim(), EnvironmentVariableTarget.User);
@@ -156,7 +161,13 @@ namespace YamyProject.UI.Default
             string server = txtServerName.Text.Trim();
             string user = txtUserName.Text.Trim();
             string pass = txtPassword.Text.Trim();
-            string connStr = $"Server={server};Uid={user};Pwd={pass};Max Pool Size=1000;";
+
+            string connStr = $"Server={server};Uid={user};";
+            if (!string.IsNullOrEmpty(pass))
+            {
+                connStr += $"Pwd={pass};";
+            }
+            connStr += "Max Pool Size=1000;";
             try
             {
                 using (var conn = new MySqlConnection(connStr))

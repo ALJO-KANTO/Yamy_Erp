@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Linq;
@@ -31,6 +32,78 @@ namespace YamyProject
                     cmbMonth.Items.Add(month);
             }
             cmbMonth.SelectedIndex = DateTime.Now.Month - 1; // Set default to current month
+
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            if (cmbYear.SelectedItem == null || cmbMonth.SelectedItem == null)
+            {
+                //MessageBox.Show("Please select a valid Year and Month.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int year = Convert.ToInt32(cmbYear.SelectedItem);
+            int month = cmbMonth.SelectedIndex + 1;
+            int dayCount = 1;
+            dgvMain.Rows.Clear();
+            dgvDays.Rows.Clear();
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_setting_attendance
+                        WHERE MONTH(`date`) = @month AND YEAR(`date`) = @year;",
+              DBClass.CreateParameter("month", month),
+              DBClass.CreateParameter("year", year)
+              ))
+                while (reader.Read())
+                {
+                    //date`, `day`, `timein`, `timeout`, `state
+                    var _date = reader["date"];
+                    string _day = reader["day"].ToString();
+                    var _timein = reader["timein"];
+                    var _timeout = reader["timeout"];
+                    int _state = (int)reader["state"];
+
+                    txtIn.Text = _timein.ToString();
+                    txtOut.Text = _timeout.ToString();
+
+                    //int daysInMonth = DateTime.DaysInMonth(year, month); // Get total days in the selected month
+                    //string inTime = txtIn.Text.Trim();
+                    //string outTime = txtOut.Text.Trim();
+                    // Loop through each day of the selected month and add to DataGridView
+                    //for (int day = 1; day <= daysInMonth; day++)
+                    //{
+
+                        DateTime date = new DateTime(year, month, dayCount);
+
+                        bool exists = dgvDays.Rows.Cast<DataGridViewRow>()
+                            .Any(row => row.Cells["Day"].Value != null &&
+                                        row.Cells["Day"].Value.ToString().Trim().Equals(date.DayOfWeek.ToString(), StringComparison.OrdinalIgnoreCase));
+                        if (cmbTimIn.SelectedIndex == 0)
+                            dgvMain.Rows.Add(dayCount, date.ToString("yyyy-MM-dd"), date.DayOfWeek, _timein, _timeout, _state);
+                        else
+                            dgvMain.Rows.Add(dayCount, date.ToString("yyyy-MM-dd"), date.DayOfWeek, _timein, _timeout, _state);
+
+                    if (_state == 0)
+                    {
+                        bool dayExist = false;
+                        for (int i = 0; i < dgvDays.Rows.Count; i++)
+                        {
+                            if (dgvDays.Rows[i].Cells[0].Value.ToString() == _day)
+                            {
+                                dayExist = true;
+                            }
+                        }
+                        if (dgvDays.Rows.Count <= 0)
+                        {
+                            dgvDays.Rows.Add(_day);
+                        } else if (!dayExist)
+                        {
+                            dgvDays.Rows.Add(_day);
+                        }
+                    }
+                    //}
+                    dayCount++;
+                }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -39,7 +112,7 @@ namespace YamyProject
             {
                 if (dgvDays.Rows[i].Cells[0].Value.ToString() == cmbDay.Text)
                 {
-                    MessageBox.Show("Day Alrady Add ");
+                    MessageBox.Show("Day Already Add ");
                     return;
                 }
             }
@@ -169,5 +242,14 @@ namespace YamyProject
             dgvMain.Rows.Clear();     // Clear all rows in the main attendance grid
         }
 
+        private void cmbYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

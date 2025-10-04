@@ -120,19 +120,22 @@
   <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="guna2HtmlToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>192, 17</value>
-  </metadata>
+  <data name="guna2HtmlLabel3.Text" xml:space="preserve">
+    <value>Customer Relationship Management, commonly known as CRM, is one of the most essential systems used by modern businesses to enhance their interaction with customers and build lasting relationships. CRM is not just a software tool, but a strategic approach aimed at understanding customer needs and providing solutions that ensure satisfaction and loyalty over time.</value>
+  </data>
+  <data name="guna2HtmlLabel4.Text" xml:space="preserve">
+    <value>
+ The primary goal of a CRM system is to create a long-term relationship with customers by collecting, organizing, and analyzing data related to their interactions with the business. Key objectives include:</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="guna2CircleButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAARpJREFUWEftln0NwjAUxCdhEpCAA5CChEnBAUhAwhyAE3Aw7rrbUpamH2thf9Bf
-        cgkt7x4vlB5rKj6GYThCh1ypXTwwtdAdKgV7tWofBsWdsZWlU/swKO5Hj4HHkKOJm9qHQfE8gLZWozak
-        11YYFo+eOkCRAV5jp+0G2EEP6HcDwHaG9loasD7pZRgU5w5A/xOK/1AbNTBoKwnYZj+4QPEpSGAIDoC3
-        GNfO7IeWMc71x5F4QXHMAHbKxRB/JCj8xgC8jkUH4BHYmW+L186G67JH4AO22Q+uUPkfoQ/Y6I//ypeo
-        gUFbScC2bRDZoAWjmNfwf/+MJuoA6wYArqxP0UTSQ+nmj+WM2WWc5sBeaWlIYHLlfLLUruKgad6VINX6
-        1mmaEQAAAABJRU5ErkJggg==
+        vAAADrwBlbxySQAAAPhJREFUWEftlsENwjAMRTtCR2AENoBRGKGjsAGMwAjdADaBDR6ylEjGtCFp3ZZD
+        nuRDEsX+qpPfNE0lAXAEDnPD5v0J0AJ3/JBcra0zCtDZDA50ts4oQK82ShvmRORm64yiBdi1UpSA3q6N
+        UgU4C3htLWAHPFYVAJyBvZk76XESBwGy/1lUVOMkIHIpckEhR0Cw6y/fD2FtXMYfLUmSKUC7XA75LVlI
+        gFxHVwHSAuv7MeTaaWTs24IU5hBeFzmEKcL+/E9ucRCwrRFpghXLNVzPijX/8DOKVAHTBAz4fGlEih6l
+        mz/LxWatnc5BcpW5oTDg8ZPC5q1o3pUg1frWJRCsAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="guna2HtmlToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -141,67 +144,56 @@
   <data name="guna2CircleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAZlJREFUWEftl41RwkAQhVOCJdCJlGAJdCAdQAfSAXQAHWgH2gF0gB3E98W3GR1D
-        7gzhGBzfzJvj9vbebu6f6mZR1/VEXJsTm8tBQXfim7mzuRwU9CDGCBxsLgcFnYnv5szmslDgF+hqeYye
-        gMQ2IniyqRfyy05AfiuEhbVN36GGmNM5XsKDm05CPlkJoIWgQAzwUxvjZ1u9cJkcBfkgmFyA8omvD+3u
-        j1MDjnwVexw8i4MPGfpag5FFE+2Vm/shRzrT4eg6v3PRTItKAtNv+EmpznOXCLFIpwniEwk0fUcBouLS
-        VerMP3MK23WAjzje1gwgirir1GO9wHZe8cHm6nhwoDaBU/hP4O8lILGv25C7/z5BfJoEVA7fhurcnmKu
-        k0AumheSSg6i/NNUjmwtOmxFQNBzj+JIHE20u+8YNcRlxByC5Jktn99eRqHdeRsidhQf8RAucR33a6sh
-        HiRZN5b8shIAaCIsbGw6HxLLTuAiuGoCChzPK9ZN+We5gvLHhDUD9zaXg4LyxHo1r/LXjEMmRuDO5ltD
-        VX0AHdYtroqqflIAAAAASUVORK5CYII=
+        vAAADrwBlbxySQAAAXFJREFUWEftV4ltAjEQpISUQCdQQkqgA+ggdAAdQAfQAXQAHYQOoIOJ5jJGy2Kw
+        7/Ehooy0umfXc2N7vfYNBu8KAEMAK9nQ+4sDwBbAUbb1/uIAcDIjcPL+4gAwAXCRTby/FwDY0/z73tC5
+        AABr/GLhfTHUEQBgKe6V91UwczpT4KeP8cgVQC5x8htxbhP0pWtyFESYTEDT+8B9L4BQIHvFNU7s2hQZ
+        FStycGTJSe6lj4tCjdngrGfe56KaFn2Y7Rp3giQzXUnEJB0njDFBQNW2E0jA3Dxz/jmntGseMCYnMWsj
+        IiDky8289ibgEf4F/D0Bbhly7x8ljDHtl6GtYnquU4iqE5IKUX411dJig42IWlUxU00JcpI7vseYzYhz
+        SCRrdoPNKHDfb0YiOwOYPgxyCIXIv/cwnXvObQ4kyd4TuQIIMwpr72uMOgKK4KUCzPGKeZNMxM6hHxPm
+        DO3b+4tDR6yD7CW/ZiwyYQQ+vP9t8AMd1i2up+9r6QAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnNav.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="guna2Button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAANxJREFUWEftlrENgzAURN3QU1GnS8sCUZDShBGyDRsmmyQbOHfkRwbs0ERnKPyk
-        a3xfPvC39O0KhSne+xa6Qyq4d2txc2AcoCerxDCjttgAFrvRzkNnsQEs8vhz8bMNw8eXMlhcGhTwJNgO
-        hdJ/XtgN6FEFHaGLSNy7srgYmD10E+tqcXNgNItCpRqLDXBxUaRU/AEERo4W9BYXA/N7CU9Q6hL9I+65
-        fgkLuwA94jA6i7Q+jFCw3TiGse2DBIuc17lIPslq6DXaWpgRP0oJDLbhwSoR3Lu8igoTnHsDdKDVpKAh
-        C3AAAAAASUVORK5CYII=
+        vAAADrwBlbxySQAAAMhJREFUWEftljEOwjAMRbt079SZjbUXQFRioUfgNr0h3ARu8JCrUJXf0AWcViJP
+        +pvjn9iWnKLIZCYADXDFD8vdqO8AsAPuesIB86jU3y7QaqQjrfq/yp+Kj23oNdKBXn3fCJWwdngo/vLM
+        ZgBKYA+cnGS5S/UdATrg4qyz+g4AdSTYS7X6r38BI1ELOvUdmQzhITJA38pyLg9hZhOEZXR00vIyWnUd
+        r/4hCfs6FdEvWQU8NNIB85h/So3Qhpue+CGWe17+zF/zBHSg1aQxFXvoAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="guna2Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAGVJREFUWEft0sENgCAMhWFGYgMZgREdwY10k/pKeiPEC6iH/0veqU1LQhMAAL9k
-        ZlnZJifH+DE1VeVUVvHZNdb1VDxa21p7rOup+PkD/Auu1raGzy6xbkxNfoRlcp6PEACA96V0A9Z2KAEU
-        G/L3AAAAAElFTkSuQmCC
+        vAAADrwBlbxySQAAAGBJREFUWEft0rENwCAMRFFGYoMwAiNmhGyUbPIjSxHFUdCAQnFPcmmfJTslMzOz
+        HQEZOCZX1pwOUIGbdWJ21dwGuLRjgVNzmx0WiBM82jFRzC6a2/mesEyu8ROamZn94QXWdigBzrcVMwAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="guna2Button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAOpJREFUWEftloENgjAQRdlMRmAT2UQ2kE1kI92gvm9LYqLFtrQak3vJT6G9Oz49
-        EtoZf4FzbkAndCmUcodQLg8SZ1SLcyibDkl9BY3ohkTZTuyFB8uEmMJUHIKq95x77YRYwtR7CGjSc64/
-        G2BRby7UL23Zcx9z9NJzRs2LTQOTj3FjmCpGNXwp33PGJAOLj3F9mCpGNXwp/0BGM2AGzIAZMAPrffx3
-        zOI3DMQPJCy2NjA/FmMoWBlQ3UASBDf7HSdB8HoguaIjOhRKuaoh8g6hJNQ8km33PAaJ2gm1Q99EiZT7
-        m+O3kUfX3QHHhq01CPpeCwAAAABJRU5ErkJggg==
+        vAAADrwBlbxySQAAAMtJREFUWEftlsENgzAMRdmsjMAmZZOyQdmkbNRu8JAlH6hDWidNqKrmST5AHPPj
+        jxR3XeMXAAbgAtwyQ/YOtq4LYKYcV1v/LUBfIEbgoSLyOvEpKkKY7FpADc+1E8KyfR9Qy3OXAD25IH5J
+        y6yX3gg89wqYNGm0a6lYz70CFk3q7Voq9oP2eZcmoAloApqAfxEQv44PEhAfSA4QMNu8J2oKcFHzOnax
+        GUjuwBk4ZYbslRpC3PM9Co9krz2PoZ0QO+SfyAnZm3byxrdYAceGrTWt2GSdAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="guna2HtmlLabel3.Text" xml:space="preserve">
-    <value>Customer Relationship Management, commonly known as CRM, is one of the most essential systems used by modern businesses to enhance their interaction with customers and build lasting relationships. CRM is not just a software tool, but a strategic approach aimed at understanding customer needs and providing solutions that ensure satisfaction and loyalty over time.</value>
-  </data>
-  <data name="guna2HtmlLabel4.Text" xml:space="preserve">
-    <value>
- The primary goal of a CRM system is to create a long-term relationship with customers by collecting, organizing, and analyzing data related to their interactions with the business. Key objectives include:</value>
   </data>
   <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>350, 17</value>

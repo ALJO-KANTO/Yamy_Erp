@@ -353,7 +353,7 @@ namespace YamyProject
 
         private void lnkNewCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCustomerCategory(0));
+            new frmViewCustomerCategory(0).ShowDialog();
         }
         private void resetTextBox()
         {

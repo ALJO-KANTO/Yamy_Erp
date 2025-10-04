@@ -97,7 +97,6 @@ namespace YamyProject
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -340,7 +339,7 @@ namespace YamyProject
             this.cmbPaymentType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPaymentType.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPaymentType.ItemHeight = 20;
+            this.cmbPaymentType.ItemHeight = 18;
             this.cmbPaymentType.Items.AddRange(new object[] {
             "Vendor",
             "Customer",
@@ -348,7 +347,7 @@ namespace YamyProject
             this.cmbPaymentType.Location = new System.Drawing.Point(604, 46);
             this.cmbPaymentType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPaymentType.Name = "cmbPaymentType";
-            this.cmbPaymentType.Size = new System.Drawing.Size(209, 26);
+            this.cmbPaymentType.Size = new System.Drawing.Size(209, 24);
             this.cmbPaymentType.TabIndex = 11;
             this.cmbPaymentType.SelectedIndexChanged += new System.EventHandler(this.cmbPaymentType_SelectedIndexChanged);
             // 
@@ -364,7 +363,7 @@ namespace YamyProject
             this.cmbMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbMethod.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbMethod.ItemHeight = 20;
+            this.cmbMethod.ItemHeight = 18;
             this.cmbMethod.Items.AddRange(new object[] {
             "Cash",
             "Check",
@@ -372,7 +371,7 @@ namespace YamyProject
             this.cmbMethod.Location = new System.Drawing.Point(604, 94);
             this.cmbMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMethod.Name = "cmbMethod";
-            this.cmbMethod.Size = new System.Drawing.Size(209, 26);
+            this.cmbMethod.Size = new System.Drawing.Size(209, 24);
             this.cmbMethod.TabIndex = 9;
             this.cmbMethod.SelectedIndexChanged += new System.EventHandler(this.cmbMethod_SelectedIndexChanged);
             // 
@@ -512,11 +511,11 @@ namespace YamyProject
             this.cmbDebitCostCenter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbDebitCostCenter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDebitCostCenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbDebitCostCenter.ItemHeight = 20;
+            this.cmbDebitCostCenter.ItemHeight = 18;
             this.cmbDebitCostCenter.Location = new System.Drawing.Point(467, 46);
             this.cmbDebitCostCenter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDebitCostCenter.Name = "cmbDebitCostCenter";
-            this.cmbDebitCostCenter.Size = new System.Drawing.Size(194, 26);
+            this.cmbDebitCostCenter.Size = new System.Drawing.Size(194, 24);
             this.cmbDebitCostCenter.TabIndex = 22;
             // 
             // cmbDebitAccountName
@@ -531,11 +530,11 @@ namespace YamyProject
             this.cmbDebitAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbDebitAccountName.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDebitAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbDebitAccountName.ItemHeight = 20;
+            this.cmbDebitAccountName.ItemHeight = 18;
             this.cmbDebitAccountName.Location = new System.Drawing.Point(9, 46);
             this.cmbDebitAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDebitAccountName.Name = "cmbDebitAccountName";
-            this.cmbDebitAccountName.Size = new System.Drawing.Size(294, 26);
+            this.cmbDebitAccountName.Size = new System.Drawing.Size(294, 24);
             this.cmbDebitAccountName.TabIndex = 22;
             this.cmbDebitAccountName.SelectedIndexChanged += new System.EventHandler(this.cmbDebitAccountName_SelectedIndexChanged);
             // 
@@ -650,11 +649,11 @@ namespace YamyProject
             this.cmbCreditAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCreditAccountName.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreditAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCreditAccountName.ItemHeight = 20;
+            this.cmbCreditAccountName.ItemHeight = 18;
             this.cmbCreditAccountName.Location = new System.Drawing.Point(12, 45);
             this.cmbCreditAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCreditAccountName.Name = "cmbCreditAccountName";
-            this.cmbCreditAccountName.Size = new System.Drawing.Size(293, 26);
+            this.cmbCreditAccountName.Size = new System.Drawing.Size(293, 24);
             this.cmbCreditAccountName.TabIndex = 13;
             this.cmbCreditAccountName.SelectedIndexChanged += new System.EventHandler(this.cmbCreditAccountName_SelectedIndexChanged);
             // 
@@ -704,11 +703,11 @@ namespace YamyProject
             this.cmbCreditCostCenter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCreditCostCenter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCreditCostCenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCreditCostCenter.ItemHeight = 20;
+            this.cmbCreditCostCenter.ItemHeight = 18;
             this.cmbCreditCostCenter.Location = new System.Drawing.Point(473, 45);
             this.cmbCreditCostCenter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCreditCostCenter.Name = "cmbCreditCostCenter";
-            this.cmbCreditCostCenter.Size = new System.Drawing.Size(191, 26);
+            this.cmbCreditCostCenter.Size = new System.Drawing.Size(191, 24);
             this.cmbCreditCostCenter.TabIndex = 22;
             // 
             // label10
@@ -940,7 +939,7 @@ namespace YamyProject
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -1006,7 +1005,7 @@ namespace YamyProject
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(808, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
@@ -1042,14 +1041,6 @@ namespace YamyProject
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 640);
             this.panel2.TabIndex = 21;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_CENTER;
-            this.guna2BorderlessForm1.BorderRadius = 10;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // guna2DragControl1
             // 
@@ -1113,11 +1104,11 @@ namespace YamyProject
             this.txtPVCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPVCode.Enabled = false;
             this.txtPVCode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPVCode.Location = new System.Drawing.Point(33, 15);
+            this.txtPVCode.Location = new System.Drawing.Point(33, 18);
             this.txtPVCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPVCode.Multiline = true;
             this.txtPVCode.Name = "txtPVCode";
-            this.txtPVCode.Size = new System.Drawing.Size(66, 29);
+            this.txtPVCode.Size = new System.Drawing.Size(66, 25);
             this.txtPVCode.TabIndex = 16;
             this.txtPVCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1819,7 +1810,6 @@ namespace YamyProject
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TabControl tabControl2;

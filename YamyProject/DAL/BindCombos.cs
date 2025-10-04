@@ -273,6 +273,25 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
+        public static ComboBox PopulateRegisterBanksAll(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "select CONCAT(CODE , ' - ' , NAME) AS name, id from tbl_bank";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+            //DataTable dt = DBClass.ExecuteDataTable("select name, id from tbl_bank where state = 0");
+            //if (isAddOption)
+            //{
+            //    // Add the "<< Add >>" row at the top
+            //    DataRow newRow = dt.NewRow();
+            //    newRow["id"] = 0;
+            //    newRow["name"] = "<< Add >>";
+            //    dt.Rows.InsertAt(newRow, 0);
+            //}
+            //cmb.ValueMember = "id";
+            //cmb.DisplayMember = "name";
+            //cmb.DataSource = dt;
+            //return cmb;
+        }
         public static Guna2ComboBox PopulateAccountNames(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
         {
             string query = "select account_name, id from tbl_bank_card";
@@ -501,7 +520,9 @@ namespace YamyProject
             //}
             lst.DisplayMember = "name";
             lst.ValueMember = "id";
-            lst.DataSource = dt;
+            if(dt != null && dt.Rows.Count > 0)
+                lst.DataSource = dt;
+
             return lst;
         }
         public static Guna2ComboBox PopulateEmployees(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)

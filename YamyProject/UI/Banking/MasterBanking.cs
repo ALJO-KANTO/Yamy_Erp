@@ -32,7 +32,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmBankRegister());
+            new frmBankRegister().ShowDialog();
         }
         private void MasterBanking_Load(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace YamyProject
         {
             DataTable dt = DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY id) AS SN, id,Code, 
                                                       name AS 'Bank Name', abb_name AS 'Abbreviation Name',ent_id as 'Ent Id', route_num as 'Route NO'
-                                                      FROM tbl_bank WHERE state = 0");
+                                                      FROM tbl_bank WHERE state = @state", DBClass.CreateParameter("@state", (CmbState.Text == "Registered" ? "0" : "-1" )));
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["id"].Visible = false;
             dgvCustomer.Columns["SN"].Width = 50;
@@ -73,8 +73,13 @@ namespace YamyProject
             if (e.RowIndex >= 0 && dgvCustomer.CurrentRow != null)
             {
                 int selectedId = Convert.ToInt32(dgvCustomer.CurrentRow.Cells["id"].Value);
-                frmLogin.frmMain.openChildForm(new frmBankRegister(selectedId));
+                new frmBankRegister(selectedId).ShowDialog();
             }
+        }
+
+        private void CmbState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindBanks();
         }
     }
 }

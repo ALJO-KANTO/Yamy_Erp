@@ -92,7 +92,6 @@
             this.guna2TileButton24 = new Guna.UI2.WinForms.Guna2TileButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJV)).BeginInit();
@@ -131,10 +130,10 @@
             this.guna2Button3.FillColor = System.Drawing.Color.RoyalBlue;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(875, 4);
+            this.guna2Button3.Location = new System.Drawing.Point(875, 8);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(113, 35);
+            this.guna2Button3.Size = new System.Drawing.Size(113, 25);
             this.guna2Button3.TabIndex = 31;
             this.guna2Button3.Text = "Save && Close";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -142,7 +141,8 @@
             // txtCreditAmount
             // 
             this.txtCreditAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCreditAmount.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtCreditAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtCreditAmount.BorderRadius = 7;
             this.txtCreditAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCreditAmount.DefaultText = "";
             this.txtCreditAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -153,19 +153,21 @@
             this.txtCreditAmount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreditAmount.ForeColor = System.Drawing.Color.Black;
             this.txtCreditAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCreditAmount.Location = new System.Drawing.Point(135, 4);
+            this.txtCreditAmount.Location = new System.Drawing.Point(135, 9);
             this.txtCreditAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCreditAmount.Name = "txtCreditAmount";
             this.txtCreditAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCreditAmount.PlaceholderText = "Cr Amount";
             this.txtCreditAmount.SelectedText = "";
-            this.txtCreditAmount.Size = new System.Drawing.Size(123, 32);
+            this.txtCreditAmount.ShortcutsEnabled = false;
+            this.txtCreditAmount.Size = new System.Drawing.Size(123, 26);
             this.txtCreditAmount.TabIndex = 30;
             // 
             // txtDebitAmount
             // 
             this.txtDebitAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDebitAmount.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtDebitAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtDebitAmount.BorderRadius = 7;
             this.txtDebitAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDebitAmount.DefaultText = "";
             this.txtDebitAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -176,13 +178,14 @@
             this.txtDebitAmount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDebitAmount.ForeColor = System.Drawing.Color.Black;
             this.txtDebitAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDebitAmount.Location = new System.Drawing.Point(9, 4);
+            this.txtDebitAmount.Location = new System.Drawing.Point(9, 9);
             this.txtDebitAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDebitAmount.Name = "txtDebitAmount";
             this.txtDebitAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtDebitAmount.PlaceholderText = "Dr Amount";
             this.txtDebitAmount.SelectedText = "";
-            this.txtDebitAmount.Size = new System.Drawing.Size(123, 32);
+            this.txtDebitAmount.ShortcutsEnabled = false;
+            this.txtDebitAmount.Size = new System.Drawing.Size(123, 26);
             this.txtDebitAmount.TabIndex = 29;
             // 
             // btnClose
@@ -198,10 +201,10 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(1099, 5);
+            this.btnClose.Location = new System.Drawing.Point(1099, 8);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(105, 35);
+            this.btnClose.Size = new System.Drawing.Size(105, 25);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -219,10 +222,10 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(996, 4);
+            this.btnSave.Location = new System.Drawing.Point(996, 8);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(95, 35);
+            this.btnSave.Size = new System.Drawing.Size(95, 25);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -485,10 +488,10 @@
             this.guna2ImageButton1.ForeColor = System.Drawing.Color.White;
             this.guna2ImageButton1.Image = global::YamyProject.Properties.Resources.ASD;
             this.guna2ImageButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2ImageButton1.Location = new System.Drawing.Point(1023, 8);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(1023, 13);
             this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.Size = new System.Drawing.Size(175, 37);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(175, 25);
             this.guna2ImageButton1.TabIndex = 32;
             this.guna2ImageButton1.Text = "Add Account";
             this.guna2ImageButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -509,13 +512,13 @@
             this.txt_jv_code.Font = new System.Drawing.Font("Segoe UI Semibold", 7F, System.Drawing.FontStyle.Bold);
             this.txt_jv_code.ForeColor = System.Drawing.Color.Black;
             this.txt_jv_code.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_jv_code.Location = new System.Drawing.Point(92, 8);
+            this.txt_jv_code.Location = new System.Drawing.Point(89, 16);
             this.txt_jv_code.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_jv_code.Name = "txt_jv_code";
             this.txt_jv_code.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txt_jv_code.PlaceholderText = "JV No";
             this.txt_jv_code.SelectedText = "";
-            this.txt_jv_code.Size = new System.Drawing.Size(172, 38);
+            this.txt_jv_code.Size = new System.Drawing.Size(172, 25);
             this.txt_jv_code.TabIndex = 30;
             // 
             // dtJV
@@ -556,7 +559,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2ControlBox1);
@@ -695,11 +698,11 @@
             this.txtJvId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtJvId.Enabled = false;
             this.txtJvId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtJvId.Location = new System.Drawing.Point(38, 19);
+            this.txtJvId.Location = new System.Drawing.Point(38, 27);
             this.txtJvId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtJvId.Multiline = true;
             this.txtJvId.Name = "txtJvId";
-            this.txtJvId.Size = new System.Drawing.Size(77, 38);
+            this.txtJvId.Size = new System.Drawing.Size(77, 24);
             this.txtJvId.TabIndex = 16;
             this.txtJvId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1111,13 +1114,6 @@
             this.guna2DragControl1.TargetControl = this.LbHeader;
             this.guna2DragControl1.TransparentWhileDrag = false;
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 5;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // frmViewJournalVoucher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1202,7 +1198,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private System.Windows.Forms.DataGridViewTextBoxColumn account_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn account_code;

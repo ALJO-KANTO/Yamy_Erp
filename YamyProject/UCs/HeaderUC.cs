@@ -31,6 +31,12 @@ namespace YamyProject
             get { return lblFormName.Text; }
             set { lblFormName.Text = value; }
         }
+
+        public string HeaderText {
+            get { return lblFormName.Text; }
+            set { lblFormName.Text = value; }
+        }
+
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             var parentForm = this.ParentForm;

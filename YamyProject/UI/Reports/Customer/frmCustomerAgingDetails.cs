@@ -183,9 +183,9 @@ namespace YamyProject
             }
             decimal totalBalance = 0;
             List<MySqlParameter> parameters = new List<MySqlParameter>
-    {
-        DBClass.CreateParameter("id", id)
-    };
+            {
+                DBClass.CreateParameter("id", id)
+            };
 
             string dateFilter = "";
             if (!chkDate.Checked)

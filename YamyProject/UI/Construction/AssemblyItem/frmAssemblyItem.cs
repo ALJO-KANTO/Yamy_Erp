@@ -477,14 +477,14 @@ namespace YamyProject
 
         private void lnkAddItemUnit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new frmAddUnitsToItem(this));
+            //new frmAddUnitsToItem(this).Show();
         }
 
 
 
         private void lnkNewWarehouse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse());
+            new frmViewWarehouse().ShowDialog();
         }
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -659,7 +659,7 @@ namespace YamyProject
 
         private void lnkCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCategory(0));
+            new frmViewCategory(0).ShowDialog();
         }
         public static string FormatItemSl(int itemSl)
         {

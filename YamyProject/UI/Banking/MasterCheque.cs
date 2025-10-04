@@ -32,7 +32,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCheque());
+            new frmViewCheque().ShowDialog();
         }
 
         private void MasterCheque_Load(object sender, EventArgs e)
@@ -52,8 +52,7 @@ namespace YamyProject
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["SN"].Width = 50;
             dgvCustomer.Columns["Bank Name"].MinimumWidth = 180;
-            dgvCustomer.Columns["Bank Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["AC Name"].MinimumWidth = 150;
+            dgvCustomer.Columns["Bank Name"].AutoSizeMode = dgvCustomer.Columns["AC Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvCustomer.Columns["AC Type"].MinimumWidth = 120;
             dgvCustomer.Columns["id"].Visible = false;
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
@@ -68,7 +67,7 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewCheque(int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())));
+            new frmViewCheque(int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
             
         }
     }

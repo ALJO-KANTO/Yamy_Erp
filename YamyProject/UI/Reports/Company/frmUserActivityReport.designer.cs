@@ -158,22 +158,23 @@
             // 
             this.cmbSelectionMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSelectionMethod.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSelectionMethod.BorderRadius = 5;
             this.cmbSelectionMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSelectionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectionMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSelectionMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSelectionMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbSelectionMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbSelectionMethod.ItemHeight = 23;
+            this.cmbSelectionMethod.ItemHeight = 18;
             this.cmbSelectionMethod.Items.AddRange(new object[] {
             "Default",
             "Item Wise",
             "A/R Aging Summary",
             "A/R Aging Details"});
-            this.cmbSelectionMethod.Location = new System.Drawing.Point(779, 20);
+            this.cmbSelectionMethod.Location = new System.Drawing.Point(757, 20);
             this.cmbSelectionMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSelectionMethod.Name = "cmbSelectionMethod";
-            this.cmbSelectionMethod.Size = new System.Drawing.Size(78, 29);
+            this.cmbSelectionMethod.Size = new System.Drawing.Size(100, 24);
             this.cmbSelectionMethod.StartIndex = 0;
             this.cmbSelectionMethod.TabIndex = 12;
             this.cmbSelectionMethod.Visible = false;
@@ -183,6 +184,7 @@
             // 
             this.cmbPaymentMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPaymentMethod.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPaymentMethod.BorderRadius = 5;
             this.cmbPaymentMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaymentMethod.Enabled = false;
@@ -190,14 +192,14 @@
             this.cmbPaymentMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbPaymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPaymentMethod.ItemHeight = 23;
+            this.cmbPaymentMethod.ItemHeight = 18;
             this.cmbPaymentMethod.Items.AddRange(new object[] {
             "Cash",
             "Credit"});
             this.cmbPaymentMethod.Location = new System.Drawing.Point(866, 20);
             this.cmbPaymentMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(125, 29);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(125, 24);
             this.cmbPaymentMethod.StartIndex = 0;
             this.cmbPaymentMethod.TabIndex = 12;
             this.cmbPaymentMethod.Visible = false;
@@ -272,7 +274,7 @@
             this.chkDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDate.ForeColor = System.Drawing.Color.Black;
-            this.chkDate.Location = new System.Drawing.Point(668, 26);
+            this.chkDate.Location = new System.Drawing.Point(668, 24);
             this.chkDate.Name = "chkDate";
             this.chkDate.Size = new System.Drawing.Size(37, 17);
             this.chkDate.TabIndex = 9;
@@ -296,7 +298,7 @@
             this.chkPayment.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkPayment.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPayment.ForeColor = System.Drawing.Color.Black;
-            this.chkPayment.Location = new System.Drawing.Point(994, 26);
+            this.chkPayment.Location = new System.Drawing.Point(994, 24);
             this.chkPayment.Name = "chkPayment";
             this.chkPayment.Size = new System.Drawing.Size(37, 17);
             this.chkPayment.TabIndex = 9;
@@ -313,11 +315,11 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(776, 1);
+            this.label4.Location = new System.Drawing.Point(754, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.Size = new System.Drawing.Size(102, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Selection Method";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -334,7 +336,7 @@
             this.chkCustomer.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkCustomer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCustomer.ForeColor = System.Drawing.Color.Black;
-            this.chkCustomer.Location = new System.Drawing.Point(164, 26);
+            this.chkCustomer.Location = new System.Drawing.Point(161, 24);
             this.chkCustomer.Name = "chkCustomer";
             this.chkCustomer.Size = new System.Drawing.Size(37, 17);
             this.chkCustomer.TabIndex = 9;
@@ -351,7 +353,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(862, 1);
             this.label3.Name = "label3";
@@ -364,6 +366,7 @@
             // cmbCustomer
             // 
             this.cmbCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCustomer.BorderRadius = 5;
             this.cmbCustomer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomer.Enabled = false;
@@ -371,11 +374,11 @@
             this.cmbCustomer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCustomer.ItemHeight = 23;
+            this.cmbCustomer.ItemHeight = 18;
             this.cmbCustomer.Location = new System.Drawing.Point(10, 20);
             this.cmbCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(136, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(136, 24);
             this.cmbCustomer.TabIndex = 6;
             this.cmbCustomer.Visible = false;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
@@ -383,7 +386,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(7, 1);
             this.label1.Name = "label1";
@@ -445,6 +448,7 @@
             this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";

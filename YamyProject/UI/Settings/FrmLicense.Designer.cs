@@ -34,25 +34,26 @@ namespace YamyProject.UI.Settings
         {
             this.components = new System.ComponentModel.Container();
             this.panelMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.textBox4 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.textBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.textBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.textBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblInfo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtSerial = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnActivate = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.shadow = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
             // 
-            this.panelMain.BorderRadius = 20;
+            this.panelMain.BackColor = System.Drawing.Color.Transparent;
+            this.panelMain.BorderRadius = 5;
             this.panelMain.Controls.Add(this.guna2HtmlLabel1);
             this.panelMain.Controls.Add(this.textBox4);
             this.panelMain.Controls.Add(this.textBox3);
@@ -71,6 +72,100 @@ namespace YamyProject.UI.Settings
             this.panelMain.Padding = new System.Windows.Forms.Padding(30);
             this.panelMain.Size = new System.Drawing.Size(800, 405);
             this.panelMain.TabIndex = 0;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(146, 171);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(303, 19);
+            this.guna2HtmlLabel1.TabIndex = 10;
+            this.guna2HtmlLabel1.Text = "Enter your serial key below to activate the software:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.Transparent;
+            this.textBox4.BorderRadius = 10;
+            this.textBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox4.DefaultText = "";
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Black;
+            this.textBox4.Location = new System.Drawing.Point(557, 258);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.MaxLength = 4;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.PlaceholderText = "XXXX";
+            this.textBox4.SelectedText = "";
+            this.textBox4.Size = new System.Drawing.Size(96, 30);
+            this.textBox4.TabIndex = 9;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.Transparent;
+            this.textBox3.BorderRadius = 10;
+            this.textBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox3.DefaultText = "";
+            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.Black;
+            this.textBox3.Location = new System.Drawing.Point(426, 258);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.MaxLength = 4;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "XXXX";
+            this.textBox3.SelectedText = "";
+            this.textBox3.Size = new System.Drawing.Size(96, 30);
+            this.textBox3.TabIndex = 8;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Transparent;
+            this.textBox2.BorderRadius = 10;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox2.DefaultText = "";
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Black;
+            this.textBox2.Location = new System.Drawing.Point(286, 258);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.MaxLength = 4;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "XXXX";
+            this.textBox2.SelectedText = "";
+            this.textBox2.Size = new System.Drawing.Size(96, 30);
+            this.textBox2.TabIndex = 7;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Transparent;
+            this.textBox1.BorderRadius = 10;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox1.DefaultText = "";
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(146, 258);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.MaxLength = 4;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "XXXX";
+            this.textBox1.SelectedText = "";
+            this.textBox1.Size = new System.Drawing.Size(96, 30);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::YamyProject.Properties.Resources.yamy_accounting_book_keeping_logo_removebg_preview__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(339, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(139, 133);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // lblTitle
             // 
@@ -97,13 +192,14 @@ namespace YamyProject.UI.Settings
             // 
             // txtSerial
             // 
+            this.txtSerial.BackColor = System.Drawing.Color.Transparent;
             this.txtSerial.BorderRadius = 10;
             this.txtSerial.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSerial.DefaultText = "";
             this.txtSerial.Enabled = false;
             this.txtSerial.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerial.Location = new System.Drawing.Point(146, 197);
-            this.txtSerial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSerial.Margin = new System.Windows.Forms.Padding(4);
             this.txtSerial.Name = "txtSerial";
             this.txtSerial.PlaceholderText = "XXXX-XXXX-XXXX-XXXX";
             this.txtSerial.SelectedText = "";
@@ -113,6 +209,7 @@ namespace YamyProject.UI.Settings
             // 
             // btnActivate
             // 
+            this.btnActivate.BackColor = System.Drawing.Color.Transparent;
             this.btnActivate.BorderRadius = 10;
             this.btnActivate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnActivate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -126,6 +223,7 @@ namespace YamyProject.UI.Settings
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BorderRadius = 10;
             this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -141,98 +239,9 @@ namespace YamyProject.UI.Settings
             // 
             this.shadow.TargetForm = this;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::YamyProject.Properties.Resources.yamy_accounting_book_keeping_logo_removebg_preview__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(339, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(139, 133);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderRadius = 10;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox1.DefaultText = "";
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(146, 258);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "XXXX";
-            this.textBox1.SelectedText = "";
-            this.textBox1.Size = new System.Drawing.Size(96, 30);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderRadius = 10;
-            this.textBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox2.DefaultText = "";
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(286, 258);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.MaxLength = 4;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "XXXX";
-            this.textBox2.SelectedText = "";
-            this.textBox2.Size = new System.Drawing.Size(96, 30);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderRadius = 10;
-            this.textBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox3.DefaultText = "";
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Black;
-            this.textBox3.Location = new System.Drawing.Point(426, 258);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.MaxLength = 4;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "XXXX";
-            this.textBox3.SelectedText = "";
-            this.textBox3.Size = new System.Drawing.Size(96, 30);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderRadius = 10;
-            this.textBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox4.DefaultText = "";
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Black;
-            this.textBox4.Location = new System.Drawing.Point(557, 258);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox4.MaxLength = 4;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PlaceholderText = "XXXX";
-            this.textBox4.SelectedText = "";
-            this.textBox4.Size = new System.Drawing.Size(96, 30);
-            this.textBox4.TabIndex = 9;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(146, 171);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(303, 19);
-            this.guna2HtmlLabel1.TabIndex = 10;
-            this.guna2HtmlLabel1.Text = "Enter your serial key below to activate the software:";
-            // 
             // FrmLicense
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.ClientSize = new System.Drawing.Size(800, 405);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

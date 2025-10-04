@@ -27,7 +27,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCategory());
+            new frmViewCategory().ShowDialog();
         }
         private void MasterItemCategory_Load(object sender, EventArgs e)
         {
@@ -55,14 +55,14 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewCategory( int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewCategory( int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
           
-                frmLogin.frmMain.openChildForm(new frmViewCategory(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+                new frmViewCategory(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
             if (dgvCustomer.Rows.Count == 0)
                 return;
         }

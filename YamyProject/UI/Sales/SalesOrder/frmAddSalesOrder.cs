@@ -93,6 +93,7 @@ namespace YamyProject
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
                     txtSalesMan.Text = reader["sales_man"].ToString();
+                    richTextDescription.Text = reader["description"].ToString();
                     BindInvoiceItems();
                     CalculateTotal();
                 }
@@ -331,30 +332,31 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, 
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city WHERE id = @id;",
-                 DBClass.CreateParameter("id", id),
-                  DBClass.CreateParameter("date", dtInv.Value.Date),
-           DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
-           DBClass.CreateParameter("invoice_id", invCode),
-           DBClass.CreateParameter("city", cmbCity.Text),
-           DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
-           DBClass.CreateParameter("po_num", ""),
-           DBClass.CreateParameter("bill_to", txtBillTo.Text),
-           DBClass.CreateParameter("ship_date", dtShip.Value.Date),
-           DBClass.CreateParameter("sales_man", txtSalesMan.Text),
-           DBClass.CreateParameter("ship_via", cmbShipVia.Text),
-           DBClass.CreateParameter("ship_to", txtShipTo.Text),
-           DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
-           DBClass.CreateParameter("account_cash_id", cmbPaymentMethod.Text == "Credit" ? level4PaymentCreditMethodId.ToString() : cmbAccountCashName.SelectedValue.ToString()),
-           DBClass.CreateParameter("payment_terms", cmbPaymentTerms.Text),
-           DBClass.CreateParameter("payment_date", dtPaymentTerms.Value.Date),
-           DBClass.CreateParameter("vat", txtTotalVat.Text),
-           DBClass.CreateParameter("total", txtTotalBefore.Text),
-           DBClass.CreateParameter("net", txtTotal.Text),
-             DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
-                    DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
-           DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
-           DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)));
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description WHERE id = @id;",
+                                     DBClass.CreateParameter("id", id),
+                                     DBClass.CreateParameter("date", dtInv.Value.Date),
+                                     DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
+                                     DBClass.CreateParameter("invoice_id", invCode),
+                                     DBClass.CreateParameter("city", cmbCity.Text),
+                                     DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
+                                       DBClass.CreateParameter("po_num", ""),
+                                       DBClass.CreateParameter("bill_to", txtBillTo.Text),
+                                       DBClass.CreateParameter("ship_date", dtShip.Value.Date),
+                                       DBClass.CreateParameter("sales_man", txtSalesMan.Text),
+                                       DBClass.CreateParameter("ship_via", cmbShipVia.Text),
+                                       DBClass.CreateParameter("ship_to", txtShipTo.Text),
+                                       DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
+                                       DBClass.CreateParameter("account_cash_id", cmbPaymentMethod.Text == "Credit" ? level4PaymentCreditMethodId.ToString() : cmbAccountCashName.SelectedValue.ToString()),
+                                       DBClass.CreateParameter("payment_terms", cmbPaymentTerms.Text),
+                                       DBClass.CreateParameter("payment_date", dtPaymentTerms.Value.Date),
+                                       DBClass.CreateParameter("vat", txtTotalVat.Text),
+                                       DBClass.CreateParameter("total", txtTotalBefore.Text),
+                                       DBClass.CreateParameter("net", txtTotal.Text),
+                                       DBClass.CreateParameter("description", richTextDescription.Text),
+                                       DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
+                                       DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
+                                       DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
+                                       DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)));
 
             DBClass.ExecuteNonQuery("delete from tbl_sales_order_details where sales_id =@id", DBClass.CreateParameter("id", id));
             insertInvItems();
@@ -370,9 +372,9 @@ namespace YamyProject
             invCode = GenerateNextSalesCode();
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales_order (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-               total,vat,net, pay, `change`, created_by, created_date, state) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
+               total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
                @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state);
+               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description);
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -392,11 +394,13 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
                DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)),
                DBClass.CreateParameter("created_by", frmLogin.userId),
                DBClass.CreateParameter("created_date", DateTime.Now.Date),
                DBClass.CreateParameter("state", 0)).ToString());
+
             insertInvItems();
             txtInvoiceId.Text = invCode.ToString();
             Utilities.LogAudit(frmLogin.userId, "Add Sales Order", "Sales Order", (int)invId, "Added Sales Order: " + invCode);
@@ -1026,7 +1030,7 @@ namespace YamyProject
 
         private void lnkNewCustomer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCustomer(0));
+            new frmViewCustomer(0).ShowDialog();
         }
 
         private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1059,7 +1063,7 @@ namespace YamyProject
         {
             if (cmbAccountCashName.Focused && int.Parse(cmbAccountCashName.SelectedValue.ToString()) == -1)
             {
-                frmLogin.frmMain.openChildForm(new frmAddAccount());
+                new frmAddAccount().ShowDialog();
             }
             else
             {

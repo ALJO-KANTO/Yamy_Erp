@@ -492,6 +492,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -508,20 +509,21 @@
             this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSearch.PlaceholderText = "Search By Name, Code";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(223, 22);
+            this.txtSearch.Size = new System.Drawing.Size(223, 25);
             this.txtSearch.TabIndex = 7;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cmbState
             // 
             this.cmbState.BackColor = System.Drawing.Color.Transparent;
+            this.cmbState.BorderRadius = 5;
             this.cmbState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbState.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbState.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbState.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbState.ItemHeight = 18;
+            this.cmbState.ItemHeight = 19;
             this.cmbState.Items.AddRange(new object[] {
             "All",
             "Active Vendor",
@@ -529,7 +531,7 @@
             this.cmbState.Location = new System.Drawing.Point(16, 8);
             this.cmbState.Margin = new System.Windows.Forms.Padding(2);
             this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(256, 24);
+            this.cmbState.Size = new System.Drawing.Size(256, 25);
             this.cmbState.StartIndex = 1;
             this.cmbState.TabIndex = 6;
             this.cmbState.SelectedIndexChanged += new System.EventHandler(this.cmbState_SelectedIndexChanged);
@@ -1331,7 +1333,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel9.Controls.Add(this.guna2Button3);
             this.panel9.Controls.Add(this.guna2HtmlLabel2);
             this.panel9.Controls.Add(this.guna2ControlBox1);
@@ -1377,7 +1379,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(1021, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";

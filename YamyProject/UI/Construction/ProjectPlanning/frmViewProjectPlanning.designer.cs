@@ -80,36 +80,69 @@
             this.tabActivity = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assigned = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.start_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabRequestMaterial = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgvRequest = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.requested_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reqStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnNewRequestMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabIssueMaterial = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvItemsIssued = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnNewIssueMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabReceivedMaterial = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dgvItemsReceived = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnNewReceivedMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabResource = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvResource = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceDefaultUnitsTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnAddResource = new Guna.UI2.WinForms.Guna2Button();
             this.gunaPanel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,39 +173,6 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.start_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reqStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceDefaultUnitsTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -207,7 +207,7 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 504);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1354, 33);
             this.panel1.TabIndex = 3;
@@ -226,7 +226,7 @@
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnClose.Location = new System.Drawing.Point(1214, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
             this.btnClose.TabIndex = 7;
@@ -260,7 +260,7 @@
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1072, 3);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
             this.btnSave.TabIndex = 6;
@@ -299,7 +299,7 @@
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 37);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1354, 224);
             this.guna2GroupBox1.TabIndex = 8;
@@ -321,6 +321,7 @@
             // btnAddTender
             // 
             this.btnAddTender.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAddTender.BorderRadius = 5;
             this.btnAddTender.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddTender.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddTender.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -328,7 +329,7 @@
             this.btnAddTender.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddTender.ForeColor = System.Drawing.Color.White;
             this.btnAddTender.Location = new System.Drawing.Point(828, 119);
-            this.btnAddTender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddTender.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddTender.Name = "btnAddTender";
             this.btnAddTender.Size = new System.Drawing.Size(35, 24);
             this.btnAddTender.TabIndex = 130;
@@ -343,7 +344,7 @@
             this.dtp_end.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_end.Location = new System.Drawing.Point(1245, 178);
-            this.dtp_end.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_end.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(106, 23);
             this.dtp_end.TabIndex = 54;
@@ -370,7 +371,7 @@
             this.dtp_start.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_start.Location = new System.Drawing.Point(990, 178);
-            this.dtp_start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_start.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_start.Name = "dtp_start";
             this.dtp_start.Size = new System.Drawing.Size(112, 23);
             this.dtp_start.TabIndex = 52;
@@ -393,21 +394,23 @@
             // 
             this.cmbProjectSite.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbProjectSite.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectSite.BorderRadius = 5;
             this.cmbProjectSite.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectSite.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectSite.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectSite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectSite.ItemHeight = 23;
+            this.cmbProjectSite.ItemHeight = 18;
             this.cmbProjectSite.Location = new System.Drawing.Point(534, 119);
-            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectSite.Name = "cmbProjectSite";
-            this.cmbProjectSite.Size = new System.Drawing.Size(290, 29);
+            this.cmbProjectSite.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectSite.TabIndex = 50;
             // 
             // btnShowTenderList
             // 
+            this.btnShowTenderList.BorderRadius = 5;
             this.btnShowTenderList.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnShowTenderList.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnShowTenderList.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -415,9 +418,9 @@
             this.btnShowTenderList.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnShowTenderList.ForeColor = System.Drawing.Color.White;
             this.btnShowTenderList.Location = new System.Drawing.Point(751, 184);
-            this.btnShowTenderList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnShowTenderList.Margin = new System.Windows.Forms.Padding(2);
             this.btnShowTenderList.Name = "btnShowTenderList";
-            this.btnShowTenderList.Size = new System.Drawing.Size(72, 28);
+            this.btnShowTenderList.Size = new System.Drawing.Size(72, 25);
             this.btnShowTenderList.TabIndex = 49;
             this.btnShowTenderList.Text = "Show";
             this.btnShowTenderList.Click += new System.EventHandler(this.btnShowTenderList_Click);
@@ -425,17 +428,18 @@
             // cmbTenderName
             // 
             this.cmbTenderName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTenderName.BorderRadius = 5;
             this.cmbTenderName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTenderName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenderName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbTenderName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbTenderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbTenderName.ItemHeight = 23;
+            this.cmbTenderName.ItemHeight = 18;
             this.cmbTenderName.Location = new System.Drawing.Point(534, 184);
-            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTenderName.Name = "cmbTenderName";
-            this.cmbTenderName.Size = new System.Drawing.Size(213, 29);
+            this.cmbTenderName.Size = new System.Drawing.Size(213, 24);
             this.cmbTenderName.TabIndex = 47;
             this.cmbTenderName.SelectedIndexChanged += new System.EventHandler(this.cmbTenderName_SelectedIndexChanged);
             // 
@@ -469,17 +473,18 @@
             // cmbFundAccount
             // 
             this.cmbFundAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFundAccount.BorderRadius = 5;
             this.cmbFundAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbFundAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFundAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbFundAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbFundAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbFundAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbFundAccount.ItemHeight = 23;
+            this.cmbFundAccount.ItemHeight = 18;
             this.cmbFundAccount.Location = new System.Drawing.Point(28, 119);
-            this.cmbFundAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbFundAccount.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFundAccount.Name = "cmbFundAccount";
-            this.cmbFundAccount.Size = new System.Drawing.Size(227, 29);
+            this.cmbFundAccount.Size = new System.Drawing.Size(227, 24);
             this.cmbFundAccount.TabIndex = 33;
             // 
             // label8
@@ -500,13 +505,14 @@
             // 
             this.cmbProjectType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProjectType.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectType.BorderRadius = 5;
             this.cmbProjectType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectType.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectType.ItemHeight = 23;
+            this.cmbProjectType.ItemHeight = 18;
             this.cmbProjectType.Items.AddRange(new object[] {
             "Residential",
             "Commercial",
@@ -518,9 +524,9 @@
             "Specialized",
             "Government"});
             this.cmbProjectType.Location = new System.Drawing.Point(1082, 119);
-            this.cmbProjectType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjectType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectType.Name = "cmbProjectType";
-            this.cmbProjectType.Size = new System.Drawing.Size(198, 29);
+            this.cmbProjectType.Size = new System.Drawing.Size(198, 24);
             this.cmbProjectType.StartIndex = 1;
             this.cmbProjectType.TabIndex = 31;
             // 
@@ -539,6 +545,8 @@
             // 
             // txtEstimatedBudget
             // 
+            this.txtEstimatedBudget.BackColor = System.Drawing.Color.Transparent;
+            this.txtEstimatedBudget.BorderRadius = 5;
             this.txtEstimatedBudget.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEstimatedBudget.DefaultText = "";
             this.txtEstimatedBudget.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -550,12 +558,12 @@
             this.txtEstimatedBudget.ForeColor = System.Drawing.Color.Black;
             this.txtEstimatedBudget.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEstimatedBudget.Location = new System.Drawing.Point(26, 184);
-            this.txtEstimatedBudget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstimatedBudget.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstimatedBudget.Name = "txtEstimatedBudget";
             this.txtEstimatedBudget.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtEstimatedBudget.PlaceholderText = "Estimated Budget";
             this.txtEstimatedBudget.SelectedText = "";
-            this.txtEstimatedBudget.Size = new System.Drawing.Size(190, 31);
+            this.txtEstimatedBudget.Size = new System.Drawing.Size(190, 25);
             this.txtEstimatedBudget.TabIndex = 26;
             this.txtEstimatedBudget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstimatedBudget_KeyPress);
             // 
@@ -577,13 +585,14 @@
             // 
             this.cmbProjectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProjectStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectStatus.BorderRadius = 5;
             this.cmbProjectStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectStatus.ItemHeight = 23;
+            this.cmbProjectStatus.ItemHeight = 18;
             this.cmbProjectStatus.Items.AddRange(new object[] {
             "Planning",
             "Mobilizing",
@@ -597,9 +606,9 @@
             "Commissioning",
             "Final Handover"});
             this.cmbProjectStatus.Location = new System.Drawing.Point(1082, 49);
-            this.cmbProjectStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjectStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectStatus.Name = "cmbProjectStatus";
-            this.cmbProjectStatus.Size = new System.Drawing.Size(198, 29);
+            this.cmbProjectStatus.Size = new System.Drawing.Size(198, 24);
             this.cmbProjectStatus.StartIndex = 0;
             this.cmbProjectStatus.TabIndex = 24;
             this.cmbProjectStatus.SelectedIndexChanged += new System.EventHandler(this.cmbProjectStatus_SelectedIndexChanged);
@@ -622,17 +631,18 @@
             // 
             this.cmbProjectName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbProjectName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProjectName.BorderRadius = 5;
             this.cmbProjectName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbProjectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProjectName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbProjectName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbProjectName.ItemHeight = 23;
+            this.cmbProjectName.ItemHeight = 18;
             this.cmbProjectName.Location = new System.Drawing.Point(534, 48);
-            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjectName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectName.Name = "cmbProjectName";
-            this.cmbProjectName.Size = new System.Drawing.Size(290, 29);
+            this.cmbProjectName.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectName.TabIndex = 16;
             // 
             // dtInv
@@ -642,7 +652,7 @@
             this.dtInv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtInv.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtInv.Location = new System.Drawing.Point(28, 42);
-            this.dtInv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtInv.Margin = new System.Windows.Forms.Padding(2);
             this.dtInv.Name = "dtInv";
             this.dtInv.Size = new System.Drawing.Size(189, 23);
             this.dtInv.TabIndex = 6;
@@ -682,7 +692,7 @@
             this.tabControl1.Controls.Add(this.tabResource);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1354, 243);
@@ -692,9 +702,9 @@
             // 
             this.tabActivity.Controls.Add(this.panel7);
             this.tabActivity.Location = new System.Drawing.Point(4, 22);
-            this.tabActivity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabActivity.Margin = new System.Windows.Forms.Padding(2);
             this.tabActivity.Name = "tabActivity";
-            this.tabActivity.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabActivity.Padding = new System.Windows.Forms.Padding(2);
             this.tabActivity.Size = new System.Drawing.Size(1346, 217);
             this.tabActivity.TabIndex = 0;
             this.tabActivity.Text = "Activity";
@@ -705,7 +715,7 @@
             this.panel7.Controls.Add(this.dgvItems);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(2, 2);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1342, 213);
             this.panel7.TabIndex = 12;
@@ -789,6 +799,29 @@
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellDoubleClick);
             // 
+            // no
+            // 
+            this.no.HeaderText = "#";
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 30;
+            // 
+            // sr
+            // 
+            this.sr.HeaderText = "Sr.";
+            this.sr.Name = "sr";
+            this.sr.ReadOnly = true;
+            this.sr.Width = 45;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Description";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // assigned
             // 
             this.assigned.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -800,14 +833,32 @@
             this.assigned.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.assigned.Visible = false;
             // 
+            // start_date
+            // 
+            this.start_date.HeaderText = "StartDate";
+            this.start_date.Name = "start_date";
+            this.start_date.ReadOnly = true;
+            // 
+            // end_date
+            // 
+            this.end_date.HeaderText = "End Date";
+            this.end_date.Name = "end_date";
+            this.end_date.ReadOnly = true;
+            // 
+            // progress
+            // 
+            this.progress.HeaderText = "Progress";
+            this.progress.Name = "progress";
+            this.progress.ReadOnly = true;
+            // 
             // tabRequestMaterial
             // 
             this.tabRequestMaterial.Controls.Add(this.panel8);
             this.tabRequestMaterial.Controls.Add(this.panel3);
             this.tabRequestMaterial.Location = new System.Drawing.Point(4, 22);
-            this.tabRequestMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRequestMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.tabRequestMaterial.Name = "tabRequestMaterial";
-            this.tabRequestMaterial.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRequestMaterial.Padding = new System.Windows.Forms.Padding(2);
             this.tabRequestMaterial.Size = new System.Drawing.Size(1346, 217);
             this.tabRequestMaterial.TabIndex = 1;
             this.tabRequestMaterial.Text = "Request Material";
@@ -818,7 +869,7 @@
             this.panel8.Controls.Add(this.dgvRequest);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(2, 39);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1342, 176);
             this.panel8.TabIndex = 12;
@@ -903,12 +954,67 @@
             this.dgvRequest.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvRequest.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequest_CellDoubleClick);
             // 
+            // requested_no
+            // 
+            this.requested_no.HeaderText = "#";
+            this.requested_no.Name = "requested_no";
+            this.requested_no.ReadOnly = true;
+            // 
+            // requested_id
+            // 
+            this.requested_id.HeaderText = "Ref Id";
+            this.requested_id.Name = "requested_id";
+            this.requested_id.ReadOnly = true;
+            this.requested_id.Width = 160;
+            // 
+            // pId
+            // 
+            this.pId.HeaderText = "Id";
+            this.pId.Name = "pId";
+            this.pId.ReadOnly = true;
+            this.pId.Visible = false;
+            // 
+            // requested_date
+            // 
+            this.requested_date.HeaderText = "Date";
+            this.requested_date.Name = "requested_date";
+            this.requested_date.ReadOnly = true;
+            this.requested_date.Width = 130;
+            // 
+            // description
+            // 
+            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "Unit";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            // 
+            // requested_qty
+            // 
+            this.requested_qty.HeaderText = "Qty";
+            this.requested_qty.Name = "requested_qty";
+            this.requested_qty.ReadOnly = true;
+            this.requested_qty.Width = 150;
+            // 
+            // reqStatus
+            // 
+            this.reqStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.reqStatus.FillWeight = 30F;
+            this.reqStatus.HeaderText = "Status";
+            this.reqStatus.Name = "reqStatus";
+            this.reqStatus.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnNewRequestMaterial);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1342, 37);
             this.panel3.TabIndex = 11;
@@ -926,7 +1032,7 @@
             this.btnNewRequestMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnNewRequestMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnNewRequestMaterial.Location = new System.Drawing.Point(4, 6);
-            this.btnNewRequestMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewRequestMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewRequestMaterial.Name = "btnNewRequestMaterial";
             this.btnNewRequestMaterial.Size = new System.Drawing.Size(159, 27);
             this.btnNewRequestMaterial.TabIndex = 9;
@@ -938,9 +1044,9 @@
             this.tabIssueMaterial.Controls.Add(this.panel6);
             this.tabIssueMaterial.Controls.Add(this.panel5);
             this.tabIssueMaterial.Location = new System.Drawing.Point(4, 22);
-            this.tabIssueMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabIssueMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.tabIssueMaterial.Name = "tabIssueMaterial";
-            this.tabIssueMaterial.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabIssueMaterial.Padding = new System.Windows.Forms.Padding(2);
             this.tabIssueMaterial.Size = new System.Drawing.Size(1346, 217);
             this.tabIssueMaterial.TabIndex = 3;
             this.tabIssueMaterial.Text = "IssueMaterial";
@@ -951,7 +1057,7 @@
             this.panel6.Controls.Add(this.dgvItemsIssued);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(2, 33);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1342, 182);
             this.panel6.TabIndex = 12;
@@ -1036,12 +1142,66 @@
             this.dgvItemsIssued.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsIssued.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemsIssued_CellDoubleClick);
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "#";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ref Id";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 160;
+            // 
+            // pId1
+            // 
+            this.pId1.HeaderText = "id";
+            this.pId1.Name = "pId1";
+            this.pId1.ReadOnly = true;
+            this.pId1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 130;
+            // 
+            // issueDescription
+            // 
+            this.issueDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issueDescription.HeaderText = "Description";
+            this.issueDescription.Name = "issueDescription";
+            this.issueDescription.ReadOnly = true;
+            // 
+            // issueUnit
+            // 
+            this.issueUnit.HeaderText = "Unit";
+            this.issueUnit.Name = "issueUnit";
+            this.issueUnit.ReadOnly = true;
+            // 
+            // issueQty
+            // 
+            this.issueQty.HeaderText = "Qty";
+            this.issueQty.Name = "issueQty";
+            this.issueQty.ReadOnly = true;
+            // 
+            // IssStatus
+            // 
+            this.IssStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IssStatus.FillWeight = 30F;
+            this.IssStatus.HeaderText = "Status";
+            this.IssStatus.Name = "IssStatus";
+            this.IssStatus.ReadOnly = true;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnNewIssueMaterial);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(2, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1342, 31);
             this.panel5.TabIndex = 11;
@@ -1059,7 +1219,7 @@
             this.btnNewIssueMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnNewIssueMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnNewIssueMaterial.Location = new System.Drawing.Point(4, 2);
-            this.btnNewIssueMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewIssueMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewIssueMaterial.Name = "btnNewIssueMaterial";
             this.btnNewIssueMaterial.Size = new System.Drawing.Size(159, 27);
             this.btnNewIssueMaterial.TabIndex = 11;
@@ -1071,9 +1231,9 @@
             this.tabReceivedMaterial.Controls.Add(this.panel9);
             this.tabReceivedMaterial.Controls.Add(this.panel4);
             this.tabReceivedMaterial.Location = new System.Drawing.Point(4, 22);
-            this.tabReceivedMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabReceivedMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.tabReceivedMaterial.Name = "tabReceivedMaterial";
-            this.tabReceivedMaterial.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabReceivedMaterial.Padding = new System.Windows.Forms.Padding(2);
             this.tabReceivedMaterial.Size = new System.Drawing.Size(1346, 217);
             this.tabReceivedMaterial.TabIndex = 2;
             this.tabReceivedMaterial.Text = "ReceivedMaterial";
@@ -1084,7 +1244,7 @@
             this.panel9.Controls.Add(this.dgvItemsReceived);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(2, 46);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1342, 169);
             this.panel9.TabIndex = 12;
@@ -1169,12 +1329,65 @@
             this.dgvItemsReceived.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsReceived.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemsReceived_CellDoubleClick);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 30;
+            // 
+            // receveRef
+            // 
+            this.receveRef.HeaderText = "Ref Id";
+            this.receveRef.Name = "receveRef";
+            this.receveRef.ReadOnly = true;
+            // 
+            // pId2
+            // 
+            this.pId2.HeaderText = "Id";
+            this.pId2.Name = "pId2";
+            this.pId2.ReadOnly = true;
+            this.pId2.Visible = false;
+            // 
+            // receveDate
+            // 
+            this.receveDate.HeaderText = "Date";
+            this.receveDate.Name = "receveDate";
+            this.receveDate.ReadOnly = true;
+            // 
+            // receveDescription
+            // 
+            this.receveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.receveDescription.HeaderText = "Description";
+            this.receveDescription.Name = "receveDescription";
+            this.receveDescription.ReadOnly = true;
+            // 
+            // receveQty
+            // 
+            this.receveQty.HeaderText = "Qty";
+            this.receveQty.Name = "receveQty";
+            this.receveQty.ReadOnly = true;
+            // 
+            // receveUnit
+            // 
+            this.receveUnit.HeaderText = "Unit";
+            this.receveUnit.Name = "receveUnit";
+            this.receveUnit.ReadOnly = true;
+            // 
+            // recStatus
+            // 
+            this.recStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.recStatus.FillWeight = 40F;
+            this.recStatus.HeaderText = "Status";
+            this.recStatus.Name = "recStatus";
+            this.recStatus.ReadOnly = true;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnNewReceivedMaterial);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(2, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1342, 44);
             this.panel4.TabIndex = 11;
@@ -1192,7 +1405,7 @@
             this.btnNewReceivedMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnNewReceivedMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnNewReceivedMaterial.Location = new System.Drawing.Point(4, 8);
-            this.btnNewReceivedMaterial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewReceivedMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewReceivedMaterial.Name = "btnNewReceivedMaterial";
             this.btnNewReceivedMaterial.Size = new System.Drawing.Size(159, 27);
             this.btnNewReceivedMaterial.TabIndex = 10;
@@ -1204,9 +1417,9 @@
             this.tabResource.Controls.Add(this.panel2);
             this.tabResource.Controls.Add(this.panel10);
             this.tabResource.Location = new System.Drawing.Point(4, 22);
-            this.tabResource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabResource.Margin = new System.Windows.Forms.Padding(2);
             this.tabResource.Name = "tabResource";
-            this.tabResource.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabResource.Padding = new System.Windows.Forms.Padding(2);
             this.tabResource.Size = new System.Drawing.Size(1346, 217);
             this.tabResource.TabIndex = 4;
             this.tabResource.Text = "Resource";
@@ -1217,7 +1430,7 @@
             this.panel2.Controls.Add(this.dgvResource);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 46);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1342, 169);
             this.panel2.TabIndex = 14;
@@ -1301,12 +1514,61 @@
             this.dgvResource.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvResource.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResource_CellDoubleClick);
             // 
+            // ResourceNo
+            // 
+            this.ResourceNo.HeaderText = "#";
+            this.ResourceNo.Name = "ResourceNo";
+            this.ResourceNo.ReadOnly = true;
+            this.ResourceNo.Width = 30;
+            // 
+            // ResourceId
+            // 
+            this.ResourceId.HeaderText = "Id";
+            this.ResourceId.Name = "ResourceId";
+            this.ResourceId.ReadOnly = true;
+            this.ResourceId.Visible = false;
+            // 
+            // ResourceCode
+            // 
+            this.ResourceCode.HeaderText = "Code";
+            this.ResourceCode.Name = "ResourceCode";
+            this.ResourceCode.ReadOnly = true;
+            this.ResourceCode.Width = 130;
+            // 
+            // ResourceName
+            // 
+            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceName.HeaderText = "Resource Name";
+            this.ResourceName.Name = "ResourceName";
+            this.ResourceName.ReadOnly = true;
+            // 
+            // ResourceType
+            // 
+            this.ResourceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceType.HeaderText = "Resource Type";
+            this.ResourceType.Name = "ResourceType";
+            this.ResourceType.ReadOnly = true;
+            // 
+            // ResourceRole
+            // 
+            this.ResourceRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceRole.HeaderText = "Primary Role";
+            this.ResourceRole.Name = "ResourceRole";
+            this.ResourceRole.ReadOnly = true;
+            // 
+            // ResourceDefaultUnitsTime
+            // 
+            this.ResourceDefaultUnitsTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceDefaultUnitsTime.HeaderText = "Default Units / Time";
+            this.ResourceDefaultUnitsTime.Name = "ResourceDefaultUnitsTime";
+            this.ResourceDefaultUnitsTime.ReadOnly = true;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.btnAddResource);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(2, 2);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1342, 44);
             this.panel10.TabIndex = 13;
@@ -1324,7 +1586,7 @@
             this.btnAddResource.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnAddResource.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnAddResource.Location = new System.Drawing.Point(4, 8);
-            this.btnAddResource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddResource.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddResource.Name = "btnAddResource";
             this.btnAddResource.Size = new System.Drawing.Size(159, 27);
             this.btnAddResource.TabIndex = 10;
@@ -1338,7 +1600,7 @@
             this.gunaPanel1.Controls.Add(this.dataGridView1);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 261);
-            this.gunaPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gunaPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.gunaPanel1.Name = "gunaPanel1";
             this.gunaPanel1.Size = new System.Drawing.Size(1354, 243);
             this.gunaPanel1.TabIndex = 9;
@@ -1349,20 +1611,13 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1354, 243);
             this.dataGridView1.TabIndex = 133;
             this.dataGridView1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 30;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -1385,26 +1640,6 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "StartDate";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "#";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Ref Id";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 160;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -1629,236 +1864,12 @@
             this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
             this.dataGridViewTextBoxColumn37.ReadOnly = true;
             // 
-            // no
-            // 
-            this.no.HeaderText = "#";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 30;
-            // 
-            // sr
-            // 
-            this.sr.HeaderText = "Sr.";
-            this.sr.Name = "sr";
-            this.sr.ReadOnly = true;
-            this.sr.Width = 45;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "Description";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // start_date
-            // 
-            this.start_date.HeaderText = "StartDate";
-            this.start_date.Name = "start_date";
-            this.start_date.ReadOnly = true;
-            // 
-            // end_date
-            // 
-            this.end_date.HeaderText = "End Date";
-            this.end_date.Name = "end_date";
-            this.end_date.ReadOnly = true;
-            // 
-            // progress
-            // 
-            this.progress.HeaderText = "Progress";
-            this.progress.Name = "progress";
-            this.progress.ReadOnly = true;
-            // 
-            // requested_no
-            // 
-            this.requested_no.HeaderText = "#";
-            this.requested_no.Name = "requested_no";
-            this.requested_no.ReadOnly = true;
-            // 
-            // requested_id
-            // 
-            this.requested_id.HeaderText = "Ref Id";
-            this.requested_id.Name = "requested_id";
-            this.requested_id.ReadOnly = true;
-            this.requested_id.Width = 160;
-            // 
-            // pId
-            // 
-            this.pId.HeaderText = "Id";
-            this.pId.Name = "pId";
-            this.pId.ReadOnly = true;
-            this.pId.Visible = false;
-            // 
-            // requested_date
-            // 
-            this.requested_date.HeaderText = "Date";
-            this.requested_date.Name = "requested_date";
-            this.requested_date.ReadOnly = true;
-            this.requested_date.Width = 130;
-            // 
-            // description
-            // 
-            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "Unit";
-            this.unit.Name = "unit";
-            this.unit.ReadOnly = true;
-            // 
-            // requested_qty
-            // 
-            this.requested_qty.HeaderText = "Qty";
-            this.requested_qty.Name = "requested_qty";
-            this.requested_qty.ReadOnly = true;
-            this.requested_qty.Width = 150;
-            // 
-            // reqStatus
-            // 
-            this.reqStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.reqStatus.FillWeight = 30F;
-            this.reqStatus.HeaderText = "Status";
-            this.reqStatus.Name = "reqStatus";
-            this.reqStatus.ReadOnly = true;
-            // 
-            // pId1
-            // 
-            this.pId1.HeaderText = "id";
-            this.pId1.Name = "pId1";
-            this.pId1.ReadOnly = true;
-            this.pId1.Visible = false;
-            // 
-            // issueDescription
-            // 
-            this.issueDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issueDescription.HeaderText = "Description";
-            this.issueDescription.Name = "issueDescription";
-            this.issueDescription.ReadOnly = true;
-            // 
-            // issueUnit
-            // 
-            this.issueUnit.HeaderText = "Unit";
-            this.issueUnit.Name = "issueUnit";
-            this.issueUnit.ReadOnly = true;
-            // 
-            // issueQty
-            // 
-            this.issueQty.HeaderText = "Qty";
-            this.issueQty.Name = "issueQty";
-            this.issueQty.ReadOnly = true;
-            // 
-            // IssStatus
-            // 
-            this.IssStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IssStatus.FillWeight = 30F;
-            this.IssStatus.HeaderText = "Status";
-            this.IssStatus.Name = "IssStatus";
-            this.IssStatus.ReadOnly = true;
-            // 
-            // receveRef
-            // 
-            this.receveRef.HeaderText = "Ref Id";
-            this.receveRef.Name = "receveRef";
-            this.receveRef.ReadOnly = true;
-            // 
-            // pId2
-            // 
-            this.pId2.HeaderText = "Id";
-            this.pId2.Name = "pId2";
-            this.pId2.ReadOnly = true;
-            this.pId2.Visible = false;
-            // 
-            // receveDate
-            // 
-            this.receveDate.HeaderText = "Date";
-            this.receveDate.Name = "receveDate";
-            this.receveDate.ReadOnly = true;
-            // 
-            // receveDescription
-            // 
-            this.receveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.receveDescription.HeaderText = "Description";
-            this.receveDescription.Name = "receveDescription";
-            this.receveDescription.ReadOnly = true;
-            // 
-            // receveQty
-            // 
-            this.receveQty.HeaderText = "Qty";
-            this.receveQty.Name = "receveQty";
-            this.receveQty.ReadOnly = true;
-            // 
-            // receveUnit
-            // 
-            this.receveUnit.HeaderText = "Unit";
-            this.receveUnit.Name = "receveUnit";
-            this.receveUnit.ReadOnly = true;
-            // 
-            // recStatus
-            // 
-            this.recStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.recStatus.FillWeight = 40F;
-            this.recStatus.HeaderText = "Status";
-            this.recStatus.Name = "recStatus";
-            this.recStatus.ReadOnly = true;
-            // 
-            // ResourceNo
-            // 
-            this.ResourceNo.HeaderText = "#";
-            this.ResourceNo.Name = "ResourceNo";
-            this.ResourceNo.ReadOnly = true;
-            this.ResourceNo.Width = 30;
-            // 
-            // ResourceId
-            // 
-            this.ResourceId.HeaderText = "Id";
-            this.ResourceId.Name = "ResourceId";
-            this.ResourceId.ReadOnly = true;
-            this.ResourceId.Visible = false;
-            // 
-            // ResourceCode
-            // 
-            this.ResourceCode.HeaderText = "Code";
-            this.ResourceCode.Name = "ResourceCode";
-            this.ResourceCode.ReadOnly = true;
-            this.ResourceCode.Width = 130;
-            // 
-            // ResourceName
-            // 
-            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceName.HeaderText = "Resource Name";
-            this.ResourceName.Name = "ResourceName";
-            this.ResourceName.ReadOnly = true;
-            // 
-            // ResourceType
-            // 
-            this.ResourceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceType.HeaderText = "Resource Type";
-            this.ResourceType.Name = "ResourceType";
-            this.ResourceType.ReadOnly = true;
-            // 
-            // ResourceRole
-            // 
-            this.ResourceRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceRole.HeaderText = "Primary Role";
-            this.ResourceRole.Name = "ResourceRole";
-            this.ResourceRole.ReadOnly = true;
-            // 
-            // ResourceDefaultUnitsTime
-            // 
-            this.ResourceDefaultUnitsTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceDefaultUnitsTime.HeaderText = "Default Units / Time";
-            this.ResourceDefaultUnitsTime.Name = "ResourceDefaultUnitsTime";
-            this.ResourceDefaultUnitsTime.ReadOnly = true;
-            // 
             // headerUC1
             // 
             this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(2);
             this.headerUC1.Name = "headerUC1";
@@ -1876,7 +1887,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmViewProjectPlanning";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";

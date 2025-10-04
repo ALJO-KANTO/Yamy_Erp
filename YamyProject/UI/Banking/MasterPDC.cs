@@ -34,7 +34,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCheque());
+            new frmViewCheque().ShowDialog();
         }
         int pdcPayable = 0, pdcPayableReturn = 0, pdcPayableHold = 0;
         int pdcReceivable = 0, pdcReceivableReturn = 0, pdcReceivableHold = 0;
@@ -94,14 +94,14 @@ namespace YamyProject
 
             dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["pass_date"].Visible = dgvCustomer.Columns["return_date"].Visible = dgvCustomer.Columns["hold_date"].Visible = dgvCustomer.Columns["cancel_date"].Visible = false;
             dgvCustomer.Columns["SN"].Width = 35;
-            dgvCustomer.Columns["Check No"].Width = 90;
+            dgvCustomer.Columns["Cheque No"].Width = 90;
             dgvCustomer.Columns["state"].Width = 50;
             dgvCustomer.Columns["TRS REF"].Width = 75;
             dgvCustomer.Columns["TRS Date"].Width = 80;
-            dgvCustomer.Columns["Check Date"].Width = 90;
+            dgvCustomer.Columns["Cheque Date"].Width = 90;
             dgvCustomer.Columns["Bank Name"].MinimumWidth = 150;
             dgvCustomer.Columns["Bank Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["Check Name"].MinimumWidth = 130;
+            dgvCustomer.Columns["Cheque Name"].MinimumWidth = 130;
             DataGridViewButtonColumn btnPass = new DataGridViewButtonColumn();
             btnPass.Name = "Pass";
             DataGridViewButtonColumn btnReturn = new DataGridViewButtonColumn();
@@ -128,10 +128,10 @@ namespace YamyProject
             dgvCustomer.Refresh();
             dgvCustomer.DataSource = chkDate.Checked ? DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY cd.date) AS `SN`, 
                                                pv.date AS 'TRS Date',
-                                               cd.check_date AS 'Check Date',cd.id, pass_date,return_date,hold_date,cancel_date,
+                                               cd.check_date AS 'Cheque Date',cd.id, pass_date,return_date,hold_date,cancel_date,
                                                pv.code AS 'TRS REF',
-                                               cd.check_no AS 'Check No',
-                                               cd.check_name AS 'Check Name', 
+                                               cd.check_no AS 'Cheque No',
+                                               cd.check_name AS 'Cheque Name', 
                                                b.name AS 'Bank Name',
                                                cast( cd.Amount as decimal(18,3)) AS Amount,cd.State
                                                FROM tbl_check_details cd
@@ -143,10 +143,10 @@ namespace YamyProject
          DBClass.CreateParameter("type", radPayable.Checked ? "Payment" : "Receipt"))
        : DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY cd.date) AS `SN`, 
                                                    pv.date AS 'TRS Date',
-                                                   cd.check_date AS 'Check Date',cd.id,  pass_date,return_date,hold_date,cancel_date,
+                                                   cd.check_date AS 'Cheque Date',cd.id,  pass_date,return_date,hold_date,cancel_date,
                                                    pv.code AS 'TRS REF',
-                                                   cd.check_no AS 'Check No',
-                                                   cd.check_name AS 'Check Name', 
+                                                   cd.check_no AS 'Cheque No',
+                                                   cd.check_name AS 'Cheque Name', 
                                                    b.name AS 'Bank Name',
                                                   cast( cd.Amount as decimal(18,3)) AS Amount,cd.State
                                                     FROM tbl_check_details cd
@@ -162,14 +162,14 @@ namespace YamyProject
 
             dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["pass_date"].Visible = dgvCustomer.Columns["return_date"].Visible = dgvCustomer.Columns["hold_date"].Visible = dgvCustomer.Columns["cancel_date"].Visible = false;
             dgvCustomer.Columns["SN"].Width = 35;
-            dgvCustomer.Columns["Check No"].Width = 90;
+            dgvCustomer.Columns["Cheque No"].Width = 90;
             dgvCustomer.Columns["state"].Width = 50;
             dgvCustomer.Columns["TRS REF"].Width = 75;
             dgvCustomer.Columns["TRS Date"].Width = 80;
-            dgvCustomer.Columns["Check Date"].Width = 90;
+            dgvCustomer.Columns["Cheque Date"].Width = 90;
             dgvCustomer.Columns["Bank Name"].MinimumWidth = 150;
             dgvCustomer.Columns["Bank Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["Check Name"].MinimumWidth = 130;
+            dgvCustomer.Columns["Cheque Name"].MinimumWidth = 130;
             DataGridViewButtonColumn btnPass = new DataGridViewButtonColumn();
             btnPass.Name = "Pass";
             DataGridViewButtonColumn btnReturn = new DataGridViewButtonColumn();
@@ -225,8 +225,8 @@ namespace YamyProject
 
         private void dgvCustomer_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvCustomer.Rows[e.RowIndex].Cells["Check Name"].Value != null &&
-                dgvCustomer.Rows[e.RowIndex].Cells["Check Name"].Value.ToString() == "TOTAL")
+            if (e.RowIndex >= 0 && dgvCustomer.Rows[e.RowIndex].Cells["Cheque Name"].Value != null &&
+                dgvCustomer.Rows[e.RowIndex].Cells["Cheque Name"].Value.ToString() == "TOTAL")
                 return;
              if (e.ColumnIndex >= 0 && dgvCustomer.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
@@ -282,7 +282,7 @@ namespace YamyProject
         }
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCustomer.Rows[e.RowIndex].Cells["Check Name"].Value.ToString() == "TOTAL")
+            if (dgvCustomer.Rows[e.RowIndex].Cells["Cheque Name"].Value.ToString() == "TOTAL")
                 return;
 
             string state = dgvCustomer.CurrentRow.Cells["state"].Value.ToString();
@@ -294,12 +294,12 @@ namespace YamyProject
             {
                 //if (state == "Return")
                 //{
-                //    MessageBox.Show("Can't Pass Return Check");
+                //    MessageBox.Show("Can't Pass Return Cheque");
                 //    return;
                 //}
                 if (state == "Cancel")
                 {
-                    MessageBox.Show("Can't Pass Cancel Check");
+                    MessageBox.Show("Can't Pass Cancel Cheque");
                     return;
                 }
             }
@@ -307,7 +307,7 @@ namespace YamyProject
             {
                 if (state != "Pass")
                 {
-                    MessageBox.Show("Can't Return Check Before Passing It First");
+                    MessageBox.Show("Can't Return Cheque Before Passing It First");
                     return;
                 }
             }
@@ -315,7 +315,7 @@ namespace YamyProject
             {
                 if (state != "New")
                 {
-                    MessageBox.Show("Only New Check Can Be Hold");
+                    MessageBox.Show("Only New Cheque Can Be Hold");
                     return;
                 }
             }
@@ -323,7 +323,7 @@ namespace YamyProject
             {
                 if (state == "Pass")
                 {
-                    MessageBox.Show("Can't Cancel Passed Check");
+                    MessageBox.Show("Can't Cancel Passed Cheque");
                     return;
                 }
             }
@@ -337,8 +337,8 @@ namespace YamyProject
                                               type,
                                              dgvCustomer.CurrentRow.Cells["TRS REF"].Value.ToString(), // code
                                              int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString()), // checkDetailId
-                                             DateTime.Parse(dgvCustomer.CurrentRow.Cells["Check Date"].Value.ToString()), // checkDate
-                                             dgvCustomer.CurrentRow.Cells["Check Name"].Value.ToString(), // name
+                                             DateTime.Parse(dgvCustomer.CurrentRow.Cells["Cheque Date"].Value.ToString()), // checkDate
+                                             dgvCustomer.CurrentRow.Cells["Cheque Name"].Value.ToString(), // name
                                              action, // state/action
                                              action == "Return" && dgvCustomer.CurrentRow.Cells["pass_date"].Value != DBNull.Value
                                                  ? (DateTime?)Convert.ToDateTime(dgvCustomer.CurrentRow.Cells["pass_date"].Value)
@@ -734,7 +734,7 @@ namespace YamyProject
                 humId,
                 "PDC Payable",
                 "PDC Payable",
-                "PDC Payable NO. " + $"{action} Check",
+                "PDC Payable NO. " + $"{action} Cheque",
                 frmLogin.userId,
                 DateTime.Now.Date,
                 ""
@@ -749,7 +749,7 @@ namespace YamyProject
                 "0",
                 "PDC Payable",
                 "PDC Payable",
-                "PDC Payable NO. " + $"{action} Check",
+                "PDC Payable NO. " + $"{action} Cheque",
                 frmLogin.userId,
                 DateTime.Now.Date,
                 ""
@@ -783,7 +783,7 @@ namespace YamyProject
                 "0",
                 "PDC Receivable",
                 "PDC Receivable",
-                "PDC Receivable NO. " + $"{action} Check",
+                "PDC Receivable NO. " + $"{action} Cheque",
                 frmLogin.userId,
                 DateTime.Now.Date,
                 ""
@@ -797,7 +797,7 @@ namespace YamyProject
                 humId,
                "PDC Receivable",
                 "PDC Receivable",
-                "PDC Receivable NO. " + $"{action} Check",
+                "PDC Receivable NO. " + $"{action} Cheque",
                 frmLogin.userId,
                 DateTime.Now.Date,
                 ""

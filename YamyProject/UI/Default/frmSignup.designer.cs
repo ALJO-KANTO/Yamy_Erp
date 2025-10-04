@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSignup));
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.btnSignup = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLearnMore = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.txtcompany = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -67,26 +67,26 @@
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // btnSignup
+            // btnLearnMore
             // 
-            this.btnSignup.BackColor = System.Drawing.Color.Transparent;
-            this.btnSignup.BorderColor = System.Drawing.Color.Gray;
-            this.btnSignup.BorderRadius = 23;
-            this.btnSignup.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignup.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSignup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSignup.FillColor = System.Drawing.Color.White;
-            this.btnSignup.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignup.ForeColor = System.Drawing.Color.Black;
-            this.btnSignup.Location = new System.Drawing.Point(67, 542);
-            this.btnSignup.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btnSignup.Name = "btnSignup";
-            this.btnSignup.PressedColor = System.Drawing.Color.DimGray;
-            this.btnSignup.Size = new System.Drawing.Size(181, 48);
-            this.btnSignup.TabIndex = 8;
-            this.btnSignup.Text = "Learn More";
-            this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
+            this.btnLearnMore.BackColor = System.Drawing.Color.Transparent;
+            this.btnLearnMore.BorderColor = System.Drawing.Color.Gray;
+            this.btnLearnMore.BorderRadius = 23;
+            this.btnLearnMore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLearnMore.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLearnMore.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLearnMore.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLearnMore.FillColor = System.Drawing.Color.White;
+            this.btnLearnMore.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLearnMore.ForeColor = System.Drawing.Color.Black;
+            this.btnLearnMore.Location = new System.Drawing.Point(67, 542);
+            this.btnLearnMore.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnLearnMore.Name = "btnLearnMore";
+            this.btnLearnMore.PressedColor = System.Drawing.Color.DimGray;
+            this.btnLearnMore.Size = new System.Drawing.Size(181, 40);
+            this.btnLearnMore.TabIndex = 8;
+            this.btnLearnMore.Text = "Learn More";
+            this.btnLearnMore.Click += new System.EventHandler(this.btnLearnMore_Click);
             // 
             // btnLogin
             // 
@@ -97,10 +97,10 @@
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(634, 582);
+            this.btnLogin.Location = new System.Drawing.Point(653, 582);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.PressedColor = System.Drawing.Color.White;
@@ -381,11 +381,11 @@
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(62, 627);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(62, 635);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(267, 23);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(192, 17);
             this.guna2HtmlLabel1.TabIndex = 37;
             this.guna2HtmlLabel1.Text = "Make This Company Main Account";
             // 
@@ -580,7 +580,7 @@
             this.Controls.Add(this.panel17);
             this.Controls.Add(this.txtcompany);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.btnSignup);
+            this.Controls.Add(this.btnLearnMore);
             this.Controls.Add(this.lblError);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -600,7 +600,7 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2TextBox txtcompany;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
-        private Guna.UI2.WinForms.Guna2Button btnSignup;
+        private Guna.UI2.WinForms.Guna2Button btnLearnMore;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;

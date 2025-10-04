@@ -1104,5 +1104,12 @@ namespace YamyProject
         {
             frmLogin.frmMain.openChildForm(new frmOpeningBalanceEmployee());
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomer.Rows.Count == 0)
+                return;
+            frmLogin.frmMain.openChildForm(new frmViewEmployee(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+        }
     }
 }

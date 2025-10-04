@@ -55,7 +55,10 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.TxtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.chkDate = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.CmbFilterType = new System.Windows.Forms.ComboBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -82,9 +85,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.CmbFilterType = new System.Windows.Forms.ComboBox();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.TxtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.contextMenuExport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.guna2Panel1.SuspendLayout();
@@ -344,7 +344,7 @@
             // 
             // guna2Panel5
             // 
-            this.guna2Panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.guna2Panel5.Controls.Add(this.guna2Button1);
             this.guna2Panel5.Controls.Add(this.guna2Button2);
             this.guna2Panel5.Controls.Add(this.guna2ControlBox1);
@@ -442,6 +442,27 @@
             this.guna2Panel3.Size = new System.Drawing.Size(1040, 33);
             this.guna2Panel3.TabIndex = 44;
             // 
+            // TxtSearch
+            // 
+            this.TxtSearch.BorderRadius = 5;
+            this.TxtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtSearch.DefaultText = "";
+            this.TxtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.TxtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.TxtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.TxtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TxtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TxtSearch.Location = new System.Drawing.Point(889, 6);
+            this.TxtSearch.Name = "TxtSearch";
+            this.TxtSearch.PlaceholderText = "";
+            this.TxtSearch.SelectedText = "";
+            this.TxtSearch.Size = new System.Drawing.Size(146, 21);
+            this.TxtSearch.TabIndex = 39;
+            this.TxtSearch.Visible = false;
+            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            // 
             // chkDate
             // 
             this.chkDate.AutoSize = true;
@@ -462,6 +483,35 @@
             this.chkDate.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkDate.UseVisualStyleBackColor = false;
             this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
+            // 
+            // guna2HtmlLabel6
+            // 
+            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(847, 9);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(37, 15);
+            this.guna2HtmlLabel6.TabIndex = 38;
+            this.guna2HtmlLabel6.Text = "Search";
+            this.guna2HtmlLabel6.Visible = false;
+            // 
+            // CmbFilterType
+            // 
+            this.CmbFilterType.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.CmbFilterType.DisplayMember = "5";
+            this.CmbFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilterType.FormattingEnabled = true;
+            this.CmbFilterType.Items.AddRange(new object[] {
+            "Type",
+            "Description"});
+            this.CmbFilterType.Location = new System.Drawing.Point(721, 6);
+            this.CmbFilterType.Margin = new System.Windows.Forms.Padding(2);
+            this.CmbFilterType.Name = "CmbFilterType";
+            this.CmbFilterType.Size = new System.Drawing.Size(115, 21);
+            this.CmbFilterType.TabIndex = 37;
+            this.CmbFilterType.Visible = false;
             // 
             // guna2HtmlLabel5
             // 
@@ -853,55 +903,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(8, 29);
             this.panel3.TabIndex = 22;
-            // 
-            // CmbFilterType
-            // 
-            this.CmbFilterType.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.CmbFilterType.DisplayMember = "5";
-            this.CmbFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbFilterType.FormattingEnabled = true;
-            this.CmbFilterType.Items.AddRange(new object[] {
-            "Type",
-            "Description"});
-            this.CmbFilterType.Location = new System.Drawing.Point(721, 6);
-            this.CmbFilterType.Margin = new System.Windows.Forms.Padding(2);
-            this.CmbFilterType.Name = "CmbFilterType";
-            this.CmbFilterType.Size = new System.Drawing.Size(115, 21);
-            this.CmbFilterType.TabIndex = 37;
-            this.CmbFilterType.Visible = false;
-            // 
-            // guna2HtmlLabel6
-            // 
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(847, 9);
-            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(37, 15);
-            this.guna2HtmlLabel6.TabIndex = 38;
-            this.guna2HtmlLabel6.Text = "Search";
-            this.guna2HtmlLabel6.Visible = false;
-            // 
-            // TxtSearch
-            // 
-            this.TxtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtSearch.DefaultText = "";
-            this.TxtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.TxtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.TxtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.TxtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TxtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TxtSearch.Location = new System.Drawing.Point(889, 6);
-            this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.PlaceholderText = "";
-            this.TxtSearch.SelectedText = "";
-            this.TxtSearch.Size = new System.Drawing.Size(146, 21);
-            this.TxtSearch.TabIndex = 39;
-            this.TxtSearch.Visible = false;
-            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // frmGeneralLedger
             // 

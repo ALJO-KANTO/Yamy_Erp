@@ -403,6 +403,8 @@
             // 
             // txtNextCode
             // 
+            this.txtNextCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtNextCode.BorderRadius = 5;
             this.txtNextCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNextCode.DefaultText = "";
             this.txtNextCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -415,7 +417,7 @@
             this.txtNextCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtNextCode.PlaceholderText = "";
             this.txtNextCode.SelectedText = "";
-            this.txtNextCode.Size = new System.Drawing.Size(145, 29);
+            this.txtNextCode.Size = new System.Drawing.Size(93, 24);
             this.txtNextCode.TabIndex = 26;
             // 
             // label19
@@ -433,6 +435,8 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.BackColor = System.Drawing.Color.Transparent;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultText = "";
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -450,6 +454,8 @@
             // 
             // txtTotalAmount
             // 
+            this.txtTotalAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotalAmount.BorderRadius = 5;
             this.txtTotalAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalAmount.DefaultText = "";
             this.txtTotalAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -463,12 +469,14 @@
             this.txtTotalAmount.PlaceholderText = "Total Amount";
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.SelectedText = "";
-            this.txtTotalAmount.Size = new System.Drawing.Size(122, 29);
+            this.txtTotalAmount.Size = new System.Drawing.Size(122, 24);
             this.txtTotalAmount.TabIndex = 22;
             this.txtTotalAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalAmount_KeyPress);
             // 
             // txtVat
             // 
+            this.txtVat.BackColor = System.Drawing.Color.Transparent;
+            this.txtVat.BorderRadius = 5;
             this.txtVat.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtVat.DefaultText = "";
             this.txtVat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -481,7 +489,7 @@
             this.txtVat.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtVat.PlaceholderText = "Vat";
             this.txtVat.SelectedText = "";
-            this.txtVat.Size = new System.Drawing.Size(146, 29);
+            this.txtVat.Size = new System.Drawing.Size(146, 24);
             this.txtVat.TabIndex = 20;
             this.txtVat.TextChanged += new System.EventHandler(this.txtVat_TextChanged);
             this.txtVat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVat_KeyPress);
@@ -501,6 +509,8 @@
             // 
             // txtAmount
             // 
+            this.txtAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtAmount.BorderRadius = 5;
             this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.DefaultText = "";
             this.txtAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -513,7 +523,7 @@
             this.txtAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAmount.PlaceholderText = "Amount";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(122, 29);
+            this.txtAmount.Size = new System.Drawing.Size(122, 24);
             this.txtAmount.TabIndex = 18;
             this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
@@ -534,17 +544,18 @@
             // cmbAccountName
             // 
             this.cmbAccountName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccountName.BorderRadius = 5;
             this.cmbAccountName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccountName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccountName.ItemHeight = 23;
+            this.cmbAccountName.ItemHeight = 18;
             this.cmbAccountName.Location = new System.Drawing.Point(10, 131);
             this.cmbAccountName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAccountName.Name = "cmbAccountName";
-            this.cmbAccountName.Size = new System.Drawing.Size(264, 29);
+            this.cmbAccountName.Size = new System.Drawing.Size(264, 24);
             this.cmbAccountName.TabIndex = 4;
             // 
             // dtInv
@@ -698,11 +709,11 @@
             this.txtInvoiceId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInvoiceId.Enabled = false;
             this.txtInvoiceId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtInvoiceId.Location = new System.Drawing.Point(33, 15);
+            this.txtInvoiceId.Location = new System.Drawing.Point(33, 18);
             this.txtInvoiceId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtInvoiceId.Multiline = true;
             this.txtInvoiceId.Name = "txtInvoiceId";
-            this.txtInvoiceId.Size = new System.Drawing.Size(66, 29);
+            this.txtInvoiceId.Size = new System.Drawing.Size(66, 24);
             this.txtInvoiceId.TabIndex = 16;
             this.txtInvoiceId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1181,10 +1192,10 @@
             this.cmbCustomer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCustomer.ItemHeight = 23;
-            this.cmbCustomer.Location = new System.Drawing.Point(236, 4);
+            this.cmbCustomer.ItemHeight = 18;
+            this.cmbCustomer.Location = new System.Drawing.Point(236, 7);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(213, 29);
+            this.cmbCustomer.Size = new System.Drawing.Size(213, 24);
             this.cmbCustomer.TabIndex = 4;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
             // 
@@ -1214,13 +1225,13 @@
             this.txtCustomerCode.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.txtCustomerCode.ForeColor = System.Drawing.Color.Black;
             this.txtCustomerCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerCode.Location = new System.Drawing.Point(69, 4);
+            this.txtCustomerCode.Location = new System.Drawing.Point(69, 7);
             this.txtCustomerCode.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.txtCustomerCode.Name = "txtCustomerCode";
             this.txtCustomerCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCustomerCode.PlaceholderText = "";
             this.txtCustomerCode.SelectedText = "";
-            this.txtCustomerCode.Size = new System.Drawing.Size(112, 29);
+            this.txtCustomerCode.Size = new System.Drawing.Size(112, 24);
             this.txtCustomerCode.TabIndex = 3;
             this.txtCustomerCode.Leave += new System.EventHandler(this.txtCustomerCode_Leave);
             this.txtCustomerCode.Validated += new System.EventHandler(this.txtCustomerCode_Validated);
@@ -1252,7 +1263,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button3);
             this.panel6.Controls.Add(this.guna2Button4);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -1318,7 +1329,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(1018, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";

@@ -946,17 +946,18 @@
             // cmbEndofServiceCredit
             // 
             this.cmbEndofServiceCredit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEndofServiceCredit.BorderRadius = 5;
             this.cmbEndofServiceCredit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEndofServiceCredit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEndofServiceCredit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEndofServiceCredit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEndofServiceCredit.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEndofServiceCredit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEndofServiceCredit.ItemHeight = 23;
+            this.cmbEndofServiceCredit.ItemHeight = 19;
             this.cmbEndofServiceCredit.Location = new System.Drawing.Point(15, 390);
             this.cmbEndofServiceCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEndofServiceCredit.Name = "cmbEndofServiceCredit";
-            this.cmbEndofServiceCredit.Size = new System.Drawing.Size(418, 29);
+            this.cmbEndofServiceCredit.Size = new System.Drawing.Size(418, 25);
             this.cmbEndofServiceCredit.TabIndex = 168;
             this.cmbEndofServiceCredit.Tag = "Gratuit";
             // 
@@ -985,34 +986,36 @@
             // cmbLeaveSalaryCredit
             // 
             this.cmbLeaveSalaryCredit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbLeaveSalaryCredit.BorderRadius = 5;
             this.cmbLeaveSalaryCredit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLeaveSalaryCredit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLeaveSalaryCredit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbLeaveSalaryCredit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbLeaveSalaryCredit.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLeaveSalaryCredit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbLeaveSalaryCredit.ItemHeight = 23;
+            this.cmbLeaveSalaryCredit.ItemHeight = 19;
             this.cmbLeaveSalaryCredit.Location = new System.Drawing.Point(15, 512);
             this.cmbLeaveSalaryCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbLeaveSalaryCredit.Name = "cmbLeaveSalaryCredit";
-            this.cmbLeaveSalaryCredit.Size = new System.Drawing.Size(418, 29);
+            this.cmbLeaveSalaryCredit.Size = new System.Drawing.Size(418, 25);
             this.cmbLeaveSalaryCredit.TabIndex = 166;
             this.cmbLeaveSalaryCredit.Tag = "Gratuit";
             // 
             // cmbLeaveSalaryDebit
             // 
             this.cmbLeaveSalaryDebit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbLeaveSalaryDebit.BorderRadius = 5;
             this.cmbLeaveSalaryDebit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLeaveSalaryDebit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLeaveSalaryDebit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbLeaveSalaryDebit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbLeaveSalaryDebit.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLeaveSalaryDebit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbLeaveSalaryDebit.ItemHeight = 23;
+            this.cmbLeaveSalaryDebit.ItemHeight = 19;
             this.cmbLeaveSalaryDebit.Location = new System.Drawing.Point(15, 450);
             this.cmbLeaveSalaryDebit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbLeaveSalaryDebit.Name = "cmbLeaveSalaryDebit";
-            this.cmbLeaveSalaryDebit.Size = new System.Drawing.Size(418, 29);
+            this.cmbLeaveSalaryDebit.Size = new System.Drawing.Size(418, 25);
             this.cmbLeaveSalaryDebit.TabIndex = 166;
             this.cmbLeaveSalaryDebit.Tag = "Gratuit";
             // 
@@ -1030,17 +1033,18 @@
             // cmbEndofServiceDebit
             // 
             this.cmbEndofServiceDebit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEndofServiceDebit.BorderRadius = 5;
             this.cmbEndofServiceDebit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEndofServiceDebit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEndofServiceDebit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEndofServiceDebit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEndofServiceDebit.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEndofServiceDebit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEndofServiceDebit.ItemHeight = 23;
+            this.cmbEndofServiceDebit.ItemHeight = 19;
             this.cmbEndofServiceDebit.Location = new System.Drawing.Point(15, 325);
             this.cmbEndofServiceDebit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEndofServiceDebit.Name = "cmbEndofServiceDebit";
-            this.cmbEndofServiceDebit.Size = new System.Drawing.Size(418, 29);
+            this.cmbEndofServiceDebit.Size = new System.Drawing.Size(418, 25);
             this.cmbEndofServiceDebit.TabIndex = 164;
             this.cmbEndofServiceDebit.Tag = "Gratuit";
             // 
@@ -1058,17 +1062,18 @@
             // cmbSalaries
             // 
             this.cmbSalaries.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSalaries.BorderRadius = 5;
             this.cmbSalaries.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSalaries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalaries.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSalaries.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSalaries.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSalaries.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbSalaries.ItemHeight = 23;
+            this.cmbSalaries.ItemHeight = 19;
             this.cmbSalaries.Location = new System.Drawing.Point(15, 87);
             this.cmbSalaries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSalaries.Name = "cmbSalaries";
-            this.cmbSalaries.Size = new System.Drawing.Size(418, 29);
+            this.cmbSalaries.Size = new System.Drawing.Size(418, 25);
             this.cmbSalaries.TabIndex = 162;
             this.cmbSalaries.Tag = "Accrued Salaries";
             // 
@@ -1119,68 +1124,72 @@
             // cmbGratuit
             // 
             this.cmbGratuit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbGratuit.BorderRadius = 5;
             this.cmbGratuit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbGratuit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGratuit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbGratuit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbGratuit.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGratuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbGratuit.ItemHeight = 23;
+            this.cmbGratuit.ItemHeight = 19;
             this.cmbGratuit.Location = new System.Drawing.Point(15, 262);
             this.cmbGratuit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGratuit.Name = "cmbGratuit";
-            this.cmbGratuit.Size = new System.Drawing.Size(418, 29);
+            this.cmbGratuit.Size = new System.Drawing.Size(418, 25);
             this.cmbGratuit.TabIndex = 154;
             this.cmbGratuit.Tag = "Gratuit";
             // 
             // cmbAcroalLeaveSalary
             // 
             this.cmbAcroalLeaveSalary.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAcroalLeaveSalary.BorderRadius = 5;
             this.cmbAcroalLeaveSalary.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAcroalLeaveSalary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcroalLeaveSalary.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAcroalLeaveSalary.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAcroalLeaveSalary.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAcroalLeaveSalary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAcroalLeaveSalary.ItemHeight = 23;
+            this.cmbAcroalLeaveSalary.ItemHeight = 19;
             this.cmbAcroalLeaveSalary.Location = new System.Drawing.Point(15, 147);
             this.cmbAcroalLeaveSalary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAcroalLeaveSalary.Name = "cmbAcroalLeaveSalary";
-            this.cmbAcroalLeaveSalary.Size = new System.Drawing.Size(418, 29);
+            this.cmbAcroalLeaveSalary.Size = new System.Drawing.Size(418, 25);
             this.cmbAcroalLeaveSalary.TabIndex = 155;
             this.cmbAcroalLeaveSalary.Tag = "Acroal Leave Salary";
             // 
             // cmbEmployeeRecivable
             // 
             this.cmbEmployeeRecivable.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEmployeeRecivable.BorderRadius = 5;
             this.cmbEmployeeRecivable.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEmployeeRecivable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeRecivable.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeRecivable.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeRecivable.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployeeRecivable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEmployeeRecivable.ItemHeight = 23;
+            this.cmbEmployeeRecivable.ItemHeight = 19;
             this.cmbEmployeeRecivable.Location = new System.Drawing.Point(15, 204);
             this.cmbEmployeeRecivable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployeeRecivable.Name = "cmbEmployeeRecivable";
-            this.cmbEmployeeRecivable.Size = new System.Drawing.Size(418, 29);
+            this.cmbEmployeeRecivable.Size = new System.Drawing.Size(418, 25);
             this.cmbEmployeeRecivable.TabIndex = 156;
             this.cmbEmployeeRecivable.Tag = "Employee Recivable";
             // 
             // cmbAccruedSalaries
             // 
             this.cmbAccruedSalaries.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccruedSalaries.BorderRadius = 5;
             this.cmbAccruedSalaries.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccruedSalaries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccruedSalaries.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccruedSalaries.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccruedSalaries.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAccruedSalaries.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccruedSalaries.ItemHeight = 23;
+            this.cmbAccruedSalaries.ItemHeight = 19;
             this.cmbAccruedSalaries.Location = new System.Drawing.Point(15, 30);
             this.cmbAccruedSalaries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAccruedSalaries.Name = "cmbAccruedSalaries";
-            this.cmbAccruedSalaries.Size = new System.Drawing.Size(418, 29);
+            this.cmbAccruedSalaries.Size = new System.Drawing.Size(418, 25);
             this.cmbAccruedSalaries.TabIndex = 157;
             this.cmbAccruedSalaries.Tag = "Accrued Salaries";
             // 

@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.checkBoxCompanyBankAC = new System.Windows.Forms.CheckBox();
             this.cmbCity = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtAccSign = new Guna.UI2.WinForms.Guna2TextBox();
@@ -63,66 +65,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.headerUC1 = new YamyProject.HeaderUC();
-            this.checkBoxCompanyBankAC = new System.Windows.Forms.CheckBox();
-            this.panel1.SuspendLayout();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.guna2GroupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 504);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(579, 33);
-            this.panel1.TabIndex = 2;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.BorderRadius = 5;
-            this.btnClose.BorderThickness = 1;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.White;
-            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(156, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 27);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.BorderRadius = 5;
-            this.btnSave.BorderThickness = 3;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(37, 2);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 27);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderThickness = 0;
+            this.guna2GroupBox1.Controls.Add(this.panel1);
             this.guna2GroupBox1.Controls.Add(this.checkBoxCompanyBankAC);
             this.guna2GroupBox1.Controls.Add(this.cmbCity);
             this.guna2GroupBox1.Controls.Add(this.label18);
@@ -162,20 +115,107 @@
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 37);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(579, 467);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(579, 500);
             this.guna2GroupBox1.TabIndex = 3;
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 467);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(579, 33);
+            this.panel1.TabIndex = 9;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDelete.BorderRadius = 7;
+            this.btnDelete.BorderThickness = 3;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(3, 3);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(78, 27);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderRadius = 5;
+            this.btnClose.BorderThickness = 1;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.White;
+            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.Location = new System.Drawing.Point(498, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(78, 27);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderRadius = 5;
+            this.btnSave.BorderThickness = 3;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(414, 3);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(78, 27);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // checkBoxCompanyBankAC
+            // 
+            this.checkBoxCompanyBankAC.AutoSize = true;
+            this.checkBoxCompanyBankAC.Location = new System.Drawing.Point(328, 356);
+            this.checkBoxCompanyBankAC.Name = "checkBoxCompanyBankAC";
+            this.checkBoxCompanyBankAC.Size = new System.Drawing.Size(206, 21);
+            this.checkBoxCompanyBankAC.TabIndex = 8;
+            this.checkBoxCompanyBankAC.Text = "As Company Bank Account";
+            this.checkBoxCompanyBankAC.UseVisualStyleBackColor = true;
             // 
             // cmbCity
             // 
             this.cmbCity.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCity.BorderRadius = 5;
             this.cmbCity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCity.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCity.ItemHeight = 23;
+            this.cmbCity.ItemHeight = 18;
             this.cmbCity.Items.AddRange(new object[] {
             "Abu Dhabi",
             "Dubai",
@@ -186,7 +226,7 @@
             this.cmbCity.Location = new System.Drawing.Point(259, 182);
             this.cmbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(122, 29);
+            this.cmbCity.Size = new System.Drawing.Size(122, 24);
             this.cmbCity.StartIndex = 0;
             this.cmbCity.TabIndex = 6;
             // 
@@ -204,6 +244,8 @@
             // 
             // txtAccSign
             // 
+            this.txtAccSign.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccSign.BorderRadius = 5;
             this.txtAccSign.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccSign.DefaultText = "";
             this.txtAccSign.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -220,11 +262,13 @@
             this.txtAccSign.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccSign.PlaceholderText = "";
             this.txtAccSign.SelectedText = "";
-            this.txtAccSign.Size = new System.Drawing.Size(275, 29);
+            this.txtAccSign.Size = new System.Drawing.Size(275, 25);
             this.txtAccSign.TabIndex = 3;
             // 
             // txtSwift
             // 
+            this.txtSwift.BackColor = System.Drawing.Color.Transparent;
+            this.txtSwift.BorderRadius = 5;
             this.txtSwift.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSwift.DefaultText = "";
             this.txtSwift.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -241,11 +285,13 @@
             this.txtSwift.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSwift.PlaceholderText = "";
             this.txtSwift.SelectedText = "";
-            this.txtSwift.Size = new System.Drawing.Size(146, 29);
+            this.txtSwift.Size = new System.Drawing.Size(146, 25);
             this.txtSwift.TabIndex = 3;
             // 
             // txtBranchName
             // 
+            this.txtBranchName.BackColor = System.Drawing.Color.Transparent;
+            this.txtBranchName.BorderRadius = 5;
             this.txtBranchName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBranchName.DefaultText = "";
             this.txtBranchName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -262,11 +308,13 @@
             this.txtBranchName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtBranchName.PlaceholderText = "";
             this.txtBranchName.SelectedText = "";
-            this.txtBranchName.Size = new System.Drawing.Size(275, 29);
+            this.txtBranchName.Size = new System.Drawing.Size(275, 25);
             this.txtBranchName.TabIndex = 3;
             // 
             // txtIBANNo
             // 
+            this.txtIBANNo.BackColor = System.Drawing.Color.Transparent;
+            this.txtIBANNo.BorderRadius = 5;
             this.txtIBANNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtIBANNo.DefaultText = "";
             this.txtIBANNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -283,11 +331,13 @@
             this.txtIBANNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtIBANNo.PlaceholderText = "";
             this.txtIBANNo.SelectedText = "";
-            this.txtIBANNo.Size = new System.Drawing.Size(218, 29);
+            this.txtIBANNo.Size = new System.Drawing.Size(218, 25);
             this.txtIBANNo.TabIndex = 3;
             // 
             // txtAccountNo
             // 
+            this.txtAccountNo.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccountNo.BorderRadius = 5;
             this.txtAccountNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccountNo.DefaultText = "";
             this.txtAccountNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -304,11 +354,13 @@
             this.txtAccountNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccountNo.PlaceholderText = "";
             this.txtAccountNo.SelectedText = "";
-            this.txtAccountNo.Size = new System.Drawing.Size(218, 29);
+            this.txtAccountNo.Size = new System.Drawing.Size(218, 25);
             this.txtAccountNo.TabIndex = 3;
             // 
             // txtAccMob
             // 
+            this.txtAccMob.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccMob.BorderRadius = 5;
             this.txtAccMob.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccMob.DefaultText = "";
             this.txtAccMob.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -325,7 +377,7 @@
             this.txtAccMob.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccMob.PlaceholderText = "";
             this.txtAccMob.SelectedText = "";
-            this.txtAccMob.Size = new System.Drawing.Size(218, 29);
+            this.txtAccMob.Size = new System.Drawing.Size(218, 25);
             this.txtAccMob.TabIndex = 3;
             // 
             // label12
@@ -342,6 +394,8 @@
             // 
             // txtCurrency
             // 
+            this.txtCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.txtCurrency.BorderRadius = 5;
             this.txtCurrency.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCurrency.DefaultText = "";
             this.txtCurrency.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -358,7 +412,7 @@
             this.txtCurrency.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCurrency.PlaceholderText = "";
             this.txtCurrency.SelectedText = "";
-            this.txtCurrency.Size = new System.Drawing.Size(146, 29);
+            this.txtCurrency.Size = new System.Drawing.Size(146, 25);
             this.txtCurrency.TabIndex = 3;
             // 
             // label9
@@ -375,6 +429,8 @@
             // 
             // txtAccountType
             // 
+            this.txtAccountType.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccountType.BorderRadius = 5;
             this.txtAccountType.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccountType.DefaultText = "";
             this.txtAccountType.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -391,7 +447,7 @@
             this.txtAccountType.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccountType.PlaceholderText = "";
             this.txtAccountType.SelectedText = "";
-            this.txtAccountType.Size = new System.Drawing.Size(123, 29);
+            this.txtAccountType.Size = new System.Drawing.Size(123, 25);
             this.txtAccountType.TabIndex = 3;
             // 
             // label8
@@ -408,6 +464,8 @@
             // 
             // txtAccountName
             // 
+            this.txtAccountName.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccountName.BorderRadius = 5;
             this.txtAccountName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccountName.DefaultText = "";
             this.txtAccountName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -424,11 +482,13 @@
             this.txtAccountName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccountName.PlaceholderText = "";
             this.txtAccountName.SelectedText = "";
-            this.txtAccountName.Size = new System.Drawing.Size(218, 29);
+            this.txtAccountName.Size = new System.Drawing.Size(218, 25);
             this.txtAccountName.TabIndex = 3;
             // 
             // txtAccManager
             // 
+            this.txtAccManager.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccManager.BorderRadius = 5;
             this.txtAccManager.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccManager.DefaultText = "";
             this.txtAccManager.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -445,7 +505,7 @@
             this.txtAccManager.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccManager.PlaceholderText = "";
             this.txtAccManager.SelectedText = "";
-            this.txtAccManager.Size = new System.Drawing.Size(218, 29);
+            this.txtAccManager.Size = new System.Drawing.Size(218, 25);
             this.txtAccManager.TabIndex = 3;
             // 
             // label6
@@ -462,6 +522,8 @@
             // 
             // txtAccountCode
             // 
+            this.txtAccountCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccountCode.BorderRadius = 5;
             this.txtAccountCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAccountCode.DefaultText = "";
             this.txtAccountCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -478,13 +540,15 @@
             this.txtAccountCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAccountCode.PlaceholderText = "";
             this.txtAccountCode.SelectedText = "";
-            this.txtAccountCode.Size = new System.Drawing.Size(147, 29);
+            this.txtAccountCode.Size = new System.Drawing.Size(147, 25);
             this.txtAccountCode.TabIndex = 3;
             this.txtAccountCode.TextChanged += new System.EventHandler(this.txtAccountCode_TextChanged);
             this.txtAccountCode.Leave += new System.EventHandler(this.txtAccountCode_Leave);
             // 
             // txtBankCode
             // 
+            this.txtBankCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtBankCode.BorderRadius = 5;
             this.txtBankCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBankCode.DefaultText = "";
             this.txtBankCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -501,7 +565,7 @@
             this.txtBankCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtBankCode.PlaceholderText = "";
             this.txtBankCode.SelectedText = "";
-            this.txtBankCode.Size = new System.Drawing.Size(147, 29);
+            this.txtBankCode.Size = new System.Drawing.Size(147, 25);
             this.txtBankCode.TabIndex = 3;
             this.txtBankCode.TextChanged += new System.EventHandler(this.txtBankCode_TextChanged);
             this.txtBankCode.Leave += new System.EventHandler(this.txtBankCode_Leave);
@@ -533,17 +597,18 @@
             // cmbAccountName
             // 
             this.cmbAccountName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccountName.BorderRadius = 5;
             this.cmbAccountName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccountName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccountName.ItemHeight = 23;
+            this.cmbAccountName.ItemHeight = 18;
             this.cmbAccountName.Location = new System.Drawing.Point(35, 421);
             this.cmbAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAccountName.Name = "cmbAccountName";
-            this.cmbAccountName.Size = new System.Drawing.Size(346, 29);
+            this.cmbAccountName.Size = new System.Drawing.Size(346, 24);
             this.cmbAccountName.TabIndex = 4;
             this.cmbAccountName.SelectedIndexChanged += new System.EventHandler(this.cmbAccountName_SelectedIndexChanged);
             // 
@@ -562,17 +627,18 @@
             // cmbBankName
             // 
             this.cmbBankName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbBankName.BorderRadius = 5;
             this.cmbBankName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBankName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbBankName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbBankName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbBankName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbBankName.ItemHeight = 23;
+            this.cmbBankName.ItemHeight = 18;
             this.cmbBankName.Location = new System.Drawing.Point(35, 55);
             this.cmbBankName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbBankName.Name = "cmbBankName";
-            this.cmbBankName.Size = new System.Drawing.Size(346, 29);
+            this.cmbBankName.Size = new System.Drawing.Size(346, 24);
             this.cmbBankName.TabIndex = 4;
             this.cmbBankName.SelectedIndexChanged += new System.EventHandler(this.cmbBankName_SelectedIndexChanged);
             // 
@@ -662,23 +728,45 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(579, 37);
             this.headerUC1.TabIndex = 0;
             // 
-            // checkBoxCompanyBankAC
+            // panel5
             // 
-            this.checkBoxCompanyBankAC.AutoSize = true;
-            this.checkBoxCompanyBankAC.Location = new System.Drawing.Point(328, 356);
-            this.checkBoxCompanyBankAC.Name = "checkBoxCompanyBankAC";
-            this.checkBoxCompanyBankAC.Size = new System.Drawing.Size(206, 21);
-            this.checkBoxCompanyBankAC.TabIndex = 8;
-            this.checkBoxCompanyBankAC.Text = "As Company Bank Account";
-            this.checkBoxCompanyBankAC.UseVisualStyleBackColor = true;
+            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 535);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(579, 2);
+            this.panel5.TabIndex = 15;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(577, 37);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(2, 498);
+            this.panel4.TabIndex = 16;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(2, 498);
+            this.panel3.TabIndex = 17;
             // 
             // frmViewBankCard
             // 
@@ -686,31 +774,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(579, 537);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.headerUC1);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmViewBankCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Customers / New Customer";
             this.Load += new System.EventHandler(this.frmViewBankCard_Load);
-            this.panel1.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private HeaderUC headerUC1;
-        private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2TextBox txtAccountName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Button btnClose;
-        private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2TextBox txtBankCode;
         private Guna.UI2.WinForms.Guna2TextBox txtAccountType;
         private System.Windows.Forms.Label label4;
@@ -739,5 +826,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox checkBoxCompanyBankAC;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
+        private System.Windows.Forms.Panel panel3;
     }
 }

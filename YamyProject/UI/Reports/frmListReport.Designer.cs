@@ -49,7 +49,7 @@ namespace YamyProject.UI.Reports
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.BtnExcel);
             this.panel8.Controls.Add(this.BtnPDF);
             this.panel8.Controls.Add(this.guna2Button1);

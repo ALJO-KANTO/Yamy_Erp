@@ -258,21 +258,21 @@
             // 
             this.cmbSelectionMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSelectionMethod.BackColor = System.Drawing.Color.Transparent;
-            this.cmbSelectionMethod.BorderRadius = 3;
+            this.cmbSelectionMethod.BorderRadius = 5;
             this.cmbSelectionMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSelectionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectionMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSelectionMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSelectionMethod.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbSelectionMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbSelectionMethod.ItemHeight = 16;
+            this.cmbSelectionMethod.ItemHeight = 18;
             this.cmbSelectionMethod.Items.AddRange(new object[] {
             "Default",
             "Item Wise"});
-            this.cmbSelectionMethod.Location = new System.Drawing.Point(828, 20);
+            this.cmbSelectionMethod.Location = new System.Drawing.Point(855, 20);
             this.cmbSelectionMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSelectionMethod.Name = "cmbSelectionMethod";
-            this.cmbSelectionMethod.Size = new System.Drawing.Size(154, 22);
+            this.cmbSelectionMethod.Size = new System.Drawing.Size(154, 24);
             this.cmbSelectionMethod.StartIndex = 0;
             this.cmbSelectionMethod.TabIndex = 14;
             // 
@@ -282,7 +282,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(824, 1);
+            this.label4.Location = new System.Drawing.Point(851, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 20);
             this.label4.TabIndex = 13;
@@ -293,7 +293,7 @@
             // 
             this.cmbPaymentMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPaymentMethod.BackColor = System.Drawing.Color.Transparent;
-            this.cmbPaymentMethod.BorderRadius = 3;
+            this.cmbPaymentMethod.BorderRadius = 5;
             this.cmbPaymentMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaymentMethod.Enabled = false;
@@ -301,14 +301,14 @@
             this.cmbPaymentMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbPaymentMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPaymentMethod.ItemHeight = 16;
+            this.cmbPaymentMethod.ItemHeight = 18;
             this.cmbPaymentMethod.Items.AddRange(new object[] {
             "Cash",
             "Credit"});
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(987, 20);
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(1014, 20);
             this.cmbPaymentMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(154, 22);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(154, 24);
             this.cmbPaymentMethod.StartIndex = 0;
             this.cmbPaymentMethod.TabIndex = 12;
             this.cmbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
@@ -316,9 +316,8 @@
             // dtTo
             // 
             this.dtTo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtTo.Checked = true;
-            this.dtTo.Enabled = false;
             this.dtTo.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtTo.Enabled = false;
             this.dtTo.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -344,9 +343,8 @@
             // dtFrom
             // 
             this.dtFrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtFrom.Checked = true;
-            this.dtFrom.Enabled = false;
             this.dtFrom.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtFrom.Enabled = false;
             this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -382,7 +380,7 @@
             this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDate.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkDate.ForeColor = System.Drawing.Color.Black;
-            this.chkDate.Location = new System.Drawing.Point(796, 27);
+            this.chkDate.Location = new System.Drawing.Point(796, 24);
             this.chkDate.Name = "chkDate";
             this.chkDate.Size = new System.Drawing.Size(39, 17);
             this.chkDate.TabIndex = 9;
@@ -407,7 +405,7 @@
             this.chkPayment.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPayment.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkPayment.ForeColor = System.Drawing.Color.Black;
-            this.chkPayment.Location = new System.Drawing.Point(1143, 26);
+            this.chkPayment.Location = new System.Drawing.Point(1170, 24);
             this.chkPayment.Name = "chkPayment";
             this.chkPayment.Size = new System.Drawing.Size(39, 17);
             this.chkPayment.TabIndex = 9;
@@ -431,7 +429,7 @@
             this.chkCustomer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCustomer.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkCustomer.ForeColor = System.Drawing.Color.Black;
-            this.chkCustomer.Location = new System.Drawing.Point(300, 27);
+            this.chkCustomer.Location = new System.Drawing.Point(300, 25);
             this.chkCustomer.Name = "chkCustomer";
             this.chkCustomer.Size = new System.Drawing.Size(39, 17);
             this.chkCustomer.TabIndex = 9;
@@ -449,7 +447,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label3.Location = new System.Drawing.Point(983, 1);
+            this.label3.Location = new System.Drawing.Point(1010, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 20);
             this.label3.TabIndex = 7;
@@ -459,7 +457,7 @@
             // cmbCustomer
             // 
             this.cmbCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCustomer.BorderRadius = 3;
+            this.cmbCustomer.BorderRadius = 5;
             this.cmbCustomer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomer.Enabled = false;
@@ -467,11 +465,11 @@
             this.cmbCustomer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCustomer.ItemHeight = 16;
+            this.cmbCustomer.ItemHeight = 18;
             this.cmbCustomer.Location = new System.Drawing.Point(10, 20);
             this.cmbCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(285, 22);
+            this.cmbCustomer.Size = new System.Drawing.Size(285, 24);
             this.cmbCustomer.TabIndex = 6;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -539,11 +537,12 @@
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel2.TabIndex = 19;
+            this.guna2HtmlLabel2.Text = null;
             // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(1197, 5);
             this.guna2ControlBox1.Name = "guna2ControlBox1";

@@ -86,6 +86,7 @@ namespace YamyProject
                 txtBillTo.Text = reader["bill_to"].ToString();
                 txtShipTo.Text = reader["ship_to"].ToString();
                 txtSalesMan.Text = reader["sales_man"].ToString();
+                richTextDescription.Text = reader["description"].ToString();
                 BindInvoiceItems();
                 CalculateTotal();
             }
@@ -177,11 +178,11 @@ namespace YamyProject
             {
                 // Use tbl_items_warehouse join
                 query = @"
-            SELECT i.code, i.name 
-            FROM tbl_items_warehouse w
-            INNER JOIN tbl_items i ON w.item_id = i.id
-            WHERE w.warehouse_id = @warehouseId
-              AND i.state = 0 AND i.active = 0";
+                        SELECT i.code, i.name 
+                        FROM tbl_items_warehouse w
+                        INNER JOIN tbl_items i ON w.item_id = i.id
+                        WHERE w.warehouse_id = @warehouseId
+                          AND i.state = 0 AND i.active = 0";
 
                 parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
             }
@@ -228,11 +229,11 @@ namespace YamyProject
             {
                 // Use tbl_items_warehouse join
                 query = @"
-            SELECT i.code, i.name 
-            FROM tbl_items_warehouse w
-            INNER JOIN tbl_items i ON w.item_id = i.id
-            WHERE w.warehouse_id = @warehouseId
-              AND i.state = 0 AND i.active = 0";
+                        SELECT i.code, i.name 
+                        FROM tbl_items_warehouse w
+                        INNER JOIN tbl_items i ON w.item_id = i.id
+                        WHERE w.warehouse_id = @warehouseId
+                          AND i.state = 0 AND i.active = 0";
 
                 parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
             }
@@ -330,7 +331,7 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, 
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city WHERE id = @id;",
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description WHERE id = @id;",
                  DBClass.CreateParameter("id", id),
                   DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -350,6 +351,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
                DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
                DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
@@ -435,9 +437,9 @@ namespace YamyProject
 
                 invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales_return (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-               total,vat,net, pay, `change`, created_by, created_date, state) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
+               total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
                @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state);
+               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description);
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -457,6 +459,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
                DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)),
                DBClass.CreateParameter("created_by", frmLogin.userId),
@@ -1232,7 +1235,7 @@ namespace YamyProject
         {
             if (cmbAccountCashName.Focused && int.Parse(cmbAccountCashName.SelectedValue.ToString()) == -1)
             {
-                frmLogin.frmMain.openChildForm(new frmAddAccount());
+                new frmAddAccount().ShowDialog();
             }
             else
             {

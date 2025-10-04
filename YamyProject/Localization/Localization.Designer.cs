@@ -1897,7 +1897,7 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CLOSE.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Close {
             get {

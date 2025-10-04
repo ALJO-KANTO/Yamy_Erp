@@ -37,12 +37,17 @@
             this.ChkLevel3 = new System.Windows.Forms.CheckBox();
             this.ChkLevel4 = new System.Windows.Forms.CheckBox();
             this.ChkLevel4OBOnly = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
@@ -51,10 +56,12 @@
             // 
             // btnClear
             // 
+            this.btnClear.BorderRadius = 5;
             this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnClear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(646, 498);
@@ -183,18 +190,52 @@
             // ChkLevel4OBOnly
             // 
             this.ChkLevel4OBOnly.AutoSize = true;
-            this.ChkLevel4OBOnly.Location = new System.Drawing.Point(517, 336);
+            this.ChkLevel4OBOnly.Location = new System.Drawing.Point(517, 332);
             this.ChkLevel4OBOnly.Name = "ChkLevel4OBOnly";
             this.ChkLevel4OBOnly.Size = new System.Drawing.Size(141, 17);
             this.ChkLevel4OBOnly.TabIndex = 9;
             this.ChkLevel4OBOnly.Text = "General Ledger OB Only";
             this.ChkLevel4OBOnly.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(2, 509);
+            this.panel3.TabIndex = 171;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(806, 37);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(2, 509);
+            this.panel4.TabIndex = 172;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(2, 544);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(804, 2);
+            this.panel5.TabIndex = 173;
+            // 
             // frmDataHandler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(808, 546);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.ChkLevel4OBOnly);
             this.Controls.Add(this.ChkLevel4);
             this.Controls.Add(this.ChkLevel3);
@@ -225,5 +266,8 @@
         private System.Windows.Forms.CheckBox ChkLevel3;
         private System.Windows.Forms.CheckBox ChkLevel4;
         private System.Windows.Forms.CheckBox ChkLevel4OBOnly;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

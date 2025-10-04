@@ -14,6 +14,7 @@ namespace YamyProject
 {
     public partial class MasterInventory : Form
     {
+        private DataView _dataView;
         private EventHandler itemUpdatedHandler;
         private EventHandler invoiceUpdatedHandler;
         private EventHandler purchaseUpdatedHandler;
@@ -65,6 +66,12 @@ namespace YamyProject
             else if (cmbState.Text != "All")
                 query += " and active != 0";
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
+            if (dt == null)
+            {
+                dgvCustomer.DataSource = null;
+                return;
+            }
+            _dataView = dt.DefaultView;
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["Item name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvCustomer.Columns["type"].Width = 140;

@@ -183,7 +183,7 @@ namespace YamyProject
         {
             if (cmbCostCenter.SelectedValue == null)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewEditMain(int.Parse(cmbCostCenter.SelectedValue.ToString())));
+            new frmViewEditMain(int.Parse(cmbCostCenter.SelectedValue.ToString())).ShowDialog();
             selectedIndex = cmbCostCenter.SelectedIndex;
         }
 

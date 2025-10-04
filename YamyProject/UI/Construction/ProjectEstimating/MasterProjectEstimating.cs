@@ -18,6 +18,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             eventHandler = (sender, args) => BindInvoices();
             EventHub.ProjectTendering += eventHandler;
+            this.Text = "Project Estimate Center";
             headerUC1.FormText = this.Text;
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;

@@ -25,7 +25,7 @@ namespace YamyProject
         private void frmBankRegister_Load(object sender, EventArgs e)
         {
             _isLoading = true;
-            BindCombos.PopulateRegisterBanks(cmbBankName);
+            BindCombos.PopulateRegisterBanksAll(cmbBankName);
             cmbBankName.SelectedIndex = -1;
             BindCombos.PopulateCountries(cmbCountry);
             if (id >0)
@@ -213,7 +213,35 @@ namespace YamyProject
                     txtEntId.Text = reader["ent_id"].ToString();
                     txtRoute.Text = reader["route_num"].ToString();
                     cmbCountry.SelectedValue = reader["country_id"].ToString();
+                    btnDelete.Enabled = true;
                 }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Deletion functionality can be implemented here if needed
+            var confirmResult = MessageBox.Show("Are you sure to delete this bank?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmResult == DialogResult.Yes)
+            {
+                if (cmbBankName.SelectedValue == null)
+                {
+                    MessageBox.Show("Please select a bank to delete.", "No Bank Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int bankId = (int)cmbBankName.SelectedValue;
+                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) AS UsageCount FROM tbl_bank_card WHERE bank_id = @id", DBClass.CreateParameter("id", bankId)))
+                {
+                    if (reader.Read() && Convert.ToInt32(reader["UsageCount"]) > 0)
+                    {
+                        MessageBox.Show("Cannot delete this bank as it is referenced in other records.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                DBClass.ExecuteNonQuery("DELETE FROM tbl_bank WHERE id = @id", DBClass.CreateParameter("id", bankId));
+                Utilities.LogAudit(frmLogin.userId, "Delete Bank", "Bank", bankId, "Deleted Bank with ID: " + bankId);
+                EventHub.RefreshBank();
+                this.Close();
+            }
         }
     }
 }

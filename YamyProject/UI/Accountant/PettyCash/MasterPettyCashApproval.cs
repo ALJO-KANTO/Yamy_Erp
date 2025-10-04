@@ -654,7 +654,7 @@ namespace YamyProject
                 int _id;
                 if (cell != null && cell.Value != null && int.TryParse(cell.Value.ToString(), out _id))
                 {
-                    frmLogin.frmMain.openChildForm(new frmPettyCashRequest(_id));
+                    new frmPettyCashRequest(_id).ShowDialog();
                 }
                 else
                 {
@@ -663,5 +663,9 @@ namespace YamyProject
             }
         }
 
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

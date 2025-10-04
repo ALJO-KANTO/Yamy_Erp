@@ -92,14 +92,14 @@
             // 
             // btnSaveAndNew
             // 
-            this.btnSaveAndNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(70)))), ((int)(((byte)(97)))));
+            this.btnSaveAndNew.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnSaveAndNew.BorderRadius = 5;
             this.btnSaveAndNew.BorderThickness = 3;
             this.btnSaveAndNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveAndNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveAndNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSaveAndNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSaveAndNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(70)))), ((int)(((byte)(97)))));
+            this.btnSaveAndNew.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSaveAndNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAndNew.ForeColor = System.Drawing.Color.White;
             this.btnSaveAndNew.Location = new System.Drawing.Point(221, 3);
@@ -158,6 +158,8 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.BackColor = System.Drawing.Color.Transparent;
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -225,6 +227,8 @@
             // 
             // txtAmount
             // 
+            this.txtAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtAmount.BorderRadius = 5;
             this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.DefaultText = "";
             this.txtAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -247,6 +251,7 @@
             // cmbPettyCash
             // 
             this.cmbPettyCash.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPettyCash.BorderRadius = 5;
             this.cmbPettyCash.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPettyCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPettyCash.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -310,7 +315,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2ControlBox1);
             this.panel6.Controls.Add(this.lbheader);

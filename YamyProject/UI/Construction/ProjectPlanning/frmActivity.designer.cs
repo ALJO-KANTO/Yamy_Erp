@@ -73,7 +73,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -141,7 +141,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(489, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
@@ -153,7 +153,7 @@
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 383);
             this.panel3.TabIndex = 22;
@@ -172,7 +172,7 @@
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnClose.Location = new System.Drawing.Point(369, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
             this.btnClose.TabIndex = 7;
@@ -193,7 +193,7 @@
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(227, 3);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
             this.btnSave.TabIndex = 6;
@@ -206,7 +206,7 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 383);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(509, 33);
             this.panel1.TabIndex = 20;
@@ -216,7 +216,7 @@
             this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 416);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(509, 2);
             this.panel5.TabIndex = 24;
@@ -226,13 +226,14 @@
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(509, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 418);
             this.panel4.TabIndex = 23;
             // 
             // txtDescription
             // 
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -242,12 +243,12 @@
             this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(109, 50);
+            this.txtDescription.Location = new System.Drawing.Point(109, 58);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PlaceholderText = "";
             this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(376, 32);
+            this.txtDescription.Size = new System.Drawing.Size(376, 25);
             this.txtDescription.TabIndex = 26;
             // 
             // label1
@@ -265,7 +266,7 @@
             this.dtStart.BackColor = System.Drawing.Color.LightSkyBlue;
             this.dtStart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtStart.Location = new System.Drawing.Point(109, 130);
-            this.dtStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
             this.dtStart.Name = "dtStart";
             this.dtStart.Size = new System.Drawing.Size(140, 23);
             this.dtStart.TabIndex = 28;
@@ -295,7 +296,7 @@
             this.dtEnd.BackColor = System.Drawing.Color.LightSkyBlue;
             this.dtEnd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtEnd.Location = new System.Drawing.Point(345, 130);
-            this.dtEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.Size = new System.Drawing.Size(140, 23);
             this.dtEnd.TabIndex = 30;
@@ -315,7 +316,7 @@
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(33, 172);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(452, 206);
             this.guna2GroupBox1.TabIndex = 34;
@@ -381,6 +382,7 @@
             // 
             // txtProgress
             // 
+            this.txtProgress.BorderRadius = 5;
             this.txtProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtProgress.DefaultText = "";
             this.txtProgress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -390,12 +392,12 @@
             this.txtProgress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtProgress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProgress.Location = new System.Drawing.Point(109, 92);
+            this.txtProgress.Location = new System.Drawing.Point(109, 96);
             this.txtProgress.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtProgress.Name = "txtProgress";
             this.txtProgress.PlaceholderText = "";
             this.txtProgress.SelectedText = "";
-            this.txtProgress.Size = new System.Drawing.Size(102, 32);
+            this.txtProgress.Size = new System.Drawing.Size(102, 25);
             this.txtProgress.TabIndex = 35;
             this.txtProgress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProgress_KeyPress);
             // 
@@ -420,7 +422,7 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmActivity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";

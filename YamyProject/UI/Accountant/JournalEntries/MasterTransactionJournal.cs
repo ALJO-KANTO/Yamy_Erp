@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -25,6 +28,7 @@ namespace YamyProject
         private void MasterTransactionJournal_Load(object sender, EventArgs e)
         {
             lblJVNO.Text = !string.IsNullOrEmpty(transactionId) ? transactionId + " " + type : "";
+            dtFrom.Enabled = dtTo.Enabled = !chkDate.Checked;
             BindJournal();
         }
 
@@ -50,8 +54,16 @@ namespace YamyProject
             {
                 condition = " and tbl_transaction.state = 0 and tbl_transaction.type ='" + cmbSelectionMethod.Text.ToString() + "'";
             }
+            List<MySqlParameter> parameters = new List<MySqlParameter>
+            {
+                DBClass.CreateParameter("id", transactionId)
+            };
             if (!chkDate.Checked)
-                condition += " and tbl_transaction.date >= " + dtFrom.Value.Date + " and tbl_transaction.date <=" + dtTo.Value.Date;
+            {
+                condition += " and tbl_transaction.date >= @dateFrom and tbl_transaction.date <=@dateTo";
+                parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
+                parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
+            }
             if (cmbSelectionMethod.Text == "Sales Invoice")
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
@@ -67,7 +79,7 @@ namespace YamyProject
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id where (tbl_transaction.type = 'Sales Invoice Cash' or tbl_transaction.type = 'Sales Invoice') and tbl_transaction.state = 0",
-                            DBClass.CreateParameter("id", transactionId));
+                            parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -94,7 +106,7 @@ namespace YamyProject
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id where (tbl_transaction.type = 'Purchase Invoice Cash' or tbl_transaction.type = 'Purchase Invoice') and tbl_transaction.state = 0",
-                            DBClass.CreateParameter("id", transactionId));
+                            parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -117,7 +129,7 @@ namespace YamyProject
                                 FROM tbl_transaction  INNER JOIN tbl_coa_level_4 ON tbl_transaction.account_id = tbl_coa_level_4.id 
                                 INNER JOIN tbl_sales ON tbl_transaction.transaction_id = tbl_sales.id INNER JOIN 
                                 tbl_customer ON tbl_sales.customer_id = tbl_customer.id where transaction_id=@id and tbl_transaction.t_type = 'SALES'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -142,7 +154,7 @@ namespace YamyProject
                                 INNER JOIN 
                                  tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id
                                 WHERE transaction_id= @id AND t_type = 'PURCHASE'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -167,7 +179,7 @@ namespace YamyProject
                                 INNER JOIN 
                                  tbl_vendor ON tbl_purchase_return.vendor_id = tbl_vendor.id
                                 WHERE transaction_id= @id AND t_type = 'PURCHASE RETURN'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -208,7 +220,7 @@ namespace YamyProject
                             INNER JOIN tbl_coa_level_4 ON tbl_transaction.account_id = tbl_coa_level_4.id
                             INNER JOIN tbl_payment_voucher ON tbl_transaction.transaction_id = tbl_payment_voucher.id
                             WHERE transaction_id= @id AND t_type = 'PAYMENT'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -243,7 +255,7 @@ namespace YamyProject
                                 INNER JOIN tbl_coa_level_4 ON tbl_transaction.account_id = tbl_coa_level_4.id
                                 INNER JOIN tbl_receipt_voucher ON tbl_transaction.transaction_id = tbl_receipt_voucher.id
                                 WHERE transaction_id= @id AND t_type = 'RECEIPT'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -269,7 +281,7 @@ namespace YamyProject
                                 INNER JOIN tbl_coa_level_4 ON tbl_transaction.account_id = tbl_coa_level_4.id
                                 INNER JOIN tbl_journal_voucher ON tbl_transaction.transaction_id = tbl_journal_voucher.id
                                 WHERE transaction_id= @id AND t_type = 'JOURNAL'",
-                                DBClass.CreateParameter("id", int.Parse(transactionId)));
+                                parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -295,7 +307,7 @@ namespace YamyProject
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id where description 
                                 like '%- Item Code - " + transactionId + "'",
-                             DBClass.CreateParameter("id", transactionId));
+                             parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -321,7 +333,7 @@ namespace YamyProject
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition+ @" and tbl_transaction.account_id = (SELECT account_id FROM tbl_coa_config WHERE category = '" + type+"')",
-                            DBClass.CreateParameter("id", transactionId));
+                            parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -354,7 +366,14 @@ namespace YamyProject
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition + @" and tbl_transaction.type Like '" + type.Replace(" All","") + "%'",
-                            DBClass.CreateParameter("id", transactionId));
+                            parameters.ToArray());
+
+
+                if (dt == null)
+                {
+                    dgvJournal.DataSource = null;
+                    return;
+                }
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -387,7 +406,12 @@ namespace YamyProject
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
                             ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition,
-                            DBClass.CreateParameter("id", transactionId));
+                            parameters.ToArray());
+                if (dt == null)
+                {
+                    dgvJournal.DataSource = null;
+                    return;
+                }
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
@@ -441,6 +465,22 @@ namespace YamyProject
         private void dgvJournal_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void chkDate_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFrom.Enabled = dtTo.Enabled = !chkDate.Checked;
+            BindJournal();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindJournal();
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindJournal();
         }
     }
 }

@@ -111,6 +111,7 @@
             // 
             // txtName
             // 
+            this.txtName.BorderRadius = 5;
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtName.DefaultText = "";
             this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -127,7 +128,7 @@
             this.txtName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtName.PlaceholderText = "Name";
             this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(402, 29);
+            this.txtName.Size = new System.Drawing.Size(402, 24);
             this.txtName.TabIndex = 6;
             // 
             // label1
@@ -165,6 +166,7 @@
             // 
             // txtCode
             // 
+            this.txtCode.BorderRadius = 5;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DefaultText = "";
             this.txtCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -181,7 +183,7 @@
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCode.PlaceholderText = "Code";
             this.txtCode.SelectedText = "";
-            this.txtCode.Size = new System.Drawing.Size(109, 29);
+            this.txtCode.Size = new System.Drawing.Size(109, 24);
             this.txtCode.TabIndex = 125;
             // 
             // label2
@@ -222,6 +224,7 @@
             // 
             // txtDescription
             // 
+            this.txtDescription.BorderRadius = 5;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultText = "";
             this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -294,33 +297,35 @@
             // cmbCity
             // 
             this.cmbCity.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCity.BorderRadius = 5;
             this.cmbCity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCity.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCity.ItemHeight = 23;
+            this.cmbCity.ItemHeight = 18;
             this.cmbCity.Location = new System.Drawing.Point(356, 235);
             this.cmbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(179, 29);
+            this.cmbCity.Size = new System.Drawing.Size(179, 24);
             this.cmbCity.TabIndex = 136;
             // 
             // cmbCountry
             // 
             this.cmbCountry.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCountry.BorderRadius = 5;
             this.cmbCountry.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCountry.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountry.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCountry.ItemHeight = 23;
+            this.cmbCountry.ItemHeight = 18;
             this.cmbCountry.Location = new System.Drawing.Point(133, 235);
             this.cmbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(179, 29);
+            this.cmbCountry.Size = new System.Drawing.Size(179, 24);
             this.cmbCountry.TabIndex = 137;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
             // 
@@ -354,6 +359,7 @@
             this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(2);
             this.headerUC1.Name = "headerUC1";

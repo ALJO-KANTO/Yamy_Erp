@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -52,7 +53,6 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.BtnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -72,6 +72,26 @@
             this.panel1.Size = new System.Drawing.Size(401, 33);
             this.panel1.TabIndex = 2;
             // 
+            // BtnDelete
+            // 
+            this.BtnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.BtnDelete.BorderRadius = 5;
+            this.BtnDelete.BorderThickness = 1;
+            this.BtnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnDelete.FillColor = System.Drawing.Color.White;
+            this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDelete.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.BtnDelete.Location = new System.Drawing.Point(3, 2);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(66, 25);
+            this.BtnDelete.TabIndex = 8;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // btnClose
             // 
             this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -87,7 +107,7 @@
             this.btnClose.Location = new System.Drawing.Point(326, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(66, 27);
+            this.btnClose.Size = new System.Drawing.Size(66, 25);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -107,7 +127,7 @@
             this.btnSave.Location = new System.Drawing.Point(248, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 27);
+            this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -176,11 +196,11 @@
             this.cmbDebitAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbDebitAccountName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDebitAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbDebitAccountName.ItemHeight = 23;
+            this.cmbDebitAccountName.ItemHeight = 18;
             this.cmbDebitAccountName.Location = new System.Drawing.Point(140, 76);
             this.cmbDebitAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDebitAccountName.Name = "cmbDebitAccountName";
-            this.cmbDebitAccountName.Size = new System.Drawing.Size(254, 29);
+            this.cmbDebitAccountName.Size = new System.Drawing.Size(254, 24);
             this.cmbDebitAccountName.TabIndex = 32;
             this.cmbDebitAccountName.SelectedIndexChanged += new System.EventHandler(this.cmbDebitAccountName_SelectedIndexChanged);
             // 
@@ -300,11 +320,11 @@
             this.cmbEmployee.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEmployee.ItemHeight = 23;
+            this.cmbEmployee.ItemHeight = 18;
             this.cmbEmployee.Location = new System.Drawing.Point(139, 32);
             this.cmbEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(255, 29);
+            this.cmbEmployee.Size = new System.Drawing.Size(255, 24);
             this.cmbEmployee.TabIndex = 9;
             this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbEmployee_SelectedIndexChanged);
             // 
@@ -382,7 +402,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2ControlBox1);
             this.panel6.Controls.Add(this.lbheader);
@@ -441,26 +461,6 @@
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2DragControl1.TargetControl = this.lbheader;
             this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // BtnDelete
-            // 
-            this.BtnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.BtnDelete.BorderRadius = 5;
-            this.BtnDelete.BorderThickness = 1;
-            this.BtnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.BtnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.BtnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnDelete.FillColor = System.Drawing.Color.White;
-            this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.BtnDelete.Location = new System.Drawing.Point(3, 2);
-            this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(66, 27);
-            this.BtnDelete.TabIndex = 8;
-            this.BtnDelete.Text = "Delete";
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // frmPettyCashCard
             // 

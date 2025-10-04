@@ -39,7 +39,7 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse());
+            new frmViewWarehouse().ShowDialog();
         }
         private void MasterWarehouse_Load(object sender, EventArgs e)
         {
@@ -84,7 +84,7 @@ namespace YamyProject
         {
             if (cmbWarehouse.SelectedValue==null)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse(int.Parse(cmbWarehouse.SelectedValue.ToString())));
+            new frmViewWarehouse(int.Parse(cmbWarehouse.SelectedValue.ToString())).ShowDialog();
         }
 
         private void btnTransfer_Click(object sender, EventArgs e)
@@ -104,8 +104,7 @@ namespace YamyProject
 
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewWarehouse());
-
+            new frmViewWarehouse().ShowDialog();
         }
 
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -457,7 +457,7 @@ namespace YamyProject
 
         private void lnkProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new frmViewProject(this));
+            //new frmViewProject(this).Show();
         }
 
         private void txtEstimatedBudget_KeyPress(object sender, KeyPressEventArgs e)

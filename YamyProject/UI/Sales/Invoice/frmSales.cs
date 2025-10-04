@@ -242,6 +242,7 @@ namespace YamyProject
                         dtPaymentTerms.Value = DateTime.Parse(reader["payment_date"].ToString());
                     }
                     cmbShipVia.Text = reader["ship_via"].ToString();
+                    richTextDescription.Text = reader["description"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
                     invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                     invId = id;
@@ -597,7 +598,7 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, 
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city WHERE id = @id;",
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description WHERE id = @id;",
                DBClass.CreateParameter("id", id),
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -607,6 +608,7 @@ namespace YamyProject
                DBClass.CreateParameter("po_num", txtPONO.Text),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
+
                DBClass.CreateParameter("sales_man", txtSalesMan.Text),
                DBClass.CreateParameter("ship_via", cmbShipVia.Text),
                DBClass.CreateParameter("ship_to", txtShipTo.Text),
@@ -617,6 +619,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
                DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
                DBClass.CreateParameter("pay", paidAmount),
@@ -739,12 +742,13 @@ namespace YamyProject
         {
             if (!ChkRequiredData())
                 return false;
-            invCode = GenerateNextSalesCode();
+
+            //invCode = GenerateNextSalesCode();
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                            ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-                           total,vat,net, pay, `change`, created_by, created_date, state) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
+                           total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
                            @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-                           @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state);
+                           @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description);
                            SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -764,6 +768,7 @@ namespace YamyProject
                DBClass.CreateParameter("vat", txtTotalVat.Text),
                DBClass.CreateParameter("total", txtTotalBefore.Text),
                DBClass.CreateParameter("net", txtTotal.Text),
+               DBClass.CreateParameter("description", richTextDescription.Text),
                DBClass.CreateParameter("pay", cmbPaymentMethod.Text == "Cash" ? string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text) : 0),
                DBClass.CreateParameter("change", cmbPaymentMethod.Text == "Cash" ? 0 : string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text)),
                DBClass.CreateParameter("created_by", frmLogin.userId),
@@ -1961,7 +1966,7 @@ namespace YamyProject
         {
             if (cmbAccountCashName.Focused && int.Parse(cmbAccountCashName.SelectedValue.ToString()) == -1)
             {
-                frmLogin.frmMain.openChildForm(new frmAddAccount());
+                new frmAddAccount().ShowDialog();
             }
             else
             {
@@ -2011,6 +2016,7 @@ namespace YamyProject
                         dtPaymentTerms.Value = DateTime.Parse(reader["payment_date"].ToString());
                     }
                     cmbShipVia.Text = reader["ship_via"].ToString();
+                    richTextDescription.Text = reader["description"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
                     invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                     invId = id;
@@ -2064,6 +2070,7 @@ namespace YamyProject
                         dtPaymentTerms.Value = DateTime.Parse(reader["payment_date"].ToString());
                     }
                     cmbShipVia.Text = reader["ship_via"].ToString();
+                    richTextDescription.Text = reader["description"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
                     invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                     invId = id;
@@ -2366,6 +2373,11 @@ namespace YamyProject
                 dtPaymentTerms.Value = dtPaymentTerms.Value.AddDays(int.Parse(cmbPaymentTerms.Text));
             else
                 dtPaymentTerms.Value = dtInv.Value;
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         public DataTable SalesDetails(string a1)

@@ -63,7 +63,7 @@ namespace YamyProject
 
         private void lnkNewUnit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewItemUnit());
+            new frmViewItemUnit().ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

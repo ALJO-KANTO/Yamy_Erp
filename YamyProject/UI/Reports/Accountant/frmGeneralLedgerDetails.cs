@@ -191,7 +191,7 @@ namespace YamyProject
                 //    }
                 //    else
                 //    {
-                //        frmLogin.frmMain.openChildForm(new frmViewCustomer(id));
+                //        new frmViewCustomer(id);
                 //    }
                 //}
             }

@@ -184,14 +184,14 @@
             this.btnOpen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnOpen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnOpen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOpen.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnOpen.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.ForeColor = System.Drawing.Color.White;
-            this.btnOpen.Location = new System.Drawing.Point(36, 152);
+            this.btnOpen.Location = new System.Drawing.Point(36, 155);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.PressedColor = System.Drawing.Color.White;
-            this.btnOpen.Size = new System.Drawing.Size(158, 43);
+            this.btnOpen.Size = new System.Drawing.Size(158, 40);
             this.btnOpen.TabIndex = 4;
             this.btnOpen.Text = "Open Company";
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
@@ -206,14 +206,14 @@
             this.btnCreate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCreate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCreate.Enabled = false;
-            this.btnCreate.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnCreate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(244, 152);
+            this.btnCreate.Location = new System.Drawing.Point(236, 155);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.PressedColor = System.Drawing.Color.White;
-            this.btnCreate.Size = new System.Drawing.Size(160, 43);
+            this.btnCreate.Size = new System.Drawing.Size(160, 40);
             this.btnCreate.TabIndex = 3;
             this.btnCreate.Text = "Create Company";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -325,11 +325,11 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2CircleProgressBar ProgressBar1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

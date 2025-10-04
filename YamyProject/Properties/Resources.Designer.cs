@@ -713,6 +713,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Conference_Skin_Type_71 {
+            get {
+                object obj = ResourceManager.GetObject("Conference Skin Type 71", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Copy {
             get {
                 object obj = ResourceManager.GetObject("Copy", resourceCulture);
@@ -903,6 +913,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Diversity2 {
+            get {
+                object obj = ResourceManager.GetObject("Diversity2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Double_Left2 {
             get {
                 object obj = ResourceManager.GetObject("Double Left2", resourceCulture);
@@ -1073,6 +1093,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GearsDraft1 {
+            get {
+                object obj = ResourceManager.GetObject("GearsDraft1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GearsProgres {
             get {
                 object obj = ResourceManager.GetObject("GearsProgres", resourceCulture);
@@ -1147,6 +1177,16 @@ namespace YamyProject.Properties {
             get {
                 object obj = ResourceManager.GetObject("Good_Quality", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap graph {
+            get {
+                object obj = ResourceManager.GetObject("graph", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -2616,6 +2656,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap View_A2ll {
             get {
                 object obj = ResourceManager.GetObject("View A2ll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap View_A2ll1 {
+            get {
+                object obj = ResourceManager.GetObject("View A2ll1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

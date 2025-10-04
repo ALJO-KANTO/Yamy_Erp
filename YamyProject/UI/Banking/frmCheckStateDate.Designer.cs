@@ -97,6 +97,7 @@
             // 
             // txtCheckName
             // 
+            this.txtCheckName.BorderRadius = 5;
             this.txtCheckName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCheckName.DefaultText = "";
             this.txtCheckName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -111,7 +112,6 @@
             this.txtCheckName.Location = new System.Drawing.Point(20, 71);
             this.txtCheckName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCheckName.Name = "txtCheckName";
-            this.txtCheckName.PasswordChar = '\0';
             this.txtCheckName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCheckName.PlaceholderText = "Check Name";
             this.txtCheckName.SelectedText = "";
@@ -150,16 +150,15 @@
             // 
             // dtCheck
             // 
-            this.dtCheck.Checked = true;
-            this.dtCheck.Enabled = false;
             this.dtCheck.BackColor = System.Drawing.Color.Gainsboro;
+            this.dtCheck.Enabled = false;
             this.dtCheck.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtCheck.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtCheck.Location = new System.Drawing.Point(20, 124);
             this.dtCheck.Margin = new System.Windows.Forms.Padding(2);
             this.dtCheck.Name = "dtCheck";
-            this.dtCheck.Size = new System.Drawing.Size(214, 29);
+            this.dtCheck.Size = new System.Drawing.Size(214, 23);
             this.dtCheck.TabIndex = 17;
             // 
             // label11
@@ -195,7 +194,7 @@
             this.dtState.Location = new System.Drawing.Point(20, 178);
             this.dtState.Margin = new System.Windows.Forms.Padding(2);
             this.dtState.Name = "dtState";
-            this.dtState.Size = new System.Drawing.Size(214, 29);
+            this.dtState.Size = new System.Drawing.Size(214, 23);
             this.dtState.TabIndex = 17;
             // 
             // label2
@@ -212,8 +211,10 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";

@@ -331,7 +331,7 @@
             this.txtPhoneNumEmerg.Location = new System.Drawing.Point(258, 461);
             this.txtPhoneNumEmerg.Multiline = true;
             this.txtPhoneNumEmerg.Name = "txtPhoneNumEmerg";
-            this.txtPhoneNumEmerg.Size = new System.Drawing.Size(149, 29);
+            this.txtPhoneNumEmerg.Size = new System.Drawing.Size(149, 24);
             this.txtPhoneNumEmerg.TabIndex = 146;
             // 
             // txtAddressEmerg
@@ -340,7 +340,7 @@
             this.txtAddressEmerg.Location = new System.Drawing.Point(22, 461);
             this.txtAddressEmerg.Multiline = true;
             this.txtAddressEmerg.Name = "txtAddressEmerg";
-            this.txtAddressEmerg.Size = new System.Drawing.Size(230, 29);
+            this.txtAddressEmerg.Size = new System.Drawing.Size(230, 24);
             this.txtAddressEmerg.TabIndex = 146;
             // 
             // txtEmergency
@@ -349,7 +349,7 @@
             this.txtEmergency.Location = new System.Drawing.Point(22, 404);
             this.txtEmergency.Multiline = true;
             this.txtEmergency.Name = "txtEmergency";
-            this.txtEmergency.Size = new System.Drawing.Size(230, 29);
+            this.txtEmergency.Size = new System.Drawing.Size(230, 24);
             this.txtEmergency.TabIndex = 146;
             // 
             // txtSocialInsurance
@@ -358,7 +358,7 @@
             this.txtSocialInsurance.Location = new System.Drawing.Point(258, 315);
             this.txtSocialInsurance.Multiline = true;
             this.txtSocialInsurance.Name = "txtSocialInsurance";
-            this.txtSocialInsurance.Size = new System.Drawing.Size(149, 29);
+            this.txtSocialInsurance.Size = new System.Drawing.Size(149, 24);
             this.txtSocialInsurance.TabIndex = 146;
             // 
             // txtEmail
@@ -367,7 +367,7 @@
             this.txtEmail.Location = new System.Drawing.Point(22, 315);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(230, 29);
+            this.txtEmail.Size = new System.Drawing.Size(230, 24);
             this.txtEmail.TabIndex = 146;
             // 
             // txtPhoneNum
@@ -376,7 +376,7 @@
             this.txtPhoneNum.Location = new System.Drawing.Point(22, 259);
             this.txtPhoneNum.Multiline = true;
             this.txtPhoneNum.Name = "txtPhoneNum";
-            this.txtPhoneNum.Size = new System.Drawing.Size(230, 29);
+            this.txtPhoneNum.Size = new System.Drawing.Size(230, 24);
             this.txtPhoneNum.TabIndex = 146;
             // 
             // txtAddress
@@ -385,7 +385,7 @@
             this.txtAddress.Location = new System.Drawing.Point(22, 173);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(230, 29);
+            this.txtAddress.Size = new System.Drawing.Size(230, 24);
             this.txtAddress.TabIndex = 146;
             // 
             // txtEmployeeCode
@@ -395,7 +395,7 @@
             this.txtEmployeeCode.Location = new System.Drawing.Point(22, 66);
             this.txtEmployeeCode.Multiline = true;
             this.txtEmployeeCode.Name = "txtEmployeeCode";
-            this.txtEmployeeCode.Size = new System.Drawing.Size(125, 29);
+            this.txtEmployeeCode.Size = new System.Drawing.Size(125, 24);
             this.txtEmployeeCode.TabIndex = 146;
             // 
             // txtBankCode
@@ -405,7 +405,7 @@
             this.txtBankCode.Location = new System.Drawing.Point(746, 260);
             this.txtBankCode.Multiline = true;
             this.txtBankCode.Name = "txtBankCode";
-            this.txtBankCode.Size = new System.Drawing.Size(76, 29);
+            this.txtBankCode.Size = new System.Drawing.Size(76, 24);
             this.txtBankCode.TabIndex = 146;
             // 
             // txtTotalSalary
@@ -415,7 +415,7 @@
             this.txtTotalSalary.Location = new System.Drawing.Point(462, 171);
             this.txtTotalSalary.Multiline = true;
             this.txtTotalSalary.Name = "txtTotalSalary";
-            this.txtTotalSalary.Size = new System.Drawing.Size(360, 29);
+            this.txtTotalSalary.Size = new System.Drawing.Size(360, 24);
             this.txtTotalSalary.TabIndex = 146;
             // 
             // txtEmiratesIdIssue
@@ -424,7 +424,7 @@
             this.txtEmiratesIdIssue.Location = new System.Drawing.Point(642, 404);
             this.txtEmiratesIdIssue.Multiline = true;
             this.txtEmiratesIdIssue.Name = "txtEmiratesIdIssue";
-            this.txtEmiratesIdIssue.Size = new System.Drawing.Size(180, 29);
+            this.txtEmiratesIdIssue.Size = new System.Drawing.Size(180, 24);
             this.txtEmiratesIdIssue.TabIndex = 146;
             // 
             // txtIBanNum
@@ -433,7 +433,7 @@
             this.txtIBanNum.Location = new System.Drawing.Point(642, 315);
             this.txtIBanNum.Multiline = true;
             this.txtIBanNum.Name = "txtIBanNum";
-            this.txtIBanNum.Size = new System.Drawing.Size(180, 29);
+            this.txtIBanNum.Size = new System.Drawing.Size(180, 24);
             this.txtIBanNum.TabIndex = 146;
             // 
             // txtSalaryOther
@@ -442,7 +442,7 @@
             this.txtSalaryOther.Location = new System.Drawing.Point(642, 120);
             this.txtSalaryOther.Multiline = true;
             this.txtSalaryOther.Name = "txtSalaryOther";
-            this.txtSalaryOther.Size = new System.Drawing.Size(180, 29);
+            this.txtSalaryOther.Size = new System.Drawing.Size(180, 24);
             this.txtSalaryOther.TabIndex = 146;
             this.txtSalaryOther.TextChanged += new System.EventHandler(this.txtSalaryOther_TextChanged);
             // 
@@ -452,7 +452,7 @@
             this.txtHouseingAllowance.Location = new System.Drawing.Point(642, 66);
             this.txtHouseingAllowance.Multiline = true;
             this.txtHouseingAllowance.Name = "txtHouseingAllowance";
-            this.txtHouseingAllowance.Size = new System.Drawing.Size(180, 29);
+            this.txtHouseingAllowance.Size = new System.Drawing.Size(180, 24);
             this.txtHouseingAllowance.TabIndex = 146;
             this.txtHouseingAllowance.TextChanged += new System.EventHandler(this.txtHouseingAllowance_TextChanged);
             // 
@@ -462,7 +462,7 @@
             this.txtEmiratesIdFileNum.Location = new System.Drawing.Point(462, 404);
             this.txtEmiratesIdFileNum.Multiline = true;
             this.txtEmiratesIdFileNum.Name = "txtEmiratesIdFileNum";
-            this.txtEmiratesIdFileNum.Size = new System.Drawing.Size(174, 29);
+            this.txtEmiratesIdFileNum.Size = new System.Drawing.Size(174, 24);
             this.txtEmiratesIdFileNum.TabIndex = 146;
             this.txtEmiratesIdFileNum.TextChanged += new System.EventHandler(this.txtTransportaionAllow_TextChanged);
             // 
@@ -472,7 +472,7 @@
             this.txtBankAccountNumber.Location = new System.Drawing.Point(462, 315);
             this.txtBankAccountNumber.Multiline = true;
             this.txtBankAccountNumber.Name = "txtBankAccountNumber";
-            this.txtBankAccountNumber.Size = new System.Drawing.Size(174, 29);
+            this.txtBankAccountNumber.Size = new System.Drawing.Size(174, 24);
             this.txtBankAccountNumber.TabIndex = 146;
             this.txtBankAccountNumber.TextChanged += new System.EventHandler(this.txtTransportaionAllow_TextChanged);
             // 
@@ -482,7 +482,7 @@
             this.txtTransportaionAllow.Location = new System.Drawing.Point(462, 119);
             this.txtTransportaionAllow.Multiline = true;
             this.txtTransportaionAllow.Name = "txtTransportaionAllow";
-            this.txtTransportaionAllow.Size = new System.Drawing.Size(174, 29);
+            this.txtTransportaionAllow.Size = new System.Drawing.Size(174, 24);
             this.txtTransportaionAllow.TabIndex = 146;
             this.txtTransportaionAllow.TextChanged += new System.EventHandler(this.txtTransportaionAllow_TextChanged);
             // 
@@ -492,7 +492,7 @@
             this.txtBasicSalary.Location = new System.Drawing.Point(462, 66);
             this.txtBasicSalary.Multiline = true;
             this.txtBasicSalary.Name = "txtBasicSalary";
-            this.txtBasicSalary.Size = new System.Drawing.Size(174, 29);
+            this.txtBasicSalary.Size = new System.Drawing.Size(174, 24);
             this.txtBasicSalary.TabIndex = 146;
             this.txtBasicSalary.TextChanged += new System.EventHandler(this.txtBasicSalary_TextChanged_1);
             // 
@@ -502,23 +502,24 @@
             this.txtEmpName.Location = new System.Drawing.Point(153, 66);
             this.txtEmpName.Multiline = true;
             this.txtEmpName.Name = "txtEmpName";
-            this.txtEmpName.Size = new System.Drawing.Size(254, 29);
+            this.txtEmpName.Size = new System.Drawing.Size(254, 24);
             this.txtEmpName.TabIndex = 146;
             // 
             // cmbBankName
             // 
             this.cmbBankName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbBankName.BorderRadius = 5;
             this.cmbBankName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBankName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbBankName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbBankName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbBankName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbBankName.ItemHeight = 23;
+            this.cmbBankName.ItemHeight = 18;
             this.cmbBankName.Location = new System.Drawing.Point(462, 259);
             this.cmbBankName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbBankName.Name = "cmbBankName";
-            this.cmbBankName.Size = new System.Drawing.Size(278, 29);
+            this.cmbBankName.Size = new System.Drawing.Size(278, 24);
             this.cmbBankName.TabIndex = 145;
             this.cmbBankName.SelectedIndexChanged += new System.EventHandler(this.cmbBankName_SelectedIndexChanged);
             // 
@@ -589,7 +590,7 @@
             this.chkActive.ForeColor = System.Drawing.Color.Black;
             this.chkActive.Location = new System.Drawing.Point(22, 508);
             this.chkActive.Name = "chkActive";
-            this.chkActive.Size = new System.Drawing.Size(121, 20);
+            this.chkActive.Size = new System.Drawing.Size(120, 20);
             this.chkActive.TabIndex = 139;
             this.chkActive.Text = "Employee Active";
             this.chkActive.UncheckedState.BorderRadius = 0;
@@ -611,13 +612,14 @@
             // cmbRelation
             // 
             this.cmbRelation.BackColor = System.Drawing.Color.Transparent;
+            this.cmbRelation.BorderRadius = 5;
             this.cmbRelation.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRelation.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbRelation.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbRelation.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbRelation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbRelation.ItemHeight = 23;
+            this.cmbRelation.ItemHeight = 18;
             this.cmbRelation.Items.AddRange(new object[] {
             "Spouse",
             "Partner",
@@ -632,12 +634,11 @@
             this.cmbRelation.Location = new System.Drawing.Point(258, 404);
             this.cmbRelation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRelation.Name = "cmbRelation";
-            this.cmbRelation.Size = new System.Drawing.Size(149, 29);
+            this.cmbRelation.Size = new System.Drawing.Size(149, 24);
             this.cmbRelation.TabIndex = 133;
             // 
             // dtEmiratesIdExpire
             // 
-            this.dtEmiratesIdExpire.Checked = true;
             this.dtEmiratesIdExpire.BackColor = System.Drawing.Color.Gainsboro;
             this.dtEmiratesIdExpire.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtEmiratesIdExpire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -645,12 +646,11 @@
             this.dtEmiratesIdExpire.Location = new System.Drawing.Point(642, 461);
             this.dtEmiratesIdExpire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtEmiratesIdExpire.Name = "dtEmiratesIdExpire";
-            this.dtEmiratesIdExpire.Size = new System.Drawing.Size(180, 29);
+            this.dtEmiratesIdExpire.Size = new System.Drawing.Size(180, 23);
             this.dtEmiratesIdExpire.TabIndex = 131;
             // 
             // dtEmiratesIdIssue
             // 
-            this.dtEmiratesIdIssue.Checked = true;
             this.dtEmiratesIdIssue.BackColor = System.Drawing.Color.Gainsboro;
             this.dtEmiratesIdIssue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtEmiratesIdIssue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -658,7 +658,7 @@
             this.dtEmiratesIdIssue.Location = new System.Drawing.Point(462, 461);
             this.dtEmiratesIdIssue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtEmiratesIdIssue.Name = "dtEmiratesIdIssue";
-            this.dtEmiratesIdIssue.Size = new System.Drawing.Size(174, 29);
+            this.dtEmiratesIdIssue.Size = new System.Drawing.Size(174, 23);
             this.dtEmiratesIdIssue.TabIndex = 132;
             // 
             // label22
@@ -697,46 +697,49 @@
             // cmbCity
             // 
             this.cmbCity.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCity.BorderRadius = 5;
             this.cmbCity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCity.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCity.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCity.ItemHeight = 23;
+            this.cmbCity.ItemHeight = 18;
             this.cmbCity.Location = new System.Drawing.Point(258, 120);
             this.cmbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(149, 29);
+            this.cmbCity.Size = new System.Drawing.Size(149, 24);
             this.cmbCity.TabIndex = 119;
             // 
             // cmbCountry
             // 
             this.cmbCountry.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCountry.BorderRadius = 5;
             this.cmbCountry.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCountry.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountry.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCountry.ItemHeight = 23;
+            this.cmbCountry.ItemHeight = 18;
             this.cmbCountry.Location = new System.Drawing.Point(22, 120);
             this.cmbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(230, 29);
+            this.cmbCountry.Size = new System.Drawing.Size(230, 24);
             this.cmbCountry.TabIndex = 119;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
             // 
             // cmbSocialState
             // 
             this.cmbSocialState.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSocialState.BorderRadius = 5;
             this.cmbSocialState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSocialState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSocialState.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSocialState.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSocialState.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbSocialState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbSocialState.ItemHeight = 23;
+            this.cmbSocialState.ItemHeight = 18;
             this.cmbSocialState.Items.AddRange(new object[] {
             "Single",
             "Married",
@@ -754,12 +757,11 @@
             this.cmbSocialState.Location = new System.Drawing.Point(258, 173);
             this.cmbSocialState.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSocialState.Name = "cmbSocialState";
-            this.cmbSocialState.Size = new System.Drawing.Size(149, 29);
+            this.cmbSocialState.Size = new System.Drawing.Size(149, 24);
             this.cmbSocialState.TabIndex = 119;
             // 
             // dtOfBirth
             // 
-            this.dtOfBirth.Checked = true;
             this.dtOfBirth.BackColor = System.Drawing.Color.Gainsboro;
             this.dtOfBirth.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtOfBirth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -767,7 +769,7 @@
             this.dtOfBirth.Location = new System.Drawing.Point(258, 259);
             this.dtOfBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtOfBirth.Name = "dtOfBirth";
-            this.dtOfBirth.Size = new System.Drawing.Size(149, 29);
+            this.dtOfBirth.Size = new System.Drawing.Size(149, 23);
             this.dtOfBirth.TabIndex = 117;
             // 
             // label9
@@ -1060,7 +1062,7 @@
             this.Label509.ForeColor = System.Drawing.Color.Cyan;
             this.Label509.Location = new System.Drawing.Point(1434, 1031);
             this.Label509.Name = "Label509";
-            this.Label509.Size = new System.Drawing.Size(309, 16);
+            this.Label509.Size = new System.Drawing.Size(308, 16);
             this.Label509.TabIndex = 11;
             this.Label509.Text = "The facility name is essential and cannot be left blank";
             // 
@@ -1071,7 +1073,7 @@
             this.Label520.ForeColor = System.Drawing.Color.Cyan;
             this.Label520.Location = new System.Drawing.Point(1369, 1044);
             this.Label520.Name = "Label520";
-            this.Label520.Size = new System.Drawing.Size(417, 16);
+            this.Label520.Size = new System.Drawing.Size(416, 16);
             this.Label520.TabIndex = 10;
             this.Label520.Text = "The establishment customer number is essential and cannot be left blank";
             // 
@@ -1082,7 +1084,7 @@
             this.Label5.ForeColor = System.Drawing.Color.Green;
             this.Label5.Location = new System.Drawing.Point(1471, 1070);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(215, 16);
+            this.Label5.Size = new System.Drawing.Size(214, 16);
             this.Label5.TabIndex = 1;
             this.Label5.Text = "The company logo has been updated";
             // 
@@ -1093,7 +1095,7 @@
             this.Label4.ForeColor = System.Drawing.Color.Cyan;
             this.Label4.Location = new System.Drawing.Point(1424, 1057);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(318, 16);
+            this.Label4.Size = new System.Drawing.Size(317, 16);
             this.Label4.TabIndex = 9;
             this.Label4.Text = "The email address is essential and cannot be left empty";
             // 
@@ -1175,10 +1177,10 @@
             // txtPettyCash
             // 
             this.txtPettyCash.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPettyCash.Location = new System.Drawing.Point(756, 524);
+            this.txtPettyCash.Location = new System.Drawing.Point(757, 505);
             this.txtPettyCash.Multiline = true;
             this.txtPettyCash.Name = "txtPettyCash";
-            this.txtPettyCash.Size = new System.Drawing.Size(93, 29);
+            this.txtPettyCash.Size = new System.Drawing.Size(93, 24);
             this.txtPettyCash.TabIndex = 151;
             this.txtPettyCash.Visible = false;
             this.txtPettyCash.TextChanged += new System.EventHandler(this.txtPettyCash_TextChanged);
@@ -1188,7 +1190,7 @@
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label66.ForeColor = System.Drawing.Color.Black;
-            this.label66.Location = new System.Drawing.Point(759, 505);
+            this.label66.Location = new System.Drawing.Point(760, 486);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(63, 15);
             this.label66.TabIndex = 149;
@@ -1200,7 +1202,7 @@
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label67.ForeColor = System.Drawing.Color.Black;
-            this.label67.Location = new System.Drawing.Point(463, 505);
+            this.label67.Location = new System.Drawing.Point(464, 486);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(65, 15);
             this.label67.TabIndex = 150;
@@ -1210,17 +1212,18 @@
             // cmbPettyCash
             // 
             this.cmbPettyCash.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPettyCash.BorderRadius = 5;
             this.cmbPettyCash.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPettyCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPettyCash.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPettyCash.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPettyCash.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbPettyCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPettyCash.ItemHeight = 23;
-            this.cmbPettyCash.Location = new System.Drawing.Point(460, 524);
+            this.cmbPettyCash.ItemHeight = 18;
+            this.cmbPettyCash.Location = new System.Drawing.Point(461, 505);
             this.cmbPettyCash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPettyCash.Name = "cmbPettyCash";
-            this.cmbPettyCash.Size = new System.Drawing.Size(290, 29);
+            this.cmbPettyCash.Size = new System.Drawing.Size(290, 24);
             this.cmbPettyCash.TabIndex = 148;
             this.cmbPettyCash.Visible = false;
             this.cmbPettyCash.SelectedIndexChanged += new System.EventHandler(this.cmbPettyCash_SelectedIndexChanged);
@@ -1231,7 +1234,7 @@
             this.txtWorkingHours.Location = new System.Drawing.Point(219, 346);
             this.txtWorkingHours.Multiline = true;
             this.txtWorkingHours.Name = "txtWorkingHours";
-            this.txtWorkingHours.Size = new System.Drawing.Size(186, 29);
+            this.txtWorkingHours.Size = new System.Drawing.Size(186, 24);
             this.txtWorkingHours.TabIndex = 147;
             // 
             // txtWorkDays
@@ -1240,7 +1243,7 @@
             this.txtWorkDays.Location = new System.Drawing.Point(20, 346);
             this.txtWorkDays.Multiline = true;
             this.txtWorkDays.Name = "txtWorkDays";
-            this.txtWorkDays.Size = new System.Drawing.Size(193, 29);
+            this.txtWorkDays.Size = new System.Drawing.Size(193, 24);
             this.txtWorkDays.TabIndex = 147;
             // 
             // txtContractType
@@ -1249,7 +1252,7 @@
             this.txtContractType.Location = new System.Drawing.Point(20, 283);
             this.txtContractType.Multiline = true;
             this.txtContractType.Name = "txtContractType";
-            this.txtContractType.Size = new System.Drawing.Size(193, 29);
+            this.txtContractType.Size = new System.Drawing.Size(193, 24);
             this.txtContractType.TabIndex = 147;
             // 
             // txtWorkContractNum
@@ -1258,7 +1261,7 @@
             this.txtWorkContractNum.Location = new System.Drawing.Point(20, 222);
             this.txtWorkContractNum.Multiline = true;
             this.txtWorkContractNum.Name = "txtWorkContractNum";
-            this.txtWorkContractNum.Size = new System.Drawing.Size(193, 29);
+            this.txtWorkContractNum.Size = new System.Drawing.Size(193, 24);
             this.txtWorkContractNum.TabIndex = 147;
             // 
             // txtGratuit
@@ -1267,7 +1270,7 @@
             this.txtGratuit.Location = new System.Drawing.Point(757, 403);
             this.txtGratuit.Multiline = true;
             this.txtGratuit.Name = "txtGratuit";
-            this.txtGratuit.Size = new System.Drawing.Size(93, 29);
+            this.txtGratuit.Size = new System.Drawing.Size(93, 24);
             this.txtGratuit.TabIndex = 147;
             // 
             // txtAcroalLeaveSalary
@@ -1276,7 +1279,7 @@
             this.txtAcroalLeaveSalary.Location = new System.Drawing.Point(757, 347);
             this.txtAcroalLeaveSalary.Multiline = true;
             this.txtAcroalLeaveSalary.Name = "txtAcroalLeaveSalary";
-            this.txtAcroalLeaveSalary.Size = new System.Drawing.Size(93, 29);
+            this.txtAcroalLeaveSalary.Size = new System.Drawing.Size(93, 24);
             this.txtAcroalLeaveSalary.TabIndex = 147;
             // 
             // txtEmployeeRecivable
@@ -1285,7 +1288,7 @@
             this.txtEmployeeRecivable.Location = new System.Drawing.Point(757, 286);
             this.txtEmployeeRecivable.Multiline = true;
             this.txtEmployeeRecivable.Name = "txtEmployeeRecivable";
-            this.txtEmployeeRecivable.Size = new System.Drawing.Size(93, 29);
+            this.txtEmployeeRecivable.Size = new System.Drawing.Size(93, 24);
             this.txtEmployeeRecivable.TabIndex = 147;
             // 
             // txtAccruedSalaries
@@ -1294,7 +1297,7 @@
             this.txtAccruedSalaries.Location = new System.Drawing.Point(757, 223);
             this.txtAccruedSalaries.Multiline = true;
             this.txtAccruedSalaries.Name = "txtAccruedSalaries";
-            this.txtAccruedSalaries.Size = new System.Drawing.Size(93, 29);
+            this.txtAccruedSalaries.Size = new System.Drawing.Size(93, 24);
             this.txtAccruedSalaries.TabIndex = 147;
             // 
             // txtAccountCode
@@ -1303,7 +1306,7 @@
             this.txtAccountCode.Location = new System.Drawing.Point(327, 505);
             this.txtAccountCode.Multiline = true;
             this.txtAccountCode.Name = "txtAccountCode";
-            this.txtAccountCode.Size = new System.Drawing.Size(93, 29);
+            this.txtAccountCode.Size = new System.Drawing.Size(93, 24);
             this.txtAccountCode.TabIndex = 147;
             this.txtAccountCode.Visible = false;
             // 
@@ -1313,7 +1316,7 @@
             this.txtResidencyIssue.Location = new System.Drawing.Point(659, 70);
             this.txtResidencyIssue.Multiline = true;
             this.txtResidencyIssue.Name = "txtResidencyIssue";
-            this.txtResidencyIssue.Size = new System.Drawing.Size(190, 29);
+            this.txtResidencyIssue.Size = new System.Drawing.Size(190, 24);
             this.txtResidencyIssue.TabIndex = 147;
             // 
             // txtResidencyFileNum
@@ -1322,7 +1325,7 @@
             this.txtResidencyFileNum.Location = new System.Drawing.Point(460, 70);
             this.txtResidencyFileNum.Multiline = true;
             this.txtResidencyFileNum.Name = "txtResidencyFileNum";
-            this.txtResidencyFileNum.Size = new System.Drawing.Size(193, 29);
+            this.txtResidencyFileNum.Size = new System.Drawing.Size(193, 24);
             this.txtResidencyFileNum.TabIndex = 147;
             // 
             // txtPassportNum
@@ -1331,23 +1334,24 @@
             this.txtPassportNum.Location = new System.Drawing.Point(20, 70);
             this.txtPassportNum.Multiline = true;
             this.txtPassportNum.Name = "txtPassportNum";
-            this.txtPassportNum.Size = new System.Drawing.Size(193, 29);
+            this.txtPassportNum.Size = new System.Drawing.Size(193, 24);
             this.txtPassportNum.TabIndex = 147;
             // 
             // cmbPosition
             // 
             this.cmbPosition.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPosition.BorderRadius = 5;
             this.cmbPosition.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosition.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPosition.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPosition.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.cmbPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPosition.ItemHeight = 23;
+            this.cmbPosition.ItemHeight = 18;
             this.cmbPosition.Location = new System.Drawing.Point(219, 283);
             this.cmbPosition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPosition.Name = "cmbPosition";
-            this.cmbPosition.Size = new System.Drawing.Size(143, 29);
+            this.cmbPosition.Size = new System.Drawing.Size(143, 24);
             this.cmbPosition.TabIndex = 141;
             // 
             // linkLabel1
@@ -1389,17 +1393,18 @@
             // cmbDepartments
             // 
             this.cmbDepartments.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDepartments.BorderRadius = 5;
             this.cmbDepartments.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartments.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbDepartments.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbDepartments.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.cmbDepartments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbDepartments.ItemHeight = 23;
+            this.cmbDepartments.ItemHeight = 18;
             this.cmbDepartments.Location = new System.Drawing.Point(219, 222);
             this.cmbDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDepartments.Name = "cmbDepartments";
-            this.cmbDepartments.Size = new System.Drawing.Size(143, 29);
+            this.cmbDepartments.Size = new System.Drawing.Size(143, 24);
             this.cmbDepartments.TabIndex = 139;
             this.cmbDepartments.SelectedIndexChanged += new System.EventHandler(this.cmbDepartments_SelectedIndexChanged);
             // 
@@ -1529,85 +1534,90 @@
             // cmbGratuit
             // 
             this.cmbGratuit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbGratuit.BorderRadius = 5;
             this.cmbGratuit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbGratuit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGratuit.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbGratuit.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbGratuit.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbGratuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbGratuit.ItemHeight = 23;
+            this.cmbGratuit.ItemHeight = 18;
             this.cmbGratuit.Location = new System.Drawing.Point(461, 403);
             this.cmbGratuit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGratuit.Name = "cmbGratuit";
-            this.cmbGratuit.Size = new System.Drawing.Size(290, 29);
+            this.cmbGratuit.Size = new System.Drawing.Size(290, 24);
             this.cmbGratuit.TabIndex = 132;
             this.cmbGratuit.SelectedIndexChanged += new System.EventHandler(this.cmbGratuit_SelectedIndexChanged);
             // 
             // cmbAcroalLeaveSalary
             // 
             this.cmbAcroalLeaveSalary.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAcroalLeaveSalary.BorderRadius = 5;
             this.cmbAcroalLeaveSalary.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAcroalLeaveSalary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcroalLeaveSalary.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAcroalLeaveSalary.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAcroalLeaveSalary.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAcroalLeaveSalary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAcroalLeaveSalary.ItemHeight = 23;
+            this.cmbAcroalLeaveSalary.ItemHeight = 18;
             this.cmbAcroalLeaveSalary.Location = new System.Drawing.Point(461, 347);
             this.cmbAcroalLeaveSalary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAcroalLeaveSalary.Name = "cmbAcroalLeaveSalary";
-            this.cmbAcroalLeaveSalary.Size = new System.Drawing.Size(290, 29);
+            this.cmbAcroalLeaveSalary.Size = new System.Drawing.Size(290, 24);
             this.cmbAcroalLeaveSalary.TabIndex = 132;
             this.cmbAcroalLeaveSalary.SelectedIndexChanged += new System.EventHandler(this.cmbAcroalLeaveSalary_SelectedIndexChanged);
             // 
             // cmbEmployeeRecivable
             // 
             this.cmbEmployeeRecivable.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEmployeeRecivable.BorderRadius = 5;
             this.cmbEmployeeRecivable.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbEmployeeRecivable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeRecivable.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeRecivable.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbEmployeeRecivable.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEmployeeRecivable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEmployeeRecivable.ItemHeight = 23;
+            this.cmbEmployeeRecivable.ItemHeight = 18;
             this.cmbEmployeeRecivable.Location = new System.Drawing.Point(461, 286);
             this.cmbEmployeeRecivable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployeeRecivable.Name = "cmbEmployeeRecivable";
-            this.cmbEmployeeRecivable.Size = new System.Drawing.Size(290, 29);
+            this.cmbEmployeeRecivable.Size = new System.Drawing.Size(290, 24);
             this.cmbEmployeeRecivable.TabIndex = 132;
             this.cmbEmployeeRecivable.SelectedIndexChanged += new System.EventHandler(this.cmbEmployeeRecivable_SelectedIndexChanged);
             // 
             // cmbAccruedSalaries
             // 
             this.cmbAccruedSalaries.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccruedSalaries.BorderRadius = 5;
             this.cmbAccruedSalaries.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccruedSalaries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccruedSalaries.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccruedSalaries.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccruedSalaries.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAccruedSalaries.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccruedSalaries.ItemHeight = 23;
+            this.cmbAccruedSalaries.ItemHeight = 18;
             this.cmbAccruedSalaries.Location = new System.Drawing.Point(461, 223);
             this.cmbAccruedSalaries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAccruedSalaries.Name = "cmbAccruedSalaries";
-            this.cmbAccruedSalaries.Size = new System.Drawing.Size(290, 29);
+            this.cmbAccruedSalaries.Size = new System.Drawing.Size(290, 24);
             this.cmbAccruedSalaries.TabIndex = 132;
             this.cmbAccruedSalaries.SelectedIndexChanged += new System.EventHandler(this.cmbAccruedSalaries_SelectedIndexChanged);
             // 
             // cmbAccountName
             // 
             this.cmbAccountName.BackColor = System.Drawing.Color.Transparent;
+            this.cmbAccountName.BorderRadius = 5;
             this.cmbAccountName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAccountName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbAccountName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbAccountName.ItemHeight = 23;
+            this.cmbAccountName.ItemHeight = 18;
             this.cmbAccountName.Location = new System.Drawing.Point(31, 505);
             this.cmbAccountName.Margin = new System.Windows.Forms.Padding(0);
             this.cmbAccountName.Name = "cmbAccountName";
-            this.cmbAccountName.Size = new System.Drawing.Size(290, 29);
+            this.cmbAccountName.Size = new System.Drawing.Size(290, 24);
             this.cmbAccountName.TabIndex = 132;
             this.cmbAccountName.Visible = false;
             this.cmbAccountName.SelectedIndexChanged += new System.EventHandler(this.cmbAccountName_SelectedIndexChanged);
@@ -1615,22 +1625,22 @@
             // cmbCountryOfIssue
             // 
             this.cmbCountryOfIssue.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCountryOfIssue.BorderRadius = 5;
             this.cmbCountryOfIssue.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCountryOfIssue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCountryOfIssue.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountryOfIssue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbCountryOfIssue.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.cmbCountryOfIssue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCountryOfIssue.ItemHeight = 23;
+            this.cmbCountryOfIssue.ItemHeight = 18;
             this.cmbCountryOfIssue.Location = new System.Drawing.Point(219, 70);
             this.cmbCountryOfIssue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCountryOfIssue.Name = "cmbCountryOfIssue";
-            this.cmbCountryOfIssue.Size = new System.Drawing.Size(186, 29);
+            this.cmbCountryOfIssue.Size = new System.Drawing.Size(186, 24);
             this.cmbCountryOfIssue.TabIndex = 126;
             // 
             // dtResidencyExpire
             // 
-            this.dtResidencyExpire.Checked = true;
             this.dtResidencyExpire.BackColor = System.Drawing.Color.Gainsboro;
             this.dtResidencyExpire.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtResidencyExpire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1638,12 +1648,11 @@
             this.dtResidencyExpire.Location = new System.Drawing.Point(659, 132);
             this.dtResidencyExpire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtResidencyExpire.Name = "dtResidencyExpire";
-            this.dtResidencyExpire.Size = new System.Drawing.Size(190, 29);
+            this.dtResidencyExpire.Size = new System.Drawing.Size(190, 23);
             this.dtResidencyExpire.TabIndex = 125;
             // 
             // dtContractExpire
             // 
-            this.dtContractExpire.Checked = true;
             this.dtContractExpire.BackColor = System.Drawing.Color.Gainsboro;
             this.dtContractExpire.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtContractExpire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1651,12 +1660,11 @@
             this.dtContractExpire.Location = new System.Drawing.Point(219, 407);
             this.dtContractExpire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtContractExpire.Name = "dtContractExpire";
-            this.dtContractExpire.Size = new System.Drawing.Size(186, 29);
+            this.dtContractExpire.Size = new System.Drawing.Size(186, 23);
             this.dtContractExpire.TabIndex = 125;
             // 
             // dtPassportEnd
             // 
-            this.dtPassportEnd.Checked = true;
             this.dtPassportEnd.BackColor = System.Drawing.Color.Gainsboro;
             this.dtPassportEnd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtPassportEnd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1664,12 +1672,11 @@
             this.dtPassportEnd.Location = new System.Drawing.Point(219, 132);
             this.dtPassportEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtPassportEnd.Name = "dtPassportEnd";
-            this.dtPassportEnd.Size = new System.Drawing.Size(186, 29);
+            this.dtPassportEnd.Size = new System.Drawing.Size(186, 23);
             this.dtPassportEnd.TabIndex = 125;
             // 
             // dtContractIssue
             // 
-            this.dtContractIssue.Checked = true;
             this.dtContractIssue.BackColor = System.Drawing.Color.Gainsboro;
             this.dtContractIssue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtContractIssue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1677,12 +1684,11 @@
             this.dtContractIssue.Location = new System.Drawing.Point(20, 407);
             this.dtContractIssue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtContractIssue.Name = "dtContractIssue";
-            this.dtContractIssue.Size = new System.Drawing.Size(193, 29);
+            this.dtContractIssue.Size = new System.Drawing.Size(193, 23);
             this.dtContractIssue.TabIndex = 125;
             // 
             // dtResidencyIsseue
             // 
-            this.dtResidencyIsseue.Checked = true;
             this.dtResidencyIsseue.BackColor = System.Drawing.Color.Gainsboro;
             this.dtResidencyIsseue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtResidencyIsseue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1690,12 +1696,11 @@
             this.dtResidencyIsseue.Location = new System.Drawing.Point(460, 132);
             this.dtResidencyIsseue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtResidencyIsseue.Name = "dtResidencyIsseue";
-            this.dtResidencyIsseue.Size = new System.Drawing.Size(193, 29);
+            this.dtResidencyIsseue.Size = new System.Drawing.Size(193, 23);
             this.dtResidencyIsseue.TabIndex = 125;
             // 
             // dtPassportIssue
             // 
-            this.dtPassportIssue.Checked = true;
             this.dtPassportIssue.BackColor = System.Drawing.Color.Gainsboro;
             this.dtPassportIssue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtPassportIssue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1703,7 +1708,7 @@
             this.dtPassportIssue.Location = new System.Drawing.Point(20, 132);
             this.dtPassportIssue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtPassportIssue.Name = "dtPassportIssue";
-            this.dtPassportIssue.Size = new System.Drawing.Size(193, 29);
+            this.dtPassportIssue.Size = new System.Drawing.Size(193, 23);
             this.dtPassportIssue.TabIndex = 125;
             // 
             // label23
@@ -1917,8 +1922,10 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";

@@ -10,14 +10,15 @@ namespace YamyProject
 {
     public partial class frmUserActivityReport : Form
     {
-
-        public frmUserActivityReport(string _type="")
+        private readonly int userId = 0;
+        public frmUserActivityReport(int _userId = 0)
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             headerUC1.FormText = this.Text;
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
+            this.userId = _userId;
         }
         
         private void frmAuditTrail_Load(object sender, EventArgs e)
@@ -39,10 +40,15 @@ namespace YamyProject
             {
                 query += " and a.action_time >= @dateFrom and action_time <= @dateTo";
             }
-
+            if (userId != 0)
+            {
+                query += " and a.user_id = @userId ";
+                parameters.Add(DBClass.CreateParameter("userId", userId));
+            }
             query += " ORDER BY a.action_time DESC;";
             parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value));
             parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value));
+            
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvItems.DataSource = dt;
 

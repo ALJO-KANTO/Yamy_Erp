@@ -66,7 +66,7 @@
             // 
             // pnlheader
             // 
-            this.pnlheader.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pnlheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.pnlheader.Controls.Add(this.guna2Button2);
             this.pnlheader.Controls.Add(this.guna2Button1);
             this.pnlheader.Controls.Add(this.guna2ControlBox1);

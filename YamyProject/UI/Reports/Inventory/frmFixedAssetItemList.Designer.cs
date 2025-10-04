@@ -143,7 +143,7 @@
             // btn_Excel
             // 
             this.btn_Excel.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Excel.BorderRadius = 3;
+            this.btn_Excel.BorderRadius = 5;
             this.btn_Excel.BorderThickness = 1;
             this.btn_Excel.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
             this.btn_Excel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -164,7 +164,7 @@
             // btnPrint
             // 
             this.btnPrint.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrint.BorderRadius = 3;
+            this.btnPrint.BorderRadius = 5;
             this.btnPrint.BorderThickness = 1;
             this.btnPrint.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
             this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -257,7 +257,7 @@
             this.chkDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDate.ForeColor = System.Drawing.Color.Black;
-            this.chkDate.Location = new System.Drawing.Point(636, 29);
+            this.chkDate.Location = new System.Drawing.Point(639, 26);
             this.chkDate.Name = "chkDate";
             this.chkDate.Size = new System.Drawing.Size(37, 17);
             this.chkDate.TabIndex = 14;
@@ -324,7 +324,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.guna2Button1);
             this.panel8.Controls.Add(this.guna2Button4);
             this.panel8.Controls.Add(this.guna2ControlBox1);

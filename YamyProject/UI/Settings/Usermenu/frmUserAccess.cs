@@ -102,7 +102,7 @@ namespace YamyProject
         }
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewUser(0));
+            new frmViewUser(0).ShowDialog();
         }
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -3234,6 +3234,14 @@ namespace YamyProject
         private void CBProjectPlanning_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (dgvCustomer.Rows.Count == 0)
+                return;
+
+            frmLogin.frmMain.LoadFormIntoPanel(new frmUserActivityReport(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
         }
     }
 }

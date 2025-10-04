@@ -169,7 +169,7 @@ namespace YamyProject.UI.Default
 
         private void guna2TileButton21_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewCheque());
+            new frmViewCheque().ShowDialog();
         }
 
         private void guna2TileButton22_Click(object sender, EventArgs e)

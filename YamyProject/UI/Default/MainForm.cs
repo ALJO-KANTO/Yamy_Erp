@@ -8,11 +8,13 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.RMS;
 using YamyProject.UI.Construction.ProjectPlanning;
 using YamyProject.UI.CRM;
 using YamyProject.UI.Default;
+using YamyProject.UI.Default.Dashboard;
 using YamyProject.UI.Manufacturing;
 using YamyProject.UI.Reports;
 using YamyProject.UI.Reports.Bank;
@@ -35,11 +37,66 @@ namespace YamyProject
         public MainForm()
         {
             InitializeComponent();
+            //ApplyTheme(this);
             LocalizationManager.LocalizeForm(this);
             roleEvent = (sender, args) => LoadUserPermissions(frmLogin.RoleId);
             EventHub.Roles += roleEvent;
             LoadAllMenuData();
         }
+        //private void ApplyTheme(Control parent)
+        //{
+        //    parent.BackColor = AppTheme.BackgroundColor;
+        //    parent.ForeColor = AppTheme.TextColor;
+
+        //    foreach (Control ctrl in parent.Controls)
+        //    {
+        //        switch (ctrl)
+        //        {
+        //            case Button btn:
+        //                btn.BackColor = AppTheme.ButtonBackColor;
+        //                btn.ForeColor = AppTheme.ButtonForeColor;
+        //                btn.FlatStyle = FlatStyle.Flat;
+        //                btn.FlatAppearance.BorderSize = 0;
+
+        //                btn.MouseEnter += (s, e) => btn.BackColor = AppTheme.ButtonHoverColor;
+        //                btn.MouseLeave += (s, e) => btn.BackColor = AppTheme.ButtonBackColor;
+        //                break;
+
+        //            case Guna2Button gunaBtn:
+        //                gunaBtn.BackColor = AppTheme.ButtonBackColor;
+        //                gunaBtn.ForeColor = AppTheme.ButtonForeColor;
+
+        //                gunaBtn.MouseEnter += (s, e) => gunaBtn.BackColor = AppTheme.ButtonHoverColor;
+        //                gunaBtn.MouseLeave += (s, e) => gunaBtn.BackColor = AppTheme.ButtonBackColor;
+        //                break;
+
+        //            case Panel pnl:
+        //                pnl.BackColor = AppTheme.PanelColor; // Add PanelColor in AppTheme
+        //                break;
+
+        //            case Label lbl:
+        //                lbl.ForeColor = AppTheme.TextColor;
+        //                break;
+
+        //            case TextBox txt:
+        //                txt.BackColor = AppTheme.InputBackgroundColor; // Optional
+        //                txt.ForeColor = AppTheme.TextColor;
+        //                break;
+
+        //            case Guna2TextBox gunaTxt:
+        //                gunaTxt.FillColor = AppTheme.InputBackgroundColor;
+        //                gunaTxt.ForeColor = AppTheme.TextColor;
+        //                break;
+        //        }
+
+        //        // Apply recursively to all child controls
+        //        if (ctrl.HasChildren)
+        //        {
+        //            ApplyTheme(ctrl);
+        //        }
+        //    }
+        //}
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
@@ -168,7 +225,45 @@ namespace YamyProject
 
             string savedCulture = Properties.Settings.Default.ApplicationLanguage ?? "en";
             btnLanguage.Text = savedCulture;
+
+            // default form
+            openChildFormX(new FrmDashboard());
+
+            // Hide Modules based on permissions
+            //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;// = UserPermissions.canView("CRM Module");
+
+            // do a function call after 2 seconds
+            var timer = new Timer { Interval = 2000 };
+            timer.Tick += (s, args) =>
+            {
+                timer.Stop();
+                NavigationBar();
+            };
+            timer.Start();
         }
+        public void openChildFormX(Form childForm)
+        {
+            // Optional: Close existing same-type child form
+            foreach (Control control in pnlMain.Controls)
+            {
+                if (control is Form && control.GetType() == childForm.GetType())
+                {
+                    Form existingForm = (Form)control;
+                    existingForm.Close(); // or BringToFront(), depending on your needs
+                }
+            }
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill; // Make it fill the panel
+
+            pnlMain.Controls.Add(childForm);
+            pnlMain.Tag = childForm;
+
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
         private void LoadAllMenuData()
         {
             //guna2Button12.Visible = true;
@@ -190,7 +285,7 @@ namespace YamyProject
                 payBillsToolStripMenuItem1.Visible = UserPermissions.canView("Vouchers");
                 prepaidExpenseToolStripMenuItem.Visible = UserPermissions.canView("Prepaid Expense");
                 pettyCashToolStripMenuItem.Visible = UserPermissions.canView("Petty Cash");
-                usersToolStripMenuItem.Visible = guna2Button4.Visible = companyToolStripMenuItem1 .Visible= UserPermissions.canView("Company");
+                usersToolStripMenuItem.Visible = btnCompanyProfile.Visible = companyToolStripMenuItem1 .Visible= UserPermissions.canView("Company");
                 inventoryCenterToolStripMenuItem1.Visible = itemListToolStripMenuItem.Visible = inventoryToolStripMenuItem2.Visible = UserPermissions.canView("Inventory Center");
                 stockManagementToolStripMenuItem.Visible = UserPermissions.canView("Stock Management");
                 warehouseToolStripMenuItem.Visible = UserPermissions.canView("Warehouse Center");
@@ -297,7 +392,32 @@ namespace YamyProject
         //        }
         //    }
         //}
+
         public void openChildForm(Form childForm)
+        {
+            // Check if form of same type already exists
+            foreach (Control control in pnlMain.Controls)
+            {
+                if (control is Form existingForm && control.GetType() == childForm.GetType())
+                {
+                    existingForm.BringToFront();
+                    return; // Don't open a new instance
+                }
+            }
+
+            // Configure the child form
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            pnlMain.Controls.Add(childForm);
+            pnlMain.Tag = childForm;
+
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        public void openChildFormOld(Form childForm)
         {
             foreach (Control control in pnlMain.Controls)
             {
@@ -609,7 +729,8 @@ namespace YamyProject
 
         private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterSetting());
+            if (frmLogin.RoleId == 1)
+                openChildForm(new MasterSetting());
         }
 
         private void customerBalanceSummaryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -724,7 +845,12 @@ namespace YamyProject
 
         private void btnExpand_Click(object sender, EventArgs e)
         {
-            if (pnlLeft.Width  == 225)
+            NavigationBar();
+        }
+
+        private void NavigationBar()
+        {
+            if (pnlLeft.Width == 225)
             {
                 foreach (Control ctrl in pnlLeft.Controls)
                 {
@@ -741,7 +867,7 @@ namespace YamyProject
                 guna2Button7.Text = "";
                 guna2Button9.Text = "";
                 guna2HtmlLabel3.Text = "";
-                btnExpand.Image = YamyProject.Properties.Resources.Chevron_Righ22t;
+                btnExpand.Image = Properties.Resources.Chevron_Righ22t;
 
             }
             else
@@ -760,7 +886,7 @@ namespace YamyProject
                 guna2Button7.Text = "View Balance";
                 guna2Button9.Text = "Run Favorite Reports ";
                 loadCompany();
-                btnExpand.Image = YamyProject.Properties.Resources.Back;
+                btnExpand.Image = Properties.Resources.Back;
             }
         }
 
@@ -834,6 +960,11 @@ namespace YamyProject
         private void btnAccount_Click(object sender, EventArgs e)
         {
             openChildForm(new frmAccountantCenter()); // Open Accountant Center Form
+        }
+
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            openChildFormX(new FrmDashboard());
         }
 
         private void btnBank_Click(object sender, EventArgs e)
@@ -913,7 +1044,8 @@ namespace YamyProject
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterSetting());
+            if (frmLogin.RoleId == 1)
+                openChildForm(new MasterSetting());
         }
         private void damageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1191,7 +1323,192 @@ namespace YamyProject
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            if (comboBox1.Text == "Attendance Sheet Center")
+            {
+                openChildForm(new MasterAttendanceSheet());
+            }
+            else if (comboBox1.Text == "Bank Card Center")
+            {
+                openChildForm(new MasterBankCard());
+            }
+            else if (comboBox1.Text == "Bank Center")
+            {
+                openChildForm(new MasterBanking());
+            }
+            else if (comboBox1.Text ==
+            "Change Current Password")
+            {
+                LoadFormIntoPanel(new frmChangePassword());
+            }
+            else if (comboBox1.Text ==
+            "Chart Of Account")
+            {
+                openChildForm(new MasterChartOfAccount());
+            }
+            else if (comboBox1.Text ==
+            "Cheques Center")
+            {
+                openChildForm(new MasterCheque());
+            }
+            else if (comboBox1.Text ==
+            "Company Profile")
+            {
+                openChildForm(new MasterCompany());
+            }
+            else if (comboBox1.Text ==
+            "Cost Center")
+            {
+                openChildForm(new MasterCostCenter());
+            }
+            else if (comboBox1.Text ==
+            "Create Sales")
+            {
+                openChildForm(new frmSales());
+            }
+            else if (comboBox1.Text ==
+            "Create Purchases")
+            {
+                openChildForm(new frmPurchase());
+            }
+            else if (comboBox1.Text ==
+            "Credit Note")
+            {
+                openChildForm(new MasterCreditNote());
+            }
+            else if (comboBox1.Text ==
+            "Customer Center")
+            {
+                openChildForm(new MasterCustomer());
+            }
+            else if (comboBox1.Text ==
+            "Debit Note")
+            {
+                openChildForm(new MasterDebitNote());
+            }
+            else if (comboBox1.Text ==
+            "Employee Center")
+            {
+                openChildForm(new MasterEmployee());
+            }
+            else if (comboBox1.Text ==
+            "End Of Services")
+            {
+                openChildForm(new frmEndOfService());
+            }
+            else if (comboBox1.Text ==
+            "Final Settlement")
+            {
+                openChildForm(new MasterFinalSettlement());
+            }
+            else if (comboBox1.Text ==
+            "Fixed Assets")
+            {
+                openChildForm(new MasterFixedAssets());
+            }
+            else if (comboBox1.Text ==
+            "Inventory Center")
+            {
+                openChildForm(new MasterInventory());
+            }
+            else if (comboBox1.Text ==
+            "Leave Salary")
+            {
+                openChildForm(new frmLeaveSalary());
+            }
+            else if (comboBox1.Text ==
+            "Loan Center")
+            {
+                openChildForm(new MasterLoan());
+            }
+            else if (comboBox1.Text ==
+            "Open Bank Card")
+            {
+                openChildForm(new MasterBankCard());
+            }
+            else if (comboBox1.Text ==
+            "Payment Voucher")
+            {
+                openChildForm(new MasterPaymentVoucher());
+            }
+            else if (comboBox1.Text ==
+            "PDC Center")
+            {
+                openChildForm(new MasterPDC());
+            }
+            else if (comboBox1.Text ==
+            "Petty Cash Center")
+            {
+                openChildForm(new MasterPettyCash());
+            }
+            else if (comboBox1.Text ==
+            "Prepaid Expense Center")
+            {
+                openChildForm(new MasterPrepaidExpense());
+            }
+            else if (comboBox1.Text ==
+            "Purchase Order")
+            {
+                openChildForm(new MasterPurchaseOrder());
+            }
+            else if (comboBox1.Text ==
+            "Purchases Invoice")
+            {
+                openChildForm(new frmPurchase());
+            }
+            else if (comboBox1.Text ==
+            "Purchases Return")
+            {
+                openChildForm(new MasterPurchaseReturn());
+            }
+            else if (comboBox1.Text ==
+            "Receipt Voucher")
+            {
+                openChildForm(new MasterReceiptVoucher());
+            }
+            else if (comboBox1.Text ==
+            "Salary Sheet")
+            {
+                openChildForm(new frmSalarySheet());
+            }
+            else if (comboBox1.Text ==
+            "Sales Order")
+            {
+                openChildForm(new MasterSalesOrder());
+            }
+            else if (comboBox1.Text ==
+            "Sales Quotation")
+            {
+                openChildForm(new MasterSalesQuotation());
+            }
+            else if (comboBox1.Text ==
+            "Sales Proforma")
+            {
+                openChildForm(new MasterSalesProforma());
+            }
+            else if (comboBox1.Text ==
+            "Sales Return")
+            {
+                openChildForm(new MasterSalesReturn());
+            }
+            else if (comboBox1.Text ==
+            "Stock Management")
+            {
+                openChildForm(new MasterStockManagement());
+            }
+            else if (comboBox1.Text ==
+            "Vendor Center")
+            {
+                openChildForm(new MasterVendor());
+            }
+            else if (comboBox1.Text ==
+            "Warehouse Center")
+            {
+                openChildForm(new MasterWarehouseNew());
+            }
+            else if(comboBox1.Text == "Transactions Journal")
+            {
+                openChildForm(new MasterTransactionJournal("0", ""));
+            }
         }
 
         private void panel19_Paint(object sender, PaintEventArgs e)
@@ -1778,6 +2095,16 @@ namespace YamyProject
         private void licenseActivatedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmLicense().ShowDialog();
+        }
+
+        private void btnCompanyProfile_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterCompany());
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

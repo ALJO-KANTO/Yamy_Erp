@@ -510,13 +510,13 @@ namespace YamyProject
         }
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewSubcontractor(0));
+            new frmViewSubcontractor(0).ShowDialog();
         }
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewSubcontractor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewSubcontractor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -991,7 +991,7 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewSubcontractor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewSubcontractor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
 
         private void receivePaymentToolStripMenuItem_Click(object sender, EventArgs e)

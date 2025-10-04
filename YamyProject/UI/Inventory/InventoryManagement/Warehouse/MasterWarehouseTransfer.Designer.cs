@@ -58,7 +58,6 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.LbHeader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.dtpTransferDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -130,11 +129,11 @@
             this.cmbWareFrom.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWareFrom.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbWareFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWareFrom.ItemHeight = 23;
+            this.cmbWareFrom.ItemHeight = 18;
             this.cmbWareFrom.Location = new System.Drawing.Point(16, 55);
             this.cmbWareFrom.Margin = new System.Windows.Forms.Padding(2);
             this.cmbWareFrom.Name = "cmbWareFrom";
-            this.cmbWareFrom.Size = new System.Drawing.Size(456, 29);
+            this.cmbWareFrom.Size = new System.Drawing.Size(456, 24);
             this.cmbWareFrom.TabIndex = 121;
             this.cmbWareFrom.SelectedIndexChanged += new System.EventHandler(this.cmbWareFrom_SelectedIndexChanged);
             // 
@@ -204,11 +203,11 @@
             this.cmbWareTo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbWareTo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbWareTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWareTo.ItemHeight = 23;
+            this.cmbWareTo.ItemHeight = 18;
             this.cmbWareTo.Location = new System.Drawing.Point(622, 57);
             this.cmbWareTo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbWareTo.Name = "cmbWareTo";
-            this.cmbWareTo.Size = new System.Drawing.Size(456, 29);
+            this.cmbWareTo.Size = new System.Drawing.Size(456, 24);
             this.cmbWareTo.TabIndex = 121;
             this.cmbWareTo.SelectedIndexChanged += new System.EventHandler(this.cmbWareTo_SelectedIndexChanged);
             // 
@@ -229,7 +228,7 @@
             this.btnToFrom.Location = new System.Drawing.Point(477, 357);
             this.btnToFrom.Margin = new System.Windows.Forms.Padding(2);
             this.btnToFrom.Name = "btnToFrom";
-            this.btnToFrom.Size = new System.Drawing.Size(141, 37);
+            this.btnToFrom.Size = new System.Drawing.Size(141, 27);
             this.btnToFrom.TabIndex = 8;
             this.btnToFrom.Click += new System.EventHandler(this.btnToFrom_Click);
             // 
@@ -250,13 +249,14 @@
             this.btnFromTo.Location = new System.Drawing.Point(477, 316);
             this.btnFromTo.Margin = new System.Windows.Forms.Padding(2);
             this.btnFromTo.Name = "btnFromTo";
-            this.btnFromTo.Size = new System.Drawing.Size(141, 37);
+            this.btnFromTo.Size = new System.Drawing.Size(141, 27);
             this.btnFromTo.TabIndex = 8;
             this.btnFromTo.Click += new System.EventHandler(this.btnFromTo_Click);
             // 
             // txtQty
             // 
             this.txtQty.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtQty.BorderRadius = 5;
             this.txtQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQty.DefaultText = "";
             this.txtQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -267,13 +267,13 @@
             this.txtQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtQty.ForeColor = System.Drawing.Color.Black;
             this.txtQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQty.Location = new System.Drawing.Point(477, 258);
+            this.txtQty.Location = new System.Drawing.Point(477, 268);
             this.txtQty.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtQty.Name = "txtQty";
             this.txtQty.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtQty.PlaceholderText = "QTY";
             this.txtQty.SelectedText = "";
-            this.txtQty.Size = new System.Drawing.Size(141, 38);
+            this.txtQty.Size = new System.Drawing.Size(141, 28);
             this.txtQty.TabIndex = 126;
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
@@ -297,7 +297,7 @@
             this.txtSearchFrom.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSearchFrom.PlaceholderText = "Search By Item Name, Code";
             this.txtSearchFrom.SelectedText = "";
-            this.txtSearchFrom.Size = new System.Drawing.Size(456, 29);
+            this.txtSearchFrom.Size = new System.Drawing.Size(456, 24);
             this.txtSearchFrom.TabIndex = 126;
             this.txtSearchFrom.TextChanged += new System.EventHandler(this.txtSearchFrom_TextChanged);
             // 
@@ -321,7 +321,7 @@
             this.txtSearchTo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtSearchTo.PlaceholderText = "Search By Item Name, Code";
             this.txtSearchTo.SelectedText = "";
-            this.txtSearchTo.Size = new System.Drawing.Size(456, 29);
+            this.txtSearchTo.Size = new System.Drawing.Size(456, 24);
             this.txtSearchTo.TabIndex = 126;
             this.txtSearchTo.TextChanged += new System.EventHandler(this.txtSearchTo_TextChanged);
             // 
@@ -459,7 +459,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel8.Controls.Add(this.guna2Button1);
             this.panel8.Controls.Add(this.guna2Button4);
             this.panel8.Controls.Add(this.guna2ControlBox1);
@@ -543,13 +543,6 @@
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2DragControl1.TargetControl = this.LbHeader;
             this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 5;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // dtpTransferDate
             // 
@@ -636,7 +629,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel LbHeader;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private System.Windows.Forms.DateTimePicker dtpTransferDate;
         internal System.Windows.Forms.Label label2;
     }

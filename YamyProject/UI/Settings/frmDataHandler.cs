@@ -67,7 +67,6 @@ namespace YamyProject
                             TRUNCATE TABLE tbl_final_settlement;
                             TRUNCATE TABLE tbl_fixed_assets;
                             TRUNCATE TABLE tbl_fixed_assets_category;
-                            TRUNCATE TABLE tbl_general_config;
                             TRUNCATE TABLE tbl_items;
                             TRUNCATE TABLE tbl_items_unit;
                             TRUNCATE TABLE tbl_items_warehouse;
@@ -88,6 +87,8 @@ namespace YamyProject
                             TRUNCATE TABLE tbl_petty_cash_request;
                             TRUNCATE TABLE tbl_petty_cash_submition;
                             TRUNCATE TABLE tbl_petty_cash_submition_details;
+                            TRUNCATE TABLE tbl_petty_cash;
+                            TRUNCATE TABLE tbl_petty_cash_details;
                             TRUNCATE TABLE tbl_position;
                             TRUNCATE TABLE tbl_prepaid_expense;
                             TRUNCATE TABLE tbl_prepaid_expense_category;
@@ -218,10 +219,10 @@ namespace YamyProject
                                             {
                                                 query += "TRUNCATE TABLE tbl_fixed_assets_category;";
                                             }
-                                            else if (item == "General Config")
-                                            {
-                                                query += "TRUNCATE TABLE tbl_general_config;";
-                                            }
+                                            //else if (item == "General Config")
+                                            //{
+                                            //    query += "TRUNCATE TABLE tbl_general_settings;";
+                                            //}
                                             else if (item == "Items")
                                             {
                                                 query += "TRUNCATE TABLE tbl_items;";
@@ -274,6 +275,8 @@ namespace YamyProject
                                             else if (item == "Petty Cash Card")
                                             {
                                                 query += "TRUNCATE TABLE tbl_petty_cash_card;";
+                                                query += "TRUNCATE TABLE tbl_petty_cash;";
+                                                query += "TRUNCATE TABLE tbl_petty_cash_details;";
                                             }
                                             else if (item == "petty Cash Category")
                                             {

@@ -31,10 +31,10 @@ namespace YamyProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtAmount = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
@@ -138,7 +138,7 @@ namespace YamyProject
             // txtAmount
             // 
             this.txtAmount.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txtAmount.BorderRadius = 3;
+            this.txtAmount.BorderRadius = 5;
             this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.DefaultText = "";
             this.txtAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -184,7 +184,7 @@ namespace YamyProject
             // txtAmountInWord
             // 
             this.txtAmountInWord.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txtAmountInWord.BorderRadius = 3;
+            this.txtAmountInWord.BorderRadius = 5;
             this.txtAmountInWord.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmountInWord.DefaultText = "";
             this.txtAmountInWord.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -274,17 +274,18 @@ namespace YamyProject
             // cmbPettyCash
             // 
             this.cmbPettyCash.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPettyCash.BorderRadius = 5;
             this.cmbPettyCash.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPettyCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPettyCash.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPettyCash.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPettyCash.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPettyCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPettyCash.ItemHeight = 23;
+            this.cmbPettyCash.ItemHeight = 18;
             this.cmbPettyCash.Location = new System.Drawing.Point(92, 45);
             this.cmbPettyCash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPettyCash.Name = "cmbPettyCash";
-            this.cmbPettyCash.Size = new System.Drawing.Size(375, 29);
+            this.cmbPettyCash.Size = new System.Drawing.Size(375, 24);
             this.cmbPettyCash.TabIndex = 29;
             this.cmbPettyCash.SelectedIndexChanged += new System.EventHandler(this.cmbPettyCash_SelectedIndexChanged);
             // 
@@ -338,6 +339,8 @@ namespace YamyProject
             // 
             // txtNo
             // 
+            this.txtNo.BackColor = System.Drawing.Color.Transparent;
+            this.txtNo.BorderRadius = 5;
             this.txtNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNo.DefaultText = "";
             this.txtNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -351,7 +354,7 @@ namespace YamyProject
             this.txtNo.Name = "txtNo";
             this.txtNo.PlaceholderText = "";
             this.txtNo.SelectedText = "";
-            this.txtNo.Size = new System.Drawing.Size(106, 20);
+            this.txtNo.Size = new System.Drawing.Size(106, 24);
             this.txtNo.TabIndex = 16;
             // 
             // label1
@@ -363,7 +366,7 @@ namespace YamyProject
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 29);
             this.label1.TabIndex = 15;
-            this.label1.Text = "No";
+            this.label1.Text = "V No";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtOpen
@@ -395,20 +398,20 @@ namespace YamyProject
             this.dgvInv.AllowUserToDeleteRows = false;
             this.dgvInv.AllowUserToResizeColumns = false;
             this.dgvInv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            this.dgvInv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.dgvInv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvInv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
             this.dgvInv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvInv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvInv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvInv.ColumnHeadersHeight = 35;
             this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvInv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -422,14 +425,14 @@ namespace YamyProject
             this.Description,
             this.Amount,
             this.colNote});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInv.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInv.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvInv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvInv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -439,8 +442,8 @@ namespace YamyProject
             this.dgvInv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvInv.RowHeadersVisible = false;
             this.dgvInv.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.dgvInv.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvInv.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvInv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInv.RowTemplate.Height = 25;
             this.dgvInv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -547,7 +550,7 @@ namespace YamyProject
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.panel6.Controls.Add(this.guna2Button2);
             this.panel6.Controls.Add(this.guna2Button1);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
@@ -680,8 +683,8 @@ namespace YamyProject
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPage3.Controls.Add(this.txtPVCode);
             this.tabPage3.Controls.Add(this.txtId);
+            this.tabPage3.Controls.Add(this.txtPVCode);
             this.tabPage3.Controls.Add(this.BtnJournal);
             this.tabPage3.Controls.Add(this.btnNext);
             this.tabPage3.Controls.Add(this.btnPrevious);
@@ -712,29 +715,31 @@ namespace YamyProject
             this.txtPVCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPVCode.Enabled = false;
             this.txtPVCode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPVCode.Location = new System.Drawing.Point(33, 15);
+            this.txtPVCode.Location = new System.Drawing.Point(75, 31);
             this.txtPVCode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPVCode.Multiline = true;
             this.txtPVCode.Name = "txtPVCode";
-            this.txtPVCode.Size = new System.Drawing.Size(66, 29);
+            this.txtPVCode.ReadOnly = true;
+            this.txtPVCode.Size = new System.Drawing.Size(24, 10);
             this.txtPVCode.TabIndex = 16;
             this.txtPVCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPVCode.Visible = false;
             // 
             // txtId
             // 
             this.txtId.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtId.Enabled = false;
-            this.txtId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtId.Location = new System.Drawing.Point(53, 16);
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(30, 16);
             this.txtId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(23, 18);
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(69, 25);
             this.txtId.TabIndex = 33;
             this.txtId.Text = "0";
             this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtId.Visible = false;
             // 
             // BtnJournal
             // 

@@ -79,7 +79,7 @@ namespace YamyProject
                 int id;
                 if (int.TryParse(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value.ToString(), out id))
                 {
-                    frmLogin.frmMain.openChildForm(new frmEditSub(id));
+                    new frmEditSub(id).ShowDialog();
                 }
                 else
                 {
@@ -140,7 +140,7 @@ namespace YamyProject
                                 MessageBox.Show("Invalid ID format.");
                                 return;
                             }
-                            frmLogin.frmMain.openChildForm(new frmCostCenter(id));
+                            new frmCostCenter(id).ShowDialog();
                         }
                     }
 
@@ -224,7 +224,7 @@ namespace YamyProject
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmCostCenter( 0));
+            new frmCostCenter(0).ShowDialog();
         }
 
         private void LbHeader_Click(object sender, EventArgs e)

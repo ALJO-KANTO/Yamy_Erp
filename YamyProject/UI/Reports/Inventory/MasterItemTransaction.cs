@@ -18,10 +18,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             LbHeader.Text = this.Text;
         }
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewItem());
-        }
+
         private void MasterItemTransaction_Load(object sender, EventArgs e)
         {
             DataTable dt = DBClass.ExecuteDataTable("select id,name from tbl_items where state = 0 and active = 0");
@@ -168,12 +165,6 @@ namespace YamyProject
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dgvCustomer.Rows.Count == 0)
-                return;
-            frmLogin.frmMain.openChildForm(new frmViewItem(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
-        }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCustomer.Rows.Count == 0)

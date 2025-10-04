@@ -16,6 +16,8 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             projectUpdatedHandler  = (sender, args) => ProjectSiteData();
             EventHub.Project += projectUpdatedHandler;
+            this.Text = "Tender Center";
+            headerUC1.FormText = this.Text;
         }
         private void MasterProjectTender_FormClosing(object sender, FormClosingEventArgs e)
         {

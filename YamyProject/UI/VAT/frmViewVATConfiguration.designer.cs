@@ -209,7 +209,6 @@
             // 
             // dtpQuarterOneDueDate
             // 
-            this.dtpQuarterOneDueDate.Checked = true;
             this.dtpQuarterOneDueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterOneDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterOneDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -217,12 +216,11 @@
             this.dtpQuarterOneDueDate.Location = new System.Drawing.Point(16, 22);
             this.dtpQuarterOneDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterOneDueDate.Name = "dtpQuarterOneDueDate";
-            this.dtpQuarterOneDueDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterOneDueDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterOneDueDate.TabIndex = 6;
             // 
             // dtpQuarterFourDueDate
             // 
-            this.dtpQuarterFourDueDate.Checked = true;
             this.dtpQuarterFourDueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterFourDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterFourDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -230,12 +228,11 @@
             this.dtpQuarterFourDueDate.Location = new System.Drawing.Point(16, 157);
             this.dtpQuarterFourDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterFourDueDate.Name = "dtpQuarterFourDueDate";
-            this.dtpQuarterFourDueDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterFourDueDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterFourDueDate.TabIndex = 12;
             // 
             // dtpQuarterThreeDueDate
             // 
-            this.dtpQuarterThreeDueDate.Checked = true;
             this.dtpQuarterThreeDueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterThreeDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterThreeDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -243,12 +240,11 @@
             this.dtpQuarterThreeDueDate.Location = new System.Drawing.Point(16, 112);
             this.dtpQuarterThreeDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterThreeDueDate.Name = "dtpQuarterThreeDueDate";
-            this.dtpQuarterThreeDueDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterThreeDueDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterThreeDueDate.TabIndex = 10;
             // 
             // dtpQuarterTwoDueDate
             // 
-            this.dtpQuarterTwoDueDate.Checked = true;
             this.dtpQuarterTwoDueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterTwoDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterTwoDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -256,7 +252,7 @@
             this.dtpQuarterTwoDueDate.Location = new System.Drawing.Point(16, 68);
             this.dtpQuarterTwoDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterTwoDueDate.Name = "dtpQuarterTwoDueDate";
-            this.dtpQuarterTwoDueDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterTwoDueDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterTwoDueDate.TabIndex = 8;
             // 
             // groupBox3
@@ -276,7 +272,6 @@
             // 
             // dtpQuarterOneEndDate
             // 
-            this.dtpQuarterOneEndDate.Checked = true;
             this.dtpQuarterOneEndDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterOneEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterOneEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -284,12 +279,11 @@
             this.dtpQuarterOneEndDate.Location = new System.Drawing.Point(16, 22);
             this.dtpQuarterOneEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterOneEndDate.Name = "dtpQuarterOneEndDate";
-            this.dtpQuarterOneEndDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterOneEndDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterOneEndDate.TabIndex = 6;
             // 
             // dtpQuarterFourEndDate
             // 
-            this.dtpQuarterFourEndDate.Checked = true;
             this.dtpQuarterFourEndDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterFourEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterFourEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -297,12 +291,11 @@
             this.dtpQuarterFourEndDate.Location = new System.Drawing.Point(16, 157);
             this.dtpQuarterFourEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterFourEndDate.Name = "dtpQuarterFourEndDate";
-            this.dtpQuarterFourEndDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterFourEndDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterFourEndDate.TabIndex = 12;
             // 
             // dtpQuarterThreeEndDate
             // 
-            this.dtpQuarterThreeEndDate.Checked = true;
             this.dtpQuarterThreeEndDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterThreeEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterThreeEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -310,12 +303,11 @@
             this.dtpQuarterThreeEndDate.Location = new System.Drawing.Point(16, 112);
             this.dtpQuarterThreeEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterThreeEndDate.Name = "dtpQuarterThreeEndDate";
-            this.dtpQuarterThreeEndDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterThreeEndDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterThreeEndDate.TabIndex = 10;
             // 
             // dtpQuarterTwoEndDate
             // 
-            this.dtpQuarterTwoEndDate.Checked = true;
             this.dtpQuarterTwoEndDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterTwoEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterTwoEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -323,9 +315,8 @@
             this.dtpQuarterTwoEndDate.Location = new System.Drawing.Point(16, 68);
             this.dtpQuarterTwoEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterTwoEndDate.MaxDate = new System.DateTime(2998, 12, 31, 0, 0, 0, 0);
-            this.dtpQuarterTwoEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpQuarterTwoEndDate.Name = "dtpQuarterTwoEndDate";
-            this.dtpQuarterTwoEndDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterTwoEndDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterTwoEndDate.TabIndex = 8;
             // 
             // groupBox2
@@ -345,7 +336,6 @@
             // 
             // dtpQuarterOneStartDate
             // 
-            this.dtpQuarterOneStartDate.Checked = true;
             this.dtpQuarterOneStartDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterOneStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterOneStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -353,13 +343,12 @@
             this.dtpQuarterOneStartDate.Location = new System.Drawing.Point(17, 19);
             this.dtpQuarterOneStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterOneStartDate.Name = "dtpQuarterOneStartDate";
-            this.dtpQuarterOneStartDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterOneStartDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterOneStartDate.TabIndex = 6;
             this.dtpQuarterOneStartDate.ValueChanged += new System.EventHandler(this.dtpQuarterOneStartDate_ValueChanged);
             // 
             // dtpQuarterFourStartDate
             // 
-            this.dtpQuarterFourStartDate.Checked = true;
             this.dtpQuarterFourStartDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterFourStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterFourStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -367,13 +356,12 @@
             this.dtpQuarterFourStartDate.Location = new System.Drawing.Point(17, 157);
             this.dtpQuarterFourStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterFourStartDate.Name = "dtpQuarterFourStartDate";
-            this.dtpQuarterFourStartDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterFourStartDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterFourStartDate.TabIndex = 12;
             this.dtpQuarterFourStartDate.ValueChanged += new System.EventHandler(this.dtpQuarterOneStartDate_ValueChanged);
             // 
             // dtpQuarterThreeStartDate
             // 
-            this.dtpQuarterThreeStartDate.Checked = true;
             this.dtpQuarterThreeStartDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterThreeStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterThreeStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -381,13 +369,12 @@
             this.dtpQuarterThreeStartDate.Location = new System.Drawing.Point(17, 112);
             this.dtpQuarterThreeStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterThreeStartDate.Name = "dtpQuarterThreeStartDate";
-            this.dtpQuarterThreeStartDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterThreeStartDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterThreeStartDate.TabIndex = 10;
             this.dtpQuarterThreeStartDate.ValueChanged += new System.EventHandler(this.dtpQuarterOneStartDate_ValueChanged);
             // 
             // dtpQuarterTwoStartDate
             // 
-            this.dtpQuarterTwoStartDate.Checked = true;
             this.dtpQuarterTwoStartDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpQuarterTwoStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpQuarterTwoStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -395,7 +382,7 @@
             this.dtpQuarterTwoStartDate.Location = new System.Drawing.Point(17, 68);
             this.dtpQuarterTwoStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpQuarterTwoStartDate.Name = "dtpQuarterTwoStartDate";
-            this.dtpQuarterTwoStartDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpQuarterTwoStartDate.Size = new System.Drawing.Size(153, 23);
             this.dtpQuarterTwoStartDate.TabIndex = 8;
             this.dtpQuarterTwoStartDate.ValueChanged += new System.EventHandler(this.dtpQuarterOneStartDate_ValueChanged);
             // 
@@ -476,7 +463,6 @@
             // 
             // dtpTRNIssueDate
             // 
-            this.dtpTRNIssueDate.Checked = true;
             this.dtpTRNIssueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpTRNIssueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpTRNIssueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -484,11 +470,13 @@
             this.dtpTRNIssueDate.Location = new System.Drawing.Point(585, 63);
             this.dtpTRNIssueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpTRNIssueDate.Name = "dtpTRNIssueDate";
-            this.dtpTRNIssueDate.Size = new System.Drawing.Size(153, 29);
+            this.dtpTRNIssueDate.Size = new System.Drawing.Size(153, 23);
             this.dtpTRNIssueDate.TabIndex = 6;
             // 
             // txtRegistrationNo
             // 
+            this.txtRegistrationNo.BackColor = System.Drawing.Color.Transparent;
+            this.txtRegistrationNo.BorderRadius = 5;
             this.txtRegistrationNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRegistrationNo.DefaultText = "";
             this.txtRegistrationNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -502,11 +490,10 @@
             this.txtRegistrationNo.Location = new System.Drawing.Point(25, 63);
             this.txtRegistrationNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRegistrationNo.Name = "txtRegistrationNo";
-            this.txtRegistrationNo.PasswordChar = '\0';
             this.txtRegistrationNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtRegistrationNo.PlaceholderText = "";
             this.txtRegistrationNo.SelectedText = "";
-            this.txtRegistrationNo.Size = new System.Drawing.Size(271, 29);
+            this.txtRegistrationNo.Size = new System.Drawing.Size(271, 24);
             this.txtRegistrationNo.TabIndex = 3;
             // 
             // label2
@@ -559,7 +546,6 @@
             // 
             // dtpCorporateTaxStartDate
             // 
-            this.dtpCorporateTaxStartDate.Checked = true;
             this.dtpCorporateTaxStartDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpCorporateTaxStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpCorporateTaxStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -567,7 +553,7 @@
             this.dtpCorporateTaxStartDate.Location = new System.Drawing.Point(8, 21);
             this.dtpCorporateTaxStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpCorporateTaxStartDate.Name = "dtpCorporateTaxStartDate";
-            this.dtpCorporateTaxStartDate.Size = new System.Drawing.Size(121, 29);
+            this.dtpCorporateTaxStartDate.Size = new System.Drawing.Size(121, 23);
             this.dtpCorporateTaxStartDate.TabIndex = 12;
             this.dtpCorporateTaxStartDate.ValueChanged += new System.EventHandler(this.dtpCorporateTaxStartDate_ValueChanged);
             // 
@@ -585,7 +571,6 @@
             // 
             // dtpCorporateTaxEndDate
             // 
-            this.dtpCorporateTaxEndDate.Checked = true;
             this.dtpCorporateTaxEndDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpCorporateTaxEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpCorporateTaxEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -593,7 +578,7 @@
             this.dtpCorporateTaxEndDate.Location = new System.Drawing.Point(8, 21);
             this.dtpCorporateTaxEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpCorporateTaxEndDate.Name = "dtpCorporateTaxEndDate";
-            this.dtpCorporateTaxEndDate.Size = new System.Drawing.Size(125, 29);
+            this.dtpCorporateTaxEndDate.Size = new System.Drawing.Size(125, 23);
             this.dtpCorporateTaxEndDate.TabIndex = 12;
             // 
             // groupBox7
@@ -610,7 +595,6 @@
             // 
             // dtpCorporateTaxDueDate
             // 
-            this.dtpCorporateTaxDueDate.Checked = true;
             this.dtpCorporateTaxDueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.dtpCorporateTaxDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpCorporateTaxDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -618,7 +602,7 @@
             this.dtpCorporateTaxDueDate.Location = new System.Drawing.Point(8, 21);
             this.dtpCorporateTaxDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpCorporateTaxDueDate.Name = "dtpCorporateTaxDueDate";
-            this.dtpCorporateTaxDueDate.Size = new System.Drawing.Size(121, 29);
+            this.dtpCorporateTaxDueDate.Size = new System.Drawing.Size(121, 23);
             this.dtpCorporateTaxDueDate.TabIndex = 12;
             // 
             // groupBox4
@@ -659,6 +643,8 @@
             // 
             // txtCorporateTaxNo
             // 
+            this.txtCorporateTaxNo.BackColor = System.Drawing.Color.Transparent;
+            this.txtCorporateTaxNo.BorderRadius = 5;
             this.txtCorporateTaxNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCorporateTaxNo.DefaultText = "";
             this.txtCorporateTaxNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -672,16 +658,14 @@
             this.txtCorporateTaxNo.Location = new System.Drawing.Point(25, 62);
             this.txtCorporateTaxNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCorporateTaxNo.Name = "txtCorporateTaxNo";
-            this.txtCorporateTaxNo.PasswordChar = '\0';
             this.txtCorporateTaxNo.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCorporateTaxNo.PlaceholderText = "";
             this.txtCorporateTaxNo.SelectedText = "";
-            this.txtCorporateTaxNo.Size = new System.Drawing.Size(271, 29);
+            this.txtCorporateTaxNo.Size = new System.Drawing.Size(271, 24);
             this.txtCorporateTaxNo.TabIndex = 3;
             // 
             // TRNIssueDate
             // 
-            this.TRNIssueDate.Checked = true;
             this.TRNIssueDate.BackColor = System.Drawing.Color.Gainsboro;
             this.TRNIssueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TRNIssueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -689,9 +673,8 @@
             this.TRNIssueDate.Location = new System.Drawing.Point(585, 62);
             this.TRNIssueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TRNIssueDate.MaxDate = new System.DateTime(2998, 12, 31, 0, 0, 0, 0);
-            this.TRNIssueDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.TRNIssueDate.Name = "TRNIssueDate";
-            this.TRNIssueDate.Size = new System.Drawing.Size(153, 29);
+            this.TRNIssueDate.Size = new System.Drawing.Size(153, 23);
             this.TRNIssueDate.TabIndex = 6;
             // 
             // label16
@@ -708,15 +691,17 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(925, 35);
             this.headerUC1.TabIndex = 16;
             // 
-            // frmViewVATConfigration
+            // frmViewVATConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -731,7 +716,7 @@
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmViewVATConfigration";
+            this.Name = "frmViewVATConfiguration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VAT Configration";
             this.Load += new System.EventHandler(this.frmViewVATConfiguration_Load);

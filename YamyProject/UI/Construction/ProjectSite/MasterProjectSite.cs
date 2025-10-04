@@ -16,6 +16,8 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             projectUpdatedHandler  = (sender, args) => ProjectSiteData();
             EventHub.Project += projectUpdatedHandler;
+            this.Text = "Project Site Center";
+            headerUC1.FormText = this.Text;
         }
         private void MasterProjectSite_FormClosing(object sender, FormClosingEventArgs e)
         {

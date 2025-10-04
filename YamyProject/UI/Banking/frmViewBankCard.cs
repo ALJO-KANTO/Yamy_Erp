@@ -32,12 +32,17 @@ namespace YamyProject
             BindCombos.PopulateRegisterBanks(cmbBankName);
             BindCombos.PopulateAllLevel4Account(cmbAccountName);
             if (id != 0)
+            {
                 BindBankCard();
-            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
-                if (reader.Read())
-                {
-                    txtAccountName.Text = reader["name"].ToString();
-                }
+            }
+            else
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
+                    if (reader.Read())
+                    {
+                        txtAccountName.Text = reader["name"].ToString();
+                    }
+            }
         }
         private void BindBankCard()
         {
@@ -58,6 +63,8 @@ namespace YamyProject
                     cmbBankName.SelectedValue = reader["bank_id"].ToString();
                     cmbCity.Text = reader["emirates"].ToString();
                     checkBoxCompanyBankAC.Checked = reader["company_ac"].ToString() == "1";
+
+                    btnDelete.Enabled = true;
                 }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -257,6 +264,26 @@ namespace YamyProject
             DBClass.CreateParameter("code", txtBankCode.Text)))
                 if (!reader.Read())
                     cmbBankName.SelectedIndex = -1;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this bank card?", "Confirm Delete!!", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_cheque where bank_card_id = " + id))
+                {
+                    if (reader.Read())
+                    {
+                        MessageBox.Show("You cannot delete this bank card because it is linked to existing cheques.");
+                        return;
+                    }
+                }
+                DBClass.ExecuteNonQuery("Delete FROM tbl_bank_card WHERE id = @id ", DBClass.CreateParameter("id", id));
+                Utilities.LogAudit(frmLogin.userId, "Delete Bank Card", "Bank Card", id, "Deleted Bank Card: " + txtAccountName.Text);
+                EventHub.RefreshBankCard();
+                this.Close();
+            }
         }
     }
 }

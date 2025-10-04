@@ -105,6 +105,12 @@ namespace YamyProject
 
             //query += " GROUP BY c.id, c.name, c.work_phone, c.main_phone, tc.name, c.region, c.email, c.trn;";
             DataTable dt = DBClass.ExecuteDataTable(query);
+            if(dt==null)
+            {
+                dgvCustomer.DataSource = null;
+                ClearVendorDetails();
+                return;
+            }
             _dataView = dt.DefaultView;
             dgvCustomer.DataSource = _dataView;
             dgvCustomer.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -635,13 +641,13 @@ namespace YamyProject
         }
         private void nToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin.frmMain.openChildForm(new frmViewVendor(0));
+            new frmViewVendor(0).ShowDialog();
         }
         private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1116,7 +1122,7 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
 
         private void receivePaymentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1275,7 +1281,7 @@ namespace YamyProject
         {
             if (dgvCustomer.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            new frmViewVendor(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())).ShowDialog();
         }
     }
 }

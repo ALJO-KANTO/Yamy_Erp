@@ -71,9 +71,10 @@ namespace YamyProject
             this.btnSignup.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.PressedColor = System.Drawing.Color.DimGray;
-            this.btnSignup.Size = new System.Drawing.Size(181, 48);
+            this.btnSignup.Size = new System.Drawing.Size(181, 40);
             this.btnSignup.TabIndex = 3;
             this.btnSignup.Text = "Sign Up";
+            this.btnSignup.Visible = false;
             // 
             // btnLogin
             // 
@@ -84,7 +85,7 @@ namespace YamyProject
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(626, 465);
@@ -100,7 +101,7 @@ namespace YamyProject
             // 
             this.txtUsername.Animated = true;
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(109)))));
-            this.txtUsername.BorderRadius = 23;
+            this.txtUsername.BorderRadius = 15;
             this.txtUsername.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.txtUsername.BorderThickness = 0;
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -114,21 +115,21 @@ namespace YamyProject
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.Location = new System.Drawing.Point(560, 317);
+            this.txtUsername.Location = new System.Drawing.Point(562, 323);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtUsername.PlaceholderText = "Username";
             this.txtUsername.SelectedText = "";
             this.txtUsername.ShadowDecoration.BorderRadius = 23;
-            this.txtUsername.Size = new System.Drawing.Size(295, 48);
+            this.txtUsername.Size = new System.Drawing.Size(295, 42);
             this.txtUsername.TabIndex = 0;
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.Transparent;
-            this.txtPassword.BorderRadius = 23;
+            this.txtPassword.BorderRadius = 15;
             this.txtPassword.BorderThickness = 0;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.DefaultText = "";
@@ -141,14 +142,14 @@ namespace YamyProject
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(559, 395);
+            this.txtPassword.Location = new System.Drawing.Point(559, 397);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtPassword.PlaceholderText = "Password";
             this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(295, 48);
+            this.txtPassword.Size = new System.Drawing.Size(295, 42);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -179,6 +180,7 @@ namespace YamyProject
             this.label3.TabIndex = 2;
             this.label3.Text = "Don\'t have an account?";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Visible = false;
             // 
             // panel17
             // 
@@ -245,6 +247,7 @@ namespace YamyProject
             this.lblLinkForgotPassword.TabIndex = 172;
             this.lblLinkForgotPassword.TabStop = true;
             this.lblLinkForgotPassword.Text = "Forgot your password? Click here";
+            this.lblLinkForgotPassword.Visible = false;
             this.lblLinkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLinkForgotPassword_LinkClicked);
             // 
             // label1
