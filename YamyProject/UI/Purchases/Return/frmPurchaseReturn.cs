@@ -8,8 +8,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
-using YamyProject.UI.Reports.Design;
-using YamyProject.UI.Settings;
 
 namespace YamyProject
 {
@@ -50,6 +48,7 @@ namespace YamyProject
             loadCostCenter();
             loadTaxCombo();
             txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
             if (id != 0)
             {
                 BindInvoice();
@@ -77,6 +76,7 @@ namespace YamyProject
                 DBClass.CreateParameter("id", id)))
             {
                 reader.Read();
+                txtId.Text = reader["id"].ToString();
                 txtNextCode.Text = reader["invoice_id"].ToString();
                 dtInv.Value = DateTime.Parse(reader["date"].ToString());
                 cmbVendor.SelectedValue = reader["vendor_id"].ToString();
@@ -92,7 +92,6 @@ namespace YamyProject
                 cmbShipVia.Text = reader["ship_via"].ToString();
                 richTextDescription.Text = reader["description"].ToString();
                 cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                 invId = id;
                 txtBillTo.Text = reader["bill_to"].ToString();
                 txtShipTo.Text = reader["ship_to"].ToString();
@@ -208,7 +207,6 @@ namespace YamyProject
             level4VatId = defaultAccounts.ContainsKey("Vat Input") ? defaultAccounts["Vat Output"] : 0;
             level4PurchaseReturnId = defaultAccounts.ContainsKey("PurchaseReturn") ? defaultAccounts["PurchaseReturn"] : 0;
         }
-        string invCode = "";
         private string GenerateNextSalesCode()
         {
             string newCode = "PR-0001";
@@ -219,6 +217,21 @@ namespace YamyProject
                 {
                     int code = int.Parse(reader["lastCode"].ToString()) + 1;
                     newCode = "PR-" + code.ToString("D4");
+                }
+            }
+
+            return newCode;
+        }
+        private string GenerateNextSalesId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_purchase_return"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
                 }
             }
 
@@ -264,7 +277,7 @@ namespace YamyProject
                  DBClass.CreateParameter("id", id),
                   DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", txtPONO.Text),
@@ -293,7 +306,7 @@ namespace YamyProject
             insertInvItems();
             CommonInsert.DeleteTransactionEntry(id, "PURCHASE RETURN");
             addJournalTransaction();
-            Utilities.LogAudit(frmLogin.userId, "Edit Purchase Return Invoice", "Purchase Return", id, "Edited Purchase Return Invoice No. " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Edit Purchase Return Invoice", "Purchase Return", id, "Edited Purchase Return Invoice No. " + txtNextCode.Text);
 
             return true;
         }
@@ -302,16 +315,16 @@ namespace YamyProject
             CommonInsert.addTransactionEntry(dtInv.Value.Date,
                  cmbPaymentMethod.Text == "Credit" ? level4PaymentCreditMethodId.ToString()
                  : cmbAccountCashName.SelectedValue.ToString(),
-                  "0", txtTotal.Text, invId.ToString(), cmbVendor.SelectedValue.ToString(), "Purchase Return Invoice", "PURCHASE RETURN", "Purchase Return Invoice NO. " + invCode,
+                  "0", txtTotal.Text, invId.ToString(), cmbVendor.SelectedValue.ToString(), "Purchase Return Invoice", "PURCHASE RETURN", "Purchase Return Invoice NO. " + txtNextCode.Text,
                  frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
             if (decimal.Parse(txtTotalVat.Text) > 0)
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
               level4VatId.ToString(), txtTotalVat.Text, "0", invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
-              "Vat Input For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+              "Vat Input For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
             CommonInsert.addTransactionEntry(dtInv.Value.Date,
               level4PurchaseReturnId.ToString(), txtTotalBefore.Text, "0", invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
-              "Purchase Return For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+              "Purchase Return For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
         }
         private void ReturnItemsToInventory()
         {
@@ -334,8 +347,6 @@ namespace YamyProject
             if (!chkRequiredDate())
                 return false;
             
-            invCode = GenerateNextSalesCode();
-            
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_purchase_return  (date, vendor_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                    ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
                    total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @vendor_id, @invoice_id,@warehouse_id,
@@ -344,7 +355,7 @@ namespace YamyProject
                    SELECT LAST_INSERT_ID();",
                    DBClass.CreateParameter("date", dtInv.Value.Date),
                    DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
-                   DBClass.CreateParameter("invoice_id", invCode),
+                   DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                    DBClass.CreateParameter("city", cmbCity.Text),
                    DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                    DBClass.CreateParameter("po_num", txtPONO.Text),
@@ -371,7 +382,7 @@ namespace YamyProject
             insertInvItems();
             //txtInvoiceId.Text = invCode.ToString();
             addJournalTransaction();
-            Utilities.LogAudit(frmLogin.userId, "Add Purchase Return Invoice", "Purchase Return", (int)invId, "Added Purchase Return Invoice No. " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Add Purchase Return Invoice", "Purchase Return", (int)invId, "Added Purchase Return Invoice No. " + txtNextCode.Text);
 
             return true;
         }
@@ -475,7 +486,7 @@ namespace YamyProject
             }
 
             CommonInsert.InsertItemTransaction(dtInv.Value.Date, "Purchase Return Invoice", invId.ToString(), row.Cells["itemId"].Value.ToString(), row.Cells["cost_price"].Value.ToString(),
-                        "0", row.Cells["price"].Value.ToString(), row.Cells["qty"].Value.ToString(), "0", "Purchase Return Invoice No. " + invCode, cmbWarehouse.SelectedValue.ToString());
+                        "0", row.Cells["price"].Value.ToString(), row.Cells["qty"].Value.ToString(), "0", "Purchase Return Invoice No. " + txtNextCode.Text, cmbWarehouse.SelectedValue.ToString());
         }
         private bool chkRequiredDate()
         {
@@ -516,10 +527,12 @@ namespace YamyProject
         private void resetTextBox()
         {
             txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text = txtPONO.Text =
-                txtInvoiceId.Text = txtTotal.Text = txtTotalVat.Text = "";
+                txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
             dgvItems.Rows.Clear();
+            txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
         }
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
@@ -1031,7 +1044,7 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
@@ -1059,7 +1072,7 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;
@@ -1205,12 +1218,10 @@ namespace YamyProject
         private void guna2TileButton23_Click(object sender, EventArgs e)
         {
             clearData();
-            txtNextCode.Text = txtInvoiceId.Text = GenerateNextSalesCode();
         }
         private void clearData()
         {
-            dgvItems.Rows.Clear();
-            txtBillTo.Text = "";
+            resetTextBox();
             id = 0;
         }
 
@@ -1224,7 +1235,7 @@ namespace YamyProject
             DBClass.ExecuteNonQuery("UPDATE tbl_purchase_return SET state = -1 WHERE id = @id; UPDATE tbl_transaction SET state= -1 WHERE transaction_id=@id AND t_type = 'PURCHASE';",
                                           DBClass.CreateParameter("id", id.ToString()));
             CommonInsert.DeleteItemTransaction("Purchase Return", id.ToString());
-            Utilities.LogAudit(frmLogin.userId, "Delete Purchase Return", "Purchase Return", id, "Deleted Purchase Return: " + txtInvoiceId.Text);
+            Utilities.LogAudit(frmLogin.userId, "Delete Purchase Return", "Purchase Return", id, "Deleted Purchase Return: " + txtNextCode.Text);
             clearData();
         }
 

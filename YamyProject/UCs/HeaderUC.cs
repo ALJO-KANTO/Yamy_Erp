@@ -93,5 +93,10 @@ namespace YamyProject
                     this.ParentForm.Dock = DockStyle.Fill;
             }
         }
+
+        private void lblFormName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

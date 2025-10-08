@@ -38,14 +38,16 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
         private void BindWorkFlow()
         {
-            var row = dgvCustomer.SelectedRows[0].Cells;
-            lblCode.Text = "0" + "0" + row["sn"].Value?.ToString().Split('-')[0];
-            string nameValue = row["Batch Name"].Value?.ToString();
-            var splitName = nameValue.Split('-');
-            lblName.Text = splitName.Length > 1 ? splitName[1].Trim() : nameValue;
-            lblstatus.Text = row["Process Status"].Value?.ToString();
-            label5.Text = row["StartTime"].Value is DateTime dt ? dt.ToString("yyyy-MM-dd") : "-";
-            LbMachinName.Text = row["Machine Name"].Value?.ToString() ?? "-";
+            if (dgvCustomer.Rows.Count>0) {
+                var row = dgvCustomer.SelectedRows[0].Cells;
+                lblCode.Text = "0" + "0" + row["sn"].Value?.ToString().Split('-')[0];
+                string nameValue = row["Batch Name"].Value?.ToString();
+                var splitName = nameValue.Split('-');
+                lblName.Text = splitName.Length > 1 ? splitName[1].Trim() : nameValue;
+                lblstatus.Text = row["Process Status"].Value?.ToString();
+                label5.Text = row["StartTime"].Value is DateTime dt ? dt.ToString("yyyy-MM-dd") : "-";
+                LbMachinName.Text = row["Machine Name"].Value?.ToString() ?? "-";
+            }
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -143,35 +145,37 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
         private void loaddataindatagraidview()
         {
-
-            var row = dgvCustomer.SelectedRows[0].Cells;
-            idtask = Convert.ToInt32(row["sn"].Value?.ToString().Split('-')[0]);
-            dgvItems.Rows.Clear();
-            string query = "";
-            query = @" SELECT t.*,d.name depNAME, d.Department,CONCAT(e.code,'-',e.name) AS EmpName
+            if (dgvCustomer.Rows.Count > 0)
+            {
+                var row = dgvCustomer.SelectedRows[0].Cells;
+                idtask = Convert.ToInt32(row["sn"].Value?.ToString().Split('-')[0]);
+                dgvItems.Rows.Clear();
+                string query = "";
+                query = @" SELECT t.*,d.name depNAME, d.Department,CONCAT(e.code,'-',e.name) AS EmpName
                             FROM tbl_manufacturer_task_details t
                             LEFT JOIN tbl_departments d ON t.DepartmentID=d.id
                             LEFT JOIN tbl_employee e ON t.EmployeeID = e.id
                             WHERE taskid = " + idtask + "";
-            using (MySqlDataReader reader = DBClass.ExecuteReader(query))
-            {
-                int count = 1;
-                while (reader.Read())
+                using (MySqlDataReader reader = DBClass.ExecuteReader(query))
                 {
-                    dgvItems.Rows.Add(count.ToString(),
-                        reader["Id"],
-                        reader["TaskID"],
-                        reader["DepartmentID"],
-                        reader["EmployeeID"],
-                        reader["EmpName"],
-                        reader["depName"],
-                        reader["StartTime"],
-                        reader["EndTime"],
-                        reader["Status"],
-                        reader["Remarks"]
-                    );
+                    int count = 1;
+                    while (reader.Read())
+                    {
+                        dgvItems.Rows.Add(count.ToString(),
+                            reader["Id"],
+                            reader["TaskID"],
+                            reader["DepartmentID"],
+                            reader["EmployeeID"],
+                            reader["EmpName"],
+                            reader["depName"],
+                            reader["StartTime"],
+                            reader["EndTime"],
+                            reader["Status"],
+                            reader["Remarks"]
+                        );
 
-                    count++;
+                        count++;
+                    }
                 }
             }
         }

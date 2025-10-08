@@ -22,7 +22,7 @@ namespace YamyProject
         decimal invId;
         int level4PaymentCreditMethodId;
         int id;
-        string invCode, formType = "";
+        string formType = "";
 
         public frmAddQuotation(int _id = 0, string _formType = "")
         {
@@ -54,7 +54,6 @@ namespace YamyProject
         }
         private void frmAddQuotation_Load(object sender, EventArgs e)
         {
-            txtInvoiceId.Text = GenerateNextSalesCode();
             dtPaymentTerms.Value = dtInv.Value = dtShip.Value = DateTime.Now.Date;
             BindCombos.PopulateWarehouse(cmbWarehouse);
             if (cmbWarehouse.SelectedValue == null)
@@ -67,6 +66,7 @@ namespace YamyProject
             cmbPaymentMethod.SelectedIndex = 0;
             bindCombo();
             txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
             if (formType == "")
             {
                 if (id != 0)
@@ -102,7 +102,7 @@ namespace YamyProject
                     }
                     cmbShipVia.Text = reader["ship_via"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                    invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
+                    txtNextCode.Text = reader["invoice_id"].ToString();
                     invId = id;
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
@@ -141,6 +141,7 @@ namespace YamyProject
                 DBClass.CreateParameter("id", id)))
                 if (reader.Read())
                 {
+                    txtId.Text = reader["id"].ToString();
                     txtNextCode.Text = reader["invoice_id"].ToString();
                     cmbCustomer.SelectedValue = reader["customer_id"].ToString();
                     cmbPaymentMethod.Text = reader["payment_method"].ToString();
@@ -153,7 +154,7 @@ namespace YamyProject
                     }
                     cmbShipVia.Text = reader["ship_via"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                    invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
+                    txtCustomerCode.Text = reader["invoice_id"].ToString();
                     invId = id;
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
@@ -228,6 +229,21 @@ namespace YamyProject
 
             return newCode;
         }
+        private string GenerateNextSalesId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_sales_quotation"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
+                }
+            }
+
+            return newCode;
+        }
 
         private DataTable GetFilteredProductsByName(string name = "")
         {
@@ -243,11 +259,11 @@ namespace YamyProject
             {
                 // Use tbl_items_warehouse join
                 query = @"
-            SELECT i.code, i.name 
-            FROM tbl_items_warehouse w
-            INNER JOIN tbl_items i ON w.item_id = i.id
-            WHERE w.warehouse_id = @warehouseId
-              AND i.state = 0 AND i.active = 0";
+                        SELECT i.code, i.name 
+                        FROM tbl_items_warehouse w
+                        INNER JOIN tbl_items i ON w.item_id = i.id
+                        WHERE w.warehouse_id = @warehouseId
+                          AND i.state = 0 AND i.active = 0";
 
                 parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
             }
@@ -294,11 +310,11 @@ namespace YamyProject
             {
                 // Use tbl_items_warehouse join
                 query = @"
-            SELECT i.code, i.name 
-            FROM tbl_items_warehouse w
-            INNER JOIN tbl_items i ON w.item_id = i.id
-            WHERE w.warehouse_id = @warehouseId
-              AND i.state = 0 AND i.active = 0";
+                        SELECT i.code, i.name 
+                        FROM tbl_items_warehouse w
+                        INNER JOIN tbl_items i ON w.item_id = i.id
+                        WHERE w.warehouse_id = @warehouseId
+                          AND i.state = 0 AND i.active = 0";
 
                 parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
             }
@@ -383,7 +399,7 @@ namespace YamyProject
                 DBClass.CreateParameter("id", id),
                 DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", txtPONO.Text),
@@ -407,7 +423,7 @@ namespace YamyProject
 
             DBClass.ExecuteNonQuery("delete from tbl_sales_quotation_details where sales_id =@id", DBClass.CreateParameter("id", id));
             insertInvItems();
-            Utilities.LogAudit(frmLogin.userId, "Update Quotation", "Quotation", id, "Updated Quotation: " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Update Quotation", "Quotation", id, "Updated Quotation: " + txtNextCode.Text);
 
             return true;
         }
@@ -416,7 +432,7 @@ namespace YamyProject
         {
             if (!chkRequiredDate())
                 return false;
-            invCode = GenerateNextSalesCode();
+
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales_quotation (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
                total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
@@ -425,7 +441,7 @@ namespace YamyProject
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", txtPONO.Text),
@@ -448,8 +464,8 @@ namespace YamyProject
                DBClass.CreateParameter("created_date", DateTime.Now.Date),
                DBClass.CreateParameter("state", 0)).ToString());
                 insertInvItems();
-            txtInvoiceId.Text = invCode.ToString();
-            Utilities.LogAudit(frmLogin.userId, "Add Quotation", "Quotation", (int)invId, "Added Quotation: " + invCode);
+
+            Utilities.LogAudit(frmLogin.userId, "Add Quotation", "Quotation", (int)invId, "Added Quotation: " + txtNextCode.Text);
 
             return true;
         }
@@ -463,8 +479,8 @@ namespace YamyProject
                 string method = dgvItems.Rows[i].Cells["method"].Value.ToString();
 
                 DBClass.ExecuteNonQuery(@"
-            INSERT INTO tbl_sales_quotation_details (sales_id, item_id, qty, cost_price, price, vatp, vat, total)
-            VALUES (@sales_id, @item_id, @qty, @cost_price, @price, @vatp, @vat, @total);",
+                    INSERT INTO tbl_sales_quotation_details (sales_id, item_id, qty, cost_price, price, vatp, vat, total)
+                    VALUES (@sales_id, @item_id, @qty, @cost_price, @price, @vatp, @vat, @total);",
                     DBClass.CreateParameter("sales_id", invId),
                     DBClass.CreateParameter("item_id", itemId),
                     DBClass.CreateParameter("qty", qty),
@@ -516,10 +532,12 @@ namespace YamyProject
         private void resetTextBox()
         {
             txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text = txtPONO.Text =
-                txtInvoiceId.Text = txtTotal.Text = txtTotalVat.Text = "";
+                txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
             dgvItems.Rows.Clear();
+            txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
         }
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
@@ -634,58 +652,58 @@ namespace YamyProject
         {
             int colIndex = dgvItems.CurrentCell.ColumnIndex;
 
-            //if (e.Control is TextBox textBoxBase)
-            //{
-            //    textBoxBase.TextChanged -= ItemCode_TextChanged;
-            //    textBoxBase.TextChanged -= ItemName_TextChanged;
-            //    textBoxBase.KeyPress -= NumericColumn_KeyPress;
+            if (e.Control is TextBox textBoxBase)
+            {
+                textBoxBase.TextChanged -= ItemCode_TextChanged;
+                textBoxBase.TextChanged -= ItemName_TextChanged;
+                textBoxBase.KeyPress -= NumericColumn_KeyPress;
 
-            //    if (lstAccountSuggestions.Visible)
-            //        lstAccountSuggestions.Visible = false;
+                if (lstAccountSuggestions.Visible)
+                    lstAccountSuggestions.Visible = false;
 
-            //    lstAccountSuggestions.SendToBack();
-            //}
+                lstAccountSuggestions.SendToBack();
+            }
 
-            //if (colIndex == dgvItems.Columns["name"].Index)
-            //{
-            //    if (e.Control is TextBox textBox)
-            //    {
-            //        textBox.TextChanged -= ItemName_TextChanged;
-            //        textBox.TextChanged += ItemName_TextChanged;
-            //        lstAccountSuggestions.Tag = textBox;
-            //    }
-            //}
-            //else if (colIndex == dgvItems.Columns["vat"].Index)
-            //{
-            //    if (e.Control is ComboBox comboBox)
-            //    {
-            //        comboBox.SelectedIndexChanged -= ComboBoxTax_SelectedIndexChanged;
-            //        comboBox.SelectedIndexChanged += ComboBoxTax_SelectedIndexChanged;
-            //    }
-            //}
-            //else if (colIndex == dgvItems.Columns["code"].Index)
-            //{
-            //    if (e.Control is TextBox textBox)
-            //    {
-            //        textBox.TextChanged -= ItemCode_TextChanged;
-            //        textBox.TextChanged += ItemCode_TextChanged;
-            //        lstAccountSuggestions.Tag = textBox;
-            //    }
-            //}
-            //else if (dgvItems.CurrentCell.OwningColumn.Name == "qty" ||
-            //         dgvItems.CurrentCell.OwningColumn.Name == "price")
-            //{
-            //    if (e.Control is TextBox textBox)
-            //    {
-            //        textBox.KeyPress -= NumericColumn_KeyPress;
-            //        textBox.KeyPress += NumericColumn_KeyPress;
-            //    }
-            //}
-            //else
-            //{
-            //    lstAccountSuggestions.Visible = false;
-            //    lstAccountSuggestions.Tag = null;
-            //}
+            if (colIndex == dgvItems.Columns["name"].Index)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.TextChanged -= ItemName_TextChanged;
+                    textBox.TextChanged += ItemName_TextChanged;
+                    lstAccountSuggestions.Tag = textBox;
+                }
+            }
+            else if (colIndex == dgvItems.Columns["vat"].Index)
+            {
+                if (e.Control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndexChanged -= ComboBoxTax_SelectedIndexChanged;
+                    comboBox.SelectedIndexChanged += ComboBoxTax_SelectedIndexChanged;
+                }
+            }
+            else if (colIndex == dgvItems.Columns["code"].Index)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.TextChanged -= ItemCode_TextChanged;
+                    textBox.TextChanged += ItemCode_TextChanged;
+                    lstAccountSuggestions.Tag = textBox;
+                }
+            }
+            else if (dgvItems.CurrentCell.OwningColumn.Name == "qty" ||
+                     dgvItems.CurrentCell.OwningColumn.Name == "price")
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= NumericColumn_KeyPress;
+                    textBox.KeyPress += NumericColumn_KeyPress;
+                }
+            }
+            else
+            {
+                lstAccountSuggestions.Visible = false;
+                lstAccountSuggestions.Tag = null;
+            }
         }
 
         private void NumericColumn_KeyPress(object sender, KeyPressEventArgs e)
@@ -1021,10 +1039,10 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtInvoiceId.Text))
+            if (string.IsNullOrWhiteSpace(txtId.Text))
                 return;
 
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
@@ -1053,10 +1071,10 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtInvoiceId.Text))
+            if (string.IsNullOrWhiteSpace(txtId.Text))
                 return;
 
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;
@@ -1251,20 +1269,19 @@ namespace YamyProject
         {
             DBClass.ExecuteNonQuery("UPDATE tbl_sales_quotation SET state = -1 WHERE id = @id ",
                                           DBClass.CreateParameter("id", id.ToString()));
-            Utilities.LogAudit(frmLogin.userId, "Delete Quotation", "Quotation", id, "Deleted Quotation: " + txtInvoiceId.Text);
+            Utilities.LogAudit(frmLogin.userId, "Delete Quotation", "Quotation", id, "Deleted Quotation: " + txtNextCode.Text);
             id = 0;
             clearData();
         }
 
         private void guna2TileButton23_Click(object sender, EventArgs e)
         {
-            txtNextCode.Text = txtInvoiceId.Text = GenerateNextSalesCode();
+            txtNextCode.Text = GenerateNextSalesCode();
             clearData();
         }
         private void clearData()
         {
-            dgvItems.Rows.Clear();
-            txtBillTo.Text = "";
+            resetTextBox();
             id = 0;
         }
         private void guna2TileButton22_Click(object sender, EventArgs e)

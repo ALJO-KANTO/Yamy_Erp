@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -34,7 +35,23 @@ namespace YamyProject
             if (id != 0)
                 BindJournal();
             txt_jv_code.Text = GenerateNextJournalCode();
+            txtJvId.Text = GenerateNextJournalId();
             LoadComboAccount();
+        }
+        private string GenerateNextJournalId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_journal_voucher"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
+                }
+            }
+
+            return newCode;
         }
         private string GenerateNextJournalCode()
         {
@@ -142,7 +159,7 @@ namespace YamyProject
                 DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@accountName", arguments));
 
                 nameslistView.Clear();
-                nameslistView.View = View.Details;
+                nameslistView.View = System.Windows.Forms.View.Details;
                 nameslistView.FullRowSelect = true;
                 nameslistView.Columns.Add(" Name", 250);
 
@@ -156,7 +173,7 @@ namespace YamyProject
                 foreach (DataRow row in dt.Rows)
                 {
                     ListViewItem item = new ListViewItem(row["name"].ToString());
-                    item.Font = new Font("Times New Roman", 9F);
+                    item.Font = new System.Drawing.Font("Times New Roman", 9F);
                     item.SubItems.Add(row["id"].ToString());
                     nameslistView.Items.Add(item);
                 }
@@ -170,10 +187,10 @@ namespace YamyProject
         private void BindJournal()
         {
             dgvJV.Rows.Clear();
-            txtJvId.Text = id.ToString();
             using (MySqlDataReader dr = DBClass.ExecuteReader(@"select * from tbl_journal_voucher WHERE id=@id", DBClass.CreateParameter("id", id)))
                 if (dr.Read())
                 {
+                    txtJvId.Text = dr["id"].ToString();
                     dtJV.Value = DateTime.Parse(dr["date"].ToString());
                     txt_jv_code.Text = dr["code"].ToString();
                     txtDebitAmount.Text = dr["debit"].ToString();
@@ -716,7 +733,7 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtJvId.Text);
+            int? currentId = Convert.ToInt32(txtJvId.Text); // Utilities.GetVoucherIdFromCode(txtJvId.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
@@ -743,7 +760,7 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtJvId.Text);
+            int? currentId = Convert.ToInt32(txtJvId.Text); // Utilities.GetVoucherIdFromCode(txtJvId.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;

@@ -529,7 +529,7 @@ namespace YamyProject.UI.Manufacturing.Models
 
         private void cbMachin_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindCombos.DepartPositionEmployee(cbMachin, CbDpartment.SelectedValue == null ? 0 : (int)CbDpartment.SelectedValue);
+            //BindCombos.DepartPositionEmployee(cbMachin, CbDpartment.SelectedValue == null ? 0 : (int)CbDpartment.SelectedValue);
 
         }
 

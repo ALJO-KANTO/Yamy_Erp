@@ -111,6 +111,7 @@
             "petty Cash Category",
             "petty Cash Request",
             "petty Cash Submission",
+            "Petty Cash",
             "Position",
             "Prepaid Expense",
             "Purchase",

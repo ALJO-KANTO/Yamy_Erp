@@ -37,7 +37,7 @@
             this.checkedListBoxEmployees.FormattingEnabled = true;
             this.checkedListBoxEmployees.Location = new System.Drawing.Point(12, 12);
             this.checkedListBoxEmployees.Name = "checkedListBoxEmployees";
-            this.checkedListBoxEmployees.Size = new System.Drawing.Size(371, 274);
+            this.checkedListBoxEmployees.Size = new System.Drawing.Size(721, 454);
             this.checkedListBoxEmployees.TabIndex = 0;
             // 
             // btnOK
@@ -49,7 +49,7 @@
             this.btnOK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnOK.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnOK.ForeColor = System.Drawing.Color.White;
-            this.btnOK.Location = new System.Drawing.Point(308, 299);
+            this.btnOK.Location = new System.Drawing.Point(335, 472);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 28);
             this.btnOK.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 332);
+            this.ClientSize = new System.Drawing.Size(745, 512);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.checkedListBoxEmployees);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

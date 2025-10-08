@@ -239,6 +239,7 @@ namespace YamyProject
             using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_petty_cash WHERE id = " + id))
                 if (reader.Read())
                 {
+                    txtId.Text = reader["id"].ToString();
                     txtPVCode.Text = reader["code"].ToString();
                     dtOpen.Value = DateTime.Parse(reader["voucher_date"].ToString());
                     code = reader["code"].ToString();

@@ -61,6 +61,11 @@ namespace YamyProject
             }
             return "";
         }
+        public static bool GetModules(string name)
+        {
+            DataRow[] dataRow = BindDataTable.tableModules.Select($"name = '" + name + "'");
+            return dataRow.Length > 0;
+        }
         public static string GeneralTaxType(DataTable dt, string name)
         {
             //concat(name, '-', value, '%')

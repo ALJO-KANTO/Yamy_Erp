@@ -6,7 +6,7 @@ namespace YamyProject
 {
     public static class BindDataTable
     {
-        public static DataTable tableCountries, tableCities, tableGeneralSettings;
+        public static DataTable tableCountries, tableCities, tableGeneralSettings, tableModules;
         internal static DataTable tableLevel4, tableCoaConfig;
         public static Dictionary<string, int> coaConfigDict;
 
@@ -16,6 +16,7 @@ namespace YamyProject
             LoadTable(ref tableCountries, "SELECT * FROM tbl_country");
             LoadTable(ref tableCities, "SELECT * FROM tbl_city");
             LoadTable(ref tableLevel4, "select CONCAT(CODE , ' - ' , NAME) AS name, id from tbl_coa_level_4 ORDER BY code");
+            LoadTable(ref tableModules, "select id, name from tbl_set_main_menu id");
         }
 
         //public static DataTable tableBank, tableBankCard, tableBankCheque, tableCompany, tableCostCenter, tableCustomers, tableCustomerCategory, tableDepartments, tableEmployee, tableFixedAssetsCategory, tableItemCategory, tableProducts, tableProductUnits, tableProductWarehouses, tablePettyCashCategory, tablePosition, tablePrepaidExpenseCategory,

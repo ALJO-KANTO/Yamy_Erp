@@ -230,7 +230,10 @@ namespace YamyProject
             openChildFormX(new FrmDashboard());
 
             // Hide Modules based on permissions
-            //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;// = UserPermissions.canView("CRM Module");
+            //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;
+            BtnCRM.Visible = Utilities.GetModules("CRM");
+            BtnManufacture.Visible = Utilities.GetModules("Manufacture");
+            BtnRestaurant.Visible = Utilities.GetModules("Restaurant");
 
             // do a function call after 2 seconds
             var timer = new Timer { Interval = 2000 };
@@ -1077,7 +1080,7 @@ namespace YamyProject
 
         private void itemCategoryListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new  MasterItemCategory());
+            openChildForm(new frmViewCategory());
         }
 
         private void itemVatListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1188,12 +1191,12 @@ namespace YamyProject
 
         private void addUnitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewItemUnit());
+            new frmViewItemUnit().ShowDialog();
         }
 
         private void addCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterItemCategory());
+            new frmViewItemC().ShowDialog();
 
         }
 
@@ -2048,7 +2051,7 @@ namespace YamyProject
 
         private void addTaxCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewItemTaxCodes());
+            new frmViewItemTaxCodes().ShowDialog();
         }
 
         private void itemTransferToolStripMenuItem_Click(object sender, EventArgs e)

@@ -35,6 +35,7 @@ namespace YamyProject
         {
             dtOpen.Value = dtpTransDate.Value = dt_check_date.Value = DateTime.Now.Date;
             txtPVCode.Text = GenerateNextReceiptCode();
+            txtId.Text = GenerateNextReceiptId();
             BindCombos.PopulateCustomers(cmbCustomer, true);
             BindCombos.PopulateCostCenter(cmbCreditCostCenter, true);
             BindCombos.PopulateCostCenter(cmbDebitCostCenter, true);
@@ -75,6 +76,7 @@ namespace YamyProject
             using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_receipt_voucher WHERE id = " + id))
                 if (reader.Read())
                 {
+                    txtId.Text = reader["id"].ToString();
                     dtOpen.Value = DateTime.Parse(reader["date"].ToString());
                     code = reader["code"].ToString();
                     txtPVCode.Text = reader["code"].ToString();
@@ -199,6 +201,21 @@ namespace YamyProject
             //dgvInv.EnableHeadersVisualStyles = false;
             //dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             calculateTotal();
+        }
+        private string GenerateNextReceiptId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_receipt_voucher"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
+                }
+            }
+
+            return newCode;
         }
         private string GenerateNextReceiptCode()
         {
@@ -1374,11 +1391,12 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtPVCode.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtPVCode.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
             currentId = currentId - 1;
+            txtId.Text = currentId.ToString();
             if (currentId <= 0)
             {
                 clear();
@@ -1403,10 +1421,11 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtPVCode.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtPVCode.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;
+            txtId.Text = currentId.ToString();
             string query = "SELECT id FROM tbl_receipt_voucher WHERE state = 0 AND id = @id";
             using (var reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("@id", currentId)))
             {

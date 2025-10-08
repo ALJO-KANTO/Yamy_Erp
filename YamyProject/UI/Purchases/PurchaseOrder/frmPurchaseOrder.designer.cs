@@ -97,14 +97,16 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.btnImport = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2VSeparator7 = new Guna.UI2.WinForms.Guna2VSeparator();
-            this.txtInvoiceId = new System.Windows.Forms.TextBox();
             this.guna2TileButton12 = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TileButton13 = new Guna.UI2.WinForms.Guna2TileButton();
@@ -1132,6 +1134,8 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.panel6.Controls.Add(this.guna2Button4);
+            this.panel6.Controls.Add(this.guna2Button5);
             this.panel6.Controls.Add(this.guna2HtmlLabel2);
             this.panel6.Controls.Add(this.guna2ControlBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1139,6 +1143,48 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1315, 23);
             this.panel6.TabIndex = 18;
+            // 
+            // guna2Button4
+            // 
+            this.guna2Button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button4.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.BorderRadius = 3;
+            this.guna2Button4.BorderThickness = 1;
+            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button4.ForeColor = System.Drawing.Color.White;
+            this.guna2Button4.Image = global::YamyProject.Properties.Resources.Subtract;
+            this.guna2Button4.ImageSize = new System.Drawing.Size(15, 15);
+            this.guna2Button4.Location = new System.Drawing.Point(1243, 4);
+            this.guna2Button4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.Size = new System.Drawing.Size(15, 15);
+            this.guna2Button4.TabIndex = 32;
+            // 
+            // guna2Button5
+            // 
+            this.guna2Button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button5.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button5.BorderRadius = 3;
+            this.guna2Button5.BorderThickness = 1;
+            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button5.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button5.ForeColor = System.Drawing.Color.White;
+            this.guna2Button5.Image = global::YamyProject.Properties.Resources.Restore_Down1;
+            this.guna2Button5.ImageSize = new System.Drawing.Size(15, 15);
+            this.guna2Button5.Location = new System.Drawing.Point(1269, 4);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2Button5.Name = "guna2Button5";
+            this.guna2Button5.Size = new System.Drawing.Size(15, 15);
+            this.guna2Button5.TabIndex = 31;
             // 
             // guna2HtmlLabel2
             // 
@@ -1189,9 +1235,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage3.Controls.Add(this.txtId);
             this.tabPage3.Controls.Add(this.btnImport);
             this.tabPage3.Controls.Add(this.guna2VSeparator7);
-            this.tabPage3.Controls.Add(this.txtInvoiceId);
             this.tabPage3.Controls.Add(this.guna2TileButton12);
             this.tabPage3.Controls.Add(this.guna2Button1);
             this.tabPage3.Controls.Add(this.guna2TileButton13);
@@ -1218,6 +1264,22 @@
             this.tabPage3.Size = new System.Drawing.Size(1307, 58);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Main";
+            // 
+            // txtId
+            // 
+            this.txtId.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtId.Enabled = false;
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtId.Location = new System.Drawing.Point(33, 21);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtId.Multiline = true;
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(66, 18);
+            this.txtId.TabIndex = 39;
+            this.txtId.Text = "0";
+            this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnImport
             // 
@@ -1253,20 +1315,6 @@
             this.guna2VSeparator7.Name = "guna2VSeparator7";
             this.guna2VSeparator7.Size = new System.Drawing.Size(8, 46);
             this.guna2VSeparator7.TabIndex = 37;
-            // 
-            // txtInvoiceId
-            // 
-            this.txtInvoiceId.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txtInvoiceId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInvoiceId.Enabled = false;
-            this.txtInvoiceId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtInvoiceId.Location = new System.Drawing.Point(33, 18);
-            this.txtInvoiceId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtInvoiceId.Multiline = true;
-            this.txtInvoiceId.Name = "txtInvoiceId";
-            this.txtInvoiceId.Size = new System.Drawing.Size(66, 24);
-            this.txtInvoiceId.TabIndex = 16;
-            this.txtInvoiceId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guna2TileButton12
             // 
@@ -1406,7 +1454,7 @@
             this.guna2TileButton23.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton23.HoverState.FillColor = System.Drawing.Color.Silver;
             this.guna2TileButton23.Image = global::YamyProject.Properties.Resources.Invoice;
-            this.guna2TileButton23.Location = new System.Drawing.Point(139, 8);
+            this.guna2TileButton23.Location = new System.Drawing.Point(139, 6);
             this.guna2TileButton23.Name = "guna2TileButton23";
             this.guna2TileButton23.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton23.TabIndex = 19;
@@ -1458,7 +1506,7 @@
             this.guna2TileButton22.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton22.HoverState.FillColor = System.Drawing.Color.Silver;
             this.guna2TileButton22.Image = global::YamyProject.Properties.Resources.Save;
-            this.guna2TileButton22.Location = new System.Drawing.Point(193, 8);
+            this.guna2TileButton22.Location = new System.Drawing.Point(193, 6);
             this.guna2TileButton22.Name = "guna2TileButton22";
             this.guna2TileButton22.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton22.TabIndex = 20;
@@ -1489,7 +1537,7 @@
             this.guna2TileButton21.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton21.HoverState.FillColor = System.Drawing.Color.Silver;
             this.guna2TileButton21.Image = global::YamyProject.Properties.Resources.Multiply;
-            this.guna2TileButton21.Location = new System.Drawing.Point(247, 8);
+            this.guna2TileButton21.Location = new System.Drawing.Point(247, 6);
             this.guna2TileButton21.Name = "guna2TileButton21";
             this.guna2TileButton21.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton21.TabIndex = 21;
@@ -1975,7 +2023,6 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator7;
-        private System.Windows.Forms.TextBox txtInvoiceId;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton12;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton13;
@@ -2063,5 +2110,8 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbProject;
         private System.Windows.Forms.RichTextBox richTextDescription;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtId;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button guna2Button5;
     }
 }

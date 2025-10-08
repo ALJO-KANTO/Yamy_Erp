@@ -345,6 +345,14 @@ namespace YamyProject.UI.Manufacturing.Models
             {
                 checkQtyAvailable();
             }
+
+            if (isSaved)
+            {
+                if(id>0)
+                    MessageBox.Show("Work Order Updated");
+                else
+                    MessageBox.Show("Work Order Saved");
+            }
         }
         private bool checkRequiredData()
         {

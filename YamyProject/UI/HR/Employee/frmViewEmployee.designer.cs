@@ -163,6 +163,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tbC.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -171,14 +174,13 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 664);
+            this.panel1.Location = new System.Drawing.Point(2, 662);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(902, 33);
+            this.panel1.Size = new System.Drawing.Size(898, 33);
             this.panel1.TabIndex = 2;
             // 
             // btnClose
@@ -190,7 +192,7 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.Location = new System.Drawing.Point(761, 4);
+            this.btnClose.Location = new System.Drawing.Point(757, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
@@ -206,7 +208,7 @@
             this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(618, 4);
+            this.btnSave.Location = new System.Drawing.Point(614, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
@@ -221,11 +223,11 @@
             this.tbC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbC.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbC.ItemSize = new System.Drawing.Size(180, 40);
-            this.tbC.Location = new System.Drawing.Point(0, 37);
+            this.tbC.Location = new System.Drawing.Point(2, 37);
             this.tbC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbC.Name = "tbC";
             this.tbC.SelectedIndex = 0;
-            this.tbC.Size = new System.Drawing.Size(902, 627);
+            this.tbC.Size = new System.Drawing.Size(898, 625);
             this.tbC.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tbC.TabButtonHoverState.FillColor = System.Drawing.Color.Silver;
             this.tbC.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -321,7 +323,7 @@
             this.TabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabPage1.Name = "TabPage1";
             this.TabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TabPage1.Size = new System.Drawing.Size(894, 579);
+            this.TabPage1.Size = new System.Drawing.Size(890, 577);
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "Employee Information";
             // 
@@ -1048,7 +1050,7 @@
             this.Guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(33)))), ((int)(((byte)(39)))));
             this.Guna2Button4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Guna2Button4.ForeColor = System.Drawing.Color.Silver;
-            this.Guna2Button4.Location = new System.Drawing.Point(1650, 901);
+            this.Guna2Button4.Location = new System.Drawing.Point(1646, 899);
             this.Guna2Button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Guna2Button4.Name = "Guna2Button4";
             this.Guna2Button4.Size = new System.Drawing.Size(87, 24);
@@ -1060,7 +1062,7 @@
             this.Label509.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label509.AutoSize = true;
             this.Label509.ForeColor = System.Drawing.Color.Cyan;
-            this.Label509.Location = new System.Drawing.Point(1434, 1031);
+            this.Label509.Location = new System.Drawing.Point(1430, 1029);
             this.Label509.Name = "Label509";
             this.Label509.Size = new System.Drawing.Size(308, 16);
             this.Label509.TabIndex = 11;
@@ -1071,7 +1073,7 @@
             this.Label520.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label520.AutoSize = true;
             this.Label520.ForeColor = System.Drawing.Color.Cyan;
-            this.Label520.Location = new System.Drawing.Point(1369, 1044);
+            this.Label520.Location = new System.Drawing.Point(1365, 1042);
             this.Label520.Name = "Label520";
             this.Label520.Size = new System.Drawing.Size(416, 16);
             this.Label520.TabIndex = 10;
@@ -1082,7 +1084,7 @@
             this.Label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label5.AutoSize = true;
             this.Label5.ForeColor = System.Drawing.Color.Green;
-            this.Label5.Location = new System.Drawing.Point(1471, 1070);
+            this.Label5.Location = new System.Drawing.Point(1467, 1068);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(214, 16);
             this.Label5.TabIndex = 1;
@@ -1093,7 +1095,7 @@
             this.Label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Label4.AutoSize = true;
             this.Label4.ForeColor = System.Drawing.Color.Cyan;
-            this.Label4.Location = new System.Drawing.Point(1424, 1057);
+            this.Label4.Location = new System.Drawing.Point(1420, 1055);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(317, 16);
             this.Label4.TabIndex = 9;
@@ -1926,11 +1928,41 @@
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(902, 37);
+            this.headerUC1.Size = new System.Drawing.Size(898, 37);
             this.headerUC1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(900, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(2, 697);
+            this.panel4.TabIndex = 162;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(2, 697);
+            this.panel2.TabIndex = 163;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(2, 695);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(898, 2);
+            this.panel5.TabIndex = 164;
             // 
             // frmViewEmployee
             // 
@@ -1943,6 +1975,9 @@
             this.Controls.Add(this.tbC);
             this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmViewEmployee";
@@ -2096,5 +2131,8 @@
         internal System.Windows.Forms.Label label66;
         internal System.Windows.Forms.Label label67;
         private Guna.UI2.WinForms.Guna2ComboBox cmbPettyCash;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
     }
 }

@@ -21,7 +21,6 @@ namespace YamyProject
         decimal invId;
         int level4PaymentCreditMethodId;
         int id;
-        string invCode;
 
         public frmPurchaseOrder(int id = 0)
         {
@@ -56,6 +55,7 @@ namespace YamyProject
             cmbPaymentMethod.SelectedIndex = 0;
             bindCombo();
             txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
             if (id != 0)
             {
                 BindInvoice();
@@ -69,6 +69,7 @@ namespace YamyProject
                 DBClass.CreateParameter("id", id)))
             {
                 reader.Read();
+                txtId.Text = reader["id"].ToString();
                 dtInv.Value = DateTime.Parse(reader["date"].ToString());
                 txtNextCode.Text = reader["invoice_id"].ToString();
                 cmbVendor.SelectedValue = reader["vendor_id"].ToString();
@@ -83,7 +84,6 @@ namespace YamyProject
                 cmbShipVia.Text = reader["ship_via"].ToString();
                 richTextDescription.Text = reader["description"].ToString();
                 cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                 invId = id;
                 txtBillTo.Text = reader["bill_to"].ToString();
                 txtShipTo.Text = reader["ship_to"].ToString();
@@ -222,6 +222,21 @@ namespace YamyProject
 
             return newCode;
         }
+        private string GenerateNextSalesId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_purchase_order"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
+                }
+            }
+
+            return newCode;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -268,7 +283,7 @@ namespace YamyProject
                  DBClass.CreateParameter("id", id),
                   DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", ""),
@@ -293,7 +308,7 @@ namespace YamyProject
             DBClass.ExecuteNonQuery(@"DELETE FROM tbl_purchase_order_details WHERE purchase_id=@id", DBClass.CreateParameter("id", id));
 
             insertInvItems();
-            Utilities.LogAudit(frmLogin.userId, "Update Purchase Order", "Purchase Order", id, "Updated Purchase Order: " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Update Purchase Order", "Purchase Order", id, "Updated Purchase Order: " + txtNextCode.Text);
 
             return true;
         }
@@ -301,7 +316,6 @@ namespace YamyProject
         {
             if (!chkRequiredDate())
                 return false;
-            invCode = GenerateNextSalesCode();
 
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_purchase_order (date, vendor_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
@@ -311,7 +325,7 @@ namespace YamyProject
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", ""),
@@ -336,8 +350,8 @@ namespace YamyProject
                DBClass.CreateParameter("state", 0)).ToString());
 
             insertInvItems();
-            txtInvoiceId.Text = invCode.ToString();
-            Utilities.LogAudit(frmLogin.userId, "Add Purchase Order", "Purchase Order", (int)invId, "Added Purchase Order: " + invCode);
+
+            Utilities.LogAudit(frmLogin.userId, "Add Purchase Order", "Purchase Order", (int)invId, "Added Purchase Order: " + txtNextCode.Text);
             return true;
         }
 
@@ -430,7 +444,7 @@ namespace YamyProject
         private void resetTextBox()
         {
             txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text =
-                txtInvoiceId.Text = txtTotal.Text = txtTotalVat.Text = "";
+                txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
             dgvItems.Rows.Clear();
@@ -931,7 +945,7 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
@@ -959,7 +973,7 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;
@@ -1140,7 +1154,9 @@ namespace YamyProject
         private void clearData()
         {
             dgvItems.Rows.Clear();
-            txtBillTo.Text = "";
+            resetTextBox();
+            txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
             id = 0;
         }
 

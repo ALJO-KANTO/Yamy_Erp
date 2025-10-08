@@ -22,7 +22,6 @@ namespace YamyProject
         decimal invId;
         int level4PaymentCreditMethodId;
         int id;
-        string invCode;
 
         public frmSaleProforma(int _id = 0)
         {
@@ -56,7 +55,8 @@ namespace YamyProject
             loadVat();
             cmbPaymentMethod.SelectedIndex = 0;
             bindCombo();
-            txtNextCode.Text = txtInvoiceId.Text = GenerateNextSalesCode();
+            txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
             if (id != 0)
             {
                 btnSave.Enabled = UserPermissions.canEdit("Sales Proforma");
@@ -69,6 +69,7 @@ namespace YamyProject
                 DBClass.CreateParameter("id", id)))
                 if (reader.Read())
                 {
+                    txtId.Text = reader["id"].ToString();
                     dtInv.Value = DateTime.Parse(reader["date"].ToString());
                     txtNextCode.Text = reader["invoice_id"].ToString();
                     cmbCustomer.SelectedValue = reader["customer_id"].ToString();
@@ -83,7 +84,6 @@ namespace YamyProject
                     cmbShipVia.Text = reader["ship_via"].ToString();
                     richTextDescription.Text = reader["description"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                    invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                     invId = id;
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
@@ -153,6 +153,21 @@ namespace YamyProject
                 {
                     int code = int.Parse(reader["lastCode"].ToString()) + 1;
                     newCode = "SP-" + code.ToString("D4");
+                }
+            }
+
+            return newCode;
+        }
+        private string GenerateNextSalesId()
+        {
+            string newCode = "1";
+
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_sales_proforma"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = code.ToString();
                 }
             }
 
@@ -305,7 +320,7 @@ namespace YamyProject
                                      DBClass.CreateParameter("id", id),
                                      DBClass.CreateParameter("date", dtInv.Value.Date),
                                      DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
-                                     DBClass.CreateParameter("invoice_id", invCode),
+                                     DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                                      DBClass.CreateParameter("city", cmbCity.Text),
                                      DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                                      DBClass.CreateParameter("po_num", ""),
@@ -330,7 +345,7 @@ namespace YamyProject
             DBClass.ExecuteNonQuery("delete from tbl_sales_proforma_details where sales_id =@id", DBClass.CreateParameter("id", id));
             insertInvItems();
 
-            Utilities.LogAudit(frmLogin.userId, "Update Proforma Invoice", "Proforma Invoice", Convert.ToInt32(id), "Updated Proforma Invoice: " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Update Proforma Invoice", "Proforma Invoice", Convert.ToInt32(id), "Updated Proforma Invoice: " + txtNextCode.Text);
 
             return true;
         }
@@ -340,7 +355,6 @@ namespace YamyProject
             if (!chkRequiredDate())
                 return false;
             
-            invCode = GenerateNextSalesCode();
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales_proforma (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
                total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
@@ -349,7 +363,7 @@ namespace YamyProject
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
-               DBClass.CreateParameter("invoice_id", invCode),
+               DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
                DBClass.CreateParameter("po_num", ""),
@@ -373,8 +387,7 @@ namespace YamyProject
                DBClass.CreateParameter("state", 0)).ToString());
 
             insertInvItems();
-            txtInvoiceId.Text = invCode.ToString();
-            Utilities.LogAudit(frmLogin.userId, "Add Proforma Invoice", "Proforma Invoice", Convert.ToInt32(invId), "Added Proforma Invoice: " + invCode);
+            Utilities.LogAudit(frmLogin.userId, "Add Proforma Invoice", "Proforma Invoice", Convert.ToInt32(invId), "Added Proforma Invoice: " + txtNextCode.Text);
 
             return true;
         }
@@ -442,10 +455,12 @@ namespace YamyProject
         private void resetTextBox()
         {
             txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text = 
-            txtInvoiceId.Text = txtTotal.Text = txtTotalVat.Text = "";
+            txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
             dgvItems.Rows.Clear();
+            txtNextCode.Text = GenerateNextSalesCode();
+            txtId.Text = GenerateNextSalesId();
         }
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
@@ -946,10 +961,10 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtInvoiceId.Text))
+            if (string.IsNullOrWhiteSpace(txtId.Text))
                 return;
 
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId == null || currentId <= 1)
                 return;
 
@@ -977,10 +992,10 @@ namespace YamyProject
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtInvoiceId.Text))
+            if (string.IsNullOrWhiteSpace(txtId.Text))
                 return;
 
-            int? currentId = Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
+            int? currentId = Convert.ToInt32(txtId.Text); // Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId is null) return;
 
             currentId = currentId + 1;
@@ -1164,14 +1179,13 @@ namespace YamyProject
 
         private void guna2TileButton23_Click(object sender, EventArgs e)
         {
-            txtNextCode.Text = txtInvoiceId.Text = GenerateNextSalesCode();
             clearData();
         }
 
         private void clearData()
         {
-            dgvItems.Rows.Clear();
-            txtBillTo.Text = "";
+            id = 0;
+            resetTextBox();
             id = 0;
         }
 

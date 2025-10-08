@@ -29,7 +29,9 @@ namespace YamyProject.UI.Manufacturing.Models
         {
             GetData();
 
-            DataTable dt = DBClass.ExecuteDataTable("SELECT CONCAT(e.CODE ,' - ' , e.Name) as NAME ,e.id,CONCAT(d.id ,' - ' , d.name, d.Department) as Department ,CONCAT(p.id ,' - ' , p.name) as Position FROM tbl_employee e,tbl_departments d, tbl_position p WHERE e.Department_id = d.id AND d.id = p.department_id AND d.Department = 'Manufacture'");
+            DataTable dt = DBClass.ExecuteDataTable(@"SELECT CONCAT(e.CODE, ' - ', e.Name) AS NAME, e.id, CONCAT(d.id, ' - ', d.name, d.Department) AS Department,
+                CONCAT(p.id, ' - ', p.name) AS Position FROM tbl_employee e JOIN tbl_departments d ON e.Department_id = d.id JOIN tbl_position p ON e.position_id = p.id
+                WHERE d.Department = 'Manufacture';");
             employeesList = new List<EmployeeModel>();
             foreach (DataRow row in dt.Rows)
             {
@@ -127,17 +129,20 @@ namespace YamyProject.UI.Manufacturing.Models
                 frmManEmployeeSelectionForm form = new frmManEmployeeSelectionForm(employeesList);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    List<string> selected = form.SelectedEmployees.Select(emp => emp.ToString()).ToList();
-                    string combined = string.Join(", ", selected);
-                    if (!string.IsNullOrEmpty(combined))
+                    if (form.SelectedEmployees.Count > 0)
                     {
-                        guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = combined;
-                        selectedEmployees = form.SelectedEmployees;
-                    }
-                    else
-                    {
-                        guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Add...";
-                        selectedEmployees.Clear();
+                        List<string> selected = form.SelectedEmployees.Select(emp => emp.ToString()).ToList();
+                        string combined = string.Join(", ", selected);
+                        if (!string.IsNullOrEmpty(combined))
+                        {
+                            guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = combined;
+                            selectedEmployees = form.SelectedEmployees;
+                        }
+                        else
+                        {
+                            guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Add...";
+                            selectedEmployees.Clear();
+                        }
                     }
                 }
             } 

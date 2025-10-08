@@ -1652,31 +1652,6 @@ namespace YamyProject
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            //int? currentId = Convert.ToInt32(txtInvoiceId.Text);//Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
-            //if (currentId == null || currentId <= 1)
-            //    return;
-
-            //currentId = currentId - 1;
-            //if (currentId <= 0)
-            //{
-            //    clear();
-            //    MessageBox.Show("No previous records.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
-
-            //string query = "select id from tbl_purchase where state = 0 and id = @id";
-            //using (var reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("id", currentId)))
-            //    if (reader.Read())
-            //    {
-            //        id = int.Parse(reader["id"].ToString());
-            //        BindInvoice();
-            //    }
-            //    else
-            //    {
-            //        //clear();
-            //        MessageBox.Show("No previous records.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-
             int? currentId = Convert.ToInt32(txtInvoiceId.Text);//Utilities.GetVoucherIdFromCode(txtInvoiceId.Text);
             if (currentId == null || currentId <= 1)
                 return;
@@ -1975,12 +1950,11 @@ namespace YamyProject
 
         private void guna2TileButton23_Click(object sender, EventArgs e)
         {
-            txtInvoiceId.Text = GetNextPurchaseId();//GenerateNextSalesCode();
             clearData();
         }
         private void clearData()
         {
-            dgvItems.Rows.Clear();
+            clear();
             txtBillTo.Text = "";
             id = 0;
         }

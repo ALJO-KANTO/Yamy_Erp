@@ -38,7 +38,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.pnlHeader.Controls.Add(this.btnMaximize);
             this.pnlHeader.Controls.Add(this.btnMinimize);
             this.pnlHeader.Controls.Add(this.btnClose);
@@ -127,7 +127,7 @@
             this.lblFormName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblFormName.FillColor = System.Drawing.Color.Transparent;
             this.lblFormName.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblFormName.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold);
+            this.lblFormName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFormName.ForeColor = System.Drawing.Color.White;
             this.lblFormName.HoverState.FillColor = System.Drawing.Color.RoyalBlue;
             this.lblFormName.Location = new System.Drawing.Point(0, 0);
@@ -135,7 +135,8 @@
             this.lblFormName.Name = "lblFormName";
             this.lblFormName.Size = new System.Drawing.Size(633, 35);
             this.lblFormName.TabIndex = 3;
-            this.lblFormName.Text = ".";
+            this.lblFormName.Text = "Title";
+            this.lblFormName.Click += new System.EventHandler(this.lblFormName_Click);
             this.lblFormName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblFormName_MouseDoubleClick);
             // 
             // HeaderUC

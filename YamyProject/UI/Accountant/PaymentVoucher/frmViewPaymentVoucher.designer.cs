@@ -155,6 +155,7 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.txtcostcenter.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -1433,11 +1434,12 @@ namespace YamyProject
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(304, 0);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(304, 3);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(314, 23);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(314, 20);
             this.guna2HtmlLabel2.TabIndex = 19;
-            this.guna2HtmlLabel2.Text = null;
+            this.guna2HtmlLabel2.Text = "Payment Voucher";
+            this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // guna2ControlBox1
             // 
@@ -1522,6 +1524,7 @@ namespace YamyProject
             this.tabPage3.Controls.Add(this.chkPrint);
             this.tabPage3.Controls.Add(this.BtnPrint);
             this.tabPage3.Controls.Add(this.BtnEmail);
+            this.tabPage3.Controls.Add(this.txtId);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -1594,7 +1597,7 @@ namespace YamyProject
             this.BtnClear.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.BtnClear.HoverState.FillColor = System.Drawing.Color.Silver;
             this.BtnClear.Image = global::YamyProject.Properties.Resources.Invoice;
-            this.BtnClear.Location = new System.Drawing.Point(139, 8);
+            this.BtnClear.Location = new System.Drawing.Point(139, 6);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(54, 47);
             this.BtnClear.TabIndex = 19;
@@ -1646,7 +1649,7 @@ namespace YamyProject
             this.BtnSaveNew.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.BtnSaveNew.HoverState.FillColor = System.Drawing.Color.Silver;
             this.BtnSaveNew.Image = global::YamyProject.Properties.Resources.Save;
-            this.BtnSaveNew.Location = new System.Drawing.Point(191, 8);
+            this.BtnSaveNew.Location = new System.Drawing.Point(191, 6);
             this.BtnSaveNew.Name = "BtnSaveNew";
             this.BtnSaveNew.Size = new System.Drawing.Size(54, 47);
             this.BtnSaveNew.TabIndex = 20;
@@ -1677,7 +1680,7 @@ namespace YamyProject
             this.BtnDelete.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.BtnDelete.HoverState.FillColor = System.Drawing.Color.Silver;
             this.BtnDelete.Image = global::YamyProject.Properties.Resources.Multiply;
-            this.BtnDelete.Location = new System.Drawing.Point(247, 8);
+            this.BtnDelete.Location = new System.Drawing.Point(247, 6);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(54, 47);
             this.BtnDelete.TabIndex = 21;
@@ -2094,6 +2097,22 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 125;
             // 
+            // txtId
+            // 
+            this.txtId.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtId.Enabled = false;
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtId.Location = new System.Drawing.Point(33, 18);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtId.Multiline = true;
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(66, 24);
+            this.txtId.TabIndex = 33;
+            this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtId.Visible = false;
+            // 
             // frmViewPaymentVoucher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2259,5 +2278,6 @@ namespace YamyProject
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private Guna.UI2.WinForms.Guna2CheckBox cbpettycash;
         private Guna.UI2.WinForms.Guna2CheckBox CbSubcontractors;
+        private TextBox txtId;
     }
 }

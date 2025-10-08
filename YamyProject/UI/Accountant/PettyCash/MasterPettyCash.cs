@@ -137,7 +137,7 @@ namespace YamyProject
                 dgvInvoiceCash.Rows.Clear();
                 string query = @"
                             SELECT 
-                            p.id as VNo,p.code as Code,p.voucher_date as Date,p.total as Total,
+                            p.id,p.code as Code,p.voucher_date as Date,p.total as Total,
                             CASE 
                                 WHEN p.`status` = 0 THEN 'Pending' 
                                 ELSE 'Confirmed' 
@@ -399,9 +399,9 @@ namespace YamyProject
 
         private void editPettyCashToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvInvoice.SelectedRows.Count > 0)
+            if (dgvInvoiceCash.SelectedRows.Count > 0)
             {
-                var cell = dgvInvoice.SelectedRows[0].Cells["id"];
+                var cell = dgvInvoiceCash.SelectedRows[0].Cells["id"];
                 if (cell != null && cell.Value != null)
                 {
                     int _invId = Convert.ToInt32(cell.Value);
@@ -580,7 +580,7 @@ namespace YamyProject
         {
             if(e.RowIndex >= 0)
             {
-                var cell = dgvInvoiceCash.Rows[e.RowIndex].Cells["VNo"];
+                var cell = dgvInvoiceCash.Rows[e.RowIndex].Cells["id"];
                 if (cell != null && cell.Value != null)
                 {
                     int submissionId = Convert.ToInt32(cell.Value);

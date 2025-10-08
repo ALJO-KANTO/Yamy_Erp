@@ -111,7 +111,7 @@
             this.Lbheader.Name = "Lbheader";
             this.Lbheader.Size = new System.Drawing.Size(751, 25);
             this.Lbheader.TabIndex = 19;
-            this.Lbheader.Text = "Fixed Assets";
+            this.Lbheader.Text = "Title";
             this.Lbheader.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UcHeaderBar

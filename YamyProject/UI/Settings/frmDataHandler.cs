@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -275,8 +276,12 @@ namespace YamyProject
                                             else if (item == "Petty Cash Card")
                                             {
                                                 query += "TRUNCATE TABLE tbl_petty_cash_card;";
+                                            }
+                                            else if (item == "Petty Cash")
+                                            {
                                                 query += "TRUNCATE TABLE tbl_petty_cash;";
                                                 query += "TRUNCATE TABLE tbl_petty_cash_details;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Petty Cash');";
                                             }
                                             else if (item == "petty Cash Category")
                                             {
