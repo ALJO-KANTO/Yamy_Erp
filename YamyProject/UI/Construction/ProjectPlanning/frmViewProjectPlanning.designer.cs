@@ -215,7 +215,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -223,8 +223,8 @@
             this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
-            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(1214, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
@@ -237,7 +237,7 @@
             // 
             this.lbl_boq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_boq.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_boq.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.lbl_boq.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.lbl_boq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.lbl_boq.Location = new System.Drawing.Point(3, 6);
             this.lbl_boq.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -249,15 +249,15 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1072, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
@@ -296,7 +296,7 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 37);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -308,7 +308,7 @@
             // lblBOQTotal
             // 
             this.lblBOQTotal.BackColor = System.Drawing.Color.Transparent;
-            this.lblBOQTotal.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBOQTotal.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBOQTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.lblBOQTotal.Location = new System.Drawing.Point(231, 188);
             this.lblBOQTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -353,7 +353,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label5.Location = new System.Drawing.Point(1186, 177);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -380,7 +380,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(923, 177);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -446,7 +446,7 @@
             // label16
             // 
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label16.Location = new System.Drawing.Point(531, 151);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -460,7 +460,7 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label12.Location = new System.Drawing.Point(532, 85);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -491,7 +491,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label8.Location = new System.Drawing.Point(1079, 85);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -533,7 +533,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(24, 150);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -571,7 +571,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label6.Location = new System.Drawing.Point(1079, 15);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -617,7 +617,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(532, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -660,7 +660,7 @@
             // label14
             // 
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label14.Location = new System.Drawing.Point(25, 83);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -673,7 +673,7 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label11.Location = new System.Drawing.Point(24, 22);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -734,7 +734,7 @@
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
@@ -752,7 +752,7 @@
             this.progress});
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -768,16 +768,16 @@
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvItems.RowHeadersVisible = false;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvItems.Size = new System.Drawing.Size(1342, 213);
             this.dgvItems.TabIndex = 10;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -785,14 +785,14 @@
             this.dgvItems.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvItems.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvItems.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItems.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvItems.ThemeStyle.ReadOnly = true;
             this.dgvItems.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.ThemeStyle.RowsStyle.Height = 25;
             this.dgvItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -888,7 +888,7 @@
             this.dgvRequest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle26.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
@@ -907,7 +907,7 @@
             this.reqStatus});
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -923,16 +923,16 @@
             this.dgvRequest.ReadOnly = true;
             this.dgvRequest.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvRequest.RowHeadersVisible = false;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvRequest.RowsDefaultCellStyle = dataGridViewCellStyle28;
-            this.dgvRequest.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRequest.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvRequest.RowTemplate.Height = 25;
             this.dgvRequest.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRequest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvRequest.Size = new System.Drawing.Size(1342, 176);
             this.dgvRequest.TabIndex = 10;
             this.dgvRequest.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvRequest.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvRequest.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvRequest.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvRequest.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRequest.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -940,14 +940,14 @@
             this.dgvRequest.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRequest.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvRequest.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvRequest.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRequest.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvRequest.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvRequest.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvRequest.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvRequest.ThemeStyle.ReadOnly = true;
             this.dgvRequest.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvRequest.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvRequest.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRequest.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvRequest.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvRequest.ThemeStyle.RowsStyle.Height = 25;
             this.dgvRequest.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -1021,7 +1021,7 @@
             // 
             // btnNewRequestMaterial
             // 
-            this.btnNewRequestMaterial.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewRequestMaterial.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewRequestMaterial.BorderRadius = 5;
             this.btnNewRequestMaterial.BorderThickness = 1;
             this.btnNewRequestMaterial.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -1029,8 +1029,8 @@
             this.btnNewRequestMaterial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewRequestMaterial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewRequestMaterial.FillColor = System.Drawing.Color.White;
-            this.btnNewRequestMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnNewRequestMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewRequestMaterial.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnNewRequestMaterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewRequestMaterial.Location = new System.Drawing.Point(4, 6);
             this.btnNewRequestMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewRequestMaterial.Name = "btnNewRequestMaterial";
@@ -1076,7 +1076,7 @@
             this.dgvItemsIssued.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle30.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
@@ -1095,7 +1095,7 @@
             this.IssStatus});
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1111,16 +1111,16 @@
             this.dgvItemsIssued.ReadOnly = true;
             this.dgvItemsIssued.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvItemsIssued.RowHeadersVisible = false;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItemsIssued.RowsDefaultCellStyle = dataGridViewCellStyle32;
-            this.dgvItemsIssued.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsIssued.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsIssued.RowTemplate.Height = 25;
             this.dgvItemsIssued.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItemsIssued.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvItemsIssued.Size = new System.Drawing.Size(1342, 182);
             this.dgvItemsIssued.TabIndex = 12;
             this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsIssued.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1128,14 +1128,14 @@
             this.dgvItemsIssued.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsIssued.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvItemsIssued.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvItemsIssued.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsIssued.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsIssued.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvItemsIssued.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItemsIssued.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvItemsIssued.ThemeStyle.ReadOnly = true;
             this.dgvItemsIssued.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItemsIssued.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvItemsIssued.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsIssued.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsIssued.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsIssued.ThemeStyle.RowsStyle.Height = 25;
             this.dgvItemsIssued.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -1208,7 +1208,7 @@
             // 
             // btnNewIssueMaterial
             // 
-            this.btnNewIssueMaterial.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewIssueMaterial.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewIssueMaterial.BorderRadius = 5;
             this.btnNewIssueMaterial.BorderThickness = 1;
             this.btnNewIssueMaterial.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -1216,8 +1216,8 @@
             this.btnNewIssueMaterial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewIssueMaterial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewIssueMaterial.FillColor = System.Drawing.Color.White;
-            this.btnNewIssueMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnNewIssueMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewIssueMaterial.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnNewIssueMaterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewIssueMaterial.Location = new System.Drawing.Point(4, 2);
             this.btnNewIssueMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewIssueMaterial.Name = "btnNewIssueMaterial";
@@ -1263,7 +1263,7 @@
             this.dgvItemsReceived.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle34.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
@@ -1282,7 +1282,7 @@
             this.recStatus});
             dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1298,16 +1298,16 @@
             this.dgvItemsReceived.ReadOnly = true;
             this.dgvItemsReceived.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvItemsReceived.RowHeadersVisible = false;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItemsReceived.RowsDefaultCellStyle = dataGridViewCellStyle36;
-            this.dgvItemsReceived.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsReceived.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsReceived.RowTemplate.Height = 25;
             this.dgvItemsReceived.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItemsReceived.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvItemsReceived.Size = new System.Drawing.Size(1342, 169);
             this.dgvItemsReceived.TabIndex = 11;
             this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsReceived.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1315,14 +1315,14 @@
             this.dgvItemsReceived.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsReceived.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvItemsReceived.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvItemsReceived.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsReceived.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsReceived.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvItemsReceived.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItemsReceived.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvItemsReceived.ThemeStyle.ReadOnly = true;
             this.dgvItemsReceived.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItemsReceived.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvItemsReceived.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItemsReceived.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItemsReceived.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsReceived.ThemeStyle.RowsStyle.Height = 25;
             this.dgvItemsReceived.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -1394,7 +1394,7 @@
             // 
             // btnNewReceivedMaterial
             // 
-            this.btnNewReceivedMaterial.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewReceivedMaterial.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewReceivedMaterial.BorderRadius = 5;
             this.btnNewReceivedMaterial.BorderThickness = 1;
             this.btnNewReceivedMaterial.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -1402,8 +1402,8 @@
             this.btnNewReceivedMaterial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewReceivedMaterial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewReceivedMaterial.FillColor = System.Drawing.Color.White;
-            this.btnNewReceivedMaterial.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnNewReceivedMaterial.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewReceivedMaterial.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnNewReceivedMaterial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNewReceivedMaterial.Location = new System.Drawing.Point(4, 8);
             this.btnNewReceivedMaterial.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewReceivedMaterial.Name = "btnNewReceivedMaterial";
@@ -1449,7 +1449,7 @@
             this.dgvResource.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle38.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
@@ -1467,7 +1467,7 @@
             this.ResourceDefaultUnitsTime});
             dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1483,16 +1483,16 @@
             this.dgvResource.ReadOnly = true;
             this.dgvResource.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvResource.RowHeadersVisible = false;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvResource.RowsDefaultCellStyle = dataGridViewCellStyle40;
-            this.dgvResource.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvResource.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvResource.RowTemplate.Height = 25;
             this.dgvResource.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvResource.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvResource.Size = new System.Drawing.Size(1342, 169);
             this.dgvResource.TabIndex = 11;
             this.dgvResource.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvResource.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvResource.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvResource.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvResource.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvResource.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1500,14 +1500,14 @@
             this.dgvResource.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvResource.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvResource.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvResource.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvResource.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvResource.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvResource.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvResource.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvResource.ThemeStyle.ReadOnly = true;
             this.dgvResource.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvResource.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvResource.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvResource.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvResource.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvResource.ThemeStyle.RowsStyle.Height = 25;
             this.dgvResource.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -1575,7 +1575,7 @@
             // 
             // btnAddResource
             // 
-            this.btnAddResource.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddResource.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnAddResource.BorderRadius = 5;
             this.btnAddResource.BorderThickness = 1;
             this.btnAddResource.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -1583,8 +1583,8 @@
             this.btnAddResource.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAddResource.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddResource.FillColor = System.Drawing.Color.White;
-            this.btnAddResource.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnAddResource.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddResource.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnAddResource.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnAddResource.Location = new System.Drawing.Point(4, 8);
             this.btnAddResource.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddResource.Name = "btnAddResource";
@@ -1866,7 +1866,7 @@
             // 
             // headerUC1
             // 
-            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";

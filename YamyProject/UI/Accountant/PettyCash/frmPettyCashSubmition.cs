@@ -30,7 +30,7 @@ namespace YamyProject
                 this.Text = "Petty Cash Submission - Edit";
             else
                 this.Text = "Petty Cash Submission - New";
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

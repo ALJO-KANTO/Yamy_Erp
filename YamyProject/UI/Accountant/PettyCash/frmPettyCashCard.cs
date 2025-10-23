@@ -27,7 +27,7 @@ namespace YamyProject
                 this.Text = "Petty Cash Card - Edit";
             else
                 this.Text = "Petty Cash Card - New";
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

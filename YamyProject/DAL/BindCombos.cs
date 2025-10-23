@@ -171,6 +171,12 @@ namespace YamyProject
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
             return cmb;
         }
+        public static ComboBox PopulateSoledCustomers(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "SELECT id,code,name FROM tbl_customer where id IN (SELECT customer_id from tbl_sales)";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+        }
         public static Guna2ComboBox PopulateFixedAssetsCategories(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
         {
             string query = "select * from tbl_fixed_assets_category";
@@ -498,6 +504,14 @@ namespace YamyProject
         public static ComboBox PopulateVendors(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false, string type = "")
         {
             string query = "SELECT id, code, name FROM tbl_vendor";
+            if (!string.IsNullOrEmpty(type))
+                query += " WHERE type = '" + type + "'";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+        }
+        public static ComboBox PopulatePurchasedVendors(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false, string type = "")
+        {
+            string query = "SELECT id, code, name FROM tbl_vendor where id IN (SELECT vendor_id from tbl_purchase) and type='Vendor'";
             if (!string.IsNullOrEmpty(type))
                 query += " WHERE type = '" + type + "'";
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);

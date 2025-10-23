@@ -102,8 +102,18 @@ namespace YamyProject.UI.Manufacturing.Viewform
             frm.label6.Text = row["employeeID"].Value?.ToString().Split('-')[0];
             frm.label9.Text = row["dgvempname"].Value?.ToString();
             frm.id = Convert.ToInt32(row["Id"].Value);
-            frm.timepicker1.Value = Convert.ToDateTime(row["dgvstarttime"].Value);
-            frm.dateTimePicker1.Value = Convert.ToDateTime(row["dgvEndTime"].Value); 
+
+            DateTime temp;
+            if (DateTime.TryParse(row["dgvstarttime"].Value?.ToString(), out temp))
+                frm.timepicker1.Value = temp;
+            else
+                frm.timepicker1.Value = DateTime.Parse("00:00:00");
+
+            if (DateTime.TryParse(row["dgvEndTime"].Value?.ToString(), out temp))
+                frm.dateTimePicker1.Value = temp;
+            else
+                frm.dateTimePicker1.Value = DateTime.Parse("00:00:00");
+
             frm.guna2ComboBox1.Text = row["dgvStatus"].Value?.ToString();
             frm.txtdiscription.Text = row["dgvRemark"].Value?.ToString();
             RMSClass.blurbackground3(frm);

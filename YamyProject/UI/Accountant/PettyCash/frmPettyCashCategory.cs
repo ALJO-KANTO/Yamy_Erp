@@ -25,7 +25,7 @@ namespace YamyProject
             else
                 this.Text = "Petty Cash Category";
 
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
        
         private void btnClose_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ namespace YamyProject.UI.Default
         public frmConfig()
         {
             InitializeComponent();
+            headerUC1.FormText = this.Text;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

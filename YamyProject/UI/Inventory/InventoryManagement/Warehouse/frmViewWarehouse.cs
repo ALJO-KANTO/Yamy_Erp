@@ -15,7 +15,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            LbHeader.Text = id == 0 ? "New Warehouse" : "Edit Warehouse";
+            headerUC1.FormText = id == 0 ? "New Warehouse" : "Edit Warehouse";
             btnSave.Text = id == 0 ? "Save" : "Update";
         }
       

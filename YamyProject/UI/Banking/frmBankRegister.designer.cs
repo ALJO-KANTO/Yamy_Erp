@@ -55,6 +55,7 @@
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.BorderThickness = 0;
             this.guna2GroupBox1.Controls.Add(this.panel1);
             this.guna2GroupBox1.Controls.Add(this.cmbBankName);
@@ -69,10 +70,11 @@
             this.guna2GroupBox1.Controls.Add(this.label2);
             this.guna2GroupBox1.Controls.Add(this.label3);
             this.guna2GroupBox1.Controls.Add(this.label7);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 37);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -83,7 +85,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
@@ -98,7 +100,7 @@
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.BackColor = System.Drawing.Color.Transparent;
-            this.btnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnDelete.BorderRadius = 7;
             this.btnDelete.BorderThickness = 3;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -119,7 +121,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -127,8 +129,8 @@
             this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
-            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(427, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -139,15 +141,15 @@
             // 
             // btnSave
             // 
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(352, 3);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -173,6 +175,9 @@
             // 
             // txtRoute
             // 
+            this.txtRoute.BackColor = System.Drawing.Color.Transparent;
+            this.txtRoute.BorderRadius = 5;
+            this.txtRoute.BorderThickness = 2;
             this.txtRoute.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRoute.DefaultText = "";
             this.txtRoute.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -194,6 +199,9 @@
             // 
             // txtAbbName
             // 
+            this.txtAbbName.BackColor = System.Drawing.Color.Transparent;
+            this.txtAbbName.BorderRadius = 5;
+            this.txtAbbName.BorderThickness = 2;
             this.txtAbbName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAbbName.DefaultText = "";
             this.txtAbbName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -215,6 +223,9 @@
             // 
             // txtEntId
             // 
+            this.txtEntId.BackColor = System.Drawing.Color.Transparent;
+            this.txtEntId.BorderRadius = 5;
+            this.txtEntId.BorderThickness = 2;
             this.txtEntId.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEntId.DefaultText = "";
             this.txtEntId.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -236,6 +247,9 @@
             // 
             // txtCode
             // 
+            this.txtCode.BackColor = System.Drawing.Color.Transparent;
+            this.txtCode.BorderRadius = 5;
+            this.txtCode.BorderThickness = 2;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DefaultText = "";
             this.txtCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -277,7 +291,7 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Enabled = false;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(32, 155);
             this.label4.Name = "label4";
@@ -290,7 +304,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Enabled = false;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(32, 89);
             this.label1.Name = "label1";
@@ -303,7 +317,7 @@
             // 
             this.lblBalance.BackColor = System.Drawing.Color.Transparent;
             this.lblBalance.Enabled = false;
-            this.lblBalance.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.lblBalance.Location = new System.Drawing.Point(228, 89);
             this.lblBalance.Name = "lblBalance";
@@ -315,7 +329,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(32, 23);
             this.label2.Name = "label2";
@@ -327,7 +341,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(155, 23);
             this.label3.Name = "label3";
@@ -340,7 +354,7 @@
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Enabled = false;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label7.Location = new System.Drawing.Point(228, 155);
             this.label7.Name = "label7";
@@ -363,7 +377,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(497, 37);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -373,7 +387,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 37);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -383,7 +397,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 319);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -406,7 +420,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmBankRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CHQ Book Register";
+            this.Text = "Bank Register";
             this.Load += new System.EventHandler(this.frmBankRegister_Load);
             this.guna2GroupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

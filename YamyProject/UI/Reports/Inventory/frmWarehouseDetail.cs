@@ -25,7 +25,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             this.warehouseId = warehouseId;
             this.itemId = _itemId;
         }

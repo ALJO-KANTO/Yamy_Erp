@@ -38,6 +38,8 @@ namespace YamyProject
         {
             InitializeComponent();
             //ApplyTheme(this);
+
+            menuStrip1.Renderer = new MyRenderer();
             LocalizationManager.LocalizeForm(this);
             roleEvent = (sender, args) => LoadUserPermissions(frmLogin.RoleId);
             EventHub.Roles += roleEvent;
@@ -234,6 +236,7 @@ namespace YamyProject
             BtnCRM.Visible = Utilities.GetModules("CRM");
             BtnManufacture.Visible = Utilities.GetModules("Manufacture");
             BtnRestaurant.Visible = Utilities.GetModules("Restaurant");
+            constructionToolStripMenuItem.Visible = Utilities.GetModules("Construction");
 
             // do a function call after 2 seconds
             var timer = new Timer { Interval = 2000 };
@@ -332,10 +335,10 @@ namespace YamyProject
                 changeCurrentPasswordToolStripMenuItem.Visible = UserPermissions.canView("Change Current Password");
                 clearDataToolStripMenuItem.Visible = UserPermissions.canView("Clear Data");
                 usersToolStripMenuItem1.Visible = UserPermissions.canView("Users");
-                projectDashBoardToolStripMenuItem.Visible = UserPermissions.canView("Project DashBoard");
+                projectDashBoardToolStripMenuItem.Visible = projectProgressToolStripMenuItem.Visible = ganttChartToolStripMenuItem.Visible = UserPermissions.canView("Project DashBoard");
                 projectToolStripMenuItem.Visible = UserPermissions.canView("Project Tender");
                 projectEstimateToolStripMenuItem.Visible = UserPermissions.canView("Project Estimate");
-                projectToolStripMenuItem1.Visible = UserPermissions.canView("Project Planning");
+                projectToolStripMenuItem1.Visible = projectWorkDoneToolStripMenuItem.Visible = UserPermissions.canView("Project Planning");
                 //guna2Button5.Visible = UserPermissions.canView("No");
                 //guna2Button11.Visible = UserPermissions.canView("No");
                 if (frmLogin.RoleId == 1)
@@ -853,6 +856,46 @@ namespace YamyProject
 
         private void NavigationBar()
         {
+            pnlLeft.SuspendLayout();
+            pnlSub.SuspendLayout();
+
+            if (pnlLeft.Width == 225)
+            {
+                foreach (Control ctrl in pnlLeft.Controls)
+                {
+                    ctrl.Tag = ctrl.Text;
+                }
+                pnlLeft.Width = 40;
+                if (pnlLeft.Width <= 0) pnlLeft.Width = 1;
+
+                pnlSub.Location = new Point(pnlSub.Location.X - 175, pnlSub.Location.Y);
+                comboBox1.Visible = false;
+                guna2Button2.Visible = false;
+                guna2HtmlLabel1.Text = "";
+                guna2HtmlLabel3.Text = "";
+                btnExpand.Image = Properties.Resources.Chevron_Righ22t;
+            }
+            else
+            {
+                foreach (Control ctrl in pnlLeft.Controls)
+                {
+                    ctrl.Text = ctrl.Tag?.ToString();
+                }
+                pnlLeft.Width = 225;
+                pnlSub.Location = new Point(pnlSub.Location.X + 175, pnlSub.Location.Y);
+                comboBox1.Visible = true;
+                guna2Button2.Visible = true;
+                guna2HtmlLabel1.Text = "My Shortcuts";
+                loadCompany();
+                btnExpand.Image = Properties.Resources.Back;
+            }
+
+            pnlLeft.ResumeLayout();
+            pnlSub.ResumeLayout();
+        }
+
+        private void NavigationBarOld()
+        {
             if (pnlLeft.Width == 225)
             {
                 foreach (Control ctrl in pnlLeft.Controls)
@@ -866,9 +909,6 @@ namespace YamyProject
                 comboBox1.Visible = false;
                 guna2Button2.Visible = false;
                 guna2HtmlLabel1.Text = "";
-                guna2Button6.Text = "";
-                guna2Button7.Text = "";
-                guna2Button9.Text = "";
                 guna2HtmlLabel3.Text = "";
                 btnExpand.Image = Properties.Resources.Chevron_Righ22t;
 
@@ -885,9 +925,6 @@ namespace YamyProject
                 comboBox1.Visible = true;
                 guna2Button2.Visible = true;
                 guna2HtmlLabel1.Text = "My Shortcuts";
-                guna2Button6.Text = "Inventory";
-                guna2Button7.Text = "View Balance";
-                guna2Button9.Text = "Run Favorite Reports ";
                 loadCompany();
                 btnExpand.Image = Properties.Resources.Back;
             }
@@ -1196,7 +1233,7 @@ namespace YamyProject
 
         private void addCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmViewItemC().ShowDialog();
+            new frmViewCategory().ShowDialog();
 
         }
 
@@ -1526,7 +1563,7 @@ namespace YamyProject
 
         private void expenseFromVendorSummeryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmIncomeByVendorSummary());
+            openChildForm(new frmExpenseByVendorSummary());
         }
 
         private void customerAgingSummaryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1561,7 +1598,7 @@ namespace YamyProject
 
         private void vendorIncomSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmIncomeByVendorSummary());
+            openChildForm(new frmExpenseByVendorSummary());
         }
 
         private void backUpCompanyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1697,7 +1734,8 @@ namespace YamyProject
 
         private void pnlMain_Paint(object sender, PaintEventArgs e)
         {
-
+            if (this.Width == 0 || this.Height == 0) return;
+            base.OnPaint(e);
         }
 
         private void themeColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2109,6 +2147,28 @@ namespace YamyProject
         {
 
         }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlMain_SizeChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pnlLeft_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void pnlLeft_SizeChanged(object sender, EventArgs e)
+        {
+            if (pnlLeft.Width <= 0) pnlLeft.Width = 1;
+            if (pnlLeft.Height <= 0) pnlLeft.Height = 1;
+        }
+
     }
 
     public class SubMenu

@@ -45,6 +45,9 @@ namespace YamyProject
 
         private void AddDGVColumns()
         {
+            if (dgvReport.Columns.Count > 0)
+                dgvReport.Columns.Clear();
+
             dgvReport.Columns.Add("state", "");
             dgvReport.Columns.Add("loadState", "");
             dgvReport.Columns.Add("currLvl", "");
@@ -496,11 +499,16 @@ namespace YamyProject
             //}
             if (e.RowIndex < 0) return;
 
-            int currLvl = int.Parse(dgvReport.Rows[e.RowIndex].Cells["currLvl"].Value.ToString());
+            int currLvl = 0;
+            var cValue = dgvReport.Rows[e.RowIndex].Cells["currLvl"].Value;
+            if (cValue != null)
+            {
+                int.TryParse(cValue.ToString(), out currLvl);
+            }
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount(int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Net",int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -764,6 +772,11 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dateTimePicker1, dateTimePicker2);
                 LoadData();
             }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

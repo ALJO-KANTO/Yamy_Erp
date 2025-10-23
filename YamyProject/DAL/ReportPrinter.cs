@@ -50,7 +50,7 @@ namespace YamyProject
             int pageWidth = e.PageBounds.Width;
             int availableWidth = pageWidth - leftMargin - rightMargin;
 
-            System.Drawing.Font headerFont = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
+            System.Drawing.Font headerFont = new System.Drawing.Font("Segoe UI", 16, FontStyle.Bold);
             StringFormat headerFormat = new StringFormat
             {
                 Alignment = StringAlignment.Center,
@@ -73,7 +73,7 @@ namespace YamyProject
             yPosition += 20;
 
             string dateText = "Printed on: " + DateTime.Now.ToString("MM/dd/yyyy");
-            e.Graphics.DrawString(dateText, new System.Drawing.Font("Arial", 10), Brushes.Black, new PointF(leftMargin, yPosition));
+            e.Graphics.DrawString(dateText, new System.Drawing.Font("Segoe UI", 10), Brushes.Black, new PointF(leftMargin, yPosition));
 
             yPosition += 20;
             e.Graphics.DrawLine(Pens.Black, leftMargin, yPosition, pageWidth - rightMargin, yPosition);
@@ -100,7 +100,7 @@ namespace YamyProject
             int centerMargin = (availableWidth - totalColumnWidth) / 2;
             int currentLeftMargin = leftMargin + centerMargin;
 
-            System.Drawing.Font headerUnderlineFont = new System.Drawing.Font("Arial", 10, FontStyle.Underline);
+            System.Drawing.Font headerUnderlineFont = new System.Drawing.Font("Segoe UI", 10, FontStyle.Underline);
             int headerXPosition = currentLeftMargin;
 
             foreach (DataGridViewColumn column in dgv.Columns)

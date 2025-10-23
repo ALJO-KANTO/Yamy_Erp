@@ -1,7 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 using YamyProject.Localization;
 
@@ -24,7 +22,7 @@ namespace YamyProject
             EventHub.Employee += employeeUpdatedHandler;
             EventHub.Roles += roleUpdatedHandler;
 
-            guna2HtmlLabel2.Text = id == 0 ? "Users - New User" : "Users - Update User";
+            headerUC1.FormText = id == 0 ? "Users - New User" : "Users - Update User";
         }
         private void frmViewUser_FormClosing(object sender, FormClosingEventArgs e)
         {

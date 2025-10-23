@@ -41,6 +41,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -52,7 +53,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -60,8 +61,8 @@
             this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
-            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(266, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -72,15 +73,15 @@
             // 
             // btnSave
             // 
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(176, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -92,7 +93,7 @@
             // 
             // headerUC1
             // 
-            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
@@ -127,7 +128,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 182);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -137,7 +138,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(355, 37);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -147,7 +148,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 37);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -159,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(357, 184);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.panel1);

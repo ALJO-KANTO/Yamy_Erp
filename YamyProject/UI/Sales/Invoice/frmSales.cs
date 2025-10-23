@@ -44,7 +44,7 @@ namespace YamyProject
                 txtPONO.Text = "";
                 this.defaultCustomerId = _customerId;
             }
-            //headerUC1.FormText = id == 0 || formType != "" ? "Sales - New Invoice" : "Sales - Edit Invoice";
+            headerUC1.FormText = id == 0 || formType != "" ? "New Tax Invoice" : "Edit Tax Invoice";
         }
         private void frmSales_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -209,7 +209,7 @@ namespace YamyProject
             newRow.Cells["total"].Value = (netPrice + vatAmount).ToString("0.00");
 
             //remove this row if no qty available in stock
-            if (itemType == "11 - Inventory Part" && !CheckItemAvailability(int.Parse(itemId), 1))
+            if (itemType == "11 - Inventory Part" && !CheckItemValidity(int.Parse(itemId), 1))
             {
                 dgvItems.Rows.Remove(newRow);
                 MessageBox.Show("No Qty Available for Item: " + itemName);
@@ -503,7 +503,7 @@ namespace YamyProject
                 int itemId = Convert.ToInt32(dgvItems.Rows[i].Cells["itemId"].Value);
                 decimal qty = dgvItems.Rows[i].Cells["qty"].Value == DBNull.Value ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["qty"].Value);
 
-                if (!CheckItemAvailability(itemId, qty))
+                if (!CheckItemValidity(itemId, qty))
                 {
                     allItemsAvailable = false;
                     break;
@@ -597,13 +597,13 @@ namespace YamyProject
                 object objOldPayment = DBClass.ExecuteScalar(@"SELECT IFNULL(sum(payment),0) amount FROM tbl_receipt_voucher_details WHERE inv_id =@id",
                             DBClass.CreateParameter("@id", id));
                 decimal oldPaymentTotal = (objOldPayment != null && objOldPayment != DBNull.Value) ? decimal.Parse(objOldPayment.ToString()) : 0;
-                string total = txtTotal.Text;
+                
                 if (oldPaymentTotal > 0)
                 {
                     paidAmount = oldPaymentTotal;
+                    changeAmount = paidAmount - changeAmount;
                 }
-                changeAmount = decimal.Parse(total);
-                paidAmount = 0;
+
             } else
             {
                 changeAmount = 0;
@@ -666,7 +666,7 @@ namespace YamyProject
                 {
                     int itemId = Convert.ToInt32(reader["item_id"]);
                     decimal qtyToReturn = Convert.ToDecimal(reader["qty"]);
-                    string method = reader["method"].ToString();
+                    //string method = reader["method"].ToString();
                     string itemType = reader["type"].ToString();
 
                     if (itemType == "12 - Service")
@@ -692,7 +692,7 @@ namespace YamyProject
                                     DBClass.CreateParameter("qty", componentQty),
                                     DBClass.CreateParameter("componentId", componentId));
 
-                                ProcessInventoryReturn(componentId, componentQty, method);
+                                //ProcessInventoryReturn(componentId, componentQty, method);
                             }
                         }
                     }
@@ -705,12 +705,12 @@ namespace YamyProject
                             DBClass.CreateParameter("qty", qtyToReturn),
                             DBClass.CreateParameter("itemId", itemId));
 
-                        ProcessInventoryReturn(itemId, qtyToReturn, method);
+                        //ProcessInventoryReturn(itemId, qtyToReturn, method);
                     }
                 }
             }
         }
-        private void ProcessInventoryReturn(int itemId, decimal qtyToReturn, string method)
+        private void ProcessInventoryReturnOld(int itemId, decimal qtyToReturn, string method)
         {
             if (method != "fifo" && method != "lifo")
                 return;
@@ -850,7 +850,7 @@ namespace YamyProject
             }
         }
 
-        bool CheckItemAvailability(int itemId, decimal salesQty)
+        bool CheckItemAvailabilityOld(int itemId, decimal salesQty)
         {
             decimal totalQtyInGrid = 0;
 
@@ -1157,8 +1157,8 @@ namespace YamyProject
                         "Sales Invoice No. " + txtNextCode.Text, cmbWarehouse.SelectedValue.ToString());
 
                     using (MySqlDataReader dr = DBClass.ExecuteReader(@"SELECT (balance / qty_balance) cost FROM tbl_item_card_details 
-                WHERE DATE <= @date AND trans_type = 'Purchase Invoice' AND itemId = @itemId
-                ORDER BY trans_no DESC LIMIT 1",
+                            WHERE DATE <= @date AND trans_type = 'Purchase Invoice' AND itemId = @itemId
+                            ORDER BY trans_no DESC LIMIT 1",
                             DBClass.CreateParameter("date", dtInv.Value.Date),
                             DBClass.CreateParameter("itemId", itemId.ToString())))
                     {
@@ -1281,6 +1281,16 @@ namespace YamyProject
                 {
                     MessageBox.Show("Total Item In Row " + (dgvItems.Rows[i].Index + 1) + " Can't Be 0 or Null");
                     return false;
+                }
+                if (!AllowItemWithOutQty)
+                {
+                    int _itemId = int.Parse(dgvItems.Rows[i].Cells["itemId"].Value.ToString());
+                    int _qty = int.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString());
+                    if (CheckItemValidity(_itemId, _qty))
+                    {
+                        MessageBox.Show("Qty not available for " + (dgvItems.Rows[i].Index + 1) + " Can't Allow");
+                        return false;
+                    }
                 }
             }
             if (cmbCustomer.SelectedValue == null)
@@ -1692,14 +1702,32 @@ namespace YamyProject
             if (AllowItemWithOutQty)
                 return true;
 
+
+            //       "SELECT(SELECT type FROM tbl_items WHERE id = t.item_id)type, sum(t.qty_in - t.qty_out)on_hand  " +
+            //     "FROM tbl_item_transaction  t WHERE t.item_id = @id AND t.reference != @refId AND t.type != 'Sales Invoice'",
             using (MySqlDataReader reader = DBClass.ExecuteReader(
-                "SELECT type, on_hand FROM tbl_items WHERE id = @id",
-                DBClass.CreateParameter("id", itemId)))
+             @" SELECT
+                    IFNULL(
+                        (SELECT SUM(t.qty_in - t.qty_out)
+                         FROM tbl_item_transaction t
+                         WHERE t.item_id = i.id
+                           AND t.reference != @refId
+                           AND t.type != 'Sales Invoice'
+                           AND t.warehouse_id = @warehouseId),
+                        i.on_hand
+                    ) AS on_hand,
+                    i.type
+                FROM tbl_items i
+                WHERE i.id = @id ;",
+
+            DBClass.CreateParameter("id", itemId),
+                DBClass.CreateParameter("refId", id),
+                DBClass.CreateParameter("warehouseId", cmbWarehouse.SelectedValue)))
             {
                 if (!reader.Read())
                     return false;
 
-                string itemType = reader["type"].ToString();
+                string itemType = reader["type"].ToString(); //qty 9,1 ed 1-5 
 
                 if (itemType == "12 - Service")
                     return true;
@@ -2095,7 +2123,7 @@ namespace YamyProject
                     txtShipTo.Text = reader["ship_to"].ToString();
 
                     dgvItems.Rows.Clear();
-                    MySqlDataReader readerDetails = DBClass.ExecuteReader(@"SELECT tbl_sales_quotation_details.*,tbl_items.type,method, tbl_items.code , tbl_items name FROM tbl_sales_quotation_details INNER JOIN 
+                    MySqlDataReader readerDetails = DBClass.ExecuteReader(@"SELECT tbl_sales_quotation_details.*,tbl_items.type,method, tbl_items.code , tbl_items.name FROM tbl_sales_quotation_details INNER JOIN 
                                                                     tbl_items ON tbl_sales_quotation_details.item_id = tbl_items.id WHERE 
                                                                     tbl_sales_quotation_details.sales_id = @id;",
                                                                     DBClass.CreateParameter("id", txtPONO.Text));
@@ -2265,7 +2293,9 @@ namespace YamyProject
             DBClass.ExecuteNonQuery("UPDATE tbl_sales SET state = -1 WHERE id = @id; UPDATE tbl_transaction SET state= -1 WHERE transaction_id = @id AND t_type = 'SALES';",
                                           DBClass.CreateParameter("id", id.ToString()));
             CommonInsert.DeleteItemTransaction("Sales", id.ToString());
-            Utilities.LogAudit(frmLogin.userId,"Sales", "Delete Sales Invoice", id, "Deleted Sales Invoice with ID: " + id.ToString());
+            CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Sales");
+            CommonInsert.DeleteTransactionEntry(id, "SALES");
+            Utilities.LogAudit(frmLogin.userId, "Sales", "Delete Sales Invoice", id, "Deleted Sales Invoice with ID: " + id.ToString());
             clearData();
         }
 

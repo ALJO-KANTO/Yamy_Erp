@@ -24,7 +24,7 @@ namespace YamyProject
             employeeUpdateHandler = (sender, args) => BindEmployee();
             EventHub.Employee += employeeUpdateHandler;
 
-            guna2HtmlLabel2.Text = Text;
+            headerUC1.FormText = Text;
         }
         private void MasterEmployee_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace YamyProject
             BindEmployee();
             pnlInfo.Height = 80;
             //btnExpand.Text = "More";
-            guna2HtmlLabel2.Text = "Employee Center";
+            headerUC1.FormText = "Employee Center";
         }
         private void MasterEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -355,7 +355,7 @@ namespace YamyProject
 
                 yPosition += 10;
                 string dateText = "Printed on: " + DateTime.Now.ToString("MM/dd/yyyy");
-                ev.Graphics.DrawString(dateText, new Font("Arial", 10), Brushes.Black, new PointF(leftMargin, yPosition));
+                ev.Graphics.DrawString(dateText, new Font("Segoe UI", 10), Brushes.Black, new PointF(leftMargin, yPosition));
                 yPosition += 25;
 
                 // Column widths

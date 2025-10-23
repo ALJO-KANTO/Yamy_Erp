@@ -17,7 +17,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             ReceiptVoucherUpdatedHandler = (sender, args) => BindVoucherData(cmbType.Text);
             EventHub.ReceiptVoucher += ReceiptVoucherUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterReceiptVoucher_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -422,9 +422,13 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_purchase ADD COLUMN `reference_no` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase_order ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase_return ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_purchase_return ADD COLUMN `purchase_ref_id` INT NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_sales ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
@@ -435,6 +439,8 @@ namespace YamyProject
                 query = @"ALTER TABLE tbl_sales_quotation ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_sales_return ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_sales_return ADD COLUMN `sales_ref_id` INT(10) NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN `hum_name` VARCHAR(300) NOT NULL DEFAULT '';";
                 DBClass.ExecuteNonQuery(query);
@@ -450,6 +456,12 @@ namespace YamyProject
                         SELECT 'ENABLE PETTYCASH APPROVAL', 0, '', 0
                         WHERE NOT EXISTS (
                             SELECT 1 FROM tbl_general_settings WHERE name = 'ENABLE PETTYCASH APPROVAL'
+                        );";
+                DBClass.ExecuteNonQuery(query);
+                query = @"INSERT INTO tbl_general_settings (name, value, description, status)
+                        SELECT 'ENABLE BARCODE', 0, '', 0
+                        WHERE NOT EXISTS (
+                            SELECT 1 FROM tbl_general_settings WHERE name = 'ENABLE BARCODE'
                         );";
                 DBClass.ExecuteNonQuery(query);
 

@@ -35,12 +35,14 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(149, 32);
+            this.label1.Size = new System.Drawing.Size(118, 25);
             this.label1.Text = "Table Details";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::YamyProject.Properties.Resources.Table;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Size = new System.Drawing.Size(78, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // panel1
@@ -50,6 +52,7 @@
             // 
             // txtname
             // 
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -73,14 +76,15 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Name";
             // 
             // frmRMSAddTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(331, 332);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.label2);

@@ -143,8 +143,8 @@ namespace YamyProject
             dgvProjects.RowHeadersVisible = false;
             dgvProjects.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSkyBlue;
             dgvProjects.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvProjects.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
-            dgvProjects.DefaultCellStyle.Font = new Font("Arial", 10);
+            dgvProjects.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dgvProjects.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dgvProjects.DefaultCellStyle.BackColor = Color.WhiteSmoke;
             dgvProjects.DefaultCellStyle.ForeColor = Color.Black;
             dgvProjects.GridColor = Color.Gray;
@@ -163,7 +163,7 @@ namespace YamyProject
             dgvProjects.AllowUserToOrderColumns = true;
 
             // Apply header style (e.g., bold, background color, and center alignment)
-            dgvProjects.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+            dgvProjects.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dgvProjects.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvProjects.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;  // Set the header background color
             dgvProjects.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // Set header text color
@@ -229,7 +229,7 @@ namespace YamyProject
                         break;
 
                     case "Change Order":
-                        e.CellStyle.BackColor = Color.RoyalBlue;
+                        e.CellStyle.BackColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
                         e.CellStyle.ForeColor = Color.Black;
                         break;
 
@@ -261,8 +261,8 @@ namespace YamyProject
             dgvProjectTenders.RowHeadersVisible = false;
             dgvProjectTenders.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSkyBlue;
             dgvProjectTenders.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvProjectTenders.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
-            dgvProjectTenders.DefaultCellStyle.Font = new Font("Arial", 10);
+            dgvProjectTenders.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dgvProjectTenders.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dgvProjectTenders.DefaultCellStyle.BackColor = Color.WhiteSmoke;
             dgvProjectTenders.DefaultCellStyle.ForeColor = Color.Black;
             dgvProjectTenders.GridColor = Color.Gray;
@@ -308,7 +308,7 @@ namespace YamyProject
             dgvProjectTenders.AllowUserToOrderColumns = true;
 
             // Apply header style (e.g., bold and center alignment)
-            dgvProjectTenders.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+            dgvProjectTenders.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dgvProjectTenders.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvProjectTenders.CellFormatting += dgvProjectTenders_CellFormatting;
@@ -365,7 +365,7 @@ namespace YamyProject
                         break;
 
                     case "Change Order":
-                        e.CellStyle.BackColor = Color.RoyalBlue;
+                        e.CellStyle.BackColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
                         e.CellStyle.ForeColor = Color.Black;
                         break;
 

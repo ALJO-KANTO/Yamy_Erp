@@ -1,4 +1,9 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using Guna.Charts.WinForms;
+using Guna.UI2.WinForms;
+using Microsoft.VisualBasic;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Drawing;
-using Guna.UI2.WinForms;
-using Microsoft.VisualBasic;
-using MySql.Data.MySqlClient;
 using YamyProject.RMS.Class;
 
 namespace YamyProject.UI.CRM.Pages
@@ -114,6 +115,130 @@ namespace YamyProject.UI.CRM.Pages
             lb.Items.Add(dgvEnd);
             lb.Items.Add(dgvstatus);
             RMSClass.loadData(qry, guna2DataGridView1, lb);
+
+            labelTotalOrder.Text = labelRunning.Text = labelCompleted.Text = labelCanceled.Text = "0";
+            if (guna2DataGridView1.Rows.Count > 0)
+            {
+                labelTotalOrder.Text = guna2DataGridView1.Rows.Count.ToString();
+            }
+            string query = @"SELECT Status, COUNT(*) count FROM tbl_manufacturer_task GROUP BY STATUS;";
+            using (MySqlDataReader reader = DBClass.ExecuteReader(query))
+            {
+                //Progress, Done, Cancel
+                while (reader.Read())
+                {
+                    if (reader["Status"].ToString() == "Progress")
+                    {
+                        labelRunning.Text = reader["count"].ToString();
+                    }
+                    else
+                    {
+                        if (reader["Status"].ToString() == "Done")
+                        {
+                            labelCompleted.Text = reader["count"].ToString();
+                        }
+                        else
+                        {
+                            if (reader["Status"].ToString() == "Cancel")
+                            {
+                                labelCanceled.Text = reader["count"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+
+            LoadChartData();
+            LoadGraphData();
+        }
+
+        private void LoadChartData()
+        {
+            // Clear existing datasets before adding new data
+            gunaChart1.Datasets.Clear();
+
+            // Chart configuration
+            gunaChart1.YAxes.GridLines.Display = false;
+
+            // Create a new horizontal bar dataset
+            var dataset = new GunaHorizontalBarDataset
+            {
+                Label = "Task Status Count"  // Rename dataset here
+            };
+
+            // Your query to get task counts by status
+            string query = "SELECT Status, COUNT(*) count FROM tbl_manufacturer_task GROUP BY STATUS;";
+
+            // Execute query and read data
+            using (MySqlDataReader reader = DBClass.ExecuteReader(query))
+            {
+                while (reader.Read())
+                {
+                    string status = reader.GetString("Status");
+                    int count = reader.GetInt32("count");
+
+                    // Map DB status to friendly names if you want
+                    if (status == "Running") status = "Progress";
+                    else if (status == "Completed") status = "Finished";
+                    else if (status == "Cancelled") status = "Cancel";
+
+                    // Add data points to the dataset
+                    dataset.DataPoints.Add(status, count);
+                }
+            }
+
+            // Add the dataset to the chart
+            gunaChart1.Datasets.Add(dataset);
+
+            // Refresh the chart to show updated data
+            gunaChart1.Update();
+        }
+
+        private void LoadGraphData()
+        {
+            gunaChart2.Datasets.Clear();
+            gunaChart2.YAxes.GridLines.Display = false;
+            //gunaChart2.XAxes.GridLines.Display = false;
+
+            var dataset = new GunaSplineDataset
+            {
+                Label = "Task Count Per Date",
+                PointRadius = 3,
+                PointStyle = PointStyle.Circle,
+                BorderColor = Color.FromArgb(75, 192, 192),
+                FillColor = Color.FromArgb(75, 192, 192)
+            };
+
+            string query = @"
+                            SELECT DATE(t.StartTime) AS TaskDate, COUNT(t.id) AS TaskCount
+                            FROM tbl_manufacturer_task t
+                            WHERE t.StartTime IS NOT NULL
+                            GROUP BY DATE(t.StartTime)
+                            ORDER BY TaskDate ASC";
+
+            try
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader(query))
+                {
+                    while (reader.Read())
+                    {
+                        DateTime taskDate = Convert.ToDateTime(reader["TaskDate"]);
+                        int count = Convert.ToInt32(reader["TaskCount"]);
+
+                        // Format date label
+                        string label = taskDate.ToString("dd MMM");
+
+                        dataset.DataPoints.Add(label, count);
+                    }
+                }
+
+                gunaChart2.Datasets.Add(dataset);
+                gunaChart2.Update();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading chart data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void guna2DataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

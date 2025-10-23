@@ -16,7 +16,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.form = _form;
-            LbHeader.Text = this.Text+form;
+            headerUC1.FormText = this.Text + form;
         }
      
         private void MasterRecycle_Load(object sender, EventArgs e)

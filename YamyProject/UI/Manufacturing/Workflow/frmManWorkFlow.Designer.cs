@@ -45,17 +45,6 @@
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.sn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvidtask = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvempname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDepName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvstarttime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -97,6 +86,17 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvidtask = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvempname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDepName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvstarttime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2ShadowPanel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -132,7 +132,7 @@
             this.guna2ImageButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2ImageButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2ImageButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2ImageButton1.FillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2ImageButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2ImageButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2ImageButton1.ForeColor = System.Drawing.Color.White;
             this.guna2ImageButton1.Image = global::YamyProject.Properties.Resources.ASD;
@@ -152,7 +152,7 @@
             this.btnSearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearch.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = global::YamyProject.Properties.Resources.Search1;
@@ -190,7 +190,7 @@
             this.cmbWorkOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbWorkOrder.FormattingEnabled = true;
             this.cmbWorkOrder.Location = new System.Drawing.Point(120, 14);
-            this.cmbWorkOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbWorkOrder.Margin = new System.Windows.Forms.Padding(2);
             this.cmbWorkOrder.Name = "cmbWorkOrder";
             this.cmbWorkOrder.Size = new System.Drawing.Size(188, 21);
             this.cmbWorkOrder.TabIndex = 70;
@@ -292,101 +292,13 @@
             this.dgvItems.ThemeStyle.ReadOnly = true;
             this.dgvItems.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.ThemeStyle.RowsStyle.Height = 22;
             this.dgvItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentDoubleClick);
             this.dgvItems.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvItems_RowPrePaint);
-            // 
-            // sn
-            // 
-            this.sn.FillWeight = 50F;
-            this.sn.HeaderText = "SN#";
-            this.sn.MinimumWidth = 50;
-            this.sn.Name = "sn";
-            this.sn.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // dgvidtask
-            // 
-            this.dgvidtask.HeaderText = "";
-            this.dgvidtask.MinimumWidth = 6;
-            this.dgvidtask.Name = "dgvidtask";
-            this.dgvidtask.ReadOnly = true;
-            this.dgvidtask.Visible = false;
-            // 
-            // DepartmentID
-            // 
-            this.DepartmentID.HeaderText = "";
-            this.DepartmentID.MinimumWidth = 6;
-            this.DepartmentID.Name = "DepartmentID";
-            this.DepartmentID.ReadOnly = true;
-            this.DepartmentID.Visible = false;
-            // 
-            // employeeID
-            // 
-            this.employeeID.HeaderText = "";
-            this.employeeID.MinimumWidth = 6;
-            this.employeeID.Name = "employeeID";
-            this.employeeID.ReadOnly = true;
-            this.employeeID.Visible = false;
-            // 
-            // dgvempname
-            // 
-            this.dgvempname.FillWeight = 53.1769F;
-            this.dgvempname.HeaderText = "Employee Name";
-            this.dgvempname.MinimumWidth = 6;
-            this.dgvempname.Name = "dgvempname";
-            this.dgvempname.ReadOnly = true;
-            // 
-            // dgvDepName
-            // 
-            this.dgvDepName.FillWeight = 53.1769F;
-            this.dgvDepName.HeaderText = "Department Name";
-            this.dgvDepName.MinimumWidth = 6;
-            this.dgvDepName.Name = "dgvDepName";
-            this.dgvDepName.ReadOnly = true;
-            // 
-            // dgvstarttime
-            // 
-            this.dgvstarttime.FillWeight = 53.1769F;
-            this.dgvstarttime.HeaderText = "Start Time";
-            this.dgvstarttime.MinimumWidth = 6;
-            this.dgvstarttime.Name = "dgvstarttime";
-            this.dgvstarttime.ReadOnly = true;
-            // 
-            // dgvEndTime
-            // 
-            this.dgvEndTime.FillWeight = 53.1769F;
-            this.dgvEndTime.HeaderText = "End Time";
-            this.dgvEndTime.MinimumWidth = 6;
-            this.dgvEndTime.Name = "dgvEndTime";
-            this.dgvEndTime.ReadOnly = true;
-            // 
-            // dgvStatus
-            // 
-            this.dgvStatus.FillWeight = 53.1769F;
-            this.dgvStatus.HeaderText = "Status";
-            this.dgvStatus.MinimumWidth = 6;
-            this.dgvStatus.Name = "dgvStatus";
-            this.dgvStatus.ReadOnly = true;
-            // 
-            // dgvRemark
-            // 
-            this.dgvRemark.FillWeight = 53.1769F;
-            this.dgvRemark.HeaderText = "Remarks";
-            this.dgvRemark.MinimumWidth = 6;
-            this.dgvRemark.Name = "dgvRemark";
-            this.dgvRemark.ReadOnly = true;
             // 
             // panel2
             // 
@@ -461,7 +373,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 29);
             this.label11.TabIndex = 44;
-            this.label11.Text = "Machien Name";
+            this.label11.Text = "Machine Name";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbdate
@@ -571,7 +483,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = global::YamyProject.Properties.Resources.Attach2;
+            this.guna2Button2.Image = global::YamyProject.Properties.Resources.Attach;
             this.guna2Button2.Location = new System.Drawing.Point(488, 5);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(30, 30);
@@ -599,7 +511,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::YamyProject.Properties.Resources.Pencil_Drawing1;
+            this.guna2Button1.Image = global::YamyProject.Properties.Resources.Pencil_Drawing;
             this.guna2Button1.Location = new System.Drawing.Point(524, 5);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(30, 30);
@@ -619,7 +531,7 @@
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(2, 5);
             this.label3.Name = "label3";
@@ -934,16 +846,110 @@
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 152;
             // 
+            // sn
+            // 
+            this.sn.FillWeight = 20F;
+            this.sn.HeaderText = "SN#";
+            this.sn.MinimumWidth = 20;
+            this.sn.Name = "sn";
+            this.sn.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // dgvidtask
+            // 
+            this.dgvidtask.HeaderText = "";
+            this.dgvidtask.MinimumWidth = 6;
+            this.dgvidtask.Name = "dgvidtask";
+            this.dgvidtask.ReadOnly = true;
+            this.dgvidtask.Visible = false;
+            // 
+            // DepartmentID
+            // 
+            this.DepartmentID.HeaderText = "";
+            this.DepartmentID.MinimumWidth = 6;
+            this.DepartmentID.Name = "DepartmentID";
+            this.DepartmentID.ReadOnly = true;
+            this.DepartmentID.Visible = false;
+            // 
+            // employeeID
+            // 
+            this.employeeID.HeaderText = "";
+            this.employeeID.MinimumWidth = 6;
+            this.employeeID.Name = "employeeID";
+            this.employeeID.ReadOnly = true;
+            this.employeeID.Visible = false;
+            // 
+            // dgvempname
+            // 
+            this.dgvempname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvempname.FillWeight = 53.1769F;
+            this.dgvempname.HeaderText = "Employee Name";
+            this.dgvempname.MinimumWidth = 6;
+            this.dgvempname.Name = "dgvempname";
+            this.dgvempname.ReadOnly = true;
+            // 
+            // dgvDepName
+            // 
+            this.dgvDepName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvDepName.FillWeight = 53.1769F;
+            this.dgvDepName.HeaderText = "Department Name";
+            this.dgvDepName.MinimumWidth = 6;
+            this.dgvDepName.Name = "dgvDepName";
+            this.dgvDepName.ReadOnly = true;
+            // 
+            // dgvstarttime
+            // 
+            this.dgvstarttime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvstarttime.FillWeight = 53.1769F;
+            this.dgvstarttime.HeaderText = "Start Time";
+            this.dgvstarttime.MinimumWidth = 6;
+            this.dgvstarttime.Name = "dgvstarttime";
+            this.dgvstarttime.ReadOnly = true;
+            // 
+            // dgvEndTime
+            // 
+            this.dgvEndTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvEndTime.FillWeight = 53.1769F;
+            this.dgvEndTime.HeaderText = "End Time";
+            this.dgvEndTime.MinimumWidth = 6;
+            this.dgvEndTime.Name = "dgvEndTime";
+            this.dgvEndTime.ReadOnly = true;
+            // 
+            // dgvStatus
+            // 
+            this.dgvStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvStatus.FillWeight = 53.1769F;
+            this.dgvStatus.HeaderText = "Status";
+            this.dgvStatus.MinimumWidth = 6;
+            this.dgvStatus.Name = "dgvStatus";
+            this.dgvStatus.ReadOnly = true;
+            // 
+            // dgvRemark
+            // 
+            this.dgvRemark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvRemark.FillWeight = 53.1769F;
+            this.dgvRemark.HeaderText = "Remarks";
+            this.dgvRemark.MinimumWidth = 6;
+            this.dgvRemark.Name = "dgvRemark";
+            this.dgvRemark.ReadOnly = true;
+            // 
             // frmManWorkFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1091, 584);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmManWorkFlow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmManWorkFlow";
@@ -1011,6 +1017,7 @@
         private System.Windows.Forms.Label LbMachinName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn sn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvidtask;
@@ -1022,6 +1029,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvRemark;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
     }
 }

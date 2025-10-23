@@ -68,15 +68,15 @@
             // 
             // btnNew
             // 
-            this.btnNew.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNew.BorderRadius = 5;
             this.btnNew.BorderThickness = 3;
             this.btnNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNew.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnNew.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnNew.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnNew.ForeColor = System.Drawing.Color.White;
             this.btnNew.Location = new System.Drawing.Point(10, 5);
             this.btnNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -103,7 +103,7 @@
             // btnRestore
             // 
             this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestore.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRestore.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnRestore.BorderRadius = 5;
             this.btnRestore.BorderThickness = 1;
             this.btnRestore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -111,7 +111,7 @@
             this.btnRestore.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRestore.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRestore.FillColor = System.Drawing.Color.White;
-            this.btnRestore.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnRestore.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnRestore.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnRestore.Location = new System.Drawing.Point(1062, 5);
             this.btnRestore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -124,7 +124,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnDelete.BorderRadius = 5;
             this.btnDelete.BorderThickness = 1;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -132,7 +132,7 @@
             this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDelete.FillColor = System.Drawing.Color.White;
-            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDelete.ForeColor = System.Drawing.Color.Maroon;
             this.btnDelete.Location = new System.Drawing.Point(321, 5);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -145,7 +145,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.BorderRadius = 5;
             this.btnEdit.BorderThickness = 1;
             this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -153,8 +153,8 @@
             this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEdit.FillColor = System.Drawing.Color.White;
-            this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnEdit.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.Location = new System.Drawing.Point(153, 5);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
@@ -174,7 +174,7 @@
             this.dgView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -183,7 +183,7 @@
             this.dgView.ColumnHeadersHeight = 30;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -197,7 +197,7 @@
             this.dgView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -216,14 +216,14 @@
             this.dgView.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgView.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgView.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgView.ThemeStyle.HeaderStyle.Height = 30;
             this.dgView.ThemeStyle.ReadOnly = true;
             this.dgView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgView.ThemeStyle.RowsStyle.Height = 30;
             this.dgView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -298,7 +298,7 @@
             this.chkProjectType.CheckedState.BorderThickness = 0;
             this.chkProjectType.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkProjectType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkProjectType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.chkProjectType.Font = new System.Drawing.Font("Segoe UI", 7.8F);
             this.chkProjectType.ForeColor = System.Drawing.Color.Black;
             this.chkProjectType.Location = new System.Drawing.Point(958, 26);
             this.chkProjectType.Name = "chkProjectType";
@@ -374,7 +374,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(795, 2);
             this.label3.Name = "label3";
@@ -457,7 +457,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(588, 1);
             this.label2.Name = "label2";
@@ -485,7 +485,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label11.Location = new System.Drawing.Point(420, 1);
             this.label11.Name = "label11";
@@ -522,7 +522,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(1010, 1);
             this.label4.Name = "label4";
@@ -576,7 +576,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(7, 1);
             this.label1.Name = "label1";
@@ -596,7 +596,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 600);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -606,7 +606,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1213, 37);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
@@ -616,7 +616,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 37);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
@@ -626,7 +626,7 @@
             // 
             // headerUC1
             // 
-            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";

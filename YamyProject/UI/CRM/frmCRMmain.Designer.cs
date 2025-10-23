@@ -36,7 +36,7 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2CircleButton6 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton5 = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -90,6 +90,8 @@
             this.guna2GradientPanel1.Controls.Add(this.guna2Button4);
             this.guna2GradientPanel1.Controls.Add(this.guna2ControlBox1);
             this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.DarkCyan;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1060, 31);
@@ -102,9 +104,9 @@
             this.CRM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.CRM.Location = new System.Drawing.Point(50, 6);
             this.CRM.Name = "CRM";
-            this.CRM.Size = new System.Drawing.Size(142, 19);
+            this.CRM.Size = new System.Drawing.Size(31, 19);
             this.CRM.TabIndex = 34;
-            this.CRM.Text = "Company Name - CRM";
+            this.CRM.Text = "CRM";
             // 
             // guna2Button2
             // 
@@ -124,53 +126,62 @@
             // guna2Button1
             // 
             this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 3;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.guna2Button1.BorderRadius = 5;
             this.guna2Button1.BorderThickness = 1;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(174)))));
+            this.guna2Button1.Image = global::YamyProject.Properties.Resources.Subtract;
             this.guna2Button1.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button1.Location = new System.Drawing.Point(1000, 8);
+            this.guna2Button1.Location = new System.Drawing.Point(979, 5);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(15, 15);
+            this.guna2Button1.Size = new System.Drawing.Size(23, 21);
             this.guna2Button1.TabIndex = 33;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button4
             // 
             this.guna2Button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button4.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.BorderRadius = 3;
+            this.guna2Button4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.guna2Button4.BorderRadius = 5;
             this.guna2Button4.BorderThickness = 1;
             this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
+            this.guna2Button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(174)))));
+            this.guna2Button4.Image = global::YamyProject.Properties.Resources.Restore_Down1;
             this.guna2Button4.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button4.Location = new System.Drawing.Point(1022, 8);
+            this.guna2Button4.Location = new System.Drawing.Point(1006, 5);
             this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(15, 15);
+            this.guna2Button4.Size = new System.Drawing.Size(23, 21);
             this.guna2Button4.TabIndex = 32;
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1042, 8);
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.BorderColor = System.Drawing.Color.LightSlateGray;
+            this.guna2ControlBox1.BorderRadius = 5;
+            this.guna2ControlBox1.BorderThickness = 1;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.guna2ControlBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2ControlBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(145)))), ((int)(((byte)(174)))));
+            this.guna2ControlBox1.Image = global::YamyProject.Properties.Resources.Close1;
+            this.guna2ControlBox1.ImageSize = new System.Drawing.Size(15, 15);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1032, 5);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(23, 21);
             this.guna2ControlBox1.TabIndex = 31;
             this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
@@ -201,7 +212,7 @@
             this.guna2CircleButton6.FillColor = System.Drawing.Color.Transparent;
             this.guna2CircleButton6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2CircleButton6.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton6.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton6.Image")));
+            this.guna2CircleButton6.Image = global::YamyProject.Properties.Resources.loginN;
             this.guna2CircleButton6.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2CircleButton6.Location = new System.Drawing.Point(11, 178);
             this.guna2CircleButton6.Name = "guna2CircleButton6";
@@ -223,7 +234,7 @@
             this.guna2CircleButton5.FillColor = System.Drawing.Color.Transparent;
             this.guna2CircleButton5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2CircleButton5.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton5.Image = global::YamyProject.Properties.Resources.Manufacturingw;
+            this.guna2CircleButton5.Image = global::YamyProject.Properties.Resources.Customer;
             this.guna2CircleButton5.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2CircleButton5.Location = new System.Drawing.Point(11, 126);
             this.guna2CircleButton5.Name = "guna2CircleButton5";
@@ -245,7 +256,7 @@
             this.guna2CircleButton2.FillColor = System.Drawing.Color.Transparent;
             this.guna2CircleButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2CircleButton2.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton2.Image")));
+            this.guna2CircleButton2.Image = global::YamyProject.Properties.Resources.empolyees;
             this.guna2CircleButton2.ImageSize = new System.Drawing.Size(25, 25);
             this.guna2CircleButton2.Location = new System.Drawing.Point(11, 74);
             this.guna2CircleButton2.Name = "guna2CircleButton2";
@@ -267,7 +278,7 @@
             this.btnNav.FillColor = System.Drawing.Color.Transparent;
             this.btnNav.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNav.ForeColor = System.Drawing.Color.White;
-            this.btnNav.Image = ((System.Drawing.Image)(resources.GetObject("btnNav.Image")));
+            this.btnNav.Image = global::YamyProject.Properties.Resources.dashboard;
             this.btnNav.ImageSize = new System.Drawing.Size(25, 25);
             this.btnNav.Location = new System.Drawing.Point(11, 22);
             this.btnNav.Name = "btnNav";
@@ -616,6 +627,7 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCRMmain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCRMmain";
@@ -638,7 +650,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel CRM;
         private Guna.UI2.WinForms.Guna2CircleButton btnNav;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;

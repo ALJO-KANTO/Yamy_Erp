@@ -304,7 +304,7 @@ namespace YamyProject
                 decimal net = totalAdditions - totalDeductions;
                 row.Cells["NetSalary"].Value = net;
 
-                row.Cells["NetSalary"].Style.ForeColor = net < 0 ? Color.RoyalBlue : Color.Black;
+                row.Cells["NetSalary"].Style.ForeColor = net < 0 ? Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83))))) : Color.Black;
             }
             catch
             {

@@ -17,7 +17,7 @@ namespace YamyProject
             EventHub.lvl2Account += lvl2;
             EventHub.lvl3Account += lvl3;
             EventHub.lvl4Account += lvl4;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterChartOfAccount_FormClosing(object sender, FormClosingEventArgs e)
         {

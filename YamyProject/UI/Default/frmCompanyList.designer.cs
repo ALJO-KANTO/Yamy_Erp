@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompanyList));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelCopyright = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
@@ -54,8 +56,10 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BackgroundImage = global::YamyProject.Properties.Resources.Untitled_design__1_;
+            this.guna2Panel1.BackgroundImage = global::YamyProject.Properties.Resources.CopmanyList;
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.guna2Panel1.Controls.Add(this.panel2);
+            this.guna2Panel1.Controls.Add(this.labelCopyright);
             this.guna2Panel1.Controls.Add(this.guna2Button2);
             this.guna2Panel1.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel1.Controls.Add(this.guna2Panel3);
@@ -67,6 +71,28 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(431, 640);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = global::YamyProject.Properties.Resources.New_Project__2_;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Location = new System.Drawing.Point(71, 54);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(288, 40);
+            this.panel2.TabIndex = 41;
+            // 
+            // labelCopyright
+            // 
+            this.labelCopyright.AutoSize = true;
+            this.labelCopyright.BackColor = System.Drawing.Color.Transparent;
+            this.labelCopyright.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCopyright.ForeColor = System.Drawing.Color.LightGray;
+            this.labelCopyright.Location = new System.Drawing.Point(91, 614);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Size = new System.Drawing.Size(250, 17);
+            this.labelCopyright.TabIndex = 40;
+            this.labelCopyright.Text = "© YAMY CO. 2025 ALL Rights Reserved.";
             // 
             // guna2Button2
             // 
@@ -106,7 +132,7 @@
             this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel3.BorderRadius = 10;
             this.guna2Panel3.Controls.Add(this.dgvCompanyList);
-            this.guna2Panel3.Location = new System.Drawing.Point(21, 208);
+            this.guna2Panel3.Location = new System.Drawing.Point(21, 222);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Padding = new System.Windows.Forms.Padding(15);
             this.guna2Panel3.Size = new System.Drawing.Size(390, 358);
@@ -119,7 +145,7 @@
             this.dgvCompanyList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(125)))), ((int)(((byte)(143)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(118)))), ((int)(((byte)(132)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(118)))), ((int)(((byte)(132)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -129,7 +155,7 @@
             this.dgvCompanyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(118)))), ((int)(((byte)(132)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(143)))), ((int)(((byte)(154)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -142,7 +168,7 @@
             this.dgvCompanyList.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(118)))), ((int)(((byte)(132)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(118)))), ((int)(((byte)(132)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -161,14 +187,14 @@
             this.dgvCompanyList.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCompanyList.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Transparent;
             this.dgvCompanyList.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvCompanyList.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCompanyList.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCompanyList.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvCompanyList.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvCompanyList.ThemeStyle.HeaderStyle.Height = 18;
             this.dgvCompanyList.ThemeStyle.ReadOnly = true;
             this.dgvCompanyList.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.Transparent;
             this.dgvCompanyList.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCompanyList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCompanyList.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCompanyList.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
             this.dgvCompanyList.ThemeStyle.RowsStyle.Height = 22;
             this.dgvCompanyList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(143)))), ((int)(((byte)(154)))));
@@ -178,7 +204,7 @@
             // btnOpen
             // 
             this.btnOpen.BackColor = System.Drawing.Color.Transparent;
-            this.btnOpen.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnOpen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnOpen.BorderRadius = 10;
             this.btnOpen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnOpen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -187,7 +213,7 @@
             this.btnOpen.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.ForeColor = System.Drawing.Color.White;
-            this.btnOpen.Location = new System.Drawing.Point(36, 155);
+            this.btnOpen.Location = new System.Drawing.Point(36, 173);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.PressedColor = System.Drawing.Color.White;
@@ -199,7 +225,7 @@
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.Transparent;
-            this.btnCreate.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnCreate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnCreate.BorderRadius = 10;
             this.btnCreate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCreate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -209,7 +235,7 @@
             this.btnCreate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(236, 155);
+            this.btnCreate.Location = new System.Drawing.Point(236, 173);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.PressedColor = System.Drawing.Color.White;
@@ -310,6 +336,7 @@
             this.Text = "Company List";
             this.Load += new System.EventHandler(this.frmCompanyList_Load);
             this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompanyList)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
@@ -331,5 +358,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private System.Windows.Forms.Label labelCopyright;
+        private System.Windows.Forms.Panel panel2;
     }
 }

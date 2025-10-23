@@ -24,7 +24,7 @@ namespace YamyProject
                 this.Text = "Petty Cash - Edit Petty Cash";
             else
                 this.Text = "Petty Cash - New Petty Cash";
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void frmPettyCashRequest_Load(object sender, EventArgs e)

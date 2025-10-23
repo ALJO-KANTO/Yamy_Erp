@@ -183,7 +183,7 @@ namespace YamyProject
                                     string categoryCode = (result == DBNull.Value || result == null) ? "000" : result.ToString();
 
                                     string typeCategory = "11" + categoryCode;
-                                    query = "SELECT RIGHT(code, 4) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory ORDER BY code DESC LIMIT 1";
+                                    query = "SELECT MAX(RIGHT(code, 4)) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory";
                                     result = DBClass.ExecuteScalar(query, DBClass.CreateParameter("@typeCategory", typeCategory));
                                     int nextSerial = (result == DBNull.Value || result == null) ? 1 : Convert.ToInt32(result) + 1;
                                     string formattedSerial = nextSerial.ToString().PadLeft(4, '0');

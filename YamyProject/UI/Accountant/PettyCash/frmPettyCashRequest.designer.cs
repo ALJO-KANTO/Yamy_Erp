@@ -44,22 +44,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSaveAndNew);
             this.panel1.Controls.Add(this.btnSave);
@@ -72,7 +68,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -81,7 +77,7 @@
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(427, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -92,14 +88,14 @@
             // 
             // btnSaveAndNew
             // 
-            this.btnSaveAndNew.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSaveAndNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSaveAndNew.BorderRadius = 5;
             this.btnSaveAndNew.BorderThickness = 3;
             this.btnSaveAndNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveAndNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSaveAndNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSaveAndNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSaveAndNew.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSaveAndNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSaveAndNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAndNew.ForeColor = System.Drawing.Color.White;
             this.btnSaveAndNew.Location = new System.Drawing.Point(221, 3);
@@ -112,14 +108,14 @@
             // 
             // btnSave
             // 
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(316, 3);
@@ -132,6 +128,7 @@
             // 
             // guna2GroupBox2
             // 
+            this.guna2GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.BorderThickness = 0;
             this.guna2GroupBox2.Controls.Add(this.txtDescription);
             this.guna2GroupBox2.Controls.Add(this.label1);
@@ -143,15 +140,16 @@
             this.guna2GroupBox2.Controls.Add(this.label5);
             this.guna2GroupBox2.Controls.Add(this.label4);
             this.guna2GroupBox2.Controls.Add(this.label6);
-            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox2.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(4, 24);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(4, 0);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(493, 121);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(493, 145);
             this.guna2GroupBox2.TabIndex = 4;
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, -6);
             this.guna2GroupBox2.Click += new System.EventHandler(this.guna2GroupBox2_Click);
@@ -170,7 +168,7 @@
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.ForeColor = System.Drawing.Color.Black;
             this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(187, 83);
+            this.txtDescription.Location = new System.Drawing.Point(182, 116);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -184,7 +182,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(22, 16);
+            this.label1.Location = new System.Drawing.Point(17, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 24);
             this.label1.TabIndex = 27;
@@ -204,7 +202,7 @@
             this.txtRequestREF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRequestREF.ForeColor = System.Drawing.Color.Black;
             this.txtRequestREF.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtRequestREF.Location = new System.Drawing.Point(22, 43);
+            this.txtRequestREF.Location = new System.Drawing.Point(17, 76);
             this.txtRequestREF.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRequestREF.Name = "txtRequestREF";
             this.txtRequestREF.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -219,7 +217,7 @@
             this.dtpRequest.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpRequest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpRequest.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRequest.Location = new System.Drawing.Point(154, 43);
+            this.dtpRequest.Location = new System.Drawing.Point(149, 76);
             this.dtpRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpRequest.Name = "dtpRequest";
             this.dtpRequest.Size = new System.Drawing.Size(124, 23);
@@ -239,7 +237,7 @@
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(18, 83);
+            this.txtAmount.Location = new System.Drawing.Point(13, 116);
             this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -259,7 +257,7 @@
             this.cmbPettyCash.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPettyCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPettyCash.ItemHeight = 23;
-            this.cmbPettyCash.Location = new System.Drawing.Point(284, 41);
+            this.cmbPettyCash.Location = new System.Drawing.Point(279, 74);
             this.cmbPettyCash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPettyCash.Name = "cmbPettyCash";
             this.cmbPettyCash.Size = new System.Drawing.Size(201, 29);
@@ -270,7 +268,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label3.Location = new System.Drawing.Point(167, 15);
+            this.label3.Location = new System.Drawing.Point(162, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 29);
             this.label3.TabIndex = 16;
@@ -282,7 +280,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label5.Location = new System.Drawing.Point(19, 63);
+            this.label5.Location = new System.Drawing.Point(14, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 18);
             this.label5.TabIndex = 16;
@@ -294,7 +292,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(284, 19);
+            this.label4.Location = new System.Drawing.Point(279, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 29);
             this.label4.TabIndex = 14;
@@ -306,72 +304,16 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label6.Location = new System.Drawing.Point(184, 63);
+            this.label6.Location = new System.Drawing.Point(179, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 20);
             this.label6.TabIndex = 29;
             this.label6.Text = "Description";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2Button1);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Controls.Add(this.lbheader);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(4, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(493, 24);
-            this.panel6.TabIndex = 37;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 3;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::YamyProject.Properties.Resources.Subtract;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button1.Location = new System.Drawing.Point(457, 3);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(14, 15);
-            this.guna2Button1.TabIndex = 30;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(476, 4);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(14, 15);
-            this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // lbheader
-            // 
-            this.lbheader.AutoSize = false;
-            this.lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbheader.ForeColor = System.Drawing.Color.White;
-            this.lbheader.Location = new System.Drawing.Point(0, 0);
-            this.lbheader.Name = "lbheader";
-            this.lbheader.Size = new System.Drawing.Size(493, 21);
-            this.lbheader.TabIndex = 19;
-            this.lbheader.Text = null;
-            this.lbheader.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(4, 178);
             this.panel5.Name = "panel5";
@@ -380,7 +322,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(497, 0);
             this.panel2.Name = "panel2";
@@ -389,7 +331,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -399,8 +341,19 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.lbheader;
             this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(4, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(493, 37);
+            this.headerUC1.TabIndex = 37;
             // 
             // frmPettyCashRequest
             // 
@@ -408,8 +361,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(501, 182);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.guna2GroupBox2);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
@@ -418,11 +371,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPettyCashRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Petty Csh Request";
+            this.Text = "Petty Cash Request";
             this.Load += new System.EventHandler(this.frmPettyCashRequest_Load);
             this.panel1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -443,13 +395,10 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbheader;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private HeaderUC headerUC1;
     }
 }

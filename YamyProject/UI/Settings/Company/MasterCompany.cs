@@ -13,7 +13,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            guna2HtmlLabel2.Visible = Case;
+            headerUC1.FormText = this.Text;
         }
         string filePath;
 

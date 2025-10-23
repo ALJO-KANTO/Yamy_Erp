@@ -16,6 +16,7 @@ namespace YamyProject.UI.Reports.Bank
         public frmChequeReportView()
         {
             InitializeComponent();
+            headerUC1.FormText = this.Text;
         }
 
         private void frmChequeReportView_Load(object sender, EventArgs e)

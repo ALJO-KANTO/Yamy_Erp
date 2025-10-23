@@ -14,19 +14,21 @@ namespace YamyProject
     public partial class MasterTransactionByAccount : Form
     {
         int account_id;
-        public MasterTransactionByAccount(int account_id)
+        string account_header = "Transactions By Account";
+        public MasterTransactionByAccount(string _account_header, int _account_id)
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            this.account_id = account_id;
+            this.account_id = _account_id;
+            this.account_header = string.IsNullOrEmpty(_account_header) ? "Transactions By Account" : _account_header;
             dgvCustomer.DataBindingComplete += dgvCustomer_DataBindingComplete;
 
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void MasterTransactionByAccount_Load(object sender, EventArgs e)
         {
-            dgvCustomer.Enabled = chkDate.Enabled = dtFrom.Enabled = dtTo.Enabled = false;
+            dgvCustomer.Enabled = false;
             dgvCustomer.Columns.Clear();
 
             dgvCustomer.Columns.Add("date", "Date");
@@ -37,7 +39,13 @@ namespace YamyProject
             dgvCustomer.Columns.Add("debit", "Debit");
             dgvCustomer.Columns.Add("credit", "Credit");
             dgvCustomer.Columns.Add("Amount", "Balance");
-
+            using (var reader = DBClass.ExecuteReader("SELECT name FROM tbl_company"))
+            {
+                if (reader.Read() && reader["name"] != DBNull.Value)
+                {
+                    lblCompany.Text = reader["name"].ToString();
+                }
+            }
             bindDGVAccount();
         }
 
@@ -52,31 +60,15 @@ namespace YamyProject
 
             string dateFilter = "";
             DateTime from = DateTime.MinValue, to = DateTime.MaxValue;
-
-            // Get date filters on UI thread
-            if (chkDate.InvokeRequired)
+            bool DateChecked = comboBox1.SelectedItem != null && comboBox1.SelectedItem.ToString() == "All";
+            if (!DateChecked)
             {
-                chkDate.Invoke((MethodInvoker)delegate
-                {
-                    if (!chkDate.Checked)
-                    {
-                        dateFilter = " AND t.date >= @startDate AND t.date <= @endDate";
-                        from = dtFrom.Value.Date;
-                        to = dtTo.Value.Date;
-                    }
-                });
-            }
-            else
-            {
-                if (!chkDate.Checked)
-                {
-                    dateFilter = " AND t.date >= @startDate AND t.date <= @endDate";
-                    from = dtFrom.Value.Date;
-                    to = dtTo.Value.Date;
-                }
+                dateFilter = " AND t.date >= @startDate AND t.date <= @endDate";
+                from = dtFrom.Value.Date;
+                to = dtTo.Value.Date;
             }
 
-            if (!chkDate.Checked)
+            if (!DateChecked)
             {
                 parameters.Add(DBClass.CreateParameter("startDate", from));
                 parameters.Add(DBClass.CreateParameter("endDate", to));
@@ -130,7 +122,7 @@ namespace YamyProject
                     dgvCustomer.Columns["type"].Width = 140;
                     dgvCustomer.Columns["debit"].Width = 80;
                     dgvCustomer.Columns["credit"].Width = 80;
-                    dgvCustomer.Enabled = chkDate.Enabled = dtFrom.Enabled = dtTo.Enabled = true;
+                    dgvCustomer.Enabled = true;
 
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
                 });
@@ -144,7 +136,8 @@ namespace YamyProject
                     DBClass.CreateParameter("id", account_id)
                 };
             string dateFilter = "";
-            if (!chkDate.Checked)
+            bool DateChecked = comboBox1.SelectedItem != null && comboBox1.SelectedItem.ToString() == "All";
+            if (!DateChecked)
             {
                 dateFilter =" AND t.date >= @startDate AND t.date <= @endDate";
                 parameters = parameters.Concat(new[]
@@ -188,20 +181,6 @@ namespace YamyProject
         bool DrawRect,showPnlHeader;
         private int rowIndex = 0; 
         private int pageNumber = 1;
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-           showPnlHeader= DrawRect = false;
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.PrintPage += PrintDoc_PrintPage;
-
-            PrintPreviewDialog previewDialog = new PrintPreviewDialog
-            {
-                Document = printDoc
-            };
-
-            rowIndex = 0; // Reset row index for new printing
-            previewDialog.ShowDialog();
-        }
 
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -221,6 +200,7 @@ namespace YamyProject
             Dictionary<int, int> colWidths = new Dictionary<int, int>();
             List<int> colPositions = new List<int>();
             int currentX = startX;
+            // pdf header
 
             foreach (DataGridViewColumn col in dgvCustomer.Columns)
             {
@@ -247,7 +227,7 @@ namespace YamyProject
             {
                 if (col.Visible)
                 {
-                    e.Graphics.DrawString(col.HeaderText, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, colPositions[colIndex], startY);
+                    e.Graphics.DrawString(col.HeaderText, new Font("Segoe UI", 10, FontStyle.Bold), Brushes.Black, colPositions[colIndex], startY);
                     colIndex++;
                 }
             }
@@ -273,7 +253,7 @@ namespace YamyProject
                             cellText = dateValue.ToString("yyyy-MM-dd"); // Ensure proper date format
                         }
 
-                        Font cellFont = new Font("Arial", 10);
+                        Font cellFont = new Font("Segoe UI", 10);
                         int colWidth = colWidths[cell.ColumnIndex];
 
                         // Wrap text for description column
@@ -306,7 +286,7 @@ namespace YamyProject
 
             // Print Page Number
             string pageNumText = "Page " + pageNumber;
-            Font pageFont = new Font("Arial", 10, FontStyle.Italic);
+            Font pageFont = new Font("Segoe UI", 10, FontStyle.Italic);
             SizeF textSizePage = e.Graphics.MeasureString(pageNumText, pageFont);
             float pageX = e.MarginBounds.Left + (e.MarginBounds.Width - textSizePage.Width) / 2;
             float pageY = e.MarginBounds.Bottom + 20;
@@ -333,10 +313,79 @@ namespace YamyProject
             bindDGVAccount();
         }
 
-        private void chkDate_CheckedChanged(object sender, EventArgs e)
+        private void guna2Button7_Click(object sender, EventArgs e)
         {
-            dtFrom.Enabled = dtTo.Enabled = !chkDate.Checked;
+            showPnlHeader = DrawRect = false;
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrintPage += PrintDoc_PrintPage;
+
+            PrintPreviewDialog previewDialog = new PrintPreviewDialog
+            {
+                Document = printDoc
+            };
+
+            rowIndex = 0; // Reset row index for new printing
+            previewDialog.ShowDialog();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Save Excel File";
+                saveDialog.FileName = account_header.Trim() + ".xlsx";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    excelApp.Visible = false;
+                    var workbook = excelApp.Workbooks.Add(Type.Missing);
+                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = account_header;
+
+                    // Merge and format header row (Date)
+                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["B1", "C1"];
+                    headerRange.Merge();
+                    headerRange.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange.Font.Bold = true;
+                    headerRange.Font.Name = "Times New Roman";
+                    headerRange.Font.Size = 10;
+                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                    int rowIndex = 2;
+                    foreach (DataGridViewRow row in dgvCustomer.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        for (int colIndex = 0; colIndex < dgvCustomer.Columns.Count; colIndex++)
+                        {
+                            if (dgvCustomer.Columns[colIndex].Visible)
+                            {
+                                worksheet.Cells[rowIndex, colIndex + 1] = row.Cells[colIndex].Value?.ToString() ?? "";
+                            }
+                        }
+                    }
+                    workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close();
+                    excelApp.Quit();
+
+                    MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
             bindDGVAccount();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem != null)
+            {
+                DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtFrom, dtTo);
+                bindDGVAccount();
+            }
         }
 
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

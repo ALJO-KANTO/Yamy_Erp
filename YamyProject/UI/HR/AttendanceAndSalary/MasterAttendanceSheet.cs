@@ -28,7 +28,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
             this.id = id;
         }
         private void btnBrowse_Click(object sender, EventArgs e)

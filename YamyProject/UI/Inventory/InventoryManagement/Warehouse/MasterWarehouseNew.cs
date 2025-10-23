@@ -28,7 +28,7 @@ namespace YamyProject
             //EventHub.Item += itemUpdatedHandler;
             EventHub.SalesInv += invoiceUpdatedHandler;
             EventHub.PurchaseInv += purchaseUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterWarehouseNew_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -253,8 +253,8 @@ namespace YamyProject
             int rowHeight = 25;
             int colSpacing = 5;
 
-            Font font = new Font("Arial", 9);
-            Font headerFont = new Font("Arial", 9, FontStyle.Bold);
+            Font font = new Font("Segoe UI", 9);
+            Font headerFont = new Font("Segoe UI", 9, FontStyle.Bold);
             Brush brush = Brushes.Black;
 
             int y = topMargin;

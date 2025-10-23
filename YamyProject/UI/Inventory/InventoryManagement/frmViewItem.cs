@@ -34,7 +34,7 @@ namespace YamyProject
             this.Text = id != 0 ? "Inventory - Edit Item" : "Inventory - New Item";
             //btnSave.Text = id != 0 ? "Update" : btnSave.Text;
             dtStart.Value = DateTime.Now;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void frmViewItem_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -262,7 +262,7 @@ namespace YamyProject
         string getNextCode()
         {
             string typeCategory = cmbType.Text.Split('-')[0].Trim() + cmbCategory.Text.Split('-')[0].Trim();
-            string query = "SELECT RIGHT(code, 4) FROM tbl_items WHERE LEFT(code, 5) ORDER BY id DESC LIMIT 1";
+            string query = "SELECT MAX(RIGHT(code, 4)) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory";
             object result = DBClass.ExecuteScalar(query, DBClass.CreateParameter("@typeCategory", typeCategory));
             int nextSerial = (result == DBNull.Value || result == null) ? 1 : Convert.ToInt32(result) + 1;
             string formattedSerial = nextSerial.ToString().PadLeft(4, '0');

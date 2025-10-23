@@ -22,7 +22,7 @@ namespace YamyProject
             itemUpdatedHandler = (sender, args) => BindWarehousesItems();
             EventHub.wareHouse += wareHouseUpdatedHandler;
             EventHub.Item += itemUpdatedHandler;
-            LbHeader.Text = "Warehouse - Transfer Items Through Warehouse";
+            headerUC1.FormText = "Warehouse - Transfer Items Through Warehouse";
         }
 
         private void btnClose_Click(object sender, EventArgs e)

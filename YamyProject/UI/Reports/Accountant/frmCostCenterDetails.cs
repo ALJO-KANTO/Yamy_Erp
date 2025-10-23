@@ -22,7 +22,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             this.id = _id;
         }
 
@@ -79,15 +79,15 @@ namespace YamyProject
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
                 dgvSales.Columns["debit"].DefaultCellStyle.Alignment = dgvSales.Columns["credit"].DefaultCellStyle.Alignment = dgvSales.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvSales.Columns["debit"].DefaultCellStyle.Font = dgvSales.Columns["credit"].DefaultCellStyle.Font = dgvSales.Columns["balance"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-                dgvSales.Columns["VoucherNo"].DefaultCellStyle.Font = dgvSales.Columns["name"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
+                dgvSales.Columns["debit"].DefaultCellStyle.Font = dgvSales.Columns["credit"].DefaultCellStyle.Font = dgvSales.Columns["balance"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+                dgvSales.Columns["VoucherNo"].DefaultCellStyle.Font = dgvSales.Columns["name"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
                 dgvSales.Columns["id"].Visible = false;
 
                 dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
 
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;

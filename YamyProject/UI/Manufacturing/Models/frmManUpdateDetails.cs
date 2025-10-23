@@ -60,5 +60,15 @@ namespace YamyProject.UI.Manufacturing.Models
             Utilities.LogAudit(frmLogin.userId, (id == 0 ? "Add Task Details" : "Update Task Details"), "Task Details", id, (id == 0 ? "Added Task Details: " : "Updated Task Details: ") + txtdiscription.Text);
             this.Close();
         }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

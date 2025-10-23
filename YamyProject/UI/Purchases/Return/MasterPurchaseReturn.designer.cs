@@ -35,6 +35,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNew = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.lblPageInfo = new System.Windows.Forms.Label();
             this.btnRestore = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
@@ -52,34 +58,26 @@
             this.cmbCustomer = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnLast = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.lblPageInfo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNew
             // 
-            this.btnNew.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNew.BorderRadius = 5;
             this.btnNew.BorderThickness = 3;
             this.btnNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNew.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNew.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
             this.btnNew.Location = new System.Drawing.Point(10, 5);
@@ -92,6 +90,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.btnRestore);
             this.panel1.Controls.Add(this.btnDelete);
@@ -104,10 +103,72 @@
             this.panel1.Size = new System.Drawing.Size(1215, 36);
             this.panel1.TabIndex = 5;
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnLast);
+            this.panel9.Controls.Add(this.btnFirst);
+            this.panel9.Controls.Add(this.btnNext);
+            this.panel9.Controls.Add(this.btnPrev);
+            this.panel9.Controls.Add(this.lblPageInfo);
+            this.panel9.Location = new System.Drawing.Point(456, 6);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(303, 25);
+            this.panel9.TabIndex = 10;
+            // 
+            // btnLast
+            // 
+            this.btnLast.BackgroundImage = global::YamyProject.Properties.Resources.Double_Right;
+            this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLast.Location = new System.Drawing.Point(253, 1);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(44, 23);
+            this.btnLast.TabIndex = 4;
+            this.btnLast.UseVisualStyleBackColor = true;
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.BackgroundImage = global::YamyProject.Properties.Resources.Double_Left2;
+            this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFirst.Location = new System.Drawing.Point(6, 1);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(44, 23);
+            this.btnFirst.TabIndex = 3;
+            this.btnFirst.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackgroundImage = global::YamyProject.Properties.Resources.Arrow22;
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNext.Location = new System.Drawing.Point(205, 1);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(44, 23);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackgroundImage = global::YamyProject.Properties.Resources.Arrow_Pointing_Left;
+            this.btnPrev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrev.Location = new System.Drawing.Point(55, 1);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(44, 23);
+            this.btnPrev.TabIndex = 1;
+            this.btnPrev.UseVisualStyleBackColor = true;
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Location = new System.Drawing.Point(104, 6);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(62, 13);
+            this.lblPageInfo.TabIndex = 0;
+            this.lblPageInfo.Text = "Page 0 of 0";
+            this.lblPageInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnRestore
             // 
             this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestore.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRestore.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnRestore.BorderRadius = 5;
             this.btnRestore.BorderThickness = 1;
             this.btnRestore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -128,7 +189,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnDelete.BorderRadius = 5;
             this.btnDelete.BorderThickness = 1;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -148,7 +209,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.BorderRadius = 5;
             this.btnEdit.BorderThickness = 1;
             this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -157,7 +218,7 @@
             this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEdit.FillColor = System.Drawing.Color.White;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.Location = new System.Drawing.Point(115, 5);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
@@ -243,6 +304,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.cmbPaymentMethod);
             this.panel2.Controls.Add(this.dtTo);
             this.panel2.Controls.Add(this.label2);
@@ -465,17 +527,17 @@
             this.panel3.Size = new System.Drawing.Size(1215, 495);
             this.panel3.TabIndex = 8;
             // 
-            // panel8
+            // headerUC1
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel8.Controls.Add(this.guna2Button2);
-            this.panel8.Controls.Add(this.guna2HtmlLabel2);
-            this.panel8.Controls.Add(this.guna2ControlBox1);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1215, 23);
-            this.panel8.TabIndex = 21;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(595, 37);
+            this.headerUC1.TabIndex = 0;
             // 
             // guna2Button2
             // 
@@ -497,18 +559,6 @@
             this.guna2Button2.Size = new System.Drawing.Size(15, 15);
             this.guna2Button2.TabIndex = 21;
             // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(570, 0);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(3, 2);
-            this.guna2HtmlLabel2.TabIndex = 19;
-            this.guna2HtmlLabel2.Text = null;
-            // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -519,68 +569,6 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btnLast);
-            this.panel9.Controls.Add(this.btnFirst);
-            this.panel9.Controls.Add(this.btnNext);
-            this.panel9.Controls.Add(this.btnPrev);
-            this.panel9.Controls.Add(this.lblPageInfo);
-            this.panel9.Location = new System.Drawing.Point(456, 6);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(303, 25);
-            this.panel9.TabIndex = 10;
-            // 
-            // btnLast
-            // 
-            this.btnLast.BackgroundImage = global::YamyProject.Properties.Resources.Double_Right;
-            this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLast.Location = new System.Drawing.Point(253, 1);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(44, 23);
-            this.btnLast.TabIndex = 4;
-            this.btnLast.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.BackgroundImage = global::YamyProject.Properties.Resources.Double_Left2;
-            this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFirst.Location = new System.Drawing.Point(6, 1);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(44, 23);
-            this.btnFirst.TabIndex = 3;
-            this.btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackgroundImage = global::YamyProject.Properties.Resources.Arrow22;
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnNext.Location = new System.Drawing.Point(205, 1);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(44, 23);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.BackgroundImage = global::YamyProject.Properties.Resources.Arrow_Pointing_Left;
-            this.btnPrev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPrev.Location = new System.Drawing.Point(55, 1);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(44, 23);
-            this.btnPrev.TabIndex = 1;
-            this.btnPrev.UseVisualStyleBackColor = true;
-            // 
-            // lblPageInfo
-            // 
-            this.lblPageInfo.AutoSize = true;
-            this.lblPageInfo.Location = new System.Drawing.Point(104, 6);
-            this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(62, 13);
-            this.lblPageInfo.TabIndex = 0;
-            this.lblPageInfo.Text = "Page 0 of 0";
-            this.lblPageInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // MasterPurchaseReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,7 +578,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MasterPurchaseReturn";
@@ -600,14 +588,12 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterPurchaseReturn_FormClosing);
             this.Load += new System.EventHandler(this.MasterPurchaseReturn_Load);
             this.panel1.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -632,9 +618,8 @@
         private Guna.UI2.WinForms.Guna2CheckBox chkPayment;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2ComboBox cmbPaymentMethod;
-        private System.Windows.Forms.Panel panel8;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnLast;

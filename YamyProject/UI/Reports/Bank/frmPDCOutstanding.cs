@@ -17,7 +17,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void frmPDCOutstanding_Load(object sender, EventArgs e)
@@ -57,17 +57,17 @@ namespace YamyProject
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
             dgvSales.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-            dgvSales.Columns["CheckNo"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-            dgvSales.Columns["CheckDate"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-            dgvSales.Columns["CheckType"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-            dgvSales.Columns["State"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
+            dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+            dgvSales.Columns["CheckNo"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+            dgvSales.Columns["CheckDate"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+            dgvSales.Columns["CheckType"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+            dgvSales.Columns["State"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
             dgvSales.Columns["id"].Visible = false;
 
             dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Bold);
+            dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
             dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
             dgvSales.EnableHeadersVisualStyles = false;
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -100,7 +100,7 @@ namespace YamyProject
 
                     int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, amount.ToString("N2"), checkType, state);
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
                     totalAmount += amount;
                     rowId++;
@@ -109,7 +109,7 @@ namespace YamyProject
 
             // Add total row
             int totalRow = dgvSales.Rows.Add("", "", "TOTAL", totalAmount.ToString("N2"), "", "");
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Bold | FontStyle.Underline);
+            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
             dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
             dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.Rows[totalRow].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleRight;

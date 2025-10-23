@@ -352,12 +352,12 @@ namespace YamyProject.UI.Manufacturing.Viewform
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.Close();
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void btnMaximize_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
@@ -369,9 +369,9 @@ namespace YamyProject.UI.Manufacturing.Viewform
             }
         }
 
-        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void DeleteItemTransaction(string reference, int itemId)

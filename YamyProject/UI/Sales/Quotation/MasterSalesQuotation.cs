@@ -20,7 +20,7 @@ namespace YamyProject
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.Customer += customerUpdatedHandler;
             EventHub.SalesQuotation += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterSalesQuotation_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -185,7 +185,7 @@ namespace YamyProject
         {
             if (dgvInvoice.Rows.Count == 0)
                 return;
-            frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString())));
+            frmLogin.frmMain.openChildForm(new frmAddQuotation(int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString())));
         }
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

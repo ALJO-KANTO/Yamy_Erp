@@ -31,23 +31,21 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 602);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -57,7 +55,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1035, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -67,7 +65,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -75,17 +73,17 @@
             this.panel3.Size = new System.Drawing.Size(2, 604);
             this.panel3.TabIndex = 163;
             // 
-            // panel6
+            // headerUC1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2Button2);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Controls.Add(this.lbheader);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(2, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1033, 23);
-            this.panel6.TabIndex = 166;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(637, 37);
+            this.headerUC1.TabIndex = 0;
             // 
             // guna2Button2
             // 
@@ -117,22 +115,9 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
-            // lbheader
-            // 
-            this.lbheader.AutoSize = false;
-            this.lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbheader.ForeColor = System.Drawing.Color.White;
-            this.lbheader.Location = new System.Drawing.Point(0, 0);
-            this.lbheader.Name = "lbheader";
-            this.lbheader.Size = new System.Drawing.Size(1033, 23);
-            this.lbheader.TabIndex = 19;
-            this.lbheader.Text = null;
-            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.guna2Button6);
             this.panel1.Controls.Add(this.guna2Button5);
             this.panel1.Controls.Add(this.guna2Button3);
@@ -146,7 +131,6 @@
             // guna2Button6
             // 
             this.guna2Button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2Button6.BorderColor = System.Drawing.Color.Gray;
             this.guna2Button6.BorderRadius = 5;
             this.guna2Button6.BorderThickness = 1;
             this.guna2Button6.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -155,8 +139,9 @@
             this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button6.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button6.ForeColor = System.Drawing.Color.DarkGray;
             this.guna2Button6.Location = new System.Drawing.Point(730, 6);
             this.guna2Button6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button6.Name = "guna2Button6";
@@ -168,7 +153,6 @@
             // guna2Button5
             // 
             this.guna2Button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2Button5.BorderColor = System.Drawing.Color.Gray;
             this.guna2Button5.BorderRadius = 5;
             this.guna2Button5.BorderThickness = 1;
             this.guna2Button5.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -177,8 +161,9 @@
             this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button5.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button5.ForeColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.Location = new System.Drawing.Point(551, 6);
             this.guna2Button5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button5.Name = "guna2Button5";
@@ -190,7 +175,6 @@
             // guna2Button3
             // 
             this.guna2Button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2Button3.BorderColor = System.Drawing.Color.Gray;
             this.guna2Button3.BorderRadius = 5;
             this.guna2Button3.BorderThickness = 1;
             this.guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -199,8 +183,9 @@
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button3.ForeColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.Location = new System.Drawing.Point(356, 6);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button3.Name = "guna2Button3";
@@ -212,7 +197,6 @@
             // guna2Button1
             // 
             this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Gray;
             this.guna2Button1.BorderRadius = 5;
             this.guna2Button1.BorderThickness = 1;
             this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -221,8 +205,9 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.ForeColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.Location = new System.Drawing.Point(188, 6);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button1.Name = "guna2Button1";
@@ -248,7 +233,7 @@
             this.ClientSize = new System.Drawing.Size(1037, 604);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -259,7 +244,6 @@
             this.Tag = "main";
             this.Text = "Setting - Master";
             this.Load += new System.EventHandler(this.MasterSetting_Load);
-            this.panel6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -269,9 +253,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbheader;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;

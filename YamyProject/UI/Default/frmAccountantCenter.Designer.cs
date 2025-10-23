@@ -195,7 +195,7 @@
             this.dgvTools2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -205,7 +205,7 @@
             this.dgvTools2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -220,7 +220,7 @@
             this.dgvTools2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -241,14 +241,14 @@
             this.dgvTools2.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools2.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvTools2.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvTools2.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvTools2.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvTools2.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvTools2.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvTools2.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvTools2.ThemeStyle.ReadOnly = true;
             this.dgvTools2.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvTools2.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvTools2.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTools2.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTools2.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTools2.ThemeStyle.RowsStyle.Height = 30;
             this.dgvTools2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -273,7 +273,7 @@
             this.customize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.customize.AutoSize = true;
             this.customize.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customize.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.customize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.customize.Location = new System.Drawing.Point(557, 10);
             this.customize.Name = "customize";
             this.customize.Size = new System.Drawing.Size(60, 13);
@@ -288,7 +288,7 @@
             this.refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.refresh.AutoSize = true;
             this.refresh.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refresh.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.refresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.refresh.Location = new System.Drawing.Point(490, 10);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(46, 13);
@@ -312,7 +312,7 @@
             this.dgvTools.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
@@ -322,7 +322,7 @@
             this.dgvTools.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -337,7 +337,7 @@
             this.dgvTools.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -358,14 +358,14 @@
             this.dgvTools.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvTools.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvTools.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvTools.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvTools.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvTools.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvTools.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvTools.ThemeStyle.ReadOnly = true;
             this.dgvTools.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvTools.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvTools.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTools.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTools.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTools.ThemeStyle.RowsStyle.Height = 30;
             this.dgvTools.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -379,7 +379,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
@@ -462,7 +462,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label27.Location = new System.Drawing.Point(17, 197);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(195, 13);
@@ -472,7 +472,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label26.Location = new System.Drawing.Point(17, 172);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(152, 13);
@@ -482,7 +482,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label25.Location = new System.Drawing.Point(17, 148);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(215, 13);
@@ -492,7 +492,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label24.Location = new System.Drawing.Point(17, 123);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(129, 13);
@@ -502,7 +502,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label23.Location = new System.Drawing.Point(17, 98);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(112, 13);
@@ -512,7 +512,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label22.Location = new System.Drawing.Point(17, 71);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(190, 13);
@@ -522,7 +522,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label19.Location = new System.Drawing.Point(17, 45);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(178, 13);
@@ -532,7 +532,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label21.Location = new System.Drawing.Point(17, 21);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(115, 13);
@@ -555,7 +555,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label9.Location = new System.Drawing.Point(17, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
@@ -565,7 +565,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label8.Location = new System.Drawing.Point(17, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(194, 13);
@@ -575,7 +575,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label7.Location = new System.Drawing.Point(17, 94);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
@@ -585,7 +585,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label6.Location = new System.Drawing.Point(17, 69);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 13);
@@ -595,7 +595,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label36.Location = new System.Drawing.Point(17, 20);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(113, 13);
@@ -605,7 +605,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label5.Location = new System.Drawing.Point(17, 45);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 13);
@@ -657,7 +657,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label32.Location = new System.Drawing.Point(17, 98);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(129, 13);
@@ -667,7 +667,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label33.Location = new System.Drawing.Point(17, 71);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(113, 13);
@@ -677,7 +677,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label34.Location = new System.Drawing.Point(17, 45);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(92, 13);
@@ -687,7 +687,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label35.Location = new System.Drawing.Point(17, 21);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(102, 13);
@@ -708,7 +708,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label12.Location = new System.Drawing.Point(17, 94);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 13);
@@ -718,7 +718,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label18.Location = new System.Drawing.Point(17, 70);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(139, 13);
@@ -728,7 +728,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label10.Location = new System.Drawing.Point(17, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 13);
@@ -738,7 +738,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label11.Location = new System.Drawing.Point(17, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 13);
@@ -758,7 +758,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label13.Location = new System.Drawing.Point(17, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(124, 13);
@@ -768,7 +768,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label16.Location = new System.Drawing.Point(17, 45);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 13);
@@ -778,7 +778,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label17.Location = new System.Drawing.Point(17, 21);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 13);
@@ -796,7 +796,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label20.Location = new System.Drawing.Point(17, 21);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
@@ -815,7 +815,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label14.Location = new System.Drawing.Point(17, 45);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 13);
@@ -825,7 +825,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label15.Location = new System.Drawing.Point(17, 21);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 13);
@@ -847,7 +847,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(6, 8);
             this.label1.Name = "label1";
@@ -886,7 +886,7 @@
             this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.label38.Location = new System.Drawing.Point(565, 13);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(46, 13);
@@ -926,7 +926,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -941,7 +941,7 @@
             this.Column4});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
@@ -956,7 +956,7 @@
             this.dgvReconcile.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -977,14 +977,14 @@
             this.dgvReconcile.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvReconcile.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.White;
             this.dgvReconcile.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvReconcile.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvReconcile.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvReconcile.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvReconcile.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvReconcile.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvReconcile.ThemeStyle.ReadOnly = true;
             this.dgvReconcile.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvReconcile.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvReconcile.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvReconcile.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvReconcile.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvReconcile.ThemeStyle.RowsStyle.Height = 30;
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
@@ -1035,7 +1035,7 @@
             this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.BackColor = System.Drawing.Color.White;
-            this.label28.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label28.Location = new System.Drawing.Point(0, 0);
             this.label28.Name = "label28";
@@ -1184,7 +1184,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 597);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -1194,7 +1194,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(944, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -1204,7 +1204,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);

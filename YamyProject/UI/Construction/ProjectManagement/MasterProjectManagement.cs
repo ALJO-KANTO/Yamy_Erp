@@ -96,7 +96,7 @@ namespace YamyProject
         private void gridDesign()
         {
             dgView.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.AliceBlue;
-            dgView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
+            dgView.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
             dgView.GridColor = System.Drawing.Color.Gray;
             dgView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
 
@@ -104,7 +104,7 @@ namespace YamyProject
             dgView.EnableHeadersVisualStyles = false;
             dgView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
             dgView.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dgView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
+            dgView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, FontStyle.Bold);
 
             // Style DataGridView
             dgView.AutoGenerateColumns = false;
@@ -113,8 +113,8 @@ namespace YamyProject
             dgView.RowHeadersVisible = false;
             dgView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightSkyBlue;
             dgView.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dgView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
-            dgView.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10);
+            dgView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 12, FontStyle.Bold);
+            dgView.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10);
             dgView.DefaultCellStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             dgView.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgView.GridColor = System.Drawing.Color.Gray;

@@ -50,6 +50,7 @@ namespace YamyProject
                 txtPONO.Text = "";
             }
             this.defaultVendorId = _vendorId;
+            headerUC1.FormText = this.Text;
         }
 
         private void frmPurchase_FormClosing(object sender, FormClosingEventArgs e)
@@ -252,6 +253,7 @@ namespace YamyProject
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
                     txtSalesMan.Text = reader["sales_man"].ToString();
+                    txtRefId.Text = reader["reference_no"].ToString();
                     if (cmbPurchasetype.Text.ToString().Trim() == "Fixed Assets")
                     {
                         labelFixedAssetCategory.Visible = true;
@@ -545,7 +547,7 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, 
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city,purchase_type =@purchase_type, fixed_asset_category_id=@fixed_asset_category_id, description = @description WHERE id = @id;",
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city,purchase_type =@purchase_type, fixed_asset_category_id=@fixed_asset_category_id, description = @description, reference_no = @reference_no WHERE id = @id;",
                                      DBClass.CreateParameter("id", id),
                                      DBClass.CreateParameter("date", dtInv.Value.Date),
                                    DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
@@ -571,6 +573,7 @@ namespace YamyProject
                                 DBClass.CreateParameter("change", changeAmount),
                                 DBClass.CreateParameter("purchase_type", cmbPurchasetype.Text),
                                 DBClass.CreateParameter("description", richTextDescription.Text),
+                                DBClass.CreateParameter("reference_no", txtRefId.Text),
                                    DBClass.CreateParameter("fixed_asset_category_id", cmbFixedAssetCategory.SelectedValue != null ? cmbFixedAssetCategory.SelectedValue.ToString() : "0"));
             ReturnItemsToInventory();
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Purchase");
@@ -605,9 +608,9 @@ namespace YamyProject
 
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_purchase (date, vendor_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-               total,vat,net, pay, `change`, created_by, created_date, state,purchase_type,fixed_asset_category_id,description) VALUES (@DATE, @vendor_id, @invoice_id,@warehouse_id,
+               total,vat,net, pay, `change`, created_by, created_date, state,purchase_type,fixed_asset_category_id,description,reference_no) VALUES (@DATE, @vendor_id, @invoice_id,@warehouse_id,
                @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state,@purchase_type,@fixed_asset_category_id,@description);
+               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state,@purchase_type,@fixed_asset_category_id,@description,@reference_no);
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("vendor_id", cmbVendor.SelectedValue),
@@ -634,6 +637,7 @@ namespace YamyProject
                DBClass.CreateParameter("state", 0),
                DBClass.CreateParameter("purchase_type", cmbPurchasetype.Text),
                DBClass.CreateParameter("description", richTextDescription.Text),
+               DBClass.CreateParameter("reference_no", txtRefId.Text),
                DBClass.CreateParameter("fixed_asset_category_id", cmbFixedAssetCategory.SelectedValue != null ? cmbFixedAssetCategory.SelectedValue.ToString() : "0")).ToString());
 
             insertInvItems();
@@ -1969,6 +1973,8 @@ namespace YamyProject
             DBClass.ExecuteNonQuery("UPDATE tbl_purchase SET state = -1 WHERE id = @id; UPDATE tbl_transaction SET state= -1 WHERE transaction_id=@id AND t_type = 'PURCHASE';",
                                           DBClass.CreateParameter("id", id.ToString()));
             CommonInsert.DeleteItemTransaction("Purchase", id.ToString());
+            CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Purchase");
+            CommonInsert.DeleteTransactionEntry(id, "PURCHASE");
             Utilities.LogAudit(frmLogin.userId, "PURCHASE", "Delete Purchase Invoice", id, "Deleted Purchase Invoice with ID: " + id.ToString());
             clearData();
         }

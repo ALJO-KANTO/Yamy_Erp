@@ -887,7 +887,8 @@ namespace YamyProject
                             (5, 'PRINT KITCHEN KOT', 0, '' ,1),
                             (6, 'PRINT BILL', 0, '' ,1),
                             (7, 'PROJECT OPTION', 0, '' ,0),
-                            (8, 'ENABLE PETTYCASH APPROVAL', 0, '', 0);
+                            (8, 'ENABLE PETTYCASH APPROVAL', 0, '', 0),;
+                            (9, 'ENABLE BARCODE', 0, '', 0);
 
                         CREATE TABLE `tbl_items` (
 	                    `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -1284,6 +1285,7 @@ namespace YamyProject
                           `fixed_asset_category_id` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
                           `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                          `reference_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1359,6 +1361,7 @@ namespace YamyProject
                           `vendor_id` int NOT NULL DEFAULT '0',
                           `invoice_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `warehouse_id` int NOT NULL DEFAULT '0',
+	                      `purchase_ref_id` INT NOT NULL DEFAULT '0',
                           `po_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `bill_to` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
@@ -1722,6 +1725,7 @@ namespace YamyProject
                           `customer_id` int NOT NULL DEFAULT '0',
                           `invoice_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `warehouse_id` int NOT NULL DEFAULT '0',
+	                      `sales_ref_id` INT(10) NOT NULL DEFAULT '0',
                           `po_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `bill_to` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',

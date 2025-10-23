@@ -31,7 +31,7 @@ namespace YamyProject
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.Vendor += vendorUpdatedHandler;
             EventHub.PurchaseReturn += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -143,7 +143,7 @@ namespace YamyProject
             if (dgvCustomer.Columns["JV NO"].Index == e.ColumnIndex)
                 frmLogin.frmMain.openChildForm(new MasterTransactionJournal(dgvCustomer.CurrentRow.Cells["JV NO"].Value.ToString(), "PurchaseReturn"));
             else
-                frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvCustomer.CurrentRow.Cells["JV NO"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())));
         }
         private void dgvCustomer_MouseHover(object sender, EventArgs e)
         {

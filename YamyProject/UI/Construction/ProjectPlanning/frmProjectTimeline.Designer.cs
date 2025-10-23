@@ -420,7 +420,7 @@
             this.ganttChartViewTasksTreeGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -445,7 +445,7 @@
             this.ganttChartViewTasksTreeGrid.CompletedWorkMember = "CompletedWork";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -464,7 +464,7 @@
             this.ganttChartViewTasksTreeGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -781,7 +781,7 @@
             this.standardRowGroupBox.Controls.Add(this.standardSetIconLabel);
             this.standardRowGroupBox.Controls.Add(this.standardDecreaseIndentButton);
             this.standardRowGroupBox.Controls.Add(this.standardSetIconComboBox);
-            this.standardRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardRowGroupBox.Location = new System.Drawing.Point(4, 254);
             this.standardRowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardRowGroupBox.Name = "standardRowGroupBox";
@@ -794,7 +794,7 @@
             // standardExpandButton
             // 
             this.standardExpandButton.Enabled = false;
-            this.standardExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardExpandButton.Location = new System.Drawing.Point(4, 15);
             this.standardExpandButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardExpandButton.Name = "standardExpandButton";
@@ -807,7 +807,7 @@
             // standardIncreaseIndentButton
             // 
             this.standardIncreaseIndentButton.Enabled = false;
-            this.standardIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardIncreaseIndentButton.Location = new System.Drawing.Point(88, 39);
             this.standardIncreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardIncreaseIndentButton.Name = "standardIncreaseIndentButton";
@@ -821,7 +821,7 @@
             // 
             this.standardSetIconLabel.AutoSize = true;
             this.standardSetIconLabel.Enabled = false;
-            this.standardSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardSetIconLabel.Location = new System.Drawing.Point(88, 20);
             this.standardSetIconLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.standardSetIconLabel.Name = "standardSetIconLabel";
@@ -832,7 +832,7 @@
             // standardDecreaseIndentButton
             // 
             this.standardDecreaseIndentButton.Enabled = false;
-            this.standardDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardDecreaseIndentButton.Location = new System.Drawing.Point(4, 39);
             this.standardDecreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardDecreaseIndentButton.Name = "standardDecreaseIndentButton";
@@ -846,7 +846,7 @@
             // 
             this.standardSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.standardSetIconComboBox.Enabled = false;
-            this.standardSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardSetIconComboBox.FormattingEnabled = true;
             this.standardSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -867,7 +867,7 @@
             this.standardMainGroupBox.Controls.Add(this.standardTasksTreeGridGroupBox);
             this.standardMainGroupBox.Controls.Add(this.standardReinitializeButton);
             this.standardMainGroupBox.Controls.Add(this.standardClearButton);
-            this.standardMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardMainGroupBox.Location = new System.Drawing.Point(4, 5);
             this.standardMainGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardMainGroupBox.Name = "standardMainGroupBox";
@@ -879,7 +879,7 @@
             // 
             // standardPrintPreviewButton
             // 
-            this.standardPrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardPrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardPrintPreviewButton.Location = new System.Drawing.Point(88, 218);
             this.standardPrintPreviewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardPrintPreviewButton.Name = "standardPrintPreviewButton";
@@ -890,7 +890,7 @@
             // 
             // standardPageSetupButton
             // 
-            this.standardPageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardPageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardPageSetupButton.Location = new System.Drawing.Point(4, 218);
             this.standardPageSetupButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardPageSetupButton.Name = "standardPageSetupButton";
@@ -907,7 +907,7 @@
             this.standardGanttChartGroupBox.Controls.Add(this.standardCalendarComboBox);
             this.standardGanttChartGroupBox.Controls.Add(this.standardUpdateScaleComboBox);
             this.standardGanttChartGroupBox.Enabled = false;
-            this.standardGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardGanttChartGroupBox.Location = new System.Drawing.Point(4, 78);
             this.standardGanttChartGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardGanttChartGroupBox.Name = "standardGanttChartGroupBox";
@@ -920,7 +920,7 @@
             // standardScaleComboBox
             // 
             this.standardScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardScaleComboBox.FormattingEnabled = true;
             this.standardScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -942,7 +942,7 @@
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowExtraDaytimeCheckBox);
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowExtraDaysCheckBox);
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowResourcesCheckBox);
-            this.standardGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardGanttChartShowGroupBox.Location = new System.Drawing.Point(7, 59);
             this.standardGanttChartShowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardGanttChartShowGroupBox.Name = "standardGanttChartShowGroupBox";
@@ -1025,7 +1025,7 @@
             // standardColorComboBox
             // 
             this.standardColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardColorComboBox.FormattingEnabled = true;
             this.standardColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1042,7 +1042,7 @@
             // standardCalendarComboBox
             // 
             this.standardCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardCalendarComboBox.FormattingEnabled = true;
             this.standardCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -1057,7 +1057,7 @@
             // standardUpdateScaleComboBox
             // 
             this.standardUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardUpdateScaleComboBox.FormattingEnabled = true;
             this.standardUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -1075,7 +1075,7 @@
             this.standardTasksTreeGridGroupBox.Controls.Add(this.standardFixedGridCheckBox);
             this.standardTasksTreeGridGroupBox.Controls.Add(this.standardShowGridCheckBox);
             this.standardTasksTreeGridGroupBox.Enabled = false;
-            this.standardTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardTasksTreeGridGroupBox.Location = new System.Drawing.Point(4, 39);
             this.standardTasksTreeGridGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardTasksTreeGridGroupBox.Name = "standardTasksTreeGridGroupBox";
@@ -1088,7 +1088,7 @@
             // standardFixedGridCheckBox
             // 
             this.standardFixedGridCheckBox.AutoSize = true;
-            this.standardFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardFixedGridCheckBox.Location = new System.Drawing.Point(67, 15);
             this.standardFixedGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardFixedGridCheckBox.Name = "standardFixedGridCheckBox";
@@ -1100,7 +1100,7 @@
             // standardShowGridCheckBox
             // 
             this.standardShowGridCheckBox.AutoSize = true;
-            this.standardShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardShowGridCheckBox.Location = new System.Drawing.Point(6, 15);
             this.standardShowGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardShowGridCheckBox.Name = "standardShowGridCheckBox";
@@ -1112,7 +1112,7 @@
             // 
             // standardReinitializeButton
             // 
-            this.standardReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardReinitializeButton.Location = new System.Drawing.Point(4, 15);
             this.standardReinitializeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardReinitializeButton.Name = "standardReinitializeButton";
@@ -1125,7 +1125,7 @@
             // standardClearButton
             // 
             this.standardClearButton.Enabled = false;
-            this.standardClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardClearButton.Location = new System.Drawing.Point(88, 15);
             this.standardClearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.standardClearButton.Name = "standardClearButton";
@@ -1170,7 +1170,7 @@
             this.dataTableRowGroupBox.Controls.Add(this.dataTableIncreaseIndentButton);
             this.dataTableRowGroupBox.Controls.Add(this.dataTableDecreaseIndentButton);
             this.dataTableRowGroupBox.Controls.Add(this.dataTableExpandButton);
-            this.dataTableRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableRowGroupBox.Location = new System.Drawing.Point(4, 272);
             this.dataTableRowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableRowGroupBox.Name = "dataTableRowGroupBox";
@@ -1188,7 +1188,7 @@
             this.dataTableMarkersGroupBox.Controls.Add(this.dataTableMarkerAddButton);
             this.dataTableMarkersGroupBox.Controls.Add(this.dataTableMarkerTypeComboBox);
             this.dataTableMarkersGroupBox.Enabled = false;
-            this.dataTableMarkersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableMarkersGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableMarkersGroupBox.Location = new System.Drawing.Point(4, 127);
             this.dataTableMarkersGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableMarkersGroupBox.Name = "dataTableMarkersGroupBox";
@@ -1271,7 +1271,7 @@
             this.dataTableInterruptionsGroupBox.Controls.Add(this.dataTableInterruptionsClearButton);
             this.dataTableInterruptionsGroupBox.Controls.Add(this.dataTableInterruptionAddButton);
             this.dataTableInterruptionsGroupBox.Enabled = false;
-            this.dataTableInterruptionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableInterruptionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableInterruptionsGroupBox.Location = new System.Drawing.Point(4, 84);
             this.dataTableInterruptionsGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableInterruptionsGroupBox.Name = "dataTableInterruptionsGroupBox";
@@ -1375,7 +1375,7 @@
             // 
             this.dataTableSetColorLabel.AutoSize = true;
             this.dataTableSetColorLabel.Enabled = false;
-            this.dataTableSetColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetColorLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetColorLabel.Location = new System.Drawing.Point(4, 65);
             this.dataTableSetColorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dataTableSetColorLabel.Name = "dataTableSetColorLabel";
@@ -1387,7 +1387,7 @@
             // 
             this.dataTableSetColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dataTableSetColorComboBox.Enabled = false;
-            this.dataTableSetColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetColorComboBox.FormattingEnabled = true;
             this.dataTableSetColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1406,7 +1406,7 @@
             // 
             this.dataTableSetIconLabel.AutoSize = true;
             this.dataTableSetIconLabel.Enabled = false;
-            this.dataTableSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetIconLabel.Location = new System.Drawing.Point(88, 20);
             this.dataTableSetIconLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dataTableSetIconLabel.Name = "dataTableSetIconLabel";
@@ -1418,7 +1418,7 @@
             // 
             this.dataTableSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dataTableSetIconComboBox.Enabled = false;
-            this.dataTableSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetIconComboBox.FormattingEnabled = true;
             this.dataTableSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -1433,7 +1433,7 @@
             // dataTableIncreaseIndentButton
             // 
             this.dataTableIncreaseIndentButton.Enabled = false;
-            this.dataTableIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableIncreaseIndentButton.Location = new System.Drawing.Point(88, 39);
             this.dataTableIncreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableIncreaseIndentButton.Name = "dataTableIncreaseIndentButton";
@@ -1445,7 +1445,7 @@
             // dataTableDecreaseIndentButton
             // 
             this.dataTableDecreaseIndentButton.Enabled = false;
-            this.dataTableDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableDecreaseIndentButton.Location = new System.Drawing.Point(4, 39);
             this.dataTableDecreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableDecreaseIndentButton.Name = "dataTableDecreaseIndentButton";
@@ -1457,7 +1457,7 @@
             // dataTableExpandButton
             // 
             this.dataTableExpandButton.Enabled = false;
-            this.dataTableExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableExpandButton.Location = new System.Drawing.Point(4, 15);
             this.dataTableExpandButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableExpandButton.Name = "dataTableExpandButton";
@@ -1474,7 +1474,7 @@
             this.dataTableMainGroupBox.Controls.Add(this.dataTableTasksTreeGridGroupBox);
             this.dataTableMainGroupBox.Controls.Add(this.dataTableReinitializeButton);
             this.dataTableMainGroupBox.Controls.Add(this.dataTableClearButton);
-            this.dataTableMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableMainGroupBox.Location = new System.Drawing.Point(4, 5);
             this.dataTableMainGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableMainGroupBox.Name = "dataTableMainGroupBox";
@@ -1486,7 +1486,7 @@
             // 
             // dataTablePrintPreviewButton
             // 
-            this.dataTablePrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTablePrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTablePrintPreviewButton.Location = new System.Drawing.Point(88, 236);
             this.dataTablePrintPreviewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTablePrintPreviewButton.Name = "dataTablePrintPreviewButton";
@@ -1497,7 +1497,7 @@
             // 
             // dataTablePageSetupButton
             // 
-            this.dataTablePageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTablePageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTablePageSetupButton.Location = new System.Drawing.Point(4, 236);
             this.dataTablePageSetupButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTablePageSetupButton.Name = "dataTablePageSetupButton";
@@ -1515,7 +1515,7 @@
             this.dataTableGanttChartGroupBox.Controls.Add(this.dataTableCalendarComboBox);
             this.dataTableGanttChartGroupBox.Controls.Add(this.dataTableUpdateScaleComboBox);
             this.dataTableGanttChartGroupBox.Enabled = false;
-            this.dataTableGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableGanttChartGroupBox.Location = new System.Drawing.Point(4, 78);
             this.dataTableGanttChartGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableGanttChartGroupBox.Name = "dataTableGanttChartGroupBox";
@@ -1528,7 +1528,7 @@
             // dataTableScaleComboBox
             // 
             this.dataTableScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableScaleComboBox.FormattingEnabled = true;
             this.dataTableScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -1553,7 +1553,7 @@
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowResourcesCheckBox);
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowMarkersCheckBox);
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowIconsCheckBox);
-            this.dataTableGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableGanttChartShowGroupBox.Location = new System.Drawing.Point(7, 59);
             this.dataTableGanttChartShowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableGanttChartShowGroupBox.Name = "dataTableGanttChartShowGroupBox";
@@ -1666,7 +1666,7 @@
             // dataTableColorComboBox
             // 
             this.dataTableColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableColorComboBox.FormattingEnabled = true;
             this.dataTableColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1684,7 +1684,7 @@
             // dataTableCalendarComboBox
             // 
             this.dataTableCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableCalendarComboBox.FormattingEnabled = true;
             this.dataTableCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -1698,7 +1698,7 @@
             // dataTableUpdateScaleComboBox
             // 
             this.dataTableUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableUpdateScaleComboBox.FormattingEnabled = true;
             this.dataTableUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -1716,7 +1716,7 @@
             this.dataTableTasksTreeGridGroupBox.Controls.Add(this.dataTableFixedGridCheckBox);
             this.dataTableTasksTreeGridGroupBox.Controls.Add(this.dataTableShowGridCheckBox);
             this.dataTableTasksTreeGridGroupBox.Enabled = false;
-            this.dataTableTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableTasksTreeGridGroupBox.Location = new System.Drawing.Point(4, 39);
             this.dataTableTasksTreeGridGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableTasksTreeGridGroupBox.Name = "dataTableTasksTreeGridGroupBox";
@@ -1729,7 +1729,7 @@
             // dataTableFixedGridCheckBox
             // 
             this.dataTableFixedGridCheckBox.AutoSize = true;
-            this.dataTableFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableFixedGridCheckBox.Location = new System.Drawing.Point(67, 15);
             this.dataTableFixedGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableFixedGridCheckBox.Name = "dataTableFixedGridCheckBox";
@@ -1742,7 +1742,7 @@
             // dataTableShowGridCheckBox
             // 
             this.dataTableShowGridCheckBox.AutoSize = true;
-            this.dataTableShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableShowGridCheckBox.Location = new System.Drawing.Point(6, 15);
             this.dataTableShowGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableShowGridCheckBox.Name = "dataTableShowGridCheckBox";
@@ -1753,7 +1753,7 @@
             // 
             // dataTableReinitializeButton
             // 
-            this.dataTableReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableReinitializeButton.Location = new System.Drawing.Point(4, 15);
             this.dataTableReinitializeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableReinitializeButton.Name = "dataTableReinitializeButton";
@@ -1766,7 +1766,7 @@
             // dataTableClearButton
             // 
             this.dataTableClearButton.Enabled = false;
-            this.dataTableClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableClearButton.Location = new System.Drawing.Point(88, 15);
             this.dataTableClearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataTableClearButton.Name = "dataTableClearButton";
@@ -1810,7 +1810,7 @@
             this.objectsRowGroupBox.Controls.Add(this.objectsIncreaseIndentButton);
             this.objectsRowGroupBox.Controls.Add(this.objectsDecreaseIndentButton);
             this.objectsRowGroupBox.Controls.Add(this.objectsExpandButton);
-            this.objectsRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsRowGroupBox.Location = new System.Drawing.Point(4, 272);
             this.objectsRowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsRowGroupBox.Name = "objectsRowGroupBox";
@@ -1828,7 +1828,7 @@
             this.objectsMarkersGroupBox.Controls.Add(this.objectsMarkerAddButton);
             this.objectsMarkersGroupBox.Controls.Add(this.objectsMarkerTypeComboBox);
             this.objectsMarkersGroupBox.Enabled = false;
-            this.objectsMarkersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsMarkersGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsMarkersGroupBox.Location = new System.Drawing.Point(4, 127);
             this.objectsMarkersGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsMarkersGroupBox.Name = "objectsMarkersGroupBox";
@@ -1911,7 +1911,7 @@
             this.objectsInterruptionsGroupBox.Controls.Add(this.objectsInterruptionsClear);
             this.objectsInterruptionsGroupBox.Controls.Add(this.objectsInterruptionAddButton);
             this.objectsInterruptionsGroupBox.Enabled = false;
-            this.objectsInterruptionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsInterruptionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsInterruptionsGroupBox.Location = new System.Drawing.Point(4, 84);
             this.objectsInterruptionsGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsInterruptionsGroupBox.Name = "objectsInterruptionsGroupBox";
@@ -2015,7 +2015,7 @@
             // 
             this.objectsSetColorLabel.AutoSize = true;
             this.objectsSetColorLabel.Enabled = false;
-            this.objectsSetColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetColorLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetColorLabel.Location = new System.Drawing.Point(4, 65);
             this.objectsSetColorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.objectsSetColorLabel.Name = "objectsSetColorLabel";
@@ -2027,7 +2027,7 @@
             // 
             this.objectsSetIconLabel.AutoSize = true;
             this.objectsSetIconLabel.Enabled = false;
-            this.objectsSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetIconLabel.Location = new System.Drawing.Point(88, 20);
             this.objectsSetIconLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.objectsSetIconLabel.Name = "objectsSetIconLabel";
@@ -2039,7 +2039,7 @@
             // 
             this.objectsSetColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.objectsSetColorComboBox.Enabled = false;
-            this.objectsSetColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetColorComboBox.FormattingEnabled = true;
             this.objectsSetColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -2058,7 +2058,7 @@
             // 
             this.objectsSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.objectsSetIconComboBox.Enabled = false;
-            this.objectsSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetIconComboBox.FormattingEnabled = true;
             this.objectsSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -2073,7 +2073,7 @@
             // objectsIncreaseIndentButton
             // 
             this.objectsIncreaseIndentButton.Enabled = false;
-            this.objectsIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsIncreaseIndentButton.Location = new System.Drawing.Point(88, 39);
             this.objectsIncreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsIncreaseIndentButton.Name = "objectsIncreaseIndentButton";
@@ -2085,7 +2085,7 @@
             // objectsDecreaseIndentButton
             // 
             this.objectsDecreaseIndentButton.Enabled = false;
-            this.objectsDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsDecreaseIndentButton.Location = new System.Drawing.Point(4, 39);
             this.objectsDecreaseIndentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsDecreaseIndentButton.Name = "objectsDecreaseIndentButton";
@@ -2097,7 +2097,7 @@
             // objectsExpandButton
             // 
             this.objectsExpandButton.Enabled = false;
-            this.objectsExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsExpandButton.Location = new System.Drawing.Point(4, 15);
             this.objectsExpandButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsExpandButton.Name = "objectsExpandButton";
@@ -2114,7 +2114,7 @@
             this.objectsMainGroupBox.Controls.Add(this.objectsTasksTreeGridGroupBox);
             this.objectsMainGroupBox.Controls.Add(this.objectsReinitializeButton);
             this.objectsMainGroupBox.Controls.Add(this.objectsClearButton);
-            this.objectsMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsMainGroupBox.Location = new System.Drawing.Point(4, 5);
             this.objectsMainGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsMainGroupBox.Name = "objectsMainGroupBox";
@@ -2126,7 +2126,7 @@
             // 
             // objectsPrintPreviewButton
             // 
-            this.objectsPrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsPrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsPrintPreviewButton.Location = new System.Drawing.Point(88, 236);
             this.objectsPrintPreviewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsPrintPreviewButton.Name = "objectsPrintPreviewButton";
@@ -2138,7 +2138,7 @@
             // 
             // objectsPageSetupButton
             // 
-            this.objectsPageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsPageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsPageSetupButton.Location = new System.Drawing.Point(4, 236);
             this.objectsPageSetupButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsPageSetupButton.Name = "objectsPageSetupButton";
@@ -2155,7 +2155,7 @@
             this.objectsGanttChartGroupBox.Controls.Add(this.objectsCalendarComboBox);
             this.objectsGanttChartGroupBox.Controls.Add(this.objectsUpdateScaleComboBox);
             this.objectsGanttChartGroupBox.Enabled = false;
-            this.objectsGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsGanttChartGroupBox.Location = new System.Drawing.Point(4, 78);
             this.objectsGanttChartGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsGanttChartGroupBox.Name = "objectsGanttChartGroupBox";
@@ -2168,7 +2168,7 @@
             // objectsScaleComboBox
             // 
             this.objectsScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsScaleComboBox.FormattingEnabled = true;
             this.objectsScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -2194,7 +2194,7 @@
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowResourcesCheckBox);
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowMarkersCheckBox);
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowIconsCheckBox);
-            this.objectsGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsGanttChartShowGroupBox.Location = new System.Drawing.Point(7, 59);
             this.objectsGanttChartShowGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsGanttChartShowGroupBox.Name = "objectsGanttChartShowGroupBox";
@@ -2310,7 +2310,7 @@
             // objectsColorComboBox
             // 
             this.objectsColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsColorComboBox.FormattingEnabled = true;
             this.objectsColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -2327,7 +2327,7 @@
             // objectsCalendarComboBox
             // 
             this.objectsCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsCalendarComboBox.FormattingEnabled = true;
             this.objectsCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -2341,7 +2341,7 @@
             // objectsUpdateScaleComboBox
             // 
             this.objectsUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsUpdateScaleComboBox.FormattingEnabled = true;
             this.objectsUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -2360,7 +2360,7 @@
             this.objectsTasksTreeGridGroupBox.Controls.Add(this.objectsFixedGridCheckBox);
             this.objectsTasksTreeGridGroupBox.Controls.Add(this.objectsShowGridCheckBox);
             this.objectsTasksTreeGridGroupBox.Enabled = false;
-            this.objectsTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsTasksTreeGridGroupBox.Location = new System.Drawing.Point(4, 39);
             this.objectsTasksTreeGridGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsTasksTreeGridGroupBox.Name = "objectsTasksTreeGridGroupBox";
@@ -2373,7 +2373,7 @@
             // objectsFixedGridCheckBox
             // 
             this.objectsFixedGridCheckBox.AutoSize = true;
-            this.objectsFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsFixedGridCheckBox.Location = new System.Drawing.Point(67, 15);
             this.objectsFixedGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsFixedGridCheckBox.Name = "objectsFixedGridCheckBox";
@@ -2385,7 +2385,7 @@
             // objectsShowGridCheckBox
             // 
             this.objectsShowGridCheckBox.AutoSize = true;
-            this.objectsShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsShowGridCheckBox.Location = new System.Drawing.Point(6, 15);
             this.objectsShowGridCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsShowGridCheckBox.Name = "objectsShowGridCheckBox";
@@ -2396,7 +2396,7 @@
             // 
             // objectsReinitializeButton
             // 
-            this.objectsReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsReinitializeButton.Location = new System.Drawing.Point(4, 15);
             this.objectsReinitializeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsReinitializeButton.Name = "objectsReinitializeButton";
@@ -2409,7 +2409,7 @@
             // objectsClearButton
             // 
             this.objectsClearButton.Enabled = false;
-            this.objectsClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsClearButton.Location = new System.Drawing.Point(88, 15);
             this.objectsClearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.objectsClearButton.Name = "objectsClearButton";

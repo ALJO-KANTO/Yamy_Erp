@@ -78,12 +78,12 @@ namespace YamyProject
                 dgvSales.Columns.Add("CostCenter", "CostCenter");
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
-                dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Regular);
+                dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.RowHeadersVisible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -190,7 +190,7 @@ namespace YamyProject
                 }
                 // Final TOTAL row
                 dgvSales.Rows.Add("", "", "", "", "TOTAL", "", "", "", customerTotal.ToString("N2"));
-                dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold | FontStyle.Underline);
+                dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
                 dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
             }
         }

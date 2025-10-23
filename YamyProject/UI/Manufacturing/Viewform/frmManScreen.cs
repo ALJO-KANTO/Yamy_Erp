@@ -79,7 +79,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
                 {
                     Text = "Machine Name: " + row["name"].ToString(),
                     ForeColor = Color.White,
-                    BackColor = Color.RoyalBlue,
+                    BackColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83))))),
                     AutoSize = false,
                     Padding = new Padding(0, 3, 0, 3),
                     Margin = new Padding(0, 10, 0, 0),
@@ -99,7 +99,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
                 {
                     AutoRoundedCorners = true,
                     Size = new Size(100, 35),
-                    FillColor = Color.RoyalBlue,
+                    FillColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83))))),
                     Text = "Start Production",
                     Tag = row["id"].ToString()
                 };
@@ -171,7 +171,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
             PictureBox pic = new PictureBox
             {
-                Image = YamyProject.Properties.Resources._1493__3_,
+                Image = YamyProject.Properties.Resources._1493__2_,
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(100, 100),
                 Location = new Point((picPanel.Width - 100) / 2, 5)
@@ -443,7 +443,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
                     {
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
-                            int finishedQty = dialog.FinishedQty;
+                            decimal finishedQty = dialog.FinishedQty;
                             decimal sellingPrice = dialog.SellingPrice;
                             DateTime date = DateTime.Now.Date;
 
@@ -457,16 +457,16 @@ namespace YamyProject.UI.Manufacturing.Viewform
         private void InsertFinishedGoodsItemTransaction(DateTime date, decimal finishedQty, decimal costPrice, decimal sellingPrice, string mId, string productId, string warehouseId)
         {
             CommonInsert.InsertItemTransaction(date, "Manufacturing", mId.ToString(), productId, costPrice.ToString(),
-                finishedQty.ToString("N2"), sellingPrice.ToString("N2"), "0", finishedQty.ToString("N2"), "Manufacturing", warehouseId.ToString());
+                finishedQty.ToString(), sellingPrice.ToString(), "0", finishedQty.ToString(), "Manufacturing", warehouseId.ToString());
         }
         private void InsertFinishedGoodsItemJournal(DateTime date, decimal finishedQty, decimal costPrice, decimal sellingPrice, string mId, string productId, string warehouseId)
         {
             object result = DBClass.ExecuteScalar(@"SELECT id FROM tbl_coa_level_4 WHERE name =@name", DBClass.CreateParameter("name", "Raw Material Inventory"));
             int level4Id = (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
 
-            CommonInsert.InsertTransactionEntry(date, BindCombos.SelectDefaultLevelAccount("Inventory").ToString(), (finishedQty * costPrice).ToString("N2"), "0",
+            CommonInsert.InsertTransactionEntry(date, BindCombos.SelectDefaultLevelAccount("Inventory").ToString(), (finishedQty * costPrice).ToString(), "0",
                 mId.ToString(), mId.ToString(), "Manufacturing", "Manufacturing - Item Code - " + productId, frmLogin.userId, DateTime.Now.Date);
-            CommonInsert.InsertTransactionEntry(date, level4Id.ToString(), "0", (finishedQty * costPrice).ToString("N2"),
+            CommonInsert.InsertTransactionEntry(date, level4Id.ToString(), "0", (finishedQty * costPrice).ToString(),
                     mId.ToString(), "0", "Manufacturing", "Manufacturing - Item Code - " + productId, frmLogin.userId, DateTime.Now.Date);
         }
         private void deleteItemActions(int id)
@@ -519,19 +519,19 @@ public class FinishedGoodsDialog : Form
         set { txtItemName.Text = value; }
     }
 
-    public int FinishedQty
+    public decimal FinishedQty
     {
         get
         {
-            int qty;
-            if (int.TryParse(txtFinishedQty.Text, out qty))
+            decimal qty;
+            if (decimal.TryParse(txtFinishedQty.Text, out qty))
                 return qty;
             else
                 return 0;
         }
         set
         {
-            txtFinishedQty.Text = value.ToString();
+            txtFinishedQty.Text = value.ToString("F2");
         }
     }
 
@@ -579,6 +579,10 @@ public class FinishedGoodsDialog : Form
         txtItemName = new TextBox() { Location = new Point(130, 20), Size = new Size(200, 22), ReadOnly = true };
         txtFinishedQty = new TextBox() { Location = new Point(130, 60), Size = new Size(200, 22) };
         txtSellingPrice = new TextBox() { Location = new Point(130, 100), Size = new Size(200, 22) };
+        
+        // Add KeyPress events to restrict to decimals only
+        txtFinishedQty.KeyPress += NumericTextBox_KeyPress;
+        txtSellingPrice.KeyPress += NumericTextBox_KeyPress;
 
         // Create Buttons
         btnSave = new Button() { Text = "Save", Location = new Point(130, 140), Size = new Size(90, 30) };
@@ -599,18 +603,33 @@ public class FinishedGoodsDialog : Form
         this.Controls.Add(btnClose);
     }
 
+    private void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        // Allow digits, one decimal point, and control keys like backspace
+        TextBox txt = sender as TextBox;
+
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+        {
+            e.Handled = true;
+        }
+
+        // Only allow one decimal point
+        if (e.KeyChar == '.' && txt.Text.Contains("."))
+        {
+            e.Handled = true;
+        }
+    }
+
     private void BtnSave_Click(object sender, EventArgs e)
     {
-        int qty;
-        if (!int.TryParse(txtFinishedQty.Text, out qty) || qty < 0)
+        if (FinishedQty <= 0)
         {
             MessageBox.Show("Please enter a valid finished quantity (0 or more).", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtFinishedQty.Focus();
             return;
         }
 
-        decimal price;
-        if (!decimal.TryParse(txtSellingPrice.Text, out price) || price < 0)
+        if (SellingPrice <= 0)
         {
             MessageBox.Show("Please enter a valid selling price (0 or more).", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             txtSellingPrice.Focus();

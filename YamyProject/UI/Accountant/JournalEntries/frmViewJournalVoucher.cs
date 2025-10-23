@@ -19,7 +19,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            //headerUC1.FormText = id == 0 ? "New Journal Voucher" : "Edit Journal Voucher";
+            headerUC1.FormText = id == 0 ? "New Journal Voucher" : "Edit Journal Voucher";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -173,7 +173,7 @@ namespace YamyProject
                 foreach (DataRow row in dt.Rows)
                 {
                     ListViewItem item = new ListViewItem(row["name"].ToString());
-                    item.Font = new System.Drawing.Font("Times New Roman", 9F);
+                    item.Font = new System.Drawing.Font("Segoe UI", 9F);
                     item.SubItems.Add(row["id"].ToString());
                     nameslistView.Items.Add(item);
                 }

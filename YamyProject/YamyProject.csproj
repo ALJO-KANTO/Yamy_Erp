@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>25</ApplicationRevision>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -389,11 +389,29 @@
     </Compile>
     <Compile Include="Localization\LocalizationManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UCs\FormBoarderBar\FormBottomBoarder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\FormBoarderBar\FormBottomBoarder.Designer.cs">
+      <DependentUpon>FormBottomBoarder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\FormBoarderBar\FormLeftBoarder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\FormBoarderBar\FormLeftBoarder.Designer.cs">
+      <DependentUpon>FormLeftBoarder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCs\FormBoarderBar\FormRightBoarder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\FormBoarderBar\FormRightBoarder.Designer.cs">
+      <DependentUpon>FormRightBoarder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCs\HeaderUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1185,6 +1203,12 @@
     <Compile Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.Designer.cs">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Purchases\Return\frmViewPurchaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\Return\frmViewPurchaseList.designer.cs">
+      <DependentUpon>frmViewPurchaseList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1776,11 +1800,11 @@
     <Compile Include="UI\Reports\Purchase\frmPurchaseByVendorSummery.designer.cs">
       <DependentUpon>frmPurchaseByVendorSummery.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Reports\Vendor\frmIncomeByVendorDetails.cs">
+    <Compile Include="UI\Reports\Vendor\frmExpenseByVendorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Reports\Vendor\frmIncomeByVendorDetails.designer.cs">
-      <DependentUpon>frmIncomeByVendorDetails.cs</DependentUpon>
+    <Compile Include="UI\Reports\Vendor\frmExpenseByVendorDetails.designer.cs">
+      <DependentUpon>frmExpenseByVendorDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="CrystalReport\ReceiptVoucher.cs">
       <AutoGen>True</AutoGen>
@@ -1973,11 +1997,11 @@
     <Compile Include="UI\Reports\Sales\frmSalesByItemSummary.designer.cs">
       <DependentUpon>frmSalesByItemSummary.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Reports\Vendor\frmIncomeByVendorSummary.cs">
+    <Compile Include="UI\Reports\Vendor\frmExpenseByVendorSummary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Reports\Vendor\frmIncomeByVendorSummary.designer.cs">
-      <DependentUpon>frmIncomeByVendorSummary.cs</DependentUpon>
+    <Compile Include="UI\Reports\Vendor\frmExpenseByVendorSummary.designer.cs">
+      <DependentUpon>frmExpenseByVendorSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Vendor\frmVendorAgingDetails.cs">
       <SubType>Form</SubType>
@@ -2222,6 +2246,12 @@
     <Compile Include="UI\Sales\Return\frmSalesReturn.designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Sales\Return\frmViewSalesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Sales\Return\frmViewSalesList.designer.cs">
+      <DependentUpon>frmViewSalesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Sales\Return\MasterSalesReturn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2372,11 +2402,11 @@
     <Compile Include="UI\SubContract\MasterSubcontractor.designer.cs">
       <DependentUpon>MasterSubcontractor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Test\frmTestForm.cs">
+    <Compile Include="UI\Test\TestForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Test\frmTestForm.Designer.cs">
-      <DependentUpon>frmTestForm.cs</DependentUpon>
+    <Compile Include="UI\Test\TestForm1.Designer.cs">
+      <DependentUpon>TestForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\VAT\frmVATCorporate.cs">
       <SubType>Form</SubType>
@@ -2435,7 +2465,181 @@
     </Content>
     <None Include="Resources\yamy.bmp" />
     <None Include="Resources\graph.png" />
+    <None Include="Resources\dashboard.png" />
+    <None Include="Resources\app favicon.png" />
+    <None Include="Resources\icon.ico" />
+    <None Include="Resources\New Project %282%29.png" />
+    <None Include="Resources\account.png" />
+    <None Include="Resources\home1.png" />
+    <Content Include="Resources\Acc.png" />
+    <None Include="Resources\account1.png" />
+    <None Include="Resources\add fileN.png" />
+    <None Include="Resources\add file.png" />
+    <Content Include="Resources\Add New.ico" />
+    <Content Include="Resources\Add New.png" />
+    <Content Include="Resources\Add New2.ico" />
+    <None Include="Resources\app icon.png" />
+    <None Include="Resources\add userN.png" />
+    <None Include="Resources\arrow left.png" />
+    <None Include="Resources\addN.png" />
+    <Content Include="Resources\ArtStation.png" />
+    <Content Include="Resources\ArtStation1.png" />
+    <None Include="Resources\attachN.png" />
+    <Content Include="Resources\Automatic.png" />
+    <Content Include="Resources\Badge.png" />
+    <Content Include="Resources\Badge1.png" />
+    <Content Include="Resources\Bank Buildi222g.png" />
+    <Content Include="Resources\Bank Building.ico" />
+    <Content Include="Resources\Bank Building.png" />
+    <Content Include="Resources\Bank.png" />
+    <None Include="Resources\bank1.png" />
+    <None Include="Resources\Bank0.png" />
+    <Content Include="Resources\Bill.png" />
+    <Content Include="Resources\Bill1.png" />
+    <None Include="Resources\billN.png" />
+    <Content Include="Resources\Business Report.png" />
+    <Content Include="Resources\card.png" />
+    <Content Include="Resources\cash.png" />
+    <Content Include="Resources\Categorize.ico" />
+    <Content Include="Resources\Categorize.png" />
+    <Content Include="Resources\Categorize1.ico" />
+    <Content Include="Resources\Categorize3.ico" />
+    <None Include="Resources\catering.png" />
+    <None Include="Resources\clipboard.png" />
+    <None Include="Resources\check list.png" />
+    <None Include="Resources\chevron-left.png" />
+    <None Include="Resources\cheque - Copy0.png" />
+    <Content Include="Resources\Close.png" />
+    <None Include="Resources\closeN.png" />
+    <Content Include="Resources\Company.png" />
+    <None Include="Resources\company1.png" />
+    <None Include="Resources\company2.png" />
+    <Content Include="Resources\Conference Skin Type 7.png" />
+    <None Include="Resources\copyN.png" />
+    <None Include="Resources\CopmanyList.jpg" />
+    <Content Include="Resources\Create Order.ico" />
+    <None Include="Resources\crm-50.png" />
+    <None Include="Resources\crm.png" />
+    <None Include="Resources\crm1.png" />
+    <None Include="Resources\crm2.png" />
+    <Content Include="Resources\Customer.png" />
+    <Content Include="Resources\Dashboard Layout.png" />
+    <Content Include="Resources\Dashboard22 Layout.png" />
+    <None Include="Resources\deleteN.png" />
+    <None Include="Resources\deilvery handcart.png" />
+    <Content Include="Resources\Edit Row.ico" />
+    <None Include="Resources\empolyees.png" />
+    <None Include="Resources\empolyees1.png" />
+    <None Include="Resources\emailN.png" />
+    <None Include="Resources\emailN - Copy.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\empolyees2.png" />
+    <Content Include="Resources\Enter Key.ico" />
+    <Content Include="Resources\ERP System.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\excel - Copy.png" />
+    <Content Include="Resources\Eye.ico" />
+    <Content Include="Resources\File Folder.png" />
+    <None Include="Resources\find.png" />
+    <None Include="Resources\findN.png" />
+    <None Include="Resources\file_upload.png" />
+    <None Include="Resources\findN1.png" />
+    <Content Include="Resources\Gear.ico" />
+    <Content Include="Resources\Gear2.ico" />
+    <Content Include="Resources\General Ledger.png" />
+    <Content Include="Resources\Graph Report.png" />
+    <Content Include="Resources\Hand.ico" />
+    <Content Include="Resources\Hom22e.png" />
+    <Content Include="Resources\HR.png" />
+    <None Include="Resources\hr1.png" />
+    <None Include="Resources\hr2.png" />
+    <Content Include="Resources\Human Resources.png" />
+    <Content Include="Resources\Inventory.png" />
+    <None Include="Resources\inventory1.png" />
+    <Content Include="Resources\Kitchen Room.ico" />
+    <Content Include="Resources\Kitchen.ico" />
+    <Content Include="Resources\Kitchen2.ico" />
+    <None Include="Resources\lang.png" />
+    <None Include="Resources\lang1.png" />
+    <None Include="Resources\kitchenN.png" />
+    <Content Include="Resources\List View.ico" />
+    <Content Include="Resources\List.png" />
+    <None Include="Resources\manfactring.png" />
+    <None Include="Resources\maximizeN.png" />
+    <None Include="Resources\LoginScreen.jpg" />
+    <None Include="Resources\loginN.png" />
+    <Content Include="Resources\Men22u.png" />
+    <Content Include="Resources\Menu.png" />
+    <None Include="Resources\menuN.png" />
+    <None Include="Resources\menuN1.png" />
+    <Content Include="Resources\Minimize Window.png" />
+    <Content Include="Resources\Minimize Window2.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\minimizeN.png" />
+    <Content Include="Resources\My Website.jpg" />
+    <None Include="Resources\New Project %282%291.png" />
+    <None Include="Resources\New Project %281%29.png" />
+    <Content Include="Resources\Phot2o Gallery.png" />
+    <Content Include="Resources\Photo Gallery.png" />
+    <Content Include="Resources\POS Terminal.ico" />
+    <Content Include="Resources\POS Terminal2.ico" />
+    <None Include="Resources\preview.png" />
+    <Content Include="Resources\Print.ico" />
+    <None Include="Resources\printN.png" />
+    <Content Include="Resources\Product.ico" />
+    <Content Include="Resources\Product.png" />
+    <Content Include="Resources\Product2.ico" />
+    <None Include="Resources\productN.png" />
+    <Content Include="Resources\Purchase.png" />
+    <Content Include="Resources\Remove.ico" />
+    <Content Include="Resources\Restaurant Table.png" />
+    <Content Include="Resources\Restaurant Tsable.ico" />
+    <Content Include="Resources\Restaurant.png" />
+    <Content Include="Resources\Restore Down.png" />
+    <None Include="Resources\resturant.png" />
+    <None Include="Resources\resturantN.png" />
+    <Content Include="Resources\Sales.png" />
+    <None Include="Resources\saveN.png" />
+    <Content Include="Resources\Screenshot 2025-04-01 122409.png" />
+    <Content Include="Resources\Search.png" />
+    <None Include="Resources\search3.png" />
+    <None Include="Resources\searchN.png" />
+    <Content Include="Resources\Security Pass.png" />
+    <Content Include="Resources\Setting.png" />
+    <None Include="Resources\settinges.png" />
+    <None Include="Resources\settingesN.png" />
+    <Content Include="Resources\Settings.png" />
+    <Content Include="Resources\Shutdown.png" />
+    <Content Include="Resources\signOut.png" />
+    <None Include="Resources\SignUpScreen.jpg" />
+    <Content Include="Resources\Staff.ico" />
+    <Content Include="Resources\Staff2.ico" />
+    <Content Include="Resources\Submit Resume.png" />
+    <Content Include="Resources\Supp3lier.png" />
+    <Content Include="Resources\Supplier.png" />
+    <Content Include="Resources\Table.png" />
+    <Content Include="Resources\Table2.ico" />
+    <None Include="Resources\tableN.png" />
+    <None Include="Resources\tableN1.png" />
+    <Content Include="Resources\Take Away Food.ico" />
+    <None Include="Resources\user guide.png" />
+    <None Include="Resources\user guide1.png" />
+    <None Include="Resources\Untitled design1 copy.jpg" />
+    <None Include="Resources\upload1.png" />
+    <None Include="Resources\Upload0.png" />
+    <Content Include="Resources\user.png" />
+    <Content Include="Resources\user2.png" />
+    <None Include="Resources\userN.png" />
+    <None Include="Resources\user_N.png" />
+    <Content Include="Resources\Vendor.png" />
+    <Content Include="Resources\Warehous2e.png" />
+    <Content Include="Resources\Warehouse.png" />
+    <Content Include="Resources\Windows Client.png" />
+    <None Include="Resources\word.png" />
     <Content Include="Resources\yamy.ico" />
+    <Content Include="Resources\yamy_accounting_book_keeping_logo-removebg-preview %281%29.png" />
+    <Content Include="Resources\yamy_accounting_book_keeping_logo-removebg-preview.png" />
+    <None Include="Resources\YAMY_Splash.jpg" />
     <Content Include="yamy.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2458,6 +2662,15 @@
     <EmbeddedResource Include="Localization\Localization.zh-CN.resx" />
     <EmbeddedResource Include="Localization\Localization.zh-TW.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UCs\FormBoarderBar\FormBottomBoarder.resx">
+      <DependentUpon>FormBottomBoarder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\FormBoarderBar\FormLeftBoarder.resx">
+      <DependentUpon>FormLeftBoarder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCs\FormBoarderBar\FormRightBoarder.resx">
+      <DependentUpon>FormRightBoarder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCs\HeaderUC.resx">
       <DependentUpon>HeaderUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -2856,6 +3069,9 @@
     <EmbeddedResource Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.resx">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\Return\frmViewPurchaseList.resx">
+      <DependentUpon>frmViewPurchaseList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.resx">
       <DependentUpon>frmChequeLinkedToPaymentReceipt.cs</DependentUpon>
     </EmbeddedResource>
@@ -3162,8 +3378,8 @@
     <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseByVendorSummery.resx">
       <DependentUpon>frmPurchaseByVendorSummery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\Vendor\frmIncomeByVendorDetails.resx">
-      <DependentUpon>frmIncomeByVendorDetails.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Reports\Vendor\frmExpenseByVendorDetails.resx">
+      <DependentUpon>frmExpenseByVendorDetails.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="CrystalReport\ReceiptVoucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -3285,8 +3501,8 @@
     <EmbeddedResource Include="UI\Reports\Sales\frmSalesByItemSummary.resx">
       <DependentUpon>frmSalesByItemSummary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\Vendor\frmIncomeByVendorSummary.resx">
-      <DependentUpon>frmIncomeByVendorSummary.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Reports\Vendor\frmExpenseByVendorSummary.resx">
+      <DependentUpon>frmExpenseByVendorSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Vendor\frmVendorAgingDetails.resx">
       <DependentUpon>frmVendorAgingDetails.cs</DependentUpon>
@@ -3408,6 +3624,9 @@
     <EmbeddedResource Include="UI\Sales\Return\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Sales\Return\frmViewSalesList.resx">
+      <DependentUpon>frmViewSalesList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Sales\Return\MasterSalesReturn.resx">
       <DependentUpon>MasterSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
@@ -3483,8 +3702,8 @@
     <EmbeddedResource Include="UI\SubContract\MasterSubcontractor.resx">
       <DependentUpon>MasterSubcontractor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Test\frmTestForm.resx">
-      <DependentUpon>frmTestForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Test\TestForm1.resx">
+      <DependentUpon>TestForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VAT\frmVATCorporate.resx">
       <DependentUpon>frmVATCorporate.cs</DependentUpon>
@@ -3545,121 +3764,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\Resources\Acc.png" />
-    <Content Include="DAL\Resources\Add New.ico" />
-    <Content Include="DAL\Resources\Add New.png" />
-    <Content Include="DAL\Resources\Add New2.ico" />
-    <Content Include="DAL\Resources\ArtStation.png" />
-    <Content Include="DAL\Resources\ArtStation1.png" />
-    <Content Include="DAL\Resources\lunch-lamb-beef-meat.jpg" />
-    <Content Include="DAL\Resources\Automatic.png" />
-    <Content Include="DAL\Resources\Badge.png" />
-    <Content Include="DAL\Resources\Badge1.png" />
-    <Content Include="DAL\Resources\Bank Buildi222g.png" />
-    <Content Include="DAL\Resources\Bank Building.ico" />
-    <Content Include="DAL\Resources\Bank Building.png" />
-    <Content Include="DAL\Resources\Bill.png" />
-    <Content Include="DAL\Resources\Bill1.png" />
-    <Content Include="DAL\Resources\Business Report.png" />
-    <Content Include="DAL\Resources\Categorize.ico" />
-    <Content Include="DAL\Resources\Categorize.png" />
-    <Content Include="DAL\Resources\Categorize1.ico" />
-    <Content Include="DAL\Resources\Categorize3.ico" />
-    <Content Include="DAL\Resources\Close.ico" />
-    <Content Include="DAL\Resources\Close.png" />
-    <Content Include="DAL\Resources\Company.png" />
-    <Content Include="DAL\Resources\Conference Skin Type 7.png" />
-    <Content Include="DAL\Resources\Create Order.ico" />
-    <Content Include="DAL\Resources\Credit Card.ico" />
-    <Content Include="DAL\Resources\Crowd.ico" />
-    <Content Include="DAL\Resources\Dashboard Layout.ico" />
-    <Content Include="DAL\Resources\Dashboard Layout.png" />
-    <Content Include="DAL\Resources\Dashboard Layout1.png" />
-    <Content Include="DAL\Resources\Dashboard22 Layout.png" />
-    <Content Include="DAL\Resources\Delete.ico" />
-    <Content Include="DAL\Resources\Delivery.ico" />
-    <Content Include="DAL\Resources\Edit Row.ico" />
-    <Content Include="DAL\Resources\Employee.ico" />
-    <Content Include="DAL\Resources\Enter Key.ico" />
-    <Content Include="DAL\Resources\ERP System.png" />
-    <Content Include="DAL\Resources\Eye.ico" />
-    <Content Include="DAL\Resources\File Folder.png" />
-    <Content Include="DAL\Resources\Gear.ico" />
-    <Content Include="DAL\Resources\Gear2.ico" />
-    <Content Include="DAL\Resources\General Led2ger.ico" />
-    <Content Include="DAL\Resources\General Ledger.ico" />
-    <Content Include="DAL\Resources\General Ledger.png" />
-    <Content Include="DAL\Resources\General Ledger1.ico" />
-    <Content Include="DAL\Resources\General Ledger1.png" />
-    <Content Include="DAL\Resources\Get Cash.ico" />
-    <Content Include="DAL\Resources\Graph Report.png" />
-    <Content Include="DAL\Resources\Graph Report1.png" />
-    <Content Include="DAL\Resources\Hand.ico" />
-    <Content Include="DAL\Resources\Hom22e.png" />
-    <Content Include="DAL\Resources\Home.ico" />
-    <Content Include="DAL\Resources\Home.png" />
-    <Content Include="DAL\Resources\Home1.ico" />
-    <Content Include="DAL\Resources\Home1.png" />
-    <Content Include="DAL\Resources\Home11.ico" />
-    <Content Include="DAL\Resources\Home2.ico" />
-    <Content Include="DAL\Resources\Home4.ico" />
-    <Content Include="DAL\Resources\Human Resources.png" />
-    <Content Include="DAL\Resources\Kitchen Room.ico" />
-    <Content Include="DAL\Resources\Kitchen.ico" />
-    <Content Include="DAL\Resources\Kitchen2.ico" />
-    <Content Include="DAL\Resources\List View.ico" />
-    <Content Include="DAL\Resources\List.png" />
-    <Content Include="DAL\Resources\Men22u.png" />
-    <Content Include="DAL\Resources\Menu.ico" />
-    <Content Include="DAL\Resources\Menu.png" />
-    <Content Include="DAL\Resources\Minimize Window.png" />
-    <Content Include="DAL\Resources\Minimize Window1.png" />
-    <Content Include="DAL\Resources\Minimize Window2.png" />
-    <Content Include="DAL\Resources\My Website.jpg" />
-    <Content Include="DAL\Resources\Phot2o Gallery.png" />
-    <Content Include="DAL\Resources\Photo Gallery.png" />
-    <Content Include="DAL\Resources\Photo Gallery1.png" />
-    <Content Include="DAL\Resources\POS Terminal.ico" />
-    <Content Include="DAL\Resources\POS Terminal2.ico" />
-    <Content Include="DAL\Resources\Print.ico" />
-    <Content Include="DAL\Resources\Product.ico" />
-    <Content Include="DAL\Resources\Product.png" />
-    <Content Include="DAL\Resources\Product2.ico" />
-    <Content Include="DAL\Resources\Remove.ico" />
-    <Content Include="DAL\Resources\Restaurant Table.png" />
-    <Content Include="DAL\Resources\Restaurant Tsable.ico" />
-    <Content Include="DAL\Resources\Restaurant.png" />
-    <Content Include="DAL\Resources\Restore Dow2n.ico" />
-    <Content Include="DAL\Resources\Restore Down.ico" />
-    <Content Include="DAL\Resources\Restore Down.png" />
-    <Content Include="DAL\Resources\Screenshot 2025-04-01 122409.png" />
-    <Content Include="DAL\Resources\Search.ico" />
-    <Content Include="DAL\Resources\Search.png" />
-    <Content Include="DAL\Resources\Security Pass.png" />
-    <Content Include="DAL\Resources\Settin2gs.ico" />
-    <Content Include="DAL\Resources\Settings.ico" />
-    <Content Include="DAL\Resources\Settings.png" />
-    <Content Include="DAL\Resources\Shutdown.png" />
-    <Content Include="DAL\Resources\Staff.ico" />
-    <Content Include="DAL\Resources\Staff2.ico" />
-    <Content Include="DAL\Resources\Submit Resume.png" />
-    <Content Include="DAL\Resources\Submit Resume1.png" />
-    <Content Include="DAL\Resources\Subtract.ico" />
-    <Content Include="DAL\Resources\Supp3lier.png" />
-    <Content Include="DAL\Resources\Supplier.ico" />
-    <Content Include="DAL\Resources\Supplier.png" />
-    <Content Include="DAL\Resources\Supplier1.png" />
-    <Content Include="DAL\Resources\Table.ico" />
-    <Content Include="DAL\Resources\Table.png" />
-    <Content Include="DAL\Resources\Table2.ico" />
-    <Content Include="DAL\Resources\Take Away Food.ico" />
-    <Content Include="DAL\Resources\Warehous2e.png" />
-    <Content Include="DAL\Resources\Warehouse.ico" />
-    <Content Include="DAL\Resources\Warehouse.png" />
-    <Content Include="DAL\Resources\Warehouse1.png" />
-    <Content Include="DAL\Resources\Windows Client.png" />
-    <Content Include="DAL\Resources\yamy_accounting_book_keeping_logo-removebg-preview %281%29.png" />
-    <Content Include="DAL\Resources\yamy_accounting_book_keeping_logo-removebg-preview.png" />
     <None Include="Resources\YAMY_Splash1.png" />
     <Content Include="SqlScripts\create_company_schema.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -3743,11 +3847,9 @@
     <None Include="Resources\Add User Male.ico" />
     <None Include="Resources\ight.ico" />
     <None Include="Resources\Sort Down.ico" />
-    <None Include="Resources\2.jpg" />
     <None Include="Resources\1.jpg" />
     <None Include="Resources\2.png" />
     <None Include="Resources\1.png" />
-    <None Include="Resources\Copy of Copy of Blue Modern Transport Login Page Wireframe Tablet UI Prototype.jpg" />
     <None Include="Resources\Exchange.ico" />
     <None Include="Resources\Double Left2.ico" />
     <None Include="Resources\Double Right.ico" />
@@ -3811,7 +3913,6 @@
     <None Include="Resources\Invoice.ico" />
     <None Include="Resources\Invoice Paid.ico" />
     <None Include="Resources\Horizontal Line.ico" />
-    <None Include="Resources\Home.ico" />
     <None Include="Resources\Graph Report.ico" />
     <None Include="Resources\Email.ico" />
     <None Include="Resources\Delivery.ico" />
@@ -3831,19 +3932,6 @@
     <None Include="Resources\3.ico" />
     <None Include="Resources\2.ico" />
     <None Include="Resources\1.ico" />
-    <None Include="DAL\Resources\cash.png" />
-    <None Include="DAL\Resources\card.png" />
-    <None Include="DAL\Resources\HR.png" />
-    <None Include="DAL\Resources\signOut.png" />
-    <None Include="DAL\Resources\user2.png" />
-    <None Include="DAL\Resources\user.png" />
-    <None Include="DAL\Resources\Vendor.png" />
-    <None Include="DAL\Resources\Setting.png" />
-    <None Include="DAL\Resources\Sales.png" />
-    <None Include="DAL\Resources\Purchase.png" />
-    <None Include="DAL\Resources\Inventory.png" />
-    <None Include="DAL\Resources\Customer.png" />
-    <None Include="DAL\Resources\Bank.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

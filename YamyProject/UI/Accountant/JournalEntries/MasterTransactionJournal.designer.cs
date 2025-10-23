@@ -37,10 +37,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.cmbSelectionMethod = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.Lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
@@ -51,9 +47,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblJVNO = new System.Windows.Forms.Label();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.headerUC1 = new YamyProject.HeaderUC();
+            this.Lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).BeginInit();
-            this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -62,9 +61,9 @@
             // 
             this.panel3.Controls.Add(this.dgvJournal);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 77);
+            this.panel3.Location = new System.Drawing.Point(2, 91);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1234, 441);
+            this.panel3.Size = new System.Drawing.Size(1234, 427);
             this.panel3.TabIndex = 8;
             // 
             // dgvJournal
@@ -80,7 +79,7 @@
             this.dgvJournal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -90,7 +89,7 @@
             this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -106,7 +105,7 @@
             this.dgvJournal.RowHeadersVisible = false;
             this.dgvJournal.RowHeadersWidth = 51;
             this.dgvJournal.RowTemplate.Height = 30;
-            this.dgvJournal.Size = new System.Drawing.Size(1234, 441);
+            this.dgvJournal.Size = new System.Drawing.Size(1234, 427);
             this.dgvJournal.TabIndex = 7;
             this.dgvJournal.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvJournal.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -117,14 +116,14 @@
             this.dgvJournal.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvJournal.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvJournal.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvJournal.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvJournal.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvJournal.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvJournal.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvJournal.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvJournal.ThemeStyle.ReadOnly = true;
             this.dgvJournal.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvJournal.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvJournal.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvJournal.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvJournal.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvJournal.ThemeStyle.RowsStyle.Height = 30;
             this.dgvJournal.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -135,7 +134,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 518);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -145,7 +144,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1236, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
@@ -155,7 +154,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
@@ -215,65 +214,6 @@
             this.cmbSelectionMethod.TabIndex = 21;
             this.cmbSelectionMethod.SelectedIndexChanged += new System.EventHandler(this.cmbSelectionMethod_SelectedIndexChanged);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel4.Controls.Add(this.guna2Button2);
-            this.panel4.Controls.Add(this.guna2ControlBox1);
-            this.panel4.Controls.Add(this.Lbheader);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(2, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1234, 23);
-            this.panel4.TabIndex = 237;
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderRadius = 3;
-            this.guna2Button2.BorderThickness = 1;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = global::YamyProject.Properties.Resources.Subtract;
-            this.guna2Button2.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button2.Location = new System.Drawing.Point(1196, 4);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(15, 15);
-            this.guna2Button2.TabIndex = 21;
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1215, 4);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
-            this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // Lbheader
-            // 
-            this.Lbheader.AutoSize = false;
-            this.Lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.Lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbheader.ForeColor = System.Drawing.Color.White;
-            this.Lbheader.Location = new System.Drawing.Point(0, 0);
-            this.Lbheader.Name = "Lbheader";
-            this.Lbheader.Size = new System.Drawing.Size(1234, 23);
-            this.Lbheader.TabIndex = 19;
-            this.Lbheader.Text = null;
-            this.Lbheader.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
@@ -286,7 +226,7 @@
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.menuStrip1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(2, 23);
+            this.panel8.Location = new System.Drawing.Point(2, 37);
             this.panel8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1234, 27);
@@ -397,9 +337,10 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.lblJVNO);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 50);
+            this.panel2.Location = new System.Drawing.Point(2, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1234, 27);
             this.panel2.TabIndex = 7;
@@ -407,7 +348,7 @@
             // lblJVNO
             // 
             this.lblJVNO.BackColor = System.Drawing.Color.Transparent;
-            this.lblJVNO.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.lblJVNO.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblJVNO.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.lblJVNO.Location = new System.Drawing.Point(524, 3);
             this.lblJVNO.Name = "lblJVNO";
@@ -415,6 +356,60 @@
             this.lblJVNO.TabIndex = 8;
             this.lblJVNO.Text = "Transactions Journal";
             this.lblJVNO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1215, 4);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
+            this.guna2ControlBox1.TabIndex = 0;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.BorderRadius = 3;
+            this.guna2Button2.BorderThickness = 1;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Image = global::YamyProject.Properties.Resources.Subtract;
+            this.guna2Button2.ImageSize = new System.Drawing.Size(15, 15);
+            this.guna2Button2.Location = new System.Drawing.Point(1196, 4);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(15, 15);
+            this.guna2Button2.TabIndex = 21;
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
+            // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1234, 37);
+            this.headerUC1.TabIndex = 238;
+            // 
+            // Lbheader
+            // 
+            this.Lbheader.BackColor = System.Drawing.Color.Transparent;
+            this.Lbheader.Location = new System.Drawing.Point(0, 0);
+            this.Lbheader.Name = "Lbheader";
+            this.Lbheader.Size = new System.Drawing.Size(0, 0);
+            this.Lbheader.TabIndex = 0;
+            this.Lbheader.Text = null;
             // 
             // MasterTransactionJournal
             // 
@@ -426,7 +421,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -434,11 +429,10 @@
             this.Name = "MasterTransactionJournal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";
-            this.Text = "Transaction Journal";
+            this.Text = "Transaction Journal Center";
             this.Load += new System.EventHandler(this.MasterTransactionJournal_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).EndInit();
-            this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -453,10 +447,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private Guna.UI2.WinForms.Guna2ComboBox cmbSelectionMethod;
-        private System.Windows.Forms.Panel panel4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel Lbheader;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DateTimePicker dtTo;
         private Guna.UI2.WinForms.Guna2CheckBox chkDate;
@@ -467,5 +457,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblJVNO;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private HeaderUC headerUC1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbheader;
     }
 }

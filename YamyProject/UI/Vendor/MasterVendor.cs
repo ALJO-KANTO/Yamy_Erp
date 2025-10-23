@@ -27,7 +27,7 @@ namespace YamyProject
             EventHub.Vendor += vendorUpdatedHandler;
             EventHub.PurchaseInv += InvoiceUpdatedHandler;
             EventHub.PaymentVoucher += PaymentVoucherHandler;
-            guna2HtmlLabel2.Text = Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterVendor_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -439,40 +439,22 @@ namespace YamyProject
                 if (dgvTransactions.Columns.Contains("type"))
                 {
                     if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Purchase")
-                    {
                         frmLogin.frmMain.openChildForm(new frmPurchase(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
-                    }
                     else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Purchase Return")
-                    {
                         frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
-                    }
-                    else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Payment")
-                    {
-                        frmLogin.frmMain.openChildForm(new frmViewPaymentVoucher(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString()), int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
-                    }
-                    else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Advance Payment")
-                    {
-                        frmLogin.frmMain.openChildForm(new frmViewPaymentVoucherAdvance(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString()), int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
-                    }
-                    else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Vendor Opening Balance")
-                    {
-                        frmLogin.frmMain.openChildForm(new frmTransactionJournal(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString()), "Vendor Opening Balance", (dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString()), (dgvTransactions.Rows[e.RowIndex].Cells["Date"].Value.ToString())));
-                    }
-                    else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Debit Note")
-                    {
-                        frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
-                    }
                 }
             }
         }
         private void dgvInvoiceCash_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvTransactions.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvInvoiceCash.Rows.Count)
             {
-                if (dgvTransactions.Columns.Contains("type"))
+                if (dgvInvoiceCash.Columns.Contains("type"))
                 {
-                    if (dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString().ToUpper().Contains("PURCHASE"))
+                    if (CommonInsert.GetFormName(dgvInvoiceCash.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Purchase")
                         frmLogin.frmMain.openChildForm(new frmPurchase(int.Parse(dgvInvoiceCash.Rows[e.RowIndex].Cells["Invoice Id"].Value.ToString())));
+                    else if (CommonInsert.GetFormName(dgvInvoiceCash.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Purchase Return")
+                        frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvInvoiceCash.Rows[e.RowIndex].Cells["Invoice Id"].Value.ToString())));
                 }
             }
         }
@@ -512,7 +494,7 @@ namespace YamyProject
 
                 yPosition += 10;
                 string dateText = "Printed on: " + DateTime.Now.ToString("MM/dd/yyyy");
-                ev.Graphics.DrawString(dateText, new Font("Arial", 10), Brushes.Black, new PointF(leftMargin, yPosition));
+                ev.Graphics.DrawString(dateText, new Font("Segoe UI", 10), Brushes.Black, new PointF(leftMargin, yPosition));
                 yPosition += 25;
 
                 // Column widths

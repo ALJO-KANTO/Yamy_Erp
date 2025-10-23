@@ -20,7 +20,7 @@ namespace YamyProject
             this.id = id;
             if (id == 0)
                 this.Text = id == 0 ? "New Category" : "Edit Category";
-            Lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
 

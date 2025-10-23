@@ -22,7 +22,7 @@ namespace YamyProject
             EventHub.Journal += JournalVoucherUpdatedHandler;
             this.type = type;
             this.transactionId = transactionId;
-            Lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void MasterTransactionJournal_Load(object sender, EventArgs e)

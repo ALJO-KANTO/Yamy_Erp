@@ -14,9 +14,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             this.id = _id;
             this.l1Id = _l1Id;
-            if (id != 0)
-                this.Text = "Edit Level 2";
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
 

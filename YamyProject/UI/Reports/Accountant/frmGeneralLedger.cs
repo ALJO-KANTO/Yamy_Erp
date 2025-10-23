@@ -21,7 +21,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            guna2HtmlLabel9.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void frmGeneralLedger_Load(object sender, EventArgs e)
@@ -365,7 +365,7 @@ namespace YamyProject
         //{
         //    dgvSales.Columns["id"].Visible = false;
         //    dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        //    dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+        //    dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
         //    dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
         //    dgvSales.EnableHeadersVisualStyles = false;
 
@@ -416,12 +416,12 @@ namespace YamyProject
                 dgvSales.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
-                dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+                dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                 dgvSales.Columns["id"].Visible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -515,7 +515,7 @@ namespace YamyProject
                                         (subTotalDebit - subTotalCredit).ToString("N2")
                                     );
                                     row.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                                    row.DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+                                    row.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                                     rowsToAdd.Add(row);
                                 }
@@ -535,7 +535,7 @@ namespace YamyProject
                                 lineTotalDebit.ToString("N2"),
                                 lineTotalCredit.ToString("N2"),
                                 lineBalance.ToString("N2"));
-                            totalRow.DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Bold | FontStyle.Underline);
+                            totalRow.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold | FontStyle.Underline);
                             totalRow.DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
                             totalRow.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                             totalRow.Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -556,7 +556,7 @@ namespace YamyProject
                         this.Invoke((MethodInvoker)delegate
                         {
                             int totalRow = dgvSales.Rows.Add(null, null, null, null, "", "", "TOTAL", totalAmount.ToString("N2"));
-                            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Bold | FontStyle.Underline);
+                            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold | FontStyle.Underline);
                             dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
                             dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                             dgvSales.Rows[totalRow].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -641,7 +641,7 @@ namespace YamyProject
                                         (runningDebit - runningCredit).ToString("N2")
                                     );
                                     row.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                                    row.DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+                                    row.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                                     rowsToAdd.Add(row);
                                 }
@@ -678,14 +678,14 @@ namespace YamyProject
         //        dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         //        dgvSales.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         //        dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-        //        dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
-        //        dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
-        //        //dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 8F, FontStyle.Regular);
+        //        dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+        //        dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+        //        //dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
 
         //        dgvSales.Columns["id"].Visible = false;
         //        dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        //        dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+        //        dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
         //        dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
         //        dgvSales.EnableHeadersVisualStyles = false;
         //        dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -749,7 +749,7 @@ namespace YamyProject
 
         //                    int rowIndex = dgvSales.Rows.Add(reader["Num"].ToString(), reader["Type"].ToString(), reader["date"].ToString(), reader["Num"].ToString(), reader["description"].ToString(), debit.ToString("N2"), credit.ToString("N2"), (subTotalDebit - subTotalCredit).ToString("N2"));
         //                    dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-        //                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Regular);
+        //                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
         //                }
         //                lineTotalDebit += subTotalDebit;
@@ -769,7 +769,7 @@ namespace YamyProject
         //            totalAmount += lineTotalDebit - lineTotalCredit;
         //        }
         //    int totalRow = dgvSales.Rows.Add(null, null, null, null, "", "", "TOTAL", totalAmount.ToString("N2"), totalAmount.ToString("N2"));
-        //    dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe", 8F, FontStyle.Bold | FontStyle.Underline);
+        //    dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold | FontStyle.Underline);
         //    dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
         //    dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
         //    dgvSales.Columns["id"].Visible = false;

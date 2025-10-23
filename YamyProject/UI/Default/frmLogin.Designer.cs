@@ -49,6 +49,7 @@ namespace YamyProject
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
@@ -65,7 +66,7 @@ namespace YamyProject
             this.btnSignup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSignup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSignup.FillColor = System.Drawing.Color.White;
-            this.btnSignup.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignup.ForeColor = System.Drawing.Color.Black;
             this.btnSignup.Location = new System.Drawing.Point(58, 531);
             this.btnSignup.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -88,7 +89,7 @@ namespace YamyProject
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(90)))));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(626, 465);
+            this.btnLogin.Location = new System.Drawing.Point(626, 479);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.PressedColor = System.Drawing.Color.White;
@@ -101,7 +102,7 @@ namespace YamyProject
             // 
             this.txtUsername.Animated = true;
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(109)))));
-            this.txtUsername.BorderRadius = 15;
+            this.txtUsername.BorderRadius = 5;
             this.txtUsername.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.txtUsername.BorderThickness = 0;
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -115,7 +116,7 @@ namespace YamyProject
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
             this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.Location = new System.Drawing.Point(562, 323);
+            this.txtUsername.Location = new System.Drawing.Point(557, 329);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -129,7 +130,7 @@ namespace YamyProject
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.Transparent;
-            this.txtPassword.BorderRadius = 15;
+            this.txtPassword.BorderRadius = 5;
             this.txtPassword.BorderThickness = 0;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.DefaultText = "";
@@ -142,7 +143,7 @@ namespace YamyProject
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(559, 397);
+            this.txtPassword.Location = new System.Drawing.Point(557, 403);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -157,8 +158,8 @@ namespace YamyProject
             // lblError
             // 
             this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblError.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.lblError.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblError.Location = new System.Drawing.Point(8, 608);
             this.lblError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -171,7 +172,7 @@ namespace YamyProject
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(66, 599);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -184,7 +185,7 @@ namespace YamyProject
             // 
             // panel17
             // 
-            this.panel17.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel17.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel17.Location = new System.Drawing.Point(975, 0);
             this.panel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -194,7 +195,7 @@ namespace YamyProject
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -204,7 +205,7 @@ namespace YamyProject
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -214,7 +215,7 @@ namespace YamyProject
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(3, 736);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -241,7 +242,7 @@ namespace YamyProject
             this.lblLinkForgotPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblLinkForgotPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblLinkForgotPassword.LinkColor = System.Drawing.Color.White;
-            this.lblLinkForgotPassword.Location = new System.Drawing.Point(590, 543);
+            this.lblLinkForgotPassword.Location = new System.Drawing.Point(612, 543);
             this.lblLinkForgotPassword.Name = "lblLinkForgotPassword";
             this.lblLinkForgotPassword.Size = new System.Drawing.Size(182, 15);
             this.lblLinkForgotPassword.TabIndex = 172;
@@ -255,7 +256,7 @@ namespace YamyProject
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(590, 229);
+            this.label1.Location = new System.Drawing.Point(590, 213);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 57);
@@ -268,7 +269,7 @@ namespace YamyProject
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(559, 286);
+            this.label2.Location = new System.Drawing.Point(560, 300);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(292, 32);
@@ -281,7 +282,7 @@ namespace YamyProject
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(560, 366);
+            this.label4.Location = new System.Drawing.Point(563, 376);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(282, 32);
@@ -305,13 +306,11 @@ namespace YamyProject
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.BackgroundImage = global::YamyProject.Properties.Resources.Login;
+            this.guna2ShadowPanel1.BackgroundImage = global::YamyProject.Properties.Resources.LoginScreen;
             this.guna2ShadowPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.guna2ShadowPanel1.Controls.Add(this.panel4);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox1);
             this.guna2ShadowPanel1.Controls.Add(this.label5);
-            this.guna2ShadowPanel1.Controls.Add(this.label4);
-            this.guna2ShadowPanel1.Controls.Add(this.label2);
-            this.guna2ShadowPanel1.Controls.Add(this.label1);
             this.guna2ShadowPanel1.Controls.Add(this.lblLinkForgotPassword);
             this.guna2ShadowPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2ShadowPanel1.Controls.Add(this.panel3);
@@ -324,6 +323,9 @@ namespace YamyProject
             this.guna2ShadowPanel1.Controls.Add(this.btnSignup);
             this.guna2ShadowPanel1.Controls.Add(this.label3);
             this.guna2ShadowPanel1.Controls.Add(this.lblError);
+            this.guna2ShadowPanel1.Controls.Add(this.label2);
+            this.guna2ShadowPanel1.Controls.Add(this.label1);
+            this.guna2ShadowPanel1.Controls.Add(this.label4);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.Location = new System.Drawing.Point(0, 0);
@@ -331,6 +333,16 @@ namespace YamyProject
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(978, 738);
             this.guna2ShadowPanel1.TabIndex = 177;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.BackgroundImage = global::YamyProject.Properties.Resources.New_Project__2_;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(31, 85);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(398, 52);
+            this.panel4.TabIndex = 178;
             // 
             // guna2ControlBox1
             // 
@@ -401,5 +413,6 @@ namespace YamyProject
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Panel panel4;
     }
 }

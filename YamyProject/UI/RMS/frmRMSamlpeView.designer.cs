@@ -83,6 +83,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -105,7 +106,7 @@
             // frmRMSamlpeView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(888, 458);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.label2);

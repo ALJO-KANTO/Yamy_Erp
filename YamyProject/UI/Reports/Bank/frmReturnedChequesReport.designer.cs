@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -58,15 +58,13 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblCompany = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dgvSales = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.contextMenuExport.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel7
@@ -88,12 +86,12 @@
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Black;
             this.lblDate.Location = new System.Drawing.Point(479, 159);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(57, 15);
+            this.lblDate.Size = new System.Drawing.Size(51, 14);
             this.lblDate.TabIndex = 17;
             this.lblDate.Text = "28/03/2025";
             // 
@@ -101,12 +99,12 @@
             // 
             this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.Black;
             this.lblTime.Location = new System.Drawing.Point(546, 159);
             this.lblTime.Margin = new System.Windows.Forms.Padding(2);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(30, 15);
+            this.lblTime.Size = new System.Drawing.Size(25, 14);
             this.lblTime.TabIndex = 16;
             this.lblTime.Text = "05:00";
             // 
@@ -143,12 +141,12 @@
             // dtpTo
             // 
             this.dtpTo.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
-            this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTo.Location = new System.Drawing.Point(158, 6);
             this.dtpTo.Margin = new System.Windows.Forms.Padding(2);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(90, 21);
+            this.dtpTo.Size = new System.Drawing.Size(90, 23);
             this.dtpTo.TabIndex = 35;
             this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
             // 
@@ -167,12 +165,12 @@
             // dtpFrom
             // 
             this.dtpFrom.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
-            this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFrom.Location = new System.Drawing.Point(47, 6);
             this.dtpFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(90, 21);
+            this.dtpFrom.Size = new System.Drawing.Size(90, 23);
             this.dtpFrom.TabIndex = 33;
             this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
@@ -205,6 +203,7 @@
             // 
             // guna2Panel3
             // 
+            this.guna2Panel3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2Panel3.Controls.Add(this.chkDate);
             this.guna2Panel3.Controls.Add(this.dtpTo);
@@ -214,6 +213,7 @@
             this.guna2Panel3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.guna2Panel3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 56);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
@@ -230,11 +230,11 @@
             this.chkDate.CheckedState.BorderThickness = 0;
             this.chkDate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkDate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkDate.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkDate.ForeColor = System.Drawing.Color.Black;
             this.chkDate.Location = new System.Drawing.Point(280, 8);
             this.chkDate.Name = "chkDate";
-            this.chkDate.Size = new System.Drawing.Size(37, 17);
+            this.chkDate.Size = new System.Drawing.Size(39, 17);
             this.chkDate.TabIndex = 55;
             this.chkDate.Text = "All";
             this.chkDate.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -307,7 +307,7 @@
             // 
             // guna2Panel2
             // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.guna2Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Panel2.Controls.Add(this.guna2Button2);
             this.guna2Panel2.Controls.Add(this.guna2Button1);
             this.guna2Panel2.Controls.Add(this.guna2Button3);
@@ -316,6 +316,7 @@
             this.guna2Panel2.Controls.Add(this.btnExcel);
             this.guna2Panel2.Controls.Add(this.btnPrint);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 23);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
@@ -407,12 +408,12 @@
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(429, 4);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(78, 19);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(78, 21);
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = "Profit & loss";
             // 
@@ -437,43 +438,43 @@
             this.dgvSales.AllowUserToDeleteRows = false;
             this.dgvSales.AllowUserToResizeColumns = false;
             this.dgvSales.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSales.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
             this.dgvSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvSales.ColumnHeadersHeight = 30;
             this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSales.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSales.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSales.Location = new System.Drawing.Point(312, 192);
             this.dgvSales.MultiSelect = false;
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.ReadOnly = true;
             this.dgvSales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvSales.RowHeadersVisible = false;
             this.dgvSales.RowHeadersWidth = 51;
             this.dgvSales.RowTemplate.Height = 30;
@@ -503,17 +504,17 @@
             this.dgvSales.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvSales.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellDoubleClick);
             // 
-            // panel9
+            // headerUC1
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel9.Controls.Add(this.guna2Button6);
-            this.panel9.Controls.Add(this.guna2ControlBox1);
-            this.panel9.Controls.Add(this.lbheader);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1040, 23);
-            this.panel9.TabIndex = 23;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(637, 37);
+            this.headerUC1.TabIndex = 0;
             // 
             // guna2Button6
             // 
@@ -545,20 +546,6 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
-            // lbheader
-            // 
-            this.lbheader.AutoSize = false;
-            this.lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbheader.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbheader.ForeColor = System.Drawing.Color.White;
-            this.lbheader.Location = new System.Drawing.Point(0, 0);
-            this.lbheader.Name = "lbheader";
-            this.lbheader.Size = new System.Drawing.Size(1040, 22);
-            this.lbheader.TabIndex = 19;
-            this.lbheader.Text = "lbheader";
-            this.lbheader.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmReturnedChequesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,20 +560,20 @@
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.guna2HtmlLabel10);
-            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.headerUC1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmReturnedChequesReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";
+            this.Text = "Returned Cheques Report";
             this.Load += new System.EventHandler(this.frmReturnedChequesReport_Load);
             this.contextMenuExport.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
-            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,10 +604,9 @@
         private Guna.UI2.WinForms.Guna2Button btnExcel;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private System.Windows.Forms.Panel panel9;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbheader;
         private Guna.UI2.WinForms.Guna2CheckBox chkDate;
     }
 }

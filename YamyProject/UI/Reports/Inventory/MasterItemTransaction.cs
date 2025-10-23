@@ -16,7 +16,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void MasterItemTransaction_Load(object sender, EventArgs e)

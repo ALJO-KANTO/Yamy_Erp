@@ -13,7 +13,8 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-                this.Text = "Prepaid Expense";
+
+            headerUC1.FormText = this.Text;
         }
 
        

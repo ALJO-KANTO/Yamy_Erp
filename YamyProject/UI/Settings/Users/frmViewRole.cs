@@ -15,7 +15,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             this.id = id;
             this.Text = id != 0 ? "Roles - Edit Role" : "Roles - New Role";
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

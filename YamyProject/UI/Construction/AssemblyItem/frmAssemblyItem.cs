@@ -253,30 +253,23 @@ namespace YamyProject
 
             return true;
         }
-        string getNextCodeProject()
+        private string getNextCodeItem()
         {
-            string baseCode = refId + "00";
+            object result1 = DBClass.ExecuteScalar("SELECT CODE FROM tbl_item_category ic WHERE ic.id = (SELECT i.category_id FROM tbl_items i WHERE i.code = @code)", DBClass.CreateParameter("@code", mainItemCode));
+            int CategoryCode = (result1 == DBNull.Value || result1 == null) ? 1 : Convert.ToInt32(result1) + 1;
 
-            //MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT code FROM tbl_items ORDER BY 
-            //    CAST(SUBSTRING_INDEX(code, '-', -1) AS UNSIGNED) DESC LIMIT 1; ");
-
-            string newItemCode = baseCode + "1";
-
+            string typeCategory = "13" + CategoryCode.ToString();
+            string query = "SELECT MAX(RIGHT(code, 4)) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory";
+            object result = DBClass.ExecuteScalar(query, DBClass.CreateParameter("@typeCategory", typeCategory));
+            int nextSerial = (result == DBNull.Value || result == null) ? 1 : Convert.ToInt32(result) + 1;
+            string formattedSerial = nextSerial.ToString().PadLeft(4, '0');
+            string newItemCode = typeCategory + formattedSerial;
             return newItemCode;
-        }
-        string getNextCodeX()
-        {
-            int baseCode=0;
-
-            MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT code FROM tbl_items ORDER BY 
-                CAST(SUBSTRING_INDEX(code, '-', -1) AS UNSIGNED) DESC LIMIT 1; ");
-            if (reader.Read() && reader["code"].ToString() != "")
-                baseCode = int.Parse(reader["code"].ToString()) + 1;
-            return baseCode.ToString();
         }
         private bool insertItem()
         {
-            
+            //txtcode.Text = getNextCodeItem();
+
             if (!chkRequiredDate())
                 return false;
 

@@ -19,11 +19,10 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            guna2HtmlLabel2.Visible = Case;
             userUpdatedHandler = roleUpdatedHandler=(sender, args) => BindUsers();
             EventHub.User += userUpdatedHandler;
             EventHub.Roles += roleUpdatedHandler;
-            guna2HtmlLabel2.Text = Text;
+            headerUC1.FormText = Text;
         }
         private void MasterUsers_FormClosing(object sender, FormClosingEventArgs e)
         {

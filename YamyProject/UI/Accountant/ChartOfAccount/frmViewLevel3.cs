@@ -16,9 +16,7 @@ namespace YamyProject
             this.id = _id;
             this.l1Id = _l1Id;
             this.l2Id = _l2Id;
-            if (id != 0)
-                this.Text = "Edit Level 3";
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

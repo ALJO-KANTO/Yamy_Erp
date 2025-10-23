@@ -20,7 +20,7 @@ namespace YamyProject
             EventHub.ItemUnit += itemUnitUpdatedHandler;
             this._item = _item;
             this.id = id;
-            LbHeader.Text = id == 0 ? "Add Item Unit" : "Edit Item Unit";
+            headerUC1.FormText = id == 0 ? "Add Item UOM" : "Edit Item UOM";
         }
 
         private void frmAddUnitsToItem_FormClosing(object sender, FormClosingEventArgs e)

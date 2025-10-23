@@ -52,28 +52,26 @@
             this.chkDate = new Guna.UI2.WinForms.Guna2CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvDetails = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).BeginInit();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNew
             // 
-            this.btnNew.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNew.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNew.BorderRadius = 5;
             this.btnNew.BorderThickness = 3;
             this.btnNew.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnNew.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNew.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnNew.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
             this.btnNew.Location = new System.Drawing.Point(4, 5);
@@ -86,6 +84,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnRestore);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnEdit);
@@ -100,7 +99,7 @@
             // btnRestore
             // 
             this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestore.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRestore.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnRestore.BorderRadius = 5;
             this.btnRestore.BorderThickness = 1;
             this.btnRestore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -121,7 +120,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnDelete.BorderRadius = 5;
             this.btnDelete.BorderThickness = 1;
             this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -141,7 +140,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.BorderRadius = 5;
             this.btnEdit.BorderThickness = 1;
             this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -150,7 +149,7 @@
             this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEdit.FillColor = System.Drawing.Color.White;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnEdit.Location = new System.Drawing.Point(104, 5);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
@@ -205,7 +204,7 @@
             this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowTemplate.Height = 30;
-            this.dgvCustomer.Size = new System.Drawing.Size(1040, 325);
+            this.dgvCustomer.Size = new System.Drawing.Size(1040, 311);
             this.dgvCustomer.TabIndex = 6;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -223,7 +222,7 @@
             this.dgvCustomer.ThemeStyle.ReadOnly = true;
             this.dgvCustomer.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvCustomer.ThemeStyle.RowsStyle.Height = 30;
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -235,6 +234,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.cmbType);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.dtTo);
@@ -243,7 +243,7 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.chkDate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 23);
+            this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1040, 48);
             this.panel2.TabIndex = 7;
@@ -365,9 +365,9 @@
             // 
             this.panel3.Controls.Add(this.dgvCustomer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 71);
+            this.panel3.Location = new System.Drawing.Point(0, 85);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1040, 325);
+            this.panel3.Size = new System.Drawing.Size(1040, 311);
             this.panel3.TabIndex = 8;
             // 
             // dgvDetails
@@ -426,7 +426,7 @@
             this.dgvDetails.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetails.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvDetails.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvDetails.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvDetails.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvDetails.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvDetails.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvDetails.ThemeStyle.HeaderStyle.Height = 30;
@@ -439,17 +439,17 @@
             this.dgvDetails.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDetails.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // panel6
+            // headerUC1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2Button11);
-            this.panel6.Controls.Add(this.guna2HtmlLabel2);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1040, 23);
-            this.panel6.TabIndex = 17;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1040, 37);
+            this.headerUC1.TabIndex = 238;
             // 
             // guna2Button11
             // 
@@ -471,18 +471,6 @@
             this.guna2Button11.Size = new System.Drawing.Size(15, 15);
             this.guna2Button11.TabIndex = 23;
             // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(481, 1);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(3, 2);
-            this.guna2HtmlLabel2.TabIndex = 19;
-            this.guna2HtmlLabel2.Text = null;
-            // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -503,7 +491,7 @@
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MasterReceiptVoucher";
@@ -518,8 +506,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetails)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -541,9 +527,8 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvDetails;
         private Guna.UI2.WinForms.Guna2Button btnRestore;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
-        private System.Windows.Forms.Panel panel6;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button11;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

@@ -42,7 +42,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(144, 32);
+            this.label1.Size = new System.Drawing.Size(112, 25);
             this.label1.Text = "Stuff Details";
             // 
             // pictureBox1
@@ -58,6 +58,7 @@
             // 
             // txtname
             // 
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -81,12 +82,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(262, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Name";
             // 
             // txtphone
             // 
+            this.txtphone.BorderRadius = 5;
             this.txtphone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtphone.DefaultText = "";
             this.txtphone.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -110,7 +112,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(27, 180);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 23);
+            this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 5;
             this.label3.Text = "Phone";
             // 
@@ -119,7 +121,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(262, 181);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 23);
+            this.label4.Size = new System.Drawing.Size(35, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Role";
             // 
@@ -147,6 +149,7 @@
             // 
             // txtcode
             // 
+            this.txtcode.BorderRadius = 5;
             this.txtcode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtcode.DefaultText = "";
             this.txtcode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -171,7 +174,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(27, 110);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 23);
+            this.label5.Size = new System.Drawing.Size(41, 19);
             this.label5.TabIndex = 10;
             this.label5.Text = "Code";
             // 
@@ -197,10 +200,11 @@
             this.Cbdepartment.TabIndex = 11;
             this.Cbdepartment.SelectedIndexChanged += new System.EventHandler(this.Cbdepartment_SelectedIndexChanged);
             // 
-            // frmRMSAddStuff
+            // frmRMSAddStaff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(554, 370);
             this.Controls.Add(this.Cbdepartment);
             this.Controls.Add(this.txtcode);
@@ -211,7 +215,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.label2);
-            this.Name = "frmRMSAddStuff";
+            this.Name = "frmRMSAddStaff";
             this.Text = "Stuff Details";
             this.Load += new System.EventHandler(this.frmRMSAddStaff_Load);
             this.Controls.SetChildIndex(this.label2, 0);

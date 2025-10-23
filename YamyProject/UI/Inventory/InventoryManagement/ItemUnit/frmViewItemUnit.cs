@@ -14,7 +14,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
 
             this.id = id;
-            LbHeader.Text = id == 0 ? "Inventory - Add Item Unit" : "Inventory - Edit Item Unit";
+            headerUC1.FormText = id == 0 ? "Inventory - Add Item Unit" : "Inventory - Edit Item Unit";
         }
        
         private void btnClose_Click(object sender, EventArgs e)

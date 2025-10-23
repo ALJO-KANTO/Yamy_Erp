@@ -29,7 +29,9 @@ namespace YamyProject.RMS
         {
             InitializeComponent();
         }
-       static frmMainRMS _obj;
+        
+        static frmMainRMS _obj;
+        
         public static frmMainRMS Instance
         {
             get {if(_obj == null) {_obj = new frmMainRMS(); } return _obj;}
@@ -42,7 +44,9 @@ namespace YamyProject.RMS
 
         private void frmMainRMS_Load(object sender, EventArgs e)
         {
-            _obj = this;    
+            _obj = this;
+            lbuser.Text = frmLogin.userName;
+            btnHome.PerformClick();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -73,7 +77,7 @@ namespace YamyProject.RMS
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-         frmRMSPOS frm = new frmRMSPOS();
+            frmRMSPOS frm = new frmRMSPOS();
             frm.Show();
             frm.Username = lbuser.Text;
         }
@@ -81,7 +85,6 @@ namespace YamyProject.RMS
         private void btnKitchen_Click(object sender, EventArgs e)
         {
             addcontrols2(new frmRMSKitchview());
-
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -92,7 +95,16 @@ namespace YamyProject.RMS
         private void btnSetting_Click(object sender, EventArgs e)
         {
             addcontrols2(new frmRMSSetting());
-            
+        }
+
+        private void guna2ControlBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void guna2ControlBox3_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

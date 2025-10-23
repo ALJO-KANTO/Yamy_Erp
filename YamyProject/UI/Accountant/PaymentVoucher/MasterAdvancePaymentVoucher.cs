@@ -17,7 +17,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             PaymentVoucherUpdatedHandler = (sender, args) => BindPayment(cmbType.Text);
             EventHub.PaymentVoucher += PaymentVoucherUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterAdvancePaymentVoucher_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -48,7 +48,7 @@ namespace YamyProject
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Silver; // Set header background to Silver
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;  // Keep text black for contrast
-            dgv.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 9);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
 
             // General Grid Appearance
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

@@ -14,7 +14,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             fixedAsset = (sender, args) => BindFixedAseet();
             EventHub.FixedAsset += fixedAsset;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterFixedAssets_FormClosing(object sender, FormClosingEventArgs e)
         {

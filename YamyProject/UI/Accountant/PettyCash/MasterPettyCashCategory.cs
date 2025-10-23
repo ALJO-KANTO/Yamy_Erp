@@ -19,7 +19,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterPettyCashCategory_Load(object sender, EventArgs e)
         {

@@ -49,11 +49,10 @@
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.TxtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.chkDate = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -90,7 +89,6 @@
             this.guna2Panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -114,12 +112,12 @@
             // 
             this.guna2HtmlLabel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel12.ForeColor = System.Drawing.Color.Black;
             this.guna2HtmlLabel12.Location = new System.Drawing.Point(471, 62);
             this.guna2HtmlLabel12.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
-            this.guna2HtmlLabel12.Size = new System.Drawing.Size(57, 15);
+            this.guna2HtmlLabel12.Size = new System.Drawing.Size(51, 14);
             this.guna2HtmlLabel12.TabIndex = 17;
             this.guna2HtmlLabel12.Text = "28/03/2025";
             // 
@@ -127,12 +125,12 @@
             // 
             this.guna2HtmlLabel11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel11.ForeColor = System.Drawing.Color.Black;
             this.guna2HtmlLabel11.Location = new System.Drawing.Point(535, 62);
             this.guna2HtmlLabel11.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
-            this.guna2HtmlLabel11.Size = new System.Drawing.Size(30, 15);
+            this.guna2HtmlLabel11.Size = new System.Drawing.Size(25, 14);
             this.guna2HtmlLabel11.TabIndex = 16;
             this.guna2HtmlLabel11.Text = "05:00";
             // 
@@ -184,12 +182,12 @@
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(429, 4);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(78, 19);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(78, 21);
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = "Profit & loss";
             // 
@@ -342,19 +340,17 @@
             this.panel8.Size = new System.Drawing.Size(30, 421);
             this.panel8.TabIndex = 44;
             // 
-            // guna2Panel5
+            // headerUC1
             // 
-            this.guna2Panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.guna2Panel5.Controls.Add(this.guna2Button1);
-            this.guna2Panel5.Controls.Add(this.guna2Button2);
-            this.guna2Panel5.Controls.Add(this.guna2ControlBox1);
-            this.guna2Panel5.Controls.Add(this.guna2HtmlLabel9);
-            this.guna2Panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel5.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(1040, 27);
-            this.guna2Panel5.TabIndex = 42;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(637, 37);
+            this.headerUC1.TabIndex = 0;
             // 
             // guna2Button1
             // 
@@ -404,20 +400,6 @@
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(16, 17);
             this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // guna2HtmlLabel9
-            // 
-            this.guna2HtmlLabel9.AutoSize = false;
-            this.guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel9.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel9.Location = new System.Drawing.Point(476, 4);
-            this.guna2HtmlLabel9.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2HtmlLabel9.Name = "guna2HtmlLabel9";
-            this.guna2HtmlLabel9.Size = new System.Drawing.Size(376, 18);
-            this.guna2HtmlLabel9.TabIndex = 1;
-            this.guna2HtmlLabel9.Text = null;
-            this.guna2HtmlLabel9.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // guna2Panel3
             // 
@@ -529,12 +511,12 @@
             // dtTo
             // 
             this.dtTo.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
-            this.dtTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtTo.Location = new System.Drawing.Point(461, 6);
             this.dtTo.Margin = new System.Windows.Forms.Padding(2);
             this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(133, 21);
+            this.dtTo.Size = new System.Drawing.Size(133, 23);
             this.dtTo.TabIndex = 35;
             this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
@@ -553,12 +535,12 @@
             // dtFrom
             // 
             this.dtFrom.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
-            this.dtFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFrom.Location = new System.Drawing.Point(291, 6);
             this.dtFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(149, 21);
+            this.dtFrom.Size = new System.Drawing.Size(149, 23);
             this.dtFrom.TabIndex = 33;
             this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
@@ -914,13 +896,14 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);
-            this.Controls.Add(this.guna2Panel5);
+            this.Controls.Add(this.headerUC1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmGeneralLedger";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";
+            this.Text = "General Ledger";
             this.Load += new System.EventHandler(this.frmGeneralLedger_Load);
             this.contextMenuExport.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
@@ -928,7 +911,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.guna2Panel4.ResumeLayout(false);
-            this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
@@ -950,11 +932,10 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvSales;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel8;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;

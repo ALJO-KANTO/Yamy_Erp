@@ -18,7 +18,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void frmCustomerAgingSummary_Load(object sender, EventArgs e)
@@ -63,12 +63,12 @@ namespace YamyProject
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {
-                    col.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Regular);
+                    col.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 }
 
                 dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -136,7 +136,7 @@ namespace YamyProject
                     );
 
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 8F, FontStyle.Regular);
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                     total_0_days += _0_days;
                     total_1_30 += _1_30;
@@ -158,7 +158,7 @@ namespace YamyProject
                 totalAmount.ToString("N2")
             );
 
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold | FontStyle.Underline);
+            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
             dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
             dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.Rows[totalRow].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleRight;

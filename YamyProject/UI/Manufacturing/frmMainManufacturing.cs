@@ -218,5 +218,10 @@ namespace YamyProject.UI.Manufacturing
             }
             contextMenuStrip1.Show(guna2CircleButton1, new Point(0, guna2CircleButton1.Height));
         }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

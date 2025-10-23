@@ -22,7 +22,7 @@ namespace YamyProject
             SubContractCategoryUpdatedHandler = (sender, args) => BindCombos.PopulateSubContractCategory(cmbCategory);
             EventHub.VendorCategory += SubContractCategoryUpdatedHandler;
             this.Text = id != 0 ? "SubContract - Edit SubContract" : "SubContract - New SubContract";
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

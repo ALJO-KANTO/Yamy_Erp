@@ -223,7 +223,7 @@ namespace YamyProject
         {
             if (dgvInvoice.Rows[e.RowIndex].Cells["Type"].Value?.ToString() == "Total")
             {
-                e.CellStyle.Font = new Font("Times new roman", 9, FontStyle.Bold); 
+                e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold); 
                 e.CellStyle.BackColor = Color.LightGray;
             }
         }

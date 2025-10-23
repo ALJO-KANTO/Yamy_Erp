@@ -19,8 +19,7 @@ namespace YamyProject
             customerCategoryUpdatedHandler = (sender, args) => BindCombos.PopulateCustomerCategory(cmbCategory);
             EventHub.CustomerCategory += customerCategoryUpdatedHandler;
             this.Text = id != 0 ? "Customers - Edit Customer" : "Customers - New Customer";
-            guna2HtmlLabel2.Text =  id != 0 ? "Customers - Edit Customer" : "Customers - New Customer";
-            //headerUC1.FormText = this.Text;
+            headerUC1.FormText = id != 0 ? "Customers - Edit Customer" : "Customers - New Customer";
         }
 
         private void btnClose_Click(object sender, EventArgs e)

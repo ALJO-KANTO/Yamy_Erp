@@ -27,7 +27,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
+            customerUpdatedHandler = (sender, args) => BindCombos.PopulateSoledCustomers(cmbCustomer);
             warehouseUpdatedHandler = (sender, args) => BindCombos.PopulateWarehouse(cmbWarehouse);
             EventHub.Customer += customerUpdatedHandler;
             EventHub.wareHouse += warehouseUpdatedHandler;
@@ -36,7 +36,7 @@ namespace YamyProject
                 this.Text = "SalesReturn - Edit";
             else
                 this.Text = "SalesReturn - New";
-           guna2HtmlLabel2.Text = this.Text;
+           headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -82,6 +82,8 @@ namespace YamyProject
                 txtShipTo.Text = reader["ship_to"].ToString();
                 txtSalesMan.Text = reader["sales_man"].ToString();
                 richTextDescription.Text = reader["description"].ToString();
+                salesId = int.Parse(reader["sales_ref_id"].ToString());
+                txtRefNo.Text = reader["po_num"].ToString();
                 BindInvoiceItems();
                 CalculateTotal();
             }
@@ -89,15 +91,20 @@ namespace YamyProject
         private void BindInvoiceItems()
         {
             dgvItems.Rows.Clear();
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT tbl_sales_return_details.*,tbl_items.type,method, tbl_items.code ,tbl_items.name FROM tbl_sales_return_details INNER JOIN 
-                                                                    tbl_items ON tbl_sales_return_details.item_id = tbl_items.id WHERE 
-                                                                    tbl_sales_return_details.sales_id = @id;",
-                                                            DBClass.CreateParameter("id", id)))
 
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id,ti.code,ti.name,ti.type, ti.method, sd.qty as S_Qty, IFNULL(srd.Qty,0) Qty, sd.price, sd.vatp, sd.vat, sd.total, sd.cost_price, IFNULL(srd.cost_center_id,0) cost_center_id
+                                                    FROM tbl_sales_details sd
+                                                    INNER JOIN tbl_items ti ON sd.item_id = ti.id
+                                                    LEFT JOIN tbl_sales_return_details srd ON srd.item_id = sd.item_id 
+                                                    AND srd.sales_id = @returnId 
+                                                    WHERE sd.sales_id = @salesId;",
+                                            DBClass.CreateParameter("salesId", salesId),
+                                            DBClass.CreateParameter("returnId", id)))
                 while (reader.Read())
                 {
-                    dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), reader["qty"].ToString(),
-                        reader["cost_price"].ToString(), reader["price"].ToString());
+                    bool isExisting = decimal.Parse(reader["Qty"].ToString()) > 0 ? true : false;
+                    dgvItems.Rows.Add(reader["id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), isExisting, Utilities.FormatDecimal(reader["S_Qty"].ToString()), Utilities.FormatDecimal(reader["Qty"].ToString()),
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
                     DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                     if (comboCell != null && reader["vat"].ToString() != "0")
                     {
@@ -141,11 +148,11 @@ namespace YamyProject
         string defaultTax = "";
         private void bindCombo()
         {
-            BindCombos.PopulateCustomers(cmbCustomer);
+            BindCombos.PopulateSoledCustomers(cmbCustomer);
             BindCombos.PopulateAllLevel4Account(cmbAccountCashName);
             BindCombos.PopulateWarehouse(cmbWarehouse);
             cmbAccountCashName.SelectedValue = BindCombos.SelectDefaultLevelAccount("Invoice Payment Cash Method");
-            aa: level4PaymentCreditMethodId = BindCombos.SelectDefaultLevelAccount("Invoice Payment Credit Method");
+            level4PaymentCreditMethodId = frmLogin.defaultAccounts.ContainsKey("Customer") ? frmLogin.defaultAccounts["Customer"] : 0;
             level4VatId = BindCombos.SelectDefaultLevelAccount("Vat Output");
             level4SalesReturnId = BindCombos.SelectDefaultLevelAccount("SalesReturn");
             level4COGS = BindCombos.SelectDefaultLevelAccount("COGS");
@@ -153,114 +160,9 @@ namespace YamyProject
             if (level4Inventory == 0 || level4COGS == 0 || level4SalesReturnId == 0 || level4VatId == 0 || level4PaymentCreditMethodId == 0)
             {
                 MessageBox.Show("Default Accounts For Invoice Must Be Set First");
-                //frmLogin.frmMain.openChildForm(new frmDefaultAccountSetting());
-                //goto aa;
-                //this.Close();
                 return;
             }
         }
-        private DataTable GetFilteredProductsByName(string name = "")
-        {
-            int selectedWarehouseId = cmbWarehouse.SelectedValue == null ? 0 : Convert.ToInt32(cmbWarehouse.SelectedValue);
-
-            string allItemsOption = Utilities.GeneralSettingsState("ALL ITEMS IN SALES");
-            string warehouseOption = Utilities.GeneralSettingsState("WAREHOUSE ITEMS IN SALES 0");
-
-            var parameters = new List<MySqlParameter>();
-            string query;
-
-            if (!string.IsNullOrEmpty(warehouseOption) && cmbWarehouse.Items.Count > 1)
-            {
-                // Use tbl_items_warehouse join
-                query = @"
-                        SELECT i.code, i.name 
-                        FROM tbl_items_warehouse w
-                        INNER JOIN tbl_items i ON w.item_id = i.id
-                        WHERE w.warehouse_id = @warehouseId
-                          AND i.state = 0 AND i.active = 0";
-
-                parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
-            }
-            else
-            {
-                // Use tbl_items directly
-                query = "SELECT code, name FROM tbl_items WHERE state = 0 AND active = 0";
-
-                if (string.IsNullOrEmpty(allItemsOption) || int.Parse(allItemsOption) <= 0)
-                {
-                    query += " AND type IN ('11 - Inventory Part', '12 - Service')";
-                }
-
-                if (!string.IsNullOrEmpty(warehouseOption))
-                {
-                    query += " AND warehouse_id = @warehouseId";
-                    parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
-                }
-            }
-
-            // Apply name filter if provided
-            if (!string.IsNullOrWhiteSpace(name))
-            {
-                query += " AND name LIKE @name";
-                parameters.Add(new MySqlParameter("@name", $"%{name}%"));
-            }
-
-            query += " ORDER BY name LIMIT 20";
-
-            return DBClass.ExecuteDataTable(query, parameters.ToArray());
-        }
-
-        private DataTable GetFilteredProductsByCode(string code = "")
-        {
-            int selectedWarehouseId = cmbWarehouse.SelectedValue == null ? 0 : Convert.ToInt32(cmbWarehouse.SelectedValue);
-
-            string allItemsOption = Utilities.GeneralSettingsState("ALL ITEMS IN SALES");
-            string warehouseOption = Utilities.GeneralSettingsState("WAREHOUSE ITEMS IN SALES 0");
-
-            var parameters = new List<MySqlParameter>();
-            string query;
-
-            if (!string.IsNullOrEmpty(warehouseOption) && cmbWarehouse.Items.Count > 1)
-            {
-                // Use tbl_items_warehouse join
-                query = @"
-                        SELECT i.code, i.name 
-                        FROM tbl_items_warehouse w
-                        INNER JOIN tbl_items i ON w.item_id = i.id
-                        WHERE w.warehouse_id = @warehouseId
-                          AND i.state = 0 AND i.active = 0";
-
-                parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
-            }
-            else
-            {
-                // Use tbl_items directly
-                query = "SELECT code, name FROM tbl_items WHERE state = 0 AND active = 0";
-
-                if (string.IsNullOrEmpty(allItemsOption) || int.Parse(allItemsOption) <= 0)
-                {
-                    query += " AND type IN ('11 - Inventory Part', '12 - Service')";
-                }
-
-                if (!string.IsNullOrEmpty(warehouseOption))
-                {
-                    query += " AND warehouse_id = @warehouseId";
-                    parameters.Add(new MySqlParameter("@warehouseId", selectedWarehouseId));
-                }
-            }
-
-            // Apply code filter if provided
-            if (!string.IsNullOrWhiteSpace(code))
-            {
-                query += " AND code LIKE @code";
-                parameters.Add(new MySqlParameter("@code", $"%{code}%"));
-            }
-
-            query += " ORDER BY code LIMIT 20";
-
-            return DBClass.ExecuteDataTable(query, parameters.ToArray());
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (dgvItems.Rows.Count == 0 || dgvItems.Rows.Count == 1 && dgvItems.Rows[0].IsNewRow)
@@ -276,7 +178,7 @@ namespace YamyProject
                 if (insertInvoice())
                 {
                     EventHub.RefreshSales();
-                    MessageBox.Show("The Return Invoice  Saved");
+                    MessageBox.Show("The Return Invoice Saved");
                     dgvItems.Rows.Clear();
 
                     if (checkBox4.Checked == true)
@@ -290,7 +192,7 @@ namespace YamyProject
                 if (updateInvoice())
                 {
                     EventHub.RefreshSales();
-                    MessageBox.Show("The Return Invoice  Saved");
+                    MessageBox.Show("The Return Invoice Saved");
                     dgvItems.Rows.Clear();
 
                     if (checkBox4.Checked == true)
@@ -333,7 +235,7 @@ namespace YamyProject
                DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
-               DBClass.CreateParameter("po_num", ""),
+               DBClass.CreateParameter("po_num", txtRefNo.Text),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
                DBClass.CreateParameter("sales_man", txtSalesMan.Text),
@@ -446,16 +348,17 @@ namespace YamyProject
 
                 invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales_return (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-               total,vat,net, pay, `change`, created_by, created_date, state, description) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
+               total,vat,net, pay, `change`, created_by, created_date, state, description, sales_ref_id) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
                @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description);
+               @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description, @sales_ref_id);
                SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
                DBClass.CreateParameter("invoice_id", txtNextCode.Text),
                DBClass.CreateParameter("city", cmbCity.Text),
                DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
-               DBClass.CreateParameter("po_num", ""),
+               DBClass.CreateParameter("po_num", txtRefNo.Text),
+               DBClass.CreateParameter("sales_ref_id", salesId),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
                DBClass.CreateParameter("sales_man", txtSalesMan.Text),
@@ -505,7 +408,9 @@ namespace YamyProject
         {
             for (int i = 0; i < dgvItems.Rows.Count - 1; i++)
             {
-                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sales_return_details (sales_id, item_id, qty,cost_price, price, vatp, vat, total, cost_center_id)
+                if (dgvItems.Rows[i].Cells["Selected_Item"].Value != null && bool.Parse(dgvItems.Rows[i].Cells["Selected_Item"].Value.ToString()))
+                {
+                    DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sales_return_details (sales_id, item_id, qty,cost_price, price, vatp, vat, total, cost_center_id)
                                          VALUES (@sales_id, @item_id, @qty,@cost_price, @price, @vatp, @vat, @total, @costCenter);",
                   DBClass.CreateParameter("@sales_id", invId),
                   DBClass.CreateParameter("@item_id", dgvItems.Rows[i].Cells["itemId"].Value.ToString()),
@@ -517,21 +422,22 @@ namespace YamyProject
                   DBClass.CreateParameter("@total", dgvItems.Rows[i].Cells["total"].Value == null || dgvItems.Rows[i].Cells["total"].Value.ToString() == "" ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["total"].Value)),
                   DBClass.CreateParameter("@costCenter", dgvItems.Rows[i].Cells["Cost_Center"].Value ?? 0));
 
-                if (dgvItems.Rows[i].Cells["type"].Value.ToString() != "Service")
-                {
-                    using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_items where id=@id",
-                    DBClass.CreateParameter("id", dgvItems.Rows[i].Cells["itemId"].Value.ToString())))
+                    if (dgvItems.Rows[i].Cells["type"].Value.ToString() != "Service")
                     {
-                        reader.Read();
-                        DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
-                            DBClass.CreateParameter("id", reader["id"].ToString()),
-                            DBClass.CreateParameter("qty", decimal.Parse(reader["on_hand"].ToString()) + decimal.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString())));
-                        insertItemTransaction(dgvItems.Rows[i]);
+                        using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_items where id=@id",
+                        DBClass.CreateParameter("id", dgvItems.Rows[i].Cells["itemId"].Value.ToString())))
+                        {
+                            reader.Read();
+                            DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
+                                DBClass.CreateParameter("id", reader["id"].ToString()),
+                                DBClass.CreateParameter("qty", decimal.Parse(reader["on_hand"].ToString()) + decimal.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString())));
+                            insertItemTransaction(dgvItems.Rows[i]);
+                        }
                     }
+                    //add cost center
+                    if (dgvItems.Rows[i].Cells["Cost_Center"].Value != null && int.Parse(dgvItems.Rows[i].Cells["Cost_Center"].Value.ToString()) > 0)
+                        CommonInsert.InsertCostCenterTransaction(dtInv.Value, Convert.ToDecimal(dgvItems.Rows[i].Cells["total"].Value ?? 0).ToString(), "0", invId.ToString(), "Sales Return", "", (dgvItems.Rows[i].Cells["Cost_Center"].Value ?? 0).ToString());
                 }
-                //add cost center
-                if (dgvItems.Rows[i].Cells["Cost_Center"].Value != null && int.Parse(dgvItems.Rows[i].Cells["Cost_Center"].Value.ToString()) > 0)
-                    CommonInsert.InsertCostCenterTransaction(dtInv.Value, Convert.ToDecimal(dgvItems.Rows[i].Cells["total"].Value ?? 0).ToString(), "0", invId.ToString(), "Sales Return", "", (dgvItems.Rows[i].Cells["Cost_Center"].Value ?? 0).ToString());
             }
         }
         private void insertItemTransaction(DataGridViewRow row)
@@ -551,101 +457,26 @@ namespace YamyProject
 
             CommonInsert.InsertItemTransaction(dtInv.Value.Date, "Sales Return Invoice", invId.ToString(), row.Cells["itemId"].Value.ToString(), row.Cells["cost_price"].Value.ToString(),
                         row.Cells["qty"].Value.ToString(), row.Cells["price"].Value.ToString(), "0", row.Cells["qty"].Value.ToString(), "SalesReturn Invoice No. " + txtNextCode.Text, cmbWarehouse.SelectedValue.ToString());
-
-            //MySqlDataReader reader = null;
-            //decimal cost_price = 0;
-            //decimal totalCost = 0;
-
-            //if (row.Cells["method"].Value.ToString() == "fifo")
-            //{
-            //    decimal remainingQty = qty;
-            //    reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_item_transaction WHERE qty_inc > 0 AND item_id = @id ORDER BY id ASC",
-            //        DBClass.CreateParameter("id", row.Cells["itemId"].Value.ToString()));
-
-            //    while (reader.Read() && remainingQty > 0)
-            //    {
-            //        decimal availableQty = Convert.ToDecimal(reader["qty_inc"]);
-            //        cost_price = Convert.ToDecimal(reader["cost_price"]);
-
-            //        decimal qtyToUse = Math.Min(remainingQty, availableQty);
-            //        remainingQty -= qtyToUse;
-            //        totalCost += cost_price * qtyToUse;
-
-            //        CommonInsert.InsertItemTransaction(dtInv.Value.Date, "Sales Return Invoice", invId.ToString(), row.Cells["itemId"].Value.ToString(),
-            //            cost_price.ToString(), "0", row.Cells["price"].Value.ToString(), qtyToUse.ToString(), "0", "SalesReturn Invoice No. " + invCode);
-
-            //        DBClass.ExecuteNonQuery("UPDATE tbl_item_transaction SET qty_inc = qty_inc - @qty WHERE id = @id",
-            //            DBClass.CreateParameter("qty", qtyToUse),
-            //            DBClass.CreateParameter("id", reader["id"].ToString()));
-            //    }
-            //}
-            //else if (row.Cells["method"].Value.ToString() == "lifo")
-            //{
-            //    decimal remainingQty = qty;
-            //    reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_item_transaction WHERE qty_inc > 0 AND item_id = @id ORDER BY id DESC",
-            //        DBClass.CreateParameter("id", row.Cells["itemId"].Value.ToString()));
-
-            //    while (reader.Read() && remainingQty > 0)
-            //    {
-            //        decimal availableQty = Convert.ToDecimal(reader["qty_inc"]);
-            //        cost_price = Convert.ToDecimal(reader["cost_price"]);
-
-            //        decimal qtyToUse = Math.Min(remainingQty, availableQty);
-            //        remainingQty -= qtyToUse;
-            //        totalCost += cost_price * qtyToUse;
-
-            //        CommonInsert.InsertItemTransaction(dtInv.Value.Date, "Sales Return Invoice", invId.ToString(), row.Cells["itemId"].Value.ToString(),
-            //            cost_price.ToString(), "0", row.Cells["price"].Value.ToString(), qtyToUse.ToString(), "0", "SalesReturn Invoice No. " + invCode);
-
-            //        DBClass.ExecuteNonQuery("UPDATE tbl_item_transaction SET qty_inc = qty_inc - @qty WHERE id = @id",
-            //            DBClass.CreateParameter("qty", qtyToUse),
-            //            DBClass.CreateParameter("id", reader["id"].ToString()));
-            //    }
-            //}
-            //else
-            //{
-            //    reader = DBClass.ExecuteReader(@"SELECT SUM(qty_in * cost_price) / SUM(qty_in) AS cost_price 
-            //                             FROM tbl_item_transaction WHERE qty_in > 0 AND item_id = @id",
-            //        DBClass.CreateParameter("id", row.Cells["itemId"].Value.ToString()));
-
-            //    if (reader.Read() && reader["cost_price"] != DBNull.Value)
-            //    {
-            //        cost_price = Convert.ToDecimal(reader["cost_price"]);
-            //    }
-
-            //    totalCost = cost_price * qty;
-
-            //    CommonInsert.InsertItemTransaction(dtInv.Value.Date, "Sales Return Invoice", invId.ToString(), row.Cells["itemId"].Value.ToString(),
-            //        cost_price.ToString(), "0", row.Cells["price"].Value.ToString(), qty.ToString(), "0", "SalesReturn Invoice No. " + invCode);
-            //}
-
-            //if (totalCost > 0)
-            //{
-            //    CommonInsert.InsertTransactionEntry(dtInv.Value.Date,
-            //        level4COGS.ToString(),
-            //        totalCost.ToString(), "0",
-            //        invId.ToString(), "0", "SalesReturn Invoice",
-            //        "COGS For SalesReturnNo. " + invCode + " - Item Code - " + row.Cells["code"].Value.ToString(),
-            //        frmLogin.userId, DateTime.Now.Date);
-
-            //    CommonInsert.InsertTransactionEntry(dtInv.Value.Date,
-            //        level4Inventory.ToString(),
-            //        "0", totalCost.ToString(),
-            //        invId.ToString(), "0", "SalesReturn Invoice",
-            //        "Item Sold For SalesReturnNo. " + invCode + " - Item Code - " + row.Cells["code"].Value.ToString(),
-            //        frmLogin.userId, DateTime.Now.Date);
-            //}
         }
         private bool chkRequiredDate()
         {
+            if(salesId <=0)
+            {
+                MessageBox.Show("Please select Sales Invoice to return items from.");
+                return false;
+            }
+
             for (int i = 0; i < dgvItems.Rows.Count - 1; i++)
             {
-                if (dgvItems.Rows[i].Cells["total"].Value == null
-                    || dgvItems.Rows[i].Cells["total"].Value.ToString() == ""
-                    || decimal.Parse(dgvItems.Rows[i].Cells["total"].Value.ToString()) == 0)
+                if (dgvItems.Rows[i].Cells["Selected_Item"].Value != null && bool.Parse(dgvItems.Rows[i].Cells["Selected_Item"].Value.ToString()))
                 {
-                    MessageBox.Show("Total Item In Row " + (dgvItems.Rows[i].Index + 1) + " Can't Be 0 or Null");
-                    return false;
+                    if (dgvItems.Rows[i].Cells["total"].Value == null
+                        || dgvItems.Rows[i].Cells["total"].Value.ToString() == ""
+                        || decimal.Parse(dgvItems.Rows[i].Cells["total"].Value.ToString()) == 0)
+                    {
+                        MessageBox.Show("Total Item In Row " + (dgvItems.Rows[i].Index + 1) + " Can't Be 0 or Null");
+                        return false;
+                    }
                 }
             }
             if (cmbCustomer.SelectedValue == null)
@@ -713,6 +544,8 @@ namespace YamyProject
                 }
                 else
                     txtBillTo.Text = txtCustomerCode.Text = "";
+
+            clearData();
         }
         private void cmbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -731,7 +564,7 @@ namespace YamyProject
         }
         private void txtCustomerCode_TextChanged(object sender, EventArgs e)
         {
-            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where code =@code",
+            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where id IN (SELECT customer_id from tbl_sales) and code =@code",
                 DBClass.CreateParameter("code", txtCustomerCode.Text)))
                 if (reader.Read())
                     cmbCustomer.SelectedValue = int.Parse(reader["id"].ToString());
@@ -739,6 +572,7 @@ namespace YamyProject
             if (txtCustomerCode.Focused)
             {
                 string input = txtCustomerCode.Text.Trim();
+                clearData();
 
                 if (string.IsNullOrEmpty(input))
                 {
@@ -746,7 +580,7 @@ namespace YamyProject
                     return;
                 }
                 string query = @"SELECT code, name FROM tbl_customer 
-                         WHERE code LIKE @search OR name LIKE @search LIMIT 20";
+                         WHERE id IN (SELECT customer_id from tbl_sales) and code LIKE @search OR name LIKE @search LIMIT 20";
 
                 DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@search", "%" + input + "%"));
 
@@ -780,7 +614,7 @@ namespace YamyProject
         }
         private void txtCustomerCode_Leave(object sender, EventArgs e)
         {
-            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where code =@code",
+            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where id IN (SELECT customer_id from tbl_sales) and code =@code",
             DBClass.CreateParameter("code", txtCustomerCode.Text)))
                 if (!reader.Read())
                     cmbCustomer.SelectedIndex = -1;
@@ -797,8 +631,6 @@ namespace YamyProject
 
             if (e.Control is TextBox textBoxBase)
             {
-                textBoxBase.TextChanged -= ItemCode_TextChanged;
-                textBoxBase.TextChanged -= ItemName_TextChanged;
                 textBoxBase.KeyPress -= NumericColumn_KeyPress;
 
                 if (lstAccountSuggestions.Visible)
@@ -807,30 +639,12 @@ namespace YamyProject
                 lstAccountSuggestions.SendToBack();
             }
 
-            if (colIndex == dgvItems.Columns["name"].Index)
-            {
-                if (e.Control is TextBox textBox)
-                {
-                    textBox.TextChanged -= ItemName_TextChanged;
-                    textBox.TextChanged += ItemName_TextChanged;
-                    lstAccountSuggestions.Tag = textBox;
-                }
-            }
-            else if (colIndex == dgvItems.Columns["vat"].Index)
+            if (colIndex == dgvItems.Columns["vat"].Index)
             {
                 if (e.Control is ComboBox comboBox)
                 {
                     comboBox.SelectedIndexChanged -= ComboBoxTax_SelectedIndexChanged;
                     comboBox.SelectedIndexChanged += ComboBoxTax_SelectedIndexChanged;
-                }
-            }
-            else if (colIndex == dgvItems.Columns["code"].Index)
-            {
-                if (e.Control is TextBox textBox)
-                {
-                    textBox.TextChanged -= ItemCode_TextChanged;
-                    textBox.TextChanged += ItemCode_TextChanged;
-                    lstAccountSuggestions.Tag = textBox;
                 }
             }
             else if (dgvItems.CurrentCell.OwningColumn.Name == "qty" ||
@@ -861,95 +675,6 @@ namespace YamyProject
             if (e.KeyChar == '.' && txt.Text.Contains("."))
             {
                 e.Handled = true;
-            }
-        }
-
-        private void ItemCode_TextChanged(object sender, EventArgs e)
-        {
-            TextBox editingTextBox = sender as TextBox;
-            if (editingTextBox == null) return;
-
-            string input = editingTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(input))
-            {
-                lstAccountSuggestions.Visible = false;
-                return;
-            }
-
-            DataTable filtered = GetFilteredProductsByCode(input);
-
-            lstAccountSuggestions.Items.Clear();
-
-            foreach (DataRow row in filtered.Rows)
-            {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
-            }
-
-            if (lstAccountSuggestions.Items.Count > 0)
-            {
-                // Get cell location
-                var cellRect = dgvItems.GetCellDisplayRectangle(dgvItems.CurrentCell.ColumnIndex, dgvItems.CurrentCell.RowIndex, true);
-                Point locationOnForm = dgvItems.PointToScreen(cellRect.Location);
-                Point locationRelativeToForm = this.PointToClient(locationOnForm);
-
-                lstAccountSuggestions.SetBounds(
-                    locationRelativeToForm.X,
-                    locationRelativeToForm.Y + cellRect.Height,
-                    cellRect.Width + 100,
-                    120
-                );
-
-                lstAccountSuggestions.Tag = editingTextBox;
-                lstAccountSuggestions.Visible = true;
-                lstAccountSuggestions.BringToFront();
-            }
-            else
-            {
-                lstAccountSuggestions.Visible = false;
-            }
-        }
-
-        private void ItemName_TextChanged(object sender, EventArgs e)
-        {
-            TextBox editingTextBox = sender as TextBox;
-            if (editingTextBox == null) return;
-
-            string input = editingTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(input))
-            {
-                lstAccountSuggestions.Visible = false;
-                return;
-            }
-            DataTable filtered = GetFilteredProductsByName(input);
-
-            lstAccountSuggestions.Items.Clear();
-
-            foreach (DataRow row in filtered.Rows)
-            {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
-            }
-
-            if (lstAccountSuggestions.Items.Count > 0)
-            {
-                // Get cell location
-                var cellRect = dgvItems.GetCellDisplayRectangle(dgvItems.CurrentCell.ColumnIndex, dgvItems.CurrentCell.RowIndex, true);
-                Point locationOnForm = dgvItems.PointToScreen(cellRect.Location);
-                Point locationRelativeToForm = this.PointToClient(locationOnForm);
-
-                lstAccountSuggestions.SetBounds(
-                    locationRelativeToForm.X,
-                    locationRelativeToForm.Y + cellRect.Height,
-                    cellRect.Width + 100,
-                    120
-                );
-
-                lstAccountSuggestions.Tag = editingTextBox;
-                lstAccountSuggestions.Visible = true;
-                lstAccountSuggestions.BringToFront();
-            }
-            else
-            {
-                lstAccountSuggestions.Visible = false;
             }
         }
 
@@ -1048,32 +773,26 @@ namespace YamyProject
                 var row = dgvItems.Rows[e.RowIndex];
                 decimal price = GetDecimalValue(row, "price");
                 decimal qty = GetDecimalValue(row, "qty");
+                decimal Sqty = GetDecimalValue(row, "S_Qty");
+                
                 decimal costPrice = GetDecimalValue(row, "cost_price");
-                if (e.ColumnIndex == dgvItems.Columns["price"].Index && dgvItems.Rows[e.RowIndex].Cells["type"].Value != null && dgvItems.Rows[e.RowIndex].Cells["type"].Value.ToString() != "Service")
-                {
-                    if (price < costPrice)
-                    {
-                        MessageBox.Show("Sales Price Must Be Greater Than Cost Price");
-                        row.Cells["price"].Value = costPrice;
-                    }
-                }
-                else if (e.ColumnIndex == dgvItems.Columns["Code"].Index)
-                {
-                    string codeValue = row.Cells["Code"].Value?.ToString();
-                    if (!string.IsNullOrWhiteSpace(codeValue))
-                        insertItemThroughCodeOrText("code", codeValue);
-                }
-                else if (e.ColumnIndex == dgvItems.Columns["Name"].Index)
-                {
-                    string nameValue = row.Cells["Name"].Value?.ToString();
-                    if (!string.IsNullOrWhiteSpace(nameValue))
-                        insertItemThroughCodeOrText("name", nameValue);
-                }
-                else if (e.ColumnIndex == dgvItems.Columns["qty"].Index)
+                if (e.ColumnIndex == dgvItems.Columns["qty"].Index)
                 {
                     if (dgvItems.CurrentRow.Cells["itemId"].Value == null)
                         row.Cells["qty"].Value = 0;
+
+                    if (qty > Sqty)
+                    {
+                        MessageBox.Show("Qty not available in sales");
+                        row.Cells["qty"].Value = 0;
+                        return;
+                    }
                 }
+                else if (e.ColumnIndex == dgvItems.Columns["Selected_Item"].Index)
+                {
+                    row.Cells["qty"].Value = 0;
+                }
+
                 ChkRowValidity();
                 CalculateTotal();
             }
@@ -1086,74 +805,6 @@ namespace YamyProject
                 return result;
             else
                 return 0;
-        }
-
-        private void insertItemThroughCodeOrText(string type, string inputText = null)
-        {
-            if (string.IsNullOrWhiteSpace(inputText))
-                return;
-
-            MySqlDataReader reader = null;
-            try
-            {
-                if (type == "code")
-                {
-                    reader = DBClass.ExecuteReader(@"
-                            SELECT id, method, type, code, sales_price, cost_price, name 
-                            FROM tbl_items 
-                            WHERE code = @code",
-                        DBClass.CreateParameter("code", inputText.Trim()));
-                }
-                else if (type == "name")
-                {
-                    // Search by name (case-insensitive)
-                    reader = DBClass.ExecuteReader(@"
-                                SELECT id, method, type, code, sales_price, cost_price, name 
-                                FROM tbl_items 
-                                WHERE name = @name COLLATE utf8mb4_general_ci LIMIT 1",
-                        DBClass.CreateParameter("name", inputText.Trim()));
-                }
-
-                if (reader != null && reader.Read())
-                {
-                    dgvItems.CurrentRow.Cells["qty"].Value = 0;
-                    dgvItems.CurrentRow.Cells["itemid"].Value = reader["id"].ToString();
-                    dgvItems.CurrentRow.Cells["cost_price"].Value = reader["cost_price"].ToString();
-                    dgvItems.CurrentRow.Cells["price"].Value = reader["sales_price"];
-                    dgvItems.CurrentRow.Cells["method"].Value = reader["method"];
-                    dgvItems.CurrentRow.Cells["type"].Value = reader["type"];
-                    dgvItems.CurrentRow.Cells["code"].Value = reader["code"].ToString();
-                    dgvItems.CurrentRow.Cells["name"].Value = reader["name"].ToString();
-
-                    // Optional default VAT
-                    if (!string.IsNullOrEmpty(defaultTax))
-                    {
-                        dgvItems.CurrentRow.Cells["vat"].Value = int.Parse(defaultTax);
-                    }
-                }
-                else
-                {
-                    DataGridViewRow row = dgvItems.CurrentRow;
-                    if (row != null)
-                    {
-                        row.Cells["itemid"].Value = null;
-                        row.Cells["cost_price"].Value = null;
-                        row.Cells["price"].Value = null;
-                        row.Cells["method"].Value = null;
-                        row.Cells["type"].Value = null;
-                        row.Cells["vat"].Value = null;
-                        if (type == "name")
-                            row.Cells["code"].Value = null;
-                        if (type == "code")
-                            row.Cells["name"].Value = null;
-                    }
-                }
-            }
-            finally
-            {
-                reader?.Close();
-                reader?.Dispose();
-            }
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -1212,32 +863,10 @@ namespace YamyProject
                 }
         }
 
-        private void lnkNewCustomer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //frmViewCustomer frm = new frmViewCustomer(_mainForm, this, 0);
-            //_mainForm.openChildForm(frm);
-        }
-
         private void frmSalesReturn_FormClosing(object sender, FormClosingEventArgs e)
         {
             EventHub.Customer -= customerUpdatedHandler;
             EventHub.wareHouse -= warehouseUpdatedHandler;
-        }
-
-        private void FormatNumberWithCommas(Guna.UI2.WinForms.Guna2TextBox txtBox)
-        {
-            if (string.IsNullOrWhiteSpace(txtBox.Text))
-                return;
-
-            string rawText = txtBox.Text.Replace(",", "");
-
-            decimal number;
-            if (decimal.TryParse(rawText, out number))
-            {
-                int cursorPosition = txtBox.SelectionStart;
-                txtBox.Text = number.ToString("N0");
-                txtBox.SelectionStart = txtBox.Text.Length;
-            }
         }
 
         private void cmbAccountCashName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1246,18 +875,15 @@ namespace YamyProject
             {
                 new frmAddAccount().ShowDialog();
             }
-            else
-            {
-            }
         }
 
         private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvItems.Rows.Count > 1 && dgvItems.CurrentRow.Cells["delete"].ColumnIndex == e.ColumnIndex)
-            {
-                dgvItems.Rows.Remove(dgvItems.CurrentRow);
-                CalculateTotal();
-            }
+            //if (dgvItems.Rows.Count > 1 && dgvItems.CurrentRow.Cells["delete"].ColumnIndex == e.ColumnIndex)
+            //{
+            //    dgvItems.Rows.Remove(dgvItems.CurrentRow);
+            //    CalculateTotal();
+            //}
         }
         private void dgvItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
@@ -1317,7 +943,6 @@ namespace YamyProject
         private void guna2TileButton18_Click(object sender, EventArgs e)
         {
             preview();
-
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -1386,11 +1011,6 @@ namespace YamyProject
             clearData();
         }
 
-        private void guna2TileButton20_Click(object sender, EventArgs e)
-        {
-            id = 0;
-        }
-
         private void guna2TileButton23_Click(object sender, EventArgs e)
         {
             clearData();
@@ -1439,17 +1059,6 @@ namespace YamyProject
                             cmbCustomer.SelectedValue = int.Parse(reader["id"].ToString());
                 }
             }
-            else if (lstAccountSuggestions.Tag is TextBox textBox)
-            {
-                if (dgvItems.CurrentCell != null && dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["code"].Index)
-                {
-                    dgvItems.CurrentCell.Value = selectedCode;
-                }
-                else if (dgvItems.CurrentCell != null && dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["name"].Index)
-                {
-                    dgvItems.CurrentCell.Value = selectedName;
-                }
-            }
 
             lstAccountSuggestions.Visible = false;
         }
@@ -1482,41 +1091,99 @@ namespace YamyProject
                 }
             }
         }
-
-        // Example method to get data for subreport 1 (replace with your actual logic)
-        private DataTable GetSubreportData1()
+        int salesId = 0;
+        private void guna2Button3_Click(object sender, EventArgs e)
         {
-            // Fetch or prepare data for subreport 1
-            DataTable subreportData = new DataTable();
-            // Your logic to fetch data for subreport 1
-            return subreportData;
+            frmViewSalesList selectSalesForm = new frmViewSalesList(0,int.Parse(cmbCustomer.SelectedValue.ToString()));
+            if (selectSalesForm.ShowDialog() == DialogResult.OK)
+            {
+                int selectedSalesId = selectSalesForm.SelectedSalesId;
+                salesId = selectedSalesId;
+                BindItemsLoad(selectedSalesId);
+            }
         }
 
-        // Example method to get data for subreport 2 (replace with your actual logic)
-        private DataTable GetSubreportData2()
+        private void BindItemsLoad(int refId)
         {
-            // Fetch or prepare data for subreport 2
-            DataTable subreportData = new DataTable();
-            // Your logic to fetch data for subreport 2
-            return subreportData;
+            dgvItems.Rows.Clear();
+            string query = @"SELECT
+                                tbl_sales_details.*, 
+                                tbl_items.type, 
+                                tbl_items.method, 
+                                tbl_items.code, 
+                                tbl_items.name,
+                                tbl_sales.invoice_id,
+                                tbl_sales.warehouse_id sales_warehouse
+                            FROM tbl_sales_details
+                            INNER JOIN tbl_items
+                                ON tbl_sales_details.item_id = tbl_items.id
+                            INNER JOIN tbl_sales
+                                ON tbl_sales_details.sales_id = tbl_sales.id
+                            WHERE tbl_sales_details.sales_id = @id;";
+            string OldQuery = @"SELECT tbl_sales_details.*,tbl_items.type,method, tbl_items.code ,tbl_items.name FROM tbl_sales_details INNER JOIN 
+                                                                    tbl_items ON tbl_sales_details.item_id = tbl_items.id WHERE 
+                                                                    tbl_sales_details.sales_id = @id;";
+            using (MySqlDataReader reader = DBClass.ExecuteReader(query,
+                                                            DBClass.CreateParameter("id", refId)))
+
+                while (reader.Read())
+                {
+                    dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), false, Utilities.FormatDecimal(reader["qty"].ToString()), "0",
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
+
+                    DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                    if (comboCell != null && reader["vat"].ToString() != "0")
+                    {
+                        comboCell.Value = int.Parse(reader["vat"].ToString());
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value = decimal.Parse(reader["vatP"].ToString());
+                    }
+                    DataGridViewComboBoxCell comboCellCostCenter = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_center"] as DataGridViewComboBoxCell;
+                    if (comboCellCostCenter != null && reader["cost_center_id"].ToString() != "0")
+                    {
+                        comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
+                    }
+                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = ((decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
+                   decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()))
+                   + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
+                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
+                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+
+                    txtRefNo.Text = reader["invoice_id"].ToString();
+                    cmbWarehouse.SelectedValue = int.Parse(reader["sales_warehouse"].ToString());
+                }
         }
 
-        // Example method to get data for subreport 3 (replace with your actual logic)
-        private DataTable GetSubreportData3()
+        private void txtRefNo_TextChanged(object sender, EventArgs e)
         {
-            // Fetch or prepare data for subreport 3
-            DataTable subreportData = new DataTable();
-            // Your logic to fetch data for subreport 3
-            return subreportData;
-        }
+            if (!txtRefNo.Focused)
+                return;
+            if (string.IsNullOrWhiteSpace(txtRefNo.Text))
+                return;
 
-        // Example method to get data for subreport 4 (replace with your actual logic)
-        private DataTable GetSubreportData4()
-        {
-            // Fetch or prepare data for subreport 4
-            DataTable subreportData = new DataTable();
-            // Your logic to fetch data for subreport 4
-            return subreportData;
+            dgvItems.Rows.Clear();
+            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT id,warehouse_id FROM tbl_sales WHERE invoice_id = @invoiceId",
+                DBClass.CreateParameter("invoiceId", txtRefNo.Text.Trim())))
+            {
+                if (reader.Read())
+                {
+                    salesId = int.Parse(reader["id"].ToString());
+                    cmbWarehouse.SelectedValue = int.Parse(reader["warehouse_id"].ToString());
+                    using (MySqlDataReader readerReturnSale = DBClass.ExecuteReader("SELECT id from tbl_sales_return where sales_ref_id = @id", DBClass.CreateParameter("id", salesId)))
+                        if (readerReturnSale.Read())
+                        {
+                            MessageBox.Show("Return Already Exist INV : " + readerReturnSale["id"].ToString());
+                        }
+                        else
+                        {
+                            BindItemsLoad(salesId);
+                        }
+                }
+                else
+                {
+                    salesId = 0;
+                    dgvItems.Rows.Clear();
+                }
+            }
         }
     }
 }

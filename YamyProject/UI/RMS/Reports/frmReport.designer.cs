@@ -52,7 +52,11 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.guna2ControlBox1.BorderColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.BorderRadius = 5;
+            this.guna2ControlBox1.BorderThickness = 1;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(701, 34);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
@@ -78,7 +82,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(118, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 32);
+            this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Report ";
             // 

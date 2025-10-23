@@ -52,7 +52,7 @@ namespace YamyProject.RMS.Model
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lbLinkAddIngredients = new LinkLabel();
+            this.lbLinkAddIngredients = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtimage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -60,7 +60,7 @@ namespace YamyProject.RMS.Model
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(186, 32);
+            this.label1.Size = new System.Drawing.Size(148, 25);
             this.label1.Text = "Products Details";
             // 
             // pictureBox1
@@ -70,12 +70,14 @@ namespace YamyProject.RMS.Model
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Location = new System.Drawing.Point(0, 659);
             this.panel1.Size = new System.Drawing.Size(800, 100);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtcode
             // 
+            this.txtcode.BorderRadius = 5;
             this.txtcode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtcode.DefaultText = "";
             this.txtcode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -100,7 +102,7 @@ namespace YamyProject.RMS.Model
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(22, 118);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 23);
+            this.label5.Size = new System.Drawing.Size(41, 19);
             this.label5.TabIndex = 18;
             this.label5.Text = "Code";
             // 
@@ -124,12 +126,13 @@ namespace YamyProject.RMS.Model
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(257, 189);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 23);
+            this.label4.Size = new System.Drawing.Size(65, 19);
             this.label4.TabIndex = 15;
             this.label4.Text = "Category";
             // 
             // txtprice
             // 
+            this.txtprice.BorderRadius = 5;
             this.txtprice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtprice.DefaultText = "";
             this.txtprice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -154,12 +157,13 @@ namespace YamyProject.RMS.Model
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(22, 188);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 23);
+            this.label3.Size = new System.Drawing.Size(38, 19);
             this.label3.TabIndex = 14;
             this.label3.Text = "Price";
             // 
             // txtname
             // 
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -183,7 +187,7 @@ namespace YamyProject.RMS.Model
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(257, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 12;
             this.label2.Text = "Name";
             // 
@@ -206,6 +210,7 @@ namespace YamyProject.RMS.Model
             this.btnBrows.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBrows.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnBrows.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBrows.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
             this.btnBrows.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBrows.ForeColor = System.Drawing.Color.White;
             this.btnBrows.Location = new System.Drawing.Point(565, 230);
@@ -217,11 +222,11 @@ namespace YamyProject.RMS.Model
             // 
             // gunaLabel1
             // 
-            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.BackColor = System.Drawing.Color.Transparent;
             this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLabel1.Location = new System.Drawing.Point(194, 290);
             this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(83, 20);
+            this.gunaLabel1.Size = new System.Drawing.Size(62, 17);
             this.gunaLabel1.TabIndex = 21;
             this.gunaLabel1.Text = "Ingredients";
             // 
@@ -270,16 +275,16 @@ namespace YamyProject.RMS.Model
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvItems.Size = new System.Drawing.Size(800, 315);
             this.dgvItems.TabIndex = 22;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -354,7 +359,7 @@ namespace YamyProject.RMS.Model
             this.lbLinkAddIngredients.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbLinkAddIngredients.Location = new System.Drawing.Point(283, 290);
             this.lbLinkAddIngredients.Name = "lbLinkAddIngredients";
-            this.lbLinkAddIngredients.Size = new System.Drawing.Size(115, 20);
+            this.lbLinkAddIngredients.Size = new System.Drawing.Size(91, 15);
             this.lbLinkAddIngredients.TabIndex = 23;
             this.lbLinkAddIngredients.TabStop = true;
             this.lbLinkAddIngredients.Text = "Add Ingredients";
@@ -362,8 +367,9 @@ namespace YamyProject.RMS.Model
             // 
             // frmRMSAddProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(800, 759);
             this.Controls.Add(this.lbLinkAddIngredients);
             this.Controls.Add(this.dgvItems);

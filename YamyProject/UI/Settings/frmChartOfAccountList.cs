@@ -18,7 +18,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.Text = "Chart Of Account Level";
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

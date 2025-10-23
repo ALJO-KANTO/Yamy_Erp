@@ -900,7 +900,7 @@ namespace YamyProject
             MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_projects where code =@code",
                 DBClass.CreateParameter("code", txtProjectCode.Text));
             if (reader.Read())
-                cmbAccountName.SelectedValue = int.Parse(reader["id"].ToString());
+                cmbProject.SelectedValue = int.Parse(reader["id"].ToString());
         }
 
         private void txtProjectCode_Leave(object sender, EventArgs e)
@@ -908,7 +908,7 @@ namespace YamyProject
             MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_projects where code =@code",
            DBClass.CreateParameter("code", txtProjectCode.Text));
             if (!reader.Read())
-                cmbAccountName.SelectedIndex = -1;
+                cmbProject.SelectedIndex = -1;
         }
 
         private void CalculateSRAndUpdateDataGridView(string itemType)

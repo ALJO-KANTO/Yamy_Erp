@@ -26,7 +26,7 @@ namespace YamyProject
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.Vendor += vendorUpdatedHandler;
             EventHub.PurchaseInv += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
             CbSubcontractorsChecked = _cbSubcontractorsChecked;
         }
         private void MasterPurchases_FormClosing(object sender, FormClosingEventArgs e)

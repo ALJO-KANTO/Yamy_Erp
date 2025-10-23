@@ -26,7 +26,7 @@ namespace YamyProject
             EventHub.Item += itemUpdatedHandler;
             EventHub.SalesInv += invoiceUpdatedHandler;
             EventHub.PurchaseInv += purchaseUpdatedHandler;
-            Lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterWarehouse_FormClosing(object sender, FormClosingEventArgs e)
         {

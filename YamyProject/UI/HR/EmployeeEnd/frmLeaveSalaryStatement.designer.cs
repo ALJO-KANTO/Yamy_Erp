@@ -41,21 +41,21 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 670);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 544);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1603, 44);
+            this.panel1.Size = new System.Drawing.Size(1202, 36);
             this.panel1.TabIndex = 5;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvLeaveSalary);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 46);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(0, 37);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1603, 624);
+            this.panel3.Size = new System.Drawing.Size(1202, 507);
             this.panel3.TabIndex = 8;
             // 
             // dgvLeaveSalary
@@ -71,7 +71,7 @@
             this.dgvLeaveSalary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -81,7 +81,7 @@
             this.dgvLeaveSalary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -90,14 +90,13 @@
             this.dgvLeaveSalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLeaveSalary.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvLeaveSalary.Location = new System.Drawing.Point(0, 0);
-            this.dgvLeaveSalary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvLeaveSalary.MultiSelect = false;
             this.dgvLeaveSalary.Name = "dgvLeaveSalary";
             this.dgvLeaveSalary.ReadOnly = true;
             this.dgvLeaveSalary.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvLeaveSalary.RowHeadersVisible = false;
             this.dgvLeaveSalary.RowTemplate.Height = 30;
-            this.dgvLeaveSalary.Size = new System.Drawing.Size(1603, 624);
+            this.dgvLeaveSalary.Size = new System.Drawing.Size(1202, 507);
             this.dgvLeaveSalary.TabIndex = 7;
             this.dgvLeaveSalary.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvLeaveSalary.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -108,14 +107,14 @@
             this.dgvLeaveSalary.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvLeaveSalary.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvLeaveSalary.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvLeaveSalary.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvLeaveSalary.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvLeaveSalary.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvLeaveSalary.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvLeaveSalary.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvLeaveSalary.ThemeStyle.ReadOnly = true;
             this.dgvLeaveSalary.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvLeaveSalary.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvLeaveSalary.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLeaveSalary.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLeaveSalary.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvLeaveSalary.ThemeStyle.RowsStyle.Height = 30;
             this.dgvLeaveSalary.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -123,25 +122,27 @@
             // 
             // headerUC1
             // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1603, 46);
+            this.headerUC1.Size = new System.Drawing.Size(1202, 37);
             this.headerUC1.TabIndex = 0;
             // 
             // frmLeaveSalaryStatement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1603, 714);
+            this.ClientSize = new System.Drawing.Size(1202, 580);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLeaveSalaryStatement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";

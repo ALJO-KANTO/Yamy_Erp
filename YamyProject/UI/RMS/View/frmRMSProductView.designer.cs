@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRMSProductView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,13 +46,14 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(148, 32);
+            this.label1.Size = new System.Drawing.Size(119, 25);
             this.label1.Text = "Products List";
             // 
             // btnAdd
             // 
             this.btnAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdd.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.btnAdd.HoverState.ImageSize = new System.Drawing.Size(57, 57);
             this.btnAdd.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
             this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(5, 55);
@@ -203,8 +205,9 @@
             // 
             // frmRMSProductView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(882, 450);
             this.Controls.Add(this.guna2DataGridView1);
             this.Name = "frmRMSProductView";

@@ -258,5 +258,15 @@ namespace YamyProject.UI.Manufacturing.Models
                 }
             }
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

@@ -1,19 +1,9 @@
-﻿using Guna.UI2.WinForms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Services.Description;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.RMS.Class;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace YamyProject.UI.CRM.Models
 {
@@ -208,6 +198,17 @@ namespace YamyProject.UI.CRM.Models
             {
                 e.Handled = true;
             }
+        }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            // minimize the form
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

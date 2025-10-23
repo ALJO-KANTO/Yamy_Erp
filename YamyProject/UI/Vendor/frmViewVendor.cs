@@ -21,7 +21,7 @@ namespace YamyProject
             vendorCategoryUpdatedHandler = (sender, args) => BindCombos.PopulateVendorCategory(cmbCategory);
             EventHub.VendorCategory += vendorCategoryUpdatedHandler;
             this.Text = id != 0 ? "Vendor - Edit Vendor" : "Vendor - New Vendor";
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

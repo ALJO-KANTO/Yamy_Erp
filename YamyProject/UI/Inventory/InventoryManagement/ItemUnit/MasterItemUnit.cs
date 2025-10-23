@@ -18,7 +18,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             itemUnitUpdatedHandler = (sender, args) => BindItems();
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void MasterItemUnit_FormClosing(object sender, FormClosingEventArgs e)

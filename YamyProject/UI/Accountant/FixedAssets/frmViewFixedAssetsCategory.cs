@@ -16,12 +16,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
 
             this.id = id;
-            if (id != 0)
-                this.Text = "Fixed Asset - Edit Fixed Asset";
-            else
-                this.Text = "Fixed Asset - New Fixed Asset";
-
-            Lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
        

@@ -21,7 +21,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = _id;
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void MasterPettyCashApproval_Load(object sender, EventArgs e)

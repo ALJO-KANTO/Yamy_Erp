@@ -28,24 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.btnThisMonth = new System.Windows.Forms.Button();
-            this.btnLast30Days = new System.Windows.Forms.Button();
-            this.btnLast7Days = new System.Windows.Forms.Button();
-            this.btnToday = new System.Windows.Forms.Button();
-            this.btnCustomDate = new System.Windows.Forms.Button();
-            this.btnOkCustomDate = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNumOrders = new System.Windows.Forms.Label();
             this.lblTitleNumOfOrders = new System.Windows.Forms.Label();
@@ -68,13 +60,25 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvUnderstock = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panel6 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.btnOkCustomDate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCustomDate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnToday = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLast7Days = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLast30Days = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThisMonth = new Guna.UI2.WinForms.Guna2Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2ShadowPanel4 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -83,120 +87,19 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderstock)).BeginInit();
-            this.panel9.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.guna2ShadowPanel1.SuspendLayout();
+            this.guna2ShadowPanel2.SuspendLayout();
+            this.guna2ShadowPanel3.SuspendLayout();
+            this.guna2ShadowPanel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.CustomFormat = "MMM dd, yyyy";
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.Location = new System.Drawing.Point(190, 49);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(120, 20);
-            this.dtpStartDate.TabIndex = 1;
-            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.CustomFormat = "MMM dd, yyyy";
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.Location = new System.Drawing.Point(336, 49);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(120, 20);
-            this.dtpEndDate.TabIndex = 2;
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
-            // 
-            // btnThisMonth
-            // 
-            this.btnThisMonth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnThisMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThisMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThisMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.btnThisMonth.Location = new System.Drawing.Point(896, 39);
-            this.btnThisMonth.Name = "btnThisMonth";
-            this.btnThisMonth.Size = new System.Drawing.Size(100, 30);
-            this.btnThisMonth.TabIndex = 3;
-            this.btnThisMonth.Text = "This month";
-            this.btnThisMonth.UseVisualStyleBackColor = true;
-            this.btnThisMonth.Click += new System.EventHandler(this.btnThisMonth_Click);
-            // 
-            // btnLast30Days
-            // 
-            this.btnLast30Days.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnLast30Days.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLast30Days.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLast30Days.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.btnLast30Days.Location = new System.Drawing.Point(796, 39);
-            this.btnLast30Days.Name = "btnLast30Days";
-            this.btnLast30Days.Size = new System.Drawing.Size(100, 30);
-            this.btnLast30Days.TabIndex = 4;
-            this.btnLast30Days.Text = "Last 30 days";
-            this.btnLast30Days.UseVisualStyleBackColor = true;
-            this.btnLast30Days.Click += new System.EventHandler(this.btnLast30Days_Click);
-            // 
-            // btnLast7Days
-            // 
-            this.btnLast7Days.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnLast7Days.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLast7Days.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLast7Days.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.btnLast7Days.Location = new System.Drawing.Point(696, 39);
-            this.btnLast7Days.Name = "btnLast7Days";
-            this.btnLast7Days.Size = new System.Drawing.Size(100, 30);
-            this.btnLast7Days.TabIndex = 5;
-            this.btnLast7Days.Text = "Last 7 days";
-            this.btnLast7Days.UseVisualStyleBackColor = true;
-            this.btnLast7Days.Click += new System.EventHandler(this.btnLast7Days_Click);
-            // 
-            // btnToday
-            // 
-            this.btnToday.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.btnToday.Location = new System.Drawing.Point(596, 39);
-            this.btnToday.Name = "btnToday";
-            this.btnToday.Size = new System.Drawing.Size(100, 30);
-            this.btnToday.TabIndex = 6;
-            this.btnToday.Text = "Today";
-            this.btnToday.UseVisualStyleBackColor = true;
-            this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
-            // 
-            // btnCustomDate
-            // 
-            this.btnCustomDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            this.btnCustomDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.btnCustomDate.Location = new System.Drawing.Point(496, 39);
-            this.btnCustomDate.Name = "btnCustomDate";
-            this.btnCustomDate.Size = new System.Drawing.Size(100, 30);
-            this.btnCustomDate.TabIndex = 7;
-            this.btnCustomDate.Text = "Custom date";
-            this.btnCustomDate.UseVisualStyleBackColor = true;
-            this.btnCustomDate.Click += new System.EventHandler(this.btnCustomDate_Click);
-            // 
-            // btnOkCustomDate
-            // 
-            this.btnOkCustomDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(127)))));
-            this.btnOkCustomDate.FlatAppearance.BorderSize = 0;
-            this.btnOkCustomDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOkCustomDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOkCustomDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            this.btnOkCustomDate.Location = new System.Drawing.Point(466, 39);
-            this.btnOkCustomDate.Name = "btnOkCustomDate";
-            this.btnOkCustomDate.Size = new System.Drawing.Size(30, 30);
-            this.btnOkCustomDate.TabIndex = 8;
-            this.btnOkCustomDate.Text = "OK";
-            this.btnOkCustomDate.UseVisualStyleBackColor = false;
-            this.btnOkCustomDate.Click += new System.EventHandler(this.btnOkCustomDate_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.lblNumOrders);
             this.panel1.Controls.Add(this.lblTitleNumOfOrders);
-            this.panel1.Location = new System.Drawing.Point(12, 94);
+            this.panel1.Location = new System.Drawing.Point(13, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(196, 48);
             this.panel1.TabIndex = 9;
@@ -204,11 +107,11 @@
             // lblNumOrders
             // 
             this.lblNumOrders.AutoSize = true;
-            this.lblNumOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumOrders.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblNumOrders.Location = new System.Drawing.Point(13, 23);
             this.lblNumOrders.Name = "lblNumOrders";
-            this.lblNumOrders.Size = new System.Drawing.Size(39, 16);
+            this.lblNumOrders.Size = new System.Drawing.Size(36, 17);
             this.lblNumOrders.TabIndex = 1;
             this.lblNumOrders.Text = "1000";
             // 
@@ -219,7 +122,7 @@
             this.lblTitleNumOfOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblTitleNumOfOrders.Location = new System.Drawing.Point(13, 4);
             this.lblTitleNumOfOrders.Name = "lblTitleNumOfOrders";
-            this.lblTitleNumOfOrders.Size = new System.Drawing.Size(99, 15);
+            this.lblTitleNumOfOrders.Size = new System.Drawing.Size(94, 15);
             this.lblTitleNumOfOrders.TabIndex = 0;
             this.lblTitleNumOfOrders.Text = "Number of Sales";
             // 
@@ -228,7 +131,7 @@
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.lblTotalRevenue);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(218, 94);
+            this.panel2.Location = new System.Drawing.Point(216, 10);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(403, 48);
             this.panel2.TabIndex = 10;
@@ -236,11 +139,11 @@
             // lblTotalRevenue
             // 
             this.lblTotalRevenue.AutoSize = true;
-            this.lblTotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRevenue.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRevenue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblTotalRevenue.Location = new System.Drawing.Point(13, 23);
             this.lblTotalRevenue.Name = "lblTotalRevenue";
-            this.lblTotalRevenue.Size = new System.Drawing.Size(39, 16);
+            this.lblTotalRevenue.Size = new System.Drawing.Size(36, 17);
             this.lblTotalRevenue.TabIndex = 1;
             this.lblTotalRevenue.Text = "1000";
             // 
@@ -251,7 +154,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label3.Location = new System.Drawing.Point(13, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 15);
+            this.label3.Size = new System.Drawing.Size(81, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Total Revenue";
             // 
@@ -260,19 +163,19 @@
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel3.Controls.Add(this.lblTotalProfit);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(630, 94);
+            this.panel3.Location = new System.Drawing.Point(630, 10);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(467, 48);
+            this.panel3.Size = new System.Drawing.Size(424, 48);
             this.panel3.TabIndex = 11;
             // 
             // lblTotalProfit
             // 
             this.lblTotalProfit.AutoSize = true;
-            this.lblTotalProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalProfit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalProfit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblTotalProfit.Location = new System.Drawing.Point(13, 23);
             this.lblTotalProfit.Name = "lblTotalProfit";
-            this.lblTotalProfit.Size = new System.Drawing.Size(39, 16);
+            this.lblTotalProfit.Size = new System.Drawing.Size(36, 17);
             this.lblTotalProfit.TabIndex = 1;
             this.lblTotalProfit.Text = "1000";
             // 
@@ -290,69 +193,69 @@
             // chartGrossRevenue
             // 
             this.chartGrossRevenue.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.IsMarginVisible = false;
-            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            chartArea3.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            chartArea3.AxisX.LineWidth = 0;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            chartArea3.AxisX.MajorGrid.LineWidth = 0;
-            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
-            chartArea3.AxisX.MajorTickMark.Size = 3F;
-            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            chartArea3.AxisY.LabelStyle.Format = "{0:0,}K";
-            chartArea3.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            chartArea3.AxisY.LineWidth = 0;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
-            chartArea3.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
-            chartArea3.AxisY.MajorTickMark.LineWidth = 0;
-            chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            chartArea3.Name = "ChartArea1";
-            this.chartGrossRevenue.ChartAreas.Add(chartArea3);
-            legend3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            legend3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            legend3.IsTextAutoFit = false;
-            legend3.Name = "Legend1";
-            this.chartGrossRevenue.Legends.Add(legend3);
-            this.chartGrossRevenue.Location = new System.Drawing.Point(28, 190);
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            chartArea1.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            chartArea1.AxisX.LineWidth = 0;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            chartArea1.AxisX.MajorGrid.LineWidth = 0;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
+            chartArea1.AxisX.MajorTickMark.Size = 3F;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            chartArea1.AxisY.LabelStyle.Format = "{0:0,}K";
+            chartArea1.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            chartArea1.AxisY.LineWidth = 0;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
+            chartArea1.AxisY.MajorTickMark.LineWidth = 0;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            chartArea1.Name = "ChartArea1";
+            this.chartGrossRevenue.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            legend1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartGrossRevenue.Legends.Add(legend1);
+            this.chartGrossRevenue.Location = new System.Drawing.Point(15, 12);
             this.chartGrossRevenue.Name = "chartGrossRevenue";
-            series3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series3.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
-            series3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series3.BorderWidth = 3;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(127)))));
-            series3.Legend = "Legend1";
-            series3.MarkerColor = System.Drawing.Color.MediumPurple;
-            series3.MarkerSize = 10;
-            series3.Name = "Series1";
-            this.chartGrossRevenue.Series.Add(series3);
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255)))));
+            series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(127)))));
+            series1.Legend = "Legend1";
+            series1.MarkerColor = System.Drawing.Color.MediumPurple;
+            series1.MarkerSize = 10;
+            series1.Name = "Series1";
+            this.chartGrossRevenue.Series.Add(series1);
             this.chartGrossRevenue.Size = new System.Drawing.Size(552, 278);
             this.chartGrossRevenue.TabIndex = 12;
             this.chartGrossRevenue.Text = "chart1";
-            title3.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            title3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            title3.Name = "Title1";
-            title3.Text = "Gross Revenue";
-            this.chartGrossRevenue.Titles.Add(title3);
+            title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title1.Font = new System.Drawing.Font("Segoe UI", 15F);
+            title1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            title1.Name = "Title1";
+            title1.Text = "Gross Revenue";
+            this.chartGrossRevenue.Titles.Add(title1);
             // 
             // chartTopProducts
             // 
-            this.chartTopProducts.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            chartArea4.Name = "ChartArea1";
-            this.chartTopProducts.ChartAreas.Add(chartArea4);
-            legend4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            legend4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            legend4.IsTextAutoFit = false;
-            legend4.Name = "Legend1";
-            this.chartTopProducts.Legends.Add(legend4);
-            this.chartTopProducts.Location = new System.Drawing.Point(619, 190);
+            this.chartTopProducts.BackColor = System.Drawing.Color.Black;
+            chartArea2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            chartArea2.Name = "ChartArea1";
+            this.chartTopProducts.ChartAreas.Add(chartArea2);
+            legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            legend2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chartTopProducts.Legends.Add(legend2);
+            this.chartTopProducts.Location = new System.Drawing.Point(13, 12);
             this.chartTopProducts.Name = "chartTopProducts";
             this.chartTopProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chartTopProducts.PaletteCustomColors = new System.Drawing.Color[] {
@@ -362,28 +265,28 @@
         System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(220)))), ((int)(((byte)(205))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(83)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(153)))), ((int)(((byte)(254)))))};
-            series4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalRight;
-            series4.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(255)))));
-            series4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            series4.BorderWidth = 8;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            series4.IsValueShownAsLabel = true;
-            series4.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartTopProducts.Series.Add(series4);
+            series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalRight;
+            series2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(159)))), ((int)(((byte)(255)))));
+            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            series2.BorderWidth = 8;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            series2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartTopProducts.Series.Add(series2);
             this.chartTopProducts.Size = new System.Drawing.Size(498, 509);
             this.chartTopProducts.TabIndex = 13;
             this.chartTopProducts.Text = "chart1";
-            title4.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            title4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            title4.Name = "Title1";
-            title4.Text = "Top 5 Products";
-            this.chartTopProducts.Titles.Add(title4);
+            title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title2.Font = new System.Drawing.Font("Segoe UI", 15F);
+            title2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            title2.Name = "Title1";
+            title2.Text = "Top 5 Products";
+            this.chartTopProducts.Titles.Add(title2);
             // 
             // panel4
             // 
@@ -395,7 +298,7 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.lblNumCustomers);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(28, 483);
+            this.panel4.Location = new System.Drawing.Point(17, 10);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(151, 204);
             this.panel4.TabIndex = 10;
@@ -404,11 +307,11 @@
             // 
             this.lblNumProducts.AutoSize = true;
             this.lblNumProducts.BackColor = System.Drawing.Color.Transparent;
-            this.lblNumProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblNumProducts.Location = new System.Drawing.Point(13, 140);
             this.lblNumProducts.Name = "lblNumProducts";
-            this.lblNumProducts.Size = new System.Drawing.Size(39, 16);
+            this.lblNumProducts.Size = new System.Drawing.Size(36, 17);
             this.lblNumProducts.TabIndex = 6;
             this.lblNumProducts.Text = "1000";
             // 
@@ -418,7 +321,7 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label8.Location = new System.Drawing.Point(13, 121);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(116, 15);
+            this.label8.Size = new System.Drawing.Size(115, 15);
             this.label8.TabIndex = 5;
             this.label8.Text = "Number of Products";
             // 
@@ -426,11 +329,11 @@
             // 
             this.lblNumSuppliers.AutoSize = true;
             this.lblNumSuppliers.BackColor = System.Drawing.Color.Transparent;
-            this.lblNumSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumSuppliers.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblNumSuppliers.Location = new System.Drawing.Point(13, 94);
             this.lblNumSuppliers.Name = "lblNumSuppliers";
-            this.lblNumSuppliers.Size = new System.Drawing.Size(39, 16);
+            this.lblNumSuppliers.Size = new System.Drawing.Size(36, 17);
             this.lblNumSuppliers.TabIndex = 4;
             this.lblNumSuppliers.Text = "1000";
             // 
@@ -440,7 +343,7 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label7.Location = new System.Drawing.Point(13, 75);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 15);
+            this.label7.Size = new System.Drawing.Size(110, 15);
             this.label7.TabIndex = 3;
             this.label7.Text = "Number of Vendors";
             // 
@@ -448,11 +351,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label6.Location = new System.Drawing.Point(3, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 16);
+            this.label6.Size = new System.Drawing.Size(92, 17);
             this.label6.TabIndex = 2;
             this.label6.Text = "Total Counter";
             // 
@@ -460,11 +363,11 @@
             // 
             this.lblNumCustomers.AutoSize = true;
             this.lblNumCustomers.BackColor = System.Drawing.Color.Transparent;
-            this.lblNumCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCustomers.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.lblNumCustomers.Location = new System.Drawing.Point(13, 50);
             this.lblNumCustomers.Name = "lblNumCustomers";
-            this.lblNumCustomers.Size = new System.Drawing.Size(39, 16);
+            this.lblNumCustomers.Size = new System.Drawing.Size(36, 17);
             this.lblNumCustomers.TabIndex = 1;
             this.lblNumCustomers.Text = "1000";
             // 
@@ -474,7 +377,7 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label5.Location = new System.Drawing.Point(13, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 15);
+            this.label5.Size = new System.Drawing.Size(125, 15);
             this.label5.TabIndex = 0;
             this.label5.Text = "Number of Customers";
             // 
@@ -483,7 +386,7 @@
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.Controls.Add(this.dgvUnderstock);
             this.panel5.Controls.Add(this.label12);
-            this.panel5.Location = new System.Drawing.Point(185, 483);
+            this.panel5.Location = new System.Drawing.Point(174, 10);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(395, 204);
             this.panel5.TabIndex = 11;
@@ -496,23 +399,23 @@
             this.dgvUnderstock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUnderstock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvUnderstock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUnderstock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUnderstock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUnderstock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(122)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUnderstock.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(122)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUnderstock.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUnderstock.EnableHeadersVisualStyles = false;
             this.dgvUnderstock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(111)))));
             this.dgvUnderstock.Location = new System.Drawing.Point(12, 25);
@@ -527,62 +430,13 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(56)))));
             this.label12.Location = new System.Drawing.Point(3, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(151, 16);
+            this.label12.Size = new System.Drawing.Size(135, 17);
             this.label12.TabIndex = 2;
             this.label12.Text = "Products Understock";
-            // 
-            // lblStartDate
-            // 
-            this.lblStartDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.lblStartDate.Location = new System.Drawing.Point(190, 49);
-            this.lblStartDate.MinimumSize = new System.Drawing.Size(120, 0);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(120, 20);
-            this.lblStartDate.TabIndex = 2;
-            this.lblStartDate.Text = "Mar 19, 2022";
-            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblStartDate.Click += new System.EventHandler(this.lblStartDate_Click);
-            // 
-            // lblEndDate
-            // 
-            this.lblEndDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.lblEndDate.Location = new System.Drawing.Point(336, 49);
-            this.lblEndDate.MinimumSize = new System.Drawing.Size(120, 0);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(120, 20);
-            this.lblEndDate.TabIndex = 14;
-            this.lblEndDate.Text = "Mar 19, 2022";
-            this.lblEndDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblEndDate.Click += new System.EventHandler(this.lblEndDate_Click);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
-            this.label2.Location = new System.Drawing.Point(316, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 20);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "-";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(63)))));
-            this.panel9.Controls.Add(this.guna2Button3);
-            this.panel9.Controls.Add(this.guna2ControlBox1);
-            this.panel9.Controls.Add(this.guna2HtmlLabel2);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1136, 23);
-            this.panel9.TabIndex = 19;
             // 
             // guna2Button3
             // 
@@ -616,19 +470,238 @@
             this.guna2ControlBox1.TabIndex = 0;
             this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
-            // guna2HtmlLabel2
+            // panel6
             // 
-            this.guna2HtmlLabel2.AutoSize = false;
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(1136, 22);
-            this.guna2HtmlLabel2.TabIndex = 19;
-            this.guna2HtmlLabel2.Text = "Dashboard";
-            this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.lblEndDate);
+            this.panel6.Controls.Add(this.lblStartDate);
+            this.panel6.Controls.Add(this.btnOkCustomDate);
+            this.panel6.Controls.Add(this.btnCustomDate);
+            this.panel6.Controls.Add(this.btnToday);
+            this.panel6.Controls.Add(this.btnLast7Days);
+            this.panel6.Controls.Add(this.btnLast30Days);
+            this.panel6.Controls.Add(this.btnThisMonth);
+            this.panel6.Controls.Add(this.dtpEndDate);
+            this.panel6.Controls.Add(this.dtpStartDate);
+            this.panel6.FillColor = System.Drawing.Color.White;
+            this.panel6.Location = new System.Drawing.Point(7, 46);
+            this.panel6.Name = "panel6";
+            this.panel6.Radius = 5;
+            this.panel6.ShadowColor = System.Drawing.Color.Black;
+            this.panel6.Size = new System.Drawing.Size(1117, 46);
+            this.panel6.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
+            this.label2.Location = new System.Drawing.Point(231, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 20);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "-";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
+            this.lblEndDate.Location = new System.Drawing.Point(251, 13);
+            this.lblEndDate.MinimumSize = new System.Drawing.Size(120, 0);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(120, 20);
+            this.lblEndDate.TabIndex = 25;
+            this.lblEndDate.Text = "Mar 19, 2022";
+            this.lblEndDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEndDate.VisibleChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
+            this.lblEndDate.Click += new System.EventHandler(this.lblEndDate_Click);
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
+            this.lblStartDate.Location = new System.Drawing.Point(105, 13);
+            this.lblStartDate.MinimumSize = new System.Drawing.Size(120, 0);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(120, 20);
+            this.lblStartDate.TabIndex = 17;
+            this.lblStartDate.Text = "Mar 19, 2022";
+            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStartDate.VisibleChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
+            this.lblStartDate.Click += new System.EventHandler(this.lblStartDate_Click);
+            // 
+            // btnOkCustomDate
+            // 
+            this.btnOkCustomDate.BorderRadius = 5;
+            this.btnOkCustomDate.BorderThickness = 1;
+            this.btnOkCustomDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(88)))), ((int)(((byte)(127)))));
+            this.btnOkCustomDate.Font = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.btnOkCustomDate.ForeColor = System.Drawing.Color.White;
+            this.btnOkCustomDate.Location = new System.Drawing.Point(380, 8);
+            this.btnOkCustomDate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOkCustomDate.Name = "btnOkCustomDate";
+            this.btnOkCustomDate.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnOkCustomDate.Size = new System.Drawing.Size(47, 27);
+            this.btnOkCustomDate.TabIndex = 24;
+            this.btnOkCustomDate.Text = "OK";
+            this.btnOkCustomDate.Click += new System.EventHandler(this.btnOkCustomDate_Click);
+            // 
+            // btnCustomDate
+            // 
+            this.btnCustomDate.BorderRadius = 5;
+            this.btnCustomDate.BorderThickness = 1;
+            this.btnCustomDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnCustomDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnCustomDate.Location = new System.Drawing.Point(431, 8);
+            this.btnCustomDate.Name = "btnCustomDate";
+            this.btnCustomDate.PressedColor = System.Drawing.Color.LightGray;
+            this.btnCustomDate.Size = new System.Drawing.Size(100, 30);
+            this.btnCustomDate.TabIndex = 23;
+            this.btnCustomDate.Text = "Custom date";
+            this.btnCustomDate.Click += new System.EventHandler(this.btnCustomDate_Click);
+            // 
+            // btnToday
+            // 
+            this.btnToday.BorderRadius = 5;
+            this.btnToday.BorderThickness = 1;
+            this.btnToday.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnToday.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnToday.Location = new System.Drawing.Point(535, 8);
+            this.btnToday.Name = "btnToday";
+            this.btnToday.PressedColor = System.Drawing.Color.LightGray;
+            this.btnToday.Size = new System.Drawing.Size(100, 30);
+            this.btnToday.TabIndex = 22;
+            this.btnToday.Text = "Today";
+            this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
+            // 
+            // btnLast7Days
+            // 
+            this.btnLast7Days.BorderRadius = 5;
+            this.btnLast7Days.BorderThickness = 1;
+            this.btnLast7Days.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnLast7Days.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLast7Days.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnLast7Days.Location = new System.Drawing.Point(639, 8);
+            this.btnLast7Days.Name = "btnLast7Days";
+            this.btnLast7Days.PressedColor = System.Drawing.Color.LightGray;
+            this.btnLast7Days.Size = new System.Drawing.Size(100, 30);
+            this.btnLast7Days.TabIndex = 21;
+            this.btnLast7Days.Text = "Last 7 days";
+            this.btnLast7Days.Click += new System.EventHandler(this.btnLast7Days_Click);
+            // 
+            // btnLast30Days
+            // 
+            this.btnLast30Days.BorderRadius = 5;
+            this.btnLast30Days.BorderThickness = 1;
+            this.btnLast30Days.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnLast30Days.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLast30Days.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnLast30Days.Location = new System.Drawing.Point(742, 8);
+            this.btnLast30Days.Name = "btnLast30Days";
+            this.btnLast30Days.PressedColor = System.Drawing.Color.LightGray;
+            this.btnLast30Days.Size = new System.Drawing.Size(100, 30);
+            this.btnLast30Days.TabIndex = 20;
+            this.btnLast30Days.Text = "Last 30 days";
+            this.btnLast30Days.Click += new System.EventHandler(this.btnLast30Days_Click);
+            // 
+            // btnThisMonth
+            // 
+            this.btnThisMonth.BorderRadius = 5;
+            this.btnThisMonth.BorderThickness = 1;
+            this.btnThisMonth.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnThisMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThisMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnThisMonth.Location = new System.Drawing.Point(846, 8);
+            this.btnThisMonth.Name = "btnThisMonth";
+            this.btnThisMonth.PressedColor = System.Drawing.Color.LightGray;
+            this.btnThisMonth.Size = new System.Drawing.Size(100, 30);
+            this.btnThisMonth.TabIndex = 19;
+            this.btnThisMonth.Text = "This month";
+            this.btnThisMonth.Click += new System.EventHandler(this.btnThisMonth_Click);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.CustomFormat = "MMM dd, yyyy";
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.Location = new System.Drawing.Point(251, 13);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(120, 23);
+            this.dtpEndDate.TabIndex = 18;
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.CustomFormat = "MMM dd, yyyy";
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.Location = new System.Drawing.Point(105, 13);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(120, 23);
+            this.dtpStartDate.TabIndex = 16;
+            // 
+            // guna2ShadowPanel1
+            // 
+            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel1.Controls.Add(this.panel1);
+            this.guna2ShadowPanel1.Controls.Add(this.panel2);
+            this.guna2ShadowPanel1.Controls.Add(this.panel3);
+            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(7, 113);
+            this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
+            this.guna2ShadowPanel1.Radius = 5;
+            this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(1117, 68);
+            this.guna2ShadowPanel1.TabIndex = 17;
+            // 
+            // guna2ShadowPanel2
+            // 
+            this.guna2ShadowPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel2.Controls.Add(this.chartGrossRevenue);
+            this.guna2ShadowPanel2.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(7, 187);
+            this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
+            this.guna2ShadowPanel2.Radius = 5;
+            this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(585, 300);
+            this.guna2ShadowPanel2.TabIndex = 18;
+            // 
+            // guna2ShadowPanel3
+            // 
+            this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel3.Controls.Add(this.panel4);
+            this.guna2ShadowPanel3.Controls.Add(this.panel5);
+            this.guna2ShadowPanel3.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(7, 495);
+            this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
+            this.guna2ShadowPanel3.Radius = 5;
+            this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(585, 234);
+            this.guna2ShadowPanel3.TabIndex = 19;
+            // 
+            // guna2ShadowPanel4
+            // 
+            this.guna2ShadowPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel4.Controls.Add(this.chartTopProducts);
+            this.guna2ShadowPanel4.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel4.Location = new System.Drawing.Point(598, 187);
+            this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
+            this.guna2ShadowPanel4.Radius = 5;
+            this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanel4.Size = new System.Drawing.Size(526, 545);
+            this.guna2ShadowPanel4.TabIndex = 20;
+            // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1136, 37);
+            this.headerUC1.TabIndex = 0;
             // 
             // FrmDashboard
             // 
@@ -636,26 +709,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1136, 740);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblEndDate);
-            this.Controls.Add(this.lblStartDate);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.chartTopProducts);
-            this.Controls.Add(this.chartGrossRevenue);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnOkCustomDate);
-            this.Controls.Add(this.btnCustomDate);
-            this.Controls.Add(this.btnToday);
-            this.Controls.Add(this.btnLast7Days);
-            this.Controls.Add(this.btnLast30Days);
-            this.Controls.Add(this.btnThisMonth);
-            this.Controls.Add(this.dtpEndDate);
-            this.Controls.Add(this.dtpStartDate);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.guna2ShadowPanel3);
+            this.Controls.Add(this.guna2ShadowPanel4);
+            this.Controls.Add(this.guna2ShadowPanel2);
+            this.Controls.Add(this.guna2ShadowPanel1);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.headerUC1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -674,20 +734,16 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnderstock)).EndInit();
-            this.panel9.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.guna2ShadowPanel1.ResumeLayout(false);
+            this.guna2ShadowPanel2.ResumeLayout(false);
+            this.guna2ShadowPanel3.ResumeLayout(false);
+            this.guna2ShadowPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Button btnThisMonth;
-        private System.Windows.Forms.Button btnLast30Days;
-        private System.Windows.Forms.Button btnLast7Days;
-        private System.Windows.Forms.Button btnToday;
-        private System.Windows.Forms.Button btnCustomDate;
-        private System.Windows.Forms.Button btnOkCustomDate;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblNumOrders;
         private System.Windows.Forms.Label lblTitleNumOfOrders;
@@ -710,12 +766,24 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dgvUnderstock;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblStartDate;
-        private System.Windows.Forms.Label lblEndDate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel9;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2ShadowPanel panel6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblEndDate;
+        private System.Windows.Forms.Label lblStartDate;
+        private Guna.UI2.WinForms.Guna2Button btnOkCustomDate;
+        private Guna.UI2.WinForms.Guna2Button btnCustomDate;
+        private Guna.UI2.WinForms.Guna2Button btnToday;
+        private Guna.UI2.WinForms.Guna2Button btnLast7Days;
+        private Guna.UI2.WinForms.Guna2Button btnLast30Days;
+        private Guna.UI2.WinForms.Guna2Button btnThisMonth;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel4;
     }
 }

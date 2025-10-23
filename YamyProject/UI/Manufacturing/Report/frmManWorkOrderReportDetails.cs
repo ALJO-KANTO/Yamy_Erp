@@ -70,7 +70,7 @@ namespace YamyProject
 
                 dgvSales.Columns["id"].Visible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -113,7 +113,7 @@ namespace YamyProject
                         reader["ProductQty"]?.ToString() ?? ""
                     );
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Regular);
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 }
             }
         }

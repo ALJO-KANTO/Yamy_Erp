@@ -461,7 +461,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount(int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Income Expense Detail By Account", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();

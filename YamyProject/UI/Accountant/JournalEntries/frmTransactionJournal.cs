@@ -21,7 +21,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            Lbheader.Text = "Edit Journal Transaction";
+            headerUC1.FormText = this.Text;
             vType = _vType.Trim();
             refId = _refId.Trim();
             if (!string.IsNullOrEmpty(_date))

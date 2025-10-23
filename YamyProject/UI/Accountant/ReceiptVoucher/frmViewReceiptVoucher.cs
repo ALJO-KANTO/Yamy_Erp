@@ -23,7 +23,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            guna2HtmlLabel2.Text = id == 0 ? "Receipt Voucher - New" : "Receipt Voucher - Edit";
+            headerUC1.FormText = this.Text; //id == 0 ? "Receipt Voucher - New" : "Receipt Voucher - Edit";
 
             this.defaultCustomerId = _customerId;
         }
@@ -194,7 +194,7 @@ namespace YamyProject
             }
             dgvInv.Columns["humId"].Visible = dgvInv.Columns["invId"].Visible = false;
             //dgvInv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
-            //dgvInv.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            //dgvInv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             //dgvInv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             //dgvInv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //dgvInv.ColumnHeadersHeight = 40;

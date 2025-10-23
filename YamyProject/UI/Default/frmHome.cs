@@ -17,6 +17,7 @@ namespace YamyProject.UI.Default
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            headerUC1.FormText = this.Text;
         }
 
         private void guna2ShadowPanel1_Paint(object sender, PaintEventArgs e)

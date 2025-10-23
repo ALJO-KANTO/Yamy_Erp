@@ -27,7 +27,7 @@ namespace YamyProject
             EventHub.Item += itemUpdatedHandler;
             EventHub.SalesInv += invoiceUpdatedHandler;
             EventHub.PurchaseInv += purchaseUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterInventory_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -310,8 +310,8 @@ namespace YamyProject
             int rowHeight = 25;
             int colSpacing = 5;
 
-            Font font = new Font("Arial", 9);
-            Font headerFont = new Font("Arial", 9, FontStyle.Bold);
+            Font font = new Font("Segoe UI", 9);
+            Font headerFont = new Font("Segoe UI", 9, FontStyle.Bold);
             Brush brush = Brushes.Black;
 
             int y = topMargin;
@@ -397,7 +397,7 @@ namespace YamyProject
                 MessageBox.Show("Export failed: " + ex.Message);
             }
         }
-        private void ExportToExcel(DataGridView dgvTransactions, string customerName, decimal customerBalance)
+        private void ExportToExcel(DataGridView dgvDetails, string customerName, decimal customerBalance)
         {
             Excel.Application xlApp = new Excel.Application();
             if (xlApp == null)
@@ -420,18 +420,18 @@ namespace YamyProject
             row += 2;
 
             // Column Headers
-            for (int i = 2; i < dgvTransactions.Columns.Count; i++)
+            for (int i = 2; i < dgvDetails.Columns.Count; i++)
             {
-                xlWorkSheet.Cells[row, i - 1] = dgvTransactions.Columns[i].HeaderText;
+                xlWorkSheet.Cells[row, i - 1] = dgvDetails.Columns[i].HeaderText;
             }
             row++;
 
             // Data Rows
-            for (int i = 0; i < dgvTransactions.Rows.Count; i++)
+            for (int i = 0; i < dgvDetails.Rows.Count; i++)
             {
-                for (int j = 2; j < dgvTransactions.Columns.Count; j++)
+                for (int j = 2; j < dgvDetails.Columns.Count; j++)
                 {
-                    var cellValue = dgvTransactions.Rows[i].Cells[j].Value;
+                    var cellValue = dgvDetails.Rows[i].Cells[j].Value;
                     xlWorkSheet.Cells[row + i, j - 1] = cellValue?.ToString();
                 }
             }
@@ -529,6 +529,38 @@ namespace YamyProject
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             //
+        }
+
+        private void dgvDetails_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvDetails.Rows.Count)
+            {
+                if (dgvDetails.Columns.Contains("t_type"))
+                {
+                    if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Purchase Invoice")
+                        frmLogin.frmMain.openChildForm(new frmPurchase(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Purchase Return Invoice")
+                        frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Opening Qty")
+                        frmLogin.frmMain.openChildForm(new frmViewItem(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Debit Note")
+                        frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Sales Invoice")
+                        frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Sales Return Invoice")
+                        frmLogin.frmMain.openChildForm(new frmSalesReturn(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Credit Note")
+                        frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Stock Settlement")
+                        frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString() == "Warehouse Transfer")
+                        frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    //else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString()) == "Project Tender")
+                    //    frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                    //else if (dgvDetails.Rows[e.RowIndex].Cells["t_type"].Value.ToString()) == "Manufacturing")
+                    //    frmLogin.frmMain.openChildForm(new frmCreditNote(int.Parse(dgvDetails.Rows[e.RowIndex].Cells["Inv_no"].Value.ToString())));
+                }
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace YamyProject
                 this.Text = "Project Resource - Edit";
             else
                 this.Text = "Project Resource - New";
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void frmProjectResource_Load(object sender, EventArgs e)
         {

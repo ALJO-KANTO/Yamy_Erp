@@ -100,7 +100,7 @@ namespace YamyProject.UI.CRM.Pages
                 Color barColor;
                 if (stage == "Closed Lost")
                 {
-                    barColor = Color.RoyalBlue;
+                    barColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
                 }
                 else
                 {

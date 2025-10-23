@@ -23,7 +23,7 @@ namespace YamyProject.RMS.Model
         public string DAAT = DateTime.Now.ToString("yyyy-MM-dd");
         string getNextCode()
         {
-            string typeCategory = "13 - Inventory Assembly".Split('-')[0].Trim();
+            string typeCategory = "13";
             object resultD = DBClass.ExecuteScalar(@"SELECT code FROM tbl_item_category WHERE id = @id", DBClass.CreateParameter("id", Convert.ToInt32(cbCat.SelectedValue)));
 
             string recordCount = "";
@@ -34,7 +34,7 @@ namespace YamyProject.RMS.Model
             {
                 typeCategory = typeCategory + recordCount;
             }
-            string query = "SELECT RIGHT(code, 4) FROM tbl_items WHERE LEFT(code, 5) ORDER BY id DESC LIMIT 1";
+            string query = "SELECT MAX(RIGHT(code, 4)) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory";
             object result = DBClass.ExecuteScalar(query, DBClass.CreateParameter("@typeCategory", typeCategory));
             int nextSerial = (result == DBNull.Value || result == null) ? 1 : Convert.ToInt32(result) + 1;
             string formattedSerial = nextSerial.ToString().PadLeft(4, '0');

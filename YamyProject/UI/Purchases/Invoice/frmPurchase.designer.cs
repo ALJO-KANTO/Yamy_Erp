@@ -31,33 +31,33 @@ namespace YamyProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBarcodeScan = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSaveClose = new Guna.UI2.WinForms.Guna2Button();
@@ -82,6 +82,7 @@ namespace YamyProject
             this.cost_center = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.txtRefId = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbFixedAssetCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtPaymentTerms = new System.Windows.Forms.DateTimePicker();
             this.cmbPurchasetype = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -106,6 +107,7 @@ namespace YamyProject
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelFixedAssetCategory = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.cmbShipVia = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtShip = new System.Windows.Forms.DateTimePicker();
             this.txtShipTo = new Guna.UI2.WinForms.Guna2TextBox();
@@ -122,10 +124,9 @@ namespace YamyProject
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -197,7 +198,6 @@ namespace YamyProject
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox3.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -208,7 +208,7 @@ namespace YamyProject
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.txtBarcodeScan);
             this.panel1.Controls.Add(this.btnSaveClose);
             this.panel1.Controls.Add(this.btnClose);
@@ -244,10 +244,10 @@ namespace YamyProject
             // btnSaveClose
             // 
             this.btnSaveClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSaveClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSaveClose.BorderRadius = 5;
             this.btnSaveClose.BorderThickness = 3;
-            this.btnSaveClose.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSaveClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSaveClose.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveClose.ForeColor = System.Drawing.Color.White;
             this.btnSaveClose.Location = new System.Drawing.Point(932, 7);
@@ -261,12 +261,12 @@ namespace YamyProject
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(1162, 7);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
@@ -278,10 +278,10 @@ namespace YamyProject
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1070, 7);
@@ -299,14 +299,14 @@ namespace YamyProject
             this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.White;
             this.guna2GroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0);
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(3, 304);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(3, 311);
             this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.ShadowDecoration.BorderRadius = 0;
             this.guna2GroupBox4.ShadowDecoration.Depth = 0;
-            this.guna2GroupBox4.Size = new System.Drawing.Size(1244, 305);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(1244, 298);
             this.guna2GroupBox4.TabIndex = 10;
             // 
             // dgvItems
@@ -314,21 +314,21 @@ namespace YamyProject
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AllowUserToResizeColumns = false;
             this.dgvItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle82.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle82.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle82.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle82.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle82.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle82;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle83.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle83.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle83.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle83.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle83.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle83;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvItems.ColumnHeadersHeight = 18;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -348,14 +348,14 @@ namespace YamyProject
             this.type,
             this.cost_center,
             this.delete});
-            dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle96.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle96.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle96.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle96.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle96.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle96.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle96;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -364,25 +364,25 @@ namespace YamyProject
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle97.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle97.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle97.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle97.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle97.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle97.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle97;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle98.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle98;
-            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.Size = new System.Drawing.Size(1244, 305);
+            this.dgvItems.Size = new System.Drawing.Size(1244, 298);
             this.dgvItems.TabIndex = 7;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -430,8 +430,8 @@ namespace YamyProject
             // code
             // 
             this.code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle84.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.code.DefaultCellStyle = dataGridViewCellStyle84;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code.DefaultCellStyle = dataGridViewCellStyle3;
             this.code.HeaderText = "Item Code";
             this.code.MinimumWidth = 100;
             this.code.Name = "code";
@@ -447,8 +447,8 @@ namespace YamyProject
             // qty
             // 
             this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle4;
             this.qty.FillWeight = 75F;
             this.qty.HeaderText = "Qty";
             this.qty.MinimumWidth = 55;
@@ -458,10 +458,10 @@ namespace YamyProject
             // cost_price
             // 
             this.cost_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle86.Format = "N2";
-            dataGridViewCellStyle86.NullValue = "0";
-            this.cost_price.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.cost_price.DefaultCellStyle = dataGridViewCellStyle5;
             this.cost_price.HeaderText = "Cost Price";
             this.cost_price.MinimumWidth = 100;
             this.cost_price.Name = "cost_price";
@@ -469,10 +469,10 @@ namespace YamyProject
             // 
             // price
             // 
-            dataGridViewCellStyle87.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle87.Format = "N2";
-            dataGridViewCellStyle87.NullValue = "0";
-            this.price.DefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.price.DefaultCellStyle = dataGridViewCellStyle6;
             this.price.HeaderText = "Price";
             this.price.MinimumWidth = 6;
             this.price.Name = "price";
@@ -481,10 +481,10 @@ namespace YamyProject
             // discount
             // 
             this.discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle88.Format = "N2";
-            dataGridViewCellStyle88.NullValue = "0";
-            this.discount.DefaultCellStyle = dataGridViewCellStyle88;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0";
+            this.discount.DefaultCellStyle = dataGridViewCellStyle7;
             this.discount.HeaderText = "Disc";
             this.discount.MinimumWidth = 100;
             this.discount.Name = "discount";
@@ -493,10 +493,10 @@ namespace YamyProject
             // net_price
             // 
             this.net_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle89.Format = "N2";
-            dataGridViewCellStyle89.NullValue = "0";
-            this.net_price.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.net_price.DefaultCellStyle = dataGridViewCellStyle8;
             this.net_price.HeaderText = "Net Price";
             this.net_price.MinimumWidth = 110;
             this.net_price.Name = "net_price";
@@ -506,8 +506,8 @@ namespace YamyProject
             // vat
             // 
             this.vat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.vat.DefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.vat.DefaultCellStyle = dataGridViewCellStyle9;
             this.vat.FillWeight = 75F;
             this.vat.HeaderText = "Vat";
             this.vat.MinimumWidth = 75;
@@ -518,10 +518,10 @@ namespace YamyProject
             // VatP
             // 
             this.VatP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle91.Format = "N2";
-            dataGridViewCellStyle91.NullValue = "0";
-            this.VatP.DefaultCellStyle = dataGridViewCellStyle91;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.VatP.DefaultCellStyle = dataGridViewCellStyle10;
             this.VatP.HeaderText = "~";
             this.VatP.MinimumWidth = 100;
             this.VatP.Name = "VatP";
@@ -530,10 +530,10 @@ namespace YamyProject
             // total
             // 
             this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle92.Format = "N2";
-            dataGridViewCellStyle92.NullValue = "0";
-            this.total.DefaultCellStyle = dataGridViewCellStyle92;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.total.DefaultCellStyle = dataGridViewCellStyle11;
             this.total.HeaderText = "Amount";
             this.total.MinimumWidth = 110;
             this.total.Name = "total";
@@ -543,8 +543,8 @@ namespace YamyProject
             // method
             // 
             this.method.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.method.DefaultCellStyle = dataGridViewCellStyle93;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.method.DefaultCellStyle = dataGridViewCellStyle12;
             this.method.HeaderText = "method";
             this.method.MinimumWidth = 100;
             this.method.Name = "method";
@@ -554,8 +554,8 @@ namespace YamyProject
             // type
             // 
             this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.type.DefaultCellStyle = dataGridViewCellStyle94;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle13;
             this.type.HeaderText = "type";
             this.type.MinimumWidth = 100;
             this.type.Name = "type";
@@ -565,8 +565,8 @@ namespace YamyProject
             // cost_center
             // 
             this.cost_center.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.cost_center.DefaultCellStyle = dataGridViewCellStyle95;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.cost_center.DefaultCellStyle = dataGridViewCellStyle14;
             this.cost_center.HeaderText = "Cost Center";
             this.cost_center.MinimumWidth = 100;
             this.cost_center.Name = "cost_center";
@@ -587,6 +587,7 @@ namespace YamyProject
             // 
             this.guna2GroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.guna2GroupBox1.BorderThickness = 0;
+            this.guna2GroupBox1.Controls.Add(this.txtRefId);
             this.guna2GroupBox1.Controls.Add(this.cmbFixedAssetCategory);
             this.guna2GroupBox1.Controls.Add(this.dtPaymentTerms);
             this.guna2GroupBox1.Controls.Add(this.cmbPurchasetype);
@@ -611,17 +612,39 @@ namespace YamyProject
             this.guna2GroupBox1.Controls.Add(this.label13);
             this.guna2GroupBox1.Controls.Add(this.label8);
             this.guna2GroupBox1.Controls.Add(this.labelFixedAssetCategory);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.Controls.Add(this.label12);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(3, 185);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(3, 192);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1244, 119);
             this.guna2GroupBox1.TabIndex = 7;
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
+            // 
+            // txtRefId
+            // 
+            this.txtRefId.BackColor = System.Drawing.Color.Transparent;
+            this.txtRefId.BorderRadius = 5;
+            this.txtRefId.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRefId.DefaultText = "";
+            this.txtRefId.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.txtRefId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRefId.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRefId.ForeColor = System.Drawing.Color.Black;
+            this.txtRefId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRefId.Location = new System.Drawing.Point(1015, 23);
+            this.txtRefId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRefId.Name = "txtRefId";
+            this.txtRefId.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtRefId.PlaceholderText = "";
+            this.txtRefId.SelectedText = "";
+            this.txtRefId.Size = new System.Drawing.Size(110, 24);
+            this.txtRefId.TabIndex = 61;
             // 
             // cmbFixedAssetCategory
             // 
@@ -789,6 +812,7 @@ namespace YamyProject
             this.txtNextCode.Name = "txtNextCode";
             this.txtNextCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtNextCode.PlaceholderText = "";
+            this.txtNextCode.ReadOnly = true;
             this.txtNextCode.SelectedText = "";
             this.txtNextCode.Size = new System.Drawing.Size(110, 24);
             this.txtNextCode.TabIndex = 40;
@@ -1014,6 +1038,18 @@ namespace YamyProject
             this.labelFixedAssetCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelFixedAssetCategory.Visible = false;
             // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label12.Location = new System.Drawing.Point(1010, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(104, 18);
+            this.label12.TabIndex = 62;
+            this.label12.Text = "Reference No";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cmbShipVia
             // 
             this.cmbShipVia.BackColor = System.Drawing.Color.Transparent;
@@ -1108,7 +1144,7 @@ namespace YamyProject
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2GroupBox3.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2GroupBox3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox3.Location = new System.Drawing.Point(3, 609);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1267,7 +1303,7 @@ namespace YamyProject
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(3, 747);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1277,7 +1313,7 @@ namespace YamyProject
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1247, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1287,7 +1323,7 @@ namespace YamyProject
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1295,19 +1331,17 @@ namespace YamyProject
             this.panel3.Size = new System.Drawing.Size(3, 749);
             this.panel3.TabIndex = 12;
             // 
-            // panel6
+            // headerUC1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2Button1);
-            this.panel6.Controls.Add(this.guna2Button4);
-            this.panel6.Controls.Add(this.guna2HtmlLabel2);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(3, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1244, 30);
-            this.panel6.TabIndex = 17;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(3, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1244, 37);
+            this.headerUC1.TabIndex = 238;
             // 
             // guna2Button1
             // 
@@ -1353,20 +1387,6 @@ namespace YamyProject
             this.guna2Button4.TabIndex = 29;
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.AutoSize = false;
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(293, 4);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(657, 26);
-            this.guna2HtmlLabel2.TabIndex = 19;
-            this.guna2HtmlLabel2.Text = "Purchase Invoice";
-            this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1382,7 +1402,7 @@ namespace YamyProject
             // 
             this.panel9.Controls.Add(this.tabControl2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 30);
+            this.panel9.Location = new System.Drawing.Point(3, 37);
             this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1244, 109);
@@ -1627,7 +1647,7 @@ namespace YamyProject
             this.guna2TileButton23.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton23.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton23.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton23.Image = global::YamyProject.Properties.Resources.Invoice;
+            this.guna2TileButton23.Image = global::YamyProject.Properties.Resources.add_fileN;
             this.guna2TileButton23.Location = new System.Drawing.Point(162, 11);
             this.guna2TileButton23.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TileButton23.Name = "guna2TileButton23";
@@ -1714,7 +1734,7 @@ namespace YamyProject
             this.guna2TileButton21.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton21.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton21.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton21.Image = global::YamyProject.Properties.Resources.Delete;
+            this.guna2TileButton21.Image = global::YamyProject.Properties.Resources.deleteN;
             this.guna2TileButton21.Location = new System.Drawing.Point(279, 11);
             this.guna2TileButton21.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TileButton21.Name = "guna2TileButton21";
@@ -1739,7 +1759,7 @@ namespace YamyProject
             this.guna2TileButton16.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton16.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton16.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton16.Image = global::YamyProject.Properties.Resources.Attach;
+            this.guna2TileButton16.Image = global::YamyProject.Properties.Resources.attachN;
             this.guna2TileButton16.Location = new System.Drawing.Point(728, 10);
             this.guna2TileButton16.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TileButton16.Name = "guna2TileButton16";
@@ -1764,7 +1784,7 @@ namespace YamyProject
             this.guna2TileButton20.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton20.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton20.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton20.Image = global::YamyProject.Properties.Resources.Copy;
+            this.guna2TileButton20.Image = global::YamyProject.Properties.Resources.copyN;
             this.guna2TileButton20.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2TileButton20.ImageOffset = new System.Drawing.Point(-10, 10);
             this.guna2TileButton20.Location = new System.Drawing.Point(351, 11);
@@ -1812,6 +1832,7 @@ namespace YamyProject
             this.guna2TileButton19.Text = "Memorize";
             this.guna2TileButton19.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2TileButton19.TextOffset = new System.Drawing.Point(10, -12);
+            this.guna2TileButton19.Visible = false;
             // 
             // checkBox3
             // 
@@ -1863,7 +1884,7 @@ namespace YamyProject
             this.guna2TileButton18.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton18.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton18.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton18.Image = global::YamyProject.Properties.Resources.Printss;
+            this.guna2TileButton18.Image = global::YamyProject.Properties.Resources.printN;
             this.guna2TileButton18.Location = new System.Drawing.Point(477, 11);
             this.guna2TileButton18.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TileButton18.Name = "guna2TileButton18";
@@ -1888,7 +1909,7 @@ namespace YamyProject
             this.guna2TileButton17.ForeColor = System.Drawing.Color.Black;
             this.guna2TileButton17.HoverState.BorderColor = System.Drawing.Color.Silver;
             this.guna2TileButton17.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.guna2TileButton17.Image = global::YamyProject.Properties.Resources.Email;
+            this.guna2TileButton17.Image = global::YamyProject.Properties.Resources.emailN;
             this.guna2TileButton17.Location = new System.Drawing.Point(535, 11);
             this.guna2TileButton17.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TileButton17.Name = "guna2TileButton17";
@@ -2087,7 +2108,7 @@ namespace YamyProject
             this.panel7.Controls.Add(this.label10);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(3, 139);
+            this.panel7.Location = new System.Drawing.Point(3, 146);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1244, 46);
@@ -2305,17 +2326,15 @@ namespace YamyProject
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.panel6;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // lstAccountSuggestions
             // 
-            this.lstAccountSuggestions.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstAccountSuggestions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountSuggestions.FormattingEnabled = true;
-            this.lstAccountSuggestions.ItemHeight = 14;
             this.lstAccountSuggestions.Location = new System.Drawing.Point(471, 351);
             this.lstAccountSuggestions.Name = "lstAccountSuggestions";
-            this.lstAccountSuggestions.Size = new System.Drawing.Size(308, 32);
+            this.lstAccountSuggestions.Size = new System.Drawing.Size(308, 30);
             this.lstAccountSuggestions.TabIndex = 58;
             this.lstAccountSuggestions.TabStop = false;
             this.lstAccountSuggestions.Visible = false;
@@ -2343,8 +2362,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle99.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle99;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn3.HeaderText = "Item Code";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -2362,9 +2381,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle100.Format = "N2";
-            dataGridViewCellStyle100.NullValue = "0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle100;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = "0";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn5.FillWeight = 75F;
             this.dataGridViewTextBoxColumn5.HeaderText = "cost_price";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
@@ -2374,9 +2393,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle101.Format = "N2";
-            dataGridViewCellStyle101.NullValue = "0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle101;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = "0";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn6.HeaderText = "Price";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -2385,9 +2404,9 @@ namespace YamyProject
             // 
             // dataGridViewTextBoxColumn7
             // 
-            dataGridViewCellStyle102.Format = "N2";
-            dataGridViewCellStyle102.NullValue = "0";
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle102;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = "0";
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn7.HeaderText = "Disc";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
@@ -2397,9 +2416,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle103.Format = "N2";
-            dataGridViewCellStyle103.NullValue = "0";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle103;
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = "0";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewTextBoxColumn8.HeaderText = "Net Price";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
@@ -2409,9 +2428,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle104.Format = "N2";
-            dataGridViewCellStyle104.NullValue = "0";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle104;
+            dataGridViewCellStyle23.Format = "N2";
+            dataGridViewCellStyle23.NullValue = "0";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewTextBoxColumn9.HeaderText = "~";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
@@ -2421,9 +2440,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle105.Format = "N2";
-            dataGridViewCellStyle105.NullValue = "0";
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle105;
+            dataGridViewCellStyle24.Format = "N2";
+            dataGridViewCellStyle24.NullValue = "0";
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewTextBoxColumn10.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -2433,10 +2452,10 @@ namespace YamyProject
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle106.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle106.Format = "N2";
-            dataGridViewCellStyle106.NullValue = "0";
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle106;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle25.Format = "N2";
+            dataGridViewCellStyle25.NullValue = "0";
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewTextBoxColumn11.HeaderText = "method";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
@@ -2447,8 +2466,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle107.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle107;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewTextBoxColumn12.HeaderText = "type";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
@@ -2458,8 +2477,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle108.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle108;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewTextBoxColumn13.HeaderText = "type";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -2480,7 +2499,7 @@ namespace YamyProject
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lstAccountSuggestions);
@@ -2490,7 +2509,7 @@ namespace YamyProject
             this.Name = "frmPurchase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";
-            this.Text = "Vendor/ New Vendor";
+            this.Text = "Purchase Invoice";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPurchase_FormClosing);
             this.Load += new System.EventHandler(this.frmPurchase_Load);
             this.panel1.ResumeLayout(false);
@@ -2498,7 +2517,6 @@ namespace YamyProject
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -2527,8 +2545,7 @@ namespace YamyProject
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2TextBox txtSalesMan;
         private System.Windows.Forms.DateTimePicker dtInv;
@@ -2645,5 +2662,7 @@ namespace YamyProject
         private Guna.UI2.WinForms.Guna2CheckBox CbSubcontractors;
         private RichTextBox richTextDescription;
         private Label label29;
+        private Guna.UI2.WinForms.Guna2TextBox txtRefId;
+        private Label label12;
     }
 }

@@ -56,23 +56,28 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(127, 32);
+            this.label1.Size = new System.Drawing.Size(99, 25);
             this.label1.Text = "Check Out";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::YamyProject.Properties.Resources.Bill1;
+            this.pictureBox1.Image = global::YamyProject.Properties.Resources.billN;
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Location = new System.Drawing.Point(0, 445);
             this.panel1.Size = new System.Drawing.Size(631, 94);
             // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.guna2ControlBox1.BorderColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.BorderRadius = 5;
+            this.guna2ControlBox1.BorderThickness = 1;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(561, 36);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
@@ -81,6 +86,8 @@
             // 
             // txtBillAmount
             // 
+            this.txtBillAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtBillAmount.BorderRadius = 5;
             this.txtBillAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBillAmount.DefaultText = "";
             this.txtBillAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -105,7 +112,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 298);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 23);
+            this.label2.Size = new System.Drawing.Size(80, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Bill Amount";
             // 
@@ -114,12 +121,14 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(296, 298);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 23);
+            this.label3.Size = new System.Drawing.Size(120, 19);
             this.label3.TabIndex = 5;
             this.label3.Text = "Payment Recevied";
             // 
             // txtRecevied
             // 
+            this.txtRecevied.BackColor = System.Drawing.Color.Transparent;
+            this.txtRecevied.BorderRadius = 5;
             this.txtRecevied.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRecevied.DefaultText = "";
             this.txtRecevied.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -145,12 +154,14 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(18, 365);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 23);
+            this.label4.Size = new System.Drawing.Size(56, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "Change";
             // 
             // txtChange
             // 
+            this.txtChange.BackColor = System.Drawing.Color.Transparent;
+            this.txtChange.BorderRadius = 5;
             this.txtChange.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtChange.DefaultText = "";
             this.txtChange.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -172,8 +183,9 @@
             // 
             // panelPaymentModes
             // 
+            this.panelPaymentModes.BackColor = System.Drawing.Color.Transparent;
             this.panelPaymentModes.BorderColor = System.Drawing.Color.Gray;
-            this.panelPaymentModes.BorderRadius = 10;
+            this.panelPaymentModes.BorderRadius = 5;
             this.panelPaymentModes.BorderThickness = 1;
             this.panelPaymentModes.Controls.Add(this.cmbAccountCashName);
             this.panelPaymentModes.Controls.Add(this.label10);
@@ -205,7 +217,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label10.Location = new System.Drawing.Point(7, 102);
             this.label10.Name = "label10";
@@ -230,7 +242,7 @@
             this.radioButtonCash.Checked = true;
             this.radioButtonCash.Location = new System.Drawing.Point(3, 3);
             this.radioButtonCash.Name = "radioButtonCash";
-            this.radioButtonCash.Size = new System.Drawing.Size(68, 27);
+            this.radioButtonCash.Size = new System.Drawing.Size(57, 23);
             this.radioButtonCash.TabIndex = 3;
             this.radioButtonCash.TabStop = true;
             this.radioButtonCash.Text = "Cash";
@@ -263,7 +275,7 @@
             this.radioButtonCard.AutoSize = true;
             this.radioButtonCard.Location = new System.Drawing.Point(3, 3);
             this.radioButtonCard.Name = "radioButtonCard";
-            this.radioButtonCard.Size = new System.Drawing.Size(67, 27);
+            this.radioButtonCard.Size = new System.Drawing.Size(56, 23);
             this.radioButtonCard.TabIndex = 3;
             this.radioButtonCard.TabStop = true;
             this.radioButtonCard.Text = "Card";
@@ -282,7 +294,6 @@
             // 
             // dtInv
             // 
-            this.dtInv.Checked = true;
             this.dtInv.BackColor = System.Drawing.Color.Gainsboro;
             this.dtInv.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtInv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -290,7 +301,7 @@
             this.dtInv.Location = new System.Drawing.Point(300, 392);
             this.dtInv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtInv.Name = "dtInv";
-            this.dtInv.Size = new System.Drawing.Size(268, 36);
+            this.dtInv.Size = new System.Drawing.Size(268, 23);
             this.dtInv.TabIndex = 9;
             this.dtInv.Visible = false;
             // 
@@ -301,15 +312,16 @@
             this.checkBoxTax.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTax.Location = new System.Drawing.Point(300, 360);
             this.checkBoxTax.Name = "checkBoxTax";
-            this.checkBoxTax.Size = new System.Drawing.Size(89, 27);
+            this.checkBoxTax.Size = new System.Drawing.Size(74, 23);
             this.checkBoxTax.TabIndex = 10;
             this.checkBoxTax.Text = "VAT 5%";
             this.checkBoxTax.UseVisualStyleBackColor = true;
             // 
             // frmRMSCheckout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(631, 539);
             this.Controls.Add(this.checkBoxTax);
             this.Controls.Add(this.dtInv);

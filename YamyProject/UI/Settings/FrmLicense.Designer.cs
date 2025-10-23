@@ -53,7 +53,7 @@ namespace YamyProject.UI.Settings
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
-            this.panelMain.BorderRadius = 5;
+            this.panelMain.BackgroundImage = global::YamyProject.Properties.Resources.YAMY_Splash1;
             this.panelMain.Controls.Add(this.guna2HtmlLabel1);
             this.panelMain.Controls.Add(this.textBox4);
             this.panelMain.Controls.Add(this.textBox3);
@@ -66,7 +66,6 @@ namespace YamyProject.UI.Settings
             this.panelMain.Controls.Add(this.btnActivate);
             this.panelMain.Controls.Add(this.btnClose);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(30);
@@ -159,7 +158,7 @@ namespace YamyProject.UI.Settings
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::YamyProject.Properties.Resources.yamy_accounting_book_keeping_logo_removebg_preview__1_;
+            this.pictureBox1.Image = global::YamyProject.Properties.Resources.app_icon;
             this.pictureBox1.Location = new System.Drawing.Point(339, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(139, 133);
@@ -172,7 +171,7 @@ namespace YamyProject.UI.Settings
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(0, 10);
+            this.lblTitle.Location = new System.Drawing.Point(12, 12);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(209, 34);
             this.lblTitle.TabIndex = 0;
@@ -211,12 +210,12 @@ namespace YamyProject.UI.Settings
             // 
             this.btnActivate.BackColor = System.Drawing.Color.Transparent;
             this.btnActivate.BorderRadius = 10;
-            this.btnActivate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnActivate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnActivate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnActivate.ForeColor = System.Drawing.Color.White;
-            this.btnActivate.Location = new System.Drawing.Point(26, 292);
+            this.btnActivate.Location = new System.Drawing.Point(354, 303);
             this.btnActivate.Name = "btnActivate";
-            this.btnActivate.Size = new System.Drawing.Size(740, 45);
+            this.btnActivate.Size = new System.Drawing.Size(106, 40);
             this.btnActivate.TabIndex = 3;
             this.btnActivate.Text = "Activate";
             this.btnActivate.Click += new System.EventHandler(this.btnActivate_Click);
@@ -228,9 +227,9 @@ namespace YamyProject.UI.Settings
             this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(26, 352);
+            this.btnClose.Location = new System.Drawing.Point(354, 352);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(740, 40);
+            this.btnClose.Size = new System.Drawing.Size(106, 40);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);

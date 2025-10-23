@@ -22,7 +22,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            LbHeader.Text = "Warehouse - Transfer History";
+            headerUC1.FormText = "Warehouse - Transfer History";
             this.id = _id;
             this.itemId = _itemId;
             this.warehouseId = _warehouseId;

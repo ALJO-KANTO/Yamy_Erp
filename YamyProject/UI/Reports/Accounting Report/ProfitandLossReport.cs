@@ -21,6 +21,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.reportType = _type;
+            headerUC1.FormText = this.Text;
         }
 
         void Dates(DateTime d)
@@ -252,7 +253,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount(int.Parse(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", int.Parse(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value.ToString())));
             }
 
             string state = dgvCustomer.Rows[e.RowIndex].Cells["state"].Value.ToString();

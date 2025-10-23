@@ -20,7 +20,7 @@ namespace YamyProject
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.Customer += customerUpdatedHandler;
             EventHub.SalesProforma += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterSalesProforma_FormClosing(object sender, FormClosingEventArgs e)
         {

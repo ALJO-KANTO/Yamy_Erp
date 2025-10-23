@@ -10,7 +10,7 @@ namespace YamyProject.UI.Default.Dashboard
         #region Fields
 
         private DashboardModel model;
-        private Button currentButton;
+        private Guna.UI2.WinForms.Guna2Button currentButton;
 
         #endregion Fields
 
@@ -26,6 +26,7 @@ namespace YamyProject.UI.Default.Dashboard
             SetDateMenuButtonUI(btnLast7Days);
             model = new DashboardModel();
             LoadData();
+            headerUC1.FormText = this.Text;
         }
 
         #endregion Constructor
@@ -67,8 +68,8 @@ namespace YamyProject.UI.Default.Dashboard
 
         private void SetDateMenuButtonUI(object button)
         {
-            var btn = (Button)button;
-            btn.BackColor = btnLast30Days.FlatAppearance.BorderColor;
+            var btn = (Guna.UI2.WinForms.Guna2Button)button;
+            btn.BackColor = btnLast30Days.BorderColor;
             btn.ForeColor = Color.White;
 
             if (currentButton != null && currentButton != btn)

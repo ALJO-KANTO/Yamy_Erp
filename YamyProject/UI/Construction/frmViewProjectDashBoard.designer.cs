@@ -46,7 +46,7 @@
             // lblTotalProjects
             // 
             this.lblTotalProjects.AutoSize = true;
-            this.lblTotalProjects.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotalProjects.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTotalProjects.Location = new System.Drawing.Point(20, 60);
             this.lblTotalProjects.Name = "lblTotalProjects";
             this.lblTotalProjects.Size = new System.Drawing.Size(155, 22);
@@ -56,7 +56,7 @@
             // lblTotalEstimates
             // 
             this.lblTotalEstimates.AutoSize = true;
-            this.lblTotalEstimates.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotalEstimates.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTotalEstimates.Location = new System.Drawing.Point(568, 60);
             this.lblTotalEstimates.Name = "lblTotalEstimates";
             this.lblTotalEstimates.Size = new System.Drawing.Size(180, 22);
@@ -102,7 +102,7 @@
             // lblTotalTenders
             // 
             this.lblTotalTenders.AutoSize = true;
-            this.lblTotalTenders.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotalTenders.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTotalTenders.Location = new System.Drawing.Point(309, 60);
             this.lblTotalTenders.Name = "lblTotalTenders";
             this.lblTotalTenders.Size = new System.Drawing.Size(166, 22);
@@ -132,7 +132,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(942, 60);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);

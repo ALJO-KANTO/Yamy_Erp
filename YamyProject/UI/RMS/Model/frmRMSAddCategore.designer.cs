@@ -46,8 +46,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 223);
-            this.panel1.Size = new System.Drawing.Size(317, 100);
+            this.panel1.Location = new System.Drawing.Point(0, 229);
+            this.panel1.Size = new System.Drawing.Size(317, 94);
             // 
             // label2
             // 
@@ -60,6 +60,7 @@
             // 
             // txtname
             // 
+            this.txtname.BorderRadius = 5;
             this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtname.DefaultText = "";
             this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -82,6 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(317, 323);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.label2);

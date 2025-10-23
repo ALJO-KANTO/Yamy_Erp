@@ -27,7 +27,7 @@ namespace YamyProject
             EventHub.Customer += customerUpdatedHandler;
             EventHub.SalesInv += InvoiceUpdatedHandler;
             EventHub.ReceiptVoucher += ReceiptVoucherUpdatedHandler;
-            //headerUC1.FormText = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterCustomer_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -478,7 +478,7 @@ namespace YamyProject
 
                 yPosition += 10;
                 string dateText = "Printed on: " + DateTime.Now.ToString("MM/dd/yyyy");
-                ev.Graphics.DrawString(dateText, new Font("Arial", 10), Brushes.Black, new PointF(leftMargin, yPosition));
+                ev.Graphics.DrawString(dateText, new Font("Segoe UI", 10), Brushes.Black, new PointF(leftMargin, yPosition));
                 yPosition += 25;
 
                 // Column widths

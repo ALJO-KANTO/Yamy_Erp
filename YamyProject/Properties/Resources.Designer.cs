@@ -73,46 +73,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _11 {
-            get {
-                object obj = ResourceManager.GetObject("11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _12 {
-            get {
-                object obj = ResourceManager.GetObject("12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _13 {
-            get {
-                object obj = ResourceManager.GetObject("13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _14 {
-            get {
-                object obj = ResourceManager.GetObject("14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _1493__2_ {
             get {
                 object obj = ResourceManager.GetObject("1493 (2)", resourceCulture);
@@ -123,39 +83,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1493__3_ {
-            get {
-                object obj = ResourceManager.GetObject("1493 (3)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _2 {
             get {
                 object obj = ResourceManager.GetObject("2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _21 {
-            get {
-                object obj = ResourceManager.GetObject("21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _22 {
-            get {
-                object obj = ResourceManager.GetObject("22", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +143,49 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account {
+            get {
+                object obj = ResourceManager.GetObject("account", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap account1 {
+            get {
+                object obj = ResourceManager.GetObject("account1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add_Administrator {
             get {
                 object obj = ResourceManager.GetObject("Add Administrator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_file {
+            get {
+                object obj = ResourceManager.GetObject("add file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_fileN {
+            get {
+                object obj = ResourceManager.GetObject("add fileN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,16 +203,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add_New1 {
-            get {
-                object obj = ResourceManager.GetObject("Add New1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Add_User_Male {
             get {
                 object obj = ResourceManager.GetObject("Add User Male", resourceCulture);
@@ -253,9 +213,49 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add_User_Male1 {
+        internal static System.Drawing.Bitmap add_userN {
             get {
-                object obj = ResourceManager.GetObject("Add User Male1", resourceCulture);
+                object obj = ResourceManager.GetObject("add userN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap addN {
+            get {
+                object obj = ResourceManager.GetObject("addN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap app_favicon {
+            get {
+                object obj = ResourceManager.GetObject("app favicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap app_icon {
+            get {
+                object obj = ResourceManager.GetObject("app icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_left {
+            get {
+                object obj = ResourceManager.GetObject("arrow left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,16 +293,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ArtStation1 {
-            get {
-                object obj = ResourceManager.GetObject("ArtStation1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ASD {
             get {
                 object obj = ResourceManager.GetObject("ASD", resourceCulture);
@@ -323,19 +313,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Attach1 {
+        internal static System.Drawing.Bitmap attachN {
             get {
-                object obj = ResourceManager.GetObject("Attach1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Attach2 {
-            get {
-                object obj = ResourceManager.GetObject("Attach2", resourceCulture);
+                object obj = ResourceManager.GetObject("attachN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,16 +353,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Back1 {
-            get {
-                object obj = ResourceManager.GetObject("Back1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Badge {
             get {
                 object obj = ResourceManager.GetObject("Badge", resourceCulture);
@@ -393,19 +363,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Badge1 {
+        internal static System.Drawing.Bitmap bank {
             get {
-                object obj = ResourceManager.GetObject("Badge1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Bank {
-            get {
-                object obj = ResourceManager.GetObject("Bank", resourceCulture);
+                object obj = ResourceManager.GetObject("bank", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,9 +403,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bank1 {
+        internal static System.Drawing.Bitmap Bank0 {
             get {
-                object obj = ResourceManager.GetObject("Bank1", resourceCulture);
+                object obj = ResourceManager.GetObject("Bank0", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,9 +423,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bill1 {
+        internal static System.Drawing.Bitmap billN {
             get {
-                object obj = ResourceManager.GetObject("Bill1", resourceCulture);
+                object obj = ResourceManager.GetObject("billN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -543,26 +503,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Categorize11 {
-            get {
-                object obj = ResourceManager.GetObject("Categorize11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Categorize2 {
-            get {
-                object obj = ResourceManager.GetObject("Categorize2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Categorize3 {
             get {
                 object obj = ResourceManager.GetObject("Categorize3", resourceCulture);
@@ -573,9 +513,49 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap catering {
+            get {
+                object obj = ResourceManager.GetObject("catering", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_list {
+            get {
+                object obj = ResourceManager.GetObject("check list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cheque {
             get {
                 object obj = ResourceManager.GetObject("Cheque", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cheque___Copy0 {
+            get {
+                object obj = ResourceManager.GetObject("cheque - Copy0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chevron_left {
+            get {
+                object obj = ResourceManager.GetObject("chevron-left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -613,6 +593,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard {
+            get {
+                object obj = ResourceManager.GetObject("clipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Clipboard_Approve {
             get {
                 object obj = ResourceManager.GetObject("Clipboard Approve", resourceCulture);
@@ -636,6 +626,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Close1 {
             get {
                 object obj = ResourceManager.GetObject("Close1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap closeN {
+            get {
+                object obj = ResourceManager.GetObject("closeN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -683,19 +683,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Company {
+        internal static System.Drawing.Bitmap company {
             get {
-                object obj = ResourceManager.GetObject("Company", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Company1 {
-            get {
-                object obj = ResourceManager.GetObject("Company1", resourceCulture);
+                object obj = ResourceManager.GetObject("company", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -713,9 +703,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Conference_Skin_Type_71 {
+        internal static System.Drawing.Bitmap CopmanyList {
             get {
-                object obj = ResourceManager.GetObject("Conference Skin Type 71", resourceCulture);
+                object obj = ResourceManager.GetObject("CopmanyList", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -726,6 +716,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Copy {
             get {
                 object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap copyN {
+            get {
+                object obj = ResourceManager.GetObject("copyN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -751,11 +751,41 @@ namespace YamyProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Credit_Card {
+            get {
+                object obj = ResourceManager.GetObject("Credit_Card", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CRM {
+        internal static System.Drawing.Bitmap crm_50 {
             get {
-                object obj = ResourceManager.GetObject("CRM", resourceCulture);
+                object obj = ResourceManager.GetObject("crm-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crm1 {
+            get {
+                object obj = ResourceManager.GetObject("crm1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crm2 {
+            get {
+                object obj = ResourceManager.GetObject("crm2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -773,9 +803,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Customer1 {
+        internal static System.Drawing.Bitmap Customer2 {
             get {
-                object obj = ResourceManager.GetObject("Customer1", resourceCulture);
+                object obj = ResourceManager.GetObject("Customer2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -783,9 +813,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Customer2 {
+        internal static System.Drawing.Bitmap dashboard {
             get {
-                object obj = ResourceManager.GetObject("Customer2", resourceCulture);
+                object obj = ResourceManager.GetObject("dashboard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -823,9 +853,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dashboard_Layout1 {
+        internal static System.Drawing.Bitmap Dashboard22_Layout {
             get {
-                object obj = ResourceManager.GetObject("Dashboard Layout1", resourceCulture);
+                object obj = ResourceManager.GetObject("Dashboard22 Layout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -833,9 +863,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dashboard22_Layout {
+        internal static System.Drawing.Bitmap deilvery_handcart {
             get {
-                object obj = ResourceManager.GetObject("Dashboard22 Layout", resourceCulture);
+                object obj = ResourceManager.GetObject("deilvery handcart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -856,6 +886,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Delete1 {
             get {
                 object obj = ResourceManager.GetObject("Delete1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deleteN {
+            get {
+                object obj = ResourceManager.GetObject("deleteN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -903,26 +943,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Diversity1 {
-            get {
-                object obj = ResourceManager.GetObject("Diversity1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Diversity2 {
-            get {
-                object obj = ResourceManager.GetObject("Diversity2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Double_Left2 {
             get {
                 object obj = ResourceManager.GetObject("Double Left2", resourceCulture);
@@ -936,6 +956,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Double_Right {
             get {
                 object obj = ResourceManager.GetObject("Double Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -961,21 +991,61 @@ namespace YamyProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon EditSS {
+        internal static System.Drawing.Bitmap Email1 {
             get {
-                object obj = ResourceManager.GetObject("EditSS", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("Email1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Email {
+        internal static System.Drawing.Bitmap emailN {
             get {
-                object obj = ResourceManager.GetObject("Email", resourceCulture);
+                object obj = ResourceManager.GetObject("emailN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap emailN___Copy {
+            get {
+                object obj = ResourceManager.GetObject("emailN - Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap empolyees {
+            get {
+                object obj = ResourceManager.GetObject("empolyees", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap empolyees1 {
+            get {
+                object obj = ResourceManager.GetObject("empolyees1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap empolyees2 {
+            get {
+                object obj = ResourceManager.GetObject("empolyees2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1013,6 +1083,26 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel {
+            get {
+                object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap excel___Copy {
+            get {
+                object obj = ResourceManager.GetObject("excel - Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exchange {
             get {
                 object obj = ResourceManager.GetObject("Exchange", resourceCulture);
@@ -1036,6 +1126,46 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap File_Folder {
             get {
                 object obj = ResourceManager.GetObject("File Folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_upload {
+            get {
+                object obj = ResourceManager.GetObject("file_upload", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap find {
+            get {
+                object obj = ResourceManager.GetObject("find", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap findN {
+            get {
+                object obj = ResourceManager.GetObject("findN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap findN1 {
+            get {
+                object obj = ResourceManager.GetObject("findN1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1093,16 +1223,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GearsDraft1 {
-            get {
-                object obj = ResourceManager.GetObject("GearsDraft1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap GearsProgres {
             get {
                 object obj = ResourceManager.GetObject("GearsProgres", resourceCulture);
@@ -1116,16 +1236,6 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap General_Ledger {
             get {
                 object obj = ResourceManager.GetObject("General Ledger", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap General_Ledger1 {
-            get {
-                object obj = ResourceManager.GetObject("General Ledger1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1203,16 +1313,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Graph_Report1 {
-            get {
-                object obj = ResourceManager.GetObject("Graph Report1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Graph_Report2 {
             get {
                 object obj = ResourceManager.GetObject("Graph Report2", resourceCulture);
@@ -1263,66 +1363,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Home1 {
-            get {
-                object obj = ResourceManager.GetObject("Home1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home11 {
-            get {
-                object obj = ResourceManager.GetObject("Home11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home111 {
-            get {
-                object obj = ResourceManager.GetObject("Home111", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home2 {
-            get {
-                object obj = ResourceManager.GetObject("Home2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home3 {
-            get {
-                object obj = ResourceManager.GetObject("Home3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Home4 {
-            get {
-                object obj = ResourceManager.GetObject("Home4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Horizontal_Line {
             get {
                 object obj = ResourceManager.GetObject("Horizontal Line", resourceCulture);
@@ -1343,19 +1383,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HR {
+        internal static System.Drawing.Bitmap hr {
             get {
-                object obj = ResourceManager.GetObject("HR", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HR1 {
-            get {
-                object obj = ResourceManager.GetObject("HR1", resourceCulture);
+                object obj = ResourceManager.GetObject("hr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1386,16 +1416,6 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Inventory {
             get {
                 object obj = ResourceManager.GetObject("Inventory", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Inventory1 {
-            get {
-                object obj = ResourceManager.GetObject("Inventory1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1473,6 +1493,36 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kitchenN {
+            get {
+                object obj = ResourceManager.GetObject("kitchenN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lang {
+            get {
+                object obj = ResourceManager.GetObject("lang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lang1 {
+            get {
+                object obj = ResourceManager.GetObject("lang1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap List {
             get {
                 object obj = ResourceManager.GetObject("List", resourceCulture);
@@ -1513,9 +1563,19 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LoginPage {
+        internal static System.Drawing.Bitmap loginN {
             get {
-                object obj = ResourceManager.GetObject("LoginPage", resourceCulture);
+                object obj = ResourceManager.GetObject("loginN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LoginScreen {
+            get {
+                object obj = ResourceManager.GetObject("LoginScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1543,9 +1603,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lunch_lamb_beef_meat {
+        internal static System.Drawing.Bitmap Maintenance {
             get {
-                object obj = ResourceManager.GetObject("lunch-lamb-beef-meat", resourceCulture);
+                object obj = ResourceManager.GetObject("Maintenance", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1553,9 +1613,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Maintenance {
+        internal static System.Drawing.Bitmap manfactring {
             get {
-                object obj = ResourceManager.GetObject("Maintenance", resourceCulture);
+                object obj = ResourceManager.GetObject("manfactring", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1573,9 +1633,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Manufacturingw {
+        internal static System.Drawing.Bitmap maximizeN {
             get {
-                object obj = ResourceManager.GetObject("Manufacturingw", resourceCulture);
+                object obj = ResourceManager.GetObject("maximizeN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1621,6 +1681,26 @@ namespace YamyProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuN {
+            get {
+                object obj = ResourceManager.GetObject("menuN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuN1 {
+            get {
+                object obj = ResourceManager.GetObject("menuN1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Microsoft_Dynamics_CRM {
@@ -1653,6 +1733,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minimize {
+            get {
+                object obj = ResourceManager.GetObject("minimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Minimize_Window {
             get {
                 object obj = ResourceManager.GetObject("Minimize Window", resourceCulture);
@@ -1663,9 +1753,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize_Window1 {
+        internal static System.Drawing.Bitmap Minimize_Window2 {
             get {
-                object obj = ResourceManager.GetObject("Minimize Window1", resourceCulture);
+                object obj = ResourceManager.GetObject("Minimize Window2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1673,9 +1763,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Minimize_Window2 {
+        internal static System.Drawing.Bitmap minimizeN {
             get {
-                object obj = ResourceManager.GetObject("Minimize Window2", resourceCulture);
+                object obj = ResourceManager.GetObject("minimizeN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1706,6 +1796,36 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap My_Website {
             get {
                 object obj = ResourceManager.GetObject("My Website", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap New_Project__1_ {
+            get {
+                object obj = ResourceManager.GetObject("New Project (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap New_Project__2_ {
+            get {
+                object obj = ResourceManager.GetObject("New Project (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap New_Project__2_1 {
+            get {
+                object obj = ResourceManager.GetObject("New Project (2)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1773,16 +1893,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Pencil_Drawing1 {
-            get {
-                object obj = ResourceManager.GetObject("Pencil Drawing1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Phot2o_Gallery {
             get {
                 object obj = ResourceManager.GetObject("Phot2o Gallery", resourceCulture);
@@ -1796,16 +1906,6 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Photo_Gallery {
             get {
                 object obj = ResourceManager.GetObject("Photo Gallery", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Photo_Gallery1 {
-            get {
-                object obj = ResourceManager.GetObject("Photo Gallery1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1853,6 +1953,16 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap preview {
+            get {
+                object obj = ResourceManager.GetObject("preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Print {
             get {
                 object obj = ResourceManager.GetObject("Print", resourceCulture);
@@ -1873,9 +1983,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Printss {
+        internal static System.Drawing.Bitmap printN {
             get {
-                object obj = ResourceManager.GetObject("Printss", resourceCulture);
+                object obj = ResourceManager.GetObject("printN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1883,9 +1993,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Printss1 {
+        internal static System.Drawing.Bitmap Printss {
             get {
-                object obj = ResourceManager.GetObject("Printss1", resourceCulture);
+                object obj = ResourceManager.GetObject("Printss", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1933,9 +2043,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Product3 {
+        internal static System.Drawing.Bitmap Product4 {
             get {
-                object obj = ResourceManager.GetObject("Product3", resourceCulture);
+                object obj = ResourceManager.GetObject("Product4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1943,9 +2053,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Product4 {
+        internal static System.Drawing.Bitmap productN {
             get {
-                object obj = ResourceManager.GetObject("Product4", resourceCulture);
+                object obj = ResourceManager.GetObject("productN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1963,39 +2073,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Purchase1 {
-            get {
-                object obj = ResourceManager.GetObject("Purchase1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Push_Pin {
             get {
                 object obj = ResourceManager.GetObject("Push Pin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Push_Pin1 {
-            get {
-                object obj = ResourceManager.GetObject("Push Pin1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Push_Pin2 {
-            get {
-                object obj = ResourceManager.GetObject("Push Pin2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2017,16 +2097,6 @@ namespace YamyProject.Properties {
             get {
                 object obj = ResourceManager.GetObject("redMultiply", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap redMultiplyXXZ {
-            get {
-                object obj = ResourceManager.GetObject("redMultiplyXXZ", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -2113,9 +2183,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sales {
+        internal static System.Drawing.Bitmap resturant {
             get {
-                object obj = ResourceManager.GetObject("Sales", resourceCulture);
+                object obj = ResourceManager.GetObject("resturant", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2123,9 +2193,19 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sales1 {
+        internal static System.Drawing.Bitmap resturantN {
             get {
-                object obj = ResourceManager.GetObject("Sales1", resourceCulture);
+                object obj = ResourceManager.GetObject("resturantN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sales {
+            get {
+                object obj = ResourceManager.GetObject("Sales", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2156,6 +2236,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Save1 {
             get {
                 object obj = ResourceManager.GetObject("Save1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap saveN {
+            get {
+                object obj = ResourceManager.GetObject("saveN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2203,6 +2293,26 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap search3 {
+            get {
+                object obj = ResourceManager.GetObject("search3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap searchN {
+            get {
+                object obj = ResourceManager.GetObject("searchN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Security_Pass {
             get {
                 object obj = ResourceManager.GetObject("Security Pass", resourceCulture);
@@ -2233,9 +2343,19 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Setting1 {
+        internal static System.Drawing.Bitmap settinges {
             get {
-                object obj = ResourceManager.GetObject("Setting1", resourceCulture);
+                object obj = ResourceManager.GetObject("settinges", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingesN {
+            get {
+                object obj = ResourceManager.GetObject("settingesN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2303,9 +2423,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap signOut1 {
+        internal static System.Drawing.Bitmap SignUp {
             get {
-                object obj = ResourceManager.GetObject("signOut1", resourceCulture);
+                object obj = ResourceManager.GetObject("SignUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2313,9 +2433,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SignUp {
+        internal static System.Drawing.Bitmap SignUpScreen {
             get {
-                object obj = ResourceManager.GetObject("SignUp", resourceCulture);
+                object obj = ResourceManager.GetObject("SignUpScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2363,16 +2483,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Submit_Resume1 {
-            get {
-                object obj = ResourceManager.GetObject("Submit Resume1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Subtract {
             get {
                 object obj = ResourceManager.GetObject("Subtract", resourceCulture);
@@ -2396,16 +2506,6 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap Supplier {
             get {
                 object obj = ResourceManager.GetObject("Supplier", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Supplier1 {
-            get {
-                object obj = ResourceManager.GetObject("Supplier1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2443,9 +2543,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Table21 {
+        internal static System.Drawing.Bitmap tableN {
             get {
-                object obj = ResourceManager.GetObject("Table21", resourceCulture);
+                object obj = ResourceManager.GetObject("tableN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2503,16 +2603,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Trash22 {
-            get {
-                object obj = ResourceManager.GetObject("Trash22", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Untitled_design__1_ {
             get {
                 object obj = ResourceManager.GetObject("Untitled design (1)", resourceCulture);
@@ -2523,9 +2613,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Untitled_design__2__removebg_preview {
+        internal static System.Drawing.Bitmap Untitled_design1 {
             get {
-                object obj = ResourceManager.GetObject("Untitled_design__2_-removebg-preview", resourceCulture);
+                object obj = ResourceManager.GetObject("Untitled design1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2533,9 +2623,29 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Untitled_design1 {
+        internal static System.Drawing.Bitmap Untitled_design1_copy {
             get {
-                object obj = ResourceManager.GetObject("Untitled design1", resourceCulture);
+                object obj = ResourceManager.GetObject("Untitled design1 copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Upload0 {
+            get {
+                object obj = ResourceManager.GetObject("Upload0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upload1 {
+            get {
+                object obj = ResourceManager.GetObject("upload1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2571,22 +2681,42 @@ namespace YamyProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon User_Shield {
+        internal static System.Drawing.Bitmap user_guide {
             get {
-                object obj = ResourceManager.GetObject("User_Shield", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("user guide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user1 {
+        internal static System.Drawing.Bitmap user_guide1 {
             get {
-                object obj = ResourceManager.GetObject("user1", resourceCulture);
+                object obj = ResourceManager.GetObject("user guide1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_N {
+            get {
+                object obj = ResourceManager.GetObject("user_N", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon User_Shield {
+            get {
+                object obj = ResourceManager.GetObject("User_Shield", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -2603,9 +2733,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user21 {
+        internal static System.Drawing.Bitmap userN {
             get {
-                object obj = ResourceManager.GetObject("user21", resourceCulture);
+                object obj = ResourceManager.GetObject("userN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2633,16 +2763,6 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vendor1 {
-            get {
-                object obj = ResourceManager.GetObject("Vendor1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap View {
             get {
                 object obj = ResourceManager.GetObject("View", resourceCulture);
@@ -2656,16 +2776,6 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap View_A2ll {
             get {
                 object obj = ResourceManager.GetObject("View A2ll", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap View_A2ll1 {
-            get {
-                object obj = ResourceManager.GetObject("View A2ll1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2703,9 +2813,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Warehouse1 {
+        internal static System.Drawing.Bitmap Windows_Client {
             get {
-                object obj = ResourceManager.GetObject("Warehouse1", resourceCulture);
+                object obj = ResourceManager.GetObject("Windows Client", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2713,9 +2823,9 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Windows_Client {
+        internal static System.Drawing.Bitmap word {
             get {
-                object obj = ResourceManager.GetObject("Windows Client", resourceCulture);
+                object obj = ResourceManager.GetObject("word", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2756,6 +2866,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap YAMY_Splash {
             get {
                 object obj = ResourceManager.GetObject("YAMY_Splash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YAMY_Splash1 {
+            get {
+                object obj = ResourceManager.GetObject("YAMY_Splash1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

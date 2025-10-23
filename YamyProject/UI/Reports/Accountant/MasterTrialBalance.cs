@@ -40,7 +40,7 @@ namespace YamyProject
 
             dgvCustomer.DataBindingComplete += dgvCustomer_DataBindingComplete;
 
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterTrialBalance_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -333,9 +333,9 @@ namespace YamyProject
             int dgvTotalWidth = dgvCustomer.Width;
             int rowsPrinted = 0;
 
-            Font regularFont = new Font("Arial", 10);
-            Font boldFont = new Font("Arial", 10, FontStyle.Bold);
-            Font pageFont = new Font("Arial", 10, FontStyle.Italic);
+            Font regularFont = new Font("Segoe UI", 10);
+            Font boldFont = new Font("Segoe UI", 10, FontStyle.Bold);
+            Font pageFont = new Font("Segoe UI", 10, FontStyle.Italic);
             if (showPnlHeader)
             {
                 int pnlHeaderWidth = pnlHeader.Width;
@@ -573,7 +573,7 @@ namespace YamyProject
         {
             if (dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString() == "")
                 return;
-            frmLogin.frmMain.openChildForm(new MasterTransactionByAccount(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions By Account", int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
         }
     }
 }

@@ -381,7 +381,7 @@ namespace YamyProject
 
                 yPosition += 10;
                 string dateText = "Printed on: " + DateTime.Now.ToString("MM/dd/yyyy");
-                ev.Graphics.DrawString(dateText, new Font("Arial", 10), Brushes.Black, new PointF(leftMargin, yPosition));
+                ev.Graphics.DrawString(dateText, new Font("Segoe UI", 10), Brushes.Black, new PointF(leftMargin, yPosition));
                 yPosition += 25;
 
                 // Column widths

@@ -53,7 +53,7 @@
             // 
             // txtImage
             // 
-            this.txtImage.Image = global::YamyProject.Properties.Resources.lunch_lamb_beef_meat;
+            this.txtImage.Image = global::YamyProject.Properties.Resources.Product;
             this.txtImage.ImageRotate = 0F;
             this.txtImage.Location = new System.Drawing.Point(36, 18);
             this.txtImage.Name = "txtImage";

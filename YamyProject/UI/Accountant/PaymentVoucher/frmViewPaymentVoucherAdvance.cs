@@ -20,7 +20,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            guna2HtmlLabel2.Text = id == 0 ? "New - Advance Payment Voucher" : "Edit - Advance Payment Voucher";
+            headerUC1.FormText = id == 0 ? "New - Advance Payment Voucher" : "Edit - Advance Payment Voucher";
 
             this.defaultCustomerId = _customerId;
         }

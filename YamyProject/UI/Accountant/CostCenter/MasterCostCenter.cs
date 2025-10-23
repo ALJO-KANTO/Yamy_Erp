@@ -19,7 +19,7 @@ namespace YamyProject
             lvl1 = lvl2 = (sender, args) => BindRefresh();
             EventHub.lvl1Account += lvl1;
             EventHub.lvl2Account += lvl2;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterCostCenter_Load(object sender, EventArgs e)
         {

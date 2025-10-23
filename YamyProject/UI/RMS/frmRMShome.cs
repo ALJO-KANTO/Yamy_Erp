@@ -41,7 +41,37 @@ namespace YamyProject
             lb.Items.Add(dgvPrice);
 
             RMSClass.loadData(qry, guna2DataGridView1, lb);
+
         }
+
+        private void loadChartData(double dinIn, double takeAway, double delivery)
+        {
+            // Clear old series if any
+            gunaChart1.Datasets.Clear();
+            //gunaChart1.Labels = null;
+
+            // Set title (optional)
+            //gunaChart1.Legend.Display = true;
+            //gunaChart1.Title.Text = "Open Leads";
+
+            var dataset = new Guna.Charts.WinForms.GunaBarDataset();
+            dataset.Label = "Orders";
+            dataset.DataPoints.Add("Dine In", dinIn);       // sample value
+            dataset.DataPoints.Add("Take Away", takeAway);
+            dataset.DataPoints.Add("Delivery", delivery);
+
+            // Optional styling
+            //dataset.BackgroundColor = new List<System.Drawing.Color>
+            //    {
+            //        System.Drawing.Color.FromArgb(54, 162, 235),
+            //        System.Drawing.Color.FromArgb(255, 206, 86),
+            //        System.Drawing.Color.FromArgb(255, 99, 132)
+            //    };
+            gunaChart1.Datasets.Add(dataset);
+            gunaChart1.Update();
+
+        }
+
         private void gettotal()
         {
             double tot = 0;
@@ -156,30 +186,61 @@ namespace YamyProject
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (isCustom)
+            {
+                timer1.Stop();
+                return;
+            }
+            else
+            {
+                loadData();
+                gettotal();
+                //LOADTOTAL(num, "Paid");
+                //guna2HtmlLabel12.Text = num.ToString();
+                ShowTotalCountInLabel("Din in");
+                guna2HtmlLabel6.Text = sst;
+                ShowTotalCountInLabel("Take Away");
+                guna2HtmlLabel19.Text = sst;
+                ShowTotalCountInLabel("Delivery");
+                guna2HtmlLabel20.Text = sst;
+                Int32 nnn = 0;
+                nnn = Convert.ToInt32(guna2HtmlLabel20.Text) + Convert.ToInt32(guna2HtmlLabel19.Text) + Convert.ToInt32(guna2HtmlLabel6.Text);
+                guna2HtmlLabel21.Text = nnn.ToString();
+                showdata1("Paid");
+                guna2HtmlLabel12.Text = sst2;
+                showdata1("Complete");
+                showdata2("Pending");
+                guna2HtmlLabel5.Text = sst2 + sst3;
 
-            loadData();
-            gettotal();
-            //LOADTOTAL(num, "Paid");
-            //guna2HtmlLabel12.Text = num.ToString();
-            ShowTotalCountInLabel("Din in");
-            guna2HtmlLabel6.Text = sst;
-            ShowTotalCountInLabel("Take Away");
-            guna2HtmlLabel19.Text = sst;
-            ShowTotalCountInLabel("Delivery");
-            guna2HtmlLabel20.Text = sst;
-            Int32 nnn = 0;
-            nnn = Convert.ToInt32( guna2HtmlLabel20.Text) +Convert.ToInt32( guna2HtmlLabel19.Text) +Convert.ToInt32(guna2HtmlLabel6.Text);
-            guna2HtmlLabel21.Text = nnn.ToString();
-            showdata1("Paid");
-            guna2HtmlLabel12.Text = sst2;
-            showdata1("Complete");
-            showdata2("Pending");
-            guna2HtmlLabel5.Text = sst2 + sst3;
-          
 
+                loadChartData(Convert.ToDouble(guna2HtmlLabel6.Text), Convert.ToDouble(guna2HtmlLabel19.Text), Convert.ToDouble(guna2HtmlLabel20.Text));
+            }
+        }
 
+        private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            //
+        }
 
+        private void guna2DateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            //
+        }
 
+        bool isCustom = false;
+
+        private void customReport()
+        {
+            isCustom = true;
+        }
+
+        private void cbrole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbrole.SelectedIndex == 0)
+            {
+                isCustom = false;
+                customReport();
+            }
         }
     }
 }

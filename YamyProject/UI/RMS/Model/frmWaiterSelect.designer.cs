@@ -38,6 +38,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 100);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -58,7 +59,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::YamyProject.Properties.Resources.Badge1;
+            this.pictureBox1.Image = global::YamyProject.Properties.Resources.Badge;
             this.pictureBox1.Location = new System.Drawing.Point(12, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 64);
@@ -74,13 +75,13 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(118, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 32);
+            this.label1.Size = new System.Drawing.Size(122, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Select Waiter";
             // 
             // frmWaiterSelect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(690, 455);

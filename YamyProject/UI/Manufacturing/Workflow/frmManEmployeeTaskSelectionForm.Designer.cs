@@ -68,6 +68,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             // btnStartSelected
             // 
             this.btnStartSelected.BorderRadius = 5;
+            this.btnStartSelected.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnStartSelected.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnStartSelected.ForeColor = System.Drawing.Color.White;
             this.btnStartSelected.Location = new System.Drawing.Point(15, 244);
@@ -81,6 +82,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             // btnComplete
             // 
             this.btnComplete.BorderRadius = 5;
+            this.btnComplete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnComplete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnComplete.ForeColor = System.Drawing.Color.White;
             this.btnComplete.Location = new System.Drawing.Point(186, 244);
@@ -95,6 +97,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(338, 301);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblEmpName);

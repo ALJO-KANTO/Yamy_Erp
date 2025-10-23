@@ -16,7 +16,7 @@ namespace YamyProject
         }
         private void frmCustomizeList_Load(object sender, EventArgs e)
         {
-            LbHeader.Text = "Customize Your List Of Tools";
+            headerUC1.FormText = "Customize Your List Of Tools";
         }
         private void LoadTools()
         {

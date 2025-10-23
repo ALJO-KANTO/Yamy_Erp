@@ -21,7 +21,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             this.id = _id;
             this.name = name;
         }
@@ -77,14 +77,14 @@ namespace YamyProject
                 dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvSales.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 8F, FontStyle.Regular);
-                dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 8F, FontStyle.Regular);
-                //dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 8F, FontStyle.Regular);
+                dgvSales.Columns["Debit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                dgvSales.Columns["Credit"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                //dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
 
                 dgvSales.Columns["id"].Visible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 8F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -168,7 +168,7 @@ namespace YamyProject
                 (lineTotalDebit - lineTotalCredit).ToString("N2"));
 
             dgvSales.Rows[totalRow0].DefaultCellStyle.Font =
-                new System.Drawing.Font("Times new roman", 8F, FontStyle.Bold | FontStyle.Underline);
+                new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold | FontStyle.Underline);
             dgvSales.Rows[totalRow0].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
     }
 

@@ -15,7 +15,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.userName = _userName;
-            guna2HtmlLabel2.Text = string.IsNullOrEmpty(_userName) ? "Users - Change Password" : "User - Forgot Password";
+            headerUC1.FormText = string.IsNullOrEmpty(_userName) ? "Users - Change Password" : "User - Forgot Password";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

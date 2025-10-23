@@ -20,7 +20,7 @@ namespace YamyProject
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.DebitNote += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {

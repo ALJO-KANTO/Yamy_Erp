@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -49,18 +48,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.addEmployee = new System.Windows.Forms.LinkLabel();
             this.addCity = new System.Windows.Forms.LinkLabel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.LbHeader = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panel1.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -73,7 +70,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -82,7 +79,7 @@
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(464, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
@@ -94,14 +91,14 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(366, 3);
@@ -125,7 +122,7 @@
             this.txtBuildingName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuildingName.ForeColor = System.Drawing.Color.Black;
             this.txtBuildingName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuildingName.Location = new System.Drawing.Point(9, 178);
+            this.txtBuildingName.Location = new System.Drawing.Point(14, 186);
             this.txtBuildingName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtBuildingName.Name = "txtBuildingName";
             this.txtBuildingName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -147,7 +144,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.Black;
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Location = new System.Drawing.Point(153, 66);
+            this.txtName.Location = new System.Drawing.Point(158, 74);
             this.txtName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtName.Name = "txtName";
             this.txtName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -161,7 +158,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(152, 32);
+            this.label1.Location = new System.Drawing.Point(157, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 29);
@@ -174,7 +171,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(9, 149);
+            this.label2.Location = new System.Drawing.Point(14, 157);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 29);
@@ -196,7 +193,7 @@
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
             this.txtCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(9, 66);
+            this.txtCode.Location = new System.Drawing.Point(14, 74);
             this.txtCode.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtCode.Name = "txtCode";
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -210,7 +207,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label3.Location = new System.Drawing.Point(9, 32);
+            this.label3.Location = new System.Drawing.Point(14, 40);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 29);
@@ -229,7 +226,7 @@
             this.cmbMainAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMainAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbMainAccount.ItemHeight = 18;
-            this.cmbMainAccount.Location = new System.Drawing.Point(10, 237);
+            this.cmbMainAccount.Location = new System.Drawing.Point(15, 245);
             this.cmbMainAccount.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMainAccount.Name = "cmbMainAccount";
             this.cmbMainAccount.Size = new System.Drawing.Size(426, 24);
@@ -240,7 +237,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(10, 206);
+            this.label14.Location = new System.Drawing.Point(15, 214);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(100, 29);
@@ -259,7 +256,7 @@
             this.cmbEmp.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbEmp.ItemHeight = 18;
-            this.cmbEmp.Location = new System.Drawing.Point(9, 129);
+            this.cmbEmp.Location = new System.Drawing.Point(14, 137);
             this.cmbEmp.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEmp.Name = "cmbEmp";
             this.cmbEmp.Size = new System.Drawing.Size(256, 24);
@@ -270,7 +267,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(9, 99);
+            this.label4.Location = new System.Drawing.Point(14, 107);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 29);
@@ -289,7 +286,7 @@
             this.cmbCity.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbCity.ItemHeight = 18;
-            this.cmbCity.Location = new System.Drawing.Point(324, 129);
+            this.cmbCity.Location = new System.Drawing.Point(329, 137);
             this.cmbCity.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(158, 24);
@@ -300,7 +297,7 @@
             this.Label25.AutoSize = true;
             this.Label25.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.Label25.Location = new System.Drawing.Point(324, 113);
+            this.Label25.Location = new System.Drawing.Point(329, 121);
             this.Label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label25.Name = "Label25";
             this.Label25.Size = new System.Drawing.Size(26, 13);
@@ -309,7 +306,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 309);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -319,7 +316,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(544, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -329,7 +326,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -340,12 +337,12 @@
             // addEmployee
             // 
             this.addEmployee.ActiveLinkColor = System.Drawing.Color.Green;
-            this.addEmployee.BackColor = System.Drawing.Color.White;
-            this.addEmployee.DisabledLinkColor = System.Drawing.Color.Black;
+            this.addEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.addEmployee.DisabledLinkColor = System.Drawing.Color.DodgerBlue;
             this.addEmployee.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployee.ForeColor = System.Drawing.Color.Black;
-            this.addEmployee.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.addEmployee.Location = new System.Drawing.Point(261, 126);
+            this.addEmployee.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.addEmployee.LinkColor = System.Drawing.Color.Blue;
+            this.addEmployee.Location = new System.Drawing.Point(266, 134);
             this.addEmployee.Name = "addEmployee";
             this.addEmployee.Size = new System.Drawing.Size(36, 29);
             this.addEmployee.TabIndex = 125;
@@ -357,11 +354,11 @@
             // addCity
             // 
             this.addCity.ActiveLinkColor = System.Drawing.Color.Green;
-            this.addCity.BackColor = System.Drawing.Color.White;
-            this.addCity.DisabledLinkColor = System.Drawing.Color.Black;
-            this.addCity.ForeColor = System.Drawing.Color.Black;
-            this.addCity.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.addCity.Location = new System.Drawing.Point(478, 126);
+            this.addCity.BackColor = System.Drawing.Color.Transparent;
+            this.addCity.DisabledLinkColor = System.Drawing.Color.DodgerBlue;
+            this.addCity.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.addCity.LinkColor = System.Drawing.Color.Blue;
+            this.addCity.Location = new System.Drawing.Point(483, 134);
             this.addCity.Name = "addCity";
             this.addCity.Size = new System.Drawing.Size(36, 29);
             this.addCity.TabIndex = 125;
@@ -370,18 +367,17 @@
             this.addCity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.addCity.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.addCity_LinkClicked);
             // 
-            // panel8
+            // headerUC1
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel8.Controls.Add(this.guna2Button1);
-            this.panel8.Controls.Add(this.guna2Button4);
-            this.panel8.Controls.Add(this.guna2ControlBox1);
-            this.panel8.Controls.Add(this.LbHeader);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(2, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(542, 23);
-            this.panel8.TabIndex = 143;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(542, 37);
+            this.headerUC1.TabIndex = 238;
             // 
             // guna2Button1
             // 
@@ -436,34 +432,13 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
-            // LbHeader
-            // 
-            this.LbHeader.AutoSize = false;
-            this.LbHeader.BackColor = System.Drawing.Color.Transparent;
-            this.LbHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LbHeader.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbHeader.ForeColor = System.Drawing.Color.White;
-            this.LbHeader.Location = new System.Drawing.Point(0, 0);
-            this.LbHeader.Name = "LbHeader";
-            this.LbHeader.Size = new System.Drawing.Size(542, 23);
-            this.LbHeader.TabIndex = 19;
-            this.LbHeader.Text = null;
-            this.LbHeader.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LbHeader.Click += new System.EventHandler(this.LbHeader_Click);
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.LbHeader;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
             // frmViewWarehouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(546, 311);
-            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.cmbCity);
             this.Controls.Add(this.Label25);
             this.Controls.Add(this.cmbMainAccount);
@@ -486,10 +461,9 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmViewWarehouse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Customer - Add New Category";
+            this.Text = "New Warehouse";
             this.Load += new System.EventHandler(this.frmViewWarehouse_Load);
             this.panel1.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,11 +490,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.LinkLabel addEmployee;
         private System.Windows.Forms.LinkLabel addCity;
-        private System.Windows.Forms.Panel panel8;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel LbHeader;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

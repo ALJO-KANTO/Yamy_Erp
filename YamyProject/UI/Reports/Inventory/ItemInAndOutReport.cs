@@ -19,7 +19,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             id = _id;
             type = _type;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
 
         private void ItemInAndOutReport_Load(object sender, EventArgs e)

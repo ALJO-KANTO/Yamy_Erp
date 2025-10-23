@@ -18,6 +18,7 @@ namespace YamyProject.UI.VAT
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            headerUC1.FormText = this.Text;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

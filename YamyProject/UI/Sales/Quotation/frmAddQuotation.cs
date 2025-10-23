@@ -42,6 +42,7 @@ namespace YamyProject
                 this.id = _id;
                 txtPONO.Text = "";
             }
+            headerUC1.FormText = _id == 0 ? "New Proforma Invoice" : "Edit Proforma Invoice";
         }
         private void frmAddQuotation_FormClosing(object sender, FormClosingEventArgs e)
         {

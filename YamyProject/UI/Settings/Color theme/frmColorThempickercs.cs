@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.RMS.Class;
@@ -91,4 +92,21 @@ namespace YamyProject.UI.Settings.Color_theme
             //colorheaderload();
         }
     }
+}
+
+public class MyColorTable : ProfessionalColorTable
+{
+    public override Color MenuItemSelected => Color.LightSkyBlue;
+    public override Color MenuItemSelectedGradientBegin => Color.DodgerBlue;
+    public override Color MenuItemSelectedGradientEnd => Color.LightBlue;
+
+    public override Color MenuItemPressedGradientBegin => Color.RoyalBlue;
+    public override Color MenuItemPressedGradientEnd => Color.SkyBlue;
+
+    public override Color MenuItemBorder => Color.Navy;
+}
+
+public class MyRenderer : ToolStripProfessionalRenderer
+{
+    public MyRenderer() : base(new MyColorTable()) { }
 }

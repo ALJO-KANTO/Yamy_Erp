@@ -195,7 +195,7 @@ namespace YamyProject
                     dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                     dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold);
+                    dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                     dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                     dgvSales.EnableHeadersVisualStyles = false;
                     dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -265,7 +265,7 @@ namespace YamyProject
 
                         int rowIndex = dgvSales.Rows.Add(Sn, reader["id"], accountName, Credit, Debit, amount.ToString("N2") + " ◀");
                         dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                        dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Regular);
+                        dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
                         totalCredit += Convert.ToDecimal(reader["Credit"]);
                         totalDebit += Convert.ToDecimal(reader["Debit"]);
@@ -274,7 +274,7 @@ namespace YamyProject
                 }
 
                 int totalRow = dgvSales.Rows.Add("", "", "TOTAL", totalCredit.ToString("N2"), totalDebit.ToString("N2"), totalAmount.ToString("N2") + " ◀");
-                dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 10F, FontStyle.Bold | FontStyle.Underline);
+                dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
                 dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
                 dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
 

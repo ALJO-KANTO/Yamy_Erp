@@ -19,7 +19,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             type = _type;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
         }

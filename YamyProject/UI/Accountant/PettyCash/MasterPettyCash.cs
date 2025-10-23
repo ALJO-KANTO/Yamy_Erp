@@ -16,7 +16,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            lbheader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             employeeUpdateHandler = (sender, args) => BindEmployees();
             EventHub.Employee += employeeUpdateHandler;
         }
@@ -62,7 +62,6 @@ namespace YamyProject
 
             BindEmployees();
             dgvInvoice.ColumnHeadersVisible = false;
-            lbheader.Text = "Petty Cash Center";
         }
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -48,33 +47,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.headerUC1 = new YamyProject.HeaderUC();
+            this.formRightBoarder = new YamyProject.FormRightBoarder();
+            this.formLeftBoarder = new YamyProject.FormLeftBoarder();
+            this.formBottomBoarder = new YamyProject.FormBottomBoarder();
             this.panel1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.BtnDelete);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 225);
+            this.panel1.Location = new System.Drawing.Point(2, 223);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(401, 33);
+            this.panel1.Size = new System.Drawing.Size(397, 33);
             this.panel1.TabIndex = 2;
             // 
             // BtnDelete
             // 
-            this.BtnDelete.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.BtnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.BtnDelete.BorderRadius = 5;
             this.BtnDelete.BorderThickness = 1;
             this.BtnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -83,8 +80,8 @@
             this.BtnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.BtnDelete.FillColor = System.Drawing.Color.White;
             this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDelete.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.BtnDelete.Location = new System.Drawing.Point(3, 2);
+            this.BtnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.BtnDelete.Location = new System.Drawing.Point(3, 3);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(66, 25);
@@ -94,7 +91,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.BorderRadius = 5;
             this.btnClose.BorderThickness = 1;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -103,7 +100,7 @@
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(326, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
@@ -114,14 +111,14 @@
             // 
             // btnSave
             // 
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(248, 3);
@@ -134,6 +131,7 @@
             // 
             // guna2GroupBox2
             // 
+            this.guna2GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.BorderThickness = 0;
             this.guna2GroupBox2.Controls.Add(this.txtDebitCode);
             this.guna2GroupBox2.Controls.Add(this.cmbDebitAccountName);
@@ -149,15 +147,16 @@
             this.guna2GroupBox2.Controls.Add(this.label4);
             this.guna2GroupBox2.Controls.Add(this.label3);
             this.guna2GroupBox2.Controls.Add(this.label1);
-            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2GroupBox2.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(0, 24);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(0, 0);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(401, 201);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(401, 258);
             this.guna2GroupBox2.TabIndex = 4;
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, -6);
             // 
@@ -175,7 +174,7 @@
             this.txtDebitCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDebitCode.ForeColor = System.Drawing.Color.Black;
             this.txtDebitCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDebitCode.Location = new System.Drawing.Point(13, 76);
+            this.txtDebitCode.Location = new System.Drawing.Point(13, 105);
             this.txtDebitCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDebitCode.Name = "txtDebitCode";
             this.txtDebitCode.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -197,7 +196,7 @@
             this.cmbDebitAccountName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDebitAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbDebitAccountName.ItemHeight = 18;
-            this.cmbDebitAccountName.Location = new System.Drawing.Point(140, 76);
+            this.cmbDebitAccountName.Location = new System.Drawing.Point(140, 105);
             this.cmbDebitAccountName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDebitAccountName.Name = "cmbDebitAccountName";
             this.cmbDebitAccountName.Size = new System.Drawing.Size(254, 24);
@@ -218,7 +217,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(13, 168);
+            this.txtEmail.Location = new System.Drawing.Point(13, 197);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -232,7 +231,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label2.Location = new System.Drawing.Point(10, 104);
+            this.label2.Location = new System.Drawing.Point(10, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 18);
             this.label2.TabIndex = 28;
@@ -253,7 +252,7 @@
             this.txtWhatsappNo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWhatsappNo.ForeColor = System.Drawing.Color.Black;
             this.txtWhatsappNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtWhatsappNo.Location = new System.Drawing.Point(186, 124);
+            this.txtWhatsappNo.Location = new System.Drawing.Point(186, 153);
             this.txtWhatsappNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtWhatsappNo.Name = "txtWhatsappNo";
             this.txtWhatsappNo.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -277,7 +276,7 @@
             this.txtMobile.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMobile.ForeColor = System.Drawing.Color.Black;
             this.txtMobile.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMobile.Location = new System.Drawing.Point(13, 124);
+            this.txtMobile.Location = new System.Drawing.Point(13, 153);
             this.txtMobile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -301,7 +300,7 @@
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.Black;
             this.txtCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(13, 32);
+            this.txtCode.Location = new System.Drawing.Point(13, 61);
             this.txtCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCode.Name = "txtCode";
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -321,7 +320,7 @@
             this.cmbEmployee.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbEmployee.ItemHeight = 18;
-            this.cmbEmployee.Location = new System.Drawing.Point(139, 32);
+            this.cmbEmployee.Location = new System.Drawing.Point(139, 61);
             this.cmbEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(255, 24);
@@ -333,7 +332,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label7.Location = new System.Drawing.Point(136, 6);
+            this.label7.Location = new System.Drawing.Point(136, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 29);
             this.label7.TabIndex = 16;
@@ -345,7 +344,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label9.Location = new System.Drawing.Point(10, 54);
+            this.label9.Location = new System.Drawing.Point(10, 83);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(127, 21);
             this.label9.TabIndex = 33;
@@ -357,7 +356,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label5.Location = new System.Drawing.Point(136, 55);
+            this.label5.Location = new System.Drawing.Point(136, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 20);
             this.label5.TabIndex = 34;
@@ -369,7 +368,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(183, 101);
+            this.label4.Location = new System.Drawing.Point(183, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 24);
             this.label4.TabIndex = 27;
@@ -381,7 +380,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label3.Location = new System.Drawing.Point(10, 150);
+            this.label3.Location = new System.Drawing.Point(10, 179);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(340, 18);
             this.label3.TabIndex = 28;
@@ -393,74 +392,54 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Location = new System.Drawing.Point(10, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 24);
             this.label1.TabIndex = 27;
             this.label1.Text = "Code";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel6
+            // headerUC1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2Button1);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Controls.Add(this.lbheader);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(401, 24);
-            this.panel6.TabIndex = 18;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(401, 37);
+            this.headerUC1.TabIndex = 239;
             // 
-            // guna2Button1
+            // formRightBoarder
             // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 3;
-            this.guna2Button1.BorderThickness = 1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::YamyProject.Properties.Resources.Subtract;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(15, 15);
-            this.guna2Button1.Location = new System.Drawing.Point(368, 4);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(14, 15);
-            this.guna2Button1.TabIndex = 30;
+            this.formRightBoarder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.formRightBoarder.Dock = System.Windows.Forms.DockStyle.Right;
+            this.formRightBoarder.Location = new System.Drawing.Point(399, 37);
+            this.formRightBoarder.Margin = new System.Windows.Forms.Padding(2);
+            this.formRightBoarder.Name = "formRightBoarder";
+            this.formRightBoarder.Size = new System.Drawing.Size(2, 221);
+            this.formRightBoarder.TabIndex = 240;
             // 
-            // guna2ControlBox1
+            // formLeftBoarder
             // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(385, 4);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(14, 15);
-            this.guna2ControlBox1.TabIndex = 0;
+            this.formLeftBoarder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.formLeftBoarder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.formLeftBoarder.Location = new System.Drawing.Point(0, 37);
+            this.formLeftBoarder.Margin = new System.Windows.Forms.Padding(2);
+            this.formLeftBoarder.Name = "formLeftBoarder";
+            this.formLeftBoarder.Size = new System.Drawing.Size(2, 221);
+            this.formLeftBoarder.TabIndex = 241;
             // 
-            // lbheader
+            // formBottomBoarder
             // 
-            this.lbheader.AutoSize = false;
-            this.lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbheader.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbheader.ForeColor = System.Drawing.Color.White;
-            this.lbheader.Location = new System.Drawing.Point(0, 0);
-            this.lbheader.Name = "lbheader";
-            this.lbheader.Size = new System.Drawing.Size(401, 21);
-            this.lbheader.TabIndex = 19;
-            this.lbheader.Text = "Petty Cash Card";
-            this.lbheader.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.lbheader;
-            this.guna2DragControl1.UseTransparentDrag = true;
+            this.formBottomBoarder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.formBottomBoarder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.formBottomBoarder.Location = new System.Drawing.Point(2, 256);
+            this.formBottomBoarder.Margin = new System.Windows.Forms.Padding(2);
+            this.formBottomBoarder.Name = "formBottomBoarder";
+            this.formBottomBoarder.Size = new System.Drawing.Size(397, 2);
+            this.formBottomBoarder.TabIndex = 242;
             // 
             // frmPettyCashCard
             // 
@@ -468,18 +447,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(401, 258);
-            this.Controls.Add(this.guna2GroupBox2);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.formBottomBoarder);
+            this.Controls.Add(this.formLeftBoarder);
+            this.Controls.Add(this.formRightBoarder);
+            this.Controls.Add(this.headerUC1);
+            this.Controls.Add(this.guna2GroupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmPettyCashCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Customers / New Customer";
+            this.Text = "Petty Cash Card";
             this.Load += new System.EventHandler(this.frmPettyCashCard_Load);
             this.panel1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -503,11 +484,10 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbDebitAccountName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbheader;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Button BtnDelete;
+        private HeaderUC headerUC1;
+        private FormRightBoarder formRightBoarder;
+        private FormLeftBoarder formLeftBoarder;
+        private FormBottomBoarder formBottomBoarder;
     }
 }

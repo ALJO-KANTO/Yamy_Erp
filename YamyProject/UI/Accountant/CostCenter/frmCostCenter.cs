@@ -23,11 +23,8 @@ namespace YamyProject
             editMain = (sender, args) => BindCombo();
             EventHub.MainCostCenter += editMain;
             this.id = id;
-            if (id != 0)
-                this.Text = "Cost Center";
-            else
-                this.Text = "Cost Center";
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
+
             if (id == 0)
             {
                 if (_projectId != 0)

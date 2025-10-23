@@ -341,6 +341,7 @@ namespace YamyProject.UI.Manufacturing.Models
                 MessageBox.Show("Can't Hold Empty Order");
                 return;
             }
+            string msg = id > 0 ? "Work Order Updated" : "Work Order Saved";
             if (checkRequiredData())
             {
                 checkQtyAvailable();
@@ -348,10 +349,7 @@ namespace YamyProject.UI.Manufacturing.Models
 
             if (isSaved)
             {
-                if(id>0)
-                    MessageBox.Show("Work Order Updated");
-                else
-                    MessageBox.Show("Work Order Saved");
+                MessageBox.Show(msg);
             }
         }
         private bool checkRequiredData()
@@ -834,6 +832,16 @@ namespace YamyProject.UI.Manufacturing.Models
             {
                 EnsureValidItemSelected();
             }
+        }
+
+        private void guna2Button3_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

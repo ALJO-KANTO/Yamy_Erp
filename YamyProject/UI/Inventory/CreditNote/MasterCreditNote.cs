@@ -19,7 +19,7 @@ namespace YamyProject
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.CreditNote += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void MasterCreditNote_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -329,7 +329,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.standardRowGroupBox.Controls.Add(this.standardSetIconLabel);
             this.standardRowGroupBox.Controls.Add(this.standardDecreaseIndentButton);
             this.standardRowGroupBox.Controls.Add(this.standardSetIconComboBox);
-            this.standardRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardRowGroupBox.Location = new System.Drawing.Point(6, 313);
             this.standardRowGroupBox.Name = "standardRowGroupBox";
             this.standardRowGroupBox.Size = new System.Drawing.Size(230, 77);
@@ -340,7 +340,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardExpandButton
             // 
             this.standardExpandButton.Enabled = false;
-            this.standardExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardExpandButton.Location = new System.Drawing.Point(6, 19);
             this.standardExpandButton.Name = "standardExpandButton";
             this.standardExpandButton.Size = new System.Drawing.Size(106, 23);
@@ -352,7 +352,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardIncreaseIndentButton
             // 
             this.standardIncreaseIndentButton.Enabled = false;
-            this.standardIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardIncreaseIndentButton.Location = new System.Drawing.Point(118, 48);
             this.standardIncreaseIndentButton.Name = "standardIncreaseIndentButton";
             this.standardIncreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -365,7 +365,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.standardSetIconLabel.AutoSize = true;
             this.standardSetIconLabel.Enabled = false;
-            this.standardSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardSetIconLabel.Location = new System.Drawing.Point(118, 24);
             this.standardSetIconLabel.Name = "standardSetIconLabel";
             this.standardSetIconLabel.Size = new System.Drawing.Size(50, 13);
@@ -375,7 +375,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardDecreaseIndentButton
             // 
             this.standardDecreaseIndentButton.Enabled = false;
-            this.standardDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardDecreaseIndentButton.Location = new System.Drawing.Point(6, 48);
             this.standardDecreaseIndentButton.Name = "standardDecreaseIndentButton";
             this.standardDecreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -388,7 +388,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.standardSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.standardSetIconComboBox.Enabled = false;
-            this.standardSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardSetIconComboBox.FormattingEnabled = true;
             this.standardSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -408,7 +408,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.standardMainGroupBox.Controls.Add(this.standardTasksTreeGridGroupBox);
             this.standardMainGroupBox.Controls.Add(this.standardReinitializeButton);
             this.standardMainGroupBox.Controls.Add(this.standardClearButton);
-            this.standardMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardMainGroupBox.Location = new System.Drawing.Point(6, 6);
             this.standardMainGroupBox.Name = "standardMainGroupBox";
             this.standardMainGroupBox.Size = new System.Drawing.Size(230, 301);
@@ -418,7 +418,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // standardPrintPreviewButton
             // 
-            this.standardPrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardPrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardPrintPreviewButton.Location = new System.Drawing.Point(118, 268);
             this.standardPrintPreviewButton.Name = "standardPrintPreviewButton";
             this.standardPrintPreviewButton.Size = new System.Drawing.Size(106, 23);
@@ -429,7 +429,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // standardPageSetupButton
             // 
-            this.standardPageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardPageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardPageSetupButton.Location = new System.Drawing.Point(6, 268);
             this.standardPageSetupButton.Name = "standardPageSetupButton";
             this.standardPageSetupButton.Size = new System.Drawing.Size(106, 23);
@@ -446,7 +446,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.standardGanttChartGroupBox.Controls.Add(this.standardCalendarComboBox);
             this.standardGanttChartGroupBox.Controls.Add(this.standardUpdateScaleComboBox);
             this.standardGanttChartGroupBox.Enabled = false;
-            this.standardGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardGanttChartGroupBox.Location = new System.Drawing.Point(6, 96);
             this.standardGanttChartGroupBox.Name = "standardGanttChartGroupBox";
             this.standardGanttChartGroupBox.Size = new System.Drawing.Size(218, 166);
@@ -457,7 +457,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardScaleComboBox
             // 
             this.standardScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardScaleComboBox.FormattingEnabled = true;
             this.standardScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -479,7 +479,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowExtraDaytimeCheckBox);
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowExtraDaysCheckBox);
             this.standardGanttChartShowGroupBox.Controls.Add(this.standardShowResourcesCheckBox);
-            this.standardGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardGanttChartShowGroupBox.Location = new System.Drawing.Point(9, 73);
             this.standardGanttChartShowGroupBox.Name = "standardGanttChartShowGroupBox";
             this.standardGanttChartShowGroupBox.Size = new System.Drawing.Size(202, 87);
@@ -556,7 +556,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardColorComboBox
             // 
             this.standardColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardColorComboBox.FormattingEnabled = true;
             this.standardColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -573,7 +573,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardCalendarComboBox
             // 
             this.standardCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardCalendarComboBox.FormattingEnabled = true;
             this.standardCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -587,7 +587,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardUpdateScaleComboBox
             // 
             this.standardUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.standardUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardUpdateScaleComboBox.FormattingEnabled = true;
             this.standardUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -605,7 +605,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.standardTasksTreeGridGroupBox.Controls.Add(this.standardFixedGridCheckBox);
             this.standardTasksTreeGridGroupBox.Controls.Add(this.standardShowGridCheckBox);
             this.standardTasksTreeGridGroupBox.Enabled = false;
-            this.standardTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardTasksTreeGridGroupBox.Location = new System.Drawing.Point(6, 48);
             this.standardTasksTreeGridGroupBox.Name = "standardTasksTreeGridGroupBox";
             this.standardTasksTreeGridGroupBox.Size = new System.Drawing.Size(218, 42);
@@ -616,7 +616,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardFixedGridCheckBox
             // 
             this.standardFixedGridCheckBox.AutoSize = true;
-            this.standardFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardFixedGridCheckBox.Location = new System.Drawing.Point(89, 19);
             this.standardFixedGridCheckBox.Name = "standardFixedGridCheckBox";
             this.standardFixedGridCheckBox.Size = new System.Drawing.Size(129, 17);
@@ -628,7 +628,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardShowGridCheckBox
             // 
             this.standardShowGridCheckBox.AutoSize = true;
-            this.standardShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardShowGridCheckBox.Location = new System.Drawing.Point(8, 19);
             this.standardShowGridCheckBox.Name = "standardShowGridCheckBox";
             this.standardShowGridCheckBox.Size = new System.Drawing.Size(75, 17);
@@ -639,7 +639,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // standardReinitializeButton
             // 
-            this.standardReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardReinitializeButton.Location = new System.Drawing.Point(6, 19);
             this.standardReinitializeButton.Name = "standardReinitializeButton";
             this.standardReinitializeButton.Size = new System.Drawing.Size(106, 23);
@@ -651,7 +651,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // standardClearButton
             // 
             this.standardClearButton.Enabled = false;
-            this.standardClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.standardClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.standardClearButton.Location = new System.Drawing.Point(118, 19);
             this.standardClearButton.Name = "standardClearButton";
             this.standardClearButton.Size = new System.Drawing.Size(106, 23);
@@ -693,7 +693,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableRowGroupBox.Controls.Add(this.dataTableIncreaseIndentButton);
             this.dataTableRowGroupBox.Controls.Add(this.dataTableDecreaseIndentButton);
             this.dataTableRowGroupBox.Controls.Add(this.dataTableExpandButton);
-            this.dataTableRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableRowGroupBox.Location = new System.Drawing.Point(6, 335);
             this.dataTableRowGroupBox.Name = "dataTableRowGroupBox";
             this.dataTableRowGroupBox.Size = new System.Drawing.Size(230, 207);
@@ -709,7 +709,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableMarkersGroupBox.Controls.Add(this.dataTableMarkerAddButton);
             this.dataTableMarkersGroupBox.Controls.Add(this.dataTableMarkerTypeComboBox);
             this.dataTableMarkersGroupBox.Enabled = false;
-            this.dataTableMarkersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableMarkersGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableMarkersGroupBox.Location = new System.Drawing.Point(6, 156);
             this.dataTableMarkersGroupBox.Name = "dataTableMarkersGroupBox";
             this.dataTableMarkersGroupBox.Size = new System.Drawing.Size(218, 46);
@@ -785,7 +785,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableInterruptionsGroupBox.Controls.Add(this.dataTableInterruptionsClearButton);
             this.dataTableInterruptionsGroupBox.Controls.Add(this.dataTableInterruptionAddButton);
             this.dataTableInterruptionsGroupBox.Enabled = false;
-            this.dataTableInterruptionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableInterruptionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableInterruptionsGroupBox.Location = new System.Drawing.Point(6, 104);
             this.dataTableInterruptionsGroupBox.Name = "dataTableInterruptionsGroupBox";
             this.dataTableInterruptionsGroupBox.Size = new System.Drawing.Size(218, 46);
@@ -881,7 +881,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.dataTableSetColorLabel.AutoSize = true;
             this.dataTableSetColorLabel.Enabled = false;
-            this.dataTableSetColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetColorLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetColorLabel.Location = new System.Drawing.Point(6, 80);
             this.dataTableSetColorLabel.Name = "dataTableSetColorLabel";
             this.dataTableSetColorLabel.Size = new System.Drawing.Size(53, 13);
@@ -892,7 +892,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.dataTableSetColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dataTableSetColorComboBox.Enabled = false;
-            this.dataTableSetColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetColorComboBox.FormattingEnabled = true;
             this.dataTableSetColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -910,7 +910,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.dataTableSetIconLabel.AutoSize = true;
             this.dataTableSetIconLabel.Enabled = false;
-            this.dataTableSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetIconLabel.Location = new System.Drawing.Point(118, 24);
             this.dataTableSetIconLabel.Name = "dataTableSetIconLabel";
             this.dataTableSetIconLabel.Size = new System.Drawing.Size(50, 13);
@@ -921,7 +921,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.dataTableSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dataTableSetIconComboBox.Enabled = false;
-            this.dataTableSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableSetIconComboBox.FormattingEnabled = true;
             this.dataTableSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -936,7 +936,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableIncreaseIndentButton
             // 
             this.dataTableIncreaseIndentButton.Enabled = false;
-            this.dataTableIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableIncreaseIndentButton.Location = new System.Drawing.Point(118, 48);
             this.dataTableIncreaseIndentButton.Name = "dataTableIncreaseIndentButton";
             this.dataTableIncreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -948,7 +948,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableDecreaseIndentButton
             // 
             this.dataTableDecreaseIndentButton.Enabled = false;
-            this.dataTableDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableDecreaseIndentButton.Location = new System.Drawing.Point(6, 48);
             this.dataTableDecreaseIndentButton.Name = "dataTableDecreaseIndentButton";
             this.dataTableDecreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -960,7 +960,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableExpandButton
             // 
             this.dataTableExpandButton.Enabled = false;
-            this.dataTableExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableExpandButton.Location = new System.Drawing.Point(6, 19);
             this.dataTableExpandButton.Name = "dataTableExpandButton";
             this.dataTableExpandButton.Size = new System.Drawing.Size(106, 23);
@@ -977,7 +977,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableMainGroupBox.Controls.Add(this.dataTableTasksTreeGridGroupBox);
             this.dataTableMainGroupBox.Controls.Add(this.dataTableReinitializeButton);
             this.dataTableMainGroupBox.Controls.Add(this.dataTableClearButton);
-            this.dataTableMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableMainGroupBox.Location = new System.Drawing.Point(6, 6);
             this.dataTableMainGroupBox.Name = "dataTableMainGroupBox";
             this.dataTableMainGroupBox.Size = new System.Drawing.Size(230, 323);
@@ -987,7 +987,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // dataTablePrintPreviewButton
             // 
-            this.dataTablePrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTablePrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTablePrintPreviewButton.Location = new System.Drawing.Point(118, 290);
             this.dataTablePrintPreviewButton.Name = "dataTablePrintPreviewButton";
             this.dataTablePrintPreviewButton.Size = new System.Drawing.Size(106, 23);
@@ -998,7 +998,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // dataTablePageSetupButton
             // 
-            this.dataTablePageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTablePageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTablePageSetupButton.Location = new System.Drawing.Point(6, 290);
             this.dataTablePageSetupButton.Name = "dataTablePageSetupButton";
             this.dataTablePageSetupButton.Size = new System.Drawing.Size(106, 23);
@@ -1015,7 +1015,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableGanttChartGroupBox.Controls.Add(this.dataTableCalendarComboBox);
             this.dataTableGanttChartGroupBox.Controls.Add(this.dataTableUpdateScaleComboBox);
             this.dataTableGanttChartGroupBox.Enabled = false;
-            this.dataTableGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableGanttChartGroupBox.Location = new System.Drawing.Point(6, 96);
             this.dataTableGanttChartGroupBox.Name = "dataTableGanttChartGroupBox";
             this.dataTableGanttChartGroupBox.Size = new System.Drawing.Size(218, 188);
@@ -1026,7 +1026,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableScaleComboBox
             // 
             this.dataTableScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableScaleComboBox.FormattingEnabled = true;
             this.dataTableScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -1051,7 +1051,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowResourcesCheckBox);
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowMarkersCheckBox);
             this.dataTableGanttChartShowGroupBox.Controls.Add(this.dataTableShowIconsCheckBox);
-            this.dataTableGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableGanttChartShowGroupBox.Location = new System.Drawing.Point(9, 73);
             this.dataTableGanttChartShowGroupBox.Name = "dataTableGanttChartShowGroupBox";
             this.dataTableGanttChartShowGroupBox.Size = new System.Drawing.Size(202, 109);
@@ -1161,7 +1161,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableColorComboBox
             // 
             this.dataTableColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableColorComboBox.FormattingEnabled = true;
             this.dataTableColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1178,7 +1178,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableCalendarComboBox
             // 
             this.dataTableCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableCalendarComboBox.FormattingEnabled = true;
             this.dataTableCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -1192,7 +1192,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableUpdateScaleComboBox
             // 
             this.dataTableUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataTableUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableUpdateScaleComboBox.FormattingEnabled = true;
             this.dataTableUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -1210,7 +1210,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.dataTableTasksTreeGridGroupBox.Controls.Add(this.dataTableFixedGridCheckBox);
             this.dataTableTasksTreeGridGroupBox.Controls.Add(this.dataTableShowGridCheckBox);
             this.dataTableTasksTreeGridGroupBox.Enabled = false;
-            this.dataTableTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableTasksTreeGridGroupBox.Location = new System.Drawing.Point(6, 48);
             this.dataTableTasksTreeGridGroupBox.Name = "dataTableTasksTreeGridGroupBox";
             this.dataTableTasksTreeGridGroupBox.Size = new System.Drawing.Size(218, 42);
@@ -1221,7 +1221,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableFixedGridCheckBox
             // 
             this.dataTableFixedGridCheckBox.AutoSize = true;
-            this.dataTableFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableFixedGridCheckBox.Location = new System.Drawing.Point(89, 19);
             this.dataTableFixedGridCheckBox.Name = "dataTableFixedGridCheckBox";
             this.dataTableFixedGridCheckBox.Size = new System.Drawing.Size(129, 17);
@@ -1233,7 +1233,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableShowGridCheckBox
             // 
             this.dataTableShowGridCheckBox.AutoSize = true;
-            this.dataTableShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableShowGridCheckBox.Location = new System.Drawing.Point(8, 19);
             this.dataTableShowGridCheckBox.Name = "dataTableShowGridCheckBox";
             this.dataTableShowGridCheckBox.Size = new System.Drawing.Size(75, 17);
@@ -1244,7 +1244,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // dataTableReinitializeButton
             // 
-            this.dataTableReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableReinitializeButton.Location = new System.Drawing.Point(6, 19);
             this.dataTableReinitializeButton.Name = "dataTableReinitializeButton";
             this.dataTableReinitializeButton.Size = new System.Drawing.Size(106, 23);
@@ -1256,7 +1256,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // dataTableClearButton
             // 
             this.dataTableClearButton.Enabled = false;
-            this.dataTableClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTableClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTableClearButton.Location = new System.Drawing.Point(118, 19);
             this.dataTableClearButton.Name = "dataTableClearButton";
             this.dataTableClearButton.Size = new System.Drawing.Size(106, 23);
@@ -1298,7 +1298,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsRowGroupBox.Controls.Add(this.objectsIncreaseIndentButton);
             this.objectsRowGroupBox.Controls.Add(this.objectsDecreaseIndentButton);
             this.objectsRowGroupBox.Controls.Add(this.objectsExpandButton);
-            this.objectsRowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsRowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsRowGroupBox.Location = new System.Drawing.Point(6, 335);
             this.objectsRowGroupBox.Name = "objectsRowGroupBox";
             this.objectsRowGroupBox.Size = new System.Drawing.Size(230, 207);
@@ -1314,7 +1314,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsMarkersGroupBox.Controls.Add(this.objectsMarkerAddButton);
             this.objectsMarkersGroupBox.Controls.Add(this.objectsMarkerTypeComboBox);
             this.objectsMarkersGroupBox.Enabled = false;
-            this.objectsMarkersGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsMarkersGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsMarkersGroupBox.Location = new System.Drawing.Point(6, 156);
             this.objectsMarkersGroupBox.Name = "objectsMarkersGroupBox";
             this.objectsMarkersGroupBox.Size = new System.Drawing.Size(218, 46);
@@ -1390,7 +1390,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsInterruptionsGroupBox.Controls.Add(this.objectsInterruptionsClear);
             this.objectsInterruptionsGroupBox.Controls.Add(this.objectsInterruptionAddButton);
             this.objectsInterruptionsGroupBox.Enabled = false;
-            this.objectsInterruptionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsInterruptionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsInterruptionsGroupBox.Location = new System.Drawing.Point(6, 104);
             this.objectsInterruptionsGroupBox.Name = "objectsInterruptionsGroupBox";
             this.objectsInterruptionsGroupBox.Size = new System.Drawing.Size(218, 46);
@@ -1486,7 +1486,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.objectsSetColorLabel.AutoSize = true;
             this.objectsSetColorLabel.Enabled = false;
-            this.objectsSetColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetColorLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetColorLabel.Location = new System.Drawing.Point(6, 80);
             this.objectsSetColorLabel.Name = "objectsSetColorLabel";
             this.objectsSetColorLabel.Size = new System.Drawing.Size(53, 13);
@@ -1497,7 +1497,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.objectsSetIconLabel.AutoSize = true;
             this.objectsSetIconLabel.Enabled = false;
-            this.objectsSetIconLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetIconLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetIconLabel.Location = new System.Drawing.Point(118, 24);
             this.objectsSetIconLabel.Name = "objectsSetIconLabel";
             this.objectsSetIconLabel.Size = new System.Drawing.Size(50, 13);
@@ -1508,7 +1508,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.objectsSetColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.objectsSetColorComboBox.Enabled = false;
-            this.objectsSetColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetColorComboBox.FormattingEnabled = true;
             this.objectsSetColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1526,7 +1526,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             this.objectsSetIconComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.objectsSetIconComboBox.Enabled = false;
-            this.objectsSetIconComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsSetIconComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsSetIconComboBox.FormattingEnabled = true;
             this.objectsSetIconComboBox.Items.AddRange(new object[] {
             "Task",
@@ -1541,7 +1541,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsIncreaseIndentButton
             // 
             this.objectsIncreaseIndentButton.Enabled = false;
-            this.objectsIncreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsIncreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsIncreaseIndentButton.Location = new System.Drawing.Point(118, 48);
             this.objectsIncreaseIndentButton.Name = "objectsIncreaseIndentButton";
             this.objectsIncreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -1553,7 +1553,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsDecreaseIndentButton
             // 
             this.objectsDecreaseIndentButton.Enabled = false;
-            this.objectsDecreaseIndentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsDecreaseIndentButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsDecreaseIndentButton.Location = new System.Drawing.Point(6, 48);
             this.objectsDecreaseIndentButton.Name = "objectsDecreaseIndentButton";
             this.objectsDecreaseIndentButton.Size = new System.Drawing.Size(106, 23);
@@ -1565,7 +1565,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsExpandButton
             // 
             this.objectsExpandButton.Enabled = false;
-            this.objectsExpandButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsExpandButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsExpandButton.Location = new System.Drawing.Point(6, 19);
             this.objectsExpandButton.Name = "objectsExpandButton";
             this.objectsExpandButton.Size = new System.Drawing.Size(106, 23);
@@ -1582,7 +1582,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsMainGroupBox.Controls.Add(this.objectsTasksTreeGridGroupBox);
             this.objectsMainGroupBox.Controls.Add(this.objectsReinitializeButton);
             this.objectsMainGroupBox.Controls.Add(this.objectsClearButton);
-            this.objectsMainGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsMainGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsMainGroupBox.Location = new System.Drawing.Point(6, 6);
             this.objectsMainGroupBox.Name = "objectsMainGroupBox";
             this.objectsMainGroupBox.Size = new System.Drawing.Size(230, 323);
@@ -1592,7 +1592,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // objectsPrintPreviewButton
             // 
-            this.objectsPrintPreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsPrintPreviewButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsPrintPreviewButton.Location = new System.Drawing.Point(118, 290);
             this.objectsPrintPreviewButton.Name = "objectsPrintPreviewButton";
             this.objectsPrintPreviewButton.Size = new System.Drawing.Size(106, 23);
@@ -1603,7 +1603,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // objectsPageSetupButton
             // 
-            this.objectsPageSetupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsPageSetupButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsPageSetupButton.Location = new System.Drawing.Point(6, 290);
             this.objectsPageSetupButton.Name = "objectsPageSetupButton";
             this.objectsPageSetupButton.Size = new System.Drawing.Size(106, 23);
@@ -1620,7 +1620,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsGanttChartGroupBox.Controls.Add(this.objectsCalendarComboBox);
             this.objectsGanttChartGroupBox.Controls.Add(this.objectsUpdateScaleComboBox);
             this.objectsGanttChartGroupBox.Enabled = false;
-            this.objectsGanttChartGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsGanttChartGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsGanttChartGroupBox.Location = new System.Drawing.Point(6, 96);
             this.objectsGanttChartGroupBox.Name = "objectsGanttChartGroupBox";
             this.objectsGanttChartGroupBox.Size = new System.Drawing.Size(218, 188);
@@ -1631,7 +1631,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsScaleComboBox
             // 
             this.objectsScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsScaleComboBox.FormattingEnabled = true;
             this.objectsScaleComboBox.Items.AddRange(new object[] {
             "Days/Hours",
@@ -1656,7 +1656,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowResourcesCheckBox);
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowMarkersCheckBox);
             this.objectsGanttChartShowGroupBox.Controls.Add(this.objectsShowIconsCheckBox);
-            this.objectsGanttChartShowGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsGanttChartShowGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsGanttChartShowGroupBox.Location = new System.Drawing.Point(9, 73);
             this.objectsGanttChartShowGroupBox.Name = "objectsGanttChartShowGroupBox";
             this.objectsGanttChartShowGroupBox.Size = new System.Drawing.Size(202, 109);
@@ -1766,7 +1766,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsColorComboBox
             // 
             this.objectsColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsColorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsColorComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsColorComboBox.FormattingEnabled = true;
             this.objectsColorComboBox.Items.AddRange(new object[] {
             "Blue (Gradient)",
@@ -1783,7 +1783,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsCalendarComboBox
             // 
             this.objectsCalendarComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsCalendarComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsCalendarComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsCalendarComboBox.FormattingEnabled = true;
             this.objectsCalendarComboBox.Items.AddRange(new object[] {
             "Mon-Fri 8h",
@@ -1797,7 +1797,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsUpdateScaleComboBox
             // 
             this.objectsUpdateScaleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.objectsUpdateScaleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsUpdateScaleComboBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsUpdateScaleComboBox.FormattingEnabled = true;
             this.objectsUpdateScaleComboBox.Items.AddRange(new object[] {
             "Hours Update",
@@ -1815,7 +1815,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.objectsTasksTreeGridGroupBox.Controls.Add(this.objectsFixedGridCheckBox);
             this.objectsTasksTreeGridGroupBox.Controls.Add(this.objectsShowGridCheckBox);
             this.objectsTasksTreeGridGroupBox.Enabled = false;
-            this.objectsTasksTreeGridGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsTasksTreeGridGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsTasksTreeGridGroupBox.Location = new System.Drawing.Point(6, 48);
             this.objectsTasksTreeGridGroupBox.Name = "objectsTasksTreeGridGroupBox";
             this.objectsTasksTreeGridGroupBox.Size = new System.Drawing.Size(218, 42);
@@ -1826,7 +1826,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsFixedGridCheckBox
             // 
             this.objectsFixedGridCheckBox.AutoSize = true;
-            this.objectsFixedGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsFixedGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsFixedGridCheckBox.Location = new System.Drawing.Point(89, 19);
             this.objectsFixedGridCheckBox.Name = "objectsFixedGridCheckBox";
             this.objectsFixedGridCheckBox.Size = new System.Drawing.Size(129, 17);
@@ -1838,7 +1838,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsShowGridCheckBox
             // 
             this.objectsShowGridCheckBox.AutoSize = true;
-            this.objectsShowGridCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsShowGridCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsShowGridCheckBox.Location = new System.Drawing.Point(8, 19);
             this.objectsShowGridCheckBox.Name = "objectsShowGridCheckBox";
             this.objectsShowGridCheckBox.Size = new System.Drawing.Size(75, 17);
@@ -1849,7 +1849,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // 
             // objectsReinitializeButton
             // 
-            this.objectsReinitializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsReinitializeButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsReinitializeButton.Location = new System.Drawing.Point(6, 19);
             this.objectsReinitializeButton.Name = "objectsReinitializeButton";
             this.objectsReinitializeButton.Size = new System.Drawing.Size(106, 23);
@@ -1861,7 +1861,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             // objectsClearButton
             // 
             this.objectsClearButton.Enabled = false;
-            this.objectsClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.objectsClearButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.objectsClearButton.Location = new System.Drawing.Point(118, 19);
             this.objectsClearButton.Name = "objectsClearButton";
             this.objectsClearButton.Size = new System.Drawing.Size(106, 23);
@@ -1953,7 +1953,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.ganttChartViewTasksTreeGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1978,7 +1978,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.ganttChartViewTasksTreeGrid.CompletedWorkMember = "CompletedWork";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1996,7 +1996,7 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             this.ganttChartViewTasksTreeGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

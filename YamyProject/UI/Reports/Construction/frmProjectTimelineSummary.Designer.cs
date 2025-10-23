@@ -49,7 +49,7 @@
             // 
             // headerUC1
             // 
-            this.headerUC1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
@@ -60,35 +60,35 @@
             // 
             // gunaChart1
             // 
-            chartFont1.FontName = "Arial";
+            chartFont1.FontName = "Segoe UI";
             this.gunaChart1.Legend.LabelFont = chartFont1;
             this.gunaChart1.Location = new System.Drawing.Point(23, 55);
             this.gunaChart1.Name = "gunaChart1";
             this.gunaChart1.Size = new System.Drawing.Size(1220, 654);
             this.gunaChart1.TabIndex = 2;
-            chartFont2.FontName = "Arial";
+            chartFont2.FontName = "Segoe UI";
             chartFont2.Size = 12;
             chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
             this.gunaChart1.Title.Font = chartFont2;
-            chartFont3.FontName = "Arial";
+            chartFont3.FontName = "Segoe UI";
             this.gunaChart1.Tooltips.BodyFont = chartFont3;
-            chartFont4.FontName = "Arial";
+            chartFont4.FontName = "Segoe UI";
             chartFont4.Size = 9;
             chartFont4.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
             this.gunaChart1.Tooltips.TitleFont = chartFont4;
             this.gunaChart1.XAxes.GridLines = grid1;
-            chartFont5.FontName = "Arial";
+            chartFont5.FontName = "Segoe UI";
             tick1.Font = chartFont5;
             this.gunaChart1.XAxes.Ticks = tick1;
             this.gunaChart1.YAxes.GridLines = grid2;
-            chartFont6.FontName = "Arial";
+            chartFont6.FontName = "Segoe UI";
             tick2.Font = chartFont6;
             this.gunaChart1.YAxes.Ticks = tick2;
             this.gunaChart1.ZAxes.GridLines = grid3;
-            chartFont7.FontName = "Arial";
+            chartFont7.FontName = "Segoe UI";
             pointLabel1.Font = chartFont7;
             this.gunaChart1.ZAxes.PointLabels = pointLabel1;
-            chartFont8.FontName = "Arial";
+            chartFont8.FontName = "Segoe UI";
             tick3.Font = chartFont8;
             this.gunaChart1.ZAxes.Ticks = tick3;
             // 

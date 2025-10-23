@@ -589,7 +589,7 @@
             this.flowLayoutPanel1.Controls.Add(this.guna2TileButton11);
             this.flowLayoutPanel1.Controls.Add(this.btndelete);
             this.flowLayoutPanel1.Controls.Add(this.btnEnter);
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(686, 410);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(401, 118);
@@ -925,6 +925,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.BorderRadius = 5;
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -947,6 +948,7 @@
             // frmRMSPOS
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1087, 632);
             this.Controls.Add(this.guna2DataGridView1);
             this.Controls.Add(this.label6);

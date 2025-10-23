@@ -13,7 +13,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -194,7 +194,7 @@ namespace YamyProject
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindVat();
-            LbHeader.Text = "Vat Report ( "+cmbType.Text+" )";
+            headerUC1.FormText = "Vat Report ( "+cmbType.Text+" )";
         }
 
         private void BindTypes(string text)

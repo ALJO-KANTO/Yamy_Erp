@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterAttendanceSheet));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,16 +45,15 @@
             this.btnUpload = new Guna.UI2.WinForms.Guna2Button();
             this.DownloadExcelSheet = new Guna.UI2.WinForms.Guna2Button();
             this.pnlData = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.cmbSheet = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dgvdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendance)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlData.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
@@ -99,15 +96,15 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.BorderRadius = 5;
             this.btnSave.BorderThickness = 3;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1041, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -119,6 +116,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 544);
@@ -148,7 +146,7 @@
             this.dgvAttendance.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -158,7 +156,7 @@
             this.dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -186,14 +184,14 @@
             this.dgvAttendance.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAttendance.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvAttendance.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAttendance.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvAttendance.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvAttendance.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvAttendance.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvAttendance.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvAttendance.ThemeStyle.ReadOnly = true;
             this.dgvAttendance.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAttendance.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvAttendance.ThemeStyle.RowsStyle.Height = 30;
             this.dgvAttendance.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -201,6 +199,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 472);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -232,7 +231,7 @@
             this.btnAttendanceReport.FillColor = System.Drawing.Color.Transparent;
             this.btnAttendanceReport.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAttendanceReport.ForeColor = System.Drawing.Color.Black;
-            this.btnAttendanceReport.Image = global::YamyProject.Properties.Resources.Invoice2;
+            this.btnAttendanceReport.Image = global::YamyProject.Properties.Resources.check_list;
             this.btnAttendanceReport.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAttendanceReport.Location = new System.Drawing.Point(541, 8);
             this.btnAttendanceReport.Name = "btnAttendanceReport";
@@ -253,7 +252,7 @@
             this.btnAddManualAttendance.FillColor = System.Drawing.Color.Transparent;
             this.btnAddManualAttendance.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddManualAttendance.ForeColor = System.Drawing.Color.Black;
-            this.btnAddManualAttendance.Image = global::YamyProject.Properties.Resources.Invoice1;
+            this.btnAddManualAttendance.Image = global::YamyProject.Properties.Resources.add_fileN;
             this.btnAddManualAttendance.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAddManualAttendance.Location = new System.Drawing.Point(369, 8);
             this.btnAddManualAttendance.Name = "btnAddManualAttendance";
@@ -274,7 +273,7 @@
             this.btnUpload.FillColor = System.Drawing.Color.Transparent;
             this.btnUpload.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.Color.Black;
-            this.btnUpload.Image = ((System.Drawing.Image)(resources.GetObject("btnUpload.Image")));
+            this.btnUpload.Image = global::YamyProject.Properties.Resources.file_upload;
             this.btnUpload.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUpload.Location = new System.Drawing.Point(199, 8);
             this.btnUpload.Name = "btnUpload";
@@ -295,7 +294,7 @@
             this.DownloadExcelSheet.FillColor = System.Drawing.Color.Transparent;
             this.DownloadExcelSheet.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DownloadExcelSheet.ForeColor = System.Drawing.Color.Black;
-            this.DownloadExcelSheet.Image = ((System.Drawing.Image)(resources.GetObject("DownloadExcelSheet.Image")));
+            this.DownloadExcelSheet.Image = global::YamyProject.Properties.Resources.excel___Copy;
             this.DownloadExcelSheet.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.DownloadExcelSheet.Location = new System.Drawing.Point(8, 8);
             this.DownloadExcelSheet.Name = "DownloadExcelSheet";
@@ -308,7 +307,7 @@
             // pnlData
             // 
             this.pnlData.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlData.Controls.Add(this.panel6);
+            this.pnlData.Controls.Add(this.headerUC1);
             this.pnlData.Controls.Add(this.cmbSheet);
             this.pnlData.Controls.Add(this.lblName);
             this.pnlData.Controls.Add(this.label3);
@@ -322,31 +321,91 @@
             this.pnlData.TabIndex = 11;
             this.pnlData.Visible = false;
             // 
-            // panel6
+            // headerUC1
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel6.Controls.Add(this.guna2HtmlLabel2);
-            this.panel6.Controls.Add(this.guna2Button2);
-            this.panel6.Controls.Add(this.guna2ControlBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1188, 23);
-            this.panel6.TabIndex = 123;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1188, 37);
+            this.headerUC1.TabIndex = 238;
             // 
-            // guna2HtmlLabel2
+            // cmbSheet
             // 
-            this.guna2HtmlLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(538, 5);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(3, 2);
-            this.guna2HtmlLabel2.TabIndex = 22;
-            this.guna2HtmlLabel2.Text = null;
-            this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cmbSheet.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSheet.BorderRadius = 5;
+            this.cmbSheet.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSheet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSheet.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbSheet.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbSheet.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbSheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbSheet.ItemHeight = 18;
+            this.cmbSheet.Items.AddRange(new object[] {
+            "Sheet1"});
+            this.cmbSheet.Location = new System.Drawing.Point(61, 64);
+            this.cmbSheet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbSheet.Name = "cmbSheet";
+            this.cmbSheet.Size = new System.Drawing.Size(189, 24);
+            this.cmbSheet.TabIndex = 121;
+            this.cmbSheet.SelectedIndexChanged += new System.EventHandler(this.cmbSheet_SelectedIndexChanged);
+            // 
+            // lblName
+            // 
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblName.ForeColor = System.Drawing.Color.Black;
+            this.lblName.Location = new System.Drawing.Point(596, 67);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(296, 20);
+            this.lblName.TabIndex = 120;
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(467, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 20);
+            this.label3.TabIndex = 120;
+            this.label3.Text = "Employee Name ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCode
+            // 
+            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCode.ForeColor = System.Drawing.Color.Black;
+            this.lblCode.Location = new System.Drawing.Point(399, 67);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(63, 20);
+            this.lblCode.TabIndex = 120;
+            this.lblCode.Text = "0000";
+            this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(270, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.TabIndex = 120;
+            this.label1.Text = "Employee Code";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(12, 70);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 15);
+            this.label9.TabIndex = 120;
+            this.label9.Text = "Sheet";
             // 
             // guna2Button2
             // 
@@ -377,80 +436,6 @@
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // cmbSheet
-            // 
-            this.cmbSheet.BackColor = System.Drawing.Color.Transparent;
-            this.cmbSheet.BorderRadius = 5;
-            this.cmbSheet.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbSheet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSheet.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbSheet.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbSheet.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbSheet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbSheet.ItemHeight = 18;
-            this.cmbSheet.Items.AddRange(new object[] {
-            "Sheet1"});
-            this.cmbSheet.Location = new System.Drawing.Point(61, 64);
-            this.cmbSheet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbSheet.Name = "cmbSheet";
-            this.cmbSheet.Size = new System.Drawing.Size(189, 24);
-            this.cmbSheet.TabIndex = 121;
-            this.cmbSheet.SelectedIndexChanged += new System.EventHandler(this.cmbSheet_SelectedIndexChanged);
-            // 
-            // lblName
-            // 
-            this.lblName.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.lblName.ForeColor = System.Drawing.Color.Black;
-            this.lblName.Location = new System.Drawing.Point(596, 67);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(296, 20);
-            this.lblName.TabIndex = 120;
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(467, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 20);
-            this.label3.TabIndex = 120;
-            this.label3.Text = "Employee Name ";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCode
-            // 
-            this.lblCode.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCode.ForeColor = System.Drawing.Color.Black;
-            this.lblCode.Location = new System.Drawing.Point(399, 67);
-            this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(63, 20);
-            this.lblCode.TabIndex = 120;
-            this.lblCode.Text = "0000";
-            this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(270, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
-            this.label1.TabIndex = 120;
-            this.label1.Text = "Employee Code";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(12, 70);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 15);
-            this.label9.TabIndex = 120;
-            this.label9.Text = "Sheet";
             // 
             // panel5
             // 
@@ -605,7 +590,7 @@
             this.guna2NumericUpDown1.Name = "guna2NumericUpDown1";
             this.guna2NumericUpDown1.Size = new System.Drawing.Size(86, 24);
             this.guna2NumericUpDown1.TabIndex = 0;
-            this.guna2NumericUpDown1.UpDownButtonFillColor = System.Drawing.Color.RoyalBlue;
+            this.guna2NumericUpDown1.UpDownButtonFillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2NumericUpDown1.Value = new decimal(new int[] {
             2025,
             0,
@@ -667,15 +652,15 @@
             // 
             // guna2Button3
             // 
-            this.guna2Button3.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.guna2Button3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button3.BorderRadius = 5;
             this.guna2Button3.BorderThickness = 3;
             this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Button3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = global::YamyProject.Properties.Resources.Search1;
             this.guna2Button3.Location = new System.Drawing.Point(697, 10);
@@ -774,7 +759,7 @@
             // 
             // lblEmployeeCode
             // 
-            this.lblEmployeeCode.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.lblEmployeeCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblEmployeeCode.ForeColor = System.Drawing.Color.Black;
             this.lblEmployeeCode.Location = new System.Drawing.Point(514, 6);
             this.lblEmployeeCode.Name = "lblEmployeeCode";
@@ -881,8 +866,6 @@
             this.panel2.ResumeLayout(false);
             this.pnlData.ResumeLayout(false);
             this.pnlData.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
@@ -939,9 +922,8 @@
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2ComboBox cmbEmployees;
-        private System.Windows.Forms.Panel panel6;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
     }
 }

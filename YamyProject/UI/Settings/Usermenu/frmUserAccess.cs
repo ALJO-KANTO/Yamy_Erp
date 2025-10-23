@@ -29,7 +29,7 @@ namespace YamyProject
             EventHub.User += UserUpdatedHandler;
             EventHub.PurchaseInv += InvoiceUpdatedHandler;
             EventHub.PaymentVoucher += PaymentVoucherHandler;
-            guna2HtmlLabel2.Text = "Access User Control";
+            headerUC1.FormText = "Access User Control";
             table = DBClass.ExecuteDataTable("SELECT a.id AS main_id,a.name AS main_name,b.id AS sub_id,b.name AS sub_name from tbl_main_menus a,tbl_sub_menus b WHERE a.id=b.m_id;");
         }
         private void frmUserAccess_FormClosing(object sender, FormClosingEventArgs e)
@@ -484,7 +484,23 @@ namespace YamyProject
                 {
                     CBRestoreCompany.Checked = Convert.ToBoolean(row["can_view"]);
                 }
-
+                else if (sub_menu.Equals("Project DashBoard", StringComparison.OrdinalIgnoreCase))
+                {
+                    CBProjectDashBoard.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("Project Tender", StringComparison.OrdinalIgnoreCase))
+                {
+                    CBProjectTender.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("Project Estimate", StringComparison.OrdinalIgnoreCase))
+                {
+                    CBProjectEstimate.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("Project Planning", StringComparison.OrdinalIgnoreCase))
+                {
+                    CBProjectPlanning.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                // CBProjectDashBoard.Checked && CBProjectTender.Checked && CBProjectEstimate.Checked && CBProjectPlanning
             }
 
             if (CBChartofaccount.Checked && CBCostCenter.Checked && CBTransactionsJ.Checked && CBFixedAssets.Checked && CBVouchers.Checked && CBPrepaid.Checked && CBPetty.Checked)
@@ -3219,21 +3235,38 @@ namespace YamyProject
         private void CBProjectDashBoard_Click(object sender, EventArgs e)
         {
 
+            updateOrEditData(
+             subMenuId: subMenuId("Project DashBoard"),
+             canView: CBProjectDashBoard.Checked,
+             canEdit: false,
+             canDelete: false);
         }
 
         private void CBProjectTender_Click(object sender, EventArgs e)
         {
-
+            updateOrEditData(
+             subMenuId: subMenuId("Project Tender"),
+             canView: CBProjectTender.Checked,
+             canEdit: false,
+             canDelete: false);
         }
 
         private void CBProjectEstimate_Click(object sender, EventArgs e)
         {
-
+            updateOrEditData(
+             subMenuId: subMenuId("Project Estimate"),
+             canView: CBProjectEstimate.Checked,
+             canEdit: false,
+             canDelete: false);
         }
 
         private void CBProjectPlanning_Click(object sender, EventArgs e)
         {
-
+            updateOrEditData(
+             subMenuId: subMenuId("Project Planning"),
+             canView: CBProjectPlanning.Checked,
+             canEdit: false,
+             canDelete: false);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

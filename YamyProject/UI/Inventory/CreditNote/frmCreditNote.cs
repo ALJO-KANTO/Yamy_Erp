@@ -5,6 +5,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -27,7 +28,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             this.id = id;
-            guna2HtmlLabel2.Text = id == 0 ? "Credit Note - New" : "Credit Note - Edit";
+            headerUC1.FormText = id == 0 ? "Credit Note - New" : "Credit Note - Edit";
         }
      
         private void btnClose_Click(object sender, EventArgs e)
@@ -257,7 +258,16 @@ namespace YamyProject
                     decimal _amount = row.Cells["amount"].Value == DBNull.Value ? 0 : Convert.ToDecimal(row.Cells["amount"].Value);
                     decimal _vat = row.Cells["vat"].Value == DBNull.Value ? 0 : Convert.ToDecimal(row.Cells["vat"].Value);
                     string _type = "SALES";
-                    DateTime _invDate = DateTime.Parse(row.Cells["inv_dated"].Value.ToString());
+                    string dateStr = row.Cells["inv_dated"].Value?.ToString().Trim();
+                    DateTime _invDate;
+
+                    if (DateTime.TryParseExact(dateStr, "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture, DateTimeStyles.None, out _invDate))
+                    {
+                        //
+                    }
+                    //DateTime _invDate = DateTime.Parse(row.Cells["inv_dated"].Value.ToString()+"00:00:000");
+
                     string _invNo = row.Cells["invoice_no"].Value.ToString();
                     string _balance = row.Cells["balance"].Value.ToString();
                     string _remaining = row.Cells["remaining"].Value.ToString();

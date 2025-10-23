@@ -39,10 +39,9 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.Lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +52,6 @@
             this.transferHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +69,7 @@
             this.dgvCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -81,7 +79,7 @@
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -96,7 +94,7 @@
             this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -115,14 +113,14 @@
             this.dgvCustomer.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvCustomer.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvCustomer.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.dgvCustomer.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvCustomer.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvCustomer.ThemeStyle.HeaderStyle.Height = 30;
             this.dgvCustomer.ThemeStyle.ReadOnly = true;
             this.dgvCustomer.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvCustomer.ThemeStyle.RowsStyle.Height = 30;
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -145,7 +143,7 @@
             this.cmbWarehouse.Location = new System.Drawing.Point(747, 4);
             this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(285, 26);
+            this.cmbWarehouse.Size = new System.Drawing.Size(285, 24);
             this.cmbWarehouse.TabIndex = 6;
             this.cmbWarehouse.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -173,7 +171,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 600);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
@@ -183,7 +181,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1038, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
@@ -193,7 +191,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
@@ -201,17 +199,17 @@
             this.panel7.Size = new System.Drawing.Size(2, 602);
             this.panel7.TabIndex = 12;
             // 
-            // panel9
+            // headerUC1
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.panel9.Controls.Add(this.guna2Button3);
-            this.panel9.Controls.Add(this.guna2ControlBox1);
-            this.panel9.Controls.Add(this.Lbheader);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(2, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1036, 23);
-            this.panel9.TabIndex = 19;
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(498, 37);
+            this.headerUC1.TabIndex = 238;
             // 
             // guna2Button3
             // 
@@ -243,21 +241,6 @@
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
-            // 
-            // Lbheader
-            // 
-            this.Lbheader.AutoSize = false;
-            this.Lbheader.BackColor = System.Drawing.Color.Transparent;
-            this.Lbheader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Lbheader.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbheader.ForeColor = System.Drawing.Color.White;
-            this.Lbheader.Location = new System.Drawing.Point(0, 0);
-            this.Lbheader.Name = "Lbheader";
-            this.Lbheader.Size = new System.Drawing.Size(1036, 22);
-            this.Lbheader.TabIndex = 19;
-            this.Lbheader.Text = null;
-            this.Lbheader.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.Lbheader.Click += new System.EventHandler(this.Lbheader_Click);
             // 
             // panel4
             // 
@@ -294,7 +277,7 @@
             this.nToolStripMenuItem,
             this.editCustomerToolStripMenuItem1,
             this.deleteCustomerToolStripMenuItem});
-            this.newCustomerToolStripMenuItem.Image = global::YamyProject.Properties.Resources.Customer2;
+            this.newCustomerToolStripMenuItem.Image = global::YamyProject.Properties.Resources.userN;
             this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
             this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(173, 29);
             this.newCustomerToolStripMenuItem.Text = "Warehouse Operations   ▼";
@@ -302,27 +285,27 @@
             // nToolStripMenuItem
             // 
             this.nToolStripMenuItem.Name = "nToolStripMenuItem";
-            this.nToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.nToolStripMenuItem.Text = "New Warehouse";
             this.nToolStripMenuItem.Click += new System.EventHandler(this.nToolStripMenuItem_Click);
             // 
             // editCustomerToolStripMenuItem1
             // 
             this.editCustomerToolStripMenuItem1.Name = "editCustomerToolStripMenuItem1";
-            this.editCustomerToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editCustomerToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
             this.editCustomerToolStripMenuItem1.Text = "Edit Warehouse";
             this.editCustomerToolStripMenuItem1.Click += new System.EventHandler(this.editCustomerToolStripMenuItem1_Click);
             // 
             // deleteCustomerToolStripMenuItem
             // 
             this.deleteCustomerToolStripMenuItem.Name = "deleteCustomerToolStripMenuItem";
-            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteCustomerToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.deleteCustomerToolStripMenuItem.Text = "Delete Warehouse";
             this.deleteCustomerToolStripMenuItem.Click += new System.EventHandler(this.deleteCustomerToolStripMenuItem_Click);
             // 
             // newTransactionToolStripMenuItem
             // 
-            this.newTransactionToolStripMenuItem.Image = global::YamyProject.Properties.Resources.Exchange;
+            this.newTransactionToolStripMenuItem.Image = global::YamyProject.Properties.Resources.deilvery_handcart;
             this.newTransactionToolStripMenuItem.Name = "newTransactionToolStripMenuItem";
             this.newTransactionToolStripMenuItem.Size = new System.Drawing.Size(108, 29);
             this.newTransactionToolStripMenuItem.Text = "Transfer Items";
@@ -330,7 +313,7 @@
             // 
             // transferHistoryToolStripMenuItem
             // 
-            this.transferHistoryToolStripMenuItem.Image = global::YamyProject.Properties.Resources._2;
+            this.transferHistoryToolStripMenuItem.Image = global::YamyProject.Properties.Resources.findN;
             this.transferHistoryToolStripMenuItem.Name = "transferHistoryToolStripMenuItem";
             this.transferHistoryToolStripMenuItem.Size = new System.Drawing.Size(117, 29);
             this.transferHistoryToolStripMenuItem.Text = "Transfer History";
@@ -345,7 +328,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -358,7 +341,6 @@
             this.Load += new System.EventHandler(this.MasterWarehouse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -375,10 +357,9 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel9;
+        private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel Lbheader;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newCustomerToolStripMenuItem;

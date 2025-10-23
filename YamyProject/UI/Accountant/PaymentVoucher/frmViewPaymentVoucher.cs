@@ -24,7 +24,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            guna2HtmlLabel2.Text = id == 0 ? "Payment Voucher - New" : "Payment Voucher - Edit";
+            headerUC1.FormText = this.Text;
 
             this.defaultCustomerId = _customerId;
             this.isSubContractors = _isSubContractors;
@@ -170,13 +170,13 @@ namespace YamyProject
                     string humId = reader["hum_id"].ToString();
                     cmbVendor.SelectedValue = int.Parse(humId);
                     string vType = reader["voucher_type"].ToString();
-                    if (vType.StartsWith("Petty Cash"))
-                    {
-                        cbpettycash.Enabled = true;
-                        cbpettycash.Checked = true;
-                        cbpettycash.Visible = true;
-                        lstOfEmp.Enabled = true;
-                    }
+                    //if (vType.StartsWith("Petty Cash"))
+                    //{
+                    //    cbpettycash.Enabled = true;
+                    //    cbpettycash.Checked = true;
+                    //    cbpettycash.Visible = true;
+                    //    lstOfEmp.Enabled = true;
+                    //}
                     string _refId = (cmbPaymentType.Text == "Employee" ? reader["hum_id"].ToString() : cmbPaymentType.Text == "General" ? reader["hum_id"].ToString() : reader["inv_id"].ToString());
                     using (MySqlDataReader drSale = DBClass.ExecuteReader(query,
                         DBClass.CreateParameter("id", _refId)))
@@ -584,20 +584,20 @@ namespace YamyProject
                 }
                 else if (cmbPaymentType.Text == "General")
                 {
-                    // Petty Cash Pay
-                    if (dgvInv.Rows[i].Cells["voucherType"].Value != null &&
-                        dgvInv.Rows[i].Cells["voucherType"].Value.ToString() == "Petty Cash Request")
-                    {
-                        int requestId = int.Parse(dgvInv.Rows[i].Cells["invId"].Value.ToString());
-                        if (cbpettycash.Checked)
-                        {
-                            DBClass.ExecuteNonQuery(
-                            "UPDATE tbl_petty_cash_request SET pay = pay + @pay, `change` = @change WHERE id = @id",
-                            DBClass.CreateParameter("pay", payment),
-                            DBClass.CreateParameter("change", change),
-                            DBClass.CreateParameter("id", requestId));
-                        }
-                    }
+                    //// Petty Cash Pay
+                    //if (dgvInv.Rows[i].Cells["voucherType"].Value != null &&
+                    //    dgvInv.Rows[i].Cells["voucherType"].Value.ToString() == "Petty Cash Request")
+                    //{
+                    //    int requestId = int.Parse(dgvInv.Rows[i].Cells["invId"].Value.ToString());
+                    //    if (cbpettycash.Checked)
+                    //    {
+                    //        DBClass.ExecuteNonQuery(
+                    //        "UPDATE tbl_petty_cash_request SET pay = pay + @pay, `change` = @change WHERE id = @id",
+                    //        DBClass.CreateParameter("pay", payment),
+                    //        DBClass.CreateParameter("change", change),
+                    //        DBClass.CreateParameter("id", requestId));
+                    //    }
+                    //}
                 }
                 insertJournals(cmbPaymentType.Text.ToString(), voucherType, payment, description);
             }
@@ -662,7 +662,7 @@ namespace YamyProject
                         }
                     }
 
-                cbpettycash.Visible = false;
+                //cbpettycash.Visible = false;
             }
             else if (cmbPaymentType.Text == "Employee")
             {
@@ -680,14 +680,14 @@ namespace YamyProject
                             cmbDebitAccountName.SelectedValue = int.Parse(accountId);
                         }
                     }
-                cbpettycash.Visible = false;
+                //cbpettycash.Visible = false;
 
             }
             if (cmbPaymentType.Text == "General")
             {
                 pnlCustomer.Visible = lstOfEmp.Visible = false;
                 txtAmount.Enabled = true;
-                cbpettycash.Visible = true;
+                //cbpettycash.Visible = true;
             }
         }
         private void LoadData()
@@ -1265,22 +1265,22 @@ namespace YamyProject
                 {
 
 
-                    using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change` AS total FROM tbl_petty_cash_request pcr 
-                                                 INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
-                                                 WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
-                                             ))
+                    //using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change` AS total FROM tbl_petty_cash_request pcr 
+                    //                             INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
+                    //                             WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
+                    //                         ))
 
-                        while (pReader1.Read())
-                        {
-                            decimal total = 0;
-                            if (pReader1["total"] != DBNull.Value &&
-                                decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
-                            {
-                                dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), DateTime.Now.Date,
-                                                rowView["name"].ToString(), total.ToString("F2"),
-                                                false, "", "", "Petty Cash Request");
-                            }
-                        }
+                    //    while (pReader1.Read())
+                    //    {
+                    //        decimal total = 0;
+                    //        if (pReader1["total"] != DBNull.Value &&
+                    //            decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
+                    //        {
+                    //            dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), DateTime.Now.Date,
+                    //                            rowView["name"].ToString(), total.ToString("F2"),
+                    //                            false, "", "", "Petty Cash Request");
+                    //        }
+                    //    }
                 }
                 else
                 {
@@ -2294,21 +2294,21 @@ namespace YamyProject
             if (cbpettycash.Checked == true )
             {
                 //lspettycashemployee.Visible = true;
-                lstOfEmp.Visible = true;
+                //lstOfEmp.Visible = true;
                 //else if (cmbMethod.Text == "Petty Cash")
                 //{
-                    pnlBank.Visible = false;
-                    pnlTrans.Visible = true;
-                    using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_coa_level_4 WHERE main_id = (SELECT id FROM tbl_coa_level_3 WHERE NAME = 'Petty') LIMIT 1;"))
-                        if (reader.Read())
-                        {
-                            txtCreditAccountCode.Text = reader["code"].ToString();
-                            string accountId = reader["id"].ToString();
-                            if (!string.IsNullOrEmpty(accountId))
-                            {
-                                cmbCreditAccountName.SelectedValue = int.Parse(accountId);
-                            }
-                        }
+                    //pnlBank.Visible = false;
+                    //pnlTrans.Visible = true;
+                    //using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_coa_level_4 WHERE main_id = (SELECT id FROM tbl_coa_level_3 WHERE NAME = 'Petty') LIMIT 1;"))
+                    //    if (reader.Read())
+                    //    {
+                    //        txtCreditAccountCode.Text = reader["code"].ToString();
+                    //        string accountId = reader["id"].ToString();
+                    //        if (!string.IsNullOrEmpty(accountId))
+                    //        {
+                    //            cmbCreditAccountName.SelectedValue = int.Parse(accountId);
+                    //        }
+                    //    }
                 //}
             }
             else

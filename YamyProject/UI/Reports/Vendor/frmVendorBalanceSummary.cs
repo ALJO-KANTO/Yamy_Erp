@@ -64,13 +64,13 @@ namespace YamyProject
 
                 dgvSales.Columns["Account"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvSales.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
-                dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
+                dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+                dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
                 dgvSales.Columns["id"].Visible = false;
 
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -124,7 +124,7 @@ namespace YamyProject
 
                     int rowIndex = dgvSales.Rows.Add(reader["id"], displayName, amount.ToString("N2") + " ◀");
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Regular);
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
                     totalAmount += amount;
                 }
@@ -132,7 +132,7 @@ namespace YamyProject
 
             // Add total row
             int totalRow = dgvSales.Rows.Add("0", "TOTAL", totalAmount.ToString("N2"));
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Times new roman", 10F, FontStyle.Bold | FontStyle.Underline);
+            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
             dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
             dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.Columns["id"].Visible = false;

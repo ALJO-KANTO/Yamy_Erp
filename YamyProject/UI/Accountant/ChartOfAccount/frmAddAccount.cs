@@ -21,7 +21,7 @@ namespace YamyProject
             EventHub.lvl1Account += lvl1;
             EventHub.lvl2Account += lvl2;
             EventHub.lvl3Account += lvl3;
-            this.Text = "COA - New Account";
+            headerUC1.FormText = "COA - New Account";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

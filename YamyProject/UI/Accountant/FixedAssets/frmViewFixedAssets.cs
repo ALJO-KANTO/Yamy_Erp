@@ -24,7 +24,7 @@ namespace YamyProject
             LocalizationManager.LocalizeForm(this);
             FixedAssetCategoryUpdatedHandler = (sender, args) => setComboBoxCategory();
             this.id = id;
-            //Lbheader.Text = id == 0 ? "Fixed Asset - New" : "Fixed Asset - Edit";
+            headerUC1.FormText = id == 0 ? "Fixed Asset - New" : "Fixed Asset - Edit";
             EventHub.FixedAssetsCategory += FixedAssetCategoryUpdatedHandler;
         }
         private void btnClose_Click(object sender, EventArgs e)

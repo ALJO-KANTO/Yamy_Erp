@@ -96,7 +96,7 @@ namespace YamyProject
         private void gridDesign()
         {
             dgView.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
-            dgView.DefaultCellStyle.Font = new Font("Arial", 10);
+            dgView.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dgView.GridColor = Color.Gray;
             dgView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
 
@@ -104,7 +104,7 @@ namespace YamyProject
             dgView.EnableHeadersVisualStyles = false;
             dgView.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSkyBlue;
             dgView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgView.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            dgView.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
             // Style DataGridView
             dgView.AutoGenerateColumns = false;
@@ -113,8 +113,8 @@ namespace YamyProject
             dgView.RowHeadersVisible = false;
             dgView.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSkyBlue;
             dgView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgView.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
-            dgView.DefaultCellStyle.Font = new Font("Arial", 10);
+            dgView.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dgView.DefaultCellStyle.Font = new Font("Segoe UI", 10);
             dgView.DefaultCellStyle.BackColor = Color.WhiteSmoke;
             dgView.DefaultCellStyle.ForeColor = Color.Black;
             dgView.GridColor = Color.Gray;
@@ -311,7 +311,7 @@ namespace YamyProject
 
                         if (progress <= 10)
                         {
-                            progressColor = Color.RoyalBlue;  // 0% - 10%
+                            progressColor = Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));  // 0% - 10%
                         }
                         else if (progress <= 30)
                         {

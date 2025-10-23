@@ -7,14 +7,13 @@ namespace YamyProject
 {
     public partial class frmEditLevel4 : Form
     {
-
         private int id;
         public frmEditLevel4(int id)
         {
             InitializeComponent(); 
             LocalizationManager.LocalizeForm(this);
             this.id = id;
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

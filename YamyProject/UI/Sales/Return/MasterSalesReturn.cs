@@ -25,7 +25,7 @@ namespace YamyProject
             invoiceUpdatedHandler = (sender, args) => BindInvoices();
             EventHub.Customer += customerUpdatedHandler;
             EventHub.SalesInv += invoiceUpdatedHandler;
-            guna2HtmlLabel2.Text = this.Text;
+            headerUC1.FormText = this.Text;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {

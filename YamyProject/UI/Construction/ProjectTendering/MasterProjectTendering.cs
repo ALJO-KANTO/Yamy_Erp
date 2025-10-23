@@ -149,14 +149,13 @@ namespace YamyProject
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //string query= "UPDATE tbl_project_tender SET state = -1 WHERE id = @id ";
-            //DBClass.ExecuteNonQuery(query, DBClass.CreateParameter("id", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
-            //BindInvoices();
+            string query = "UPDATE tbl_project_tender SET state = -1 WHERE id = @id ";
+            DBClass.ExecuteNonQuery(query, DBClass.CreateParameter("id", dgView.SelectedRows[0].Cells["id"].Value.ToString()));
+            BindInvoices();
         }
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            //_mainForm.openChildForm(new MasterInventoryRecycle(_mainForm, this));
-
+            frmLogin.frmMain.openChildForm(new MasterRecycle("Project Tender"));
         }
         private void chkCustomer_CheckedChanged(object sender, EventArgs e)
         {

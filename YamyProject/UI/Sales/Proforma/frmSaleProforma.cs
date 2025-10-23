@@ -32,6 +32,7 @@ namespace YamyProject
             EventHub.Customer += customerUpdatedHandler;
             EventHub.wareHouse += warehouseUpdatedHandler;
             this.id = _id;
+            headerUC1.FormText = _id == 0 ? "New Proforma Invoice" : "Edit Proforma Invoice";
         }
         private void frmSaleProforma_FormClosing(object sender, FormClosingEventArgs e)
         {

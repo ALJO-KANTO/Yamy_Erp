@@ -16,7 +16,7 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             itemCategoryUpdatedHandler = (sender, args) => BindItems();
-            LbHeader.Text = this.Text;
+            headerUC1.FormText = this.Text;
             EventHub.ItemCategory += itemCategoryUpdatedHandler;
         }
         private void MasterItemCategory_FormClosing(object sender, FormClosingEventArgs e)
