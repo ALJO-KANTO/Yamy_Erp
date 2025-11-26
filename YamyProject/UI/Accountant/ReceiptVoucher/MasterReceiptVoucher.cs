@@ -37,7 +37,7 @@ namespace YamyProject
             if (chkDate.Checked)
              dt = DBClass.ExecuteDataTable(@"SELECT tp.id,tp.date AS Date,
                                             tp.code AS 'Receipt Code',
-                                            (select concat('000',    MAX(tbl_transaction.transaction_id)) FROM tbl_transaction WHERE tbl_transaction.transaction_id=tp.id and t_type='RECEIPT') AS 'JV NO',
+                                            LPAD(tp.id, 4, '0') AS 'JV NO',
                                             tp.amount AS Amount,
                                             concat(tc.code,' - ',tc.name) AS 'Debit Account', 
                                             concat(tc1.code,' - ',tc1.name) AS 'Credit Account' 
@@ -49,23 +49,24 @@ namespace YamyProject
                                             tbl_coa_level_4 AS tc1 ON tp.credit_account_id = tc1.id where tp.type=@type",
                     DBClass.CreateParameter("type",type));
        else
-                                dt = DBClass.ExecuteDataTable(@"SELECT 
-                                        tp.id,
-                                            tp.date AS Date,
-                                                tp.code AS 'Receipt Code',
-                                                        tp.amount AS Amount,
+                                dt = DBClass.ExecuteDataTable(@"SELECT tp.id,tp.date AS Date,
+                                            tp.code AS 'Receipt Code',
+                                            LPAD(tp.id, 4, '0') AS 'JV NO',
+                                            tp.amount AS Amount,
                                             concat(tc.code,' - ',tc.name) AS 'Debit Account', 
-                                                concat(tc1.code,' - ',tc1.name) AS 'Credit Account' 
-                                        FROM 
-                                           tbl_receipt_voucher tp
-                                        INNER JOIN 
-                                           tbl_coa_level_4 tc ON tp.debit_account_id = tc.id
-                                        INNER JOIN 
-                                            tbl_coa_level_4 AS tc1 ON tp.credit_account_id = tc1.id where tp.type=@type and tp.date >= @dateFrom and date<= @dateTo",
-                   DBClass.CreateParameter("dateFrom", dtFrom.Value.Date.ToString("yyyy-MM-dd")),
-                   DBClass.CreateParameter("dateTo", dtTo.Value.Date.ToString("yyyy-MM-dd")),
+                                            concat(tc1.code,' - ',tc1.name) AS 'Credit Account' 
+                                            FROM 
+                                            tbl_receipt_voucher tp
+                                            INNER JOIN 
+                                            tbl_coa_level_4 tc ON tp.debit_account_id = tc.id
+                                            INNER JOIN 
+                                            tbl_coa_level_4 AS tc1 ON tp.credit_account_id = tc1.id where tp.type=@type and tp.date >= @dateFrom and tp.date<= @dateTo",
+                   DBClass.CreateParameter("dateFrom", dtFrom.Value.Date),
+                   DBClass.CreateParameter("dateTo", dtTo.Value.Date),
                    DBClass.CreateParameter("type", type));
                             dgvCustomer.DataSource = dt;
+            if (dt == null)
+                return;
 
             dgvCustomer.Columns["id"].Visible = false;
             dgvCustomer.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";

@@ -240,6 +240,9 @@ namespace YamyProject.UI.Manufacturing.Models
                 @"DELETE FROM tbl_manufacturer_task_details WHERE TaskID = @TaskID",
                 DBClass.CreateParameter("@TaskID", taskId));
 
+            if (selectedEmployees == null)
+                return;
+
             if (selectedEmployees != null || selectedEmployees.Count != 0)
             {
                 foreach (EmployeeModel employee in selectedEmployees)

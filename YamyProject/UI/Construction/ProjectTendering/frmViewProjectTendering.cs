@@ -18,6 +18,7 @@ namespace YamyProject
         int id;
         bool isExported = false;
         bool isEstimated = false;
+        string descriptionColumnName = "Description of work";
 
         public frmViewProjectTendering(int _id)
         {
@@ -54,6 +55,13 @@ namespace YamyProject
             dgvImportedItem.Columns.Add("id", "#");
             dgvImportedItem.Columns.Add("Sr.", "Sr.");
             dgvImportedItem.Columns.Add("Description of work", "Description of work");
+            //// Create the new link column
+            //DataGridViewLinkColumn bomLinkColumn = new DataGridViewLinkColumn();
+            //bomLinkColumn.HeaderText = "View";
+            //bomLinkColumn.Name = "BoM";
+            //bomLinkColumn.Text = "BoM";
+            //bomLinkColumn.UseColumnTextForLinkValue = true;
+            //dgvImportedItem.Columns.Add(bomLinkColumn);
             dgvImportedItem.Columns.Add("Qty", "Qty");
             dgvImportedItem.Columns.Add("Unit", "Unit");
             dgvImportedItem.Columns.Add("Length", "Length");
@@ -119,34 +127,34 @@ namespace YamyProject
                     loadGridDesign();
                     dgvImportedItem.Rows.Clear();
 
-                    //AssemblyItemManager.ClearItemsList();
+                    AssemblyItemManager.ClearItemsList();
                     while (reader.Read())
                     {
                         count++;
                         dgvImportedItem.Rows.Add((count).ToString(), reader["sr"].ToString(), reader["name"].ToString(), reader["qty"].ToString(),
                                 reader["unit_name"].ToString(), reader["length"].ToString(), reader["width"].ToString(), reader["thickness"].ToString(), reader["rate"].ToString(), reader["amount"].ToString(), reader["note"].ToString());
 
-                        //    using (MySqlDataReader dr = DBClass.ExecuteReader("select ti.code,ti.id,ti.on_hand qty,ti.cost_price rate,ti.name from tbl_item_assembly_bos ta inner join tbl_items_boq_details ti on ta.item_id = ti.id and ti.ref_id=ta.assembly_id where ta.assembly_id=@id", DBClass.CreateParameter("id", reader["item_id"].ToString())))
-                        //        while (dr.Read())
-                        //        {
-                        //            decimal _cost = decimal.Parse(dr["rate"].ToString());
-                        //            decimal _qty = decimal.Parse(dr["qty"].ToString());
-                        //            AssemblyItemManager.AddItem(new AssemblyItemModel
-                        //            {
-                        //                ItemId = int.Parse(dr["id"].ToString()),
-                        //                RefId = reader["sr"].ToString(),
-                        //                No = "",
-                        //                Code = dr["code"].ToString(),
-                        //                Name = dr["name"].ToString(),
-                        //                Cost = _cost,
-                        //                Qty = _qty,
-                        //                Total = _cost * _qty,
-                        //                AssetAccountId = 0,
-                        //                COGSAccountId = 0,
-                        //                IncomeAccountId = 0,
-                        //                VendorAccountId = 0
-                        //            });
-                        //        }
+                        using (MySqlDataReader dr = DBClass.ExecuteReader("select ti.code,ti.id,ti.on_hand qty,ti.cost_price rate,ti.name from tbl_item_assembly_bos ta inner join tbl_items_boq_details ti on ta.item_id = ti.id and ti.ref_id=ta.assembly_id where ta.assembly_id=@id", DBClass.CreateParameter("id", reader["item_id"].ToString())))
+                            while (dr.Read())
+                            {
+                                decimal _cost = decimal.Parse(dr["rate"].ToString());
+                                decimal _qty = decimal.Parse(dr["qty"].ToString());
+                                AssemblyItemManager.AddItem(new AssemblyItemModel
+                                {
+                                    ItemId = int.Parse(dr["id"].ToString()),
+                                    RefId = reader["sr"].ToString(),
+                                    No = "",
+                                    Code = dr["code"].ToString(),
+                                    Name = dr["name"].ToString(),
+                                    Cost = _cost,
+                                    Qty = _qty,
+                                    Total = _cost * _qty,
+                                    AssetAccountId = 0,
+                                    COGSAccountId = 0,
+                                    IncomeAccountId = 0,
+                                    VendorAccountId = 0
+                                });
+                            }
                     }
                     isExported = true;
                     dgvItems.Visible = false;
@@ -493,7 +501,10 @@ namespace YamyProject
             if (id == 0)
             {
                 if (insertData())
+                {
                     resetTextBox();
+                    MessageBox.Show("Project Tender Saved");
+                }
             }
             else
             {
@@ -504,7 +515,10 @@ namespace YamyProject
                 else
                 {
                     if (updateData())
+                    {
+                        MessageBox.Show("Project Tender Updated");
                         resetTextBox();
+                    }
                 }
             }
         }
@@ -1007,6 +1021,7 @@ namespace YamyProject
                 var columnSelectForm = new frmBoqImport();
             if (columnSelectForm.ShowDialog() == DialogResult.OK)
             {
+                // Existing setup
                 DataTable table = columnSelectForm.dataTable;
                 dgvImportedItem.Columns.Clear();
                 dgvImportedItem.DataSource = null;
@@ -1014,9 +1029,12 @@ namespace YamyProject
                 isExported = true;
                 dgvItems.Visible = false;
                 dgvImportedItem.Visible = true;
+
+                // Adjust column widths
                 foreach (DataGridViewColumn column in dgvImportedItem.Columns)
                 {
-                    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" || column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" ||
+                        column.HeaderText == "Description of items" || column.HeaderText == "Item")
                     {
                         column.Width = 550;
                     }
@@ -1025,17 +1043,83 @@ namespace YamyProject
                         column.Width = 200;
                     }
                 }
+
+                //// Add the "BoM" link column after "Description"
+                //string descriptionColumnName = null;
+                //foreach (DataGridViewColumn column in dgvImportedItem.Columns)
+                //{
+                //    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" ||
+                //        column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                //    {
+                //        descriptionColumnName = column.Name;
+                //        break;
+                //    }
+                //}
+
+                //if (descriptionColumnName != null)
+                //{
+                //    // Create the new link column
+                //    DataGridViewLinkColumn bomLinkColumn = new DataGridViewLinkColumn();
+                //    bomLinkColumn.HeaderText = "View";
+                //    bomLinkColumn.Name = "BoM";
+                //    bomLinkColumn.Text = "BoM";
+                //    bomLinkColumn.UseColumnTextForLinkValue = true;
+
+                //    // Insert it right after the description column
+                //    int insertIndex = dgvImportedItem.Columns[descriptionColumnName].DisplayIndex + 1;
+                //    dgvImportedItem.Columns.Insert(insertIndex, bomLinkColumn);
+                //}
+
+                // Make rows with alphabetic "Sr." bold
                 foreach (DataGridViewRow row in dgvImportedItem.Rows)
                 {
                     if (row.IsNewRow) continue;
-                    
                     var srValue = row.Cells["Sr."].Value?.ToString().Trim();
-
                     if (!string.IsNullOrEmpty(srValue) && Regex.IsMatch(srValue, @"^[A-Za-z]+$"))
                     {
                         row.DefaultCellStyle.Font = new Font(dgvImportedItem.Font, FontStyle.Bold);
                     }
                 }
+
+                // Handle click event for "BoM" link
+                //dgvImportedItem.CellContentClick += (s, e) =>
+                //{
+                //    if (e.RowIndex >= 0 && dgvImportedItem.Columns[e.ColumnIndex].Name == "BoM")
+                //    {
+                //        string description = dgvImportedItem.Rows[e.RowIndex].Cells[descriptionColumnName].Value?.ToString();
+                //        MessageBox.Show($"BoM details for: {description}", "BoM Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //};
+
+                //DataTable table = columnSelectForm.dataTable;
+                //dgvImportedItem.Columns.Clear();
+                //dgvImportedItem.DataSource = null;
+                //dgvImportedItem.DataSource = table;
+                //isExported = true;
+                //dgvItems.Visible = false;
+                //dgvImportedItem.Visible = true;
+                //foreach (DataGridViewColumn column in dgvImportedItem.Columns)
+                //{
+                //    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" || column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                //    {
+                //        column.Width = 550;
+                //    }
+                //    else
+                //    {
+                //        column.Width = 200;
+                //    }
+                //}
+                //foreach (DataGridViewRow row in dgvImportedItem.Rows)
+                //{
+                //    if (row.IsNewRow) continue;
+
+                //    var srValue = row.Cells["Sr."].Value?.ToString().Trim();
+
+                //    if (!string.IsNullOrEmpty(srValue) && Regex.IsMatch(srValue, @"^[A-Za-z]+$"))
+                //    {
+                //        row.DefaultCellStyle.Font = new Font(dgvImportedItem.Font, FontStyle.Bold);
+                //    }
+                //}
             }
 
         }
@@ -1190,18 +1274,18 @@ namespace YamyProject
 
         private void dgvImportedItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (selectedRow.Cells["Sr."].Value == null)
-            //{
-            //    selectedRow.Cells["Sr."].Value = "1";
-            //}
-            //if (cmbProject.SelectedValue!=null)
-            //{
-            //    OpenAssemblys();
-            //}
-            //else
-            //{
-            //    selectProjectFirst();
-            //}
+            if (selectedRow.Cells["Sr."].Value == null)
+            {
+                selectedRow.Cells["Sr."].Value = "1";
+            }
+            if (cmbProject.SelectedValue != null)
+            {
+                //OpenAssemblysOld();
+            }
+            else
+            {
+                selectProjectFirst();
+            }
         }
         private void selectProjectFirst()
         {
@@ -1210,31 +1294,43 @@ namespace YamyProject
 
         private void dgvImportedItem_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            //selectedRow = dgvImportedItem.CurrentRow;
-            //if (dgvImportedItem.CurrentCell.ColumnIndex == dgvImportedItem.Columns["Description of work"].Index)
-            //{
-            //    if (selectedRow.Cells["Description of work"].Value !=null && selectedRow.Cells["Description of work"].Value.ToString() == "")
-            //    {
-            //        if (selectedRow.Cells["Sr."].Value == null)
-            //        {
-            //            selectedRow.Cells["Sr."].Value = "0";
-            //        }
-            //        if (cmbProject.SelectedValue != null)
-            //        {
-            //            OpenAssemblys();
-            //        }
-            //        else
-            //        {
-            //            selectProjectFirst();
-            //        }
-            //    } else
-            //    {
-            //        if(selectedRow.Cells["Sr."].Value == null)
-            //        {
-            //            selectedRow.Cells["Sr."].Value = "1";
-            //        }
-            //    }
-            //}
+            selectedRow = dgvImportedItem.CurrentRow;
+            if (dgvImportedItem.CurrentCell.ColumnIndex == dgvImportedItem.Columns["Description of work"].Index)
+            {
+                if (selectedRow.Cells["Description of work"].Value != null && selectedRow.Cells["Description of work"].Value.ToString() == "")
+                {
+                    if (selectedRow.Cells["Sr."].Value == null)
+                    {
+                        selectedRow.Cells["Sr."].Value = "0";
+                    }
+                    if (cmbProject.SelectedValue != null)
+                    {
+                        //OpenAssemblysOld();
+                    }
+                    else
+                    {
+                        selectProjectFirst();
+                    }
+                }
+                else
+                {
+                    if (selectedRow.Cells["Sr."].Value == null)
+                    {
+                        //selectedRow.Cells["Sr."].Value = "1";
+                        int previousSrValue = 0;
+
+                        if (selectedRow.Index > 0)
+                        {
+                            var prevValue = dgvImportedItem.Rows[selectedRow.Index - 1].Cells["Sr."].Value;
+                            if (prevValue != null && int.TryParse(prevValue.ToString(), out int parsedValue))
+                            {
+                                previousSrValue = parsedValue;
+                            }
+                        }
+                        selectedRow.Cells["Sr."].Value = previousSrValue + 1;
+                    }
+                }
+            }
         }
         private void OpenAssemblysOld()
         {
@@ -1249,13 +1345,16 @@ namespace YamyProject
                 itemTyped = "";// dgvImportedItem.Rows[rowIndex].Cells["type"].Value.ToString();
                 selectedItemId = itemId.ToString();
             }
-            //if (itemTyped == "13 - Inventory Assembly")
-            //{
+            string srNo = srId;
+            if (int.TryParse(srNo, out int srN))
+            {
+                //if (itemTyped == "13 - Inventory Assembly")
+                //{
                 comboCount++;
-                frmAssemblyItem assemblyForm = new frmAssemblyItem(itemId, srId, int.Parse(txtProjectCode.Text.ToString()),description);
+                frmAssemblyItem assemblyForm = new frmAssemblyItem(itemId, srId, int.Parse(txtProjectCode.Text.ToString()), description);
                 assemblyForm.FormClosedWithResult += AssemblyForm_FormClosedWithResult;
                 assemblyForm.ShowDialog();
-
+            }
             //DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items_boq_details where warehouse_id=@id and state = 0 and active = 0",
             //                                DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
             //DataGridViewComboBoxColumn name = (DataGridViewComboBoxColumn)dgvImportedItem.Columns["name"];
@@ -1354,6 +1453,21 @@ namespace YamyProject
         {
             frmAddTenderName frm = new frmAddTenderName(this, 0);
             frm.ShowDialog();
+        }
+
+        private void dgvImportedItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex >= 0 && dgvImportedItem.Columns[e.ColumnIndex].Name == "BoM")
+            //{
+            //    string description = dgvImportedItem.Rows[e.RowIndex].Cells[descriptionColumnName].Value?.ToString();
+            //    string srNo = dgvImportedItem.Rows[e.RowIndex].Cells["sr."].Value?.ToString();
+            //    if (int.TryParse(srNo, out int srN))
+            //    {
+            //        selectedRow = dgvImportedItem.Rows[e.RowIndex];
+            //        //MessageBox.Show($"BoM details for: {description}", "BoM Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        OpenAssemblysOld();
+            //    }
+            //}
         }
 
         //private void CalculateSRAndUpdateDataGridView(string itemType)

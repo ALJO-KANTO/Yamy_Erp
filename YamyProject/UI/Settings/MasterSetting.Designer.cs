@@ -35,6 +35,7 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabelModule = new System.Windows.Forms.LinkLabel();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
@@ -82,7 +83,7 @@
             this.headerUC1.Location = new System.Drawing.Point(2, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(637, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1033, 37);
             this.headerUC1.TabIndex = 0;
             // 
             // guna2Button2
@@ -118,15 +119,29 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.linkLabelModule);
             this.panel1.Controls.Add(this.guna2Button6);
             this.panel1.Controls.Add(this.guna2Button5);
             this.panel1.Controls.Add(this.guna2Button3);
             this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(2, 23);
+            this.panel1.Location = new System.Drawing.Point(2, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1033, 45);
             this.panel1.TabIndex = 167;
+            // 
+            // linkLabelModule
+            // 
+            this.linkLabelModule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabelModule.AutoSize = true;
+            this.linkLabelModule.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.linkLabelModule.Location = new System.Drawing.Point(948, 16);
+            this.linkLabelModule.Name = "linkLabelModule";
+            this.linkLabelModule.Size = new System.Drawing.Size(47, 13);
+            this.linkLabelModule.TabIndex = 4;
+            this.linkLabelModule.TabStop = true;
+            this.linkLabelModule.Text = "Modules";
+            this.linkLabelModule.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelModule_LinkClicked);
             // 
             // guna2Button6
             // 
@@ -219,10 +234,10 @@
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(2, 68);
+            this.panel2.Location = new System.Drawing.Point(2, 82);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1033, 534);
+            this.panel2.Size = new System.Drawing.Size(1033, 520);
             this.panel2.TabIndex = 168;
             // 
             // MasterSetting
@@ -245,6 +260,7 @@
             this.Text = "Setting - Master";
             this.Load += new System.EventHandler(this.MasterSetting_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -262,5 +278,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.LinkLabel linkLabelModule;
     }
 }

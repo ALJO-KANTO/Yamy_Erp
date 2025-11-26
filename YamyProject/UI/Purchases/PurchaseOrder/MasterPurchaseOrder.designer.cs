@@ -422,6 +422,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(160, 22);
             this.dtTo.TabIndex = 11;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label2
             // 
@@ -449,6 +450,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(160, 22);
             this.dtFrom.TabIndex = 11;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label11
             // 

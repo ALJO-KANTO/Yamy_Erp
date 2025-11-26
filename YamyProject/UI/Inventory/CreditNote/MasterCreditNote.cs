@@ -39,49 +39,47 @@ namespace YamyProject
         {
             DataTable dt;
             string query = "";
-            if (cmbSelectionMethod.Text == "Default")
-            {
+            //if (cmbSelectionMethod.Text == "Default")
+            //{
                 //SELECT c.id,c.date,c.credit_account,c.debit_account,c.invoice_id,c.amount,c.vat,c.description FROM tbl_credit_note c
                 query = @"SELECT 
                             ROW_NUMBER() OVER (ORDER BY c.date) AS `SN`, 
                             c.date AS Date, 
                             c.id,
-                        CONCAT('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                        LPAD(c.id, 4, '0') AS 'JV NO', 
                             c.invoice_id AS 'INV NO',
-                            c.amount AS Amount,c.vat AS Vat,c.credit_account,c.debit_account
+                            c.amount AS Amount,c.vat AS Vat,c.total as Total,c.credit_account,c.debit_account
                         FROM 
                             tbl_credit_note c
-                        INNER JOIN 
-                            tbl_transaction ON c.id = tbl_transaction.transaction_id
                         INNER JOIN 
                             tbl_customer ON c.credit_account = tbl_customer.id
                         WHERE 
                             c.state = 0
                         ";
-            }
-            else
-            {
-                query = @"SELECT 
-                            ROW_NUMBER() OVER (ORDER BY c.date) AS `SN`, 
-                            c.date AS Date, 
-                            c.id,
-                            c.invoice_id AS 'INV NO',
-                            c.amount AS Amount,c.vat AS Vat,c.credit_account,c.debit_account,ts.invoice_id,ts.invoice_date,ts.invoice_type 
-                            ,ts.amount,ts.vat
-                        FROM 
-                            tbl_credit_note c
-                         INNER JOIN tbl_credit_note_details ts ON c.id = ts.ref_id
-                        WHERE 
-                            c.state = 0
-                        ";
-            }
+            //}
+            //else
+            //{
+            //    query = @"SELECT 
+            //                ROW_NUMBER() OVER (ORDER BY c.date) AS `SN`, 
+            //                c.date AS Date, 
+            //                c.id,
+            //                c.invoice_id AS 'INV NO',
+            //                c.amount AS Amount,c.vat AS Vat,c.credit_account,c.debit_account,ts.invoice_id,ts.invoice_date,ts.invoice_type 
+            //                ,ts.amount,ts.vat
+            //            FROM 
+            //                tbl_credit_note c
+            //             INNER JOIN tbl_credit_note_details ts ON c.id = ts.ref_id
+            //            WHERE 
+            //                c.state = 0
+            //            ";
+            //}
             List<MySqlParameter> parameters = new List<MySqlParameter>();
 
-            //if (cmbCustomer.Text != "" && !chkCustomer.Checked)
-            //{
-            //    query += " and tbl_purchase.vendor_id = @id";
-            //    parameters.Add(DBClass.CreateParameter("id", cmbCustomer.SelectedValue.ToString()));
-            //}
+            if (cmbCustomer.Text != "" && !chkCustomer.Checked)
+            {
+                query += " and tbl_customer.id = @id";
+                parameters.Add(DBClass.CreateParameter("id", cmbCustomer.SelectedValue.ToString()));
+            }
             //if (cmbPaymentMethod.Text != "" && !chkPayment.Checked)
             //{
             //    query += " and tbl_purchase.payment_method = @payment";
@@ -90,15 +88,17 @@ namespace YamyProject
             if (!chkDate.Checked)
                 query += " and c.date >= @dateFrom and c.date <= @dateTo";
             if (cmbSelectionMethod.Text == "Default")
-                query += " GROUP BY c.id,c.date,c.credit_account,c.debit_account,c.invoice_id,c.amount,c.vat,c.description; ";
+                query += " GROUP BY c.id,c.date,c.credit_account,c.debit_account,c.invoice_id,c.amount,c.vat,c.total,c.description; ";
 
             else
-                query += " GROUP BY c.id,c.date,c.credit_account,c.debit_account,c.invoice_id,c.amount,c.vat,ts.invoice_id,ts.invoice_date,ts.invoice_type,ts.amount,ts.vat; ";
+                query += " GROUP BY c.id,c.date,c.credit_account,c.debit_account,c.invoice_id,c.amount,c.vat,ts.invoice_id,ts.invoice_date,ts.invoice_type,ts.amount,ts.vat,c.total; ";
             parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
             parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvInvoice.DataSource = dt;
             dgvInvoice.Columns["id"].Visible = false;
+            dgvInvoice.Columns["debit_account"].Visible = false;
+            dgvInvoice.Columns["credit_account"].Visible = false;
             dgvInvoice.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
             dgvInvoice.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
@@ -106,6 +106,12 @@ namespace YamyProject
             dgvInvoice.ColumnHeadersHeight = 18;
             dgvInvoice.EnableHeadersVisualStyles = false;
             dgvInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvInvoice.Columns["amount"].DefaultCellStyle.Alignment =
+            dgvInvoice.Columns["vat"].DefaultCellStyle.Alignment = 
+            dgvInvoice.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["vat"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["total"].DefaultCellStyle.Format = "N2";
 
             if (dgvInvoice.Rows.Count > 0 && cmbSelectionMethod.Text == "Default")
                 bindInvoiceItems();
@@ -120,8 +126,7 @@ namespace YamyProject
             DataTable dt = DBClass.ExecuteDataTable(@"select * from tbl_credit_note_details where ref_id = @id",
                                                      DBClass.CreateParameter("id", dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString()));
             dgvItems.DataSource = dt;
-         
-          
+
             //dgvItems.Columns["invoice_type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvItems.Columns["ref_id"].Visible = dgvItems.Columns["ref_id"].Visible = dgvItems.Columns["invoice_id"].Visible = false;
             dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Gray;
@@ -131,6 +136,16 @@ namespace YamyProject
             dgvItems.ColumnHeadersHeight = 18;
             dgvItems.EnableHeadersVisualStyles = false;
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvItems.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvItems.Columns["vat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvItems.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvItems.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvItems.Columns["remaining"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvItems.Columns["total"].DefaultCellStyle.Format = "N2";
+            dgvItems.Columns["vat"].DefaultCellStyle.Format = "N2";
+            dgvItems.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvItems.Columns["balance"].DefaultCellStyle.Format = "N2";
+            dgvItems.Columns["remaining"].DefaultCellStyle.Format = "N2";
             if (dgvItems.Rows.Count > 0)
             {
                 btnDelete.Enabled = btnRecycle.Enabled = UserPermissions.canDelete("Credit Note");
@@ -230,6 +245,16 @@ namespace YamyProject
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
         }
     }
 }

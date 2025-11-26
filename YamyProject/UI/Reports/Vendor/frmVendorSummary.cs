@@ -70,8 +70,11 @@ namespace YamyProject
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
                 dgvSales.Columns["debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["debit"].DefaultCellStyle.Format = "N2";
                 dgvSales.Columns["credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["credit"].DefaultCellStyle.Format = "N2";
                 dgvSales.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["balance"].DefaultCellStyle.Format = "N2";
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {

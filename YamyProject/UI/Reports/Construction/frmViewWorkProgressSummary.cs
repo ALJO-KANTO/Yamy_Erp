@@ -53,6 +53,10 @@ namespace YamyProject
             dgvItems.DataSource = dt;
             
             dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (dgvItems.Columns.Contains("Total Done Qty"))
+            {
+                dgvItems.Columns["Total Done Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }

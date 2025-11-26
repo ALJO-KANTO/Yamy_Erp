@@ -84,7 +84,10 @@ namespace YamyProject
                                 ORDER BY
                                     h.name, t.date, t.id;
                             ";
-
+            if (id == -1)
+            {
+                query = query.Replace("AND h.id = @VendorID", "");
+            }
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
 
             // Add Balance column
@@ -107,8 +110,11 @@ namespace YamyProject
             dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9);
 
             dgvSales.Columns["Debit"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Columns["Credit"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Columns["Balance"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
         }

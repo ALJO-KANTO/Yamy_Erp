@@ -56,6 +56,7 @@ namespace YamyProject
         }
         private void MasterTrialBalance_Load(object sender, EventArgs e)
         {
+            comboBox1.SelectedIndex = 1;
             bindDGVTrial();
             loadCompany();
         }
@@ -573,7 +574,7 @@ namespace YamyProject
         {
             if (dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString() == "")
                 return;
-            frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions By Account", int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+            frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions By Account", int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()), dtFrom.Value.ToString(), dtTo.Value.ToString()));
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -61,6 +62,14 @@ namespace YamyProject
             dgvSales.Columns["id"].Visible = false;
 
             dgvSales.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["balance"].DefaultCellStyle.Format = "N2";
 
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -90,6 +99,8 @@ namespace YamyProject
                                 i.id = @itemId
                             AND i.state = 0";
 
+            if(_itemId <= 0)
+                sql = sql.Replace("i.id = @itemId", "1=1"); // Load all items if no specific item is provided
             DataTable dt = DBClass.ExecuteDataTable(sql, DBClass.CreateParameter("@itemId", _itemId));
 
             if (dt.Rows.Count == 0)
@@ -113,6 +124,7 @@ namespace YamyProject
 
             // Add: Invoices (Level 4)
             LoadInvoicesForItem(_itemId, dgvSales.Rows.Count - 1);  // insert below item
+            UpdateTotalsRow();
         }
         private void LoadInvoicesForItem(int itemId, int insertIndex)
         {
@@ -151,9 +163,10 @@ namespace YamyProject
                 dgvSales.Rows.Insert(insertIndex + 1, "n", "l", "4", "",
                     Convert.ToDateTime(row["date"]).ToString("dd/MM/yyyy"),
                     row["num"], row["memo"], row["customer"],
-                    row["qty"], row["price"], row["amount"], row["balance"], row["sales_id"]);
+                    FormatNumber(row["qty"].ToString()), FormatNumber(row["price"]), FormatNumber(row["amount"]), FormatNumber(row["balance"]), row["sales_id"]);
                 insertIndex++;
             }
+            UpdateTotalsRow();
         }
         private void dgvSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -235,7 +248,7 @@ namespace YamyProject
 
                         DataTable items = DBClass.ExecuteDataTable(sql,
                             DBClass.CreateParameter("@catId", catId),
-                            DBClass.CreateParameter("@type", itemType), 
+                            DBClass.CreateParameter("@type", itemType),
                             DBClass.CreateParameter("startDate", dtpFrom.Value.Date),
                             DBClass.CreateParameter("endDate", dtpTo.Value.Date));
 
@@ -248,25 +261,26 @@ namespace YamyProject
 
                             if (itemName != currentItem)
                             {
-                                dgvSales.Rows.Insert(insertIndex, "e", "l", "3", space + "      " + itemName, "", "", "", "", "", "", "",row["id"].ToString());
+                                dgvSales.Rows.Insert(insertIndex, "e", "l", "3", space + "      " + itemName, "", "", "", "", "", "", "", row["id"].ToString());
                                 insertIndex++;
                                 currentItem = itemName;
                             }
 
-                            dgvSales.Rows.Insert(insertIndex, "n", "l", "4","",
+                            dgvSales.Rows.Insert(insertIndex, "n", "l", "4", "",
                                 Convert.ToDateTime(row["date"]).ToString("dd/MM/yyyy"),
                                 row["num"], row["memo"], row["customer"],
-                                row["qty"], row["price"], row["amount"], row["balance"], "");
+                                FormatNumber(row["qty"]), FormatNumber(row["price"]), FormatNumber(row["amount"]), FormatNumber(row["balance"]), "");
                             insertIndex++;
                         }
+                        UpdateTotalsRow();
                     }
-                     else if (currLvl == 3)
-            {
-                // Expand Item → Invoices
-                int itemId;
-                if (int.TryParse(key, out itemId))
-                {
-                    string sql = @"
+                    else if (currLvl == 3)
+                    {
+                        // Expand Item → Invoices
+                        int itemId;
+                        if (int.TryParse(key, out itemId))
+                        {
+                            string sql = @"
                                 SELECT 
                                     s.date,
                                     s.invoice_id AS num,
@@ -286,39 +300,41 @@ namespace YamyProject
                                 ORDER BY 
                                     s.date";
 
-                    DataTable invoices = DBClass.ExecuteDataTable(sql, 
-                        DBClass.CreateParameter("@itemId", itemId), 
-                        DBClass.CreateParameter("startDate", dtpFrom.Value.Date),
-                        DBClass.CreateParameter("endDate", dtpTo.Value.Date));
-                    int insertIndex = e.RowIndex + 1;
+                            DataTable invoices = DBClass.ExecuteDataTable(sql,
+                                DBClass.CreateParameter("@itemId", itemId),
+                                DBClass.CreateParameter("startDate", dtpFrom.Value.Date),
+                                DBClass.CreateParameter("endDate", dtpTo.Value.Date));
+                            int insertIndex = e.RowIndex + 1;
 
-                    foreach (DataRow row in invoices.Rows)
-                    {
-                        dgvSales.Rows.Insert(insertIndex, "n", "l", "4", "", 
-                            Convert.ToDateTime(row["date"]).ToString("dd/MM/yyyy"),
-                            row["num"], row["memo"], row["customer"],
-                            row["qty"], row["price"], row["amount"], row["balance"], "");
-                        insertIndex++;
+                            foreach (DataRow row in invoices.Rows)
+                            {
+                                dgvSales.Rows.Insert(insertIndex, "n", "l", "4", "",
+                                    Convert.ToDateTime(row["date"]).ToString("dd/MM/yyyy"),
+                                    row["num"], row["memo"], row["customer"],
+                                    FormatNumber(row["qty"]), FormatNumber(row["price"]), FormatNumber(row["amount"]), FormatNumber(row["balance"]), "");
+                                insertIndex++;
+                            }
+
+                            dgvSales.Rows[e.RowIndex].Cells["loadState"].Value = "l";
+                            UpdateTotalsRow();
+                        }
                     }
 
-                    dgvSales.Rows[e.RowIndex].Cells["loadState"].Value = "l";
+                    dgvSales.Rows[e.RowIndex].Cells["colName"].Value = cellValue.Replace("►", "▼");
+                    dgvSales.Rows[e.RowIndex].Cells["state"].Value = "c";
+                }
+                else
+                {
+                    ToggleSalesChildren(e.RowIndex, true);
                 }
             }
-
-            dgvSales.Rows[e.RowIndex].Cells["colName"].Value = cellValue.Replace("►", "▼");
-            dgvSales.Rows[e.RowIndex].Cells["state"].Value = "c";
-        }
-        else
-        {
-            ToggleSalesChildren(e.RowIndex, true);
-        }
-    }
-    else if (state == "c")
-    {
-        ToggleSalesChildren(e.RowIndex, false);
-        dgvSales.Rows[e.RowIndex].Cells["colName"].Value = cellValue.Replace("▼", "►");
-        dgvSales.Rows[e.RowIndex].Cells["state"].Value = "e";
-    }
+            else if (state == "c")
+            {
+                ToggleSalesChildren(e.RowIndex, false);
+                dgvSales.Rows[e.RowIndex].Cells["colName"].Value = cellValue.Replace("▼", "►");
+                dgvSales.Rows[e.RowIndex].Cells["state"].Value = "e";
+            }
+            UpdateTotalsRow();
         }
 
         private void ToggleSalesChildren(int parentRowIndex, bool visible)
@@ -347,6 +363,7 @@ namespace YamyProject
                     break;
                 }
             }
+            UpdateTotalsRow();
         }
         private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -507,6 +524,7 @@ namespace YamyProject
                     dgvSales_CellClick(dgvSales, new DataGridViewCellEventArgs(0, i));
                 }
             }
+            UpdateTotalsRow();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -615,6 +633,63 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtpFrom, dtpTo);
                 LoadItemData();
             }
+        }
+
+        /// <summary>
+        /// Calculate totals for visible invoice rows and ensure a bold TOTAL row at the bottom.
+        /// </summary>
+        private void UpdateTotalsRow()
+        {
+            // Remove existing total row(s)
+            for (int i = dgvSales.Rows.Count - 1; i >= 0; i--)
+            {
+                var state = dgvSales.Rows[i].Cells["state"].Value?.ToString();
+                if (state == "t")
+                    dgvSales.Rows.RemoveAt(i);
+            }
+
+            decimal totalQty = 0m;
+            decimal totalAmount = 0m;
+            decimal totalBalance = 0m;
+            decimal totalPriceWeighted = 0m; // for weighted average (price * qty)
+
+            NumberStyles styles = NumberStyles.Any;
+            CultureInfo culture = CultureInfo.CurrentCulture;
+
+            for (int i = 0; i < dgvSales.Rows.Count; i++)
+            {
+                var row = dgvSales.Rows[i];
+                if (row.IsNewRow) continue;
+                if (!row.Visible) continue;
+
+                int lvl;
+                if (!int.TryParse(row.Cells["currLvl"].Value?.ToString() ?? "0", out lvl)) continue;
+                if (lvl != 4) continue; // only invoice rows
+
+                decimal d;
+                string qtyStr = row.Cells["qty"].Value?.ToString() ?? "";
+                string amountStr = row.Cells["amount"].Value?.ToString() ?? "";
+                string priceStr = row.Cells["price"].Value?.ToString() ?? "";
+                string balanceStr = row.Cells["balance"].Value?.ToString() ?? "";
+
+                if (decimal.TryParse(qtyStr, styles, culture, out d)) { totalQty += d; totalPriceWeighted += d * (decimal.TryParse(priceStr, styles, culture, out d) ? d : 0m); }
+                if (decimal.TryParse(amountStr, styles, culture, out d)) totalAmount += d;
+                if (decimal.TryParse(balanceStr, styles, culture, out d)) totalBalance += d;
+            }
+
+            string qtyTotalStr = totalQty.ToString("N2", culture);
+            string amountTotalStr = totalAmount.ToString("N2", culture);
+            string balanceTotalStr = totalBalance.ToString("N2", culture);
+            string avgPriceStr = (totalQty > 0m) ? (totalPriceWeighted / totalQty).ToString("N2", culture) : "";
+
+            // Add total row as last row (state 't')
+            dgvSales.Rows.Add("t", "l", "0", "TOTAL", "", "", "", "", qtyTotalStr, avgPriceStr, amountTotalStr, balanceTotalStr, "");
+
+            // Style the total row to be bold for all columns
+            var totalRow = dgvSales.Rows[dgvSales.Rows.Count - 1];
+            totalRow.DefaultCellStyle.Font = new System.Drawing.Font(dgvSales.Font, FontStyle.Bold);
+            totalRow.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            totalRow.ReadOnly = true;
         }
     }
 }

@@ -291,7 +291,12 @@ namespace YamyProject
                             ta.name AS `Description`,
                             t.debit AS `Debit`,
                             t.credit AS `Credit`,
-                            SUM(t.credit - t.debit) OVER (ORDER BY t.id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS `Balance`
+                            SUM(
+                                CASE 
+                                    WHEN t.type = 'Purchase Invoice Cash' THEN 0
+                                    ELSE (t.credit - t.debit)
+                                END
+                            ) OVER (ORDER BY t.id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS `Balance`
                         FROM 
                             tbl_transaction t
                         INNER JOIN 

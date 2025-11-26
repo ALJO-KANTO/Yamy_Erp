@@ -41,6 +41,7 @@ namespace YamyProject.UI.Reports
             dgvData.Columns["state"].Visible = dgvData.Columns["currname"].Visible = dgvData.Columns["id"].Visible = dgvData.Columns["loadState"].Visible = dgvData.Columns["currLvl"].Visible = false;
 
             dgvData.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvData.Columns["balance"].DefaultCellStyle.Format = "N2";
         }
 
         public void BindDGV()
@@ -101,7 +102,7 @@ namespace YamyProject.UI.Reports
             if (currLvl > 2) return;
             if (currLvl == 2)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", int.Parse(dgvData.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", int.Parse(dgvData.Rows[e.RowIndex].Cells["id"].Value.ToString()), "", ""));
             }
 
             string state = dgvData.Rows[e.RowIndex].Cells["state"].Value.ToString();

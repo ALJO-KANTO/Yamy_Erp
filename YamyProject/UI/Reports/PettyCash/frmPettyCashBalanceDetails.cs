@@ -202,6 +202,8 @@ namespace YamyProject
                     dgvSales.Columns.Add("Balance", "Balance");
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
+                    dgvSales.Columns["Amount"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["Balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvSales.Columns["Account"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                     dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
@@ -280,7 +282,7 @@ namespace YamyProject
                         decimal balance = Convert.ToDecimal(reader["BALANCE"]);
 
 
-                        int rowIndex = dgvSales.Rows.Add(reader["transaction_id"].ToString(), reader["Type"].ToString(), reader["date"].ToString(), reader["Num"].ToString(), reader["A/C NAME"].ToString(), reader["AMOUNT"].ToString(), balance.ToString("N2") + " ◀");
+                        int rowIndex = dgvSales.Rows.Add(reader["transaction_id"].ToString(), reader["Type"].ToString(), reader["date"].ToString(), reader["Num"].ToString(), reader["A/C NAME"].ToString(), Utilities.FormatDecimal(reader["AMOUNT"]), balance.ToString("N2") + " ◀");
                         dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                         dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
@@ -314,6 +316,8 @@ namespace YamyProject
 
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
+                    dgvSales.Columns["Amount"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["Balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvSales.Columns["Account"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                     dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);

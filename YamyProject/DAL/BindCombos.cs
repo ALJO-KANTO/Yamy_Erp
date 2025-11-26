@@ -517,8 +517,50 @@ namespace YamyProject
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
             return cmb;
         }
+        public class ListItemModel
+        {
+            public string Name { get; set; } // This will be shown in the list
+            public int Id { get; set; }      // This is the hidden value
+        }
+        public static CheckedListBox PopulateListEmployeesNew(CheckedListBox lst, bool isAddOption = false)
+        {
+            DataTable dt = DBClass.ExecuteDataTable(
+                "SELECT CONCAT(CODE ,' - ' , Name) AS Name, Id FROM tbl_employee"
+            );
 
-        public static CheckedListBox PopulateListEmployees(CheckedListBox lst, bool isAddOption = false)
+            //if (dt == null)
+            //{
+            //    MessageBox.Show("No data returned from tbl_employee.");
+            //    return lst;
+            //}
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("id", typeof(int));
+            //dt.Columns.Add("name", typeof(string));
+
+            //// Add sample rows
+            //dt.Rows.Add(1, "E001 - John Doe");
+
+            //lst.DataSource = dt;
+            List<ListItemModel> items = new List<ListItemModel>();
+            foreach(DataRow row in dt.Rows)
+            {
+                items.Add(new ListItemModel
+                {
+                    Id = Convert.ToInt32(row["id"]),
+                    Name = row["name"].ToString()
+                });
+            }
+            // Bind the list to the CheckedListBox
+            foreach (var item in items) {
+                lst.Items.Add(item);
+            }
+            lst.DisplayMember = "name";
+            lst.ValueMember = "id";
+
+
+            return lst;
+        }
+        public static CheckedListBox PopulateListEmployeesOld(CheckedListBox lst, bool isAddOption = false)
         {
             //string query = "SELECT CONCAT(CODE ,' - ' , Name) as name ,id FROM tbl_employee";
             //BindCheckedListBox(lst, query, "id", "name", isAddOption, "0", "<< Add >>", false);
@@ -1248,7 +1290,7 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
-        public static Guna2ComboBox PopulateProjectResource(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false )
+        public static Guna2ComboBox PopulateProjectResourceRole(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false )
         {
             string query = "SELECT CONCAT(CODE ,' - ' , name) as name ,id FROM tbl_project_role";
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
@@ -1266,6 +1308,12 @@ namespace YamyProject
             //cmb.DisplayMember = "name";
             //cmb.DataSource = dt;
             //return cmb;
+        }
+        public static Guna2ComboBox PopulateProjectResourceLabor(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "SELECT CONCAT(CODE ,' - ' , name) as name ,id FROM tbl_project_resource WHERE TYPE='Labour'";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
         }
 
         public static ComboBox LoadDepartManufacture(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
@@ -1296,6 +1344,25 @@ namespace YamyProject
             return cmb;
             //DataTable dt = DBClass.ExecuteDataTable("select * from tbl_position where department_id=@id ",
             //DBClass.CreateParameter("id", departId));
+            //if (isAddOption)
+            //{
+            //    // Add the "<< Add >>" row at the top
+            //    DataRow newRow = dt.NewRow();
+            //    newRow["id"] = 0;
+            //    newRow["name"] = "<< Add >>";
+            //    dt.Rows.InsertAt(newRow, 0);
+            //}
+            //cmb.ValueMember = "id";
+            //cmb.DisplayMember = "name";
+            //cmb.DataSource = dt;
+            //return cmb;
+        }
+        public static ComboBox LoadProcessStageManufacture(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "select * from tbl_Manufacturing_Steps";
+            BindComboBox(cmb, query, "id", "step_name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+            //DataTable dt = DBClass.ExecuteDataTable("select * from tbl_Manufacturing_Steps");
             //if (isAddOption)
             //{
             //    // Add the "<< Add >>" row at the top

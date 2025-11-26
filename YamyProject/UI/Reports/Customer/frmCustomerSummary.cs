@@ -101,42 +101,42 @@ namespace YamyProject
             }
 
             string query = $@"
-        SELECT 
-    ROW_NUMBER() OVER(ORDER BY MIN(t.date)) AS SN,
-    v.id, 
-    CAST(NOW() AS DATE) AS `DATE`, 
-    CONCAT(v.code, ' - ', v.name) AS `name`, 
-    IFNULL(SUM(t.debit), 0) AS debit, 
-    IFNULL(SUM(t.credit), 0) AS credit,
-    COALESCE(SUM(
-        CASE 
-            WHEN t.type = 'Customer Receipt' THEN -IF(t.debit = 0, t.credit, t.debit)
-            WHEN t.type = 'Sales Invoice Cash' THEN 0 
-            WHEN t.type = 'Customer Opening Balance' AND t.credit > 0 THEN -t.credit 
-            WHEN t.type = 'Check Cancel (Customer)' THEN t.debit
-            WHEN t.type = 'PDC Receivable' THEN IF(t.debit = 0, t.credit, t.debit)
-            WHEN t.type = 'SalesReturn Invoice' THEN -IF(t.debit = 0, t.credit, t.debit)
-            WHEN t.type = 'Credit Note' THEN -IF(t.debit = 0, t.credit, t.debit)
-            WHEN t.type LIKE 'Customer%' OR t.type LIKE 'Sales%' THEN IF(t.debit = 0, t.credit, t.debit)
-            ELSE 0 
-        END
-    ), 0) AS balance
-FROM tbl_customer v
-INNER JOIN tbl_transaction t 
-    ON v.id = t.hum_id
-WHERE v.state = 0
-    AND t.type IN (
-                                    'Customer Receipt',
-                                    'Sales Invoice',
-                                    'Customer Opening Balance',
-                                    'Check Cancel (Customer)',
-                                    'SalesReturn Invoice',
-                                    'Credit Note',
-                                    'PDC Receivable'
-                                )
-    {dateFilter}
-GROUP BY v.id, v.code, v.name
-;";
+                                    SELECT 
+                                ROW_NUMBER() OVER(ORDER BY MIN(t.date)) AS SN,
+                                v.id, 
+                                CAST(NOW() AS DATE) AS `DATE`, 
+                                CONCAT(v.code, ' - ', v.name) AS `name`, 
+                                IFNULL(SUM(t.debit), 0) AS debit, 
+                                IFNULL(SUM(t.credit), 0) AS credit,
+                                COALESCE(SUM(
+                                    CASE 
+                                        WHEN t.type = 'Customer Receipt' THEN -IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'Sales Invoice Cash' THEN 0 
+                                        WHEN t.type = 'Customer Opening Balance' AND t.credit > 0 THEN -t.credit 
+                                        WHEN t.type = 'Check Cancel (Customer)' THEN t.debit
+                                        WHEN t.type = 'PDC Receivable' THEN IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'SalesReturn Invoice' THEN -IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'Credit Note' THEN -IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type LIKE 'Customer%' OR t.type LIKE 'Sales%' THEN IF(t.debit = 0, t.credit, t.debit)
+                                        ELSE 0 
+                                    END
+                                ), 0) AS balance
+                            FROM tbl_customer v
+                            INNER JOIN tbl_transaction t 
+                                ON v.id = t.hum_id
+                            WHERE v.state = 0
+                                AND t.type IN (
+                                                                'Customer Receipt',
+                                                                'Sales Invoice',
+                                                                'Customer Opening Balance',
+                                                                'Check Cancel (Customer)',
+                                                                'SalesReturn Invoice',
+                                                                'Credit Note',
+                                                                'PDC Receivable'
+                                                            )
+                                {dateFilter}
+                            GROUP BY v.id, v.code, v.name
+                            ;";
 
             using (MySqlDataReader reader = DBClass.ExecuteReader(query, parameters.ToArray()))
             {

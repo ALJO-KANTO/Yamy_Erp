@@ -53,7 +53,7 @@ namespace YamyProject
             LocalizationManager.LocalizeDataGridViewHeaders(dgvReport);
             dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
-
+            dgvReport.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //dgvReport.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -94,7 +94,7 @@ namespace YamyProject
                 while (reader.Read())
                 {
                     totalRevenue += Convert.ToDecimal(reader["balance"] ?? 0);
-                    dgvReport.Rows.Add("e", "n", "3", "      " + reader["name"], "", "", Convert.ToDecimal(reader["balance"] ?? 0));
+                    dgvReport.Rows.Add("e", "n", "3", "      " + reader["name"], "", "", Utilities.FormatDecimal((reader["balance"] ?? 0)));
                 }
             }
             dgvReport.Rows.Add("e", "u", "2", "    Total Income", "", "", totalRevenue.ToString("N2"));
@@ -116,7 +116,7 @@ namespace YamyProject
                 while (reader.Read())
                 {
                     totalCOGS += Convert.ToDecimal(reader["balance"] ?? 0);
-                    dgvReport.Rows.Add("e", "n", "3", "      " + reader["name"], "", "", Convert.ToDecimal(reader["balance"] ?? 0));
+                    dgvReport.Rows.Add("e", "n", "3", "      " + reader["name"], "", "", Utilities.FormatDecimal(reader["balance"] ?? 0));
                 }
             }
 
@@ -145,7 +145,7 @@ namespace YamyProject
                     string name = reader["name"].ToString();
                     decimal balance = Convert.ToDecimal(reader["balance"] ?? 0);
                     totalExpenses += balance;
-                    dgvReport.Rows.Add("e", "n", "3", "      " + name, "", "", balance.ToString("N2"));
+                    dgvReport.Rows.Add("e", "n", "3", "      " + name, "", "", Utilities.FormatDecimal(balance));
                 }
             }
 
@@ -218,7 +218,7 @@ namespace YamyProject
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                             newRow.Height = row.Height;
 
                             ApplyRowStyle(newRow, currLvl + 1);
@@ -461,7 +461,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Income Expense Detail By Account", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Income Expense Detail By Account", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()), dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString()));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -499,7 +499,7 @@ namespace YamyProject
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                                     newRow.Height = dgvReport.Rows[e.RowIndex].Height;
 
                                     ApplyRowStyle(newRow, currLvl + 1);
@@ -723,7 +723,7 @@ namespace YamyProject
             if (comboBox1.SelectedItem != null)
             {
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dateTimePicker1, dateTimePicker2);
-                LoadData();
+                BindDGV();
             }
         }
     }

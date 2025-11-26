@@ -1,4 +1,5 @@
-﻿using MigraDoc.DocumentObjectModel;
+﻿using Guna.UI2.WinForms;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
@@ -25,7 +27,7 @@ namespace YamyProject
         private void frmPurchaseByVendorSummary_Load(object sender, EventArgs e)
         {
             btnPrint.Text = "Print ▼";
-            LoadSalesData();
+            LoadPurchaseData();
             using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
                 if (reader.Read())
                 {
@@ -43,36 +45,37 @@ namespace YamyProject
         {
             MessageBox.Show("Exporting Report...");
         }
-        private void LoadSalesData()
+        private void LoadPurchaseData()
         {
-            dgvSales.Rows.Clear();
+            dgvPurchase.Rows.Clear();
 
-            if (dgvSales.Columns.Count == 0)
+            if (dgvPurchase.Columns.Count == 0)
             {
-                dgvSales.Columns.Add("id", "id");
-                dgvSales.Columns["id"].Visible = false;
-                dgvSales.Columns.Add("sn", "SN");
-                dgvSales.Columns.Add("name", "Name");
-                dgvSales.Columns.Add("debit", "Net Sales");
-                LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+                dgvPurchase.Columns.Add("id", "id");
+                dgvPurchase.Columns["id"].Visible = false;
+                dgvPurchase.Columns.Add("sn", "SN");
+                dgvPurchase.Columns.Add("name", "Name");
+                dgvPurchase.Columns.Add("debit", "Net Purchase");
+                LocalizationManager.LocalizeDataGridViewHeaders(dgvPurchase);
 
-                dgvSales.Columns["debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPurchase.Columns["debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                foreach (DataGridViewColumn col in dgvSales.Columns)
+                foreach (DataGridViewColumn col in dgvPurchase.Columns)
                 {
                     col.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 }
 
-                dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
-                dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
-                dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
-                dgvSales.EnableHeadersVisualStyles = false;
-                dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvSales.GridColor = System.Drawing.Color.LightGray;
-                dgvSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                dgvSales.RowHeadersVisible = false;
+                dgvPurchase.Columns["debit"].DefaultCellStyle.Format = "N2";
+                dgvPurchase.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+                dgvPurchase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvPurchase.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
+                dgvPurchase.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+                dgvPurchase.EnableHeadersVisualStyles = false;
+                dgvPurchase.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvPurchase.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvPurchase.GridColor = System.Drawing.Color.LightGray;
+                dgvPurchase.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                dgvPurchase.RowHeadersVisible = false;
             }
 
             decimal totalAmount = 0;
@@ -123,22 +126,22 @@ namespace YamyProject
                 {
                     int sn = Convert.ToInt32(reader["SN"]);
                     string name = reader["vendor_name"].ToString();
-                    decimal netSales = Convert.ToDecimal(reader["Total Purchase"]);
-                    int rowIndex = dgvSales.Rows.Add(reader["vendor_id"].ToString(), sn, name, netSales.ToString("N2"), "0.00", "0.00");
+                    decimal netPurchase = Convert.ToDecimal(reader["Total Purchase"]);
+                    int rowIndex = dgvPurchase.Rows.Add(reader["vendor_id"].ToString(), sn, name, netPurchase.ToString("N2"), "0.00", "0.00");
 
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+                    dgvPurchase.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    dgvPurchase.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 
-                    totalAmount += netSales;
+                    totalAmount += netPurchase;
                 }
             }
 
             // Add total row
-            int totalRow = dgvSales.Rows.Add("", "", "TOTAL", totalAmount.ToString("N2"), "", "");
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
-            dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
-            dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            dgvSales.Rows[totalRow].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            int totalRow = dgvPurchase.Rows.Add("", "", "TOTAL", totalAmount.ToString("N2"), "", "");
+            dgvPurchase.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
+            dgvPurchase.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
+            dgvPurchase.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            dgvPurchase.Rows[totalRow].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void SavePDF_Click(object sender, EventArgs e)
         {
@@ -198,29 +201,29 @@ namespace YamyProject
 
             dataTable.AddColumn("2cm"); // SN
             dataTable.AddColumn("11cm"); // Name
-            dataTable.AddColumn("6cm");   // Net Sales
+            dataTable.AddColumn("6cm");   // Net Purchase
 
             Row header = dataTable.AddRow();
             header.Shading.Color = Colors.LightGray;
             header.Format.Font.Bold = true;
             header.Cells[0].AddParagraph("SN");
             header.Cells[1].AddParagraph("Name");
-            header.Cells[2].AddParagraph("Net Sales");
+            header.Cells[2].AddParagraph("Net Purchase");
 
             decimal totalAmount = 0;
 
-            foreach (DataGridViewRow row in dgvSales.Rows)
+            foreach (DataGridViewRow row in dgvPurchase.Rows)
             {
                 if (row.IsNewRow) continue;
 
                 string sn = row.Cells["sn"].Value?.ToString() ?? "";
                 string name = row.Cells["name"].Value?.ToString() ?? "";
-                string salesStr = row.Cells["debit"].Value?.ToString() ?? "0";
+                string purchaseStr = row.Cells["debit"].Value?.ToString() ?? "0";
 
                 if (name.ToUpper().Contains("TOTAL")) continue;
 
                 decimal amount;
-                decimal.TryParse(salesStr, out amount);
+                decimal.TryParse(purchaseStr, out amount);
                 totalAmount += amount;
 
                 Row tRow = dataTable.AddRow();
@@ -267,25 +270,48 @@ namespace YamyProject
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
                     worksheet.Name = "Purchase By Vendor Balance";
 
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "C1"];
-                    headerRange.Merge();
-                    headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yyyy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange0 = worksheet.Range["A1", "D1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["A2", "D2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = guna2HtmlLabel7.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["A3", "D3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dtpFrom.Text + " - To " + dtpTo.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    // Merge and format header row (Date)
+                    Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
                     // Add column headers (row 2)
-                    worksheet.Cells[2, 1] = "SN";
-                    worksheet.Cells[2, 2] = "Name";
-                    worksheet.Cells[2, 3] = "Net Sales";
+                    worksheet.Cells[rowIndex, 1] = "SN";
+                    worksheet.Cells[rowIndex, 2] = "Name";
+                    worksheet.Cells[rowIndex, 3] = "Net Purchase";
 
                     for (int i = 1; i <= 3; i++)
                     {
@@ -296,27 +322,26 @@ namespace YamyProject
                         headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
                     }
 
-                    int rowIndex = 3;
                     decimal totalAmount = 0;
 
-                    foreach (DataGridViewRow row in dgvSales.Rows)
+                    foreach (DataGridViewRow row in dgvPurchase.Rows)
                     {
                         if (row.IsNewRow) continue;
 
                         string sn = row.Cells["sn"].Value?.ToString() ?? "";
                         string name = row.Cells["name"].Value?.ToString() ?? "";
-                        string netSalesStr = row.Cells["debit"].Value?.ToString() ?? "0";
+                        string netPurchaseStr = row.Cells["debit"].Value?.ToString() ?? "0";
 
                         if (name.ToUpper().Contains("TOTAL"))
                             continue;
 
-                        decimal netSales = 0;
-                        decimal.TryParse(netSalesStr, out netSales);
-                        totalAmount += netSales;
+                        decimal netPurchase = 0;
+                        decimal.TryParse(netPurchaseStr, out netPurchase);
+                        totalAmount += netPurchase;
 
                         worksheet.Cells[rowIndex, 1] = sn;
                         worksheet.Cells[rowIndex, 2] = name;
-                        worksheet.Cells[rowIndex, 3] = netSales.ToString("N2");
+                        worksheet.Cells[rowIndex, 3] = netPurchase.ToString("N2");
 
                         for (int col = 1; col <= 3; col++)
                         {
@@ -324,7 +349,7 @@ namespace YamyProject
                             cell.Font.Name = "Times New Roman";
                             cell.Font.Size = 9;
                             if (col == 3)
-                                cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         }
 
                         rowIndex++;
@@ -337,8 +362,8 @@ namespace YamyProject
 
                     worksheet.Cells[rowIndex, 2].Font.Bold = true;
                     worksheet.Cells[rowIndex, 3].Font.Bold = true;
-                    worksheet.Cells[rowIndex, 3].Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
-                    worksheet.Cells[rowIndex, 3].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                    worksheet.Cells[rowIndex, 3].Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                    worksheet.Cells[rowIndex, 3].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
 
                     worksheet.Columns.AutoFit();
                     workbook.SaveAs(saveDialog.FileName);
@@ -350,23 +375,23 @@ namespace YamyProject
             }
         }
 
-        private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPurchase_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //if (Utilities.UserPermissionCheck("CustomerBalanceSummary"))
             //{
-                int id = int.Parse(dgvSales.CurrentRow.Cells["id"].Value.ToString());
+                int id = int.Parse(dgvPurchase.CurrentRow.Cells["id"].Value.ToString());
                 frmLogin.frmMain.openChildForm(new frmPurchaseByVendorDetails(id));
             //}
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            LoadSalesData();
+            LoadPurchaseData();
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            LoadSalesData();
+            LoadPurchaseData();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -374,7 +399,7 @@ namespace YamyProject
             if (comboBox1.SelectedItem != null)
             {
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtpFrom, dtpTo);
-                LoadSalesData();
+                LoadPurchaseData();
             }
         }
     }

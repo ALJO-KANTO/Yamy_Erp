@@ -60,10 +60,11 @@ namespace YamyProject.UI.Manufacturing.Viewform
                         reader["id"],
                         reader["batchname"],
                         reader["date"],
-                        reader["hours"],
                         reader["amount"],
+                        reader["hours"],
                         reader["Description"],
-                        status
+                        status,
+                        "View Packing"
                     );
 
                     count++;
@@ -88,15 +89,49 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
         private void dgvItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvItems.Rows.Count > 0 && dgvItems.CurrentRow != null)
+            if (e.RowIndex < 0) // Ignore header row
+                return;
+
+            // Otherwise, open work order details
+            int id;
+            if (int.TryParse(dgvItems.Rows[e.RowIndex].Cells["dgvid"].Value?.ToString(), out id))
             {
-                int id = Convert.ToInt32(dgvItems.CurrentRow.Cells["dgvid"].Value);
                 frmManWorkOrderDetails frm = new frmManWorkOrderDetails(id);
                 frm.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Please select a work order to view details.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a valid work order to view details.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) // ignore header click
+                return;
+
+            // Check if clicked column is the link column
+            if (dgvItems.Columns[e.ColumnIndex].Name == "dgvlinkPacking")
+            {
+                string status = dgvItems.Rows[e.RowIndex].Cells["dgvStatus"].Value?.ToString();
+
+                if (status == "Done")
+                {
+                    string productName = dgvItems.Rows[e.RowIndex].Cells["ProductName"].Value?.ToString();
+                    string batchNo = dgvItems.Rows[e.RowIndex].Cells["BatchNo"].Value?.ToString();
+
+                    // Open Packing Form
+                    frmManProductPacking packingForm = new frmManProductPacking();
+
+                    // Optional: send the data to the form
+                    // packingForm.SetInitialData(productName, batchNo);
+
+                    packingForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Work not finished.");
+                }
             }
         }
     }

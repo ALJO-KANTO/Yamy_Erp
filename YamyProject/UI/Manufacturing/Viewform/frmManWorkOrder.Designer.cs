@@ -51,6 +51,7 @@
             this.dgvhours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvdescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvlinkPacking = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -253,7 +254,8 @@
             this.amount,
             this.dgvhours,
             this.dgvdescription,
-            this.dgvStatus});
+            this.dgvStatus,
+            this.dgvlinkPacking});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -293,6 +295,7 @@
             this.dgvItems.ThemeStyle.RowsStyle.Height = 22;
             this.dgvItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentClick);
             this.dgvItems.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentDoubleClick);
             // 
             // sn
@@ -344,6 +347,12 @@
             this.dgvStatus.HeaderText = "Status";
             this.dgvStatus.Name = "dgvStatus";
             this.dgvStatus.ReadOnly = true;
+            // 
+            // dgvlinkPacking
+            // 
+            this.dgvlinkPacking.HeaderText = "Open Packing";
+            this.dgvlinkPacking.Name = "dgvlinkPacking";
+            this.dgvlinkPacking.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -480,5 +489,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvhours;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvdescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStatus;
+        private System.Windows.Forms.DataGridViewLinkColumn dgvlinkPacking;
     }
 }

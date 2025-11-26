@@ -887,8 +887,10 @@ namespace YamyProject
                             (5, 'PRINT KITCHEN KOT', 0, '' ,1),
                             (6, 'PRINT BILL', 0, '' ,1),
                             (7, 'PROJECT OPTION', 0, '' ,0),
-                            (8, 'ENABLE PETTYCASH APPROVAL', 0, '', 0),;
-                            (9, 'ENABLE BARCODE', 0, '', 0);
+                            (8, 'ENABLE PETTYCASH APPROVAL', 0, '', 0),
+                            (9, 'ENABLE BARCODE', 0, '', 0),
+                            (10, 'ENABLE ITEM SERIAL NO', 0, '', 0),
+                            (11, 'ENABLE ITEM EXPIREDATE', 0, '', 0);
 
                         CREATE TABLE `tbl_items` (
 	                    `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -1843,18 +1845,19 @@ namespace YamyProject
                         CREATE TABLE IF NOT EXISTS `tbl_set_main_menu` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                          `status` int DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_set_main_menu` (`id`, `name`) VALUES
-	                        (1, 'Accountant'),
-	                        (2, 'Banking'),
-	                        (3, 'Inventory'),
-	                        (4, 'HR'),
-	                        (5, 'Construction'),
-	                        (6, 'CRM'),
-	                        (7, 'Manufacture'),
-	                        (8, 'Restaurant');
+                        INSERT INTO `tbl_set_main_menu` (`id`, `name`, `status`) VALUES
+	                        (1, 'Accountant',1),
+	                        (2, 'Banking',1),
+	                        (3, 'Inventory',1),
+	                        (4, 'HR',1),
+	                        (5, 'Construction',0),
+	                        (6, 'CRM',0),
+	                        (7, 'Manufacture',0),
+	                        (8, 'Restaurant',0);
 
                         CREATE TABLE IF NOT EXISTS `tbl_set_menu_forms` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -2245,6 +2248,9 @@ namespace YamyProject
                           `modified_by` int DEFAULT '0',
                           `modified_date` date DEFAULT NULL,
                           `state` int DEFAULT '0',
+                          `subcontractor_account_id` int NOT NULL DEFAULT '0',
+                          `retention_account_id` int NOT NULL DEFAULT '0',
+                          `retention_percentage` DECIMAL(18,2) NOT NULL DEFAULT '0',  
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2362,8 +2368,8 @@ namespace YamyProject
                             name VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
                             start_date DATE NOT NULL,
                             end_date DATE NOT NULL,
-                            progress DECIMAL(20,3) NOT NULL DEFAULT '0.000',
-                            status INT NOT NULL DEFAULT 0
+                            progress DECIMAL(20,2) NOT NULL DEFAULT '0.000',
+                            status VARCHAR(50) NULL DEFAULT '' COLLATE 'utf8mb4_general_ci'
                         );
 
                         CREATE TABLE `tbl_project_work_done` (
@@ -2412,7 +2418,9 @@ namespace YamyProject
 	                        `fixedStatus` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	                        `product_id` INT(10) NULL DEFAULT '0',
 	                        `warehouse_id` INT(10) NULL DEFAULT '0',
+	                        `warehouse_to_id` INT(10) NULL DEFAULT '0',
                             `product_qty` DECIMAL(10,0) NULL DEFAULT '0',
+	                        `process_stage` VARCHAR(100) NULL DEFAULT '' COLLATE 'utf8mb4_0900_ai_ci',
 	                        PRIMARY KEY (`id`) USING BTREE
                         )
                         COLLATE='utf8mb4_0900_ai_ci'
@@ -2440,6 +2448,7 @@ namespace YamyProject
 	                        `EndTime` DATETIME NULL DEFAULT NULL,
 	                        `Status` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	                        `userID` INT(10) NULL DEFAULT NULL,
+                            `current_stage_id` INT(10) NULL DEFAULT 0,
 	                        PRIMARY KEY (`id`) USING BTREE
                         )
                         COLLATE='utf8mb4_0900_ai_ci'
@@ -2589,6 +2598,58 @@ namespace YamyProject
                         VALUES (1,'RoyalBlue','White');
                         ";
                 DBClass.ExecuteNonQuery(query);
+                DBClass.ExecuteNonQuery(@" USE " + dbName + @";
+                    CREATE TABLE IF NOT EXISTS tbl_reconciliation (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        account_id INT NOT NULL,
+                        statement_date DATE NOT NULL,
+                        ending_balance DECIMAL(18,4) NOT NULL,
+                        service_charge DECIMAL(18,4) DEFAULT 0,
+                        interest_amount DECIMAL(18,4) DEFAULT 0,
+                        created_by INT,
+                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                    ) ENGINE=InnoDB;
+                ");
+
+                DBClass.ExecuteNonQuery(@" USE " + dbName + @";
+                    CREATE TABLE IF NOT EXISTS tbl_reconciliation_item (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        reconciliation_id INT NOT NULL,
+                        transaction_id INT NOT NULL,
+                        amount DECIMAL(18,4) NOT NULL,
+                        cleared_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        FOREIGN KEY (reconciliation_id) REFERENCES tbl_reconciliation(id)
+                    ) ENGINE=InnoDB;
+                ");
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_labor_attendance (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            employee_id INT NOT NULL,
+                            date DATE NOT NULL,
+                            time_in TIME NOT NULL,
+                            lunch_start TIME DEFAULT NULL,
+                            lunch_end TIME DEFAULT NULL,
+                            time_out TIME DEFAULT NULL,
+                            overtime_hours DECIMAL(5,2) DEFAULT 0,
+                            labor_id INT DEFAULT 0,
+                            Status VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci'
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_Manufacturing_Steps (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code VARCHAR(20) NOT NULL,
+                            step_name VARCHAR(100) NOT NULL,
+                            description VARCHAR(500),
+                            step_order INT NOT NULL,
+                            is_completed TINYINT(1) DEFAULT 0,
+                            created_by INT,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );
+                        ";
+                DBClass.ExecuteNonQuery(query);
 
                 query = @" USE " + dbName + @";
                         
@@ -2673,6 +2734,7 @@ namespace YamyProject
                 
                 DBClass.ExecuteNonQuery(query);
 
+                
                 // Step 4: Execute all your table creation queries
                 query = @" USE " + dbName + @";
                 INSERT INTO `tbl_company` ( `name`, `descriptions`, `phone1`, `phone2`, `gmail`, `mobile_number`, `website`, `address`, `trn_no`, `logoComp`) VALUES

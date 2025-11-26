@@ -188,7 +188,7 @@ namespace YamyProject
 
         public void loadCombo()
         {
-            BindCombos.PopulateProjectResource(cmbRole);
+            BindCombos.PopulateProjectResourceRole(cmbRole);
             BindCombos.PopulateEmployees(cmbEmployee);
             cmbEmployee.SelectedIndex = -1;
         }

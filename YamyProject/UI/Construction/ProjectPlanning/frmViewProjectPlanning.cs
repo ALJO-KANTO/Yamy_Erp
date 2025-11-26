@@ -40,7 +40,9 @@ namespace YamyProject
             AccountCashId = defaultAccounts.ContainsKey("Purchase Payment Cash Method")
                 ? defaultAccounts["Purchase Payment Cash Method"] : 0;
             BindCombos.PopulateAllLevel4Account(cmbFundAccount);
-            
+            BindCombos.PopulateAllLevel4Account(cmbRetentionAccount);
+            BindCombos.PopulateVendors(cmbSubcontractor, false, false, "Subcontractor");
+
             LoaddgvItems();
 
             BindCombo();
@@ -83,6 +85,10 @@ namespace YamyProject
                 txtEstimatedBudget.Text = Utilities.FormatDecimal(decimal.Parse(reader["estimated_budget"].ToString()));
                 cmbProjectType.Text = reader["project_type"].ToString();
                 cmbFundAccount.SelectedValue = int.Parse(reader["fund_account_id"].ToString());
+                txtRetentionPercentage.Text = reader["retention_percentage"].ToString();
+                cmbSubcontractor.SelectedValue = int.Parse(reader["subcontractor_account_id"].ToString());
+                int.Parse(reader["retention_account_id"].ToString());
+                txtRetentionPercentage.Text = reader["retention_percentage"].ToString();
                 //cmbFundPeriod.Text = reader["fund_period"].ToString();
                 //txtDescription.Text = reader["description"].ToString();
                 //txtAssignedTeam.Text = reader["assigned_team"].ToString();
@@ -102,6 +108,10 @@ namespace YamyProject
                 BindIssuedDate();
                 BindReceivedDate();
                 BindResourceDate();
+                if (!string.IsNullOrEmpty(reader["retention_percentage"].ToString()) && !string.IsNullOrEmpty(txtEstimatedBudget.Text))
+                {
+                    CalculateRetention();
+                }
             }
         }
 
@@ -228,12 +238,18 @@ namespace YamyProject
             if (id == 0)
             {
                 if (insertData())
+                {
+                    MessageBox.Show("Planning Saved");
                     reloadData();
+                }
             }
             else
             {
                 if (updateData())
+                {
+                    MessageBox.Show("Planning Updated");
                     reloadData();
+                }
             }
             //master.BindData();
         }
@@ -303,7 +319,7 @@ namespace YamyProject
                 return false;
 
             DBClass.ExecuteNonQuery(@"UPDATE tbl_project_planning 
-                                    SET modified_by = @modifiedBy, modified_date = @modifiedDate ,date=@date, project_id=@projectId, location=@location,site=@site,plot_number=@plotNumber, start_date=@startDate, end_date=@endDate, status=@status, estimated_budget=@estimatedBudget, project_type=@projectType, description=@description, fund_account_id=@accountId, fund_period=@fundPeriod,assigned_team=@assignedTeam,progress=@progress WHERE id = @id;",
+                                    SET modified_by = @modifiedBy, modified_date = @modifiedDate ,date=@date, project_id=@projectId, location=@location,site=@site,plot_number=@plotNumber, start_date=@startDate, end_date=@endDate, status=@status, estimated_budget=@estimatedBudget, project_type=@projectType, description=@description, fund_account_id=@accountId, fund_period=@fundPeriod,assigned_team=@assignedTeam,progress=@progress, subcontractor_account_id=@subcontractor_account_id, retention_account_id=@retention_account_id, retention_percentage=@retention_percentage WHERE id = @id;",
             DBClass.CreateParameter("id", id),
             DBClass.CreateParameter("projectId", cmbProjectName.SelectedValue.ToString()),
             DBClass.CreateParameter("date", dtInv.Value.Date),
@@ -323,7 +339,11 @@ namespace YamyProject
             //DBClass.CreateParameter("tenderId", cmbTenderName.SelectedValue.ToString()),
             //DBClass.CreateParameter("tender_name_id", cmbTenderName.SelectedValue.ToString()),
             DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
-            DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date));
+            DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
+            DBClass.CreateParameter("subcontractor_account_id", cmbSubcontractor.SelectedValue.ToString()),
+            DBClass.CreateParameter("retention_account_id", cmbRetentionAccount.SelectedValue.ToString()),
+            DBClass.CreateParameter("retention_percentage", txtRetentionPercentage.Text.ToString())
+            );
             //updatePlaning();
             CommonInsert.DeleteTransactionEntry(id, "PROJECT PLANNING");
             transactions();
@@ -334,14 +354,87 @@ namespace YamyProject
         {
             if (!string.IsNullOrEmpty(txtEstimatedBudget.Text))
             {
+                var FundAccountId = cmbFundAccount.SelectedValue == null ? 0 : cmbFundAccount.SelectedValue;
+                var SubcontractorId = cmbSubcontractor.SelectedValue == null ? 0 : cmbSubcontractor.SelectedValue;
+                var SubcontractorAccountId = DBClass.ExecuteScalar("SELECT account_id FROM tbl_vendor WHERE id=@id",
+                    DBClass.CreateParameter("id", SubcontractorId)) ?? 0;
+                var RetentionAccountId = cmbRetentionAccount.SelectedValue == null ? 0 : cmbRetentionAccount.SelectedValue;
+
+                decimal TotalAmount = decimal.Parse(txtEstimatedBudget.Text);
+                decimal RetentionPercentage = string.IsNullOrEmpty(txtEstimatedBudget.Text) ? 0 : decimal.Parse(txtRetentionPercentage.Text);
+                decimal RetentionAmount = string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : decimal.Parse(txtRetentionAmount.Text);
+                decimal paymentAmount = TotalAmount - RetentionAmount;
+
+                // 1. Project expense - record project cost
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     FundAccountId.ToString(),   // Project Planning Account
+                      TotalAmount.ToString(), "0", id.ToString(), "0",
+                      "Project Planning", "PROJECT PLANNING",
+                      "Project Planning Invoice NO.",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+
+                // 2. Credit Subcontractor for total invoice
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     SubcontractorAccountId.ToString(),          // Subcontractor Account
+                      "0", TotalAmount.ToString(), id.ToString(), SubcontractorId.ToString(),
+                      "Project Planning", "PROJECT PLANNING",
+                      "Subcontractor Invoice Payable",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+
+                // 3. Payment to subcontractor (actual paid)
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     SubcontractorAccountId.ToString(),
+                      paymentAmount.ToString(), "0", id.ToString(), "0",
+                      "Project Planning", "PROJECT PLANNING",
+                      "Payment made to subcontractor",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     AccountCashId.ToString(),                    // Cash/Bank
+                      "0", paymentAmount.ToString(), id.ToString(), "0",
+                      "Project Planning", "PROJECT PLANNING",
+                      "Cash/Bank payment to subcontractor",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+
+                // 4. Retention withheld
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     SubcontractorAccountId.ToString(),
+                      RetentionAmount.ToString(), "0", id.ToString(), "0",
+                      "Project Planning", "PROJECT PLANNING",
+                      "Retention withheld from subcontractor",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     RetentionAccountId.ToString(),               // Retention Payable Account
+                      "0", RetentionAmount.ToString(), id.ToString(), "0",
+                      "Project Planning", "PROJECT PLANNING",
+                      "Retention Payable",
+                      frmLogin.userId, DateTime.Now.Date, "0");
+            }
+        }
+
+        private void transactionsOld()
+        {
+            if (!string.IsNullOrEmpty(txtEstimatedBudget.Text))
+            {
                 decimal TotalAmount = decimal.Parse(txtEstimatedBudget.Text.ToString());
+                decimal RetentionPercentage = decimal.Parse(txtRetentionPercentage.Text.ToString());
+                decimal RetentionAmount = decimal.Parse(txtRetentionAmount.Text.ToString());
+                decimal paymentAmount = TotalAmount - RetentionAmount;
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      cmbFundAccount.SelectedValue.ToString(),
                       TotalAmount.ToString(), "0", id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
                      frmLogin.userId, DateTime.Now.Date, "0");
+
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      AccountCashId.ToString(),
-                      "0", TotalAmount.ToString(), id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
+                      "0", paymentAmount.ToString(), id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
+                     frmLogin.userId, DateTime.Now.Date, "0");
+
+                /******************************Retention**************************/
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                     AccountCashId.ToString(),
+                      "0", RetentionAmount.ToString(), id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
                      frmLogin.userId, DateTime.Now.Date, "0");
             }
         }
@@ -350,7 +443,7 @@ namespace YamyProject
             if (!chkRequiredDate())
                 return false;
 
-            invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_project_planning(date,project_id, location,site,plot_number, start_date, end_date, status, estimated_budget,project_type,description,fund_account_id,fund_period,assigned_team, progress,tender_id, created_by, created_date, tender_name_id) VALUES (@date,@projectId, @location,@site,@plotNumber, @startDate, @endDate, @status, @estimatedBudget,@projectType,@description,@accountId,@fundPeriod,@assignedTeam,@progress,@tenderId, @created_by, @created_date,@tenderNameId);SELECT LAST_INSERT_ID();",
+            invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_project_planning(date,project_id, location,site,plot_number, start_date, end_date, status, estimated_budget,project_type,description,fund_account_id,fund_period,assigned_team, progress,tender_id, created_by, created_date, tender_name_id, subcontractor_account_id, retention_account_id, retention_percentage) VALUES (@date,@projectId, @location,@site,@plotNumber, @startDate, @endDate, @status, @estimatedBudget,@projectType,@description,@accountId,@fundPeriod,@assignedTeam,@progress,@tenderId, @created_by, @created_date,@tenderNameId, @subcontractor_account_id, @retention_account_id, @retention_percentage);SELECT LAST_INSERT_ID();",
             DBClass.CreateParameter("date", dtInv.Value.Date),
             DBClass.CreateParameter("projectId", cmbProjectName.SelectedValue.ToString()),
             DBClass.CreateParameter("location", "0"),
@@ -369,7 +462,12 @@ namespace YamyProject
             DBClass.CreateParameter("tenderId", tenderId.ToString()),
             DBClass.CreateParameter("tenderNameId", cmbTenderName.SelectedValue.ToString()),
             DBClass.CreateParameter("created_by", frmLogin.userId),
-            DBClass.CreateParameter("created_date", DateTime.Now.Date)).ToString());
+            DBClass.CreateParameter("created_date", DateTime.Now.Date),
+            DBClass.CreateParameter("subcontractor_account_id", cmbSubcontractor.SelectedValue.ToString()),
+            DBClass.CreateParameter("retention_account_id", cmbRetentionAccount.SelectedValue.ToString()),
+            DBClass.CreateParameter("retention_percentage", txtRetentionPercentage.Text.ToString())
+            ).ToString());
+            
             id = (int) decimal.Parse(invId.ToString());
             //updatePlaning();
             transactions();
@@ -1024,6 +1122,31 @@ namespace YamyProject
             {
                 new frmProjectAssignResource(this, int.Parse(dgvResource.CurrentRow.Cells["ResourceId"].Value.ToString()), tenderId, id).ShowDialog();
             }
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtRetentionPercentage.Text, out int value))
+            {
+                if (value > 90)  // set your max value here
+                {
+                    txtRetentionPercentage.Text = "90";
+                    txtRetentionPercentage.SelectionStart = txtRetentionPercentage.Text.Length; // keep cursor at end
+                }
+            }
+            if(txtRetentionPercentage.Focused && !string.IsNullOrEmpty(txtRetentionPercentage.Text))
+                CalculateRetention();
+        }
+
+        private void txtEstimatedBudget_TextChanged(object sender, EventArgs e)
+        {
+            if (txtEstimatedBudget.Focused && !string.IsNullOrEmpty(txtEstimatedBudget.Text))
+                CalculateRetention();
+        }
+
+        private void CalculateRetention()
+        {
+            txtRetentionAmount.Text = ((decimal.Parse(txtEstimatedBudget.Text) * decimal.Parse(txtRetentionPercentage.Text == "" ? "0" : txtRetentionPercentage.Text)) / 100).ToString("F2");
         }
 
         private void ShowGridInsteadOfTabs()

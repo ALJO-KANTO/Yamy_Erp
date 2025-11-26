@@ -271,5 +271,15 @@ namespace YamyProject
             _currentPage = 1;
             BindInvoices();
         }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
     }
 }

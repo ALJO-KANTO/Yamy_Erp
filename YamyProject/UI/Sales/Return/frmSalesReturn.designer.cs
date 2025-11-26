@@ -39,21 +39,6 @@
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Selected_Item = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.S_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cost_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vat = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.VatP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost_Center = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtRefNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNextCode = new Guna.UI2.WinForms.Guna2TextBox();
@@ -149,7 +134,24 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Selected_Item = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.S_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cost_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vat = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.VatP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost_Center = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -270,6 +272,7 @@
             this.qty,
             this.cost_price,
             this.price,
+            this.discount,
             this.vat,
             this.VatP,
             this.total,
@@ -327,109 +330,6 @@
             this.dgvItems.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellValueChanged);
             this.dgvItems.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvItems_EditingControlShowing);
             this.dgvItems.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvItems_RowPostPaint);
-            // 
-            // itemId
-            // 
-            this.itemId.HeaderText = "id";
-            this.itemId.Name = "itemId";
-            this.itemId.ReadOnly = true;
-            this.itemId.Visible = false;
-            // 
-            // no
-            // 
-            this.no.HeaderText = "#";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 35;
-            // 
-            // code
-            // 
-            this.code.HeaderText = "Item Code";
-            this.code.Name = "code";
-            this.code.ReadOnly = true;
-            this.code.Width = 80;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "Item Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Selected_Item
-            // 
-            this.Selected_Item.HeaderText = "✅";
-            this.Selected_Item.Name = "Selected_Item";
-            this.Selected_Item.Width = 40;
-            // 
-            // S_Qty
-            // 
-            this.S_Qty.HeaderText = "S-Qty";
-            this.S_Qty.Name = "S_Qty";
-            this.S_Qty.ReadOnly = true;
-            this.S_Qty.Width = 70;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.Width = 80;
-            // 
-            // cost_price
-            // 
-            this.cost_price.HeaderText = "Cost Price";
-            this.cost_price.Name = "cost_price";
-            this.cost_price.ReadOnly = true;
-            this.cost_price.Visible = false;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            this.price.Width = 80;
-            // 
-            // vat
-            // 
-            this.vat.HeaderText = "Vat";
-            this.vat.Name = "vat";
-            this.vat.ReadOnly = true;
-            this.vat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // VatP
-            // 
-            this.VatP.HeaderText = "~";
-            this.VatP.Name = "VatP";
-            this.VatP.ReadOnly = true;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "Amount";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 130;
-            // 
-            // method
-            // 
-            this.method.HeaderText = "method";
-            this.method.Name = "method";
-            this.method.ReadOnly = true;
-            this.method.Visible = false;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "type";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            this.type.Visible = false;
-            // 
-            // Cost_Center
-            // 
-            this.Cost_Center.HeaderText = "Cost Center";
-            this.Cost_Center.Name = "Cost_Center";
-            this.Cost_Center.ReadOnly = true;
             // 
             // guna2GroupBox1
             // 
@@ -1929,6 +1829,7 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "~";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 50;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -1943,6 +1844,7 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Visible = false;
+            this.dataGridViewTextBoxColumn11.Width = 130;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -1950,6 +1852,13 @@
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "type";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Visible = false;
             // 
             // headerUC1
             // 
@@ -1962,6 +1871,116 @@
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(1036, 37);
             this.headerUC1.TabIndex = 0;
+            // 
+            // itemId
+            // 
+            this.itemId.HeaderText = "id";
+            this.itemId.Name = "itemId";
+            this.itemId.ReadOnly = true;
+            this.itemId.Visible = false;
+            // 
+            // no
+            // 
+            this.no.HeaderText = "#";
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 35;
+            // 
+            // code
+            // 
+            this.code.HeaderText = "Item Code";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            this.code.Width = 80;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Item Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Selected_Item
+            // 
+            this.Selected_Item.HeaderText = "✅";
+            this.Selected_Item.Name = "Selected_Item";
+            this.Selected_Item.Width = 40;
+            // 
+            // S_Qty
+            // 
+            this.S_Qty.HeaderText = "S-Qty";
+            this.S_Qty.Name = "S_Qty";
+            this.S_Qty.ReadOnly = true;
+            this.S_Qty.Width = 70;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.Width = 80;
+            // 
+            // cost_price
+            // 
+            this.cost_price.HeaderText = "Cost Price";
+            this.cost_price.Name = "cost_price";
+            this.cost_price.ReadOnly = true;
+            this.cost_price.Visible = false;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 80;
+            // 
+            // discount
+            // 
+            this.discount.HeaderText = "Disc";
+            this.discount.Name = "discount";
+            this.discount.ReadOnly = true;
+            this.discount.Width = 50;
+            // 
+            // vat
+            // 
+            this.vat.HeaderText = "Vat";
+            this.vat.Name = "vat";
+            this.vat.ReadOnly = true;
+            this.vat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // VatP
+            // 
+            this.VatP.HeaderText = "~";
+            this.VatP.Name = "VatP";
+            this.VatP.ReadOnly = true;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Amount";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 130;
+            // 
+            // method
+            // 
+            this.method.HeaderText = "method";
+            this.method.Name = "method";
+            this.method.ReadOnly = true;
+            this.method.Visible = false;
+            // 
+            // type
+            // 
+            this.type.HeaderText = "type";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Visible = false;
+            // 
+            // Cost_Center
+            // 
+            this.Cost_Center.HeaderText = "Cost Center";
+            this.Cost_Center.Name = "Cost_Center";
+            this.Cost_Center.ReadOnly = true;
             // 
             // frmSalesReturn
             // 
@@ -2115,11 +2134,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn cost_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewComboBoxColumn vat;
         private System.Windows.Forms.DataGridViewTextBoxColumn VatP;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn method;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewComboBoxColumn Cost_Center;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
     }
 }

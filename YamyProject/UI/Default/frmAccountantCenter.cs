@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using YamyProject.UI.Accountant.Reconciliation;
 
 
 namespace YamyProject
@@ -46,10 +47,74 @@ namespace YamyProject
 
             // Attach event handler for selection change
             cmbMemorized.SelectedIndexChanged += cmbMemorized_SelectedIndexChanged;
-            dgvReconcile.Rows.Add("Petty Cash");
-            dgvReconcile.Rows[0].Cells["account"].Style.ForeColor = Color.Blue;
-            dgvReconcile.Rows[0].Cells["account"].Style.Font = new Font(dgvReconcile.Font, FontStyle.Underline);
-            dgvReconcile.Cursor = Cursors.Hand;
+            //dgvReconcile.Rows.Add("Petty Cash");
+            //dgvReconcile.Rows[0].Cells["account"].Style.ForeColor = Color.Blue;
+            //dgvReconcile.Rows[0].Cells["account"].Style.Font = new Font(dgvReconcile.Font, FontStyle.Underline);
+            //dgvReconcile.Cursor = Cursors.Hand;
+            //col_ac_id, account, col_last_reco, col_reco_bal, col_curr_bal
+            string query = @"WITH bank_exists AS (
+                                SELECT CASE 
+                                    WHEN EXISTS (
+                                        SELECT 1 FROM tbl_bank_card WHERE state = 0
+                                    ) THEN 1 ELSE 0 END AS has_bank
+                            ),
+                            bank_accounts AS (
+                                SELECT 
+                                    l4.id AS account_id,
+                                    l4.name,
+                                    l4.main_id
+                                FROM tbl_coa_level_4 l4
+                                JOIN bank_exists b ON 
+                                    (b.has_bank = 1 AND l4.main_id IN (
+                                        SELECT main_id 
+                                        FROM tbl_coa_level_4 
+                                        WHERE id IN (
+                                            SELECT account_id FROM tbl_bank_card WHERE state = 0
+                                        )
+                                    ))
+                                    OR
+                                    (b.has_bank = 0 AND l4.main_id IN (
+                                        SELECT id FROM tbl_coa_level_3 WHERE name LIKE '%Bank%'
+                                    ))
+                            ),
+                            last_reco AS (
+                                SELECT 
+                                    r1.account_id,
+                                    r1.statement_date AS last_reconciled,
+                                    r1.ending_balance AS reconciled_balance
+                                FROM tbl_reconciliation r1
+                                WHERE r1.statement_date = (
+                                    SELECT MAX(r2.statement_date)
+                                    FROM tbl_reconciliation r2
+                                    WHERE r2.account_id = r1.account_id
+                                )
+                            ),
+                            current_bal AS (
+                                SELECT 
+                                    t.account_id,
+                                    SUM(t.debit - t.credit) AS current_balance
+                                FROM tbl_transaction t
+                                GROUP BY t.account_id
+                            )
+                            SELECT 
+                                b.account_id,
+                                b.name,
+                                COALESCE(l.last_reconciled, '') AS last_reconciled,
+                                COALESCE(l.reconciled_balance, 0) AS reconciled_balance,
+                                COALESCE(c.current_balance, 0) AS current_balance
+                            FROM bank_accounts b
+                            LEFT JOIN last_reco l ON b.account_id = l.account_id
+                            LEFT JOIN current_bal c ON b.account_id = c.account_id
+                            ORDER BY b.name;
+                            ";
+            using (MySqlDataReader reader = DBClass.ExecuteReader(query))
+            {
+                while (reader.Read())
+                {
+                    dgvReconcile.Rows.Add(reader["account_id"], reader["name"], reader["last_reconciled"], reader["reconciled_balance"], reader["current_balance"]);
+                }
+            }
+
         }
         private void LoadTools()
         {
@@ -250,12 +315,12 @@ namespace YamyProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0) 
             {
-                string clickedAccount = dgvReconcile.Rows[e.RowIndex].Cells["account"].Value.ToString();
+                //string clickedAccount = dgvReconcile.Rows[e.RowIndex].Cells["account"].Value.ToString();
 
-                if (clickedAccount == "Petty Cash")
-                {
-                    frmLogin.frmMain.openChildForm(new frmPettyCashSubmission(0));
-                }
+                //if (clickedAccount == "Petty Cash")
+                //{
+                //    frmLogin.frmMain.openChildForm(new frmPettyCashSubmission(0));
+                //}
             }
         }
 
@@ -328,6 +393,24 @@ namespace YamyProject
         private void Lbheader_Click(object sender, EventArgs e)
         {
             this.BringToFront();
+        }
+
+        private void btnBegin_Click(object sender, EventArgs e)
+        {
+            FrmReconciliation frm = new FrmReconciliation();
+            frm.ShowDialog();
+        }
+
+        private void dgvReconcile_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ensure we clicked the "name" link column
+            if (e.ColumnIndex == dgvReconcile.Columns["account"].Index && e.RowIndex >= 0)
+            {
+                string accountId = dgvReconcile.Rows[e.RowIndex].Cells["col_ac_id"].Value.ToString();
+                string accountName = dgvReconcile.Rows[e.RowIndex].Cells["account"].Value.ToString();
+
+                frmLogin.frmMain.openChildForm(new FrmAccountDetails(accountId, accountName));
+            }
         }
     }
 }

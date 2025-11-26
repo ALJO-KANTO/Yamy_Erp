@@ -78,6 +78,13 @@ namespace YamyProject
                 dgvSales.Columns.Add("CostCenter", "CostCenter");
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
+                dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+
                 dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;

@@ -1,7 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Text;
@@ -62,16 +66,16 @@ namespace YamyProject
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {
-                    col.DefaultCellStyle.Font = new Font("Times New Roman", 8F, FontStyle.Regular);
+                    col.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 8F, FontStyle.Regular);
                 }
 
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 8F, FontStyle.Bold);
-                dgvSales.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 8F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
-                dgvSales.DefaultCellStyle.ForeColor = Color.Black;
-                dgvSales.DefaultCellStyle.BackColor = Color.White;
-                dgvSales.GridColor = Color.LightGray;
-                dgvSales.BorderStyle = BorderStyle.None;
+                dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvSales.GridColor = System.Drawing.Color.LightGray;
+                dgvSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
                 dgvSales.RowHeadersVisible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -136,8 +140,8 @@ namespace YamyProject
                         Type
                     );
 
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new Font("Times New Roman", 8F, FontStyle.Regular);
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 8F, FontStyle.Regular);
 
                     totalDebit += debit;
                     totalCredit += credit;
@@ -146,9 +150,9 @@ namespace YamyProject
 
             // Add total row
             int totalRow = dgvSales.Rows.Add("", "", "", "TOTAL", "", totalDebit.ToString("N2"), totalCredit.ToString("N2"));
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new Font("Times New Roman", 8F, FontStyle.Bold | FontStyle.Underline);
-            dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = Color.Gainsboro;
-            dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = Color.Black;
+            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 8F, FontStyle.Bold | FontStyle.Underline);
+            dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
+            dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.Rows[totalRow].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Rows[totalRow].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
@@ -166,11 +170,6 @@ namespace YamyProject
                     }
                 }
             }
-        }
-
-        private void SavePDF_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -298,6 +297,147 @@ namespace YamyProject
             {
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtpFrom, dtpTo);
                 LoadFixedAssetDetails();
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            // Build PDF of current grid including TOTAL row
+            decimal totalDebit = 0m;
+            decimal totalCredit = 0m;
+
+            // Sum values from grid (ignore TOTAL row if present)
+            foreach (DataGridViewRow r in dgvSales.Rows)
+            {
+                if (r.IsNewRow) continue;
+                var state = r.Cells["AccountName"].Value; // use a non-null column to detect total - but we will skip rows where SN is empty and AccountCode == "TOTAL"
+                // Skip the explicitly added TOTAL row (it has empty SN and AccountCode == "TOTAL")
+                if (string.IsNullOrWhiteSpace(Convert.ToString(r.Cells["id"].Value)) && Convert.ToString(r.Cells["AccountCode"].Value).ToUpper().Contains("TOTAL"))
+                    continue;
+
+                decimal d;
+                if (decimal.TryParse(Convert.ToString(r.Cells["Debit"].Value), out d))
+                    totalDebit += d;
+                if (decimal.TryParse(Convert.ToString(r.Cells["Credit"].Value), out d))
+                    totalCredit += d;
+            }
+
+            // Create document
+            Document doc = new Document();
+            Section section = doc.AddSection();
+
+            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.RightMargin = Unit.FromCentimeter(1);
+            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+
+            // Header
+            Table headerTable = section.AddTable();
+            headerTable.Borders.Width = 0;
+            headerTable.AddColumn("5cm");
+            headerTable.AddColumn("8cm");
+            headerTable.AddColumn("5cm");
+            Row headerRow = headerTable.AddRow();
+
+            Paragraph left = headerRow.Cells[0].AddParagraph();
+            left.Format.Font.Name = "Times New Roman";
+            left.Format.Font.Size = 10;
+            left.Format.Alignment = ParagraphAlignment.Left;
+            left.AddText(DateTime.Now.ToString("hh:mm tt") + "\n");
+            left.AddText(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            Paragraph center = headerRow.Cells[1].AddParagraph();
+            center.Format.Font.Name = "Times New Roman";
+            center.Format.Alignment = ParagraphAlignment.Center;
+            center.AddFormattedText(guna2HtmlLabel8.Text.ToUpper() + "\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("Fixed Asset Details\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("All Transactions", TextFormat.NotBold).Font.Size = 9;
+
+            // Separator
+            Paragraph line = section.AddParagraph();
+            line.Format.Borders.Bottom.Width = 2;
+            line.Format.SpaceAfter = "0.5cm";
+
+            // Data table
+            Table table = section.AddTable();
+            table.Borders.Width = 0.75;
+            table.Format.Font.Name = "Times New Roman";
+            table.Format.Font.Size = 9;
+
+            table.AddColumn("1.0cm"); // SN
+            table.AddColumn("2.2cm"); // Date
+            table.AddColumn("2.0cm"); // Transaction ID (hidden in grid)
+            table.AddColumn("2.0cm"); // Account Code
+            table.AddColumn("4.0cm"); // Account Name
+            table.AddColumn("2.0cm"); // Debit
+            table.AddColumn("2.0cm"); // Credit
+            table.AddColumn("2.0cm"); // Type
+
+            Row hdr = table.AddRow();
+            hdr.Shading.Color = Colors.LightGray;
+            hdr.Format.Font.Bold = true;
+            hdr.Cells[0].AddParagraph("SN");
+            hdr.Cells[1].AddParagraph("Date");
+            hdr.Cells[2].AddParagraph("Num");
+            hdr.Cells[3].AddParagraph("A/C CODE");
+            hdr.Cells[4].AddParagraph("A/C NAME");
+            hdr.Cells[5].AddParagraph("Debit");
+            hdr.Cells[6].AddParagraph("Credit");
+            hdr.Cells[7].AddParagraph("Type");
+
+            // Add rows
+            foreach (DataGridViewRow r in dgvSales.Rows)
+            {
+                if (r.IsNewRow) continue;
+
+                // If this is the TOTAL row added to grid, skip adding as a normal row (we'll add totals at the end)
+                if (string.IsNullOrWhiteSpace(Convert.ToString(r.Cells["id"].Value)) && Convert.ToString(r.Cells["AccountCode"].Value).ToUpper().Contains("TOTAL"))
+                    continue;
+
+                Row row = table.AddRow();
+                row.Cells[0].AddParagraph(Convert.ToString(r.Cells["id"].Value) ?? "");
+                row.Cells[1].AddParagraph(Convert.ToString(r.Cells["Date"].Value) ?? "");
+                row.Cells[2].AddParagraph(Convert.ToString(r.Cells["Num"].Value) ?? "");
+                row.Cells[3].AddParagraph(Convert.ToString(r.Cells["AccountCode"].Value) ?? "");
+                row.Cells[4].AddParagraph(Convert.ToString(r.Cells["AccountName"].Value) ?? "");
+
+                decimal d;
+                string debitText = decimal.TryParse(Convert.ToString(r.Cells["Debit"].Value), out d) ? d.ToString("N2") : "";
+                string creditText = decimal.TryParse(Convert.ToString(r.Cells["Credit"].Value), out d) ? d.ToString("N2") : "";
+
+                row.Cells[5].AddParagraph(debitText).Format.Alignment = ParagraphAlignment.Right;
+                row.Cells[6].AddParagraph(creditText).Format.Alignment = ParagraphAlignment.Right;
+                row.Cells[7].AddParagraph(Convert.ToString(r.Cells["Type"].Value) ?? "");
+            }
+
+            // Total row in PDF: merge left columns and show totals right aligned and bold
+            Row total = table.AddRow();
+            total.Cells[0].MergeRight = 3; // merge SN, Date, Num, A/C CODE
+            total.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+            total.Cells[4].AddParagraph(""); // keep A/C NAME cell empty
+            Paragraph td = total.Cells[5].AddParagraph(totalDebit.ToString("N2"));
+            td.Format.Font.Bold = true;
+            td.Format.Alignment = ParagraphAlignment.Right;
+            Paragraph tc = total.Cells[6].AddParagraph(totalCredit.ToString("N2"));
+            tc.Format.Font.Bold = true;
+            tc.Format.Alignment = ParagraphAlignment.Right;
+
+            // Render and save
+            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+            renderer.Document = doc;
+            renderer.RenderDocument();
+
+            using (SaveFileDialog saveFile = new SaveFileDialog())
+            {
+                saveFile.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveFile.Title = "Save Fixed Asset Details";
+                saveFile.FileName = "FixedAssetDetails.pdf";
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    renderer.PdfDocument.Save(saveFile.FileName);
+                    Process.Start("explorer.exe", saveFile.FileName);
+                }
             }
         }
     }

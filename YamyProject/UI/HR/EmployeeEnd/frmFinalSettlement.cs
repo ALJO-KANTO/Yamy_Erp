@@ -66,10 +66,10 @@ namespace YamyProject
             {
                 if (reader.Read())
                 {
-                    txtBasicSalary.Text = reader["BasicSalary"]?.ToString() ?? "";
-                    txtHousingAllowance.Text = reader["HousingAllowance"]?.ToString() ?? "";
-                    txtTransportationAllowance.Text = reader["TransportationAllowance"]?.ToString() ?? "";
-                    txtOthers.Text = reader["Other"]?.ToString() ?? "";
+                    txtBasicSalary.Text = decimal.Parse(reader["BasicSalary"]?.ToString()).ToString("N2") ?? "";
+                    txtHousingAllowance.Text = decimal.Parse(reader["HousingAllowance"]?.ToString()).ToString("N2") ?? "";
+                    txtTransportationAllowance.Text = decimal.Parse(reader["TransportationAllowance"]?.ToString()).ToString("N2") ?? "";
+                    txtOthers.Text = decimal.Parse(reader["Other"]?.ToString()).ToString("N2") ?? "";
                 }
                 else
                 {
@@ -77,14 +77,14 @@ namespace YamyProject
                 }
             }
 
-            string Lreader = "SELECT SUM(credit) - SUM(debit) AS 'Sum' FROM tbl_leave_salary";
-            MySqlParameter Lparam = DBClass.CreateParameter("@id", cmbEmployeeName.SelectedValue);
+            string Lreader = "SELECT SUM(credit) - SUM(debit) AS 'Sum' FROM tbl_leave_salary where code = @code";
+            MySqlParameter Lparam = DBClass.CreateParameter("@code", txtEmpCode.Text);
 
             using (var reader = DBClass.ExecuteReader(Lreader, Lparam))
             {
                 if (reader.Read())
                 {
-                    txtLeaveSalary.Text = reader["Sum"]?.ToString() ?? "";
+                    txtLeaveSalary.Text = decimal.Parse(reader["Sum"]?.ToString()).ToString("N2") ?? "";
                 }
                 else
                 {
@@ -92,14 +92,14 @@ namespace YamyProject
                 }
             }
 
-            string Ereader = "SELECT SUM(credit) - SUM(debit) AS 'EOS' FROM tbl_end_of_service";
-            MySqlParameter Eparam = DBClass.CreateParameter("@id", cmbEmployeeName.SelectedValue);
+            string Ereader = "SELECT SUM(credit) - SUM(debit) AS 'EOS' FROM tbl_end_of_service where code=@code";
+            MySqlParameter Eparam = DBClass.CreateParameter("@code", txtEmpCode.Text);
 
             using (var reader = DBClass.ExecuteReader(Ereader, Eparam))
             {
                 if (reader.Read())
                 {
-                    txtEndOfService.Text = reader["EOS"]?.ToString() ?? "";
+                    txtEndOfService.Text = decimal.Parse(reader["EOS"]?.ToString()).ToString("N2") ?? "";
                 }
                 else
                 {
@@ -107,10 +107,10 @@ namespace YamyProject
                 }
             }
 
-            using (MySqlDataReader read = DBClass.ExecuteReader("SELECT SUM(Amount) AS amount FROM tbl_loan WHERE EmployeeID = @1 AND loanDates >= CURDATE();",
-                DBClass.CreateParameter("1", txtEmpCode.Text)))
+            using (MySqlDataReader read = DBClass.ExecuteReader("SELECT SUM(Amount) AS amount FROM tbl_loan WHERE EmployeeID = @code AND loanDates >= CURDATE();",
+                DBClass.CreateParameter("code", txtEmpCode.Text)))
                 if (read.Read())
-                    txtEmployeeAdvances.Text = read["amount"].ToString();
+                    txtEmployeeAdvances.Text = decimal.Parse(read["amount"].ToString()).ToString("N2");
             Salarytotal();
             Salaries();
         }

@@ -1,5 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace YamyProject.UI.Manufacturing.Viewform
@@ -8,6 +11,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
     {
         bool AllowItemWithOutQty = true;
         int workOrderId = 0, warehouseId = 0;
+        public List<int> SelectedStepIds { get; private set; } = new List<int>();
 
         public frmManWorkOrderDetails(int _wId)
         {
@@ -21,16 +25,16 @@ namespace YamyProject.UI.Manufacturing.Viewform
         {
             int sn = 0;
             sn = sn + 1;
-            string qry = @" SELECT  B.id, C.id itemId,C.code, C.name,B.cost,B.qty,B.Total,B.RequestQty,B.ReceiveQty
+            string qry = @" SELECT  B.id, C.id itemId,C.code, C.name,B.cost,B.qty,IFNULL(C.on_hand,0) AvQty,B.Total,B.RequestQty,B.ReceiveQty
                            FROM `tbl_manufacturer_batchdetails` B
                            INNER JOIN tbl_items C ON C.id = B.itemid where   B.batchID = '" + id + "'";
-            using(MySqlDataReader reader = DBClass.ExecuteReader(qry))
+            using (MySqlDataReader reader = DBClass.ExecuteReader(qry))
             {
                 dgvItems.Rows.Clear();
                 while (reader.Read())
                 {
-                   int rowIndex = dgvItems.Rows.Add(sn, reader["id"], reader["itemId"], reader["code"], reader["name"],
-                                    reader["qty"], reader["RequestQty"], reader["ReceiveQty"], reader["cost"], reader["Total"]);
+                    int rowIndex = dgvItems.Rows.Add(sn, reader["id"], reader["itemId"], reader["code"], reader["name"],
+                                     reader["qty"], reader["AvQty"] , reader["RequestQty"], reader["ReceiveQty"], reader["cost"], reader["Total"]);
 
                     sn++;
                 }
@@ -53,7 +57,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             dgvItems.Rows.Clear();
             if (workOrderId > 0)
             {
-                string qry = @" SELECT a.id, a.batchname, a.hours, a.amount, a.Description, IFNULL(b.status,'Pending') status,a.warehouse_id FROM tbl_manufacturer_batch a LEFT JOIN (
+                string qry = @" SELECT a.id, a.batchname, a.hours, a.amount, a.Description, IFNULL(b.status,'Pending') status,a.warehouse_id,a.warehouse_to_id,a.process_stage FROM tbl_manufacturer_batch a LEFT JOIN (
                                 SELECT t.batchId,t.status FROM tbl_manufacturer_task t WHERE t.id IN (SELECT MAX(id) FROM tbl_manufacturer_task GROUP BY BatchID)
                             ) b ON b.BatchID = a.id WHERE a.id = '" + workOrderId + "'";
 
@@ -66,10 +70,20 @@ namespace YamyProject.UI.Manufacturing.Viewform
                         lblStatus.Text = status;
                         warehouseId = Convert.ToInt32(reader["warehouse_id"]);
                         GetMaterialDetails(workOrderId);
+                        string stageString = reader["process_stage"].ToString();
+
+                        List<int> stages = stageString
+                            .Split(',')
+                            .Where(x => !string.IsNullOrWhiteSpace(x))
+                            .Select(x => int.Parse(x))
+                            .ToList();
+
+                        SelectedStepIds = stages;  // or AddRange
+                        SelectedStepIds.AddRange(stages);
                     }
                 }
             }
-            
+
         }
 
         private void dgvItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -130,83 +144,88 @@ namespace YamyProject.UI.Manufacturing.Viewform
                 }
                 if (isValid)
                 {
+                    string stages = SelectedStepIds.Count > 0 ? string.Join(",", SelectedStepIds) : "";
                     foreach (DataGridViewRow row in dgvItems.Rows)
                     {
                         int id = Convert.ToInt32(row.Cells["dgvid"].Value);
                         int itemId = Convert.ToInt32(row.Cells["dgvItemId"].Value);
-                        _qty = Convert.ToInt32(row.Cells["Dgvqty"].Value);
-                        _requestQty = Convert.ToInt32(row.Cells["dgvRequestQty"].Value);
-                        _receiveQty = Convert.ToInt32(row.Cells["dgvReceiveQty"].Value);
+                        _qty = Convert.ToDecimal(row.Cells["Dgvqty"].Value);
+                        _requestQty = Convert.ToDecimal(row.Cells["dgvRequestQty"].Value);
+                        _receiveQty = Convert.ToDecimal(row.Cells["dgvReceiveQty"].Value);
 
                         DBClass.ExecuteNonQuery("UPDATE tbl_manufacturer_batchdetails set RequestQty = @requestQty,ReceiveQty = @receiveQty where id = @id",
                             DBClass.CreateParameter("id", id),
                             DBClass.CreateParameter("requestQty", _requestQty),
                             DBClass.CreateParameter("receiveQty", _receiveQty));
-                        using (MySqlDataReader itemReader = DBClass.ExecuteReader("select * from tbl_items where id = @id", DBClass.CreateParameter("id", Convert.ToInt32(itemId))))
-                        {
-                            if (_receiveQty > 0)
-                            {
-                                if (itemReader.Read())
-                                {
-                                    string itemType = Convert.ToString(itemReader["type"]);
-                                    string method = Convert.ToString(itemReader["method"]);
-                                    string salesPrice = Convert.ToString(itemReader["sales_price"]);
-                                    decimal qty = _receiveQty;
+                        //using (MySqlDataReader itemReader = DBClass.ExecuteReader("select * from tbl_items where id = @id", DBClass.CreateParameter("id", Convert.ToInt32(itemId))))
+                        //{
+                        //    if (_receiveQty > 0)
+                        //    {
+                        //        if (itemReader.Read())
+                        //        {
+                        //            string itemType = Convert.ToString(itemReader["type"]);
+                        //            string method = Convert.ToString(itemReader["method"]);
+                        //            string salesPrice = Convert.ToString(itemReader["sales_price"]);
+                        //            decimal qty = _receiveQty;
 
-                                    decimal costAmount = 0;
+                        //            decimal costAmount = 0;
 
-                                    if (itemType == "12 - Service")
-                                    {
-                                        //
-                                    }
-                                    else if (itemType == "13 - Inventory Assembly")
-                                    {
-                                        using (MySqlDataReader componentReader = DBClass.ExecuteReader(@"
-                                        SELECT itemid, qty,(select method FROM tbl_items WHERE tbl_items.id = tbl_manufacturer_batchdetails.itemid) as method 
-                                        FROM tbl_manufacturer_batchdetails WHERE batchid = @assemblyId",
-                                            DBClass.CreateParameter("assemblyId", itemId)))
-                                        {
-                                            while (componentReader.Read())
-                                            {
-                                                int componentId = Convert.ToInt32(componentReader["item_id"]);
-                                                decimal componentQty = Convert.ToDecimal(componentReader["qty"]) * qty;
-                                                string methodOfIngrediant = componentReader["method"].ToString().Trim();
+                        //            if (itemType == "12 - Service")
+                        //            {
+                        //                //
+                        //            }
+                        //            else if (itemType == "13 - Inventory Assembly")
+                        //            {
+                        //                using (MySqlDataReader componentReader = DBClass.ExecuteReader(@"
+                        //                SELECT itemid, qty,(select method FROM tbl_items WHERE tbl_items.id = tbl_manufacturer_batchdetails.itemid) as method 
+                        //                FROM tbl_manufacturer_batchdetails WHERE batchid = @assemblyId",
+                        //                    DBClass.CreateParameter("assemblyId", itemId)))
+                        //                {
+                        //                    while (componentReader.Read())
+                        //                    {
+                        //                        int componentId = Convert.ToInt32(componentReader["item_id"]);
+                        //                        decimal componentQty = Convert.ToDecimal(componentReader["qty"]) * qty;
+                        //                        string methodOfIngrediant = componentReader["method"].ToString().Trim();
 
-                                                DBClass.ExecuteNonQuery(@"
-                                            UPDATE tbl_items 
-                                            SET on_hand = on_hand - @qty 
-                                            WHERE id = @componentId",
-                                                    DBClass.CreateParameter("qty", componentQty),
-                                                    DBClass.CreateParameter("componentId", componentId));
+                        //                        DBClass.ExecuteNonQuery(@"
+                        //                    UPDATE tbl_items 
+                        //                    SET on_hand = on_hand - @qty 
+                        //                    WHERE id = @componentId",
+                        //                            DBClass.CreateParameter("qty", componentQty),
+                        //                            DBClass.CreateParameter("componentId", componentId));
 
-                                                decimal costReturned = InsertItemTransaction(componentId, componentQty, methodOfIngrediant, salesPrice);
-                                                costAmount = costReturned;
-                                                //totalCostAllItems += costReturned;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_items WHERE id=@id",
-                                       DBClass.CreateParameter("id", itemId)))
-                                        {
-                                            if (reader.Read())
-                                            {
-                                                decimal onHand = Convert.ToDecimal(reader["on_hand"]);
-                                                DBClass.ExecuteNonQuery("UPDATE tbl_items SET on_hand = @newQty WHERE id = @id",
-                                                    DBClass.CreateParameter("newQty", onHand - qty),
-                                                    DBClass.CreateParameter("id", itemId));
+                        //                        decimal costReturned = InsertItemTransaction(componentId, componentQty, methodOfIngrediant, salesPrice);
+                        //                        costAmount = costReturned;
+                        //                        //totalCostAllItems += costReturned;
+                        //                    }
+                        //                }
+                        //            }
+                        //            else
+                        //            {
+                        //                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_items WHERE id=@id",
+                        //               DBClass.CreateParameter("id", itemId)))
+                        //                {
+                        //                    if (reader.Read())
+                        //                    {
+                        //                        decimal onHand = Convert.ToDecimal(reader["on_hand"]);
+                        //                        DBClass.ExecuteNonQuery("UPDATE tbl_items SET on_hand = @newQty WHERE id = @id",
+                        //                            DBClass.CreateParameter("newQty", onHand - qty),
+                        //                            DBClass.CreateParameter("id", itemId));
 
-                                                decimal costReturned = InsertItemTransaction(itemId, qty, method, salesPrice);
-                                                costAmount = costReturned;
-                                                //totalCostAllItems += costReturned;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        //                        decimal costReturned = InsertItemTransaction(itemId, qty, method, salesPrice);
+                        //                        costAmount = costReturned;
+                        //                        //totalCostAllItems += costReturned;
+                        //                    }
+                        //                }
+                        //            }
+                        //        }
+                        //    }
+                        //}
                     }
+                    DBClass.ExecuteNonQuery("UPDATE tbl_manufacturer_batch set process_stage=@stages where id = @id",
+                            DBClass.CreateParameter("id", workOrderId),
+                            DBClass.CreateParameter("stages", stages));
+
                     Utilities.LogAudit(frmLogin.userId, "Update Work Order", "Work Order", workOrderId, "Updated Work Order: " + lblBatchName.Text);
 
                     MessageBox.Show(
@@ -215,11 +234,13 @@ namespace YamyProject.UI.Manufacturing.Viewform
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
+
+
                 }
             }
         }
 
-        private decimal InsertItemTransaction(int itemId, decimal qty, string method, string sales_price)
+        private decimal InsertItemTransactionOld(int itemId, decimal qty, string method, string sales_price)
         {
             string invId = workOrderId.ToString();
             DateTime dated = DateTime.Now;
@@ -373,6 +394,17 @@ namespace YamyProject.UI.Manufacturing.Viewform
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        private void btnProcessStage_Click(object sender, EventArgs e)
+        {
+            //dialog with tbl_manufacturing_steps
+            var selectedIds = ShowStepSelectionDialog();
+
+            if (selectedIds != null && selectedIds.Count > 0)
+            {
+                string stages = string.Join(",", selectedIds);
+                SelectedStepIds = selectedIds;
+            }
+        }
 
         private void DeleteItemTransaction(string reference, int itemId)
         {
@@ -380,6 +412,140 @@ namespace YamyProject.UI.Manufacturing.Viewform
             DBClass.ExecuteNonQuery("DELETE FROM tbl_item_card_details WHERE `trans_type` = 'Manufacturing' and itemId = @itemId AND `trans_no` = @id", DBClass.CreateParameter("id", reference), DBClass.CreateParameter("itemId", itemId));
             CommonInsert.UpdateOnHandItem(itemId.ToString());
         }
-    }
 
+        private List<int> ShowStepSelectionDialog()
+        {
+            // Load steps from DB
+            List<StepInfo> steps = LoadStepsFromDB();
+            HeaderUC headerUC1 = new HeaderUC();
+            System.Windows.Forms.Panel panel3 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel panel1 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel panel2 = new System.Windows.Forms.Panel();
+
+            // Create dynamic form
+            Form dialog = new Form();
+            dialog.Text = "Select Manufacturing Steps";
+            dialog.StartPosition = FormStartPosition.CenterParent;
+            dialog.Size = new System.Drawing.Size(400, 500);
+            dialog.FormBorderStyle = FormBorderStyle.None;
+            // 
+            // headerUC1
+            // 
+            headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            headerUC1.FormText = "";
+            headerUC1.HeaderText = "";
+            headerUC1.Location = new System.Drawing.Point(0, 0);
+            headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            headerUC1.Name = "headerUC1";
+            headerUC1.Size = new System.Drawing.Size(325, 37);
+            headerUC1.TabIndex = 1;
+            headerUC1.FormText = "Manufacturing Steps";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            panel3.Location = new System.Drawing.Point(0, 41);
+            panel3.Margin = new System.Windows.Forms.Padding(2);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(2, 235);
+            panel3.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Location = new System.Drawing.Point(2, 274);
+            panel1.Margin = new System.Windows.Forms.Padding(2);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(309, 2);
+            panel1.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            panel2.Location = new System.Drawing.Point(309, 41);
+            panel2.Margin = new System.Windows.Forms.Padding(2);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(2, 233);
+            panel2.TabIndex = 15;
+            // Create checked list box dynamically
+            CheckedListBox clb = new CheckedListBox();
+            clb.Dock = DockStyle.Top;
+            clb.Height = 400;
+
+            // Add steps + pre-check existing selected steps
+            foreach (var step in steps)
+            {
+                int index = clb.Items.Add(step);
+
+                if (SelectedStepIds.Contains(step.Id))
+                    clb.SetItemChecked(index, true);
+            }
+
+            // OK button
+            Button btnOk = new Button();
+            btnOk.Text = "OK";
+            btnOk.Dock = DockStyle.Bottom;
+            btnOk.Height = 40;
+
+            // Close dialog when OK is clicked
+            btnOk.Click += (s, e) => dialog.DialogResult = DialogResult.OK;
+
+            // Add controls to form
+            dialog.Controls.Add(clb);
+            dialog.Controls.Add(btnOk);
+            dialog.Controls.Add(headerUC1);
+            dialog.Controls.Add(panel2);
+            dialog.Controls.Add(panel1);
+            dialog.Controls.Add(panel3);
+
+            // Show dialog
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                List<int> selectedIds = new List<int>();
+
+                foreach (var item in clb.CheckedItems)
+                    selectedIds.Add(((StepInfo)item).Id);
+
+                return selectedIds;
+            }
+
+            return new List<int>();
+        }
+        private List<StepInfo> LoadStepsFromDB()
+        {
+            List<StepInfo> list = new List<StepInfo>();
+            string query = "SELECT id, step_name FROM tbl_Manufacturing_Steps ORDER BY step_order";
+
+            using (MySqlDataReader dr = DBClass.ExecuteReader(query))
+            {
+                while (dr.Read())
+                {
+                    list.Add(new StepInfo
+                    {
+                        Id = dr.GetInt32("id"),
+                        Name = dr.GetString("step_name")
+                    });
+                }
+            }
+
+            return list;
+        }
+
+        private void BtnLPO_Click(object sender, EventArgs e)
+        {
+            new frmPurchaseOrder().ShowDialog();
+        }
+
+        private class StepInfo
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public override string ToString() => Name;
+        }
+
+    }
 }

@@ -96,7 +96,7 @@ namespace YamyProject
             BindCombos.PopulateAllLevel4Account(cmbIncomeAccount);
             BindCombos.PopulateAllLevel4Account(cmbAssetAccount);
             BindCombos.PopulateAllLevel4Account(cmbCOGSAccount);
-            cmbIncomeAccount.SelectedValue = BindCombos.SelectDefaultLevelAccount("Item Income");
+            cmbIncomeAccount.SelectedValue = BindCombos.SelectDefaultLevelAccount("Sales");
             cmbAssetAccount.SelectedValue = BindCombos.SelectDefaultLevelAccount("Inventory");
             cmbCOGSAccount.SelectedValue = BindCombos.SelectDefaultLevelAccount("COGS");
         }

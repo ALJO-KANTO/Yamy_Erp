@@ -90,6 +90,24 @@ namespace YamyProject
         {
             addcontrols2(new frmGeneralSettings());
         }
+
+        private void linkLabelModule_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (var passwordForm = new PasswordPromptForm("Enter developer password:"))
+            {
+                if (passwordForm.ShowDialog() == DialogResult.OK)
+                {
+                    if (passwordForm.EnteredPassword == SecurityConfig.DeveloperPassword)
+                    {
+                        new frmModules().ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect password.");
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -140,6 +140,9 @@
             // 
             // btn_Excel
             // 
+            this.btn_Excel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Excel.BackgroundImage = global::YamyProject.Properties.Resources.excel___Copy;
+            this.btn_Excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Excel.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Excel.BorderRadius = 5;
             this.btn_Excel.BorderThickness = 1;
@@ -148,19 +151,22 @@
             this.btn_Excel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_Excel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Excel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Excel.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Excel.FillColor = System.Drawing.Color.Transparent;
             this.btn_Excel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Excel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Excel.Location = new System.Drawing.Point(102, 16);
+            this.btn_Excel.Location = new System.Drawing.Point(102, 13);
             this.btn_Excel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Excel.Name = "btn_Excel";
-            this.btn_Excel.Size = new System.Drawing.Size(76, 29);
+            this.btn_Excel.Size = new System.Drawing.Size(35, 35);
             this.btn_Excel.TabIndex = 23;
             this.btn_Excel.Text = "Excel";
             this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
             // 
             // btnPrint
             // 
+            this.btnPrint.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrint.BackgroundImage = global::YamyProject.Properties.Resources.printN;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrint.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPrint.BorderRadius = 5;
             this.btnPrint.BorderThickness = 1;
@@ -169,15 +175,14 @@
             this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrint.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.FillColor = System.Drawing.Color.Transparent;
             this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnPrint.Location = new System.Drawing.Point(9, 16);
+            this.btnPrint.Location = new System.Drawing.Point(51, 13);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(76, 29);
+            this.btnPrint.Size = new System.Drawing.Size(35, 35);
             this.btnPrint.TabIndex = 22;
-            this.btnPrint.Text = "Print";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // txtSearch

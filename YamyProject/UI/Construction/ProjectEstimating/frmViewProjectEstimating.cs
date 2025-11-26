@@ -1,6 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CrystalDecisions.Windows.Forms;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using OfficeOpenXml;
+using OfficeOpenXml.Table.PivotTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,6 +21,7 @@ namespace YamyProject
         int level4Inventory;
         int id;
         bool isExported = false;
+        string descriptionColumnName = "Description of work";
 
         public frmViewProjectEstimating(int _id)
         {
@@ -79,6 +82,18 @@ namespace YamyProject
                 dgvItems.Columns.Add("no", "#");
                 dgvItems.Columns.Add("sr", "Sr.");
                 dgvItems.Columns.Add("name", "Description of work");
+                if (descriptionColumnName != null)
+                {
+                    // Create the new link columns
+                    DataGridViewLinkColumn bomLinkColumn = new DataGridViewLinkColumn();
+                    bomLinkColumn.HeaderText = "View";
+                    bomLinkColumn.Name = "BoM";
+                    bomLinkColumn.Text = "BoM";
+                    bomLinkColumn.UseColumnTextForLinkValue = true;
+
+                    // Insert it right after the description column
+                    dgvItems.Columns.Add(bomLinkColumn);
+                }
                 dgvItems.Columns.Add("qty", "Qty");
                 dgvItems.Columns.Add("unit", "Unit");
                 dgvItems.Columns.Add("Length", "Length");
@@ -181,7 +196,7 @@ namespace YamyProject
                     //dgvItems.Columns.Add("total", "Total");
                     //dgvItems.Columns.Add("type", "Type");
                     //dgvItems.Columns.Add("delete", "DEL");
-                    dgvItems.Rows.Add(reader["id"].ToString(), (count++), reader["sr"].ToString(), reader["name"].ToString(),
+                    dgvItems.Rows.Add(reader["id"].ToString(), (count++), reader["sr"].ToString(), reader["name"].ToString(), null,
                         decimal.Parse(reader["qty"].ToString()).ToString("F2"),
                         reader["unit_name"].ToString(),
                         decimal.Parse(reader["length"].ToString()).ToString("F2"),
@@ -227,19 +242,19 @@ namespace YamyProject
         }
         private void LoaddgvItems()
         {
-            dgvItems.Rows.Clear();
-            DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items where warehouse_id=@id and state = 0 and  active = 0",
-                                DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
-            DataGridViewComboBoxColumn cmbItemName = (DataGridViewComboBoxColumn)dgvItems.Columns["name"];
-            cmbItemName.DataSource = dt;
-            cmbItemName.DisplayMember = "name";
-            cmbItemName.ValueMember = "code";
+            //dgvItems.Rows.Clear();
+            //DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items where warehouse_id=@id and state = 0 and  active = 0",
+            //                    DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
+            //DataGridViewComboBoxColumn cmbItemName = (DataGridViewComboBoxColumn)dgvItems.Columns["name"];
+            //cmbItemName.DataSource = dt;
+            //cmbItemName.DisplayMember = "name";
+            //cmbItemName.ValueMember = "code";
             //change it based on selected item SELECT u.id,u.name from tbl_items_unit iu,tbl_unit u WHERE iu.unit_id=u.id AND iu.item_id = 50;
-            dt = DBClass.ExecuteDataTable("select id, name from tbl_unit");
-            DataGridViewComboBoxColumn cmbUnit = (DataGridViewComboBoxColumn)dgvItems.Columns["unit"];
-            cmbUnit.DataSource = dt;
-            cmbUnit.DisplayMember = "name";
-            cmbUnit.ValueMember = "id";
+            //dt = DBClass.ExecuteDataTable("select id, name from tbl_unit");
+            //DataGridViewComboBoxColumn cmbUnit = (DataGridViewComboBoxColumn)dgvItems.Columns["unit"];
+            //cmbUnit.DataSource = dt;
+            //cmbUnit.DisplayMember = "name";
+            //cmbUnit.ValueMember = "id";
         }
         int cmbIncomeAccount = 0, cmbAssetAccount = 0, cmbCOGSAccount = 0;
         public void BindCombo()
@@ -635,8 +650,10 @@ namespace YamyProject
                 resetTextBox();
 
         }
+        DataGridViewRow selectedRow;
         private void dgvItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            selectedRow = dgvItems.CurrentRow;
             if (dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["name"].Index)
             {
                 ComboBox comboBox = e.Control as ComboBox;
@@ -694,6 +711,8 @@ namespace YamyProject
                 dgvItems.CurrentRow.Cells["total"].Value = totalAmount;
             }
         }
+        int comboCount = 0;
+        string itemTyped = "", selectedItemId = "0";
         private void ComboBoxName_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
@@ -1107,6 +1126,144 @@ namespace YamyProject
                 return;
             }
             e.Handled = true;
+        }
+
+        private void dgvItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvItems.Columns[e.ColumnIndex].Name == "BoM")
+            {
+                string description = dgvItems.Rows[e.RowIndex].Cells["name"].Value?.ToString();
+                string srNo = dgvItems.Rows[e.RowIndex].Cells["sr"].Value?.ToString();
+                if (int.TryParse(srNo, out int srN))
+                {
+                    selectedRow = dgvItems.Rows[e.RowIndex];
+                    OpenAssembly();
+                }
+            }
+        }
+
+        private void OpenAssembly()
+        {
+            if (selectedRow != null)
+            {
+                string srId = "1.0", description = "";
+                int itemId = 0;
+                if (dgvItems.Rows.Count > 1)
+                {
+                    int rowIndex = selectedRow.Index;
+                    itemId = 0;// int.Parse(dgvImportedItem.Rows[rowIndex].Cells[0].Value.ToString());
+                    srId = dgvItems.Rows[rowIndex].Cells["Sr"].Value.ToString();
+                    description = dgvItems.Rows[rowIndex].Cells["name"].Value == null ? "" : dgvItems.Rows[rowIndex].Cells["name"].Value.ToString();
+                    itemTyped = "";// dgvImportedItem.Rows[rowIndex].Cells["type"].Value.ToString();
+                    selectedItemId = itemId.ToString();
+                }
+
+                comboCount++;
+                frmAssemblyItem assemblyForm = new frmAssemblyItem(itemId, srId, int.Parse(txtProjectCode.Text.ToString()), description);
+                assemblyForm.FormClosedWithResult += AssemblyForm_FormClosedWithResult;
+                assemblyForm.ShowDialog();
+            }
+        }
+
+        private void AssemblyForm_FormClosedWithResult(object sender, EventArgs e)
+        {
+            if (isExported)
+            {
+                DataGridViewRow currentRow = dgvItems.CurrentRow;
+                if (currentRow != null)
+                {
+                    var result = AssemblyItemManager.GetItemsListWhere(currentRow.Cells["Sr"].Value.ToString());
+                    decimal qty = 0, cost = 0, total = 0;
+                    foreach (var item in result)
+                    {
+                        qty += decimal.Parse(item.Qty.ToString());
+                        cost += decimal.Parse(item.Cost.ToString());
+                        total += decimal.Parse(item.Total.ToString());
+                    }
+                    currentRow.Cells["Qty"].Value = qty.ToString();
+                    //currentRow.Cells[3].Value = "";
+                    currentRow.Cells["Rate"].Value = cost.ToString();
+                    currentRow.Cells["Amount"].Value = total.ToString();
+                }
+            }
+            else
+            {
+                MySqlDataReader reader = DBClass.ExecuteReader("select ti.id item_id,ti.code,ti.id,ta.qty,ti.unit_id,ti.cost_price rate,ti.type FROM tbl_item_assembly ta inner join tbl_items_boq_details ti on ta.item_id = ti.id and ti.ref_id=ta.assembly_id where ta.assembly_id = " + selectedItemId);
+
+                DataGridViewRow currentRow = dgvItems.CurrentRow;
+                int count = 1;
+                if (currentRow != null)
+                {
+                    count = int.Parse(currentRow.Cells[1].Value.ToString());
+                }
+
+                int currentRowIndex = (currentRow != null) ? currentRow.Index : dgvItems.Rows.Count;
+
+                while (reader.Read())
+                {
+                    string amount = (decimal.Parse(reader["rate"].ToString()) * decimal.Parse(reader["qty"].ToString())).ToString("N2");
+                    string itemType = reader["type"].ToString();
+
+                    DataGridViewRow newRow = new DataGridViewRow();
+
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["item_id"].ToString() });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell());
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "0" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["code"].ToString() });
+
+                    DataGridViewComboBoxCell codeCell = new DataGridViewComboBoxCell();
+                    codeCell.Items.Add(reader["code"].ToString());
+                    codeCell.Value = reader["code"].ToString();
+                    newRow.Cells.Add(codeCell);
+
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["qty"].ToString() });
+
+                    DataGridViewComboBoxCell unitCell = new DataGridViewComboBoxCell();
+                    //unitCell.Items.Add(reader["unit_id"].ToString());
+                    //unitCell.Value = reader["unit_id"].ToString();
+                    newRow.Cells.Add(unitCell);
+
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = int.Parse(reader["unit_id"].ToString()) });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["rate"].ToString() });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = amount });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = itemType });
+                    dgvItems.Rows.Insert(currentRowIndex, newRow);
+
+                    currentRowIndex++;
+                    CalculateSRAndUpdateDataGridViewNew();
+                }
+
+            }
+        }
+        private void CalculateSRAndUpdateDataGridViewNew()
+        {
+            int mainCount = 0;
+            Dictionary<int, int> subCountByMain = new Dictionary<int, int>();
+
+            foreach (DataGridViewRow row in dgvItems.Rows)
+            {
+                if (row.Cells["type"].Value != null)
+                {
+                    string type = row.Cells["type"].Value.ToString();
+                    if (type == "13 - Inventory Assembly")
+                    {
+                        mainCount++;
+                        row.Cells["SR"].Value = mainCount.ToString() + ".0"; // Assign SR number for main items
+                    }
+                    else if (type == "11 - Inventory Part")
+                    {
+                        int lastMainItem = mainCount;
+                        if (!subCountByMain.ContainsKey(lastMainItem))
+                        {
+                            subCountByMain[lastMainItem] = 0;
+                        }
+                        subCountByMain[lastMainItem]++;
+
+                        string subSR = lastMainItem + "." + subCountByMain[lastMainItem];
+                        row.Cells["SR"].Value = subSR; // Assign SR number for sub-items
+                    }
+                }
+            }
         }
 
         private void txtDefaultMarginPercentage_TextChanged(object sender, EventArgs e)

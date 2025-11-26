@@ -32,7 +32,14 @@ namespace YamyProject
         {
             if (value != DBNull.Value && value != null)
             {
-                return Convert.ToDecimal(value).ToString(DecimalFormatDigit());
+                if (string.IsNullOrEmpty(value.ToString()))
+                {
+                    return "";
+                }
+                else
+                {
+                    return Convert.ToDecimal(value).ToString(DecimalFormatDigit());
+                }
             }
             return "0.00";
         }
@@ -64,7 +71,7 @@ namespace YamyProject
         public static bool GetModules(string name)
         {
             DataRow[] dataRow = BindDataTable.tableModules.Select($"name = '" + name + "'");
-            return dataRow.Length > 0;
+            return dataRow.Length > 0 && int.Parse(dataRow[0]["status"].ToString()) == 1;
         }
         public static string GeneralTaxType(DataTable dt, string name)
         {

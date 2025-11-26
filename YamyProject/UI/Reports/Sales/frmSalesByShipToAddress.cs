@@ -1,0 +1,529 @@
+﻿using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
+using MySql.Data.MySqlClient;
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using YamyProject.Localization;
+using Excel = Microsoft.Office.Interop.Excel;
+
+namespace YamyProject
+{
+    public partial class frmSalesByShipToAddress : Form
+    {
+        int id;
+        string tblName = "tbl_sales";
+        string tblDetailName = "tbl_sales_details";
+
+        public frmSalesByShipToAddress(int _id=0 ,string _tblName = "tbl_sales")
+        {
+            InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
+            headerUC1.FormText = this.Text;
+            this.id = _id;
+            this.tblName = _tblName;
+        }
+
+        private void frmSalesByShipToAddress_Load(object sender, EventArgs e)
+        {
+            btnPrint.Text = "Print ▼";
+            DateTime dated = DateTime.Now;
+            guna2HtmlLabel11.Text = dated.TimeOfDay.ToString();
+            guna2HtmlLabel11.Text = dated.Date.ToShortDateString();
+            loadCompany();
+            LoadSalesData();
+        }
+        private void loadCompany()
+        {
+            using (var reader = DBClass.ExecuteReader("SELECT name FROM tbl_company"))
+            {
+                if (reader.Read() && reader["name"] != DBNull.Value)
+                {
+                    guna2HtmlLabel8.Text = reader["name"].ToString();
+                }
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            contextMenuExport.Show(btnPrint, new Point(0, btnPrint.Height));
+        }
+
+        private void Report_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Exporting Report...");
+        }
+        private void LoadSalesData()
+        {
+            dgvSales.Rows.Clear();
+            SetDetailTable();
+            // Ensure columns exist
+            if (dgvSales.Columns.Count == 0)
+            {
+                dgvSales.Columns.Add("id", "Id");
+                dgvSales.Columns["id"].Visible = false;
+                dgvSales.Columns.Add("type", "Type");
+                dgvSales.Columns.Add("date", "Date");
+                dgvSales.Columns.Add("num", "Num");
+                dgvSales.Columns.Add("ship_to", "Ship To Address");
+                dgvSales.Columns.Add("ship_via", "Ship Via");
+                dgvSales.Columns.Add("ship_date", "Ship Date");
+                dgvSales.Columns.Add("item", "Item");
+                dgvSales.Columns.Add("qty", "Qty");
+                dgvSales.Columns.Add("price", "Sales Price");
+                dgvSales.Columns.Add("amount", "Amount");
+                LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+
+                dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+                dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+                dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+                dgvSales.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
+                dgvSales.EnableHeadersVisualStyles = false;
+                dgvSales.RowHeadersVisible = false;
+                dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+
+            string salesQuery = @"
+                                SELECT distinct c.id,CONCAT(CODE,' - ',c.name) name FROM tbl_transaction t
+                                    JOIN tbl_customer c ON t.hum_id = c.id
+                                    WHERE t.state = 0 AND
+                                    t.type IN (
+                                        'Customer Receipt',
+                                        'Sales Invoice',
+                                        'Customer Opening Balance',
+                                        'Customer Advance Payment',
+                                        'Check Cancel (Customer)',
+                                        'SalesReturn Invoice',
+                                        'Credit Note',
+                                        'PDC Receivable'
+                                    )
+                                    AND t.date >= @startDate AND t.date <= @endDate";
+
+            var param = new[]{
+                DBClass.CreateParameter("startDate", dateTimePicker1.Value.Date),
+                DBClass.CreateParameter("endDate", dateTimePicker2.Value.Date)
+                };
+
+            using (MySqlDataReader customerReader = DBClass.ExecuteReader(salesQuery, param.ToArray()))
+            {
+                decimal netTotal = 0, netQtyTotal = 0;
+
+                while (customerReader.Read())
+                {
+                    int customerId = Convert.ToInt32(customerReader["id"]);
+                    string customerName = customerReader["name"].ToString();
+                    dgvSales.Rows.Add(customerId.ToString(),customerName, "", "", "", "", "", "", "", "", "", "");
+
+                    string itemQuery = @"
+                                  SELECT s.id, 'Invoice' type, s.date, s.invoice_id num, s.ship_to, s.ship_via, s.ship_date,
+                                    CONCAT(ti.code,' - ',ti.name) AS `Item Name`,
+                                    ts.qty AS Qty,
+                                    ts.price AS Price,
+                                    ts.total AS Total
+                                    FROM
+                                    "+tblDetailName+@" ts
+                                    INNER JOIN 
+                                    tbl_items ti ON ts.item_id = ti.id
+                                    INNER JOIN "+ tblName + @" s ON s.id = ts.sales_id
+                                    WHERE s.customer_id = @id;
+                                 ";
+
+                    MySqlParameter itemParam = new MySqlParameter("@id", customerId);
+
+                    using (MySqlDataReader invoiceReader = DBClass.ExecuteReader(itemQuery, itemParam))
+                    {
+                        decimal customerTotal = 0, customerQtyTotal = 0;
+                        while (invoiceReader.Read())
+                        {
+                            int saleId = Convert.ToInt32(invoiceReader["id"]);
+                            string type = invoiceReader["type"].ToString();
+                            string date = Convert.ToDateTime(invoiceReader["date"]).ToString("dd/MM/yyyy");
+                            string num = invoiceReader["num"].ToString();
+                            string ship_to = invoiceReader["ship_to"].ToString();
+                            string ship_via = invoiceReader["ship_via"].ToString();
+                            string ship_date = Convert.ToDateTime(invoiceReader["ship_date"]).ToString("dd/MM/yyyy");
+
+                            string item = invoiceReader["Item Name"].ToString();
+                            decimal qty = Convert.ToDecimal(invoiceReader["Qty"]);
+                            decimal price = Convert.ToDecimal(invoiceReader["Price"]);
+                            decimal amount = Convert.ToDecimal(invoiceReader["Total"]);
+
+                            dgvSales.Rows.Add(
+                                saleId.ToString(), // id
+                                type,
+                                date,
+                                num,
+                                ship_to,
+                                ship_via,
+                                ship_date,
+                                item,
+                                qty.ToString("N2"),
+                                price.ToString("N2"),
+                                amount.ToString("N2")
+                            );
+
+                            customerTotal += amount;
+                            customerQtyTotal += qty;
+                        }
+                        dgvSales.Rows.Add("0", "TOTAL "+customerName, "", "", "", "", "", "", customerQtyTotal.ToString("N2"), "", customerTotal.ToString("N2"));
+                        dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
+                        dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
+
+                        netTotal += customerTotal;
+                        netQtyTotal += customerQtyTotal;
+                    }
+                }
+                // Final TOTAL row
+                dgvSales.Rows.Add("0", "TOTAL", "", "", "", "", "", "", netQtyTotal.ToString("N2"), "", netTotal.ToString("N2"));
+                dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
+                dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
+            }
+        }
+        private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string name = dgvSales.Rows[e.RowIndex].Cells["name"].Value?.ToString();
+                if (string.Equals(name, "TOTAL", StringComparison.OrdinalIgnoreCase))
+                    return;
+                if (dgvSales.Rows[e.RowIndex].Cells["id"].Value != null)
+                {
+                    int _id = int.Parse(dgvSales.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                    var _type = dgvSales.Rows[e.RowIndex].Cells["type"].Value.ToString();
+                    if (_type.Contains("Invoice"))
+                    {
+                        frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvSales.CurrentRow.Cells["id"].Value.ToString())));
+                    }
+                    //else if(_type == "Purchase Return Invoice")
+                    //{
+                    //    frmLogin.frmMain.openChildForm(new frmPurchaseReturn(id));
+                    //}
+                }
+            }
+        }
+        private void SetDetailTable()
+        {
+            if (tblName == "tbl_sales")
+                tblDetailName = "tbl_sales_details";
+            else if (tblName == "tbl_sales_quotation")
+                tblDetailName = "tbl_sales_quotation_details";
+            else if (tblName == "tbl_sales_proforma")
+                tblDetailName = "tbl_sales_proforma_details";
+            else if (tblName == "tbl_sales_order")
+                tblDetailName = "tbl_sales_order_details";
+            else if (tblName == "tbl_sales_return")
+                tblDetailName = "tbl_sales_return_details";
+            else
+                tblDetailName = "tbl_sales_details"; // fallback
+        }
+
+        private void SavePDF_Click(object sender, EventArgs e)
+        {
+            string companyName = "Company Name";
+
+            // Get company name from DB
+            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
+                if (reader.Read())
+                {
+                    companyName = reader["name"].ToString();
+                }
+
+            // Create PDF document
+            Document doc = new Document();
+            Section section = doc.AddSection();
+
+            // Page margins
+            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.RightMargin = Unit.FromCentimeter(1);
+            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+
+            // Header layout
+            Table headerTable = section.AddTable();
+            headerTable.Borders.Width = 0;
+            headerTable.AddColumn("5cm");
+            headerTable.AddColumn("8cm");
+            headerTable.AddColumn("5cm");
+
+            Row headerRow = headerTable.AddRow();
+
+            // Left side: Date/Time
+            Paragraph left = headerRow.Cells[0].AddParagraph();
+            left.Format.Font.Name = "Times New Roman";
+            left.Format.Font.Size = 10;
+            left.Format.Alignment = ParagraphAlignment.Left;
+            headerRow.Cells[0].VerticalAlignment = VerticalAlignment.Top;
+            left.AddText(DateTime.Now.ToString("hh:mm tt") + "\n");
+            left.AddText(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            // Center: Company name + Title
+            Paragraph center = headerRow.Cells[1].AddParagraph();
+            center.Format.Font.Name = "Times New Roman";
+            center.Format.Alignment = ParagraphAlignment.Center;
+            headerRow.Cells[1].VerticalAlignment = VerticalAlignment.Top;
+
+            FormattedText companyText = center.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold);
+            companyText.Font.Size = 12;
+
+            FormattedText titleText = center.AddFormattedText("Sales By Customer Details\n", TextFormat.Bold);
+            titleText.Font.Size = 12;
+
+            FormattedText subtitleText = center.AddFormattedText("All Transaction", TextFormat.NotBold);
+            subtitleText.Font.Size = 9;
+
+            //section.Add(headerTable); // ✅ Attach header table
+
+            // Bold separator line
+            Paragraph line = section.AddParagraph();
+            line.Format.Borders.Bottom.Width = 2;
+            line.Format.SpaceAfter = "0.5cm";
+
+            // Main table
+            Table dataTable = section.AddTable();
+            dataTable.Borders.Width = 0.75;
+            dataTable.Format.Font.Name = "Times New Roman";
+            dataTable.Format.Font.Size = 9;
+
+            // Define columns (total = 18.5cm)
+            dataTable.AddColumn("2.2cm"); // Type
+            dataTable.AddColumn("2.2cm"); // Date
+            dataTable.AddColumn("2.2cm"); // Num
+            dataTable.AddColumn("3.2cm"); // Name
+            dataTable.AddColumn("4.0cm"); // Item
+            dataTable.AddColumn("1.3cm"); // Qty
+            dataTable.AddColumn("2.0cm"); // Sales Price
+            dataTable.AddColumn("2.0cm"); // Amount
+
+            // Header row
+            Row tableHeader = dataTable.AddRow();
+            tableHeader.Shading.Color = Colors.LightGray;
+            tableHeader.Format.Font.Bold = true;
+            tableHeader.Cells[0].AddParagraph("Type");
+            tableHeader.Cells[1].AddParagraph("Date");
+            tableHeader.Cells[2].AddParagraph("Num");
+            tableHeader.Cells[3].AddParagraph("Name");
+            tableHeader.Cells[4].AddParagraph("Item");
+            tableHeader.Cells[5].AddParagraph("Qty");
+            tableHeader.Cells[6].AddParagraph("Sales Price");
+            tableHeader.Cells[7].AddParagraph("Amount");
+
+            decimal totalAmount = 0;
+
+            // Add data rows
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string type = row.Cells["type"]?.Value?.ToString() ?? "";
+                string date = row.Cells["date"]?.Value?.ToString() ?? "";
+                string num = row.Cells["num"]?.Value?.ToString() ?? "";
+                string name = row.Cells["name"]?.Value?.ToString() ?? "";
+                string item = row.Cells["item"]?.Value?.ToString() ?? "";
+                string qty = row.Cells["qty"]?.Value?.ToString() ?? "";
+                string price = row.Cells["price"]?.Value?.ToString() ?? "";
+                string amountStr = row.Cells["amount"]?.Value?.ToString() ?? "0";
+
+                // Avoid printing rows with TOTAL in name (just in case)
+                if (name.Trim().ToUpper() == "TOTAL") continue;
+
+                decimal amount;
+                decimal.TryParse(amountStr, out amount);
+                totalAmount += amount;
+
+                Row tRow = dataTable.AddRow();
+                tRow.Cells[0].AddParagraph(type);
+                tRow.Cells[1].AddParagraph(date);
+                tRow.Cells[2].AddParagraph(num);
+                tRow.Cells[3].AddParagraph(name);
+                tRow.Cells[4].AddParagraph(item);
+                tRow.Cells[5].AddParagraph(qty).Format.Alignment = ParagraphAlignment.Right;
+                tRow.Cells[6].AddParagraph(price).Format.Alignment = ParagraphAlignment.Right;
+                Paragraph amt = tRow.Cells[7].AddParagraph();
+                amt.AddFormattedText(amount.ToString("N2"));
+                tRow.Cells[7].Format.Alignment = ParagraphAlignment.Right;
+            }
+
+            // Total row (only once)
+            Row totalRow = dataTable.AddRow();
+            totalRow.Cells[0].MergeRight = 6;
+            Paragraph totalLabel = totalRow.Cells[0].AddParagraph("TOTAL");
+            totalLabel.Format.Font.Bold = true;
+
+            Paragraph totalVal = totalRow.Cells[7].AddParagraph();
+            FormattedText formattedTotal = totalVal.AddFormattedText(totalAmount.ToString("N2"));
+            formattedTotal.Font.Bold = true;
+            formattedTotal.Font.Underline = Underline.Single;
+            totalRow.Cells[7].Format.Alignment = ParagraphAlignment.Right;
+
+            //section.Add(dataTable); // ✅ Attach main table
+
+            // Render PDF
+            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+            renderer.Document = doc;
+            renderer.RenderDocument();
+
+            using (SaveFileDialog saveFile = new SaveFileDialog())
+            {
+                saveFile.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveFile.Title = "Save Sales By Customer Details";
+                saveFile.FileName = "SalesByCustomerDetails.pdf";
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    renderer.PdfDocument.Save(saveFile.FileName);
+                    Process.Start("explorer.exe", saveFile.FileName);
+                }
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Save Excel File";
+                saveDialog.FileName = "SalesByShipToAddress.xlsx";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var excelApp = new Excel.Application();
+                    excelApp.Visible = false;
+                    var workbook = excelApp.Workbooks.Add(Type.Missing);
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = "Sales By Ship To Address";
+
+                    // Add Title
+                    Excel.Range headerRange0 = worksheet.Range["C1", "F1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = guna2HtmlLabel8.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["C2", "F2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = guna2HtmlLabel7.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["C3", "F3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dateTimePicker1.Text + " - To " + dateTimePicker2.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    // Merge and format header row (Date)
+                    Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
+
+                    // Column headers
+                    for (int col = 0; col < dgvSales.Columns.Count; col++)
+                    {
+                        var column = dgvSales.Columns[col];
+
+                        // Skip hidden columns if needed
+                        if (!column.Visible) continue;
+
+                        var headerCell = worksheet.Cells[rowIndex, col];
+                        headerCell.Value = column.HeaderText;  // show column header
+                        headerCell.Font.Bold = true;
+                        headerCell.Font.Name = "Times New Roman";
+                        headerCell.Font.Size = 11;
+                        headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+
+                    }
+
+                    rowIndex++; // move to next row for data
+
+                    foreach (DataGridViewRow row in dgvSales.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        int colIndex = 1; // Excel column index starts at 1
+
+                        foreach (DataGridViewColumn column in dgvSales.Columns)
+                        {
+                            if (!column.Visible) continue;
+
+                            object value = row.Cells[column.Name].Value;
+                            string textValue = value?.ToString() ?? "";
+
+                            // Write value to Excel
+                            var cell = worksheet.Cells[rowIndex, colIndex];
+                            cell.Value = textValue;
+
+                            // Common font formatting
+                            cell.Font.Name = "Times New Roman";
+                            cell.Font.Size = 9;
+
+                            // Check if the value is numeric or decimal
+                            if (decimal.TryParse(textValue, out _))
+                            {
+                                // Right-align numeric values
+                                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            }
+                            else
+                            {
+                                // Left-align text by default
+                                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            }
+
+                            colIndex++;
+                        }
+
+                        rowIndex++;
+                    }
+
+                    // Auto-fit columns
+                    worksheet.Columns.AutoFit();
+
+                    // Save
+                    workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close(false);
+                    excelApp.Quit();
+
+                    MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            LoadSalesData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            LoadSalesData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem != null)
+            {
+                DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dateTimePicker1, dateTimePicker2);
+                LoadSalesData();
+            }
+        }
+    }
+}

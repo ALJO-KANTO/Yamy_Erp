@@ -104,7 +104,7 @@ namespace YamyProject
                     string paymentVoucher = reader["PaymentVoucher"]?.ToString() ?? "";
                     string receiptVoucher = reader["ReceiptVoucher"]?.ToString() ?? "";
 
-                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, amount.ToString("N2"), checkType, paymentVoucher, receiptVoucher);
+                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, Utilities.FormatDecimal(amount), checkType, paymentVoucher, receiptVoucher);
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 

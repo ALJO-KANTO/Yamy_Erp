@@ -1346,7 +1346,7 @@ namespace YamyProject
             this.Name = "frmViewPettyCashVoucher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";
-            this.Text = "Payment Voucher";
+            this.Text = "PettyCash Voucher";
             this.Load += new System.EventHandler(this.frmViewPettyCashVoucher_Load);
             this.panel1.ResumeLayout(false);
             this.txtcostcenter.ResumeLayout(false);

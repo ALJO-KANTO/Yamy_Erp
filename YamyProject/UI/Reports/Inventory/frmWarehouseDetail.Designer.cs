@@ -92,7 +92,7 @@
             this.dgvData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowTemplate.Height = 30;
-            this.dgvData.Size = new System.Drawing.Size(1103, 421);
+            this.dgvData.Size = new System.Drawing.Size(1103, 407);
             this.dgvData.TabIndex = 6;
             this.dgvData.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvData.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -128,7 +128,7 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.chkDate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 23);
+            this.panel2.Location = new System.Drawing.Point(2, 37);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1103, 55);
@@ -136,6 +136,8 @@
             // 
             // btn_Excel
             // 
+            this.btn_Excel.BackgroundImage = global::YamyProject.Properties.Resources.excel___Copy;
+            this.btn_Excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Excel.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Excel.BorderRadius = 5;
             this.btn_Excel.BorderThickness = 1;
@@ -144,19 +146,20 @@
             this.btn_Excel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_Excel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Excel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Excel.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Excel.FillColor = System.Drawing.Color.Transparent;
             this.btn_Excel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Excel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_Excel.Location = new System.Drawing.Point(102, 16);
+            this.btn_Excel.Location = new System.Drawing.Point(85, 12);
             this.btn_Excel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Excel.Name = "btn_Excel";
-            this.btn_Excel.Size = new System.Drawing.Size(76, 29);
+            this.btn_Excel.Size = new System.Drawing.Size(35, 35);
             this.btn_Excel.TabIndex = 23;
-            this.btn_Excel.Text = "Excel";
             this.btn_Excel.Click += new System.EventHandler(this.btn_Excel_Click);
             // 
             // btnPrint
             // 
+            this.btnPrint.BackgroundImage = global::YamyProject.Properties.Resources.printN;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPrint.BorderColor = System.Drawing.Color.DarkGray;
             this.btnPrint.BorderRadius = 5;
             this.btnPrint.BorderThickness = 1;
@@ -165,15 +168,14 @@
             this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrint.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.FillColor = System.Drawing.Color.Transparent;
             this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnPrint.Location = new System.Drawing.Point(9, 16);
+            this.btnPrint.Location = new System.Drawing.Point(34, 12);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(76, 29);
+            this.btnPrint.Size = new System.Drawing.Size(35, 35);
             this.btnPrint.TabIndex = 22;
-            this.btnPrint.Text = "Print";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dtTo
@@ -260,10 +262,10 @@
             // 
             this.panel3.Controls.Add(this.dgvData);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 78);
+            this.panel3.Location = new System.Drawing.Point(2, 92);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1103, 421);
+            this.panel3.Size = new System.Drawing.Size(1103, 407);
             this.panel3.TabIndex = 8;
             // 
             // panel5
@@ -280,20 +282,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1105, 23);
+            this.panel4.Location = new System.Drawing.Point(1105, 37);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 478);
+            this.panel4.Size = new System.Drawing.Size(2, 464);
             this.panel4.TabIndex = 13;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 23);
+            this.panel6.Location = new System.Drawing.Point(0, 37);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2, 478);
+            this.panel6.Size = new System.Drawing.Size(2, 464);
             this.panel6.TabIndex = 12;
             // 
             // headerUC1
@@ -302,10 +304,10 @@
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(637, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1107, 37);
             this.headerUC1.TabIndex = 0;
             // 
             // guna2Button1

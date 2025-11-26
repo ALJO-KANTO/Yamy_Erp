@@ -44,9 +44,9 @@ namespace YamyProject
         private void LoadData()
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>
-    {
-        DBClass.CreateParameter("@CustomerID", id)
-    };
+            {
+                DBClass.CreateParameter("@CustomerID", id)
+            };
 
             string dateFilter = "";
             if (!chkDate.Checked)
@@ -81,7 +81,10 @@ namespace YamyProject
                                 ORDER BY
                                     h.name, t.date, t.id;
                             ";
-
+            if (id == -1)
+            {
+                query = query.Replace("AND h.id = @CustomerID", "");
+            }
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
 
             // Add Balance column
@@ -105,6 +108,9 @@ namespace YamyProject
             dgvSales.Columns["Debit"].DefaultCellStyle.Format = "N2";
             dgvSales.Columns["Credit"].DefaultCellStyle.Format = "N2";
             dgvSales.Columns["Balance"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvSales.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);

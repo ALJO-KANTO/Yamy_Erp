@@ -63,40 +63,57 @@ namespace YamyProject
             }
 
             string query = $@"
-        SELECT 
-            ROW_NUMBER() OVER (ORDER BY Balance DESC) AS SN,  -- Serial Number
-            min_id AS id,                                     -- Actual DB ID (e.g., first transaction ID)
-            Name,
-            Balance
-        FROM (
-            SELECT 
-                h.name AS Name,
-                SUM(t.debit - t.credit) AS Balance,
-                MIN(h.id) AS min_id
-            FROM 
-                tbl_transaction t
-            JOIN 
-                tbl_customer h ON t.hum_id = h.id
-            WHERE 
-                t.type IN ('Sales Invoice', 'Sales Invoice Cash', 'Customer Opening Balance', 'Customer Receipt')
-                {dateFilter}
-            GROUP BY 
-                t.hum_id, h.name
-        ) AS sub
-        ORDER BY 
-            Balance DESC;
-    ";
+                                SELECT 
+                                    ROW_NUMBER() OVER (ORDER BY Balance DESC) AS SN,  -- Serial Number
+                                    min_id AS id,                                     -- Actual DB ID (e.g., first transaction ID)
+                                    Name,
+                                    Balance
+                                FROM (
+                                    SELECT 
+                                        h.name AS Name,
+                                        SUM(t.debit - t.credit) AS Balance,
+                                        MIN(h.id) AS min_id
+                                    FROM 
+                                        tbl_transaction t
+                                    JOIN 
+                                        tbl_customer h ON t.hum_id = h.id
+                                    WHERE 
+                                        t.type IN ('Sales Invoice', 'Sales Invoice Cash', 'Customer Opening Balance', 'Customer Receipt')
+                                        {dateFilter}
+                                    GROUP BY 
+                                        t.hum_id, h.name
+                                ) AS sub
+                                ORDER BY 
+                                    Balance DESC;
+                            ";
 
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvSales.DataSource = dt;
 
-            dgvSales.Columns["id"].Visible = false;
-            dgvSales.Columns[0].Width = 60;  // Serial Number
-            dgvSales.Columns[1].Width = 250; // Customer Name
-            dgvSales.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvSales.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvSales.Columns[2].DefaultCellStyle.Format = "N2";
+            // Use column names instead of indexes to avoid ordering issues
+            if (dgvSales.Columns.Contains("id"))
+                dgvSales.Columns["id"].Visible = false;
+
+            if (dgvSales.Columns.Contains("SN"))
+            {
+                dgvSales.Columns["SN"].Width = 60;  // Serial Number
+                dgvSales.Columns["SN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            if (dgvSales.Columns.Contains("Name"))
+            {
+                dgvSales.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvSales.Columns["Name"].Width = 250; // optional preferred width
+            }
+
+            if (dgvSales.Columns.Contains("Balance"))
+            {
+                // Balance is the 4th column in the query; format to 2 decimals and align right
+                dgvSales.Columns["Balance"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["Balance"].Width = 120; // optional preferred width
+            }
+
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);

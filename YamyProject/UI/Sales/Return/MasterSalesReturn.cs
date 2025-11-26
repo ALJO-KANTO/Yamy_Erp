@@ -43,14 +43,12 @@ namespace YamyProject
                                 ROW_NUMBER() OVER (ORDER BY tbl_sales_return.date) AS `SN`, 
                                 tbl_sales_return.date AS Date, 
                                 tbl_sales_return.id,
-                            concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                                LPAD(tbl_sales_return.id, 4,'0') AS 'JV NO', 
                                 tbl_sales_return.invoice_id AS 'INV NO', 
                                 CONCAT(tbl_customer.code,'-', tbl_customer.name) AS 'Customer Name', tbl_sales_return.payment_method as 'Payment Method',
                                 tbl_sales_return.total AS Total,tbl_sales_return.vat AS Vat,tbl_sales_return.net as 'Net'
                             FROM 
                                 tbl_sales_return
-                            INNER JOIN 
-                                tbl_transaction ON tbl_sales_return.id = tbl_transaction.transaction_id
                             INNER JOIN 
                                 tbl_customer ON tbl_sales_return.customer_id = tbl_customer.id
                             WHERE 
@@ -199,6 +197,21 @@ namespace YamyProject
         {
             this.WindowState = FormWindowState.Minimized;
 
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void cmbSelectionMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
         }
     }
 }

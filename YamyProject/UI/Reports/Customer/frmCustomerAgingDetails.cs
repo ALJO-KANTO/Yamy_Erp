@@ -126,7 +126,7 @@ namespace YamyProject
                 tRow.Cells[5].AddParagraph(row.Cells["Terms"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
                 tRow.Cells[6].AddParagraph(row.Cells["DueDate"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
                 tRow.Cells[7].AddParagraph(row.Cells["Aging"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
-                tRow.Cells[8].AddParagraph(row.Cells["OpenigBalance"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
+                tRow.Cells[8].AddParagraph(row.Cells["OpeningBalance"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
             }
 
             // Render PDF
@@ -162,11 +162,11 @@ namespace YamyProject
                 dgvSales.Columns.Add("Terms", "Terms");
                 dgvSales.Columns.Add("DueDate", "Due Date");
                 dgvSales.Columns.Add("Aging", "Aging");
-                dgvSales.Columns.Add("OpenigBalance", "Opening Balance");
+                dgvSales.Columns.Add("OpeningBalance", "Opening Balance");
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
-                dgvSales.Columns["OpenigBalance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvSales.Columns["OpenigBalance"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                dgvSales.Columns["OpeningBalance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["OpeningBalance"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                 dgvSales.Columns["Name"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                 dgvSales.Columns["id"].Visible = false;
@@ -196,29 +196,34 @@ namespace YamyProject
             }
 
             string query = $@"
-        SELECT 
-            ROW_NUMBER() OVER (ORDER BY t.id) AS SN,
-            t.type AS Type,
-            t.date AS Date,
-            t.transaction_id id,
-            t.transaction_id,
-            t.voucher_no,
-            c.name,
-            '30 Days' AS Terms,
-            DATE_ADD(t.date, INTERVAL 30 DAY) AS `Due Date`,
-            DATEDIFF(CURDATE(), t.Date) AS Aging,	
-            t.debit - t.credit AS `Open Balance`
-        FROM 
-            tbl_transaction t
-        JOIN 
-            tbl_customer c ON t.hum_id = c.id
-        WHERE 
-            c.id = @id
-            AND t.state = 0
-            AND t.type IN ('Customer Receipt','Sales Invoice','Check Cancel (Customer)','SalesReturn Invoice','Credit Note','PDC Receivable')
-            {dateFilter}
-        ORDER BY 
-            t.date;";
+                            SELECT 
+                                ROW_NUMBER() OVER (ORDER BY t.id) AS SN,
+                                t.type AS Type,
+                                t.date AS Date,
+                                t.transaction_id id,
+                                t.transaction_id,
+                                t.voucher_no,
+                                c.name,
+                                '30 Days' AS Terms,
+                                DATE_ADD(t.date, INTERVAL 30 DAY) AS `Due Date`,
+                                DATEDIFF(CURDATE(), t.Date) AS Aging,	
+                                t.debit - t.credit AS `Open Balance`
+                            FROM 
+                                tbl_transaction t
+                            JOIN 
+                                tbl_customer c ON t.hum_id = c.id
+                            WHERE 
+                                c.id = @id
+                                AND t.state = 0
+                                AND t.type IN ('Customer Receipt','Sales Invoice','Check Cancel (Customer)','SalesReturn Invoice','Credit Note','PDC Receivable')
+                                {dateFilter}
+                            ORDER BY 
+                                t.date;";
+
+            if(id == -1)
+            {
+                query = query.Replace("c.id = @id", "c.id != 0");
+            }
 
             using (MySqlDataReader reader = DBClass.ExecuteReader(query, parameters.ToArray()))
             {
@@ -239,7 +244,7 @@ namespace YamyProject
                         reader["Terms"].ToString(),
                         Convert.ToDateTime(reader["Due Date"]).ToString("dd/MM/yyyy"),
                         reader["Aging"].ToString(),
-                        balance.ToString("N2")
+                        Utilities.FormatDecimal(balance)
                     );
 
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -286,35 +291,57 @@ namespace YamyProject
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
                     worksheet.Name = "Customer Aging Details";
 
+                    Excel.Range headerRange0 = worksheet.Range["C1", "F1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["C2", "F2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = guna2HtmlLabel7.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["C3", "F3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dtpFrom.Text + " - To " + dtpTo.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "I1"];
-                    headerRange.Merge();
-                    headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yyyy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange3 = worksheet.Range["C4", "F4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
                     // Column headers
                     string[] headers = { "Type", "Date", "Num", "Voucher", "Name", "Terms", "Due Date", "Aging", "Open Balance" };
                     for (int i = 0; i < headers.Length; i++)
                     {
-                        worksheet.Cells[2, i + 1] = headers[i];
-                        var cell = worksheet.Cells[2, i + 1];
+                        worksheet.Cells[rowIndex, i + 1] = headers[i];
+                        var cell = worksheet.Cells[rowIndex, i + 1];
                         cell.Font.Bold = true;
                         cell.Font.Name = "Times New Roman";
                         cell.Font.Size = 10;
                         cell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
-                        cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                        cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     }
 
-                    int rowIndex = 3;
+                    rowIndex++; // move to next row for data
                     foreach (DataGridViewRow row in dgvSales.Rows)
                     {
                         if (row.IsNewRow) continue;
@@ -328,7 +355,7 @@ namespace YamyProject
                         worksheet.Cells[rowIndex, 7] = row.Cells["DueDate"].Value?.ToString();
                         worksheet.Cells[rowIndex, 8] = row.Cells["Aging"].Value?.ToString();
 
-                        string balance = row.Cells["OpenigBalance"].Value?.ToString() ?? "0";
+                        string balance = row.Cells["OpeningBalance"].Value?.ToString() ?? "0";
                         worksheet.Cells[rowIndex, 9] = balance;
 
                         for (int col = 1; col <= 9; col++)
@@ -338,9 +365,9 @@ namespace YamyProject
                             cell.Font.Size = 9;
 
                             if (col >= 6) // Right-align from Terms onward
-                                cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                             else
-                                cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                         }
 
                         // If it's TOTAL row, apply formatting
@@ -348,7 +375,7 @@ namespace YamyProject
                         {
                             worksheet.Cells[rowIndex, 5].Font.Bold = true;
                             worksheet.Cells[rowIndex, 9].Font.Bold = true;
-                            worksheet.Cells[rowIndex, 9].Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            worksheet.Cells[rowIndex, 9].Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
                         }
 
                         rowIndex++;

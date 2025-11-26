@@ -105,27 +105,26 @@ namespace YamyProject
         private void BindInvoiceItems()
         {
             dgvItems.Rows.Clear();
-            //using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id,ti.code,ti.name,ti.type, ti.method, sd.qty as S_Qty, IFNULL(srd.Qty,0) Qty, sd.price, sd.vatp, sd.vat, sd.total, sd.cost_price
-            //                                        FROM tbl_sales_details sd
-            //                                        INNER JOIN tbl_items ti ON sd.item_id = ti.id
-            //                                        LEFT JOIN tbl_sales_return_details srd ON srd.item_id = sd.item_id 
-            //                                        AND srd.sales_id = @returnId 
-            //                                        WHERE sd.sales_id = @salesId;",
-            //                               DBClass.CreateParameter("salesId", purchaseId),
-            //                               DBClass.CreateParameter("returnId", id)))
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id as item_id, IFNULL(prd.Qty,0) as Qty, pd.qty as P_Qty, pd.cost_price, pd.price, pd.vatp, pd.vat
-                                                                    ,ti.type,ti.method, ti.code ,ti.name, IFNULL(prd.cost_center_id,0) cost_center_id FROM tbl_purchase_details pd INNER JOIN 
-                                                                    tbl_items ti ON pd.item_id = ti.id 
-                                                                    LEFT JOIN tbl_purchase_return_details prd ON prd.item_id = pd.item_id AND prd.purchase_id = @returnId
-                                                                    WHERE pd.purchase_id = @purchaseId;",
-                                                            DBClass.CreateParameter("purchaseId", purchaseId),
-                                                            DBClass.CreateParameter("returnId", id)))
-                
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id as item_id, IFNULL(prd.Qty,0) as Qty, pd.qty as P_Qty, pd.cost_price, pd.price, pd.discount, pd.vatp, pd.vat
+                                                                        ,ti.type,ti.method, ti.code ,ti.name, IFNULL(prd.cost_center_id,0) cost_center_id FROM tbl_purchase_return_details prd INNER JOIN 
+                                                                        tbl_items ti ON prd.item_id = ti.id 
+                                                                        LEFT JOIN tbl_purchase_details pd ON prd.item_id = pd.item_id AND prd.purchase_id = @returnId
+                                                                        WHERE pd.purchase_id = @purchaseId;",
+                                                                DBClass.CreateParameter("purchaseId", purchaseId),
+                                                                DBClass.CreateParameter("returnId", id)))
+                //using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id as item_id, IFNULL(prd.Qty,0) as Qty, pd.qty as P_Qty, pd.cost_price, pd.price, pd.discount, pd.vatp, pd.vat
+                //                                                        ,ti.type,ti.method, ti.code ,ti.name, IFNULL(prd.cost_center_id,0) cost_center_id FROM tbl_purchase_details pd INNER JOIN 
+                //                                                        tbl_items ti ON pd.item_id = ti.id 
+                //                                                        LEFT JOIN tbl_purchase_return_details prd ON prd.item_id = pd.item_id AND prd.purchase_id = @returnId
+                //                                                        WHERE pd.purchase_id = @purchaseId;",
+                //                                                DBClass.CreateParameter("purchaseId", purchaseId),
+                //                                                DBClass.CreateParameter("returnId", id)))
+
                 while (reader.Read())
                 {
                     bool isExisting = decimal.Parse(reader["Qty"].ToString()) > 0 ? true : false;
                     dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), isExisting, Utilities.FormatDecimal(reader["P_Qty"].ToString()), Utilities.FormatDecimal(reader["qty"].ToString()),
-                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()), Utilities.FormatDecimal(reader["discount"].ToString()));
                     DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                     if (comboCell != null && reader["vat"].ToString() != "0")
                     {
@@ -137,12 +136,15 @@ namespace YamyProject
                     {
                         comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
                     }
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = ((decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
-                      decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_price"].Value.ToString()))
-                      + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
+                    int rowIndex = dgvItems.Rows.Count - 2;
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["qty"].Value?.ToString(), out decimal qty0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["cost_price"].Value?.ToString(), out decimal costPrice0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["discount"].Value?.ToString(), out decimal discount0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["vatp"].Value?.ToString(), out decimal vatp0);
 
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+                    dgvItems.Rows[rowIndex].Cells["total"].Value = (qty0 * (costPrice0 - discount0)) + vatp0;
+                    dgvItems.Rows[rowIndex].Cells["method"].Value = reader["method"].ToString();
+                    dgvItems.Rows[rowIndex].Cells["type"].Value = reader["type"].ToString();
                 }
         }
 
@@ -330,15 +332,15 @@ namespace YamyProject
             CommonInsert.addTransactionEntry(dtInv.Value.Date,
                  cmbPaymentMethod.Text == "Credit" ? level4PaymentCreditMethodId.ToString()
                  : cmbAccountCashName.SelectedValue.ToString(),
-                  "0", txtTotal.Text, invId.ToString(), cmbVendor.SelectedValue.ToString(), "Purchase Return Invoice", "PURCHASE RETURN", "Purchase Return Invoice NO. " + txtNextCode.Text,
+                  txtTotal.Text, "0", invId.ToString(), cmbVendor.SelectedValue.ToString(), "Purchase Return Invoice", "PURCHASE RETURN", "Purchase Return Invoice NO. " + txtNextCode.Text,
                  frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
             if (decimal.Parse(txtTotalVat.Text) > 0)
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
-              level4VatId.ToString(), txtTotalVat.Text, "0", invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
+              level4VatId.ToString(), "0", txtTotalVat.Text, invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
               "Vat Input For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
             CommonInsert.addTransactionEntry(dtInv.Value.Date,
-              level4PurchaseReturnId.ToString(), txtTotalBefore.Text, "0", invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
+              level4PurchaseReturnId.ToString(), "0", txtTotalBefore.Text, invId.ToString(), "0", "Purchase Return Invoice", "PURCHASE RETURN",
               "Purchase Return For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
         }
         private void ReturnItemsToInventory()
@@ -430,11 +432,12 @@ namespace YamyProject
                     //DBClass.CreateParameter("@total", dgvItems.Rows[i].Cells["total"].Value == null || dgvItems.Rows[i].Cells["total"].Value.ToString() == "" ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["total"].Value)),
                     //DBClass.CreateParameter("@costCenter", dgvItems.Rows[i].Cells["cost_center"].Value ?? 0));
 
-                    valueList.Add($"(@purchase_id, @item_id{paramIndex}, @qty{paramIndex}, @cost_price{paramIndex}, @price{paramIndex}, @vatp{paramIndex}, @vat{paramIndex}, @total{paramIndex}, @costCenter{paramIndex})");
+                    valueList.Add($"(@purchase_id, @item_id{paramIndex}, @qty{paramIndex}, @cost_price{paramIndex}, @price{paramIndex}, @discount{paramIndex}, @vatp{paramIndex}, @vat{paramIndex}, @total{paramIndex}, @costCenter{paramIndex})");
                     parameters.Add(new MySqlParameter($"item_id{paramIndex}", itemId));
                     parameters.Add(new MySqlParameter($"qty{paramIndex}", qty));
                     parameters.Add(new MySqlParameter($"cost_price{paramIndex}", row.Cells["cost_price"].Value == DBNull.Value || row.Cells["cost_price"].Value.ToString() == "" ? 0 : Convert.ToDecimal(row.Cells["cost_price"].Value)));
                     parameters.Add(new MySqlParameter($"price{paramIndex}", row.Cells["price"].Value == DBNull.Value || row.Cells["price"].Value.ToString() == "" ? 0 : Convert.ToDecimal(row.Cells["price"].Value)));
+                    parameters.Add(new MySqlParameter($"discount{paramIndex}", row.Cells["discount"].Value == DBNull.Value || row.Cells["discount"].Value.ToString() == "" ? 0 : Convert.ToDecimal(row.Cells["discount"].Value)));
                     parameters.Add(new MySqlParameter($"vatp{paramIndex}", row.Cells["vatp"].Value == null ? 0 : Convert.ToDecimal(row.Cells["vatp"].Value)));
                     parameters.Add(new MySqlParameter($"vat{paramIndex}", row.Cells["vat"].Value == null ? 0 : row.Cells["vat"].Value));
                     parameters.Add(new MySqlParameter($"total{paramIndex}", row.Cells["total"].Value == null || row.Cells["total"].Value.ToString() == "" ? 0 : Convert.ToDecimal(row.Cells["total"].Value)));
@@ -448,7 +451,7 @@ namespace YamyProject
 
             string sql = $@"
                             INSERT INTO tbl_purchase_return_details 
-                            (purchase_id, item_id, qty, cost_price, price, vatp, vat, total, cost_center_id)
+                            (purchase_id, item_id, qty, cost_price, price, discount, vatp, vat, total, cost_center_id)
                             VALUES {string.Join(", ", valueList)}";
             using(var conn = DBClass.GetConnection())
             {
@@ -472,15 +475,6 @@ namespace YamyProject
 
                 if (row.Cells["type"].Value.ToString() != "Service")
                 {
-                    //using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_items where id=@id",
-                    //DBClass.CreateParameter("id", row.Cells["itemId"].Value.ToString())))
-                    //{
-                    //    reader.Read();
-                    //    DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
-                    //    DBClass.CreateParameter("id", reader["id"].ToString()),
-                    //    DBClass.CreateParameter("qty", decimal.Parse(reader["on_hand"].ToString()) - decimal.Parse(row.Cells["qty"].Value.ToString())));
-                    //}
-
                     insertItemTransaction(row);
                 }
                 //add cost center
@@ -859,6 +853,7 @@ namespace YamyProject
                 string taxP = selectedRow["value"].ToString();
 
                 decimal price = GetDecimalValue(row, "cost_price");
+                decimal discount = GetDecimalValue(row, "discount");
                 decimal qty = GetDecimalValue(row, "qty");
 
                 if (price == 0 || qty == 0)
@@ -867,7 +862,7 @@ namespace YamyProject
                 }
                 else
                 {
-                    decimal netPrice = (qty * price);
+                    decimal netPrice = (qty * (price- discount));
                     row.Cells["vat"].Value = Convert.ToInt32(taxId);
                     row.Cells["vatp"].Value = (decimal.Parse(netPrice.ToString()) * decimal.Parse(taxP) / 100);
                     row.Cells["total"].Value = netPrice + decimal.Parse(row.Cells["vatp"].Value.ToString());
@@ -882,6 +877,7 @@ namespace YamyProject
                 return;
 
             decimal price = GetDecimalValue(row, "cost_price");
+            decimal discount = GetDecimalValue(row, "discount");
             decimal qty = GetDecimalValue(row, "qty");
 
             if (price == 0 || qty == 0)
@@ -892,7 +888,7 @@ namespace YamyProject
             {
                 try
                 {
-                    decimal netPrice = (qty * price);
+                    decimal netPrice = (qty * (price- discount));
 
                     string vatValue = row.Cells["vat"].Value?.ToString() ?? "0";
                     string vatPercentage = "0";
@@ -1405,6 +1401,46 @@ namespace YamyProject
             }
         }
 
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            dgvItems.Rows.Clear();
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id as item_id, IFNULL(prd.Qty,0) as Qty, pd.qty as P_Qty, pd.cost_price, pd.price, pd.discount, pd.vatp, pd.vat
+                                                                    ,ti.type,ti.method, ti.code ,ti.name, IFNULL(prd.cost_center_id,0) cost_center_id FROM tbl_purchase_details pd INNER JOIN 
+                                                                    tbl_items ti ON pd.item_id = ti.id 
+                                                                    LEFT JOIN tbl_purchase_return_details prd ON prd.item_id = pd.item_id AND prd.purchase_id = @returnId
+                                                                    WHERE pd.purchase_id = @purchaseId;",
+                                                            DBClass.CreateParameter("purchaseId", purchaseId),
+                                                            DBClass.CreateParameter("returnId", id))) {
+                while (reader.Read())
+                {
+                    bool isExisting = decimal.Parse(reader["Qty"].ToString()) > 0 ? true : false;
+                    dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), isExisting, Utilities.FormatDecimal(reader["P_Qty"].ToString()), Utilities.FormatDecimal(reader["qty"].ToString()),
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()), Utilities.FormatDecimal(reader["discount"].ToString()));
+                    DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                    if (comboCell != null && reader["vat"].ToString() != "0")
+                    {
+                        comboCell.Value = int.Parse(reader["vat"].ToString());
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value = decimal.Parse(reader["vatP"].ToString());
+                    }
+                    DataGridViewComboBoxCell comboCellCostCenter = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_center"] as DataGridViewComboBoxCell;
+                    if (comboCellCostCenter != null && reader["cost_center_id"].ToString() != "0")
+                    {
+                        comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
+                    }
+                    int rowIndex = dgvItems.Rows.Count - 2;
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["qty"].Value?.ToString(), out decimal qty0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["cost_price"].Value?.ToString(), out decimal costPrice0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["discount"].Value?.ToString(), out decimal discount0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["vatp"].Value?.ToString(), out decimal vatp0);
+
+                    dgvItems.Rows[rowIndex].Cells["total"].Value = (qty0 * (costPrice0 - discount0)) + vatp0;
+                    dgvItems.Rows[rowIndex].Cells["method"].Value = reader["method"].ToString();
+                    dgvItems.Rows[rowIndex].Cells["type"].Value = reader["type"].ToString();
+                }
+            }
+            ;
+        }
+
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             frmViewPurchaseList selectPurchaseForm = new frmViewPurchaseList(0, int.Parse(cmbVendor.SelectedValue.ToString()));
@@ -1438,7 +1474,7 @@ namespace YamyProject
 
                 while (reader.Read())
                 {
-                    dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), false, Utilities.FormatDecimal(reader["qty"].ToString()), "0", Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
+                    dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), false, Utilities.FormatDecimal(reader["qty"].ToString()), "0", Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()), Utilities.FormatDecimal(reader["discount"].ToString()));
                     DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                     if (comboCell != null && reader["vat"].ToString() != "0")
                     {
@@ -1450,12 +1486,15 @@ namespace YamyProject
                     {
                         comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
                     }
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = ((decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
-                      decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_price"].Value.ToString()))
-                      + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
+                    int rowIndex = dgvItems.Rows.Count - 2;
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["qty"].Value?.ToString(), out decimal qty1);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["cost_price"].Value?.ToString(), out decimal costPrice1);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["discount"].Value?.ToString(), out decimal discount1);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["vatp"].Value?.ToString(), out decimal vatp1);
 
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+                    dgvItems.Rows[rowIndex].Cells["total"].Value = (qty1 * (costPrice1 - discount1)) + vatp1;
+                    dgvItems.Rows[rowIndex].Cells["method"].Value = reader["method"].ToString();
+                    dgvItems.Rows[rowIndex].Cells["type"].Value = reader["type"].ToString();
 
                     txtRefNo.Text = reader["invoice_id"].ToString();
                     cmbWarehouse.SelectedValue = int.Parse(reader["purchase_warehouse"].ToString());

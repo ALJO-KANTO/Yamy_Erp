@@ -1474,10 +1474,11 @@
             this.guna2TileButton15.Name = "guna2TileButton15";
             this.guna2TileButton15.Size = new System.Drawing.Size(100, 23);
             this.guna2TileButton15.TabIndex = 32;
-            this.guna2TileButton15.Text = "Add Time / Costs";
+            this.guna2TileButton15.Text = "Add BOM";
             this.guna2TileButton15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2TileButton15.TextOffset = new System.Drawing.Point(10, -12);
             this.guna2TileButton15.Visible = false;
+            this.guna2TileButton15.Click += new System.EventHandler(this.guna2TileButton15_Click);
             // 
             // guna2TileButton22
             // 

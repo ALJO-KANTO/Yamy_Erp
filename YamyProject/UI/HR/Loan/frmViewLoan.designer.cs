@@ -34,6 +34,7 @@
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txtAccountCodeDebit = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbAccountNameDebit = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -99,6 +100,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.BtnDelete);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -107,6 +109,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1000, 33);
             this.panel1.TabIndex = 2;
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.BtnDelete.BorderRadius = 5;
+            this.BtnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.BtnDelete.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.BtnDelete.ForeColor = System.Drawing.Color.White;
+            this.BtnDelete.Location = new System.Drawing.Point(3, 4);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(94, 27);
+            this.BtnDelete.TabIndex = 3;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.Visible = false;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // guna2GroupBox1
             // 
@@ -128,7 +146,7 @@
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1000, 582);
             this.guna2GroupBox1.TabIndex = 4;
-            this.guna2GroupBox1.Text = "New Loan";
+            this.guna2GroupBox1.Text = "Loan";
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
             // 
             // txtAccountCodeDebit
@@ -612,5 +630,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtAccountCodeCredit;
         public Guna.UI2.WinForms.Guna2ComboBox cmbAccountNameCredit;
         private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2Button BtnDelete;
     }
 }

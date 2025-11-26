@@ -94,7 +94,7 @@ namespace YamyProject
                         reader["WarehouseName"],
                         reader["ItemId"],
                         reader["ItemName"],
-                        reader["Qty"]
+                        Utilities.FormatDecimal(reader["Qty"])
                     };
 
                     this.Invoke(new Action(() =>
@@ -154,7 +154,7 @@ namespace YamyProject
                         row["WarehouseName"],
                         row["ItemId"],
                         row["ItemName"],
-                        Convert.ToDecimal(row["Qty"]).ToString("N2")
+                        Utilities.FormatDecimal(row["Qty"])
                     };
 
                     dgvData.Rows.Add(newRow);

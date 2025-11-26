@@ -98,7 +98,7 @@ namespace YamyProject
                         ? Convert.ToDateTime(reader["return_date"]).ToString("dd/MM/yyyy") : "";
                     decimal amount = reader["amount"] != DBNull.Value ? Convert.ToDecimal(reader["amount"]) : 0;
 
-                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, returnDate, amount.ToString("N2"));
+                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, returnDate, Utilities.FormatDecimal(amount));
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 

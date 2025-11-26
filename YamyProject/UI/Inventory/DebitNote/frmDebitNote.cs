@@ -38,7 +38,8 @@ namespace YamyProject
         {
             dtInv.Value = DateTime.Now.Date;
             bindCombo();
-            txtNextCode.Text = GenerateNextSalesCode();
+            c.Text = GenerateNextSalesCode();
+            cmbAccountName.Text = c.Text; 
             if (id != 0)
             {
                 BindInvoice();
@@ -75,7 +76,7 @@ namespace YamyProject
                         cmbCustomer.SelectedValue = reader["credit_account"].ToString();
                     
                     cmbAccountName.SelectedValue = reader["debit_account"].ToString();
-                    txtNextCode.Text = reader["invoice_id"].ToString();
+                    c.Text = reader["invoice_id"].ToString();
                     txtAmount.Text = reader["amount"].ToString();
                     invCode = txtInvoiceId.Text = reader["invoice_id"].ToString();
                     invId = id;
@@ -234,15 +235,15 @@ namespace YamyProject
         private void addTransaction() {
             CommonInsert.addTransactionEntry(dtInv.Value.Date, level4VendorId.ToString()
                  , "0", txtTotalAmount.Text, invId.ToString(), cmbCustomer.SelectedValue.ToString(), "Debit Note", "Debit Note", "Debit Note NO. " + invCode,
-                 frmLogin.userId, DateTime.Now.Date,txtNextCode.Text);
+                 frmLogin.userId, DateTime.Now.Date,c.Text);
 
             if (decimal.Parse(txtVat.Text) > 0)
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
               level4VatId.ToString(), txtVat.Text, invId.ToString(), "0", "0", "Debit Note", "Debit Note",
-              "Vat Input For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date,txtNextCode.Text);
+              "Vat Input For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date,c.Text);
             CommonInsert.addTransactionEntry(dtInv.Value.Date,
               level4PurchaseReturn.ToString(), txtAmount.Text, "0", invId.ToString(), "0", "Debit Note", "Debit Note",
-              "Revenue For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date,txtNextCode.Text);
+              "Revenue For Invoice No. " + invCode, frmLogin.userId, DateTime.Now.Date,c.Text);
 
             //string accountId = cmbPaymentMethod.Text == "Credit" ? level4PaymentCreditMethodId.ToString()
             //     : cmbAccountCashName.SelectedValue.ToString();
@@ -558,11 +559,6 @@ namespace YamyProject
                             s.`change` AS Remaining
                             FROM 
                             tbl_purchase s
-                            INNER JOIN 
-                            tbl_transaction t 
-                            ON t.transaction_id = s.id 
-                            AND t.`type` IN ('Vendor Opening Balance', 'Purchase Invoice') 
-                            AND t.hum_id = s.vendor_id
                             WHERE 
                             s.vendor_id = @id
                             GROUP BY 
@@ -571,7 +567,7 @@ namespace YamyProject
                             Remaining > 0;
                         ";
 
-            //int count = 1;
+            //int count = 1;s
             using (MySqlDataReader reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("id", cmbCustomer.SelectedValue.ToString())))
             {
                 int count = 1;

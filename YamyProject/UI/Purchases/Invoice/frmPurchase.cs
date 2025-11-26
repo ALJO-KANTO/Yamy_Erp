@@ -1825,7 +1825,7 @@ namespace YamyProject
                         {
                             decimal netPrice = Convert.ToDecimal(readerDetails["qty"].ToString()) * Convert.ToDecimal(readerDetails["cost_price"].ToString());
                             dgvItems.Rows.Add(readerDetails["item_id"].ToString(), "", readerDetails["code"].ToString(), readerDetails["name"].ToString(), readerDetails["qty"].ToString(),
-                                readerDetails["cost_price"].ToString(), readerDetails["price"].ToString(), readerDetails["discount"].ToString(), netPrice, readerDetails["vat"].ToString(), readerDetails["vatp"].ToString());
+                                readerDetails["cost_price"].ToString(), readerDetails["price"].ToString(), readerDetails["discount"].ToString(), netPrice);
                             DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                             if (comboCell != null && readerDetails["vat"].ToString() != "0")
                             {

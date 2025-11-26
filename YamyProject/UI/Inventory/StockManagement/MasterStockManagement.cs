@@ -31,10 +31,9 @@ namespace YamyProject
             if (cmbSelectionMethod.Text == "Default")
                 query = @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_item_stock_settlement.date) AS `SN`, 
                         tbl_item_stock_settlement.date AS Date, tbl_item_stock_settlement.id,
-                        concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                        LPAD(tbl_item_stock_settlement.id, 4, '0') AS 'JV NO', 
                         tbl_item_stock_settlement.code AS 'INV NO'
                         FROM tbl_item_stock_settlement
-                        INNER JOIN tbl_transaction ON tbl_item_stock_settlement.id = tbl_transaction.transaction_id
                         WHERE tbl_item_stock_settlement.state = 0 ";
             else
                 query = @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_item_stock_settlement.date) AS `SN`, 

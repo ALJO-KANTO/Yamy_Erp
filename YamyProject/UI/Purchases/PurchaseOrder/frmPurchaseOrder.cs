@@ -61,7 +61,7 @@ namespace YamyProject
                 BindInvoice();
                 btnSave.Enabled = UserPermissions.canEdit("Purchase Order");
             }
-
+            guna2TileButton15.Visible = Utilities.GetModules("Manufacture");
         }
         private void BindInvoice()
         {
@@ -1603,6 +1603,11 @@ namespace YamyProject
                 row.Cells["name"].Value = null;
                 row.Cells["code"].Value = null;
             }
+        }
+
+        private void guna2TileButton15_Click(object sender, EventArgs e)
+        {
+            //guna2TileButton15
         }
     }
 }

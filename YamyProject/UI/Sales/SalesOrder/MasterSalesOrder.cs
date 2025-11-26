@@ -41,7 +41,6 @@ namespace YamyProject
         {
             string query = GetQuery();
             List<MySqlParameter> parameters = GetQueryParameters();
-
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             BindDataToGrid(dt);
             HandleInvoiceItems();
@@ -66,56 +65,74 @@ namespace YamyProject
             }
             if (!chkDate.Checked)
             {
-                filters.Add("tbl_sales_order.date >= @dateFrom and tbl_sales_order.date <= @dateTo");
+                filters.Add("tbl_sales_order.date >= @dateFrom AND tbl_sales_order.date <= @dateTo");
             }
 
-            return string.Join(" AND ", filters);
+            // Always filter state = 0 (as per your base queries)
+            filters.Insert(0, "tbl_sales_order.state = 0");
+
+            return filters.Count > 0 ? "WHERE " + string.Join(" AND ", filters) : "";
         }
         private string GetDefaultQuery()
         {
-            return @"SELECT 
-                        ROW_NUMBER() OVER (ORDER BY tbl_sales_order.date) AS `SN`, 
-                        tbl_sales_order.date AS Date, 
-                        tbl_sales_order.id,
-                        tbl_sales_order.invoice_id AS 'INV NO', 
-                        CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
-                        tbl_sales_order.payment_method AS 'Payment Method',
-                        tbl_sales_order.total AS Total,
-                        tbl_sales_order.vat AS Vat,
-                        tbl_sales_order.net AS 'Net',
-                        tbl_sales_order.sales_id AS 'SalesId',
-                        tbl_sales_order.tranfer_status
-                    FROM tbl_sales_order
-                    INNER JOIN tbl_customer ON tbl_sales_order.customer_id = tbl_customer.id
-                    WHERE tbl_sales_order.state = 0
-                    GROUP BY tbl_sales_order.id, tbl_sales_order.date, tbl_sales_order.invoice_id, tbl_customer.code, tbl_customer.name, tbl_sales_order.total;";
+            string whereClause = GetWhereClause();
+
+            string query;
+            query = $@"
+            SELECT 
+                ROW_NUMBER() OVER (ORDER BY tbl_sales_order.date) AS SN, 
+                tbl_sales_order.date AS Date, 
+                tbl_sales_order.id,
+                tbl_sales_order.invoice_id AS 'INV NO', 
+                CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
+                tbl_sales_order.payment_method AS 'Payment Method',
+                tbl_sales_order.total AS Total,
+                tbl_sales_order.vat AS Vat,
+                tbl_sales_order.net AS Net,
+                tbl_sales_order.sales_id AS SalesId,
+                tbl_sales_order.tranfer_status,
+                CONCAT(ti.code, ' - ', ti.name) AS 'Item Name',
+                ts.qty AS Qty,
+                ts.price AS Price,
+                ts.vat AS 'Item Vat',
+                ts.total AS 'Item Total'
+            FROM tbl_sales_order
+            INNER JOIN tbl_sales_order_details ts ON tbl_sales_order.id = ts.sales_id
+            INNER JOIN tbl_items ti ON ts.item_id = ti.id
+            INNER JOIN tbl_customer ON tbl_sales_order.customer_id = tbl_customer.id
+            {whereClause}
+            GROUP BY tbl_sales_order.id, tbl_sales_order.date, tbl_sales_order.invoice_id, 
+                     tbl_customer.code, tbl_customer.name, tbl_sales_order.total, 
+                     ti.code, ti.name, ts.qty, ts.price, ts.vat, ts.total";
+
+            return query;
         }
 
         private string GetDetailedQuery()
         {
-            return @"SELECT 
-                        ROW_NUMBER() OVER (ORDER BY tbl_sales_order.date) AS `SN`, 
-                        tbl_sales_order.date AS Date, 
-                        tbl_sales_order.id,
-                        tbl_sales_order.invoice_id AS 'INV NO', 
-                        CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
-                        tbl_sales_order.payment_method AS 'Payment Method',
-                        tbl_sales_order.total AS Total,
-                        tbl_sales_order.vat AS Vat,
-                        tbl_sales_order.net AS 'Net',
-                        tbl_sales_order.sales_id AS 'SalesId',
-                        tbl_sales_order.tranfer_status,
-                        CONCAT(ti.code, ' - ', ti.name) AS 'Item Name',
-                        ts.qty AS Qty,
-                        ts.price AS Price,
-                        ts.vat AS 'Item Vat',
-                        ts.total AS 'Item Total'
-                    FROM tbl_sales_order
-                    INNER JOIN tbl_sales_order_details ts ON tbl_sales_order.id = ts.sales_id
-                    INNER JOIN tbl_items ti ON ts.item_id = ti.id
-                    INNER JOIN tbl_customer ON tbl_sales_order.customer_id = tbl_customer.id
-                    WHERE tbl_sales_order.state = 0
-                    GROUP BY tbl_sales_order.id, tbl_sales_order.date, tbl_sales_order.invoice_id, tbl_customer.code, tbl_customer.name, tbl_sales_order.total, ti.code, ti.name, ts.qty, ts.price, ts.vat, ts.total;";
+            string whereClause = GetWhereClause();
+
+            string query;
+            query = $@"
+            SELECT 
+                ROW_NUMBER() OVER (ORDER BY tbl_sales_order.date) AS SN, 
+                tbl_sales_order.date AS Date, 
+                tbl_sales_order.id,
+                tbl_sales_order.invoice_id AS 'INV NO', 
+                CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
+                tbl_sales_order.payment_method AS 'Payment Method',
+                tbl_sales_order.total AS Total,
+                tbl_sales_order.vat AS Vat,
+                tbl_sales_order.net AS Net,
+                tbl_sales_order.sales_id AS SalesId,
+                tbl_sales_order.tranfer_status
+            FROM tbl_sales_order
+            INNER JOIN tbl_customer ON tbl_sales_order.customer_id = tbl_customer.id
+            {whereClause}
+            GROUP BY tbl_sales_order.id, tbl_sales_order.date, tbl_sales_order.invoice_id, 
+                     tbl_customer.code, tbl_customer.name, tbl_sales_order.total";
+
+            return query;
         }
 
         private List<MySqlParameter> GetQueryParameters()
@@ -280,6 +297,16 @@ namespace YamyProject
         {
             this.WindowState = FormWindowState.Minimized;
 
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
         }
     }
 }

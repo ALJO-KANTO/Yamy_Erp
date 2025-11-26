@@ -40,6 +40,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -96,14 +100,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnBegin = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvReconcile = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.account = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -119,6 +120,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.account = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_ac_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_last_reco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_reco_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_curr_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTools2)).BeginInit();
@@ -870,6 +881,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.btnBegin);
             this.panel3.Controls.Add(this.label38);
             this.panel3.Controls.Add(this.guna2Separator2);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -880,6 +892,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(611, 229);
             this.panel3.TabIndex = 139;
+            // 
+            // btnBegin
+            // 
+            this.btnBegin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBegin.Location = new System.Drawing.Point(4, 198);
+            this.btnBegin.Name = "btnBegin";
+            this.btnBegin.Size = new System.Drawing.Size(92, 28);
+            this.btnBegin.TabIndex = 151;
+            this.btnBegin.Text = "Reconcile";
+            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
             // 
             // label38
             // 
@@ -924,6 +946,8 @@
             this.dgvReconcile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvReconcile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvReconcile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dgvReconcile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -935,18 +959,19 @@
             this.dgvReconcile.ColumnHeadersHeight = 30;
             this.dgvReconcile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvReconcile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_ac_id,
             this.account,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReconcile.DefaultCellStyle = dataGridViewCellStyle11;
+            this.col_last_reco,
+            this.col_reco_bal,
+            this.col_curr_bal});
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReconcile.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvReconcile.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvReconcile.Location = new System.Drawing.Point(4, 40);
             this.dgvReconcile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -954,18 +979,18 @@
             this.dgvReconcile.Name = "dgvReconcile";
             this.dgvReconcile.ReadOnly = true;
             this.dgvReconcile.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReconcile.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReconcile.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvReconcile.RowHeadersVisible = false;
             this.dgvReconcile.RowHeadersWidth = 51;
             this.dgvReconcile.RowTemplate.Height = 30;
-            this.dgvReconcile.Size = new System.Drawing.Size(605, 174);
+            this.dgvReconcile.Size = new System.Drawing.Size(605, 152);
             this.dgvReconcile.TabIndex = 145;
             this.dgvReconcile.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.White;
             this.dgvReconcile.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -990,34 +1015,7 @@
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvReconcile.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReconcile_CellClick);
-            // 
-            // account
-            // 
-            this.account.HeaderText = "ACCOUNT";
-            this.account.MinimumWidth = 6;
-            this.account.Name = "account";
-            this.account.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "LAST RECONCILED";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "RECONCILED BALANCE";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "CURRENT BALANCE";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.dgvReconcile.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReconcile_CellContentClick);
             // 
             // label29
             // 
@@ -1212,6 +1210,100 @@
             this.panel7.Size = new System.Drawing.Size(2, 599);
             this.panel7.TabIndex = 145;
             // 
+            // account
+            // 
+            this.account.HeaderText = "ACCOUNT";
+            this.account.MinimumWidth = 6;
+            this.account.Name = "account";
+            this.account.ReadOnly = true;
+            this.account.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.account.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ACCOUNT";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 151;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "LAST RECONCILED";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 152;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn3.HeaderText = "RECONCILED BALANCE";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 151;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn4.HeaderText = "CURRENT BALANCE";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 151;
+            // 
+            // col_ac_id
+            // 
+            this.col_ac_id.HeaderText = "Acc Id";
+            this.col_ac_id.Name = "col_ac_id";
+            this.col_ac_id.ReadOnly = true;
+            this.col_ac_id.Visible = false;
+            // 
+            // col_last_reco
+            // 
+            this.col_last_reco.HeaderText = "LAST RECONCILED";
+            this.col_last_reco.MinimumWidth = 6;
+            this.col_last_reco.Name = "col_last_reco";
+            this.col_last_reco.ReadOnly = true;
+            // 
+            // col_reco_bal
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.col_reco_bal.DefaultCellStyle = dataGridViewCellStyle11;
+            this.col_reco_bal.HeaderText = "RECONCILED BALANCE";
+            this.col_reco_bal.MinimumWidth = 6;
+            this.col_reco_bal.Name = "col_reco_bal";
+            this.col_reco_bal.ReadOnly = true;
+            // 
+            // col_curr_bal
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.col_curr_bal.DefaultCellStyle = dataGridViewCellStyle12;
+            this.col_curr_bal.HeaderText = "CURRENT BALANCE";
+            this.col_curr_bal.MinimumWidth = 6;
+            this.col_curr_bal.Name = "col_curr_bal";
+            this.col_curr_bal.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "CURRENT BALANCE";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 151;
+            // 
             // frmAccountantCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1284,10 +1376,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label customize;
         private Guna.UI2.WinForms.Guna2DataGridView dgvReconcile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn account;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label31;
@@ -1349,5 +1437,16 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnBegin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_ac_id;
+        private System.Windows.Forms.DataGridViewLinkColumn account;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_last_reco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_reco_bal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_curr_bal;
     }
 }

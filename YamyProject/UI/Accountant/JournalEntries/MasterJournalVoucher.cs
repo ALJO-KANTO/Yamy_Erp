@@ -65,7 +65,7 @@ namespace YamyProject
                             jv.id, 
                             jv.date AS Date,
                             jv.code AS 'Journal Code',
-                (select concat('000',    MAX(tbl_transaction.transaction_id)) FROM tbl_transaction WHERE tbl_transaction.transaction_id=jv.id and t_type='JOURNAL') AS 'JV NO',
+                            LPAD(jv.id, 4, '0') AS 'JV NO',
                             jv.debit AS 'Debit Amount', 
                             jv.credit AS 'Credit Amount' 
                         FROM tbl_journal_voucher jv Where state=0");
@@ -75,13 +75,14 @@ namespace YamyProject
                             jv.id, 
                             jv.date AS Date,
                             jv.code AS 'Journal Code',
+                            LPAD(jv.id, 4, '0') AS 'JV NO',
                             jv.debit AS 'Debit Amount', 
                             jv.credit AS 'Credit Amount' 
                         FROM tbl_journal_voucher jv Where state=0
                             AND jv.date >= @dateFrom 
                             AND jv.date <= @dateTo",
-                    DBClass.CreateParameter("dateFrom", dtFrom.Value.Date.ToString("yyyy-MM-dd")),
-                    DBClass.CreateParameter("dateTo", dtTo.Value.Date.ToString("yyyy-MM-dd")));
+                    DBClass.CreateParameter("dateFrom", dtFrom.Value.Date),
+                    DBClass.CreateParameter("dateTo", dtTo.Value));
 
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["id"].Visible = false;

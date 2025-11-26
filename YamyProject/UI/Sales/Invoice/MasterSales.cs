@@ -48,14 +48,12 @@ namespace YamyProject
         //    ROW_NUMBER() OVER (ORDER BY tbl_sales.date) AS `SN`, 
         //    tbl_sales.date AS Date, 
         //    tbl_sales.id,
-        //concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+        //    LPAD(tbl_sales.id, 4, '0') AS 'JV NO', 
         //    tbl_sales.invoice_id AS 'INV NO', 
         //    CONCAT(tbl_customer.code,' - ', tbl_customer.name) AS 'Customer Name', tbl_sales.payment_method as 'Payment Method',
         //    tbl_sales.total AS Total,tbl_sales.vat AS Vat,tbl_sales.pay as 'Pay',tbl_sales.change as 'Change'
         //FROM 
         //    tbl_sales
-        //INNER JOIN 
-        //    tbl_transaction ON tbl_sales.id = tbl_transaction.transaction_id
         //INNER JOIN 
         //    tbl_customer ON tbl_sales.customer_id = tbl_customer.id
         //WHERE 
@@ -182,16 +180,14 @@ namespace YamyProject
                         tbl_sales.date AS Date, 
                         tbl_sales.id,
                         tbl_sales.invoice_id AS 'INV NO', 
-                        concat('000',    MAX(tbl_transaction.transaction_id)) AS 'Jv No', 
+                        LPAD(tbl_sales.id, 4, '0') AS 'Jv No', 
                         CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
                         tbl_sales.payment_method AS 'Payment Method',
                         tbl_sales.total AS Total,
                         tbl_sales.vat AS Vat,
                         tbl_sales.Net AS 'Net'
                     FROM tbl_sales
-                    INNER JOIN tbl_customer ON tbl_sales.customer_id = tbl_customer.id
-                    INNER JOIN 
-                    tbl_transaction ON tbl_sales.id = tbl_transaction.transaction_id
+                    INNER JOIN tbl_customer ON tbl_sales.customer_id = tbl_customer.id 
                     WHERE tbl_sales.state = 0
                     GROUP BY tbl_sales.id, tbl_sales.date, tbl_sales.invoice_id, tbl_customer.code, tbl_customer.name, tbl_sales.total;";
         }

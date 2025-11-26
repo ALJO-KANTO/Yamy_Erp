@@ -213,7 +213,7 @@
             this.dgvInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvInvoice.RowHeadersVisible = false;
             this.dgvInvoice.RowTemplate.Height = 30;
-            this.dgvInvoice.Size = new System.Drawing.Size(1211, 342);
+            this.dgvInvoice.Size = new System.Drawing.Size(1211, 328);
             this.dgvInvoice.TabIndex = 6;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -258,7 +258,7 @@
             this.panel2.Controls.Add(this.cmbCustomer);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 23);
+            this.panel2.Location = new System.Drawing.Point(2, 37);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1211, 54);
             this.panel2.TabIndex = 7;
@@ -272,7 +272,7 @@
             this.cmbSelectionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectionMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbSelectionMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbSelectionMethod.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSelectionMethod.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cmbSelectionMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbSelectionMethod.ItemHeight = 18;
             this.cmbSelectionMethod.Items.AddRange(new object[] {
@@ -325,6 +325,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(160, 22);
             this.dtTo.TabIndex = 11;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label2
             // 
@@ -352,6 +353,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(160, 22);
             this.dtFrom.TabIndex = 11;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label11
             // 
@@ -414,6 +416,7 @@
             this.chkPayment.UncheckedState.BorderThickness = 0;
             this.chkPayment.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkPayment.UseVisualStyleBackColor = false;
+            this.chkPayment.Visible = false;
             this.chkPayment.CheckedChanged += new System.EventHandler(this.chkPayment_CheckedChanged);
             // 
             // label4
@@ -453,7 +456,6 @@
             this.chkCustomer.UncheckedState.BorderThickness = 0;
             this.chkCustomer.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkCustomer.UseVisualStyleBackColor = false;
-            this.chkCustomer.Visible = false;
             this.chkCustomer.CheckedChanged += new System.EventHandler(this.chkCustomer_CheckedChanged);
             // 
             // label3
@@ -488,7 +490,6 @@
             this.cmbCustomer.Name = "cmbCustomer";
             this.cmbCustomer.Size = new System.Drawing.Size(285, 24);
             this.cmbCustomer.TabIndex = 6;
-            this.cmbCustomer.Visible = false;
             this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // label1
@@ -509,9 +510,9 @@
             // 
             this.panel3.Controls.Add(this.dgvInvoice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 77);
+            this.panel3.Location = new System.Drawing.Point(2, 91);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1211, 342);
+            this.panel3.Size = new System.Drawing.Size(1211, 328);
             this.panel3.TabIndex = 8;
             // 
             // panel4
@@ -607,20 +608,20 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1213, 23);
+            this.panel6.Location = new System.Drawing.Point(1213, 37);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2, 579);
+            this.panel6.Size = new System.Drawing.Size(2, 565);
             this.panel6.TabIndex = 13;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(0, 23);
+            this.panel7.Location = new System.Drawing.Point(0, 37);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(2, 579);
+            this.panel7.Size = new System.Drawing.Size(2, 565);
             this.panel7.TabIndex = 12;
             // 
             // headerUC1
@@ -629,10 +630,10 @@
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(498, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1215, 37);
             this.headerUC1.TabIndex = 238;
             // 
             // guna2Button2

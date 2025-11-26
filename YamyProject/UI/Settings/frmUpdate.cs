@@ -217,13 +217,15 @@ namespace YamyProject
 
                 query = @"
 
-                CREATE TABLE IF NOT EXISTS tbl_project_activity (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    planning_id INT NOT NULL DEFAULT(0),
-                    code VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                    name VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                    start_date DATE NOT NULL,
-                    end_date DATE NOT NULL
+                        CREATE TABLE IF NOT EXISTS tbl_project_activity (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            planning_id INT NOT NULL DEFAULT(0),
+                            code VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+                            name VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+                            start_date DATE NOT NULL,
+                            end_date DATE NOT NULL,
+                            progress DECIMAL(20,2) NOT NULL DEFAULT '0.000',
+                            status VARCHAR(50) NULL DEFAULT '' COLLATE 'utf8mb4_general_ci'
                         );";
 
                 DBClass.ExecuteNonQuery(query);
@@ -287,6 +289,10 @@ namespace YamyProject
 	                        `fixedassetsID` INT(10) NULL DEFAULT NULL,
 	                        `fixedStatus` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
                         	`product_id` INT(10) NULL DEFAULT '0',
+	                        `warehouse_id` INT(10) NULL DEFAULT '0',
+	                        `warehouse_to_id` INT(10) NULL DEFAULT '0',
+                            `product_qty` DECIMAL(10,0) NULL DEFAULT '0',
+	                        `process_stage` VARCHAR(100) NULL DEFAULT '' COLLATE 'utf8mb4_0900_ai_ci',
 	                        PRIMARY KEY (`id`) USING BTREE
                         )
                         COLLATE='utf8mb4_0900_ai_ci'
@@ -350,6 +356,30 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
+                DBClass.ExecuteNonQuery(@"
+                    CREATE TABLE IF NOT EXISTS tbl_reconciliation (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        account_id INT NOT NULL,
+                        statement_date DATE NOT NULL,
+                        ending_balance DECIMAL(18,4) NOT NULL,
+                        service_charge DECIMAL(18,4) DEFAULT 0,
+                        interest_amount DECIMAL(18,4) DEFAULT 0,
+                        created_by INT,
+                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                    ) ENGINE=InnoDB;
+                ");
+
+                DBClass.ExecuteNonQuery(@"
+                    CREATE TABLE IF NOT EXISTS tbl_reconciliation_item (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        reconciliation_id INT NOT NULL,
+                        transaction_id INT NOT NULL,
+                        amount DECIMAL(18,4) NOT NULL,
+                        cleared_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        FOREIGN KEY (reconciliation_id) REFERENCES tbl_reconciliation(id)
+                    ) ENGINE=InnoDB;
+                ");
+
                 query = @"
                         CREATE TABLE tbl_petty_cash_details(
                             id int NOT NULL AUTO_INCREMENT,
@@ -369,6 +399,20 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
+                query = @"CREATE TABLE `tbl_item_serial` (
+                            `id` INT(10) NOT NULL AUTO_INCREMENT,
+                            `item_id` INT(10) NOT NULL,
+                            `serial_number` VARCHAR(100) NOT NULL,
+                            `transaction_id` INT(10) NULL DEFAULT NULL, -- optional: link to purchase or sale
+                            `status` VARCHAR(50) NOT NULL DEFAULT 'Available', -- Available / Sold / Returned
+                            `warehouse_id` INT(10) NOT NULL DEFAULT 0,
+                            `created_date` DATE NOT NULL,
+                            PRIMARY KEY (`id`),
+                            UNIQUE KEY `unique_serial` (`serial_number`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
                 query = @"-- Modify column
                         ALTER TABLE tbl_items 
                         MODIFY COLUMN name VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';
@@ -380,6 +424,8 @@ namespace YamyProject
                 query = @"ALTER TABLE tbl_coa_level_1 ADD COLUMN category_code VARCHAR(50);";
                 DBClass.ExecuteNonQuery(query);
 
+                query = @"ALTER TABLE tbl_set_main_menu ADD COLUMN status INT NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase_details CHANGE COLUMN sales_id purchase_id INT NOT NULL DEFAULT 0;";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase_order_details CHANGE COLUMN sales_id purchase_id INT NOT NULL DEFAULT 0;";
@@ -404,7 +450,7 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_project_activity ADD COLUMN progress DECIMAL(20,3) NOT NULL DEFAULT 0;";
                 DBClass.ExecuteNonQuery(query);
-                query = @"ALTER TABLE tbl_project_activity ADD COLUMN status INT NOT NULL DEFAULT 0;";
+                query = @"ALTER TABLE tbl_project_activity ADD COLUMN status VARCHAR(50) NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_vendor ADD COLUMN `type` VARCHAR(200) NULL DEFAULT 'Vendor' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
@@ -419,6 +465,12 @@ namespace YamyProject
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `country_id` int NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `city_id` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_project_planning ADD COLUMN `subcontractor_account_id` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_project_planning ADD COLUMN `retention_account_id` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_project_planning ADD COLUMN `retention_percentage` DECIMAL(18,2) NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_purchase ADD COLUMN `description` VARCHAR(300) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
@@ -705,6 +757,33 @@ namespace YamyProject
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                             user_id INT
                         );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_labor_attendance (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            employee_id INT NOT NULL,
+                            date DATE NOT NULL,
+                            time_in TIME NOT NULL,
+                            lunch_start TIME DEFAULT NULL,
+                            lunch_end TIME DEFAULT NULL,
+                            time_out TIME DEFAULT NULL,
+                            overtime_hours DECIMAL(5,2) DEFAULT 0,
+                            labor_id INT DEFAULT 0,
+                            Status VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci'
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_Manufacturing_Steps (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code VARCHAR(20) NOT NULL,
+                            step_name VARCHAR(100) NOT NULL,
+                            description VARCHAR(500),
+                            step_order INT NOT NULL,
+                            is_completed TINYINT(1) DEFAULT 0,
+                            created_by INT,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );
+                        ";
                 DBClass.ExecuteNonQuery(query);
 
                 MessageBox.Show("Database Updated");

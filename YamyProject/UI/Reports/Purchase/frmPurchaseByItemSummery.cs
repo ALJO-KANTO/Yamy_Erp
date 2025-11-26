@@ -44,6 +44,22 @@ namespace YamyProject
             dgvSales.Columns["currLvl"].Visible = false;
             dgvSales.Columns["id"].Visible = false;
 
+            dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["percent"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["avgPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["cogs"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["avgCogs"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["grossMargin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["grossMarginPercent"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["avgPrice"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["cogs"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["avgCogs"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["grossMargin"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["percent"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["grossMarginPercent"].DefaultCellStyle.Format = "N2";
             dgvSales.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;

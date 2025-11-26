@@ -55,7 +55,7 @@ namespace YamyProject
             {
                 query = @"SELECT 
                 ROW_NUMBER() OVER (ORDER BY tbl_purchase.date) AS `SN`, 
-                concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                LPAD(tbl_purchase.id, 4, '0') AS 'JV NO', 
                 tbl_purchase.date AS Date, 
                 tbl_purchase.id,
                 tbl_purchase.invoice_id AS 'INV NO', 
@@ -64,9 +64,7 @@ namespace YamyProject
                 FROM 
                     tbl_purchase
                 INNER JOIN 
-                    tbl_transaction ON tbl_purchase.id = tbl_transaction.transaction_id
-                INNER JOIN 
-                    tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id
+                    tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id 
                 WHERE 
                     tbl_purchase.state = 0
 
@@ -76,7 +74,7 @@ namespace YamyProject
             {
                 query = @"SELECT 
                     ROW_NUMBER() OVER (ORDER BY tbl_purchase.date) AS `SN`, 
-                    concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                    LPAD(tbl_purchase.id, 4, '0') AS 'JV NO', 
                     tbl_purchase.date AS Date, 
                     tbl_purchase.id,
                     tbl_purchase.invoice_id AS 'INV NO', 
@@ -88,9 +86,7 @@ namespace YamyProject
                  INNER JOIN tbl_purchase_details ts ON tbl_purchase.id = ts.purchase_id
                 inner join tbl_items ti on ts.item_id =ti.id
                 INNER JOIN 
-                    tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id
-                INNER JOIN 
-                    tbl_transaction ON tbl_purchase.id = tbl_transaction.transaction_id
+                    tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id 
                 WHERE 
                     tbl_purchase.state = 0
 
@@ -315,6 +311,16 @@ namespace YamyProject
         private void btnLast_Click(object sender, EventArgs e)
         {
             _currentPage = _totalPages;
+            BindInvoices();
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
             BindInvoices();
         }
     }

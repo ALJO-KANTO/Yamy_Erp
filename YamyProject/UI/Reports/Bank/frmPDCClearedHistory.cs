@@ -94,7 +94,7 @@ namespace YamyProject
                     string passDate = reader["pass_date"] != DBNull.Value ? Convert.ToDateTime(reader["pass_date"]).ToString("dd/MM/yyyy") : "";
                     decimal amount = reader["amount"] != DBNull.Value ? Convert.ToDecimal(reader["amount"]) : 0;
 
-                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, passDate, amount.ToString("N2"));
+                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, passDate, Utilities.FormatDecimal(amount));
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 

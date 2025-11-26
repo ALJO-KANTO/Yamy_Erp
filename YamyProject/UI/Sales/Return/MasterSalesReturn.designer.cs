@@ -275,6 +275,8 @@
             this.cmbSelectionMethod.Size = new System.Drawing.Size(154, 24);
             this.cmbSelectionMethod.StartIndex = 0;
             this.cmbSelectionMethod.TabIndex = 14;
+            this.cmbSelectionMethod.Visible = false;
+            this.cmbSelectionMethod.SelectedIndexChanged += new System.EventHandler(this.cmbSelectionMethod_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -288,6 +290,7 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Selection Method";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
             // 
             // cmbPaymentMethod
             // 
@@ -311,6 +314,7 @@
             this.cmbPaymentMethod.Size = new System.Drawing.Size(154, 24);
             this.cmbPaymentMethod.StartIndex = 0;
             this.cmbPaymentMethod.TabIndex = 12;
+            this.cmbPaymentMethod.Visible = false;
             this.cmbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // dtTo
@@ -326,6 +330,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(160, 22);
             this.dtTo.TabIndex = 11;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label2
             // 
@@ -353,6 +358,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(160, 22);
             this.dtFrom.TabIndex = 11;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label11
             // 
@@ -415,6 +421,7 @@
             this.chkPayment.UncheckedState.BorderThickness = 0;
             this.chkPayment.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkPayment.UseVisualStyleBackColor = false;
+            this.chkPayment.Visible = false;
             this.chkPayment.CheckedChanged += new System.EventHandler(this.chkPayment_CheckedChanged);
             // 
             // chkCustomer
@@ -453,6 +460,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Payment Method";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Visible = false;
             // 
             // cmbCustomer
             // 

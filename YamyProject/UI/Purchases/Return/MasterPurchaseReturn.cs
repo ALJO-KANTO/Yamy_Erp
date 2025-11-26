@@ -48,15 +48,13 @@ namespace YamyProject
             string query = @"SELECT 
                 ROW_NUMBER() OVER (ORDER BY tbl_purchase_return.date) AS `SN`, 
                 tbl_purchase_return.date AS Date, 
-                tbl_purchase_return.id,
-            concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                tbl_purchase_return.id, 
+                LPAD(tbl_purchase_return.id, 4, '0') AS 'JV NO', 
                 tbl_purchase_return.invoice_id AS 'INV NO', 
                 CONCAT(tbl_vendor.code,'-', tbl_vendor.name) AS 'Vendor Name', tbl_purchase_return.payment_method as 'Payment Method',
                 tbl_purchase_return.total AS Total,tbl_purchase_return.vat AS Vat,tbl_purchase_return.Net as 'Net'
             FROM 
                 tbl_purchase_return
-            INNER JOIN 
-                tbl_transaction ON tbl_purchase_return.id = tbl_transaction.transaction_id
             INNER JOIN 
                 tbl_vendor ON tbl_purchase_return.vendor_id = tbl_vendor.id
             WHERE 
@@ -213,6 +211,16 @@ namespace YamyProject
         {
             EventHub.Vendor -= vendorUpdatedHandler;
             EventHub.PurchaseInv -= invoiceUpdatedHandler;
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
         }
     }
 }

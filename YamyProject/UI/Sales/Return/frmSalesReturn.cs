@@ -92,7 +92,7 @@ namespace YamyProject
         {
             dgvItems.Rows.Clear();
 
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id,ti.code,ti.name,ti.type, ti.method, sd.qty as S_Qty, IFNULL(srd.Qty,0) Qty, sd.price, sd.vatp, sd.vat, sd.total, sd.cost_price, IFNULL(srd.cost_center_id,0) cost_center_id
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT ti.id,ti.code,ti.name,ti.type, ti.method, sd.qty as S_Qty, IFNULL(srd.Qty,0) Qty, sd.price,sd.discount, sd.vatp, sd.vat, sd.total, sd.cost_price, IFNULL(srd.cost_center_id,0) cost_center_id
                                                     FROM tbl_sales_details sd
                                                     INNER JOIN tbl_items ti ON sd.item_id = ti.id
                                                     LEFT JOIN tbl_sales_return_details srd ON srd.item_id = sd.item_id 
@@ -104,7 +104,7 @@ namespace YamyProject
                 {
                     bool isExisting = decimal.Parse(reader["Qty"].ToString()) > 0 ? true : false;
                     dgvItems.Rows.Add(reader["id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), isExisting, Utilities.FormatDecimal(reader["S_Qty"].ToString()), Utilities.FormatDecimal(reader["Qty"].ToString()),
-                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()), Utilities.FormatDecimal(reader["discount"].ToString()));
                     DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                     if (comboCell != null && reader["vat"].ToString() != "0")
                     {
@@ -116,11 +116,16 @@ namespace YamyProject
                     {
                         comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
                     }
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = ((decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
-                   decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()))
-                   + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+                    int rowIndex = dgvItems.Rows.Count - 2;
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["qty"].Value?.ToString(), out decimal qty0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["price"].Value?.ToString(), out decimal price0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["discount"].Value?.ToString(), out decimal discount0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["vatp"].Value?.ToString(), out decimal vatp0);
+
+                    dgvItems.Rows[rowIndex].Cells["total"].Value = (qty0 * (price0 - discount0)) + vatp0;
+                    dgvItems.Rows[rowIndex].Cells["method"].Value = reader["method"]?.ToString() ?? "";
+                    dgvItems.Rows[rowIndex].Cells["type"].Value = reader["type"]?.ToString() ?? "";
+
                 }
         }
 
@@ -410,12 +415,13 @@ namespace YamyProject
             {
                 if (dgvItems.Rows[i].Cells["Selected_Item"].Value != null && bool.Parse(dgvItems.Rows[i].Cells["Selected_Item"].Value.ToString()))
                 {
-                    DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sales_return_details (sales_id, item_id, qty,cost_price, price, vatp, vat, total, cost_center_id)
-                                         VALUES (@sales_id, @item_id, @qty,@cost_price, @price, @vatp, @vat, @total, @costCenter);",
+                    DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sales_return_details (sales_id, item_id, qty,cost_price, price, discount, vatp, vat, total, cost_center_id)
+                                         VALUES (@sales_id, @item_id, @qty,@cost_price, @price, @discount, @vatp, @vat, @total, @costCenter);",
                   DBClass.CreateParameter("@sales_id", invId),
                   DBClass.CreateParameter("@item_id", dgvItems.Rows[i].Cells["itemId"].Value.ToString()),
                   DBClass.CreateParameter("@qty", dgvItems.Rows[i].Cells["qty"].Value == DBNull.Value ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["qty"].Value)),
                   DBClass.CreateParameter("@price", dgvItems.Rows[i].Cells["price"].Value == DBNull.Value || dgvItems.Rows[i].Cells["price"].Value.ToString() == "" ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["price"].Value)),
+                  DBClass.CreateParameter("@discount", dgvItems.Rows[i].Cells["discount"].Value == DBNull.Value || dgvItems.Rows[i].Cells["discount"].Value.ToString() == "" ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["discount"].Value)),
                   DBClass.CreateParameter("@cost_price", dgvItems.Rows[i].Cells["cost_price"].Value == DBNull.Value || dgvItems.Rows[i].Cells["cost_price"].Value.ToString() == "" ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["cost_price"].Value)),
                   DBClass.CreateParameter("@vat", dgvItems.Rows[i].Cells["vat"].Value == null ? 0 : dgvItems.Rows[i].Cells["vat"].Value),
                   DBClass.CreateParameter("@vatp", dgvItems.Rows[i].Cells["vat"].Value == null ? 0 : Convert.ToDecimal(dgvItems.Rows[i].Cells["vatp"].Value)),
@@ -424,15 +430,7 @@ namespace YamyProject
 
                     if (dgvItems.Rows[i].Cells["type"].Value.ToString() != "Service")
                     {
-                        using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_items where id=@id",
-                        DBClass.CreateParameter("id", dgvItems.Rows[i].Cells["itemId"].Value.ToString())))
-                        {
-                            reader.Read();
-                            DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
-                                DBClass.CreateParameter("id", reader["id"].ToString()),
-                                DBClass.CreateParameter("qty", decimal.Parse(reader["on_hand"].ToString()) + decimal.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString())));
-                            insertItemTransaction(dgvItems.Rows[i]);
-                        }
+                        insertItemTransaction(dgvItems.Rows[i]);
                     }
                     //add cost center
                     if (dgvItems.Rows[i].Cells["Cost_Center"].Value != null && int.Parse(dgvItems.Rows[i].Cells["Cost_Center"].Value.ToString()) > 0)
@@ -544,8 +542,8 @@ namespace YamyProject
                 }
                 else
                     txtBillTo.Text = txtCustomerCode.Text = "";
-
-            clearData();
+            if(cmbCustomer.Focused)
+                clearData();
         }
         private void cmbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -692,6 +690,7 @@ namespace YamyProject
                 string taxP = selectedRow["value"].ToString();
 
                 decimal price = GetDecimalValue(row, "price");
+                decimal discount = GetDecimalValue(row, "discount");
                 decimal qty = GetDecimalValue(row, "qty");
 
                 if (price == 0 || qty == 0)
@@ -700,7 +699,7 @@ namespace YamyProject
                 }
                 else
                 {
-                    decimal net = (price * qty);
+                    decimal net = ((price - discount) * qty);
                     row.Cells["vat"].Value = Convert.ToInt32(taxId);
                     row.Cells["vatp"].Value = (net * decimal.Parse(taxP) / 100);
                     row.Cells["total"].Value = net + Convert.ToDecimal(row.Cells["vatp"].Value);
@@ -715,6 +714,7 @@ namespace YamyProject
             if (row == null) return;
 
             decimal price = GetDecimalValue(dgvItems.CurrentRow, "price");
+            decimal discount = GetDecimalValue(dgvItems.CurrentRow, "discount");
             decimal qty = GetDecimalValue(dgvItems.CurrentRow, "qty");
 
             if (price == 0 || qty == 0)
@@ -726,7 +726,7 @@ namespace YamyProject
 
             try
             {
-                decimal netPrice = (qty * price);
+                decimal netPrice = (qty * (price - discount));
 
                 string vatId = row.Cells["vat"].Value?.ToString() ?? "0";
                 string vP = "0";
@@ -1129,7 +1129,7 @@ namespace YamyProject
                 while (reader.Read())
                 {
                     dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), false, Utilities.FormatDecimal(reader["qty"].ToString()), "0",
-                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()));
+                        Utilities.FormatDecimal(reader["cost_price"].ToString()), Utilities.FormatDecimal(reader["price"].ToString()), Utilities.FormatDecimal(reader["discount"].ToString()));
 
                     DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
                     if (comboCell != null && reader["vat"].ToString() != "0")
@@ -1142,11 +1142,17 @@ namespace YamyProject
                     {
                         comboCellCostCenter.Value = int.Parse(reader["cost_center_id"].ToString());
                     }
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = ((decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
-                   decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()))
-                   + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
-                    dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+                    int rowIndex = dgvItems.Rows.Count - 2;
+
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["qty"].Value?.ToString(), out decimal qty0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["price"].Value?.ToString(), out decimal price0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["discount"].Value?.ToString(), out decimal discount0);
+                    decimal.TryParse(dgvItems.Rows[rowIndex].Cells["vatp"].Value?.ToString(), out decimal vatp0);
+
+                    dgvItems.Rows[rowIndex].Cells["total"].Value = (qty0 * (price0 - discount0)) + vatp0;
+                    dgvItems.Rows[rowIndex].Cells["method"].Value = reader["method"]?.ToString() ?? "";
+                    dgvItems.Rows[rowIndex].Cells["type"].Value = reader["type"]?.ToString() ?? "";
+
 
                     txtRefNo.Text = reader["invoice_id"].ToString();
                     cmbWarehouse.SelectedValue = int.Parse(reader["sales_warehouse"].ToString());

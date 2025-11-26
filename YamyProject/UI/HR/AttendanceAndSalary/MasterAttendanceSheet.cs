@@ -499,8 +499,8 @@ namespace YamyProject
             using (MySqlDataReader settingsReader = DBClass.ExecuteReader(query, DBClass.CreateParameter("date", startDate)))
                 if (settingsReader.Read())
                 {
-                    actualTimeIn = settingsReader["Time In"].ToString() + ":00";
-                    actualTimeOut = settingsReader["Time Out"].ToString() + ":00";
+                    actualTimeIn = settingsReader["timein"].ToString() + ":00";
+                    actualTimeOut = settingsReader["timeout"].ToString() + ":00";
                 }
 
             for (int day = 1; day <= daysInMonth; day++)

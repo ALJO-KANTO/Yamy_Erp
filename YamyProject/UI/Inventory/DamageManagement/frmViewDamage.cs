@@ -262,14 +262,6 @@ namespace YamyProject
 
                 if (dgvItems.Rows[i].Cells["type"].Value.ToString() != "Service")
                 {
-                    using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_items where id=@id",
-                    DBClass.CreateParameter("id", dgvItems.Rows[i].Cells["itemId"].Value.ToString())))
-                    {
-                        reader.Read();
-                        DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
-                            DBClass.CreateParameter("id", reader["id"].ToString()),
-                            DBClass.CreateParameter("qty", decimal.Parse(reader["on_hand"].ToString()) - decimal.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString())));
-                    }
                     insertItemTransaction(dgvItems.Rows[i]);
                 }
             }

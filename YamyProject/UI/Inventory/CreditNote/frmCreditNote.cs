@@ -40,6 +40,7 @@ namespace YamyProject
             dtInv.Value = DateTime.Now.Date;
             bindCombo();
             txtInvoiceId.Text = GenerateNextSalesCode();
+            txtNextCode.Text = txtInvoiceId.Text;
             if (id != 0)
             {
                 BindInvoice();
@@ -545,11 +546,6 @@ namespace YamyProject
                                 s.change AS Remaining
                             FROM 
                                 tbl_sales s
-                            INNER JOIN 
-                                tbl_transaction t 
-                                ON t.transaction_id = s.id 
-                                AND t.`type` IN ('Customer Opening Balance', 'Sales Invoice') 
-                                AND t.hum_id = s.customer_id
                             WHERE 
                                 s.customer_id = @id
                             GROUP BY 

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using static YamyProject.BindCombos;
 
 namespace YamyProject
 {
@@ -41,8 +42,12 @@ namespace YamyProject
             //dgvInv.Columns.AddRange(new DataGridViewColumn[] { no, humId, invId, invDate, InvNo, Total, chkPay, Pay, Description, voucherType });
             txtPVCode.Text = GenerateNextPaymentCode();
             txtId.Text = GenerateNextPaymentId();
-            BindCombos.PopulateListEmployees(lstOfEmp, true);
-            BindCombos.PopulateListEmployees(lstOfEmp, true);
+            this.Invoke((Action)(() =>
+            {
+                BindCombos.PopulateListEmployeesNew(lstOfEmp, false);
+            }));
+
+            //BindCombos.PopulateListEmployees(lstOfEmp, true);
             BindCombos.PopulateCostCenter(cmbDebitCostCenter, true);
             BindCombos.PopulateCostCenter(cmbCreditCostCenter, true);
             BindCombos.PopulateAllLevel4Account(cmbDebitAccountName, true);
@@ -205,6 +210,12 @@ namespace YamyProject
             dgvInv.EnableHeadersVisualStyles = false;
             dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             calculateTotal();
+
+            if (cmbPaymentType.Text == "Employee")
+            {
+                if (id > 0)
+                    TickFillCheckNameEmployee();
+            }
         }
         private string GenerateNextPaymentCode()
         {
@@ -539,15 +550,15 @@ namespace YamyProject
                         DBClass.CreateParameter("id", int.Parse(dgvInv.Rows[i].Cells["invId"].Value.ToString())));
                     }
                     //Employee Loan Payment
-                    else if (dgvInv.Rows[i].Cells["voucherType"].Value?.ToString() == "Employee Loan Payment")
-                    {
-                        int employeeCode = Convert.ToInt32(dgvInv.Rows[i].Cells["invno"].Value.ToString().Split('-')[0]);
-                        DBClass.ExecuteNonQuery(" UPDATE tbl_loan SET pay = pay+@pay , `change` = @change where EmployeeID = @code and loanDate=@date",
-                        DBClass.CreateParameter("pay", decimal.Parse(payment)),
-                        DBClass.CreateParameter("change", change),
-                        DBClass.CreateParameter("code", employeeCode.ToString()),
-                        DBClass.CreateParameter("date", DateTime.Parse(dgvInv.Rows[i].Cells["invDate"].Value.ToString())));
-                    }
+                    //else if (dgvInv.Rows[i].Cells["voucherType"].Value?.ToString() == "Employee Loan Payment")
+                    //{
+                    //    int employeeCode = Convert.ToInt32(dgvInv.Rows[i].Cells["invno"].Value.ToString().Split('-')[0]);
+                    //    DBClass.ExecuteNonQuery(" UPDATE tbl_loan SET pay = pay+@pay , `change` = @change where EmployeeID = @code and loanDate=@date",
+                    //    DBClass.CreateParameter("pay", decimal.Parse(payment)),
+                    //    DBClass.CreateParameter("change", change),
+                    //    DBClass.CreateParameter("code", employeeCode.ToString()),
+                    //    DBClass.CreateParameter("date", DateTime.Parse(dgvInv.Rows[i].Cells["invDate"].Value.ToString())));
+                    //}
                 }
                 else if (cmbPaymentType.Text == "Vendor")
                 {
@@ -612,15 +623,15 @@ namespace YamyProject
             }
             else if (cmbPaymentType.Text == "Employee")
             {
-                humId = (lstOfEmp.SelectedItem as DataRowView).Row["id"].ToString();
-                if (voucherType == "Employee Loan Payment")
-                {
-                    tType = "Employee Loan Payment";
-                }
-                else if (voucherType == "Salary")
+                humId = (lstOfEmp.SelectedItem as ListItemModel).Id.ToString();
+                if (voucherType == "Salary")
                 {
                     tType = "Employee Salary Payment";
                 }
+                //else if (voucherType == "Employee Loan Payment")
+                //{
+                //    tType = "Employee Loan Payment";
+                //}
             }
             else if (cmbPaymentType.Text == "General")
             {
@@ -1241,161 +1252,7 @@ namespace YamyProject
             }
             txtAmountInWord.Text = GeneralConfiguration.NumberToWords(decimal.Parse(txtAmount.Text));
         }
-        private void lstOfEmp_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            DataRowView rowView = lstOfEmp.Items[e.Index] as DataRowView;
-            if (rowView == null) return;
-
-            string fullName = rowView["name"]?.ToString() ?? "";
-            string[] nameParts = fullName.Split('-');
-            if (nameParts.Length < 2) return;
-
-            string empCode = nameParts[0]; 
-            string empName = nameParts[1]; 
-            string empId = rowView["id"].ToString();
-
-            if (e.NewValue == CheckState.Checked)
-            {
-
-                var _idd = "0";
-
-
-                /****Petty Cash****/
-                if (cbpettycash.Visible && cbpettycash.Enabled)
-                {
-
-
-                    //using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change` AS total FROM tbl_petty_cash_request pcr 
-                    //                             INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
-                    //                             WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
-                    //                         ))
-
-                    //    while (pReader1.Read())
-                    //    {
-                    //        decimal total = 0;
-                    //        if (pReader1["total"] != DBNull.Value &&
-                    //            decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
-                    //        {
-                    //            dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), DateTime.Now.Date,
-                    //                            rowView["name"].ToString(), total.ToString("F2"),
-                    //                            false, "", "", "Petty Cash Request");
-                    //        }
-                    //    }
-                }
-                else
-                {
-
-                    using (MySqlDataReader reader = DBClass.ExecuteReader(
-                        @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_attendance_salary.id) AS SN,  
-                      tbl_attendance_salary.* 
-                      FROM tbl_attendance_salary 
-                      WHERE emp_code = @code AND `change` <> 0",
-                        DBClass.CreateParameter("code", empCode)))
-                    {
-                        while (reader.Read())
-                        {
-                            decimal netSalary = Convert.ToDecimal(reader["net_salary"]);
-                            decimal totalLoan = Convert.ToDecimal(reader["total_loan"]);
-                            decimal paid = Convert.ToDecimal(reader["Pay"]);
-                            decimal finalAmount = netSalary - totalLoan - paid;
-
-                            dgvInv.Rows.Add(
-                                reader["SN"].ToString(),     // Serial number
-                                empId,                        // Employee ID
-                                reader["id"].ToString(),      // Salary record ID
-                                reader["date"].ToString(),    // Date
-                                empName,                      // Employee Name
-                                Utilities.FormatDecimal(finalAmount), // Remaining Salary
-                                0,
-                                0,
-                                "",
-                                "Salary"
-                            );
-
-                            _idd = reader["SN"].ToString();
-                        }
-                    }
-
-                    // Leave Salary
-                    //MySqlDataReader reade = DBClass.ExecuteReader(
-                    //     "SELECT SUM(tl.credit) - SUM(tl.debit) AS total " +
-                    //     "FROM tbl_leave_salary tl " +
-                    //     "INNER JOIN tbl_employee te ON tl.code = te.code " +
-                    //     "WHERE te.id = " + empId);
-
-
-                    //if (reade.Read())
-                    //{
-                    //    decimal total = 0;
-                    //    if (reade["total"] != DBNull.Value &&
-                    //        decimal.TryParse(reade["total"].ToString(), out total) && total > 0)
-                    //    {
-                    //        dgvInv.Rows.Add(no, empId, _idd, DateTime.Now.Date, rowView["name"].ToString(),
-                    //                        total.ToString("F2"), false, "", "Leave Salary");
-                    //    }
-                    //}
-                    //            MySqlDataReader Ereade = DBClass.ExecuteReader(
-                    //"SELECT SUM(tl.credit) - SUM(tl.debit) AS total " +
-                    //"FROM tbl_end_of_service tl " +
-                    //"INNER JOIN tbl_employee te ON tl.code = te.code " +
-                    //"WHERE te.id = " + empId);
-
-                    //            if (Ereade.Read())
-                    //            {
-                    //                decimal total = 0;
-                    //                if (Ereade["total"] != DBNull.Value &&
-                    //                    decimal.TryParse(Ereade["total"].ToString(), out total) && total > 0)
-                    //                {
-                    //                    dgvInv.Rows.Add(no, empId, _idd, DateTime.Now.Date, rowView["name"].ToString(),
-                    //                                    total.ToString("F2"), false, "", "End Of Service");
-                    //                }
-                    //            }
-
-
-                    // Employee Loan
-                    MySqlDataReader pReader = DBClass.ExecuteReader(@"
-                    SELECT 
-                    ROW_NUMBER() OVER (ORDER BY loanDate) AS SN, 
-                    id, LoanDate, RequestAmount AS Amount, `Change` 
-                    FROM tbl_loan 
-                    WHERE EmployeeID = @code AND `change` > 0 
-                    LIMIT 1;",
-                    DBClass.CreateParameter("code", rowView["name"].ToString().Split('-')[0]));
-
-                    while (pReader.Read())
-                    {
-                        dgvInv.Rows.Add(
-                            pReader["SN"].ToString(),
-                            empId,
-                            pReader["id"].ToString(),                       // invId (Loan ID)
-                            pReader["LoanDate"].ToString(),                 // invDate
-                            rowView["name"].ToString(),                     // InvNo (e.g. "30001 - John")
-                            Utilities.FormatDecimal(pReader["Change"]),     // Total (Amount to pay)
-                            false,                                          // humId
-                            "",                                             // Pay (you can set = Change if needed)
-                            "",
-                            "Employee Loan Payment"// Description
-                        );
-
-                        _idd = pReader["SN"].ToString();
-                    }
-                    pReader.Dispose();
-                }
-            }
-            else if (e.NewValue == CheckState.Unchecked)
-            {
-                for (int i = dgvInv.Rows.Count - 1; i >= 0; i--)
-                    if (dgvInv.Rows[i].Cells["humId"].Value != null && dgvInv.Rows[i].Cells["humId"].Value.ToString() == empId)
-                        dgvInv.Rows.RemoveAt(i);
-
-                calculateTotal();
-            }
-            dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.BeginInvoke((MethodInvoker)delegate
-            {
-                AutoFillCheckNameEmployee();
-            });
-        }
+        
 
         private string GenerateNextChequeCode()
         {
@@ -1642,15 +1499,54 @@ namespace YamyProject
         {
             foreach (var item in lstOfEmp.CheckedItems)
             {
-                var rowView = item as DataRowView;
-                if (rowView != null && rowView["name"].ToString().Contains("-"))
+                if (item is ListItemModel empItem && !string.IsNullOrEmpty(empItem.Name) && empItem.Name.Contains("-"))
                 {
-                    txtCheckName.Text = rowView["name"].ToString().Split('-')[1].Trim();
-                    return; // only the first checked name
+                    // Split into code and name
+                    string[] parts = empItem.Name.Split('-');
+                    if (parts.Length >= 2)
+                    {
+                        txtCheckName.Text = parts[1].Trim(); // Only the first checked name
+                        return;
+                    }
                 }
             }
+            //foreach (var item in lstOfEmp.CheckedItems)
+            //{
+            //    var rowView = item as DataRowView;
+            //    if (rowView != null && rowView["name"].ToString().Contains("-"))
+            //    {
+            //        txtCheckName.Text = rowView["name"].ToString().Split('-')[1].Trim();
+            //        return; // only the first checked name
+            //    }
+            //}
 
             txtCheckName.Text = "";
+        }
+        private void TickFillCheckNameEmployee()
+        {
+            // Clear previous checks if needed
+            for (int i = 0; i < lstOfEmp.Items.Count; i++)
+            {
+                if (lstOfEmp.Items[i] is ListItemModel empItem)
+                {
+                    int empId = empItem.Id; // Access the Id directly
+
+                    // Loop through DataGridView rows
+                    foreach (DataGridViewRow row in dgvInv.Rows)
+                    {
+                        if (row.Cells["humId"].Value != null &&
+                            int.TryParse(row.Cells["humId"].Value.ToString(), out int humId))
+                        {
+                            if (humId == empId)
+                            {
+                                // Check this employee in the list
+                                lstOfEmp.SetItemChecked(i, true);
+                                break; // No need to continue checking this employee
+                            }
+                        }
+                    }
+                }
+            }
         }
         private void AutoFillCheckNameVendor()
         {
@@ -2074,33 +1970,6 @@ namespace YamyProject
             }
         }
 
-        private void lstOfEmp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(!lstOfEmp.Focused)
-                return; // Ignore changes not made by user interaction
-
-            if (lstOfEmp.SelectedIndex == -1)
-            {
-                txtCheckName.Text = "";
-                return;
-            }
-
-            // Check for "<< Add New >>"
-            if (lstOfEmp.Text == "<< Add New >>" || lstOfEmp.SelectedIndex == -1) // adjust index if needed
-            {
-                var addEmpForm = new frmViewEmployee();
-                addEmpForm.ShowDialog();
-                BindCombos.PopulateListEmployees(lstOfEmp, true);
-                BindCombos.PopulateListEmployees(lstOfEmp, true);
-
-                lstOfEmp.SelectedIndex = lstOfEmp.Items.Count - 1;
-
-                return;
-            }
-
-            // Normal selection: update textbox
-            txtCheckName.Text = lstOfEmp.Text;
-        }
 
         //private bool _suppressTextChanged = false;
         //private bool _isSelectingFromList = false;
@@ -2358,6 +2227,181 @@ namespace YamyProject
             {
                 e.Handled = true;
             }
+        }
+
+        private void lstOfEmp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!lstOfEmp.Focused)
+                return; // Ignore changes not made by user interaction
+
+            if (lstOfEmp.SelectedIndex == -1)
+            {
+                txtCheckName.Text = "";
+                return;
+            }
+
+            txtCheckName.Text = lstOfEmp.Text;
+
+        }
+
+        private void lstOfEmp_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!lstOfEmp.Focused)
+                return;
+
+            ListItemModel empItem = lstOfEmp.Items[e.Index] as ListItemModel;
+            if (empItem == null)
+                return;
+
+            string fullName = empItem.Name ?? "";
+            string[] nameParts = fullName.Split('-');
+            if (nameParts.Length < 2) return;
+
+            string empCode = nameParts[0].Trim();
+            string empName = nameParts[1].Trim();
+            int empId = empItem.Id;
+
+            if (e.NewValue == CheckState.Checked)
+            {
+
+                var _idd = "0";
+
+
+                /****Petty Cash****/
+                if (cbpettycash.Visible && cbpettycash.Enabled)
+                {
+
+
+                    //using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change` AS total FROM tbl_petty_cash_request pcr 
+                    //                             INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
+                    //                             WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
+                    //                         ))
+
+                    //    while (pReader1.Read())
+                    //    {
+                    //        decimal total = 0;
+                    //        if (pReader1["total"] != DBNull.Value &&
+                    //            decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
+                    //        {
+                    //            dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), DateTime.Now.Date,
+                    //                            rowView["name"].ToString(), total.ToString("F2"),
+                    //                            false, "", "", "Petty Cash Request");
+                    //        }
+                    //    }
+                }
+                else
+                {
+
+                    using (MySqlDataReader reader = DBClass.ExecuteReader(
+                        @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_attendance_salary.id) AS SN,  
+              tbl_attendance_salary.* 
+              FROM tbl_attendance_salary 
+              WHERE emp_code = @code AND `change` <> 0",
+                        DBClass.CreateParameter("code", empCode)))
+                    {
+                        while (reader.Read())
+                        {
+                            decimal netSalary = Convert.ToDecimal(reader["net_salary"]);
+                            decimal totalLoan = Convert.ToDecimal(reader["total_loan"]);
+                            decimal paid = Convert.ToDecimal(reader["Pay"]);
+                            decimal finalAmount = netSalary - totalLoan - paid;
+
+                            dgvInv.Rows.Add(
+                                reader["SN"].ToString(),     // Serial number
+                                empId,                        // Employee ID
+                                reader["id"].ToString(),      // Salary record ID
+                                reader["date"].ToString(),    // Date
+                                empName,                      // Employee Name
+                                Utilities.FormatDecimal(finalAmount), // Remaining Salary
+                                0,
+                                0,
+                                "",
+                                "Salary"
+                            );
+
+                            _idd = reader["SN"].ToString();
+                        }
+                    }
+
+                    // Leave Salary
+                    //MySqlDataReader reade = DBClass.ExecuteReader(
+                    //     "SELECT SUM(tl.credit) - SUM(tl.debit) AS total " +
+                    //     "FROM tbl_leave_salary tl " +
+                    //     "INNER JOIN tbl_employee te ON tl.code = te.code " +
+                    //     "WHERE te.id = " + empId);
+
+
+                    //if (reade.Read())
+                    //{
+                    //    decimal total = 0;
+                    //    if (reade["total"] != DBNull.Value &&
+                    //        decimal.TryParse(reade["total"].ToString(), out total) && total > 0)
+                    //    {
+                    //        dgvInv.Rows.Add(no, empId, _idd, DateTime.Now.Date, rowView["name"].ToString(),
+                    //                        total.ToString("F2"), false, "", "Leave Salary");
+                    //    }
+                    //}
+                    //            MySqlDataReader Ereade = DBClass.ExecuteReader(
+                    //"SELECT SUM(tl.credit) - SUM(tl.debit) AS total " +
+                    //"FROM tbl_end_of_service tl " +
+                    //"INNER JOIN tbl_employee te ON tl.code = te.code " +
+                    //"WHERE te.id = " + empId);
+
+                    //            if (Ereade.Read())
+                    //            {
+                    //                decimal total = 0;
+                    //                if (Ereade["total"] != DBNull.Value &&
+                    //                    decimal.TryParse(Ereade["total"].ToString(), out total) && total > 0)
+                    //                {
+                    //                    dgvInv.Rows.Add(no, empId, _idd, DateTime.Now.Date, rowView["name"].ToString(),
+                    //                                    total.ToString("F2"), false, "", "End Of Service");
+                    //                }
+                    //            }
+
+
+                    // Employee Loan
+            //        MySqlDataReader pReader = DBClass.ExecuteReader(@"
+            //SELECT 
+            //ROW_NUMBER() OVER (ORDER BY loanDate) AS SN, 
+            //id, LoanDate, RequestAmount AS Amount, `Change` 
+            //FROM tbl_loan 
+            //WHERE EmployeeID = @code AND `change` > 0 
+            //LIMIT 1;",
+            //        DBClass.CreateParameter("code", empCode));
+
+            //        while (pReader.Read())
+            //        {
+            //            dgvInv.Rows.Add(
+            //                pReader["SN"].ToString(),
+            //                empId,
+            //                pReader["id"].ToString(),                       // invId (Loan ID)
+            //                pReader["LoanDate"].ToString(),                 // invDate
+            //                fullName,                     // InvNo (e.g. "30001 - John")
+            //                Utilities.FormatDecimal(pReader["Change"]),     // Total (Amount to pay)
+            //                false,                                          // humId
+            //                "",                                             // Pay (you can set = Change if needed)
+            //                "",
+            //                "Employee Loan Payment"// Description
+            //            );
+
+            //            _idd = pReader["SN"].ToString();
+            //        }
+            //        pReader.Dispose();
+                }
+            }
+            else if (e.NewValue == CheckState.Unchecked)
+            {
+                for (int i = dgvInv.Rows.Count - 1; i >= 0; i--)
+                    if (dgvInv.Rows[i].Cells["humId"].Value != null && int.Parse(dgvInv.Rows[i].Cells["humId"].Value.ToString()) == empId)
+                        dgvInv.Rows.RemoveAt(i);
+
+                calculateTotal();
+            }
+            dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                AutoFillCheckNameEmployee();
+            });
         }
 
         public void ShowReport3()

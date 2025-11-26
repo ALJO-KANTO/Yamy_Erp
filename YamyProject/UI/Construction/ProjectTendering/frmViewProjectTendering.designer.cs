@@ -43,17 +43,8 @@
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvImportedItem = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.unitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmbProject = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,6 +71,24 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
@@ -95,7 +104,7 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(2, 673);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1350, 33);
             this.panel1.TabIndex = 2;
@@ -114,7 +123,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(1210, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
             this.btnClose.TabIndex = 7;
@@ -135,7 +144,7 @@
             this.btnSaveNew.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSaveNew.ForeColor = System.Drawing.Color.White;
             this.btnSaveNew.Location = new System.Drawing.Point(1068, 3);
-            this.btnSaveNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveNew.Name = "btnSaveNew";
             this.btnSaveNew.Size = new System.Drawing.Size(137, 27);
             this.btnSaveNew.TabIndex = 6;
@@ -156,7 +165,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(927, 3);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
             this.btnSave.TabIndex = 6;
@@ -171,10 +180,10 @@
             this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.White;
             this.guna2GroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0);
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox4.Location = new System.Drawing.Point(2, 237);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.ShadowDecoration.BorderRadius = 0;
             this.guna2GroupBox4.ShadowDecoration.Depth = 0;
@@ -194,7 +203,7 @@
             this.dgvImportedItem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -204,7 +213,7 @@
             this.dgvImportedItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -250,6 +259,7 @@
             this.dgvImportedItem.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvImportedItem.Visible = false;
             this.dgvImportedItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportedItem_CellClick);
+            this.dgvImportedItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportedItem_CellContentClick);
             this.dgvImportedItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportedItem_CellDoubleClick);
             this.dgvImportedItem.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvImportedItem_CellValidating);
             this.dgvImportedItem.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImportedItem_CellValueChanged);
@@ -267,7 +277,7 @@
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
@@ -290,7 +300,7 @@
             this.delete});
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -340,43 +350,11 @@
             this.dgvItems.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvItems_EditingControlShowing);
             this.dgvItems.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvItems_RowPostPaint);
             // 
-            // itemId
-            // 
-            this.itemId.HeaderText = "id";
-            this.itemId.Name = "itemId";
-            this.itemId.Visible = false;
-            // 
-            // no
-            // 
-            this.no.HeaderText = "#";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 35;
-            // 
-            // sr
-            // 
-            this.sr.HeaderText = "Sr.";
-            this.sr.Name = "sr";
-            this.sr.ReadOnly = true;
-            this.sr.Width = 45;
-            // 
-            // code
-            // 
-            this.code.HeaderText = "Item Code";
-            this.code.Name = "code";
-            this.code.Width = 180;
-            // 
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.name.HeaderText = "Item Name";
             this.name.Name = "name";
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.Width = 80;
             // 
             // unit
             // 
@@ -384,33 +362,6 @@
             this.unit.FillWeight = 20F;
             this.unit.HeaderText = "Unit";
             this.unit.Name = "unit";
-            // 
-            // unitId
-            // 
-            this.unitId.HeaderText = "UnitId";
-            this.unitId.Name = "unitId";
-            this.unitId.Visible = false;
-            // 
-            // rate
-            // 
-            this.rate.HeaderText = "Rate";
-            this.rate.Name = "rate";
-            this.rate.Visible = false;
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Visible = false;
-            this.amount.Width = 130;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "Type";
-            this.type.Name = "type";
-            this.type.Visible = false;
-            this.type.Width = 5;
             // 
             // delete
             // 
@@ -431,7 +382,7 @@
             this.cmbProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProject.ItemHeight = 18;
             this.cmbProject.Location = new System.Drawing.Point(230, 61);
-            this.cmbProject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProject.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(213, 24);
             this.cmbProject.TabIndex = 4;
@@ -477,10 +428,10 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(2, 37);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1350, 200);
             this.guna2GroupBox1.TabIndex = 7;
@@ -498,7 +449,7 @@
             this.btnAddTender.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddTender.ForeColor = System.Drawing.Color.White;
             this.btnAddTender.Location = new System.Drawing.Point(448, 117);
-            this.btnAddTender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddTender.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddTender.Name = "btnAddTender";
             this.btnAddTender.Size = new System.Drawing.Size(35, 24);
             this.btnAddTender.TabIndex = 26;
@@ -516,7 +467,7 @@
             this.btnAddProject.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddProject.ForeColor = System.Drawing.Color.White;
             this.btnAddProject.Location = new System.Drawing.Point(446, 61);
-            this.btnAddProject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddProject.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddProject.Name = "btnAddProject";
             this.btnAddProject.Size = new System.Drawing.Size(35, 24);
             this.btnAddProject.TabIndex = 25;
@@ -534,11 +485,11 @@
             this.btn_import_excel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_import_excel.ForeColor = System.Drawing.Color.White;
             this.btn_import_excel.Location = new System.Drawing.Point(804, 140);
-            this.btn_import_excel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_import_excel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_import_excel.Name = "btn_import_excel";
             this.btn_import_excel.Size = new System.Drawing.Size(112, 27);
             this.btn_import_excel.TabIndex = 24;
-            this.btn_import_excel.Text = "Import BOQ";
+            this.btn_import_excel.Text = "Upload BOQ";
             this.btn_import_excel.Click += new System.EventHandler(this.btn_import_excel_Click);
             // 
             // txtProjectCode
@@ -591,7 +542,7 @@
             this.cmbTenderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbTenderName.ItemHeight = 18;
             this.cmbTenderName.Location = new System.Drawing.Point(231, 117);
-            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTenderName.Name = "cmbTenderName";
             this.cmbTenderName.Size = new System.Drawing.Size(213, 24);
             this.cmbTenderName.TabIndex = 21;
@@ -603,7 +554,7 @@
             this.dtsd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtsd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtsd.Location = new System.Drawing.Point(549, 140);
-            this.dtsd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtsd.Margin = new System.Windows.Forms.Padding(2);
             this.dtsd.Name = "dtsd";
             this.dtsd.Size = new System.Drawing.Size(189, 23);
             this.dtsd.TabIndex = 20;
@@ -671,7 +622,7 @@
             this.cmbAccountName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbAccountName.ItemHeight = 18;
             this.cmbAccountName.Location = new System.Drawing.Point(1006, 61);
-            this.cmbAccountName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbAccountName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAccountName.Name = "cmbAccountName";
             this.cmbAccountName.Size = new System.Drawing.Size(298, 24);
             this.cmbAccountName.TabIndex = 4;
@@ -683,7 +634,7 @@
             this.dtpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtpt.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpt.Location = new System.Drawing.Point(28, 61);
-            this.dtpt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpt.Margin = new System.Windows.Forms.Padding(2);
             this.dtpt.Name = "dtpt";
             this.dtpt.Size = new System.Drawing.Size(189, 23);
             this.dtpt.TabIndex = 6;
@@ -700,7 +651,7 @@
             this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbWarehouse.ItemHeight = 23;
             this.cmbWarehouse.Location = new System.Drawing.Point(28, 113);
-            this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.cmbWarehouse.Name = "cmbWarehouse";
             this.cmbWarehouse.Size = new System.Drawing.Size(190, 29);
             this.cmbWarehouse.TabIndex = 4;
@@ -802,7 +753,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 706);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1350, 2);
             this.panel5.TabIndex = 14;
@@ -812,7 +763,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1352, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 671);
             this.panel4.TabIndex = 13;
@@ -822,10 +773,128 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 37);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 671);
             this.panel3.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "#";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Sr.";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 45;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Item Code";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "QTY";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "UnitId";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Rate";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            this.dataGridViewTextBoxColumn8.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dataGridViewTextBoxColumn9.Width = 5;
+            // 
+            // itemId
+            // 
+            this.itemId.HeaderText = "id";
+            this.itemId.Name = "itemId";
+            this.itemId.Visible = false;
+            // 
+            // no
+            // 
+            this.no.HeaderText = "#";
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 35;
+            // 
+            // sr
+            // 
+            this.sr.HeaderText = "Sr.";
+            this.sr.Name = "sr";
+            this.sr.ReadOnly = true;
+            this.sr.Width = 45;
+            // 
+            // code
+            // 
+            this.code.HeaderText = "Item Code";
+            this.code.Name = "code";
+            this.code.Width = 180;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.Width = 80;
+            // 
+            // unitId
+            // 
+            this.unitId.HeaderText = "UnitId";
+            this.unitId.Name = "unitId";
+            this.unitId.Visible = false;
+            // 
+            // rate
+            // 
+            this.rate.HeaderText = "Rate";
+            this.rate.Name = "rate";
+            this.rate.Visible = false;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "Amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Visible = false;
+            this.amount.Width = 130;
+            // 
+            // type
+            // 
+            this.type.HeaderText = "Type";
+            this.type.Name = "type";
+            this.type.Visible = false;
+            this.type.Width = 5;
             // 
             // headerUC1
             // 
@@ -834,7 +903,7 @@
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(2);
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(1354, 37);
             this.headerUC1.TabIndex = 0;
@@ -853,7 +922,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmViewProjectTendering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Tag = "main";
@@ -914,5 +983,14 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvImportedItem;
         private Guna.UI2.WinForms.Guna2Button btnAddTender;
         private Guna.UI2.WinForms.Guna2Button btnAddProject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }

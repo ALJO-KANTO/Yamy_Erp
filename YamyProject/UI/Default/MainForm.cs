@@ -234,7 +234,7 @@ namespace YamyProject
             // Hide Modules based on permissions
             //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;
             BtnCRM.Visible = Utilities.GetModules("CRM");
-            BtnManufacture.Visible = Utilities.GetModules("Manufacture");
+            BtnManufacture.Visible = toolStripMenuItem6.Visible = Utilities.GetModules("Manufacture");
             BtnRestaurant.Visible = Utilities.GetModules("Restaurant");
             constructionToolStripMenuItem.Visible = Utilities.GetModules("Construction");
 
@@ -286,7 +286,7 @@ namespace YamyProject
                 //itemUnitListToolStripMenuItem.Visible = UserPermissions.canView("");
                 //salesTaxCodeListToolStripMenuItem.Visible = UserPermissions.canView("");
                 costCenterToolStripMenuItem.Visible = UserPermissions.canView("Cost Center");
-                journalTransactionsToolStripMenuItem.Visible = UserPermissions.canView("Transactions Journal");
+                transactionJournalToolStripMenuItem.Visible = UserPermissions.canView("Transactions Journal");
                 fixedAssetsItemListToolStripMenuItem.Visible = UserPermissions.canView("Fixed Assets");
                 payBillsToolStripMenuItem1.Visible = UserPermissions.canView("Vouchers");
                 prepaidExpenseToolStripMenuItem.Visible = UserPermissions.canView("Prepaid Expense");
@@ -766,7 +766,7 @@ namespace YamyProject
 
         private void balanceSheetSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport());
+            openChildForm(new frmBalanceSheetReport("standard"));
         }
 
         private void trialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -842,7 +842,7 @@ namespace YamyProject
 
         private void journalTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterTransactionJournal("0",""));
+            
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1573,7 +1573,7 @@ namespace YamyProject
 
         private void profitLossToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport(""));
+            openChildForm(new ProfitandLossReport("standard"));
         }
 
         private void customerBalanceSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -2169,6 +2169,245 @@ namespace YamyProject
             if (pnlLeft.Height <= 0) pnlLeft.Height = 1;
         }
 
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ReportCenter());
+        }
+
+        private void profitLossDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("Detail"));
+        }
+
+        private void profitLossYTDComparisonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("YTS Comparison"));
+        }
+
+        private void profitLossPrevYearComparisonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("Prev Year Comparison"));
+        }
+
+        private void profitLossByJobToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("by Job"));
+        }
+
+        private void profitLossByClassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("by Class"));
+        }
+
+        private void profitLossUnclassifiedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ProfitandLossReport("Unclassified"));
+        }
+
+        private void incomeByCustomerDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmIncomeByCustomerDetails(-1));
+        }
+
+        private void expenseFromVendorDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmExpenseByVendorDetails(-1));
+        }
+
+        private void balanceSheetDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBalanceSheetReport("detail"));
+        }
+
+        private void balanceSheetSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBalanceSheetReport("summary"));
+        }
+
+        private void balanceSheetPrevYearComparisonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBalanceSheetReport("Prev Year Comparison"));
+        }
+
+        private void balanceSheetByClassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBalanceSheetReport("by Class"));
+        }
+
+        private void cashFlowForecastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCashFlowStatement());
+        }
+
+        private void aRAgingDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomerAgingDetails(-1));
+        }
+
+        private void customerBalanceDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomerBalanceDetails(-1));
+        }
+
+        private void openInvoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmOpenInvoicesReport(0, "Open Invoices"));
+        }
+
+        private void collectionsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmOpenInvoicesReport(0, "Collections"));
+        }
+
+        private void averageDaysToPaySummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomerSummary());
+        }
+
+        private void averageDaysToPayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomerBalanceDetails());
+        }
+
+        private void transactionListByCustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomerBalanceDetails());
+        }
+
+        private void customerPhoneListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmListReport("Customer Phone List"));
+        }
+
+        private void customerContactListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmListReport("Customer Contact List"));
+        }
+
+        private void itemPriceListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmListReport("Item Price List"));
+        }
+
+        private void aPAgingDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVendorAgingDetails());
+        }
+
+        private void vendorBalanceDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVendorBalanceDetails());
+        }
+
+        private void unpaidBillsDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseByUnpaidDetails());
+        }
+
+        private void transactionListByVendorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVendorBalanceDetails());
+        }
+
+        private void salesTaxLiabilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesTaxLiabilityRevenue("SalesTaxLiability"));
+        }
+
+        private void salesTaxRevenueSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesTaxLiabilityRevenue("SalesTaxRevenue"));
+        }
+
+        private void vendorPhoneListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmListReport("Vendor Phone List"));
+        }
+
+        private void vendorConcatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmListReport("Vendor Contact List"));
+        }
+
+        private void purchaseByVendorDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseByVendorDetails());
+        }
+
+        private void purchaseByItemDetailToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseByItemDetails(0));
+        }
+
+        private void openPurchaseOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseOrderSummary());
+        }
+
+        private void openPurchaseOrdersDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseOrderDetails());
+        }
+
+        private void openPurchaseOrdersByJobToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchaseOrderDetails());
+        }
+
+        private void transactionJournalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterTransactionJournal("0", ""));
+        }
+
+        private void bankReconcilationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterBankReconciliation());
+        }
+
+        private void salesByCustomerDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByCustomerDetails(-1));
+        }
+
+        private void salesByItemDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByItemDetails(-1));
+        }
+
+        private void salesByToAddressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByShipToAddress());
+        }
+
+        private void pendingSalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByCustomerDetails(-1, "tbl_sales_order"));
+        }
+
+        private void inventoryValuationSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new frmInventoryValuationSummary());
+        }
+
+        private void inventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new frmInventoryValuationDetail());
+        }
+
+        private void timeSheetReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmSelectTimeSheetReport().ShowDialog();
+        }
+
+        private void laborAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmLaborAttendance());
+        }
+
+        private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmUserActivityReport());
+        }
     }
 
     public class SubMenu

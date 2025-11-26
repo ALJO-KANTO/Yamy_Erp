@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
@@ -57,6 +58,12 @@ namespace YamyProject
                     dgvSales.Columns.Add("91_plus", "> 90");
                     dgvSales.Columns.Add("total", "Total");
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+
+                    dgvSales.Columns["0_days"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["1_30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["31_60"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["61_90"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["91_plus"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
 
                 dgvSales.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -90,25 +97,25 @@ namespace YamyProject
             }
 
             string query = $@"
-        SELECT 
-            ROW_NUMBER() OVER (ORDER BY c.id) AS SN,
-            c.id AS customer_id,
-            CONCAT(CODE,' ',c.name) AS customer_name,
-            SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) = 0 THEN t.debit - t.credit ELSE 0 END) AS '0_days',
-            SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 1 AND 30 THEN t.debit - t.credit ELSE 0 END) AS '1_30',
-            SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 31 AND 60 THEN t.debit - t.credit ELSE 0 END) AS '31_60',
-            SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 61 AND 90 THEN t.debit - t.credit ELSE 0 END) AS '61_90',
-            SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) > 90 THEN t.debit - t.credit ELSE 0 END) AS '91_plus',
-            SUM(t.debit - t.credit) AS total
-        FROM tbl_customer c
-        INNER JOIN tbl_transaction t ON t.hum_id = c.id
-        WHERE 
+            SELECT 
+                ROW_NUMBER() OVER (ORDER BY c.id) AS SN,
+                c.id AS customer_id,
+                CONCAT(CODE,' ',c.name) AS customer_name,
+                SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) = 0 THEN t.debit - t.credit ELSE 0 END) AS '0_days',
+                SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 1 AND 30 THEN t.debit - t.credit ELSE 0 END) AS '1_30',
+                SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 31 AND 60 THEN t.debit - t.credit ELSE 0 END) AS '31_60',
+                SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) BETWEEN 61 AND 90 THEN t.debit - t.credit ELSE 0 END) AS '61_90',
+                SUM(CASE WHEN DATEDIFF(CURDATE(), t.date) > 90 THEN t.debit - t.credit ELSE 0 END) AS '91_plus',
+                SUM(t.debit - t.credit) AS total
+            FROM tbl_customer c
+            INNER JOIN tbl_transaction t ON t.hum_id = c.id
+            WHERE 
             t.state = 0 AND t.type IN
             ('Customer Receipt','Sales Invoice','Check Cancel (Customer)','SalesReturn Invoice','Credit Note','PDC Receivable')
             {dateFilter}
-        GROUP BY c.id, c.name
-        HAVING SUM(t.debit - t.credit) > 0
-        ORDER BY c.id;";
+            GROUP BY c.id, c.name
+            HAVING SUM(t.debit - t.credit) > 0
+            ORDER BY c.id;";
 
             using (MySqlDataReader reader = DBClass.ExecuteReader(query, parameters.ToArray()))
             {
@@ -416,42 +423,61 @@ namespace YamyProject
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
                     worksheet.Name = "Customer Aging Summary";
 
+                    Excel.Range headerRange0 = worksheet.Range["C1", "F1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["C2", "F2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = guna2HtmlLabel7.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["C3", "F3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dtpFrom.Text + " - To " + dtpTo.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "E1"];
-                    headerRange.Merge();
-                    headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange3 = worksheet.Range["C4", "F4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
-                    // Add column headers (row 2)
-                    // Add column headers (row 2)
-                    worksheet.Cells[2, 1] = "SN";
-                    worksheet.Cells[2, 2] = "Name";
-                    worksheet.Cells[2, 3] = "0 Days";
-                    worksheet.Cells[2, 4] = "1-30 Days";
-                    worksheet.Cells[2, 5] = "31-60 Days";
-                    worksheet.Cells[2, 6] = "61-90 Days";
-                    worksheet.Cells[2, 7] = "91+ Days";
-                    worksheet.Cells[2, 8] = "Total Balance";
-
-                    for (int i = 1; i <= 8; i++)
+                    for (int col = 0; col < dgvSales.Columns.Count; col++)
                     {
-                        var headerCell = worksheet.Cells[2, i];
-                        headerCell.Font.Bold = true;
-                        headerCell.Font.Name = "Times New Roman";
-                        headerCell.Font.Size = 10;
-                        headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
-                    }
+                        var column = dgvSales.Columns[col];
 
-                    int rowIndex = 3;
+                        // Skip hidden columns if needed
+                        if (!column.Visible) continue;
+                        if (column.HeaderText.Length > 0)
+                        {
+                            var headerCell = worksheet.Cells[rowIndex, col];
+                            headerCell.Value = column.HeaderText;  // show column header
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+                    }
+                    rowIndex++; // move to next row for data
                     foreach (DataGridViewRow row in dgvSales.Rows)
                     {
                         if (row.IsNewRow) continue;
@@ -472,8 +498,8 @@ namespace YamyProject
 
                             worksheet.Cells[rowIndex, 2].Font.Bold = true;
                             worksheet.Cells[rowIndex, 8].Font.Bold = true;
-                            worksheet.Cells[rowIndex, 8].Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
-                            worksheet.Cells[rowIndex, 8].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                            worksheet.Cells[rowIndex, 8].Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            worksheet.Cells[rowIndex, 8].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         }
                         else
                         {
@@ -492,7 +518,7 @@ namespace YamyProject
                                 cell.Font.Name = "Times New Roman";
                                 cell.Font.Size = 9;
                                 if (col >= 3) // Right-align aging columns and balance
-                                    cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                             }
                         }
 

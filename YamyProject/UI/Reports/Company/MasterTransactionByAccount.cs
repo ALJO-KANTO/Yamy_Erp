@@ -15,12 +15,23 @@ namespace YamyProject
     {
         int account_id;
         string account_header = "Transactions By Account";
-        public MasterTransactionByAccount(string _account_header, int _account_id)
+        string startDate="", endDate="";
+        public MasterTransactionByAccount(string _account_header, int _account_id, string _startDate, string _endDate)
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.account_id = _account_id;
             this.account_header = string.IsNullOrEmpty(_account_header) ? "Transactions By Account" : _account_header;
+            this.startDate = _startDate;
+            this.endDate = _endDate;
+            if (!string.IsNullOrEmpty(startDate))
+            {
+                dtFrom.Value = DateTime.Parse(startDate);
+            }
+            if (!string.IsNullOrEmpty(endDate))
+            {
+                dtTo.Value = DateTime.Parse(endDate);
+            }
             dgvCustomer.DataBindingComplete += dgvCustomer_DataBindingComplete;
 
             headerUC1.FormText = this.Text;
@@ -39,6 +50,10 @@ namespace YamyProject
             dgvCustomer.Columns.Add("debit", "Debit");
             dgvCustomer.Columns.Add("credit", "Credit");
             dgvCustomer.Columns.Add("Amount", "Balance");
+            dgvCustomer.Columns["debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCustomer.Columns["credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCustomer.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             using (var reader = DBClass.ExecuteReader("SELECT name FROM tbl_company"))
             {
                 if (reader.Read() && reader["name"] != DBNull.Value)
@@ -46,6 +61,7 @@ namespace YamyProject
                     lblCompany.Text = reader["name"].ToString();
                 }
             }
+            lblReportName.Text = account_header;
             bindDGVAccount();
         }
 

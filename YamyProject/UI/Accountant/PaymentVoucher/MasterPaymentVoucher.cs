@@ -65,7 +65,7 @@ namespace YamyProject
                         tp.id, 
                         tp.date AS Date,
                         tp.code AS 'Payment Code',
-                        (select concat('000',    MAX(tbl_transaction.transaction_id)) FROM tbl_transaction WHERE tbl_transaction.transaction_id=tp.id) AS 'JV NO', 
+                        LPAD(tp.id, 4, '0') AS 'JV NO', 
                         tp.amount AS Amount,
                         CONCAT(tc.code, ' - ', tc.name) AS 'Debit Account', 
                         CONCAT(tc1.code, ' - ', tc1.name) AS 'Credit Account' 
@@ -80,17 +80,18 @@ namespace YamyProject
                         tp.id, 
                         tp.date AS Date,
                         tp.code AS 'Payment Code',
+                        LPAD(tp.id, 4, '0') AS 'JV NO', 
                         tp.amount AS Amount,
                         CONCAT(tc.code, ' - ', tc.name) AS 'Debit Account', 
                         CONCAT(tc1.code, ' - ', tc1.name) AS 'Credit Account' 
                     FROM tbl_payment_voucher tp
                     INNER JOIN tbl_coa_level_4 tc ON tp.debit_account_id = tc.id
                     INNER JOIN tbl_coa_level_4 tc1 ON tp.credit_account_id = tc1.id
-                    WHERE  tp.type = @type 
+                    WHERE tp.type = @type 
                         AND tp.date >= @dateFrom 
                         AND tp.date <= @dateTo",
-                    DBClass.CreateParameter("dateFrom", dtFrom.Value.Date.ToString("yyyy-MM-dd")),
-                    DBClass.CreateParameter("dateTo", dtTo.Value.Date.ToString("yyyy-MM-dd")),
+                    DBClass.CreateParameter("dateFrom", dtFrom.Value.Date),
+                    DBClass.CreateParameter("dateTo", dtTo.Value.Date),
                     DBClass.CreateParameter("type", type));
 
             dgvCustomer.DataSource = dt;
@@ -199,6 +200,15 @@ namespace YamyProject
             restoreForm.ShowDialog();
         }
         private void RestoreForm_DataRestored(object sender, EventArgs e)
+        {
+            BindPayment(cmbType.SelectedItem.ToString());
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindPayment(cmbType.SelectedItem.ToString());
+        }
+        private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             BindPayment(cmbType.SelectedItem.ToString());
         }

@@ -55,6 +55,7 @@ namespace YamyProject
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
                 dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {

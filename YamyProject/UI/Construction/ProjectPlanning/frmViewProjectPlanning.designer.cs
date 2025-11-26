@@ -49,11 +49,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblBOQTotal = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_boq = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.lblBOQTotal = new System.Windows.Forms.Label();
+            this.txtRetentionAmount = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtRetentionPercentage = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAddTender = new Guna.UI2.WinForms.Guna2Button();
             this.dtp_end = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,69 +83,40 @@
             this.tabActivity = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assigned = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.start_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabRequestMaterial = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgvRequest = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.requested_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requested_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reqStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnNewRequestMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabIssueMaterial = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvItemsIssued = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IssStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnNewIssueMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabReceivedMaterial = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dgvItemsReceived = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receveUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnNewReceivedMaterial = new Guna.UI2.WinForms.Guna2Button();
             this.tabResource = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvResource = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceDefaultUnitsTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnAddResource = new Guna.UI2.WinForms.Guna2Button();
             this.gunaPanel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbRetentionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbSubcontractor = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -173,6 +147,39 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.start_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requested_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reqStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pId2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receveUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceDefaultUnitsTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -202,6 +209,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblBOQTotal);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.lbl_boq);
             this.panel1.Controls.Add(this.btnSave);
@@ -211,6 +219,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1354, 33);
             this.panel1.TabIndex = 3;
+            // 
+            // lblBOQTotal
+            // 
+            this.lblBOQTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblBOQTotal.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBOQTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.lblBOQTotal.Location = new System.Drawing.Point(10, 6);
+            this.lblBOQTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBOQTotal.Name = "lblBOQTotal";
+            this.lblBOQTotal.Size = new System.Drawing.Size(206, 20);
+            this.lblBOQTotal.TabIndex = 132;
+            this.lblBOQTotal.Text = "BOQ Total = 0";
+            this.lblBOQTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnClose
             // 
@@ -270,7 +291,13 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderThickness = 0;
-            this.guna2GroupBox1.Controls.Add(this.lblBOQTotal);
+            this.guna2GroupBox1.Controls.Add(this.cmbSubcontractor);
+            this.guna2GroupBox1.Controls.Add(this.label9);
+            this.guna2GroupBox1.Controls.Add(this.cmbRetentionAccount);
+            this.guna2GroupBox1.Controls.Add(this.label7);
+            this.guna2GroupBox1.Controls.Add(this.txtRetentionAmount);
+            this.guna2GroupBox1.Controls.Add(this.label3);
+            this.guna2GroupBox1.Controls.Add(this.txtRetentionPercentage);
             this.guna2GroupBox1.Controls.Add(this.btnAddTender);
             this.guna2GroupBox1.Controls.Add(this.dtp_end);
             this.guna2GroupBox1.Controls.Add(this.label5);
@@ -296,7 +323,7 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 37);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -305,18 +332,67 @@
             this.guna2GroupBox1.TabIndex = 8;
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
             // 
-            // lblBOQTotal
+            // txtRetentionAmount
             // 
-            this.lblBOQTotal.BackColor = System.Drawing.Color.Transparent;
-            this.lblBOQTotal.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBOQTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.lblBOQTotal.Location = new System.Drawing.Point(231, 188);
-            this.lblBOQTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBOQTotal.Name = "lblBOQTotal";
-            this.lblBOQTotal.Size = new System.Drawing.Size(206, 20);
-            this.lblBOQTotal.TabIndex = 132;
-            this.lblBOQTotal.Text = "BOQ Total = 0";
-            this.lblBOQTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtRetentionAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtRetentionAmount.BorderRadius = 5;
+            this.txtRetentionAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRetentionAmount.DefaultText = "";
+            this.txtRetentionAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRetentionAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtRetentionAmount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionAmount.Enabled = false;
+            this.txtRetentionAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRetentionAmount.ForeColor = System.Drawing.Color.Black;
+            this.txtRetentionAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionAmount.Location = new System.Drawing.Point(376, 184);
+            this.txtRetentionAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRetentionAmount.Name = "txtRetentionAmount";
+            this.txtRetentionAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtRetentionAmount.PlaceholderText = "Amount";
+            this.txtRetentionAmount.ReadOnly = true;
+            this.txtRetentionAmount.SelectedText = "";
+            this.txtRetentionAmount.Size = new System.Drawing.Size(125, 25);
+            this.txtRetentionAmount.TabIndex = 133;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label3.Location = new System.Drawing.Point(288, 153);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(190, 29);
+            this.label3.TabIndex = 132;
+            this.label3.Text = "Retention %      |    Amount";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtRetentionPercentage
+            // 
+            this.txtRetentionPercentage.BackColor = System.Drawing.Color.Transparent;
+            this.txtRetentionPercentage.BorderRadius = 5;
+            this.txtRetentionPercentage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRetentionPercentage.DefaultText = "";
+            this.txtRetentionPercentage.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRetentionPercentage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtRetentionPercentage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionPercentage.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionPercentage.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionPercentage.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRetentionPercentage.ForeColor = System.Drawing.Color.Black;
+            this.txtRetentionPercentage.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionPercentage.Location = new System.Drawing.Point(332, 184);
+            this.txtRetentionPercentage.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRetentionPercentage.Name = "txtRetentionPercentage";
+            this.txtRetentionPercentage.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtRetentionPercentage.PlaceholderText = "%";
+            this.txtRetentionPercentage.SelectedText = "";
+            this.txtRetentionPercentage.Size = new System.Drawing.Size(40, 25);
+            this.txtRetentionPercentage.TabIndex = 131;
+            this.txtRetentionPercentage.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // btnAddTender
             // 
@@ -328,7 +404,7 @@
             this.btnAddTender.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAddTender.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddTender.ForeColor = System.Drawing.Color.White;
-            this.btnAddTender.Location = new System.Drawing.Point(828, 119);
+            this.btnAddTender.Location = new System.Drawing.Point(978, 119);
             this.btnAddTender.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddTender.Name = "btnAddTender";
             this.btnAddTender.Size = new System.Drawing.Size(35, 24);
@@ -370,7 +446,7 @@
             this.dtp_start.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtp_start.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_start.Location = new System.Drawing.Point(990, 178);
+            this.dtp_start.Location = new System.Drawing.Point(1060, 178);
             this.dtp_start.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_start.Name = "dtp_start";
             this.dtp_start.Size = new System.Drawing.Size(112, 23);
@@ -382,7 +458,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label4.Location = new System.Drawing.Point(923, 177);
+            this.label4.Location = new System.Drawing.Point(993, 177);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 29);
@@ -402,7 +478,7 @@
             this.cmbProjectSite.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectSite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProjectSite.ItemHeight = 18;
-            this.cmbProjectSite.Location = new System.Drawing.Point(534, 119);
+            this.cmbProjectSite.Location = new System.Drawing.Point(684, 119);
             this.cmbProjectSite.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectSite.Name = "cmbProjectSite";
             this.cmbProjectSite.Size = new System.Drawing.Size(290, 24);
@@ -417,7 +493,7 @@
             this.btnShowTenderList.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnShowTenderList.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnShowTenderList.ForeColor = System.Drawing.Color.White;
-            this.btnShowTenderList.Location = new System.Drawing.Point(751, 184);
+            this.btnShowTenderList.Location = new System.Drawing.Point(901, 184);
             this.btnShowTenderList.Margin = new System.Windows.Forms.Padding(2);
             this.btnShowTenderList.Name = "btnShowTenderList";
             this.btnShowTenderList.Size = new System.Drawing.Size(72, 25);
@@ -436,7 +512,7 @@
             this.cmbTenderName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbTenderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbTenderName.ItemHeight = 18;
-            this.cmbTenderName.Location = new System.Drawing.Point(534, 184);
+            this.cmbTenderName.Location = new System.Drawing.Point(684, 184);
             this.cmbTenderName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTenderName.Name = "cmbTenderName";
             this.cmbTenderName.Size = new System.Drawing.Size(213, 24);
@@ -448,7 +524,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label16.Location = new System.Drawing.Point(531, 151);
+            this.label16.Location = new System.Drawing.Point(681, 151);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(98, 29);
@@ -462,7 +538,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label12.Location = new System.Drawing.Point(532, 85);
+            this.label12.Location = new System.Drawing.Point(682, 85);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(135, 29);
@@ -481,10 +557,10 @@
             this.cmbFundAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbFundAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbFundAccount.ItemHeight = 18;
-            this.cmbFundAccount.Location = new System.Drawing.Point(28, 119);
+            this.cmbFundAccount.Location = new System.Drawing.Point(178, 51);
             this.cmbFundAccount.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFundAccount.Name = "cmbFundAccount";
-            this.cmbFundAccount.Size = new System.Drawing.Size(227, 24);
+            this.cmbFundAccount.Size = new System.Drawing.Size(349, 24);
             this.cmbFundAccount.TabIndex = 33;
             // 
             // label8
@@ -565,6 +641,7 @@
             this.txtEstimatedBudget.SelectedText = "";
             this.txtEstimatedBudget.Size = new System.Drawing.Size(190, 25);
             this.txtEstimatedBudget.TabIndex = 26;
+            this.txtEstimatedBudget.TextChanged += new System.EventHandler(this.txtEstimatedBudget_TextChanged);
             this.txtEstimatedBudget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstimatedBudget_KeyPress);
             // 
             // label6
@@ -619,7 +696,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label1.Location = new System.Drawing.Point(532, 15);
+            this.label1.Location = new System.Drawing.Point(682, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 29);
@@ -639,7 +716,7 @@
             this.cmbProjectName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProjectName.ItemHeight = 18;
-            this.cmbProjectName.Location = new System.Drawing.Point(534, 48);
+            this.cmbProjectName.Location = new System.Drawing.Point(684, 48);
             this.cmbProjectName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectName.Name = "cmbProjectName";
             this.cmbProjectName.Size = new System.Drawing.Size(290, 24);
@@ -654,7 +731,7 @@
             this.dtInv.Location = new System.Drawing.Point(28, 42);
             this.dtInv.Margin = new System.Windows.Forms.Padding(2);
             this.dtInv.Name = "dtInv";
-            this.dtInv.Size = new System.Drawing.Size(189, 23);
+            this.dtInv.Size = new System.Drawing.Size(110, 23);
             this.dtInv.TabIndex = 6;
             // 
             // label14
@@ -662,7 +739,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(25, 83);
+            this.label14.Location = new System.Drawing.Point(175, 20);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(229, 29);
@@ -734,7 +811,7 @@
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
@@ -752,7 +829,7 @@
             this.progress});
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -799,29 +876,6 @@
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellDoubleClick);
             // 
-            // no
-            // 
-            this.no.HeaderText = "#";
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 30;
-            // 
-            // sr
-            // 
-            this.sr.HeaderText = "Sr.";
-            this.sr.Name = "sr";
-            this.sr.ReadOnly = true;
-            this.sr.Width = 45;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "Description";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // assigned
             // 
             this.assigned.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -832,24 +886,6 @@
             this.assigned.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.assigned.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.assigned.Visible = false;
-            // 
-            // start_date
-            // 
-            this.start_date.HeaderText = "StartDate";
-            this.start_date.Name = "start_date";
-            this.start_date.ReadOnly = true;
-            // 
-            // end_date
-            // 
-            this.end_date.HeaderText = "End Date";
-            this.end_date.Name = "end_date";
-            this.end_date.ReadOnly = true;
-            // 
-            // progress
-            // 
-            this.progress.HeaderText = "Progress";
-            this.progress.Name = "progress";
-            this.progress.ReadOnly = true;
             // 
             // tabRequestMaterial
             // 
@@ -888,7 +924,7 @@
             this.dgvRequest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle26.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
@@ -907,7 +943,7 @@
             this.reqStatus});
             dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -953,61 +989,6 @@
             this.dgvRequest.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRequest.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvRequest.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRequest_CellDoubleClick);
-            // 
-            // requested_no
-            // 
-            this.requested_no.HeaderText = "#";
-            this.requested_no.Name = "requested_no";
-            this.requested_no.ReadOnly = true;
-            // 
-            // requested_id
-            // 
-            this.requested_id.HeaderText = "Ref Id";
-            this.requested_id.Name = "requested_id";
-            this.requested_id.ReadOnly = true;
-            this.requested_id.Width = 160;
-            // 
-            // pId
-            // 
-            this.pId.HeaderText = "Id";
-            this.pId.Name = "pId";
-            this.pId.ReadOnly = true;
-            this.pId.Visible = false;
-            // 
-            // requested_date
-            // 
-            this.requested_date.HeaderText = "Date";
-            this.requested_date.Name = "requested_date";
-            this.requested_date.ReadOnly = true;
-            this.requested_date.Width = 130;
-            // 
-            // description
-            // 
-            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "Unit";
-            this.unit.Name = "unit";
-            this.unit.ReadOnly = true;
-            // 
-            // requested_qty
-            // 
-            this.requested_qty.HeaderText = "Qty";
-            this.requested_qty.Name = "requested_qty";
-            this.requested_qty.ReadOnly = true;
-            this.requested_qty.Width = 150;
-            // 
-            // reqStatus
-            // 
-            this.reqStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.reqStatus.FillWeight = 30F;
-            this.reqStatus.HeaderText = "Status";
-            this.reqStatus.Name = "reqStatus";
-            this.reqStatus.ReadOnly = true;
             // 
             // panel3
             // 
@@ -1076,7 +1057,7 @@
             this.dgvItemsIssued.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle30.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
@@ -1095,7 +1076,7 @@
             this.IssStatus});
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1141,60 +1122,6 @@
             this.dgvItemsIssued.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsIssued.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsIssued.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemsIssued_CellDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "#";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Ref Id";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 160;
-            // 
-            // pId1
-            // 
-            this.pId1.HeaderText = "id";
-            this.pId1.Name = "pId1";
-            this.pId1.ReadOnly = true;
-            this.pId1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // issueDescription
-            // 
-            this.issueDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.issueDescription.HeaderText = "Description";
-            this.issueDescription.Name = "issueDescription";
-            this.issueDescription.ReadOnly = true;
-            // 
-            // issueUnit
-            // 
-            this.issueUnit.HeaderText = "Unit";
-            this.issueUnit.Name = "issueUnit";
-            this.issueUnit.ReadOnly = true;
-            // 
-            // issueQty
-            // 
-            this.issueQty.HeaderText = "Qty";
-            this.issueQty.Name = "issueQty";
-            this.issueQty.ReadOnly = true;
-            // 
-            // IssStatus
-            // 
-            this.IssStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IssStatus.FillWeight = 30F;
-            this.IssStatus.HeaderText = "Status";
-            this.IssStatus.Name = "IssStatus";
-            this.IssStatus.ReadOnly = true;
             // 
             // panel5
             // 
@@ -1263,7 +1190,7 @@
             this.dgvItemsReceived.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle34.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
@@ -1282,7 +1209,7 @@
             this.recStatus});
             dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1328,59 +1255,6 @@
             this.dgvItemsReceived.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvItemsReceived.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItemsReceived.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemsReceived_CellDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 30;
-            // 
-            // receveRef
-            // 
-            this.receveRef.HeaderText = "Ref Id";
-            this.receveRef.Name = "receveRef";
-            this.receveRef.ReadOnly = true;
-            // 
-            // pId2
-            // 
-            this.pId2.HeaderText = "Id";
-            this.pId2.Name = "pId2";
-            this.pId2.ReadOnly = true;
-            this.pId2.Visible = false;
-            // 
-            // receveDate
-            // 
-            this.receveDate.HeaderText = "Date";
-            this.receveDate.Name = "receveDate";
-            this.receveDate.ReadOnly = true;
-            // 
-            // receveDescription
-            // 
-            this.receveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.receveDescription.HeaderText = "Description";
-            this.receveDescription.Name = "receveDescription";
-            this.receveDescription.ReadOnly = true;
-            // 
-            // receveQty
-            // 
-            this.receveQty.HeaderText = "Qty";
-            this.receveQty.Name = "receveQty";
-            this.receveQty.ReadOnly = true;
-            // 
-            // receveUnit
-            // 
-            this.receveUnit.HeaderText = "Unit";
-            this.receveUnit.Name = "receveUnit";
-            this.receveUnit.ReadOnly = true;
-            // 
-            // recStatus
-            // 
-            this.recStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.recStatus.FillWeight = 40F;
-            this.recStatus.HeaderText = "Status";
-            this.recStatus.Name = "recStatus";
-            this.recStatus.ReadOnly = true;
             // 
             // panel4
             // 
@@ -1449,7 +1323,7 @@
             this.dgvResource.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle38.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
@@ -1467,7 +1341,7 @@
             this.ResourceDefaultUnitsTime});
             dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle39.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -1513,55 +1387,6 @@
             this.dgvResource.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvResource.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvResource.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResource_CellDoubleClick);
-            // 
-            // ResourceNo
-            // 
-            this.ResourceNo.HeaderText = "#";
-            this.ResourceNo.Name = "ResourceNo";
-            this.ResourceNo.ReadOnly = true;
-            this.ResourceNo.Width = 30;
-            // 
-            // ResourceId
-            // 
-            this.ResourceId.HeaderText = "Id";
-            this.ResourceId.Name = "ResourceId";
-            this.ResourceId.ReadOnly = true;
-            this.ResourceId.Visible = false;
-            // 
-            // ResourceCode
-            // 
-            this.ResourceCode.HeaderText = "Code";
-            this.ResourceCode.Name = "ResourceCode";
-            this.ResourceCode.ReadOnly = true;
-            this.ResourceCode.Width = 130;
-            // 
-            // ResourceName
-            // 
-            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceName.HeaderText = "Resource Name";
-            this.ResourceName.Name = "ResourceName";
-            this.ResourceName.ReadOnly = true;
-            // 
-            // ResourceType
-            // 
-            this.ResourceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceType.HeaderText = "Resource Type";
-            this.ResourceType.Name = "ResourceType";
-            this.ResourceType.ReadOnly = true;
-            // 
-            // ResourceRole
-            // 
-            this.ResourceRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceRole.HeaderText = "Primary Role";
-            this.ResourceRole.Name = "ResourceRole";
-            this.ResourceRole.ReadOnly = true;
-            // 
-            // ResourceDefaultUnitsTime
-            // 
-            this.ResourceDefaultUnitsTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceDefaultUnitsTime.HeaderText = "Default Units / Time";
-            this.ResourceDefaultUnitsTime.Name = "ResourceDefaultUnitsTime";
-            this.ResourceDefaultUnitsTime.ReadOnly = true;
             // 
             // panel10
             // 
@@ -1619,6 +1444,73 @@
             this.dataGridView1.TabIndex = 133;
             this.dataGridView1.Visible = false;
             // 
+            // cmbRetentionAccount
+            // 
+            this.cmbRetentionAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbRetentionAccount.BorderRadius = 5;
+            this.cmbRetentionAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRetentionAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRetentionAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRetentionAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRetentionAccount.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbRetentionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbRetentionAccount.ItemHeight = 18;
+            this.cmbRetentionAccount.Location = new System.Drawing.Point(332, 121);
+            this.cmbRetentionAccount.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbRetentionAccount.Name = "cmbRetentionAccount";
+            this.cmbRetentionAccount.Size = new System.Drawing.Size(294, 24);
+            this.cmbRetentionAccount.TabIndex = 135;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label7.Location = new System.Drawing.Point(331, 88);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(229, 29);
+            this.label7.TabIndex = 134;
+            this.label7.Text = "Retention Account";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbSubcontractor
+            // 
+            this.cmbSubcontractor.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSubcontractor.BorderRadius = 5;
+            this.cmbSubcontractor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSubcontractor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubcontractor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbSubcontractor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbSubcontractor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbSubcontractor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbSubcontractor.ItemHeight = 18;
+            this.cmbSubcontractor.Location = new System.Drawing.Point(26, 121);
+            this.cmbSubcontractor.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSubcontractor.Name = "cmbSubcontractor";
+            this.cmbSubcontractor.Size = new System.Drawing.Size(294, 24);
+            this.cmbSubcontractor.TabIndex = 137;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label9.Location = new System.Drawing.Point(23, 90);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(229, 29);
+            this.label9.TabIndex = 136;
+            this.label9.Text = "Subcontractor";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 30;
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Sr.";
@@ -1640,6 +1532,26 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "StartDate";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "#";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ref Id";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 160;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -1864,6 +1776,231 @@
             this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
             this.dataGridViewTextBoxColumn37.ReadOnly = true;
             // 
+            // no
+            // 
+            this.no.HeaderText = "#";
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 30;
+            // 
+            // sr
+            // 
+            this.sr.HeaderText = "Sr.";
+            this.sr.Name = "sr";
+            this.sr.ReadOnly = true;
+            this.sr.Width = 45;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "Description";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // start_date
+            // 
+            this.start_date.HeaderText = "StartDate";
+            this.start_date.Name = "start_date";
+            this.start_date.ReadOnly = true;
+            // 
+            // end_date
+            // 
+            this.end_date.HeaderText = "End Date";
+            this.end_date.Name = "end_date";
+            this.end_date.ReadOnly = true;
+            // 
+            // progress
+            // 
+            this.progress.HeaderText = "Progress";
+            this.progress.Name = "progress";
+            this.progress.ReadOnly = true;
+            // 
+            // requested_no
+            // 
+            this.requested_no.HeaderText = "#";
+            this.requested_no.Name = "requested_no";
+            this.requested_no.ReadOnly = true;
+            // 
+            // requested_id
+            // 
+            this.requested_id.HeaderText = "Ref Id";
+            this.requested_id.Name = "requested_id";
+            this.requested_id.ReadOnly = true;
+            this.requested_id.Width = 160;
+            // 
+            // pId
+            // 
+            this.pId.HeaderText = "Id";
+            this.pId.Name = "pId";
+            this.pId.ReadOnly = true;
+            this.pId.Visible = false;
+            // 
+            // requested_date
+            // 
+            this.requested_date.HeaderText = "Date";
+            this.requested_date.Name = "requested_date";
+            this.requested_date.ReadOnly = true;
+            this.requested_date.Width = 130;
+            // 
+            // description
+            // 
+            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "Unit";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            // 
+            // requested_qty
+            // 
+            this.requested_qty.HeaderText = "Qty";
+            this.requested_qty.Name = "requested_qty";
+            this.requested_qty.ReadOnly = true;
+            this.requested_qty.Width = 150;
+            // 
+            // reqStatus
+            // 
+            this.reqStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.reqStatus.FillWeight = 30F;
+            this.reqStatus.HeaderText = "Status";
+            this.reqStatus.Name = "reqStatus";
+            this.reqStatus.ReadOnly = true;
+            // 
+            // pId1
+            // 
+            this.pId1.HeaderText = "id";
+            this.pId1.Name = "pId1";
+            this.pId1.ReadOnly = true;
+            this.pId1.Visible = false;
+            // 
+            // issueDescription
+            // 
+            this.issueDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.issueDescription.HeaderText = "Description";
+            this.issueDescription.Name = "issueDescription";
+            this.issueDescription.ReadOnly = true;
+            // 
+            // issueUnit
+            // 
+            this.issueUnit.HeaderText = "Unit";
+            this.issueUnit.Name = "issueUnit";
+            this.issueUnit.ReadOnly = true;
+            // 
+            // issueQty
+            // 
+            this.issueQty.HeaderText = "Qty";
+            this.issueQty.Name = "issueQty";
+            this.issueQty.ReadOnly = true;
+            // 
+            // IssStatus
+            // 
+            this.IssStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IssStatus.FillWeight = 30F;
+            this.IssStatus.HeaderText = "Status";
+            this.IssStatus.Name = "IssStatus";
+            this.IssStatus.ReadOnly = true;
+            // 
+            // receveRef
+            // 
+            this.receveRef.HeaderText = "Ref Id";
+            this.receveRef.Name = "receveRef";
+            this.receveRef.ReadOnly = true;
+            // 
+            // pId2
+            // 
+            this.pId2.HeaderText = "Id";
+            this.pId2.Name = "pId2";
+            this.pId2.ReadOnly = true;
+            this.pId2.Visible = false;
+            // 
+            // receveDate
+            // 
+            this.receveDate.HeaderText = "Date";
+            this.receveDate.Name = "receveDate";
+            this.receveDate.ReadOnly = true;
+            // 
+            // receveDescription
+            // 
+            this.receveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.receveDescription.HeaderText = "Description";
+            this.receveDescription.Name = "receveDescription";
+            this.receveDescription.ReadOnly = true;
+            // 
+            // receveQty
+            // 
+            this.receveQty.HeaderText = "Qty";
+            this.receveQty.Name = "receveQty";
+            this.receveQty.ReadOnly = true;
+            // 
+            // receveUnit
+            // 
+            this.receveUnit.HeaderText = "Unit";
+            this.receveUnit.Name = "receveUnit";
+            this.receveUnit.ReadOnly = true;
+            // 
+            // recStatus
+            // 
+            this.recStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.recStatus.FillWeight = 40F;
+            this.recStatus.HeaderText = "Status";
+            this.recStatus.Name = "recStatus";
+            this.recStatus.ReadOnly = true;
+            // 
+            // ResourceNo
+            // 
+            this.ResourceNo.HeaderText = "#";
+            this.ResourceNo.Name = "ResourceNo";
+            this.ResourceNo.ReadOnly = true;
+            this.ResourceNo.Width = 30;
+            // 
+            // ResourceId
+            // 
+            this.ResourceId.HeaderText = "Id";
+            this.ResourceId.Name = "ResourceId";
+            this.ResourceId.ReadOnly = true;
+            this.ResourceId.Visible = false;
+            // 
+            // ResourceCode
+            // 
+            this.ResourceCode.HeaderText = "Code";
+            this.ResourceCode.Name = "ResourceCode";
+            this.ResourceCode.ReadOnly = true;
+            this.ResourceCode.Width = 130;
+            // 
+            // ResourceName
+            // 
+            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceName.HeaderText = "Resource Name";
+            this.ResourceName.Name = "ResourceName";
+            this.ResourceName.ReadOnly = true;
+            // 
+            // ResourceType
+            // 
+            this.ResourceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceType.HeaderText = "Resource Type";
+            this.ResourceType.Name = "ResourceType";
+            this.ResourceType.ReadOnly = true;
+            // 
+            // ResourceRole
+            // 
+            this.ResourceRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceRole.HeaderText = "Primary Role";
+            this.ResourceRole.Name = "ResourceRole";
+            this.ResourceRole.ReadOnly = true;
+            // 
+            // ResourceDefaultUnitsTime
+            // 
+            this.ResourceDefaultUnitsTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceDefaultUnitsTime.HeaderText = "Default Units / Time";
+            this.ResourceDefaultUnitsTime.Name = "ResourceDefaultUnitsTime";
+            this.ResourceDefaultUnitsTime.ReadOnly = true;
+            // 
             // headerUC1
             // 
             this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
@@ -2049,5 +2186,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2TextBox txtRetentionPercentage;
+        private Guna.UI2.WinForms.Guna2TextBox txtRetentionAmount;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbRetentionAccount;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbSubcontractor;
+        private System.Windows.Forms.Label label9;
     }
 }

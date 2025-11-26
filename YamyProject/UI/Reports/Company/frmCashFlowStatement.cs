@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using Font = System.Drawing.Font;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
@@ -58,7 +59,7 @@ namespace YamyProject
             LocalizationManager.LocalizeDataGridViewHeaders(dgvReport);
             dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
-
+            dgvReport.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //dgvReport.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -116,56 +117,14 @@ namespace YamyProject
                             WHERE l1.category_code = 'ASSET'
                             GROUP BY l4.id, l4.name;
                             ";
-            //using (MySqlDataReader reader = DBClass.ExecuteReader(@"
-            //            SELECT 'OPERATING ACTIVITIES' AS name, '' AS id, NULL AS balance, 'u' AS mode, '1' AS level, ' ►     ' AS symbol
-
-            //            UNION
-
-            //            SELECT 'Net Income', '', (
-            //                WITH AccountBalances AS (
-            //                    SELECT 
-            //                        l1.category_code AS Category,
-            //                        SUM(t.credit - t.debit) AS Balance
-            //                    FROM tbl_transaction t
-            //                    JOIN tbl_coa_level_4 l4 ON t.account_id = l4.id
-            //                    JOIN tbl_coa_level_3 l3 ON l4.main_id = l3.id
-            //                    JOIN tbl_coa_level_2 l2 ON l3.main_id = l2.id
-            //                    JOIN tbl_coa_level_1 l1 ON l2.main_id = l1.id
-            //                    WHERE l1.category_code IN ('INCOME', 'COST', 'EXPENSE') AND t.state = 0
-            //                    GROUP BY l1.category_code
-            //                )
-            //                SELECT
-            //                    COALESCE((SELECT Balance FROM AccountBalances WHERE Category = 'INCOME'), 0)
-            //                    - COALESCE((SELECT Balance FROM AccountBalances WHERE Category = 'COST'), 0)
-            //                    - COALESCE((SELECT Balance FROM AccountBalances WHERE Category = 'EXPENSE'), 0)
-            //            ) AS balance, '2' AS level, 'n' AS mode, '                    ' AS symbol
-
-            //            UNION
-
-            //            SELECT 'Adjustments to reconcile Net Income', '', NULL, 'u' AS mode, '2' AS level, '   ►     ' AS symbol
-
-            //            UNION
-
-            //            SELECT 'to net cash provided by operations:', '', NULL, 'u' AS mode, '2' AS level, '   ►     ' AS symbol
-
-            //            UNION
-
-            //            SELECT CONCAT('  ', l4.name), l4.id, SUM(t.debit - t.credit), 'n' AS mode, '4' AS level, '                    ' AS symbol
-            //            FROM tbl_coa_level_1 l1
-            //            JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
-            //            JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
-            //            JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-            //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id AND t.state = 0
-            //            WHERE l1.category_code = 'ASSET'
-            //            GROUP BY l4.id, l4.name;
-            //        ",
+            
             using (MySqlDataReader reader = DBClass.ExecuteReader(sql, parameters.ToArray()))
             {
                 while (reader.Read())
                 {
                     dgvReport.Rows.Add("e", reader["mode"], reader["level"], reader["symbol"] + reader["name"].ToString(),
                         reader["id"].ToString(), reader["name"].ToString(),
-                        reader["balance"].ToString());
+                        Utilities.FormatDecimal(reader["balance"].ToString()));
 
                     totalBalance += Convert.ToDecimal(reader["balance"] == DBNull.Value ? "0" : reader["balance"]);
                 }
@@ -193,7 +152,7 @@ namespace YamyProject
                 {
                     dgvReport.Rows.Add("e", reader["mode"], reader["level"], reader["symbol"] + reader["name"].ToString(),
                         reader["id"].ToString(), reader["name"].ToString(),
-                        reader["balance"].ToString());
+                        Utilities.FormatDecimal(reader["balance"].ToString()));
 
                     totalBalance += Convert.ToDecimal(reader["balance"] == DBNull.Value ? "0" : reader["balance"]);
                 }
@@ -260,7 +219,7 @@ namespace YamyProject
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                             newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                             newRow.Height = row.Height;
 
                             ApplyRowStyle(newRow, currLvl + 1);
@@ -425,22 +384,64 @@ namespace YamyProject
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
                     worksheet.Name = "Cash Flow Statement";
 
+                    Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = label1.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dateTimePicker1.Text + " - To " + dateTimePicker2.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["B1", "C1"];
-                    headerRange.Merge();
-                    headerRange.Value = DateTime.Now.ToString("MMM dd, yy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange3 = worksheet.Range["A4", "C4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
-                    int rowIndex = 2;
+                    for (int col = 0; col < dgvReport.Columns.Count; col++)
+                    {
+                        var column = dgvReport.Columns[col];
+
+                        // Skip hidden columns if needed
+                        if (!column.Visible) continue;
+                        if (column.HeaderText.Length > 0)
+                        {
+                            var headerCell = worksheet.Cells[rowIndex, col];
+                            headerCell.Value = column.HeaderText;  // show column header
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+                    }
+
+                    // 2️⃣ Write data rows
+                    rowIndex++; // move to next row for data
+
                     foreach (DataGridViewRow row in dgvReport.Rows)
                     {
                         if (row.IsNewRow) continue;
@@ -464,7 +465,7 @@ namespace YamyProject
 
                             amountCell.Font.Size = 10;
                             amountCell.Font.Bold = true;
-                            amountCell.Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            amountCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
                         }
                         else
                         {
@@ -474,7 +475,7 @@ namespace YamyProject
                             amountCell.Font.Size = 9;
                         }
 
-                        amountCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        amountCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         rowIndex++;
                     }
 
@@ -508,7 +509,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Net",int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Net",int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()), dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString()));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -546,7 +547,7 @@ namespace YamyProject
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                                     newRow.Height = dgvReport.Rows[e.RowIndex].Height;
 
                                     ApplyRowStyle(newRow, currLvl + 1);

@@ -98,7 +98,7 @@ namespace YamyProject
                     string checkType = reader["check_type"].ToString();
                     string state = reader["state"].ToString();
 
-                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, amount.ToString("N2"), checkType, state);
+                    int rowIndex = dgvSales.Rows.Add(rowId, checkNo, checkDate, Utilities.FormatDecimal(amount), checkType, state);
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 

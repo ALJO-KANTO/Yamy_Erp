@@ -329,9 +329,7 @@ namespace YamyProject
                   DBClass.CreateParameter("@qty", dgvItems.Rows[i].Cells["qtydif"].Value),
                   DBClass.CreateParameter("@minusamount", decimal.Parse(dgvItems.Rows[i].Cells["minusamount"].Value.ToString())),
                 DBClass.CreateParameter("@plusamount", (decimal.Parse(dgvItems.Rows[i].Cells["plusamount"].Value.ToString()))));
-                DBClass.ExecuteNonQuery("update tbl_items set on_hand=@qty where id = @id",
-                DBClass.CreateParameter("id", dgvItems.Rows[i].Cells["itemId"].Value.ToString()),
-                DBClass.CreateParameter("qty", decimal.Parse(dgvItems.Rows[i].Cells["newqty"].Value.ToString())));
+                
                 insertItemTransaction(dgvItems.Rows[i]);
 
                 Utilities.LogAudit(frmLogin.userId, "Insert Stock Settlement Item", "Stock Settlement", (int)invId, 

@@ -1873,6 +1873,66 @@ namespace YamyProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_by_Class {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_by_Class", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_by_Job {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_by_Job", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_details {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_details", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_Prev_Y_Comparison {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_Prev_Y_Comparison", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_standard {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_standard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap P_and_L_ytd_comparison {
+            get {
+                object obj = ResourceManager.GetObject("P_and_L_ytd_comparison", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paycheque {
             get {
                 object obj = ResourceManager.GetObject("Paycheque", resourceCulture);
@@ -2876,6 +2936,16 @@ namespace YamyProject.Properties {
         internal static System.Drawing.Bitmap YAMY_Splash1 {
             get {
                 object obj = ResourceManager.GetObject("YAMY_Splash1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom_in {
+            get {
+                object obj = ResourceManager.GetObject("zoom-in", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

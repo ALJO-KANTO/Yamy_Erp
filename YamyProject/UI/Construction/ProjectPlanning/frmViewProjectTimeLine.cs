@@ -406,8 +406,8 @@ namespace YamyProject.UI.Construction.ProjectPlanning
                             string taskCode = reader["task_code"].ToString();
                             double completedWork = reader["completed_work"] != DBNull.Value ? Convert.ToDouble(reader["completed_work"]) : 0;
                             double plannedWork = reader["planned_work"] != DBNull.Value ? Convert.ToDouble(reader["planned_work"]) : 0;
-                            double assigned_time = reader["assigned_time"] != DBNull.Value ? Convert.ToDouble(reader["assigned_time"]) : 0;
-                            double assigned_max_time = reader["assigned_max_time"] != DBNull.Value ? Convert.ToDouble(reader["assigned_max_time"]) : 0;
+                            double assigned_time = reader["assigned_time"] != DBNull.Value ? GetLastOrFirstDouble(reader["assigned_time"]) : 0;
+                            double assigned_max_time = reader["assigned_max_time"] != DBNull.Value ? GetLastOrFirstDouble(reader["assigned_max_time"]) : 0;
                             double work_progress = reader["progress"] != DBNull.Value ? Convert.ToDouble(reader["progress"]) : 0;
                             
                             if (Regex.IsMatch(taskCode, @"^[a-zA-Z]+$"))
@@ -542,6 +542,26 @@ namespace YamyProject.UI.Construction.ProjectPlanning
             duringInitialization = false;
 
             ensureEnableItemUI();
+        }
+
+        private double GetLastOrFirstDouble(object dbValue)
+        {
+            if (dbValue == DBNull.Value || dbValue == null)
+                return 0;
+
+            string valueStr = dbValue.ToString();
+            if (string.IsNullOrWhiteSpace(valueStr))
+                return 0;
+
+            // Split by commas
+            string[] parts = valueStr.Split(',', (char)StringSplitOptions.RemoveEmptyEntries);
+
+            // Take the last one if multiple, else the first
+            string selected = parts.Length > 1
+                ? parts.Last().Trim()
+                : parts.First().Trim();
+
+            return double.TryParse(selected, out double result) ? result : 0;
         }
 
         private void objectsReinitializeButton_Click00(object sender, EventArgs e)

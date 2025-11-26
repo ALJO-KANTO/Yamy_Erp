@@ -40,14 +40,12 @@ namespace YamyProject
                             ROW_NUMBER() OVER (ORDER BY tbl_damage.date) AS `SN`, 
                             tbl_damage.date AS Date, 
                             tbl_damage.id,
-                        concat('000',    MAX(tbl_transaction.transaction_id)) AS 'JV NO', 
+                            LPAD(tbl_damage.id, 4, '0') AS 'JV NO', 
                             tbl_damage.reference_no AS 'INV NO', 
                             CONCAT(tbl_employee.code,' - ', tbl_employee.name) AS 'Employee Name',
                             tbl_damage.total AS Total
                         FROM 
                             tbl_damage
-                        INNER JOIN 
-                            tbl_transaction ON tbl_damage.id = tbl_transaction.transaction_id
                         INNER JOIN 
                             tbl_employee ON tbl_damage.reported_by = tbl_employee.id
                         WHERE 

@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddResource = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -52,15 +51,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ResourceDefaultUnitsTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvResource = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.ResourceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResourceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnAddResource = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResource)).BeginInit();
             this.SuspendLayout();
@@ -76,26 +72,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1093, 33);
             this.panel1.TabIndex = 3;
-            // 
-            // btnAddResource
-            // 
-            this.btnAddResource.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.btnAddResource.BorderRadius = 5;
-            this.btnAddResource.BorderThickness = 1;
-            this.btnAddResource.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddResource.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddResource.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddResource.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddResource.FillColor = System.Drawing.Color.White;
-            this.btnAddResource.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnAddResource.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.btnAddResource.Location = new System.Drawing.Point(2, 3);
-            this.btnAddResource.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddResource.Name = "btnAddResource";
-            this.btnAddResource.Size = new System.Drawing.Size(159, 27);
-            this.btnAddResource.TabIndex = 11;
-            this.btnAddResource.Text = "New Resource";
-            this.btnAddResource.Click += new System.EventHandler(this.btnAddResource_Click);
             // 
             // btnClose
             // 
@@ -286,60 +262,6 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
-            // Select
-            // 
-            this.Select.HeaderText = "Select";
-            this.Select.Name = "Select";
-            // 
-            // ResourceDefaultUnitsTime
-            // 
-            this.ResourceDefaultUnitsTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceDefaultUnitsTime.HeaderText = "Default Units / Time";
-            this.ResourceDefaultUnitsTime.Name = "ResourceDefaultUnitsTime";
-            this.ResourceDefaultUnitsTime.ReadOnly = true;
-            // 
-            // ResourceRole
-            // 
-            this.ResourceRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceRole.HeaderText = "Primary Role";
-            this.ResourceRole.Name = "ResourceRole";
-            this.ResourceRole.ReadOnly = true;
-            // 
-            // ResourceType
-            // 
-            this.ResourceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceType.HeaderText = "Resource Type";
-            this.ResourceType.Name = "ResourceType";
-            this.ResourceType.ReadOnly = true;
-            // 
-            // ResourceName
-            // 
-            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResourceName.HeaderText = "Resource Name";
-            this.ResourceName.Name = "ResourceName";
-            this.ResourceName.ReadOnly = true;
-            // 
-            // ResourceCode
-            // 
-            this.ResourceCode.HeaderText = "Code";
-            this.ResourceCode.Name = "ResourceCode";
-            this.ResourceCode.ReadOnly = true;
-            this.ResourceCode.Width = 130;
-            // 
-            // ResourceId
-            // 
-            this.ResourceId.HeaderText = "Id";
-            this.ResourceId.Name = "ResourceId";
-            this.ResourceId.ReadOnly = true;
-            this.ResourceId.Visible = false;
-            // 
-            // ResourceNo
-            // 
-            this.ResourceNo.HeaderText = "#";
-            this.ResourceNo.Name = "ResourceNo";
-            this.ResourceNo.ReadOnly = true;
-            this.ResourceNo.Width = 30;
-            // 
             // dgvResource
             // 
             this.dgvResource.AllowUserToAddRows = false;
@@ -365,11 +287,7 @@
             this.dgvResource.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ResourceNo,
             this.ResourceId,
-            this.ResourceCode,
             this.ResourceName,
-            this.ResourceType,
-            this.ResourceRole,
-            this.ResourceDefaultUnitsTime,
             this.Select});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -419,6 +337,52 @@
             this.dgvResource.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvResource.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResource_CellDoubleClick);
             // 
+            // ResourceNo
+            // 
+            this.ResourceNo.HeaderText = "#";
+            this.ResourceNo.Name = "ResourceNo";
+            this.ResourceNo.ReadOnly = true;
+            this.ResourceNo.Width = 30;
+            // 
+            // ResourceId
+            // 
+            this.ResourceId.HeaderText = "Id";
+            this.ResourceId.Name = "ResourceId";
+            this.ResourceId.ReadOnly = true;
+            this.ResourceId.Visible = false;
+            // 
+            // ResourceName
+            // 
+            this.ResourceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResourceName.HeaderText = "Resource Name";
+            this.ResourceName.Name = "ResourceName";
+            this.ResourceName.ReadOnly = true;
+            // 
+            // Select
+            // 
+            this.Select.HeaderText = "Select";
+            this.Select.Name = "Select";
+            // 
+            // btnAddResource
+            // 
+            this.btnAddResource.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnAddResource.BorderRadius = 5;
+            this.btnAddResource.BorderThickness = 1;
+            this.btnAddResource.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddResource.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddResource.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddResource.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddResource.FillColor = System.Drawing.Color.White;
+            this.btnAddResource.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnAddResource.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnAddResource.Location = new System.Drawing.Point(2, 3);
+            this.btnAddResource.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddResource.Name = "btnAddResource";
+            this.btnAddResource.Size = new System.Drawing.Size(159, 27);
+            this.btnAddResource.TabIndex = 11;
+            this.btnAddResource.Text = "New Resource";
+            this.btnAddResource.Click += new System.EventHandler(this.btnAddResource_Click);
+            // 
             // frmProjectAssignResource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,7 +412,6 @@
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnSave;
-        private Guna.UI2.WinForms.Guna2Button btnAddResource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -464,14 +427,11 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceDefaultUnitsTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceRole;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceNo;
         private Guna.UI2.WinForms.Guna2DataGridView dgvResource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResourceName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private Guna.UI2.WinForms.Guna2Button btnAddResource;
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,52 @@ namespace YamyProject
             BindCombos.PopulateEmployeesForLoan(cmbEmployeeName);
             BindCombos.PopulateAllLevel4Account(cmbAccountNameCredit);
             BindCombos.PopulateAllLevel4Account(cmbAccountNameDebit);
+            if (id > 0)
+            {
+                BindData();
+            }
+            else
+            {
+                txtCode.Text = GenerateNextCode();
+            }
         }
+
+        private void BindData()
+        {
+            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT l.*,e.id AS empId FROM tbl_loan l LEFT JOIN tbl_employee e ON e.code=l.EmployeeID WHERE l.id = @id", DBClass.CreateParameter("id", id)))
+            {
+                if (reader.Read())
+                {
+                    cmbAccountNameCredit.SelectedValue = reader["credit_account_id"];
+                    cmbAccountNameDebit.SelectedValue = reader["debit_account_id"];
+                    cmbEmployeeName.SelectedValue = reader["empId"];
+                    txtCode.Text = reader["code"].ToString();
+                    txtDescription.Text = reader["description"].ToString();
+                    txtEmployeeCode.Text = reader["employeeId"].ToString();
+                    txtInstallments.Text = reader["installments"].ToString();
+                    txtRequestAmount.Text = decimal.Parse(reader["RequestAmount"].ToString()).ToString("N2");
+                    dtpRequestDate.Value = DateTime.Parse(reader["LoanDate"].ToString());
+                    dtpStartDate.Value = DateTime.Parse(reader["StartDate"].ToString());
+                    dtpEndDate.Value = DateTime.Parse(reader["EndDate"].ToString());
+
+                    using (MySqlDataReader readerDetail = DBClass.ExecuteReader("select * from tbl_loan where code = @code", DBClass.CreateParameter("code", reader["code"].ToString())))
+                    {
+                        int slNo = 1;
+                        while (readerDetail.Read())
+                        {
+                            string install = readerDetail["Installments"].ToString();
+                            string dated = readerDetail["LoanDates"].ToString();
+                            DateTime dateTime = DateTime.Parse(dated);
+                            dgvLoan.Rows.Add(slNo, dateTime.ToShortDateString(), dateTime.ToString("MMMM"), txtDescription.Text, decimal.Parse(readerDetail["Amount"].ToString()).ToString("N2"));
+                            slNo++;
+                        }
+                    }
+
+                    BtnDelete.Visible = true;
+                }
+            }
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -43,12 +89,8 @@ namespace YamyProject
                     this.Close();
             }
             else
-                  if (updatePetty())
+                  if (updateLoan())
                 this.Close();
-        }
-        private bool updatePetty()
-        {
-            throw new NotImplementedException();
         }
 
         private void SetupDataGridView()
@@ -61,42 +103,29 @@ namespace YamyProject
             dgvLoan.Columns.Add("Amount", "Amount");
             LocalizationManager.LocalizeDataGridViewHeaders(dgvLoan);
         }
-        private void FormatNumberWithCommas(Guna.UI2.WinForms.Guna2TextBox txtBox)
-        {
-            if (string.IsNullOrWhiteSpace(txtBox.Text))
-                return;
 
-            string rawText = txtBox.Text.Replace(",", "");
-
-            decimal number;
-            if (decimal.TryParse(rawText, out number))
-            {
-                int cursorPosition = txtBox.SelectionStart;
-                txtBox.Text = number.ToString("N0");
-                txtBox.SelectionStart = txtBox.Text.Length;
-            }
-        }
         private void txtInstallments_TextChanged(object sender, EventArgs e)
         {
-            BindGrid();
+            if (txtInstallments.Focused)
+                BindGrid();
         }
         decimal attempInstall = 1;
         private void BindGrid()
         {
-            if (txtInstallments.Text.Trim() == ""||txtRequestAmount.Text.Trim()=="")
+            if (txtInstallments.Text.Trim() == "" || txtRequestAmount.Text.Trim() == "")
             {
                 return;
             }
-            dtpEndDate.Value= dtpStartDate.Value.AddMonths(int.Parse(txtInstallments.Text)-1);
+            dtpEndDate.Value = dtpStartDate.Value.AddMonths(int.Parse(txtInstallments.Text) - 1);
             dgvLoan.Rows.Clear();
             attempInstall = 1;
             for (DateTime dt = dtpStartDate.Value.Date; dt <= dtpEndDate.Value.Date; dt = dt.AddMonths(1))
             {
-                decimal requstedAmount = decimal.Parse(txtRequestAmount.Text) / decimal.Parse(txtInstallments.Text);
-                dgvLoan.Rows.Add(attempInstall, dt.ToShortDateString(), dt.ToString("MMMM"), txtDescription.Text, requstedAmount.ToString("N4"));
+                decimal requestedAmount = decimal.Parse(txtRequestAmount.Text) / decimal.Parse(txtInstallments.Text);
+                dgvLoan.Rows.Add(attempInstall, dt.ToShortDateString(), dt.ToString("MMMM"), txtDescription.Text, requestedAmount.ToString("N2"));
                 attempInstall++;
             }
-            }
+        }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
@@ -110,16 +139,10 @@ namespace YamyProject
 
         private bool insertLoan()
         {
-            int code = 10001;
-            string Ccode = "LO" + code;
             if (!chkRequiredDate())
                 return false;
 
-            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT code FROM tbl_loan ORDER BY CAST(SUBSTRING(code, 3) AS UNSIGNED) DESC LIMIT 1;"))
-                if (reader.Read() && reader["code"].ToString() != "")
-                    code = int.Parse(reader["code"].ToString().Replace("LO", "")) + 1;
-            Ccode = "LO" + code;
-
+            txtCode.Text = GenerateNextCode();
             if (dgvLoan.Rows.Count == 0)
             {
                 MessageBox.Show("No data available to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -147,7 +170,7 @@ namespace YamyProject
                                             StartDate, EndDate, loanDates, Months, Description, Amount,debit_account_id,credit_account_id,`change`) 
                                             VALUES (@code, @LoanDate, @EmployeeID, @EmployeeName, @RequestAmount, @Installments, @StartDate, @EndDate,
                                             @loanDates, @Months, @Description, @Amount,@debit_account_id,@credit_account_id,@change); SELECT LAST_INSERT_ID();",
-                        DBClass.CreateParameter("code", Ccode),
+                        DBClass.CreateParameter("code", txtCode.Text),
                         DBClass.CreateParameter("LoanDate", loanDate.ToString("yyyy-MM-dd")),
                         DBClass.CreateParameter("EmployeeID", employeeCode),
                         DBClass.CreateParameter("EmployeeName", employeeName),
@@ -177,9 +200,97 @@ namespace YamyProject
                 }
             }
             insertJournals();
-            Utilities.LogAudit(frmLogin.userId, "Insert Loan", "Loan", id, "Inserted Loan: " + Ccode + " for Employee: " + employeeName);
+            Utilities.LogAudit(frmLogin.userId, "Insert Loan", "Loan", id, "Inserted Loan: " + txtCode.Text + " for Employee: " + employeeName);
             MessageBox.Show("Data saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
+        }
+
+        private bool updateLoan()
+        {
+            if (!chkRequiredDate())
+                return false;
+
+            if (dgvLoan.Rows.Count == 0)
+            {
+                MessageBox.Show("No data available to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            DBClass.ExecuteNonQuery(@"DELETE FROM tbl_loan WHERE code = @code", DBClass.CreateParameter("code", txtCode.Text));
+            CommonInsert.DeleteTransactionEntry(id, "Loan Request");
+
+            DBClass.ExecuteNonQuery(@"
+                        UPDATE tbl_attendance_salary 
+                        SET total_loan = (select IFNULL(SUM(RequestAmount), 0) from tbl_loan where emp_code=@EmployeeID)
+                        WHERE emp_code = @EmployeeID");
+
+            DateTime loanDate = dtpRequestDate.Value;
+            string employeeName = cmbEmployeeName.Text;
+            int employeeCode = Convert.ToInt32(txtEmployeeCode.Text);
+            decimal requestAmount = Convert.ToDecimal(txtRequestAmount.Text);
+            int installments = Convert.ToInt32(txtInstallments.Text);
+            DateTime startDate = dtpStartDate.Value;
+            DateTime endDate = dtpEndDate.Value;
+
+            foreach (DataGridViewRow row in dgvLoan.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    DateTime loanDates = Convert.ToDateTime(row.Cells["Date"].Value);
+                    string months = row.Cells["Month"].Value.ToString();
+                    string description = row.Cells["Description"].Value.ToString();
+                    decimal amount = Convert.ToDecimal(row.Cells["Amount"].Value);
+
+                    id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_loan (code, LoanDate, EmployeeID, EmployeeName, RequestAmount, Installments,
+                                            StartDate, EndDate, loanDates, Months, Description, Amount,debit_account_id,credit_account_id,`change`) 
+                                            VALUES (@code, @LoanDate, @EmployeeID, @EmployeeName, @RequestAmount, @Installments, @StartDate, @EndDate,
+                                            @loanDates, @Months, @Description, @Amount,@debit_account_id,@credit_account_id,@change); SELECT LAST_INSERT_ID();",
+                        DBClass.CreateParameter("code", txtCode.Text),
+                        DBClass.CreateParameter("LoanDate", loanDate.ToString("yyyy-MM-dd")),
+                        DBClass.CreateParameter("EmployeeID", employeeCode),
+                        DBClass.CreateParameter("EmployeeName", employeeName),
+                        DBClass.CreateParameter("RequestAmount", requestAmount),
+                        DBClass.CreateParameter("Installments", installments),
+                        DBClass.CreateParameter("StartDate", startDate.ToString("yyyy-MM-dd")),
+                        DBClass.CreateParameter("EndDate", endDate.ToString("yyyy-MM-dd")),
+                        DBClass.CreateParameter("loanDates", DateTime.Parse(row.Cells["Date"].Value.ToString()).ToString("yyyy-MM-dd")),
+                        DBClass.CreateParameter("Months", row.Cells["Month"].Value.ToString()),
+                        DBClass.CreateParameter("Description", row.Cells["Description"].Value.ToString()),
+                        DBClass.CreateParameter("Amount", Convert.ToDecimal(row.Cells["Amount"].Value)),
+                        DBClass.CreateParameter("debit_account_id", cmbAccountNameDebit.SelectedValue),
+                        DBClass.CreateParameter("credit_account_id", cmbAccountNameCredit.SelectedValue),
+                        DBClass.CreateParameter("change", requestAmount)
+                        ).ToString());
+                    DBClass.ExecuteNonQuery(@"
+                        UPDATE tbl_attendance_salary 
+                        SET total_loan = IFNULL(total_loan, 0) + @Amount
+                        WHERE emp_code = @EmployeeID
+                          AND MONTH(`date`) = @Month
+                          AND YEAR(`date`) = @Year;",
+                       DBClass.CreateParameter("EmployeeID", employeeCode),
+                       DBClass.CreateParameter("Amount", amount),
+                       DBClass.CreateParameter("Month", loanDates.Month),
+                       DBClass.CreateParameter("Year", loanDates.Year)
+                   );
+                }
+            }
+            insertJournals();
+            Utilities.LogAudit(frmLogin.userId, "Update Loan", "Loan", id, "Updated Loan: " + txtCode.Text + " for Employee: " + employeeName);
+            MessageBox.Show("Data updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
+
+        private string GenerateNextCode()
+        {
+            int code = 10001;
+            string result = "LO" + code;
+
+            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT code FROM tbl_loan ORDER BY CAST(SUBSTRING(code, 3) AS UNSIGNED) DESC LIMIT 1;"))
+                if (reader.Read() && reader["code"].ToString() != "")
+                    code = int.Parse(reader["code"].ToString().Replace("LO", "")) + 1;
+            result = "LO" + code;
+
+            return result;
         }
         private void insertJournals()
         {
@@ -187,11 +298,11 @@ namespace YamyProject
             CommonInsert.addTransactionEntry(dtpRequestDate.Value.Date,
                   cmbAccountNameDebit.SelectedValue.ToString(),
                   txtRequestAmount.Text, "0", id.ToString(), cmbEmployeeName.SelectedValue.ToString(), "Loan Request", "Employee LOAN", "Loan Request " + txtCode.Text,
-                   frmLogin.userId, DateTime.Now.Date,txtCode.Text);
+                   frmLogin.userId, DateTime.Now.Date, txtCode.Text);
             CommonInsert.addTransactionEntry(dtpRequestDate.Value.Date,
                                   cmbAccountNameCredit.SelectedValue.ToString(),
-                                 "0", txtRequestAmount.Text, id.ToString(),cmbEmployeeName.SelectedValue.ToString(), "Loan Request", "Employee LOAN", "Loan Request " + txtCode.Text,
-                   frmLogin.userId, DateTime.Now.Date,txtCode.Text);
+                                 "0", txtRequestAmount.Text, id.ToString(), cmbEmployeeName.SelectedValue.ToString(), "Loan Request", "Employee LOAN", "Loan Request " + txtCode.Text,
+                   frmLogin.userId, DateTime.Now.Date, txtCode.Text);
 
         }
         private bool chkRequiredDate()
@@ -206,8 +317,8 @@ namespace YamyProject
         }
         private void btnSaveClose_Click(object sender, EventArgs e)
         {
-                if (insertLoan())
-                    resetTextBox();
+            if (insertLoan())
+                resetTextBox();
         }
         private void resetTextBox()
         {
@@ -313,6 +424,63 @@ namespace YamyProject
             {
                 e.Handled = true;
             }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+        }
+
+        private bool DeleteData()
+        {
+            if (!chkRequiredDate())
+                return false;
+
+            if (dgvLoan.Rows.Count == 0)
+            {
+                MessageBox.Show("No data available to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            string query = @"SELECT * FROM tbl_payment_voucher_details pvd
+                    INNER JOIN tbl_payment_voucher pv ON pv.id = pvd.payment_id
+                    WHERE
+                        pv.`type` = 'Employee'
+                        AND pvd.voucher_type = 'Employee Loan Payment'
+                        AND pvd.hum_id = (select id from tbl_employee where code = @empCode)";
+            using(MySqlDataReader reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("empCode", txtEmployeeCode.Text)))
+            {
+                if (reader.Read())
+                {
+                    MessageBox.Show("Cannot delete this loan as there are associated payment vouchers.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            DBClass.ExecuteNonQuery(@"DELETE FROM tbl_loan WHERE code = @code", DBClass.CreateParameter("code", txtCode.Text));
+            CommonInsert.DeleteTransactionEntry(id, "Loan Request");
+
+            DBClass.ExecuteNonQuery(@"
+                        UPDATE tbl_attendance_salary 
+                        SET total_loan = (select IFNULL(SUM(RequestAmount), 0) from tbl_loan where emp_code=@EmployeeID)
+                        WHERE emp_code = @EmployeeID");
+
+            dgvLoan.Rows.Clear();
+            txtCode.Text = GenerateNextCode();
+            txtAccountCodeDebit.Text = "";
+            txtAccountCodeCredit.Text = "";
+            cmbAccountNameDebit.SelectedIndex = -1;
+            cmbAccountNameCredit.SelectedIndex = -1;
+            cmbEmployeeName.SelectedIndex = -1;
+            txtDescription.Text = "";
+            txtEmployeeCode.Text = "";
+            txtInstallments.Text = "";
+            txtRequestAmount.Text = "";
+            dtpRequestDate.Value = DateTime.Now;
+            dtpStartDate.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now;
+
+            MessageBox.Show("Loan deleted successfully.", "Success");
+            return true;
         }
     }
 }

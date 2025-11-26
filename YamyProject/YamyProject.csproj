@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -88,6 +88,15 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DlhSoft.DataControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6071b28da0134838, processorArchitecture=MSIL">
       <HintPath>..\packages\DlhSoft.GanttChartLibrary.WindowsForms.2.0.0.7\lib\net20\DlhSoft.DataControlLibrary.dll</HintPath>
     </Reference>
@@ -206,6 +215,7 @@
     <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.8.0.4\lib\net462\System.Drawing.Common.dll</HintPath>
     </Reference>
@@ -598,6 +608,18 @@
     <Compile Include="UI\Accountant\ReceiptVoucher\MasterReceiptVoucher.designer.cs">
       <DependentUpon>MasterReceiptVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Accountant\Reconciliation\FrmAccountDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accountant\Reconciliation\FrmAccountDetails.Designer.cs">
+      <DependentUpon>FrmAccountDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accountant\Reconciliation\FrmReconciliation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accountant\Reconciliation\FrmReconciliation.Designer.cs">
+      <DependentUpon>FrmReconciliation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Banking\BankReconcilation\MasterBankReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -677,10 +699,10 @@
     <Compile Include="UI\Construction\ProjectPlanning\frmProjectAssignResource.designer.cs">
       <DependentUpon>frmProjectAssignResource.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Construction\ProjectPlanning\frmProjectResource.cs">
+    <Compile Include="UI\Construction\ProjectResources\frmProjectResource.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Construction\ProjectPlanning\frmProjectResource.designer.cs">
+    <Compile Include="UI\Construction\ProjectResources\frmProjectResource.designer.cs">
       <DependentUpon>frmProjectResource.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Construction\ProjectPlanning\frmIssueMaterial.cs">
@@ -724,6 +746,12 @@
     </Compile>
     <Compile Include="UI\Construction\ProjectPlanning\frmViewProjectTimeLine.designer.cs">
       <DependentUpon>frmViewProjectTimeLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectResources\frmLaborAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectResources\frmLaborAttendance.designer.cs">
+      <DependentUpon>frmLaborAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Construction\ProjectSite\frmProjectSites.cs">
       <SubType>Form</SubType>
@@ -1203,11 +1231,41 @@
     <Compile Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.Designer.cs">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Manufacturing\Models\frmManAddProcessStage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Models\frmManAddProcessStage.Designer.cs">
+      <DependentUpon>frmManAddProcessStage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Viewform\frmManProductionStage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Viewform\frmManProductionStage.designer.cs">
+      <DependentUpon>frmManProductionStage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Viewform\frmManProductPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Viewform\frmManProductPacking.Designer.cs">
+      <DependentUpon>frmManProductPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Workflow\frmManWorkFlowStageReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Workflow\frmManWorkFlowStageReport.Designer.cs">
+      <DependentUpon>frmManWorkFlowStageReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Purchases\Return\frmViewPurchaseList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Purchases\Return\frmViewPurchaseList.designer.cs">
       <DependentUpon>frmViewPurchaseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Accounting Report\ProfitandLossDetailReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Accounting Report\ProfitandLossDetailReport.designer.cs">
+      <DependentUpon>ProfitandLossDetailReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.cs">
       <SubType>Form</SubType>
@@ -1250,6 +1308,24 @@
     </Compile>
     <Compile Include="UI\Reports\Construction\frmProjectTimelineSummary.Designer.cs">
       <DependentUpon>frmProjectTimelineSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Construction\frmTimeSheetReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Construction\frmTimeSheetReport.designer.cs">
+      <DependentUpon>frmTimeSheetReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Construction\frmSelectTimeSheetReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Construction\frmSelectTimeSheetReport.designer.cs">
+      <DependentUpon>frmSelectTimeSheetReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Customer\frmOpenInvoicesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Customer\frmOpenInvoicesReport.designer.cs">
+      <DependentUpon>frmOpenInvoicesReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\frmListReport.cs">
       <SubType>Form</SubType>
@@ -1583,12 +1659,6 @@
     <Compile Include="UI\Reports\Accounting Report\ProfitandLossReport.designer.cs">
       <DependentUpon>ProfitandLossReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Reports\Accounting Report\ProfitandLossReportNew.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\Accounting Report\ProfitandLossReportNew.designer.cs">
-      <DependentUpon>ProfitandLossReportNew.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Reports\Company\frmCashFlowStatement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1612,12 +1682,6 @@
     </Compile>
     <Compile Include="UI\Reports\Company\frmIncomeExpenseStatement.designer.cs">
       <DependentUpon>frmIncomeExpenseStatement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Reports\Company\MasterBalanceSheet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Reports\Company\MasterBalanceSheet.Designer.cs">
-      <DependentUpon>MasterBalanceSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Company\MasterTransactionByAccount.cs">
       <SubType>Form</SubType>
@@ -1788,17 +1852,53 @@
     <Compile Include="UI\Reports\Purchase\frmPurchaseByItemSummery.designer.cs">
       <DependentUpon>frmPurchaseByItemSummery.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseByUnpaidDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseByUnpaidDetails.designer.cs">
+      <DependentUpon>frmPurchaseByUnpaidDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseOrderDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseOrderDetails.designer.cs">
+      <DependentUpon>frmPurchaseOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\Purchase\frmPurchaseByVendorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Reports\Purchase\frmPurchaseByVendorDetails.designer.cs">
       <DependentUpon>frmPurchaseByVendorDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseOrderSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Purchase\frmPurchaseOrderSummary.designer.cs">
+      <DependentUpon>frmPurchaseOrderSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\Purchase\frmPurchaseByVendorSummery.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Reports\Purchase\frmPurchaseByVendorSummery.designer.cs">
       <DependentUpon>frmPurchaseByVendorSummery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\ReportCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\ReportCenter.Designer.cs">
+      <DependentUpon>ReportCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Sales\frmSalesTaxLiabilityRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Sales\frmSalesTaxLiabilityRevenue.designer.cs">
+      <DependentUpon>frmSalesTaxLiabilityRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Sales\frmSalesByShipToAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Sales\frmSalesByShipToAddress.designer.cs">
+      <DependentUpon>frmSalesByShipToAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Vendor\frmExpenseByVendorDetails.cs">
       <SubType>Form</SubType>
@@ -2276,6 +2376,12 @@
     <Compile Include="UI\Settings\Color theme\frmColorThempickercs.Designer.cs">
       <DependentUpon>frmColorThempickercs.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Settings\Company\frmModules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Settings\Company\frmModules.designer.cs">
+      <DependentUpon>frmModules.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Settings\Company\MasterCompany.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2591,6 +2697,12 @@
     <Content Include="Resources\Product2.ico" />
     <None Include="Resources\productN.png" />
     <Content Include="Resources\Purchase.png" />
+    <None Include="Resources\P_and_L_ytd_comparison.png" />
+    <None Include="Resources\P_and_L_details.png" />
+    <None Include="Resources\P_and_L_standard.png" />
+    <None Include="Resources\P_and_L_by_Class.png" />
+    <None Include="Resources\P_and_L_by_Job.png" />
+    <None Include="Resources\P_and_L_Prev_Y_Comparison.png" />
     <Content Include="Resources\Remove.ico" />
     <Content Include="Resources\Restaurant Table.png" />
     <Content Include="Resources\Restaurant Tsable.ico" />
@@ -2640,6 +2752,13 @@
     <Content Include="Resources\yamy_accounting_book_keeping_logo-removebg-preview %281%29.png" />
     <Content Include="Resources\yamy_accounting_book_keeping_logo-removebg-preview.png" />
     <None Include="Resources\YAMY_Splash.jpg" />
+    <None Include="Resources\zoom-in.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_by_Class.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_by_Job.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_details.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_Prev_Y_Comparison.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_standard.png" />
+    <Content Include="UI\Reports\Templates\P_and_L_ytd_comparison.png" />
     <Content Include="yamy.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2764,6 +2883,12 @@
     <EmbeddedResource Include="UI\Accountant\ReceiptVoucher\MasterReceiptVoucher.resx">
       <DependentUpon>MasterReceiptVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accountant\Reconciliation\FrmAccountDetails.resx">
+      <DependentUpon>FrmAccountDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accountant\Reconciliation\FrmReconciliation.resx">
+      <DependentUpon>FrmReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Banking\BankReconcilation\MasterBankReconciliation.resx">
       <DependentUpon>MasterBankReconciliation.cs</DependentUpon>
     </EmbeddedResource>
@@ -2803,7 +2928,7 @@
     <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmProjectAssignResource.resx">
       <DependentUpon>frmProjectAssignResource.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmProjectResource.resx">
+    <EmbeddedResource Include="UI\Construction\ProjectResources\frmProjectResource.resx">
       <DependentUpon>frmProjectResource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmIssueMaterial.resx">
@@ -2826,6 +2951,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmViewProjectTimeLine.resx">
       <DependentUpon>frmViewProjectTimeLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectResources\frmLaborAttendance.resx">
+      <DependentUpon>frmLaborAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectSite\frmProjectSites.resx">
       <DependentUpon>frmProjectSites.cs</DependentUpon>
@@ -3069,8 +3197,23 @@
     <EmbeddedResource Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.resx">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Models\frmManAddProcessStage.resx">
+      <DependentUpon>frmManAddProcessStage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManProductionStage.resx">
+      <DependentUpon>frmManProductionStage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManProductPacking.resx">
+      <DependentUpon>frmManProductPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Workflow\frmManWorkFlowStageReport.resx">
+      <DependentUpon>frmManWorkFlowStageReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchases\Return\frmViewPurchaseList.resx">
       <DependentUpon>frmViewPurchaseList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Accounting Report\ProfitandLossDetailReport.resx">
+      <DependentUpon>ProfitandLossDetailReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Bank\frmChequeLinkedToPaymentReceipt.resx">
       <DependentUpon>frmChequeLinkedToPaymentReceipt.cs</DependentUpon>
@@ -3092,6 +3235,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Construction\frmProjectTimelineSummary.resx">
       <DependentUpon>frmProjectTimelineSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Construction\frmTimeSheetReport.resx">
+      <DependentUpon>frmTimeSheetReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Construction\frmSelectTimeSheetReport.resx">
+      <DependentUpon>frmSelectTimeSheetReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Customer\frmOpenInvoicesReport.resx">
+      <DependentUpon>frmOpenInvoicesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Design\Report1.rdlc" />
     <EmbeddedResource Include="UI\Reports\frmListReport.resx">
@@ -3259,9 +3411,6 @@
     <EmbeddedResource Include="UI\Reports\Accounting Report\ProfitandLossReport.resx">
       <DependentUpon>ProfitandLossReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\Accounting Report\ProfitandLossReportNew.resx">
-      <DependentUpon>ProfitandLossReportNew.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Company\frmCashFlowStatement.resx">
       <DependentUpon>frmCashFlowStatement.cs</DependentUpon>
     </EmbeddedResource>
@@ -3273,9 +3422,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Company\frmIncomeExpenseStatement.resx">
       <DependentUpon>frmIncomeExpenseStatement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Reports\Company\MasterBalanceSheet.resx">
-      <DependentUpon>MasterBalanceSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Company\MasterTransactionByAccount.resx">
       <DependentUpon>MasterTransactionByAccount.cs</DependentUpon>
@@ -3372,11 +3518,29 @@
     <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseByItemSummery.resx">
       <DependentUpon>frmPurchaseByItemSummery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseByUnpaidDetails.resx">
+      <DependentUpon>frmPurchaseByUnpaidDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseOrderDetails.resx">
+      <DependentUpon>frmPurchaseOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseByVendorDetails.resx">
       <DependentUpon>frmPurchaseByVendorDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseOrderSummary.resx">
+      <DependentUpon>frmPurchaseOrderSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Purchase\frmPurchaseByVendorSummery.resx">
       <DependentUpon>frmPurchaseByVendorSummery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\ReportCenter.resx">
+      <DependentUpon>ReportCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Sales\frmSalesTaxLiabilityRevenue.resx">
+      <DependentUpon>frmSalesTaxLiabilityRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Sales\frmSalesByShipToAddress.resx">
+      <DependentUpon>frmSalesByShipToAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Vendor\frmExpenseByVendorDetails.resx">
       <DependentUpon>frmExpenseByVendorDetails.cs</DependentUpon>
@@ -3638,6 +3802,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\Color theme\frmColorThempickercs.resx">
       <DependentUpon>frmColorThempickercs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Settings\Company\frmModules.resx">
+      <DependentUpon>frmModules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\Company\MasterCompany.resx">
       <DependentUpon>MasterCompany.cs</DependentUpon>

@@ -29,9 +29,9 @@ namespace YamyProject.UI.Manufacturing
         private void btnProducts_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManBatchProduction());
         }
        
@@ -54,9 +54,9 @@ namespace YamyProject.UI.Manufacturing
         private void btnNav_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManDashboard());
         }
 
@@ -92,9 +92,9 @@ namespace YamyProject.UI.Manufacturing
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManMachinRecordView());
 
         }
@@ -102,18 +102,18 @@ namespace YamyProject.UI.Manufacturing
         private void btnOrders_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManScreen());
         }
 
         private void btnOrderD_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             //addcontrols2(new frmManDashboard());
         }
 
@@ -125,8 +125,8 @@ namespace YamyProject.UI.Manufacturing
         private void guna2CircleButton3_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btnSuff = (Control)sender;
-            indicator.Top = btnSuff.Top + (btnSuff.Height / 2 - indicator.Height / 2);
+            var btnC = (Control)sender;
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManStaff());
 
             //Pages.SetPage(btn.Tag.ToString());     
@@ -135,8 +135,9 @@ namespace YamyProject.UI.Manufacturing
         private void guna2CircleButton4_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManWorkOrder());
         }
 
@@ -157,17 +158,17 @@ namespace YamyProject.UI.Manufacturing
         private void btnHome_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btnHome = (Control)sender;
-            indicator.Top = btnHome.Top + (btnHome.Height / 2 - indicator.Height / 2);
+            var btnC = (Control)sender;
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             pnlcenter.Controls.Clear();
         }
 
         private void btnWorkFlowCenter_Click(object sender, EventArgs e)
         {
             indicator.Visible = true;
-            var btndashboard = (Control)sender;
+            var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
-            indicator.Top = btndashboard.Top + (btndashboard.Height / 2 - indicator.Height / 2);
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
             addcontrols2(new frmManWorkFlow());
         }
 
@@ -196,15 +197,22 @@ namespace YamyProject.UI.Manufacturing
                     indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
                     addcontrols2(new frmManWorkOrderReportSummary());
                 };
-                ToolStripMenuItem item4 = new ToolStripMenuItem("Work Flow Report");
+                ToolStripMenuItem item4 = new ToolStripMenuItem("Work Flow Stage Report");
                 item4.Click += (s, args) =>
+                {
+                    indicator.Visible = true;
+                    indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
+                    addcontrols2(new frmManWorkFlowStageReport());
+                };
+                ToolStripMenuItem item5 = new ToolStripMenuItem("Work Flow Report");
+                item5.Click += (s, args) =>
                 {
                     indicator.Visible = true;
                     indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
                     addcontrols2(new frmManWorkFlowReportSummary());
                 };
-                ToolStripMenuItem item5 = new ToolStripMenuItem("Employee Report");
-                item5.Click += (s, args) =>
+                ToolStripMenuItem item6 = new ToolStripMenuItem("Employee Report");
+                item6.Click += (s, args) =>
                 {
                     indicator.Visible = true;
                     indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
@@ -215,13 +223,23 @@ namespace YamyProject.UI.Manufacturing
                 contextMenuStrip1.Items.Add(item3);
                 contextMenuStrip1.Items.Add(item4);
                 contextMenuStrip1.Items.Add(item5);
+                contextMenuStrip1.Items.Add(item6);
             }
             contextMenuStrip1.Show(guna2CircleButton1, new Point(0, guna2CircleButton1.Height));
         }
 
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
+            //
+        }
 
+        private void btnStages_Click(object sender, EventArgs e)
+        {
+            indicator.Visible = true;
+            var btnC = (Control)sender;
+            //Pages.SetPage(btn.Tag.ToString());     
+            indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
+            addcontrols2(new frmManProductionStage());
         }
     }
 }

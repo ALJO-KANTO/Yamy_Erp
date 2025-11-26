@@ -94,7 +94,7 @@ namespace YamyProject
                     string accountName = reader["account_name"].ToString();
                     decimal balance = reader["Balance"] != DBNull.Value ? Convert.ToDecimal(reader["Balance"]) : 0;
 
-                    int rowIndex = dgvSales.Rows.Add(rowId, bankName, accountName, balance.ToString("N2"));
+                    int rowIndex = dgvSales.Rows.Add(rowId, bankName, accountName, Utilities.FormatDecimal(balance));
                     dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                     dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
 

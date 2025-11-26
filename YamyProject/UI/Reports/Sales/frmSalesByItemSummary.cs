@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -59,6 +60,23 @@ namespace YamyProject
             dgvSales.Columns["id"].Visible = false;
 
             dgvSales.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["percent"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["avgPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["cogs"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["avgCogs"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["grossMargin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["grossMarginPercent"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["percent"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["avgPrice"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["cogs"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["avgCogs"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["grossMargin"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["grossMarginPercent"].DefaultCellStyle.Format = "N2";
+
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             dgvSales.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
@@ -82,6 +100,8 @@ namespace YamyProject
                     dgvSales.Rows.Add("e", "u", "1", "   ►   " + type, "", "", "", "", "", "", "", "", type.ToString());
                 }
             }
+
+            UpdateTotalsRow();
         }
         private void dgvSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -170,7 +190,7 @@ namespace YamyProject
                         int insertIndex = e.RowIndex + 1;
                         foreach (DataRow row in items.Rows)
                         {
-                            dgvSales.Rows.Insert(insertIndex, "n", "l", "3", space + "      " + row["item_name"], row["qty"], row["amount"],
+                            dgvSales.Rows.Insert(insertIndex, "n", "l", "3", space + "      " + row["item_name"], FormatNumber(row["qty"]), FormatNumber(row["amount"]),
                                 row["percent_of_sales"] + "%", row["avg_price"], row["cogs"], row["avg_cogs"],
                                 row["gross_margin"], row["gross_margin_percent"] + "%", row["id"].ToString(), row["id"]);
                             insertIndex++;
@@ -193,6 +213,14 @@ namespace YamyProject
                 dgvSales.Rows[e.RowIndex].Cells["colName"].Value = cellValue.Replace("▼", "►");
                 dgvSales.Rows[e.RowIndex].Cells["state"].Value = "e";
             }
+
+            UpdateTotalsRow();
+        }
+
+        private string FormatNumber(object val)
+        {
+            decimal result;
+            return decimal.TryParse(Convert.ToString(val), out result) ? result.ToString("N2") : "";
         }
 
         private void ToggleSalesChildren(int parentRowIndex, bool visible)
@@ -221,6 +249,7 @@ namespace YamyProject
                     break;
                 }
             }
+            UpdateTotalsRow();
         }
         private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -374,6 +403,7 @@ namespace YamyProject
                     dgvSales_CellClick(dgvSales, new DataGridViewCellEventArgs(0, i));
                 }
             }
+            UpdateTotalsRow();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -469,6 +499,93 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtpFrom, dtpTo);
                 LoadItemData();
             }
+        }
+        /// <summary>
+        /// Calculate totals for visible item rows and ensure a bold TOTAL row at the bottom.
+        /// </summary>
+        private void UpdateTotalsRow()
+        {
+            // Remove existing total row(s) first
+            for (int i = dgvSales.Rows.Count - 1; i >= 0; i--)
+            {
+                var state = dgvSales.Rows[i].Cells["state"].Value?.ToString();
+                if (state == "t")
+                    dgvSales.Rows.RemoveAt(i);
+            }
+
+            decimal totalQty = 0m;
+            decimal totalAmount = 0m;
+            decimal totalPercent = 0m;
+            decimal totalCogs = 0m;
+            decimal totalGross = 0m;
+            decimal totalGrossPercent = 0m;
+            int percentCount = 0;
+            int grossPercentCount = 0;
+
+            NumberStyles styles = NumberStyles.Any;
+            CultureInfo culture = CultureInfo.CurrentCulture;
+
+            for (int i = 0; i < dgvSales.Rows.Count; i++)
+            {
+                var row = dgvSales.Rows[i];
+                if (row.IsNewRow) continue;
+                if (!row.Visible) continue;
+
+                // Skip non-item rows (levels 1 and 2)
+                int lvl;
+                if (!int.TryParse(row.Cells["currLvl"].Value?.ToString() ?? "0", out lvl)) continue;
+                if (lvl != 3) continue;
+
+                string qtyStr = row.Cells["qty"].Value?.ToString() ?? "";
+                string amountStr = row.Cells["amount"].Value?.ToString() ?? "";
+                string percentStr = row.Cells["percent"].Value?.ToString() ?? "";
+                string cogsStr = row.Cells["cogs"].Value?.ToString() ?? "";
+                string grossStr = row.Cells["grossMargin"].Value?.ToString() ?? "";
+                string grossPercentStr = row.Cells["grossMarginPercent"].Value?.ToString() ?? "";
+
+                decimal d;
+                if (decimal.TryParse(qtyStr, styles, culture, out d)) totalQty += d;
+                if (decimal.TryParse(amountStr, styles, culture, out d)) totalAmount += d;
+
+                if (!string.IsNullOrWhiteSpace(percentStr))
+                {
+                    var p = percentStr.Replace("%", "").Trim();
+                    if (decimal.TryParse(p, styles, culture, out d))
+                    {
+                        totalPercent += d;
+                        percentCount++;
+                    }
+                }
+
+                if (decimal.TryParse(cogsStr, styles, culture, out d)) totalCogs += d;
+                if (decimal.TryParse(grossStr, styles, culture, out d)) totalGross += d;
+
+                if (!string.IsNullOrWhiteSpace(grossPercentStr))
+                {
+                    var gp = grossPercentStr.Replace("%", "").Trim();
+                    if (decimal.TryParse(gp, styles, culture, out d))
+                    {
+                        totalGrossPercent += d;
+                        grossPercentCount++;
+                    }
+                }
+            }
+
+            string qtyTotalStr = totalQty.ToString("N2", culture);
+            string amountTotalStr = totalAmount.ToString("N2", culture);
+            string percentTotalStr = percentCount > 0 ? totalPercent.ToString("N1", culture) + "%" : "";
+            string cogsTotalStr = totalCogs.ToString("N2", culture);
+            string grossTotalStr = totalGross.ToString("N2", culture);
+            string grossPercentTotalStr = grossPercentCount > 0 ? totalGrossPercent.ToString("N1", culture) + "%" : "";
+
+            // Add total row as last row
+            dgvSales.Rows.Add("t", "l", "0", "TOTAL", qtyTotalStr, amountTotalStr, percentTotalStr, "", cogsTotalStr, "", grossTotalStr, grossPercentTotalStr, "");
+
+            // Style the total row to be bold
+            var totalRow = dgvSales.Rows[dgvSales.Rows.Count - 1];
+            totalRow.DefaultCellStyle.Font = new System.Drawing.Font(dgvSales.Font, FontStyle.Bold);
+            totalRow.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
+            totalRow.ReadOnly = true;
         }
     }
 }

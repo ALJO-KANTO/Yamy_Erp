@@ -246,34 +246,40 @@ namespace YamyProject
             var parameters = new List<MySqlParameter> { new MySqlParameter("@id", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()) };
 
             string query = @"SELECT 
-                            ROW_NUMBER() OVER (ORDER BY t.id) AS SN,
-                            t.id,
-                            t.transaction_id AS `InvoiceId`,
-                            t.voucher_no as `V - No`,
-                            t.`Date`,
-                            ta.name AS `Account Name`,
-                            t.type AS `Type`,
-                            t.debit AS `Debit`,
-                            t.credit AS `Credit`,
-                            SUM(t.debit - t.credit) OVER (ORDER BY t.id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS `Balance`
-                        FROM 
-                            tbl_transaction t
-                        INNER JOIN 
-                            tbl_coa_level_4 ta ON t.account_id = ta.id
-                        WHERE
-                            t.hum_id = @id 
-                            AND t.state = 0 
-                            AND t.type IN (
-                                'Customer Receipt', 
-                                'Sales Invoice', 
-                                'Sales Invoice Cash', 
-                                'Customer Opening Balance', 
-                                'Customer Advance Payment',
-                                'Check Cancel (Customer)', 
-                                'SalesReturn Invoice', 
-                                'Credit Note', 
-                                'PDC Receivable'
-                            )";     
+                                    ROW_NUMBER() OVER (ORDER BY t.id) AS SN,
+                                    t.id,
+                                    t.transaction_id AS `InvoiceId`,
+                                    t.voucher_no AS `V - No`,
+                                    t.`Date`,
+                                    ta.name AS `Account Name`,
+                                    t.type AS `Type`,
+                                    t.debit AS `Debit`,
+                                    t.credit AS `Credit`,
+                                    SUM(
+                                        CASE 
+                                            WHEN t.type = 'Sales Invoice Cash' THEN 0
+                                            ELSE (t.debit - t.credit)
+                                        END
+                                    ) OVER (ORDER BY t.id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS `Balance`
+                                FROM 
+                                    tbl_transaction t
+                                INNER JOIN 
+                                    tbl_coa_level_4 ta ON t.account_id = ta.id
+                                WHERE
+                                    t.hum_id = @id
+                                    AND t.state = 0 
+                                    AND t.type IN (
+                                        'Customer Receipt', 
+                                        'Sales Invoice', 
+                                        'Sales Invoice Cash', 
+                                        'Customer Opening Balance', 
+                                        'Customer Advance Payment',
+                                        'Check Cancel (Customer)', 
+                                        'SalesReturn Invoice', 
+                                        'Credit Note', 
+                                        'PDC Receivable'
+                                    );
+                                ";     
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             decimal totalAmount = 0, totalPaidAmount = 0, amount = 0, paidAmount = 0;
             string _type = "";

@@ -92,7 +92,8 @@ namespace YamyProject
                                         'Check Cancel (Subcontractor)',
                                         'Purchase Return Invoice',
                                         'Debit Note',
-                                        'PDC Payable'
+                                        'PDC Payable',
+                                        'Project Planning'
                             )
                         GROUP BY hum_id
                     ) t ON t.hum_id = c.id
@@ -170,7 +171,8 @@ namespace YamyProject
                             'Check Cancel (Subcontractor)', 
                             'Purchase Return Invoice', 
                             'Debit Note', 
-                            'PDC Payable'
+                            'PDC Payable',
+                            'Project Planning'
                              )";
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             decimal totalAmount = 0, totalPaidAmount = 0, amount = 0, paidAmount = 0;

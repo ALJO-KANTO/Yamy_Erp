@@ -57,9 +57,20 @@ namespace YamyProject
                     dgvSales.Columns.Add("91_plus", "> 90");
                     dgvSales.Columns.Add("total", "Total");
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+                    dgvSales.Columns["0_days"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["0_days"].DefaultCellStyle.Format = "N2";
+                    dgvSales.Columns["1_30"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["1_30"].DefaultCellStyle.Format = "N2";
+                    dgvSales.Columns["31_60"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["31_60"].DefaultCellStyle.Format = "N2";
+                    dgvSales.Columns["61_90"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["61_90"].DefaultCellStyle.Format = "N2";
+                    dgvSales.Columns["91_plus"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvSales.Columns["91_plus"].DefaultCellStyle.Format = "N2";
                 }
 
                 dgvSales.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["total"].DefaultCellStyle.Format = "N2";
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {

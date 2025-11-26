@@ -58,7 +58,7 @@ namespace YamyProject
             if (dgvSales.Columns.Count == 0)
             {
                 dgvSales.Columns.Add("id", "");
-                dgvSales.Columns.Add("Account", "");
+                dgvSales.Columns.Add("Account", "Name");
                 dgvSales.Columns.Add("Amount", firstDateStr);
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
@@ -257,26 +257,61 @@ namespace YamyProject
             {
                 saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
                 saveDialog.Title = "Save Excel File";
-                saveDialog.FileName = "CustomerBalance.xlsx";
+                saveDialog.FileName = "CustomerBalanceSummary.xlsx";
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
-                    worksheet.Name = "Customer Balance";
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = "Customer Balance Summary";
 
+                    Excel.Range headerRange0 = worksheet.Range["A1", "B1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["A2", "B2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = guna2HtmlLabel7.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["A3", "B3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dtpFrom.Text + " - To " + dtpTo.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["B1", "C1"];
-                    headerRange.Merge();
-                    headerRange.Value = DateTime.Now.ToString("MMM dd, yy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
-                    int rowIndex = 2;
+                    // Column headers
+                    string[] headers = { "Name", "Balance" };
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        worksheet.Cells[rowIndex, i + 1] = headers[i];
+                        var cell = worksheet.Cells[rowIndex, i + 1];
+                        cell.Font.Bold = true;
+                        cell.Font.Name = "Times New Roman";
+                        cell.Font.Size = 10;
+                        cell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    }
+
+                    rowIndex++; // move to next row for data
                     foreach (DataGridViewRow row in dgvSales.Rows)
                     {
                         if (row.IsNewRow) continue;
@@ -300,7 +335,7 @@ namespace YamyProject
 
                             amountCell.Font.Size = 10;
                             amountCell.Font.Bold = true;
-                            amountCell.Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            amountCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
                         }
                         else
                         {
@@ -310,7 +345,7 @@ namespace YamyProject
                             amountCell.Font.Size = 9;
                         }
 
-                        amountCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                        amountCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         rowIndex++;
                     }
 

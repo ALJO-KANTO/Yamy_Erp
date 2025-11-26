@@ -37,6 +37,7 @@
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnStages = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnWorkFlowCenter = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnHome = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -186,6 +187,7 @@
             // 
             // guna2GradientPanel2
             // 
+            this.guna2GradientPanel2.Controls.Add(this.btnStages);
             this.guna2GradientPanel2.Controls.Add(this.guna2CircleButton1);
             this.guna2GradientPanel2.Controls.Add(this.btnWorkFlowCenter);
             this.guna2GradientPanel2.Controls.Add(this.btnHome);
@@ -206,6 +208,29 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(48, 640);
             this.guna2GradientPanel2.TabIndex = 2;
             // 
+            // btnStages
+            // 
+            this.btnStages.BackColor = System.Drawing.Color.Transparent;
+            this.btnStages.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStages.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnStages.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnStages.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnStages.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStages.FillColor = System.Drawing.Color.Transparent;
+            this.btnStages.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnStages.ForeColor = System.Drawing.Color.White;
+            this.btnStages.Image = global::YamyProject.Properties.Resources.Sync;
+            this.btnStages.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnStages.Location = new System.Drawing.Point(11, 198);
+            this.btnStages.Name = "btnStages";
+            this.btnStages.PressedDepth = 0;
+            this.btnStages.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnStages.Size = new System.Drawing.Size(25, 25);
+            this.btnStages.TabIndex = 21;
+            this.btnStages.Tag = "Products";
+            this.guna2HtmlToolTip1.SetToolTip(this.btnStages, "Process Stage");
+            this.btnStages.Click += new System.EventHandler(this.btnStages_Click);
+            // 
             // guna2CircleButton1
             // 
             this.guna2CircleButton1.BackColor = System.Drawing.Color.Transparent;
@@ -219,7 +244,7 @@
             this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton1.Image = global::YamyProject.Properties.Resources.Categorize3;
             this.guna2CircleButton1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2CircleButton1.Location = new System.Drawing.Point(11, 373);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(11, 404);
             this.guna2CircleButton1.Name = "guna2CircleButton1";
             this.guna2CircleButton1.PressedDepth = 0;
             this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -242,7 +267,7 @@
             this.btnWorkFlowCenter.ForeColor = System.Drawing.Color.White;
             this.btnWorkFlowCenter.Image = global::YamyProject.Properties.Resources.Dashboard22_Layout;
             this.btnWorkFlowCenter.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnWorkFlowCenter.Location = new System.Drawing.Point(11, 331);
+            this.btnWorkFlowCenter.Location = new System.Drawing.Point(11, 362);
             this.btnWorkFlowCenter.Name = "btnWorkFlowCenter";
             this.btnWorkFlowCenter.PressedDepth = 0;
             this.btnWorkFlowCenter.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -288,7 +313,7 @@
             this.btnworkOrder.ForeColor = System.Drawing.Color.White;
             this.btnworkOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnworkOrder.Image")));
             this.btnworkOrder.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnworkOrder.Location = new System.Drawing.Point(13, 248);
+            this.btnworkOrder.Location = new System.Drawing.Point(13, 278);
             this.btnworkOrder.Name = "btnworkOrder";
             this.btnworkOrder.PressedDepth = 0;
             this.btnworkOrder.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -311,14 +336,14 @@
             this.btnSuff.ForeColor = System.Drawing.Color.White;
             this.btnSuff.Image = ((System.Drawing.Image)(resources.GetObject("btnSuff.Image")));
             this.btnSuff.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnSuff.Location = new System.Drawing.Point(12, 205);
+            this.btnSuff.Location = new System.Drawing.Point(12, 235);
             this.btnSuff.Name = "btnSuff";
             this.btnSuff.PressedDepth = 0;
             this.btnSuff.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnSuff.Size = new System.Drawing.Size(25, 25);
             this.btnSuff.TabIndex = 14;
             this.btnSuff.Tag = "Leads";
-            this.guna2HtmlToolTip1.SetToolTip(this.btnSuff, "Stuff ");
+            this.guna2HtmlToolTip1.SetToolTip(this.btnSuff, "Staff ");
             this.btnSuff.Click += new System.EventHandler(this.guna2CircleButton3_Click);
             // 
             // guna2CircleButton2
@@ -334,7 +359,7 @@
             this.guna2CircleButton2.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton2.Image = global::YamyProject.Properties.Resources.loginN;
             this.guna2CircleButton2.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2CircleButton2.Location = new System.Drawing.Point(12, 415);
+            this.guna2CircleButton2.Location = new System.Drawing.Point(12, 446);
             this.guna2CircleButton2.Name = "guna2CircleButton2";
             this.guna2CircleButton2.PressedDepth = 0;
             this.guna2CircleButton2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -379,7 +404,7 @@
             this.btnProducts.ForeColor = System.Drawing.Color.White;
             this.btnProducts.Image = global::YamyProject.Properties.Resources.productN;
             this.btnProducts.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnProducts.Location = new System.Drawing.Point(12, 119);
+            this.btnProducts.Location = new System.Drawing.Point(12, 162);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.PressedDepth = 0;
             this.btnProducts.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -402,7 +427,7 @@
             this.btnMachineRecords.ForeColor = System.Drawing.Color.White;
             this.btnMachineRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnMachineRecords.Image")));
             this.btnMachineRecords.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMachineRecords.Location = new System.Drawing.Point(12, 162);
+            this.btnMachineRecords.Location = new System.Drawing.Point(12, 119);
             this.btnMachineRecords.Name = "btnMachineRecords";
             this.btnMachineRecords.PressedDepth = 0;
             this.btnMachineRecords.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -425,7 +450,7 @@
             this.btnOrders.ForeColor = System.Drawing.Color.White;
             this.btnOrders.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.Image")));
             this.btnOrders.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnOrders.Location = new System.Drawing.Point(12, 292);
+            this.btnOrders.Location = new System.Drawing.Point(12, 322);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.PressedDepth = 0;
             this.btnOrders.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -958,5 +983,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2CircleButton btnStages;
     }
 }

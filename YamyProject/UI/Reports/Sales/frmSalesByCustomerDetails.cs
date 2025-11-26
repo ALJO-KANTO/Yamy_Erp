@@ -35,7 +35,7 @@ namespace YamyProject
         private void frmSalesByCustomerDetails_Load(object sender, EventArgs e)
         {
             btnPrint.Text = "Print ▼";
-            LoadSalesData();
+
             DateTime dated = DateTime.Now;
             guna2HtmlLabel11.Text = dated.TimeOfDay.ToString();
             guna2HtmlLabel11.Text = dated.Date.ToShortDateString();
@@ -82,6 +82,12 @@ namespace YamyProject
                 dgvSales.Columns.Add("amount", "Amount");
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
+                dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
+                dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
                 dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -123,6 +129,11 @@ namespace YamyProject
                 DBClass.CreateParameter("startDate", dateTimePicker1.Value.Date),
                 DBClass.CreateParameter("endDate", dateTimePicker2.Value.Date)
                 };
+
+            if(id < 0)
+            {
+                salesQuery = salesQuery.Replace("s.customer_id = @cid", "1=1");
+            }
 
             using (MySqlDataReader salesReader = DBClass.ExecuteReader(salesQuery, param.ToArray()))
             {

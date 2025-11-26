@@ -49,13 +49,109 @@ namespace YamyProject
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            //
+            string companyName = guna2HtmlLabel8.Text.Trim();
+
+            Document doc = new Document();
+            Section section = doc.AddSection();
+
+            // Margins
+            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.RightMargin = Unit.FromCentimeter(1);
+            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+
+            // Header
+            Paragraph header = section.AddParagraph();
+            header.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold);
+            header.AddFormattedText("Vendor Balance Detail\n", TextFormat.Bold);
+            header.AddFormattedText("From " + dtpFrom.Value.ToShortDateString() +
+                                    " To " + dtpTo.Value.ToShortDateString(), TextFormat.NotBold);
+            header.Format.Alignment = ParagraphAlignment.Center;
+            header.Format.SpaceAfter = "0.5cm";
+
+            // Table
+            Table table = section.AddTable();
+            table.Borders.Width = 0.75;
+            table.Format.Font.Name = "Times New Roman";
+            table.Format.Font.Size = 9;
+
+            //dgvSales.Columns.Add("id", "id");
+            //dgvSales.Columns.Add("Type", "Type");
+            //dgvSales.Columns.Add("Date", "Date");
+            //dgvSales.Columns.Add("Num", "Num");
+            //dgvSales.Columns.Add("Account", "Account");
+            //dgvSales.Columns.Add("Amount", "Amount");
+            //dgvSales.Columns.Add("Balance", "Balance");
+            table.AddColumn("3cm"); // Type
+            table.AddColumn("2.5cm"); // Date
+            table.AddColumn("3cm"); // Num
+            table.AddColumn("7cm"); // Account
+            table.AddColumn("3cm"); // Amount
+            table.AddColumn("3cm"); // Balance
+
+            Row th = table.AddRow();
+            th.Shading.Color = Colors.LightGray;
+            th.Format.Font.Bold = true;
+            th.Cells[0].AddParagraph("Type");
+            th.Cells[1].AddParagraph("Date");
+            th.Cells[2].AddParagraph("Num");
+            th.Cells[3].AddParagraph("Account");
+            th.Cells[4].AddParagraph("Amount").Format.Alignment = ParagraphAlignment.Right;
+            th.Cells[5].AddParagraph("Balance").Format.Alignment = ParagraphAlignment.Right;
+
+            decimal totalAmount = 0, totalBalance = 0;
+            int sn = 1;
+
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string type = row.Cells["Type"].Value?.ToString() ?? "";
+                string date = row.Cells["Date"].Value?.ToString() ?? "";
+                string num = row.Cells["Num"].Value?.ToString() ?? "";
+                string account = row.Cells["Account"].Value?.ToString() ?? "";
+                string amountStr = row.Cells["Amount"].Value?.ToString() ?? "";
+                string balanceStr = row.Cells["Balance"].Value?.ToString() ?? "";
+
+                if (account.ToUpper().Contains("TOTAL")) continue;
+
+                decimal amount = 0;
+                decimal.TryParse(amountStr.Trim(), out amount);
+                totalAmount += amount;
+                decimal balance = 0;
+                decimal.TryParse(balanceStr.Trim(), out balance);
+                totalBalance += balance;
+
+                Row r = table.AddRow();
+                r.Cells[0].AddParagraph(type);
+                r.Cells[1].AddParagraph(date);
+                r.Cells[2].AddParagraph(num);
+                r.Cells[3].AddParagraph(account);
+                r.Cells[4].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                r.Cells[5].AddParagraph(balance.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+
+                sn++;
+            }
+
+            // Total row
+            Row totalRow = table.AddRow();
+            totalRow.Cells[0].MergeRight = 1;
+            totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+            totalRow.Cells[4].AddParagraph(totalAmount.ToString("N2")).Format.Font.Bold = true;
+            totalRow.Cells[4].Format.Alignment = ParagraphAlignment.Right;
+            totalRow.Cells[5].AddParagraph(totalBalance.ToString("N2")).Format.Font.Bold = true;
+            totalRow.Cells[5].Format.Alignment = ParagraphAlignment.Right;
+
+            // Render PDF
+            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+            renderer.Document = doc;
+            renderer.RenderDocument();
+
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "VendorBalanceDetail.pdf");
+            renderer.PdfDocument.Save(filePath);
+            Process.Start("explorer.exe", filePath);
         }
 
-        private void Report_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Exporting Report...");
-        }
         private void LoadSalesData()
         {
             dgvSales.Rows.Clear();
@@ -73,7 +169,9 @@ namespace YamyProject
 
                 dgvSales.Columns["Account"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvSales.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["Amount"].DefaultCellStyle.Format = "N2";
                 dgvSales.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvSales.Columns["Balance"].DefaultCellStyle.Format = "N2";
                 dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                 dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
@@ -235,111 +333,6 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtpFrom, dtpTo);
                 LoadSalesData();
             }
-        }
-
-        private void SavePDF_Click(object sender, EventArgs e)
-        {
-            string companyName = guna2HtmlLabel8.Text.Trim();
-
-            Document doc = new Document();
-            Section section = doc.AddSection();
-
-            // Margins
-            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
-            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
-            section.PageSetup.RightMargin = Unit.FromCentimeter(1);
-            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
-
-            // Header
-            Paragraph header = section.AddParagraph();
-            header.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold);
-            header.AddFormattedText("Vendor Balance Detail\n", TextFormat.Bold);
-            header.AddFormattedText("From " + dtpFrom.Value.ToShortDateString() +
-                                    " To " + dtpTo.Value.ToShortDateString(), TextFormat.NotBold);
-            header.Format.Alignment = ParagraphAlignment.Center;
-            header.Format.SpaceAfter = "0.5cm";
-
-            // Table
-            Table table = section.AddTable();
-            table.Borders.Width = 0.75;
-            table.Format.Font.Name = "Times New Roman";
-            table.Format.Font.Size = 9;
-
-            //dgvSales.Columns.Add("id", "id");
-            //dgvSales.Columns.Add("Type", "Type");
-            //dgvSales.Columns.Add("Date", "Date");
-            //dgvSales.Columns.Add("Num", "Num");
-            //dgvSales.Columns.Add("Account", "Account");
-            //dgvSales.Columns.Add("Amount", "Amount");
-            //dgvSales.Columns.Add("Balance", "Balance");
-            table.AddColumn("3cm"); // Type
-            table.AddColumn("2.5cm"); // Date
-            table.AddColumn("3cm"); // Num
-            table.AddColumn("7cm"); // Account
-            table.AddColumn("3cm"); // Amount
-            table.AddColumn("3cm"); // Balance
-
-            Row th = table.AddRow();
-            th.Shading.Color = Colors.LightGray;
-            th.Format.Font.Bold = true;
-            th.Cells[0].AddParagraph("Type");
-            th.Cells[1].AddParagraph("Date");
-            th.Cells[2].AddParagraph("Num");
-            th.Cells[3].AddParagraph("Account");
-            th.Cells[4].AddParagraph("Amount").Format.Alignment = ParagraphAlignment.Right;
-            th.Cells[5].AddParagraph("Balance").Format.Alignment = ParagraphAlignment.Right;
-
-            decimal totalAmount = 0, totalBalance = 0;
-            int sn = 1;
-
-            foreach (DataGridViewRow row in dgvSales.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                string type = row.Cells["Type"].Value?.ToString() ?? "";
-                string date = row.Cells["Date"].Value?.ToString() ?? "";
-                string num = row.Cells["Num"].Value?.ToString() ?? "";
-                string account = row.Cells["Account"].Value?.ToString() ?? "";
-                string amountStr = row.Cells["Amount"].Value?.ToString() ?? "";
-                string balanceStr = row.Cells["Balance"].Value?.ToString() ?? "";
-
-                if (account.ToUpper().Contains("TOTAL")) continue;
-
-                decimal amount = 0;
-                decimal.TryParse(amountStr.Trim(), out amount);
-                totalAmount += amount;
-                decimal balance = 0;
-                decimal.TryParse(balanceStr.Trim(), out balance);
-                totalBalance += balance;
-
-                Row r = table.AddRow();
-                r.Cells[0].AddParagraph(type);
-                r.Cells[1].AddParagraph(date);
-                r.Cells[2].AddParagraph(num);
-                r.Cells[3].AddParagraph(account);
-                r.Cells[4].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
-                r.Cells[5].AddParagraph(balance.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
-
-                sn++;
-            }
-
-            // Total row
-            Row totalRow = table.AddRow();
-            totalRow.Cells[0].MergeRight = 1;
-            totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
-            totalRow.Cells[4].AddParagraph(totalAmount.ToString("N2")).Format.Font.Bold = true;
-            totalRow.Cells[4].Format.Alignment = ParagraphAlignment.Right;
-            totalRow.Cells[5].AddParagraph(totalBalance.ToString("N2")).Format.Font.Bold = true;
-            totalRow.Cells[5].Format.Alignment = ParagraphAlignment.Right;
-
-            // Render PDF
-            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-            renderer.Document = doc;
-            renderer.RenderDocument();
-
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "VendorBalanceDetail.pdf");
-            renderer.PdfDocument.Save(filePath);
-            Process.Start("explorer.exe", filePath);
         }
 
         private void btnExcel_Click(object sender, EventArgs e)

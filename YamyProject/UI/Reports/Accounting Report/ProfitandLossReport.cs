@@ -1,12 +1,15 @@
-﻿using MigraDoc.DocumentObjectModel;
+﻿using Guna.UI2.WinForms;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -28,7 +31,7 @@ namespace YamyProject
         {
             DateTime sDateOfY = new DateTime(d.Year, 1, 1);
             DateTime eDateOfY = new DateTime(d.Year, 12, 31);
-            
+
             dtFrom.Value = sDateOfY;
             dtTo.Value = eDateOfY;
         }
@@ -45,36 +48,199 @@ namespace YamyProject
             }
 
             btnPrint.Text = "Print ▼";
-            AddDGVColumns();
-            BindDGV();
+            dateChangeTo();
+
+            BindDGV_Data();
+        }
+        DateTime prevFrom;
+        DateTime prevTo;
+        private void dateChangeTo()
+        {
+            if (reportType == "Prev Year Comparison" || reportType == "by Job" || reportType == "by class")
+            {
+                dtFrom.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+            prevFrom = new DateTime(dtFrom.Value.Year, 1, 1);
+            prevTo = new DateTime(dtTo.Value.Year, dtTo.Value.Month, DateTime.DaysInMonth(dtTo.Value.Year, dtTo.Value.Month));
         }
 
-        private void AddDGVColumns()
+        private void AddDGVColumnsAll()
         {
-            dgvCustomer.Columns.Add("state", "");
-            dgvCustomer.Columns.Add("loadState", "");
-            dgvCustomer.Columns.Add("currLvl", "");
-            dgvCustomer.Columns.Add("lvl1", "Account Name");
-            dgvCustomer.Columns.Add("id", "");
-            dgvCustomer.Columns.Add("currname", "");
-            dgvCustomer.Columns.Add("balance", "Amount");
+            dgvCustomer.Columns.Clear();
+            if (reportType == "standard" || reportType == "Unclassified")
+            {
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                dgvCustomer.Columns.Add("balance", "Amount");
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
+            else if (reportType == "YTS Comparison")
+            {
+                string currentPeriod = $"{dtFrom.Value:MMM ''yy} – {dtTo.Value:MMM ''yy}";
+                string previousPeriod = $"{prevFrom:MMM ''yy} – {prevTo:MMM ''yy}";
+                var s = "";
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                dgvCustomer.Columns.Add("balance1", currentPeriod);
+                dgvCustomer.Columns.Add("balance2", previousPeriod);
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.Columns["balance2"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance1"].HeaderCell.Style.Format = dgvCustomer.Columns["balance2"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.Columns["balance2"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
+            else if (reportType == "Prev Year Comparison")
+            {
+                dgvCustomer.Dock = DockStyle.Fill;
+                string currentPeriod = $"{dtFrom.Value:MMM dd} – {dtTo.Value:MMM dd yy}";
+                string previousPeriod = $"{prevFrom:MMM dd} – {prevTo:MMM dd yy}";
+
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                dgvCustomer.Columns.Add("balance1", currentPeriod);
+                dgvCustomer.Columns.Add("balance2", previousPeriod);
+                dgvCustomer.Columns.Add("change", "Change");
+                dgvCustomer.Columns.Add("change_percentage", "% Change");
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance1"].DefaultCellStyle.Alignment =
+                    dgvCustomer.Columns["balance2"].DefaultCellStyle.Alignment =
+                    dgvCustomer.Columns["change"].DefaultCellStyle.Alignment =
+                    dgvCustomer.Columns["change_percentage"].DefaultCellStyle.Alignment =
+                    DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment =
+                    dgvCustomer.Columns["balance1"].HeaderCell.Style.Alignment =
+                    dgvCustomer.Columns["balance2"].HeaderCell.Style.Alignment =
+                    dgvCustomer.Columns["change"].HeaderCell.Style.Alignment =
+                    dgvCustomer.Columns["change_percentage"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance1"].HeaderCell.Style.Format = dgvCustomer.Columns["balance2"].HeaderCell.Style.Format = dgvCustomer.Columns["change"].HeaderCell.Style.Format = dgvCustomer.Columns["change_percentage"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
+            else if(reportType == "by Job")
+            {
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                // here i want column name from job name(customer name) from tbl_customer and total amount from tbl_transaction
+                dgvCustomer.Columns.Add("balance", "Total");
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
+            else if(reportType == "by Class")
+            {
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                dgvCustomer.Columns.Add("balance", "Unclassified");
+                dgvCustomer.Columns.Add("balance1", "Total");
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.Columns["balance1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.Columns["balance1"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
+            else if (reportType == "Unclassified")
+            {
+                dgvCustomer.Columns.Add("state", "");
+                dgvCustomer.Columns.Add("loadState", "");
+                dgvCustomer.Columns.Add("currLvl", "");
+                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("id", "");
+                dgvCustomer.Columns.Add("currname", "");
+                dgvCustomer.Columns.Add("balance", "Amount");
+                dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+                dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
+                dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            }
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
-            dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
-
-            dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-
-            dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
         }
 
-        public void BindDGV()
+        public void BindDGV_Data()
         {
-            dgvCustomer.Rows.Clear();
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+            AddDGVColumnsAll();
+
+            if (reportType == "standard")
+            {
+                dgvCustomer.Rows.Clear();
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                         WITH AccountBalances AS (
                             -- Calculate balances for Income, Cost, and Expenses
                             SELECT 
@@ -85,7 +251,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.name IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
                             GROUP BY l1.name
                         ),
 
@@ -115,7 +281,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.name IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
                             GROUP BY l1.id, l1.name
                         )
 
@@ -135,22 +301,576 @@ namespace YamyProject
                         ORDER BY eb.id;
 
                         "))
-            {
-                while (reader.Read())
-                    dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
-                        reader["id"].ToString(), reader["name"].ToString(),
-                        reader["balance"].ToString());
-
-                // Auto-expand everything
-                for (int i = 0; i < dgvCustomer.Rows.Count; i++)
                 {
-                    ExpandRowRecursively(i);
+                    while (reader.Read())
+                        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
                 }
             }
-            //dgvCustomer.DefaultCellStyle.BackColor = Color.LightCyan;
-            //dgvCustomer.Columns["balance"].DefaultCellStyle.BackColor = Color.LightGray;
-            //dgvCustomer.Columns["balance"].DefaultCellStyle.ForeColor = Color.DarkBlue;
-            //dgvCustomer.Columns["balance"].DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            else if (reportType == "YTS Comparison")
+            {
+                dgvCustomer.Rows.Clear();
+                headerUC1.FormText = this.Text + " " + reportType;
+                guna2HtmlLabel7.Text = this.Text + " " + reportType;
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                        WITH AccountBalances AS (
+                            -- Calculate balances for Income, Cost, and Expenses
+                            SELECT 
+                                l1.name AS Category, 
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END),0) AS Balance1,
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END),0) AS Balance2
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.name
+                        ),
+
+                        FinalBalance AS (
+                            -- Calculate final balance: Income - Cost - Expenses
+                            SELECT 
+                                'Final Balance (Income - Cost - Expenses)' AS Category,
+                                COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Income'),0) 
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Cost'),0)
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance1,
+
+                                COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Income'),0) 
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Cost'),0)
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance2
+                        ),
+
+                        EquityBalances AS (
+                            -- Calculate balances for Assets, Liabilities, and Equity
+                            SELECT 
+                                l1.name, 
+                                l1.id, 
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END),0) AS Balance1,
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END),0) AS Balance2
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.id, l1.name
+                        )
+
+                        -- Final result combining the balances
+                        SELECT 
+                            eb.name, 
+                            eb.id, 
+                            CASE 
+                                WHEN eb.name='Equity' THEN eb.Balance1 + (SELECT Balance1 FROM FinalBalance)
+                                ELSE eb.Balance1
+                            END AS Balance1,
+                            CASE 
+                                WHEN eb.name='Equity' THEN eb.Balance2 + (SELECT Balance2 FROM FinalBalance)
+                                ELSE eb.Balance2
+                            END AS Balance2
+                        FROM EquityBalances eb
+                        ORDER BY eb.id;
+
+                        ",
+                        DBClass.CreateParameter("@currentFrom", dtFrom.Value),
+                        DBClass.CreateParameter("@currentTo", dtTo.Value),
+                        DBClass.CreateParameter("@prevFrom", prevFrom),
+                        DBClass.CreateParameter("@prevTo", prevTo)
+                        )
+                    )
+                {
+                    while (reader.Read())
+                        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(reader["balance1"].ToString()), Utilities.FormatDecimal(reader["balance2"].ToString()));
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
+                }
+            }
+            else if (reportType == "Prev Year Comparison")
+            {
+                dgvCustomer.Rows.Clear();
+                headerUC1.FormText = this.Text + " " + reportType;
+                guna2HtmlLabel7.Text = this.Text + " " + reportType;
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                        WITH AccountBalances AS (
+                            -- Calculate balances for Income, Cost, and Expenses
+                            SELECT 
+                                l1.name AS Category, 
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END),0) AS Balance1,
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END),0) AS Balance2
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.name
+                        ),
+
+                        FinalBalance AS (
+                            -- Calculate final balance: Income - Cost - Expenses
+                            SELECT 
+                                'Final Balance (Income - Cost - Expenses)' AS Category,
+                                COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Income'),0) 
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Cost'),0)
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance1,
+
+                                COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Income'),0) 
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Cost'),0)
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance2
+                        ),
+
+                        EquityBalances AS (
+                            -- Calculate balances for Assets, Liabilities, and Equity
+                            SELECT 
+                                l1.name, 
+                                l1.id, 
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END),0) AS Balance1,
+                                COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END),0) AS Balance2
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.id, l1.name
+                        )
+
+                        -- Final result combining the balances
+                        SELECT 
+                            eb.name, 
+                            eb.id, 
+                            CASE 
+                                WHEN eb.name='Equity' THEN eb.Balance1 + (SELECT Balance1 FROM FinalBalance)
+                                ELSE eb.Balance1
+                            END AS Balance1,
+                            CASE 
+                                WHEN eb.name='Equity' THEN eb.Balance2 + (SELECT Balance2 FROM FinalBalance)
+                                ELSE eb.Balance2
+                            END AS Balance2
+                        FROM EquityBalances eb
+                        ORDER BY eb.id;
+
+                        ",
+                        DBClass.CreateParameter("@currentFrom", dtFrom.Value),
+                        DBClass.CreateParameter("@currentTo", dtTo.Value),
+                        DBClass.CreateParameter("@prevFrom", prevFrom),
+                        DBClass.CreateParameter("@prevTo", prevTo)
+                        )
+                    )
+                {
+                    while (reader.Read())
+                    {
+                        decimal balance1 = Convert.ToDecimal(reader["balance1"] ?? 0);
+                        decimal balance2 = Convert.ToDecimal(reader["balance2"] ?? 0);
+                        // Calculate $ Change
+                        decimal change = balance1 - balance2;
+
+                        // Calculate % Change (avoid division by zero)
+                        decimal percentChange = (balance2 != 0)
+                            ? (change / balance2) * 100
+                            : 0;
+
+                        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                                                reader["id"].ToString(), reader["name"].ToString(), Utilities.FormatDecimal(balance1),
+                                                Utilities.FormatDecimal(balance2), Utilities.FormatDecimal(change), $"{percentChange:N1}%"
+                                             );
+                    }
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
+                }
+            }
+            else if (reportType == "by Job")
+            {
+                headerUC1.FormText = this.Text + " " + reportType;
+                guna2HtmlLabel7.Text = this.Text + " " + reportType;
+                
+                //dgvCustomer.Columns.Clear();
+                DataTable customersTable = DBClass.ExecuteDataTable(@"SELECT DISTINCT 
+                                                                            c.name,c.id
+                                                                        FROM tbl_customer AS c
+                                                                        JOIN tbl_transaction AS t 
+                                                                            ON c.id = t.hum_id
+                                                                        WHERE t.hum_id <> 0
+                                                                          AND EXISTS (
+                                                                                SELECT 1
+                                                                                FROM tbl_transaction AS tx
+                                                                                LEFT JOIN tbl_coa_level_4 AS l4 ON tx.account_id = l4.id
+                                                                                LEFT JOIN tbl_coa_level_3 AS l3 ON l4.main_id = l3.id
+                                                                                LEFT JOIN tbl_coa_level_2 AS l2 ON l3.main_id = l2.id
+                                                                                LEFT JOIN tbl_coa_level_1 AS l1 ON l2.main_id = l1.id
+                                                                                WHERE 
+                                                                                    (tx.id = t.id
+                                                                                     OR (tx.type = t.type AND tx.transaction_id = t.transaction_id))
+                                                                                  AND l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                                                                            )
+                                                                          AND t.type IN (
+                                                                                'Customer Receipt',
+                                                                                'Sales Invoice',
+                                                                                'Customer Opening Balance',
+                                                                                'Customer Advance Payment',
+                                                                                'Check Cancel (Customer)',
+                                                                                'SalesReturn Invoice',
+                                                                                'Credit Note',
+                                                                                'PDC Receivable'
+                                                                            )
+                                                                          AND t.date BETWEEN @sDate AND @eDate
+                                                                        ORDER BY c.name;
+                                                                      ", 
+                                                                      DBClass.CreateParameter("sDate", dtFrom.Value),
+                                                                      DBClass.CreateParameter("eDate", dtTo.Value));
+                // Build dynamic CASE SUM(...) for each customer
+                string pivotColumns = string.Join(", ",
+                                                        customersTable.Rows.Cast<DataRow>().Select(c =>
+                                                        {
+                                                            string customerName = c["name"].ToString();
+                                                            string customerId = c["id"].ToString();
+
+                                                            return $@"
+                                                                SUM(
+                                                                    CASE 
+                                                                        WHEN t.hum_id = {customerId} THEN 
+                                                                            CASE 
+                                                                                WHEN t.type = 'Sales Invoice Cash' THEN -(COALESCE(t.debit - t.credit, 0))
+                                                                                ELSE COALESCE(t.debit - t.credit, 0)
+                                                                            END
+                                                                        ELSE 0
+                                                                    END
+                                                                ) AS `{MySqlHelper.EscapeString(customerName)}`
+                                                            ";
+                                                        })
+                                                    );
+
+
+                // Build final SQL
+                string sql = $@"
+                                SELECT 
+                                    l1.id,
+                                    l1.name AS AccountName,
+                                    {pivotColumns},
+                                    SUM(
+                                        CASE 
+                                            WHEN t.type = 'Sales Invoice Cash' THEN -(COALESCE(t.debit - t.credit, 0))
+                                            ELSE COALESCE(t.debit - t.credit, 0)
+                                        END
+                                    ) AS Total
+                                FROM tbl_coa_level_1 AS l1
+                                LEFT JOIN tbl_coa_level_2 AS l2 ON l2.main_id = l1.id
+                                LEFT JOIN tbl_coa_level_3 AS l3 ON l3.main_id = l2.id
+                                LEFT JOIN tbl_coa_level_4 AS l4 ON l4.main_id = l3.id
+                                LEFT JOIN tbl_transaction AS t 
+                                    ON t.account_id = l4.id
+                                LEFT JOIN tbl_customer AS c 
+                                    ON c.id = t.hum_id
+                                WHERE t.hum_id <> 0
+                                  AND EXISTS (
+                                        SELECT 1
+                                        FROM tbl_transaction AS tx
+                                        LEFT JOIN tbl_coa_level_4 AS lx4 ON tx.account_id = lx4.id
+                                        LEFT JOIN tbl_coa_level_3 AS lx3 ON lx4.main_id = lx3.id
+                                        LEFT JOIN tbl_coa_level_2 AS lx2 ON lx3.main_id = lx2.id
+                                        LEFT JOIN tbl_coa_level_1 AS lx1 ON lx2.main_id = lx1.id
+                                        WHERE 
+                                            (tx.id = t.id
+                                             OR (tx.type = t.type AND tx.transaction_id = t.transaction_id))
+                                          AND lx1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                                    )
+                                  AND t.type IN (
+                                        'Customer Receipt',
+                                        'Sales Invoice',
+                                        'Customer Opening Balance',
+                                        'Customer Advance Payment',
+                                        'Check Cancel (Customer)',
+                                        'SalesReturn Invoice',
+                                        'Credit Note',
+                                        'PDC Receivable'
+                                    )
+                                  AND t.date BETWEEN @sDate AND @eDate
+                                GROUP BY l1.id, l1.name
+                                ORDER BY l1.id;
+                                ";
+
+                // Execute
+                DataTable ResultData = DBClass.ExecuteDataTable(sql,
+                    DBClass.CreateParameter("sDate", dtFrom.Value),
+                    DBClass.CreateParameter("eDate", dtTo.Value));
+
+                var op = "";
+                dgvCustomer.Columns.Clear();
+                dgvCustomer.DataSource = ResultData;
+                dgvCustomer.Columns["id"].Visible = false;
+                //dgvCustomer.Columns.Add("state", "");
+                //dgvCustomer.Columns.Add("loadState", "");
+                //dgvCustomer.Columns.Add("currLvl", "");
+                //dgvCustomer.Columns.Add("lvl1", "Account Name");
+                //dgvCustomer.Columns.Add("id", "");
+                //dgvCustomer.Columns.Add("currname", "");
+                //using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                //        WITH AccountBalances AS (
+                //            -- Calculate balances for Income, Cost, and Expenses
+                //            SELECT 
+                //                l1.name AS Category, 
+                //                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
+                //            FROM tbl_coa_level_1 l1
+                //            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                //            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                //            GROUP BY l1.name
+                //        ),
+
+                //        FinalBalance AS (
+                //            -- Calculate final balance: Income - Cost - Expenses
+                //            SELECT 
+                //                'Final Balance (Income - Cost - Expenses)' AS Category,
+                //                COALESCE(
+                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'Income'), 0
+                //                ) -
+                //                COALESCE(
+                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
+                //                ) -
+                //                COALESCE(
+                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                //                ) AS Balance
+                //        ),
+
+                //        EquityBalances AS (
+                //            -- Calculate balances for Assets, Liabilities, and Equity
+                //            SELECT 
+                //                l1.name, 
+                //                l1.id, 
+                //                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
+                //            FROM tbl_coa_level_1 l1
+                //            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                //            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                //            GROUP BY l1.id, l1.name
+                //        )
+
+                //        -- Final result combining the balances
+                //        SELECT 
+                //            eb.name, 
+                //            eb.id, 
+                //            CASE 
+                //                -- For Equity, add the final balance from Income - Cost - Expenses to Retained Earnings
+                //                WHEN eb.name = 'Equity' THEN 
+                //                    eb.balance + 
+                //                    (SELECT Balance FROM FinalBalance)
+                //                ELSE 
+                //                    eb.balance
+                //            END AS balance
+                //        FROM EquityBalances eb
+                //        ORDER BY eb.id;
+
+                //        "))
+                //{
+                //    while (reader.Read())
+                //        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                //            reader["id"].ToString(), reader["name"].ToString(),
+                //            Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                //    // Auto-expand everything
+                //    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                //    {
+                //        ExpandRowRecursively(i);
+                //    }
+                //}
+                //// here i want column name from job name(customer name) from tbl_customer and total amount from tbl_transaction
+                //dgvCustomer.Columns.Add("balance", "Total");
+                //dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
+                //dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                //dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
+                //dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+                //LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+
+            }
+            else if(reportType == "by Class")
+            {
+                headerUC1.FormText = this.Text + " " + reportType;
+                guna2HtmlLabel7.Text = this.Text + " " + reportType;
+
+                dgvCustomer.Rows.Clear();
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                        WITH AccountBalances AS (
+                            -- Calculate balances for Income, Cost, and Expenses
+                            SELECT 
+                                l1.name AS Category, 
+                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.name
+                        ),
+
+                        FinalBalance AS (
+                            -- Calculate final balance: Income - Cost - Expenses
+                            SELECT 
+                                'Final Balance (Income - Cost - Expenses)' AS Category,
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Income'), 0
+                                ) -
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
+                                ) -
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                                ) AS Balance
+                        ),
+
+                        EquityBalances AS (
+                            -- Calculate balances for Assets, Liabilities, and Equity
+                            SELECT 
+                                l1.name, 
+                                l1.id, 
+                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.id, l1.name
+                        )
+
+                        -- Final result combining the balances
+                        SELECT 
+                            eb.name, 
+                            eb.id, 
+                            CASE 
+                                -- For Equity, add the final balance from Income - Cost - Expenses to Retained Earnings
+                                WHEN eb.name = 'Equity' THEN 
+                                    eb.balance + 
+                                    (SELECT Balance FROM FinalBalance)
+                                ELSE 
+                                    eb.balance
+                            END AS balance
+                        FROM EquityBalances eb
+                        ORDER BY eb.id;
+
+                        "))
+                {
+                    while (reader.Read())
+                        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(reader["balance"].ToString()), Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
+                }
+            }
+            else if(reportType == "Unclassified")
+            {
+                headerUC1.FormText = this.Text + " " + reportType;
+                guna2HtmlLabel7.Text = this.Text + " " + reportType;
+
+                dgvCustomer.Rows.Clear();
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                        WITH AccountBalances AS (
+                            -- Calculate balances for Income, Cost, and Expenses
+                            SELECT 
+                                l1.name AS Category, 
+                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.name
+                        ),
+
+                        FinalBalance AS (
+                            -- Calculate final balance: Income - Cost - Expenses
+                            SELECT 
+                                'Final Balance (Income - Cost - Expenses)' AS Category,
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Income'), 0
+                                ) -
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
+                                ) -
+                                COALESCE(
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                                ) AS Balance
+                        ),
+
+                        EquityBalances AS (
+                            -- Calculate balances for Assets, Liabilities, and Equity
+                            SELECT 
+                                l1.name, 
+                                l1.id, 
+                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
+                            FROM tbl_coa_level_1 l1
+                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            GROUP BY l1.id, l1.name
+                        )
+
+                        -- Final result combining the balances
+                        SELECT 
+                            eb.name, 
+                            eb.id, 
+                            CASE 
+                                -- For Equity, add the final balance from Income - Cost - Expenses to Retained Earnings
+                                WHEN eb.name = 'Equity' THEN 
+                                    eb.balance + 
+                                    (SELECT Balance FROM FinalBalance)
+                                ELSE 
+                                    eb.balance
+                            END AS balance
+                        FROM EquityBalances eb
+                        ORDER BY eb.id;
+
+                        "))
+                {
+                    while (reader.Read())
+                        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
+                }
+            }
         }
         private void ExpandRowRecursively(int rowIndex)
         {
@@ -175,33 +895,62 @@ namespace YamyProject
 
                         using (MySqlDataReader reader = DBClass.ExecuteReader(
                             $@"SELECT name as currname, concat(code,' - ',name) as name , id 
-                       FROM tbl_coa_level_" + (currLvl + 1) + " WHERE main_id = @parentId ORDER BY code",
+                                FROM tbl_coa_level_" + (currLvl + 1) + " WHERE main_id = @parentId ORDER BY code",
                             DBClass.CreateParameter("parentId", parentId)))
                         {
                             int insertIndex = rowIndex + 1;
-                            dgvCustomer.Rows[rowIndex].Cells["balance"].Value = "";
+                            if (reportType == "standard" || reportType == "Unclassified")
+                                dgvCustomer.Rows[rowIndex].Cells["balance"].Value = "";
+                            else if (reportType == "YTS Comparison")
+                                dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = dgvCustomer.Rows[rowIndex].Cells["balance2"].Value = "";
+                            else if (reportType == "by Class")
+                                dgvCustomer.Rows[rowIndex].Cells["balance"].Value = dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = "";
 
                             while (reader.Read())
                             {
                                 string nextState = (currLvl + 1 == 4) ? "n" : "e";
                                 string nextIcon = (currLvl + 1 == 4) ? "  " : "►";
-                                var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
 
-                                if (balanceData != null)
+                                var newRow = new DataGridViewRow();
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
+                                if (reportType == "YTS Comparison")
                                 {
-                                    var newRow = new DataGridViewRow();
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
-                                    newRow.Height = dgvCustomer.Rows[rowIndex].Height;
-
-                                    ApplyRowStyle(newRow, currLvl + 1);
-                                    newRows.Add(newRow);
+                                    var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData.balance1) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData.balance2) });
                                 }
+                                else if (reportType == "standard" || reportType == "Unclassified")
+                                {
+                                    var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+                                } else if (reportType == "Prev Year Comparison")
+                                {
+                                    var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+                                    decimal balance1 = balanceData.balance1;
+                                    decimal balance2 = balanceData.balance2;
+                                    decimal change = balance1 - balance2;
+                                    decimal percentChange = (balance2 != 0) ? (change / balance2) * 100 : 0;
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balance1) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balance2) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(change) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = $"{percentChange:N1}%" });
+                                }
+                                else if (reportType == "by Class")
+                                {
+                                    var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+                                }
+                                newRow.Height = dgvCustomer.Rows[rowIndex].Height;
+
+                                ApplyRowStyle(newRow, currLvl + 1);
+                                newRows.Add(newRow);
+
                             }
 
                             foreach (var r in newRows)
@@ -253,7 +1002,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", int.Parse(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", int.Parse(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value.ToString()), dtFrom.Value.ToString(), dtTo.Value.ToString()));
             }
 
             string state = dgvCustomer.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -281,22 +1030,50 @@ namespace YamyProject
                             {
                                 string nextState = (currLvl + 1 == 4) ? "n" : "e";
                                 string nextIcon = (currLvl + 1 == 4) ? "  " : "►";
-                                var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
-                                if (balanceData != null)
-                                {
-                                    var newRow = new DataGridViewRow();
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
-                                    newRow.Height = dgvCustomer.Rows[e.RowIndex].Height;
 
-                                    ApplyRowStyle(newRow, currLvl + 1);
-                                    newRows.Add(newRow);
+                                var newRow = new DataGridViewRow();
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
+
+
+                                if (reportType == "standard" || reportType == "Unclassified")
+                                {
+                                    var balance = GetBalanceData(currLvl + 1, reader["currname"].ToString());
+
+                                    if (balance != null)
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balance) });
                                 }
+                                else if (reportType == "YTS Comparison")
+                                {
+                                    var balances = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+
+                                    if (balances.balance1 != null || balances.balance2 != null)
+                                    {
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balances.balance1) });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balances.balance2) });
+                                    }
+                                }
+                                else if (reportType == "Prev Year Comparison")
+                                {
+                                    var balances = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balances.balance1) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balances.balance2) });
+                                    decimal change = balances.balance1 - balances.balance2;
+                                    decimal percentChange = (balances.balance2 != 0) ? (change / balances.balance2) * 100 : 0;
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(change) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = $"{percentChange:N1}%" });
+                                }
+
+                                newRow.Height = dgvCustomer.Rows[e.RowIndex].Height;
+
+                                ApplyRowStyle(newRow, currLvl + 1);
+                                newRows.Add(newRow);
+
                             }
 
                             // Add all new rows in one go for better performance
@@ -321,12 +1098,38 @@ namespace YamyProject
                 }
                 else if (state == "c")
                 {
-                    var parentBalanceData = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""));
 
-                    if (!string.IsNullOrEmpty(parentBalanceData))
+                    if (reportType == "standard" || reportType == "Unclassified")
                     {
-                        dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = parentBalanceData;
+                        var balanceData = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""));
+
+                        if (balanceData != null)
+                        {
+
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData);
+                        }
                     }
+                    if (reportType == "YTS Comparison")
+                    {
+                        var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+                        if (balances.balance1 != null && balances.balance2 != null)
+                        {
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
+                        }
+                    }
+                    else if (reportType == "Prev Year Comparison")
+                    {
+                        var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
+
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
+                        decimal change = balances.balance1 - balances.balance2;
+                        decimal percentChange = (balances.balance2 != 0) ? (change / balances.balance2) * 100 : 0;
+                        dgvCustomer.Rows[e.RowIndex].Cells["change"].Value = Utilities.FormatDecimal(change);
+                        dgvCustomer.Rows[e.RowIndex].Cells["change_percentage"].Value = $"{percentChange:N1}%";
+                    }
+            
                     ToggleChildRowsVisibility(e.RowIndex, currLvl, false);
                     dgvCustomer.Rows[e.RowIndex].Cells["lvl1"].Value = cellValue.Replace("▼", "►");
                     dgvCustomer.Rows[e.RowIndex].Cells["state"].Value = "e";
@@ -347,7 +1150,6 @@ namespace YamyProject
             else
                 row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
-
 
         private string GetBalanceData(int level, string name)
         {
@@ -400,7 +1202,7 @@ namespace YamyProject
                         LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
                         LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
 
-                        WHERE t1.name IN ('Income', 'Cost', 'General & Direct Expenses') AND t{level}.name = @name
+                        WHERE t1.category_code IN ('Income', 'Cost', 'General & Direct Expenses') AND t{level}.name = @name
 
                         GROUP BY t1.id, t2.id, t3.id, t4.id;
                         ", DBClass.CreateParameter("name", name)))
@@ -412,6 +1214,63 @@ namespace YamyProject
             }
 
             return null;
+        }
+        private (decimal balance1, decimal balance2) GetBalanceData(int level, string name, DateTime currentFrom, DateTime currentTo, DateTime previousFrom, DateTime previousTo)
+        {
+            using (MySqlDataReader read = DBClass.ExecuteReader($@"
+                    SELECT
+                        -- Balance for current period
+                        (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit),0)
+                         FROM tbl_transaction tt
+                         WHERE tt.account_id IN (
+                             SELECT id FROM tbl_coa_level_4 
+                             WHERE main_id IN (
+                                 SELECT id FROM tbl_coa_level_3 
+                                 WHERE main_id IN (
+                                     SELECT id FROM tbl_coa_level_2 
+                                     WHERE main_id = t1.id
+                                 )
+                             )
+                         ) AND tt.date BETWEEN @currFrom AND @currTo
+                        ) AS balance1,
+
+                        -- Balance for previous period
+                        (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit),0)
+                         FROM tbl_transaction tt
+                         WHERE tt.account_id IN (
+                             SELECT id FROM tbl_coa_level_4 
+                             WHERE main_id IN (
+                                 SELECT id FROM tbl_coa_level_3 
+                                 WHERE main_id IN (
+                                     SELECT id FROM tbl_coa_level_2 
+                                     WHERE main_id = t1.id
+                                 )
+                             )
+                         ) AND tt.date BETWEEN @prevFrom AND @prevTo
+                        ) AS balance2
+
+                    FROM tbl_coa_level_1 t1
+                    LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                    LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                    LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+                    WHERE t{level}.name = @name
+                    GROUP BY t1.id, t2.id, t3.id, t4.id;
+                ",
+                DBClass.CreateParameter("name", name),
+                DBClass.CreateParameter("currFrom", currentFrom),
+                DBClass.CreateParameter("currTo", currentTo),
+                DBClass.CreateParameter("prevFrom", previousFrom),
+                DBClass.CreateParameter("prevTo", previousTo)
+            ))
+            {
+                if (read.Read())
+                {
+                    decimal b1 = Convert.ToDecimal(read["balance1"]);
+                    decimal b2 = Convert.ToDecimal(read["balance2"]);
+                    return (b1, b2);
+                }
+            }
+            return (0, 0);
         }
 
         private void ToggleChildRowsVisibility(int parentRowIndex, int parentLevel, bool visible)
@@ -491,71 +1350,603 @@ namespace YamyProject
             {
                 saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
                 saveDialog.Title = "Save Excel File";
-                saveDialog.FileName = "ProfitAndLoss.xlsx";
+                saveDialog.FileName = guna2HtmlLabel7.Text.Replace(" ", "") + ".xlsx";
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
-                    worksheet.Name = "ProfitAndLoss";
-
-                    // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["B1", "C1"];
-                    headerRange.Merge();
-                    headerRange.Value = DateTime.Now.ToString("MMM dd, yy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-                    int rowIndex = 2;
-                    foreach (DataGridViewRow row in dgvCustomer.Rows)
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = guna2HtmlLabel7.Text.Replace(" ", "");
+                    if (reportType == "standard" || reportType == "Unclassified")
                     {
-                        if (row.IsNewRow) continue;
+                        Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                        headerRange0.Merge();
+                        headerRange0.Value = lblCompany.Text;
+                        headerRange0.Font.Bold = true;
+                        headerRange0.Font.Name = "Times New Roman";
+                        headerRange0.Font.Size = 12;
+                        headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                        headerRange1.Merge();
+                        headerRange1.Value = guna2HtmlLabel7.Text;
+                        headerRange1.Font.Bold = true;
+                        headerRange1.Font.Name = "Times New Roman";
+                        headerRange1.Font.Size = 11;
+                        headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                        headerRange2.Merge();
+                        headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                        headerRange2.Font.Bold = false;
+                        headerRange2.Font.Name = "Times New Roman";
+                        headerRange2.Font.Size = 9;
+                        headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        // Merge and format header row (Date)
+                        Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                        headerRange3.Merge();
+                        headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                        headerRange3.Font.Bold = false;
+                        headerRange3.Font.Name = "Times New Roman";
+                        headerRange3.Font.Size = 9;
+                        headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
-                        string account = row.Cells["lvl1"].Value?.ToString();
-                        string amount = row.Cells["balance"].Value?.ToString();
+                        int rowIndex = 5;
+                        // 1️⃣ Write header row (aligned with data columns)
+                        var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                        var amountHeaderCell = worksheet.Cells[rowIndex, 3];
 
-                        var accountCell = worksheet.Cells[rowIndex, 2];
-                        var amountCell = worksheet.Cells[rowIndex, 3];
+                        accountHeaderCell.Value = "Account";
+                        amountHeaderCell.Value = "Balance";
 
-                        accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
-                        amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
-
-                        accountCell.Font.Name = "Times New Roman";
-                        amountCell.Font.Name = "Times New Roman";
-
-                        if (account.ToUpper().Contains("TOTAL"))
+                        foreach (var headerCell in new[] { accountHeaderCell, amountHeaderCell })
                         {
-                            accountCell.Font.Size = 10;
-                            accountCell.Font.Bold = true;
-
-                            amountCell.Font.Size = 10;
-                            amountCell.Font.Bold = true;
-                            amountCell.Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
                         }
-                        else
+
+                        // 2️⃣ Write data rows
+                        rowIndex++; // move to next row for data
+                        foreach (DataGridViewRow row in dgvCustomer.Rows)
                         {
-                            accountCell.Font.Size = 10;
-                            accountCell.Font.Bold = true;
+                            if (row.IsNewRow) continue;
 
-                            amountCell.Font.Size = 9;
+
+                            string account = row.Cells["lvl1"].Value?.ToString();
+                            string amount = row.Cells["balance"].Value?.ToString();
+
+                            var accountCell = worksheet.Cells[rowIndex, 2];
+                            var amountCell = worksheet.Cells[rowIndex, 3];
+
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amountCell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amountCell.Font.Size = 10;
+                                amountCell.Font.Bold = true;
+                                amountCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amountCell.Font.Size = 9;
+                            }
+
+                            amountCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+
+                            rowIndex++;
                         }
 
-                        amountCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
-                        rowIndex++;
+                        worksheet.Columns[2].AutoFit();
+                        worksheet.Columns[3].AutoFit();
                     }
+                    else if (reportType == "YTS Comparison")
+                    {
+                        Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                        headerRange0.Merge();
+                        headerRange0.Value = lblCompany.Text;
+                        headerRange0.Font.Bold = true;
+                        headerRange0.Font.Name = "Times New Roman";
+                        headerRange0.Font.Size = 12;
+                        headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                        headerRange1.Merge();
+                        headerRange1.Value = guna2HtmlLabel7.Text;
+                        headerRange1.Font.Bold = true;
+                        headerRange1.Font.Name = "Times New Roman";
+                        headerRange1.Font.Size = 11;
+                        headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                        headerRange2.Merge();
+                        headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                        headerRange2.Font.Bold = false;
+                        headerRange2.Font.Name = "Times New Roman";
+                        headerRange2.Font.Size = 9;
+                        headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        // Merge and format header row (Date)
+                        Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                        headerRange3.Merge();
+                        headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                        headerRange3.Font.Bold = false;
+                        headerRange3.Font.Name = "Times New Roman";
+                        headerRange3.Font.Size = 9;
+                        headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                    worksheet.Columns[2].AutoFit();
-                    worksheet.Columns[3].AutoFit();
+                        int rowIndex = 5;
+                        // 1️⃣ Write header row (aligned with data columns)
+                        var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                        var amount1HeaderCell = worksheet.Cells[rowIndex, 3];
+                        var amount2HeaderCell = worksheet.Cells[rowIndex, 4];
 
+                        accountHeaderCell.Value = "Account";
+                        amount1HeaderCell.Value = dgvCustomer.Columns["balance1"].HeaderCell.Value;
+                        amount2HeaderCell.Value = dgvCustomer.Columns["balance2"].HeaderCell.Value;
+
+                        foreach (var headerCell in new[] { accountHeaderCell, amount1HeaderCell, amount2HeaderCell })
+                        {
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+
+                        // 2️⃣ Write data rows
+                        rowIndex++; // move to next row for data
+                        foreach (DataGridViewRow row in dgvCustomer.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+
+
+                            string account = row.Cells["lvl1"].Value?.ToString();
+                            string amount1 = row.Cells["balance1"].Value?.ToString();
+                            string amount2 = row.Cells["balance2"].Value?.ToString();
+
+                            var accountCell = worksheet.Cells[rowIndex, 2];
+                            var amount1Cell = worksheet.Cells[rowIndex, 3];
+                            var amount2Cell = worksheet.Cells[rowIndex, 4];
+
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amount1Cell.Value = amount1.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+                            amount2Cell.Value = amount2.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amount1Cell.Font.Name = "Times New Roman";
+                            amount2Cell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount1Cell.Font.Size = 10;
+                                amount2Cell.Font.Size = 10;
+                                amount1Cell.Font.Bold = true;
+                                amount2Cell.Font.Bold = true;
+                                amount1Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                                amount2Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount1Cell.Font.Size = 9;
+                                amount2Cell.Font.Size = 9;
+                            }
+
+                            amount1Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            amount2Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+                            rowIndex++;
+                        }
+
+                        worksheet.Columns[2].AutoFit();
+                        worksheet.Columns[3].AutoFit();
+                        worksheet.Columns[4].AutoFit();
+                    }
+                    else if (reportType == "Prev Year Comparison")
+                    {
+                        Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                        headerRange0.Merge();
+                        headerRange0.Value = lblCompany.Text;
+                        headerRange0.Font.Bold = true;
+                        headerRange0.Font.Name = "Times New Roman";
+                        headerRange0.Font.Size = 12;
+                        headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                        headerRange1.Merge();
+                        headerRange1.Value = guna2HtmlLabel7.Text;
+                        headerRange1.Font.Bold = true;
+                        headerRange1.Font.Name = "Times New Roman";
+                        headerRange1.Font.Size = 11;
+                        headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                        headerRange2.Merge();
+                        headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                        headerRange2.Font.Bold = false;
+                        headerRange2.Font.Name = "Times New Roman";
+                        headerRange2.Font.Size = 9;
+                        headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        // Merge and format header row (Date)
+                        Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                        headerRange3.Merge();
+                        headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                        headerRange3.Font.Bold = false;
+                        headerRange3.Font.Name = "Times New Roman";
+                        headerRange3.Font.Size = 9;
+                        headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        int rowIndex = 5;
+                        // 1️⃣ Write header row (aligned with data columns)
+                        var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                        var amount1HeaderCell = worksheet.Cells[rowIndex, 3];
+                        var amount2HeaderCell = worksheet.Cells[rowIndex, 4];
+                        var changeHeaderCell = worksheet.Cells[rowIndex, 5];
+                        var changePercentageHeaderCell = worksheet.Cells[rowIndex, 6];
+
+                        accountHeaderCell.Value = "Account";
+                        amount1HeaderCell.Value = dgvCustomer.Columns["balance1"].HeaderCell.Value;
+                        amount2HeaderCell.Value = dgvCustomer.Columns["balance2"].HeaderCell.Value;
+                        changeHeaderCell.Value = dgvCustomer.Columns["change"].HeaderCell.Value;
+                        changePercentageHeaderCell.Value = dgvCustomer.Columns["change_percentage"].HeaderCell.Value;
+
+                        foreach (var headerCell in new[] { accountHeaderCell, amount1HeaderCell, amount2HeaderCell, changeHeaderCell, changePercentageHeaderCell })
+                        {
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+
+                        // 2️⃣ Write data rows
+                        rowIndex++; // move to next row for data
+                        foreach (DataGridViewRow row in dgvCustomer.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+
+
+                            string account = row.Cells["lvl1"].Value?.ToString();
+                            string amount1 = row.Cells["balance1"].Value?.ToString();
+                            string amount2 = row.Cells["balance2"].Value?.ToString();
+                            string change = row.Cells["change"].Value?.ToString();
+                            string change_percentage = row.Cells["change_percentage"].Value?.ToString();
+
+                            var accountCell = worksheet.Cells[rowIndex, 2];
+                            var amount1Cell = worksheet.Cells[rowIndex, 3];
+                            var amount2Cell = worksheet.Cells[rowIndex, 4];
+                            var changeCell = worksheet.Cells[rowIndex, 5];
+                            var changePercentageCell = worksheet.Cells[rowIndex, 6];
+
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amount1Cell.Value = amount1.Trim();
+                            amount2Cell.Value = amount2.Trim();
+                            changeCell.Value = change.Trim();
+                            changePercentageCell.Value = change_percentage.Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amount1Cell.Font.Name = "Times New Roman";
+                            amount2Cell.Font.Name = "Times New Roman";
+                            changeCell.Font.Name = "Times New Roman";
+                            changePercentageCell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount1Cell.Font.Size = amount2Cell.Font.Size = changeCell.Font.Size = changePercentageCell.Font.Size = 10;
+                                amount1Cell.Font.Bold = amount2Cell.Font.Bold = changeCell.Font.Bold = changePercentageCell.Font.Bold = true;
+                                amount1Cell.Font.Underline = amount2Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                                changeCell.Font.Underline = changePercentageCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+                                amount1Cell.Font.Size = amount2Cell.Font.Size = 9;
+                                changeCell.Font.Size = changePercentageCell.Font.Size = 9;
+                            }
+
+                            amount1Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            amount2Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            changeCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            changePercentageCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+                            rowIndex++;
+                        }
+
+                        worksheet.Columns[2].AutoFit();
+                        worksheet.Columns[3].AutoFit();
+                        worksheet.Columns[4].AutoFit();
+                        worksheet.Columns[5].AutoFit();
+                        worksheet.Columns[6].AutoFit();
+                    }
+                    else if(reportType == "by Job")
+                    {
+                        Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                        headerRange0.Merge();
+                        headerRange0.Value = lblCompany.Text;
+                        headerRange0.Font.Bold = true;
+                        headerRange0.Font.Name = "Times New Roman";
+                        headerRange0.Font.Size = 12;
+                        headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                        headerRange1.Merge();
+                        headerRange1.Value = guna2HtmlLabel7.Text;
+                        headerRange1.Font.Bold = true;
+                        headerRange1.Font.Name = "Times New Roman";
+                        headerRange1.Font.Size = 11;
+                        headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                        headerRange2.Merge();
+                        headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                        headerRange2.Font.Bold = false;
+                        headerRange2.Font.Name = "Times New Roman";
+                        headerRange2.Font.Size = 9;
+                        headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        // Merge and format header row (Date)
+                        Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                        headerRange3.Merge();
+                        headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                        headerRange3.Font.Bold = false;
+                        headerRange3.Font.Name = "Times New Roman";
+                        headerRange3.Font.Size = 9;
+                        headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        int rowIndex = 5;
+                        // header names from dgvCustomer
+                        foreach(DataGridViewColumn col in dgvCustomer.Columns)
+                        {
+                            if(col.Visible)
+                            {
+                                var headerCell = worksheet.Cells[rowIndex, col.Index + 1];
+                                headerCell.Value = col.HeaderText;
+                                headerCell.Font.Bold = true;
+                                headerCell.Font.Name = "Times New Roman";
+                                headerCell.Font.Size = 11;
+                                headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                            }
+                        }
+                        //// 1️⃣ Write header row (aligned with data columns)
+                        //var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                        //var amount1HeaderCell = worksheet.Cells[rowIndex, 3];
+                        //var amount2HeaderCell = worksheet.Cells[rowIndex, 4];
+                        //var changeHeaderCell = worksheet.Cells[rowIndex, 5];
+                        //var changePercentageHeaderCell = worksheet.Cells[rowIndex, 6];
+
+                        //accountHeaderCell.Value = "Account";
+                        //amount1HeaderCell.Value = dgvCustomer.Columns["balance1"].HeaderCell.Value;
+                        //amount2HeaderCell.Value = dgvCustomer.Columns["balance2"].HeaderCell.Value;
+                        //changeHeaderCell.Value = dgvCustomer.Columns["change"].HeaderCell.Value;
+                        //changePercentageHeaderCell.Value = dgvCustomer.Columns["change_percentage"].HeaderCell.Value;
+
+                        //foreach (var headerCell in new[] { accountHeaderCell, amount1HeaderCell, amount2HeaderCell, changeHeaderCell, changePercentageHeaderCell })
+                        //{
+                        //    headerCell.Font.Bold = true;
+                        //    headerCell.Font.Name = "Times New Roman";
+                        //    headerCell.Font.Size = 11;
+                        //    headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        //    headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        //}
+
+                        // 2️⃣ Write data rows
+                        rowIndex++; // move to next row for data
+                        //foreach (DataGridViewRow row in dgvCustomer.Rows)
+                        //{
+                        //    if (row.IsNewRow) continue;
+
+
+                        //    string account = row.Cells["lvl1"].Value?.ToString();
+                        //    string amount1 = row.Cells["balance1"].Value?.ToString();
+                        //    string amount2 = row.Cells["balance2"].Value?.ToString();
+                        //    string change = row.Cells["change"].Value?.ToString();
+                        //    string change_percentage = row.Cells["change_percentage"].Value?.ToString();
+
+                        //    var accountCell = worksheet.Cells[rowIndex, 2];
+                        //    var amount1Cell = worksheet.Cells[rowIndex, 3];
+                        //    var amount2Cell = worksheet.Cells[rowIndex, 4];
+                        //    var changeCell = worksheet.Cells[rowIndex, 5];
+                        //    var changePercentageCell = worksheet.Cells[rowIndex, 6];
+
+                        //    accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                        //    amount1Cell.Value = amount1.Trim();
+                        //    amount2Cell.Value = amount2.Trim();
+                        //    changeCell.Value = change.Trim();
+                        //    changePercentageCell.Value = change_percentage.Trim();
+
+                        //    accountCell.Font.Name = "Times New Roman";
+                        //    amount1Cell.Font.Name = "Times New Roman";
+                        //    amount2Cell.Font.Name = "Times New Roman";
+                        //    changeCell.Font.Name = "Times New Roman";
+                        //    changePercentageCell.Font.Name = "Times New Roman";
+
+                        //    if (account.ToUpper().Contains("TOTAL"))
+                        //    {
+                        //        accountCell.Font.Size = 10;
+                        //        accountCell.Font.Bold = true;
+
+                        //        amount1Cell.Font.Size = amount2Cell.Font.Size = changeCell.Font.Size = changePercentageCell.Font.Size = 10;
+                        //        amount1Cell.Font.Bold = amount2Cell.Font.Bold = changeCell.Font.Bold = changePercentageCell.Font.Bold = true;
+                        //        amount1Cell.Font.Underline = amount2Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                        //        changeCell.Font.Underline = changePercentageCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                        //    }
+                        //    else
+                        //    {
+                        //        accountCell.Font.Size = 10;
+                        //        accountCell.Font.Bold = true;
+                        //        amount1Cell.Font.Size = amount2Cell.Font.Size = 9;
+                        //        changeCell.Font.Size = changePercentageCell.Font.Size = 9;
+                        //    }
+
+                        //    amount1Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                        //    amount2Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                        //    changeCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                        //    changePercentageCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+                        //    rowIndex++;
+                        //}
+
+                        //worksheet.Columns[2].AutoFit();
+                        //worksheet.Columns[3].AutoFit();
+                        //worksheet.Columns[4].AutoFit();
+                        //worksheet.Columns[5].AutoFit();
+                        //worksheet.Columns[6].AutoFit();
+                        foreach (DataGridViewRow row in dgvCustomer.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            foreach (DataGridViewColumn col in dgvCustomer.Columns)
+                            {
+                                if (col.Visible)
+                                {
+                                    var dataCell = worksheet.Cells[rowIndex, col.Index + 1];
+                                    DataGridViewCell dgvCell = row.Cells[col.Index];
+                                    dataCell.Value = dgvCell.Value?.ToString() ?? "";
+                                    dataCell.Font.Name = "Times New Roman";
+                                    // Align numeric columns to right
+                                    string colName = col.Name.ToLower();
+                                    if (colName.Contains("balance") || colName.Contains("debit") || colName.Contains("credit") || colName.Contains("amount") || colName.Contains("total"))
+                                    {
+                                        dataCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                                        dataCell.Font.Size = 9;
+                                    }
+                                    else
+                                    {
+                                        dataCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                                        dataCell.Font.Size = 10;
+                                    }
+                                }
+                            }
+                            rowIndex++;
+                        }
+                    }
+                    else if (reportType == "by Class")
+                    {
+                        Excel.Range headerRange0 = worksheet.Range["A1", "D1"];
+                        headerRange0.Merge();
+                        headerRange0.Value = lblCompany.Text;
+                        headerRange0.Font.Bold = true;
+                        headerRange0.Font.Name = "Times New Roman";
+                        headerRange0.Font.Size = 12;
+                        headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange1 = worksheet.Range["A2", "D2"];
+                        headerRange1.Merge();
+                        headerRange1.Value = guna2HtmlLabel7.Text;
+                        headerRange1.Font.Bold = true;
+                        headerRange1.Font.Name = "Times New Roman";
+                        headerRange1.Font.Size = 11;
+                        headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range headerRange2 = worksheet.Range["A3", "D3"];
+                        headerRange2.Merge();
+                        headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                        headerRange2.Font.Bold = false;
+                        headerRange2.Font.Name = "Times New Roman";
+                        headerRange2.Font.Size = 9;
+                        headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        // Merge and format header row (Date)
+                        Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                        headerRange3.Merge();
+                        headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                        headerRange3.Font.Bold = false;
+                        headerRange3.Font.Name = "Times New Roman";
+                        headerRange3.Font.Size = 9;
+                        headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                        int rowIndex = 5;
+                        // 1️⃣ Write header row (aligned with data columns)
+                        var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                        var amountHeaderCell = worksheet.Cells[rowIndex, 3];
+                        var amount1HeaderCell = worksheet.Cells[rowIndex, 4];
+
+                        accountHeaderCell.Value = "Account";
+                        amountHeaderCell.Value = "Unclassified";
+                        amount1HeaderCell.Value = "Total";
+
+                        foreach (var headerCell in new[] { accountHeaderCell, amountHeaderCell, amount1HeaderCell })
+                        {
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+
+                        // 2️⃣ Write data rows
+                        rowIndex++; // move to next row for data
+                        foreach (DataGridViewRow row in dgvCustomer.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+
+
+                            string account = row.Cells["lvl1"].Value?.ToString();
+                            string amount = row.Cells["balance"].Value?.ToString();
+                            string amount1 = row.Cells["balance1"].Value?.ToString();
+
+                            var accountCell = worksheet.Cells[rowIndex, 2];
+                            var amountCell = worksheet.Cells[rowIndex, 3];
+                            var amount1Cell = worksheet.Cells[rowIndex, 4];
+
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+                            amount1Cell.Value = amount1.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amountCell.Font.Name = "Times New Roman";
+                            amount1Cell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amountCell.Font.Size = 10;
+                                amountCell.Font.Bold = true;
+                                amountCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                                amount1Cell.Font.Size = 10;
+                                amount1Cell.Font.Bold = true;
+                                amount1Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amountCell.Font.Size = 9;
+                                amount1Cell.Font.Size = 9;
+                            }
+
+                            amountCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            amount1Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+
+
+                            rowIndex++;
+                        }
+
+                        worksheet.Columns[2].AutoFit();
+                        worksheet.Columns[3].AutoFit();
+                    }
                     workbook.SaveAs(saveDialog.FileName);
                     workbook.Close();
                     excelApp.Quit();
 
                     MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //open same excel file
+                    Process.Start("explorer.exe", saveDialog.FileName);
                 }
             }
         }
@@ -604,7 +1995,8 @@ namespace YamyProject
             companyText.Font.Size = 12;
 
             // "ProfitAndLoss Summary" - Bold, size 10
-            FormattedText summaryText = center.AddFormattedText("ProfitAndLoss Summary\n", TextFormat.Bold);
+            string title = guna2HtmlLabel7.Text.Replace(" ", "");
+            FormattedText summaryText = center.AddFormattedText(title+"\n", TextFormat.Bold);
             summaryText.Font.Size = 12;
 
             // "All Transactions" - Regular, size 9
@@ -621,43 +2013,293 @@ namespace YamyProject
             line.Format.Borders.Bottom.Width = 2;
             line.Format.SpaceAfter = "0.5cm";
 
-            // Table for data
-            Table dataTable = section.AddTable();
-            dataTable.Borders.Width = 0;
-            dataTable.AddColumn("10cm");
-            dataTable.AddColumn("5cm");
-
-            decimal totalAmount = 0;
-
-            // Load from DataGridView
-            foreach (DataGridViewRow row in dgvCustomer.Rows)
+            if (reportType == "standard" || reportType == "Unclassified")
             {
-                if (row.IsNewRow) continue;
+                // Table for data
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                dataTable.AddColumn("10cm");
+                dataTable.AddColumn("5cm");
 
-                string account = row.Cells["lvl1"].Value?.ToString() ?? "";
-                if (account.ToUpper().Contains("TOTAL")) continue;
+                decimal totalAmount = 0;
 
-                string amountStr = row.Cells["balance"].Value?.ToString() ?? "0";
-                account = account.Replace("▶", "").Trim();
-                amountStr = amountStr.Replace("◀", "").Trim();
+                // Load from DataGridView
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    if (row.IsNewRow) continue;
 
-                decimal amount = 0;
-                decimal.TryParse(amountStr, out amount);
+                    string account = row.Cells["lvl1"].Value?.ToString() ?? "";
+                    if (account.ToUpper().Contains("TOTAL")) continue;
 
-                Row tRow = dataTable.AddRow();
-                tRow.Cells[0].AddParagraph(account);
-                tRow.Cells[1].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    string amountStr = row.Cells["balance"].Value?.ToString() ?? "0";
+                    account = account.Replace("▶", "").Trim();
+                    amountStr = amountStr.Replace("◀", "").Trim();
 
-                totalAmount += amount;
+                    decimal amount = 0;
+                    decimal.TryParse(amountStr, out amount);
+
+                    Row tRow = dataTable.AddRow();
+                    tRow.Cells[0].AddParagraph(account);
+                    tRow.Cells[1].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+
+                    totalAmount += amount;
+                }
+
+                // TOTAL row
+                Row totalRow = dataTable.AddRow();
+                totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+                Paragraph totalText = totalRow.Cells[1].AddParagraph(totalAmount.ToString("N2"));
+                totalText.Format.Font.Bold = true;
+                totalText.Format.Font.Underline = Underline.Single;
+                totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
             }
+            else if(reportType == "YTS Comparison")
+            {
+                //dynamic columns so i want to create table based on dgv columns
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                // Add columns based on DataGridView
+                // Add columns starting from index 3
+                for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (dgvCol.Visible) // only add visible columns
+                    {
+                        if(dgvCol.HeaderText.Contains("Account Name"))
+                            dataTable.AddColumn("10cm"); // Adjust width as needed
+                        else
+                            dataTable.AddColumn("3cm"); // Adjust width as needed
+                    }
+                }
 
-            // TOTAL row
-            Row totalRow = dataTable.AddRow();
-            totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
-            Paragraph totalText = totalRow.Cells[1].AddParagraph(totalAmount.ToString("N2"));
-            totalText.Format.Font.Bold = true;
-            totalText.Format.Font.Underline = Underline.Single;
-            totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
+                // Add header row
+                Row header = dataTable.AddRow();
+                int colIndex = 0;
+                for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (!dgvCol.Visible) continue;
+
+                    Paragraph p = header.Cells[colIndex].AddParagraph(dgvCol.HeaderText);
+                    p.Format.Font.Bold = true;
+                    p.Format.Font.Name = "Times New Roman";
+                    p.Format.Alignment = ParagraphAlignment.Center;
+                    colIndex++;
+                }
+
+                // Add data rows
+                foreach (DataGridViewRow dgvRow in dgvCustomer.Rows)
+                {
+                    if (dgvRow.IsNewRow) continue;
+
+                    Row row = dataTable.AddRow();
+                    int dataColIndex = 0;
+
+                    for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                    {
+                        DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                        if (!dgvCol.Visible) continue;
+
+                        DataGridViewCell dgvCell = dgvRow.Cells[i];
+                        Paragraph p = row.Cells[dataColIndex].AddParagraph(dgvCell.Value?.ToString() ?? "");
+                        p.Format.Font.Name = "Times New Roman";
+
+                        // Align numeric columns to right
+                        string colName = dgvCol.Name.ToLower();
+                        if (colName.Contains("balance1") || colName.Contains("balance2"))
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Right;
+                            p.Format.Font.Size = 9;
+                        }
+                        else
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Left;
+                            p.Format.Font.Size = 10;
+                        }
+
+                        dataColIndex++;
+                    }
+                }
+            }
+            else if (reportType == "Prev Year Comparison")
+            {
+                // dynamic columns so i want to create table based on dgv columns
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                // Add columns based on DataGridView
+                // Add columns starting from index 3
+                for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (dgvCol.Visible) // only add visible columns
+                    {
+                        if (dgvCol.HeaderText.Contains("Account Name"))
+                            dataTable.AddColumn("7cm"); // Adjust width as needed
+                        else
+                            dataTable.AddColumn("3cm"); // Adjust width as needed
+                    }
+                }
+
+                // Add header row
+                Row header = dataTable.AddRow();
+                int colIndex = 0;
+                for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (!dgvCol.Visible) continue;
+
+                    Paragraph p = header.Cells[colIndex].AddParagraph(dgvCol.HeaderText);
+                    p.Format.Font.Bold = true;
+                    p.Format.Font.Name = "Times New Roman";
+                    p.Format.Alignment = ParagraphAlignment.Center;
+                    colIndex++;
+                }
+
+                // Add data rows
+                foreach (DataGridViewRow dgvRow in dgvCustomer.Rows)
+                {
+                    if (dgvRow.IsNewRow) continue;
+
+                    Row row = dataTable.AddRow();
+                    int dataColIndex = 0;
+
+                    for (int i = 3; i < dgvCustomer.Columns.Count; i++)
+                    {
+                        DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                        if (!dgvCol.Visible) continue;
+
+                        DataGridViewCell dgvCell = dgvRow.Cells[i];
+                        Paragraph p = row.Cells[dataColIndex].AddParagraph(dgvCell.Value?.ToString() ?? "");
+                        p.Format.Font.Name = "Times New Roman";
+
+                        // Align numeric columns to right
+                        string colName = dgvCol.Name.ToLower();
+                        if (colName.Contains("balance1") || colName.Contains("balance2") || colName.Contains("change") || colName.Contains("change_percentage"))
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Right;
+                            p.Format.Font.Size = 9;
+                        }
+                        else
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Left;
+                            p.Format.Font.Size = 10;
+                        }
+
+                        dataColIndex++;
+                    }
+                }
+            }
+            else if(reportType == "by Job")
+            {
+                // dynamic columns so i want to create table based on dgv columns
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                // Add columns based on DataGridView
+                // Add columns starting from index 0
+                for (int i = 0; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (dgvCol.Visible) // only add visible columns
+                    {
+                        if (dgvCol.HeaderText.Contains("Account Name") || dgvCol.HeaderText.Contains("Job"))
+                            dataTable.AddColumn("7cm"); // Adjust width as needed
+                        else
+                            dataTable.AddColumn("3cm"); // Adjust width as needed
+                    }
+                }
+                // Add header row
+                Row header = dataTable.AddRow();
+                int colIndex = 0;
+                for (int i = 0; i < dgvCustomer.Columns.Count; i++)
+                {
+                    DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                    if (!dgvCol.Visible) continue;
+                    Paragraph p = header.Cells[colIndex].AddParagraph(dgvCol.HeaderText);
+                    p.Format.Font.Bold = true;
+                    p.Format.Font.Name = "Times New Roman";
+                    p.Format.Alignment = ParagraphAlignment.Center;
+                    colIndex++;
+                }
+                // Add data rows
+                foreach (DataGridViewRow dgvRow in dgvCustomer.Rows)
+                {
+                    if (dgvRow.IsNewRow) continue;
+                    Row row = dataTable.AddRow();
+                    int dataColIndex = 0;
+                    for (int i = 0; i < dgvCustomer.Columns.Count; i++)
+                    {
+                        DataGridViewColumn dgvCol = dgvCustomer.Columns[i];
+                        if (!dgvCol.Visible) continue;
+                        DataGridViewCell dgvCell = dgvRow.Cells[i];
+                        Paragraph p = row.Cells[dataColIndex].AddParagraph(dgvCell.Value?.ToString() ?? "");
+                        p.Format.Font.Name = "Times New Roman";
+                        // Align numeric columns to right
+                        string colName = dgvCol.Name.ToLower();
+                        if (colName.Contains("balance") || colName.Contains("debit") || colName.Contains("credit") || colName.Contains("amount") || colName.Contains("total"))
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Right;
+                            p.Format.Font.Size = 9;
+                        }
+                        else
+                        {
+                            p.Format.Alignment = ParagraphAlignment.Left;
+                            p.Format.Font.Size = 10;
+                        }
+                        dataColIndex++;
+                    }
+                }
+            }
+            else if (reportType == "by Class")
+            {
+                // Table for data
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                dataTable.AddColumn("10cm");
+                dataTable.AddColumn("5cm");
+
+                decimal totalAmount = 0;
+                decimal totalAmount1 = 0;
+
+                // Load from DataGridView
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string account = row.Cells["lvl1"].Value?.ToString() ?? "";
+                    if (account.ToUpper().Contains("TOTAL")) continue;
+
+                    string amountStr = row.Cells["balance"].Value?.ToString() ?? "0";
+                    string amount1Str = row.Cells["balance1"].Value?.ToString() ?? "0";
+                    account = account.Replace("▶", "").Trim();
+                    amountStr = amountStr.Replace("◀", "").Trim();
+                    amount1Str = amount1Str.Replace("◀", "").Trim();
+
+                    decimal amount = 0;
+                    decimal amount1 = 0;
+                    decimal.TryParse(amountStr, out amount);
+                    decimal.TryParse(amount1Str, out amount1);
+
+                    Row tRow = dataTable.AddRow();
+                    tRow.Cells[0].AddParagraph(account);
+                    tRow.Cells[1].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    tRow.Cells[1].AddParagraph(amount1.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+
+                    totalAmount += amount;
+                    totalAmount1 += amount1;
+                }
+
+                // TOTAL row
+                Row totalRow = dataTable.AddRow();
+                totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+                Paragraph totalText = totalRow.Cells[1].AddParagraph(totalAmount.ToString("N2"));
+                totalText.Format.Font.Bold = true;
+                totalText.Format.Font.Underline = Underline.Single;
+                totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
+                Paragraph totalText1 = totalRow.Cells[2].AddParagraph(totalAmount1.ToString("N2"));
+                totalText1.Format.Font.Bold = true;
+                totalText1.Format.Font.Underline = Underline.Single;
+                totalRow.Cells[2].Format.Alignment = ParagraphAlignment.Right;
+            }
 
             //section.Add(dataTable);
 
@@ -666,7 +2308,7 @@ namespace YamyProject
             renderer.Document = doc;
             renderer.RenderDocument();
 
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ProfitAndLoss.pdf");
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), title+".pdf");
             renderer.PdfDocument.Save(filePath);
             Process.Start("explorer.exe", filePath);
         }
@@ -676,9 +2318,27 @@ namespace YamyProject
             if (comboBox1.SelectedItem != null)
             {
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtFrom, dtTo);
-                AddDGVColumns();
-                BindDGV();
+                dateChangeTo();
+                BindDGV_Data();
             }
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            dateChangeTo();
+            BindDGV_Data();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            dateChangeTo();
+            BindDGV_Data();
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            dateChangeTo();
+            BindDGV_Data();
         }
     }
 }

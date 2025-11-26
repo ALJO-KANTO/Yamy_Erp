@@ -26,7 +26,7 @@ namespace YamyProject.UI.Reports
         {
             InitializeComponent();
             this.type = _type;
-            LbHeader.Text = type;
+            headerUC1.FormText = type;
         }
 
         private void frmListReport_Load(object sender, EventArgs e)
@@ -46,16 +46,26 @@ namespace YamyProject.UI.Reports
             else if (type == "Country List") { query = "SELECT * FROM tbl_country"; }
             else if (type == "Cost Center List") { query = "SELECT * FROM tbl_Cost_Center"; }
             else if (type == "Customer List") { query = "SELECT * FROM tbl_customer"; }
+            else if (type == "Customer Phone List") { query = "SELECT id, concat(code,name) name, main_phone FROM tbl_customer"; }
+            else if (type == "Customer Contact List") { query = @"SELECT c.id, CONCAT(c.code,c.name) Name, c.main_phone 'Main Phone', c.work_phone 'Work Phone',c.mobile 'Mobile', 
+                                                                    COALESCE(t.Amount, 0) AS 'Balance' FROM tbl_customer c LEFT JOIN (SELECT hum_id, SUM(debit - credit) AS Amount FROM 
+                                                                    tbl_transaction WHERE state = 0 AND type IN ('Customer Receipt','Sales Invoice','Customer Opening Balance','Customer Advance Payment','Check Cancel (Customer)','SalesReturn Invoice','Credit Note','PDC Receivable') GROUP BY hum_id) t ON t.hum_id = c.id"; }
             else if (type == "Customer Category List") { query = "SELECT * FROM tbl_customer_category"; }
             else if (type == "Department List") { query = "SELECT * FROM tbl_departments"; }
             else if (type == "Employee List") { query = "SELECT * FROM tbl_employee"; }
             else if (type == "Fixed Asset List") { query = "SELECT * FROM tbl_fixed_assets"; }
             else if (type == "Fixed Asset Category List") { query = "SELECT * FROM tbl_fixed_assets_category"; }
-            else if (type == "FixedAsset Item List") { 
-                query = "SELECT id, code, name, type, barcode, cost_price,sales_price, min_amount, max_amount, on_hand qty FROM tbl_items where item_type = 'Fixed Assets'"; 
+            else if (type == "FixedAsset Item List")
+            {
+                query = "SELECT id, Code, Name, Type, Barcode, cost_price,sales_price, min_amount, max_amount, on_hand qty FROM tbl_items where item_type = 'Fixed Assets'";
             }
-            else if (type == "Item List") { 
-                query = "SELECT id, code, name, type, barcode, cost_price,sales_price, min_amount, max_amount, on_hand qty FROM tbl_items"; 
+            else if (type == "Item List")
+            {
+                query = "SELECT id, Code, Name, type, Barcode, cost_price,sales_price, min_amount, max_amount, on_hand qty FROM tbl_items";
+            }
+            else if (type == "Item Price List")
+            {
+                query = "SELECT id, Code, Name, Type, sales_price Price FROM tbl_items";
             }
             else if (type == "Item Category List") { query = "SELECT * FROM tbl_item_category"; }
             else if (type == "Item Tax Code List") { query = "SELECT * FROM tbl_tax"; }
@@ -66,6 +76,13 @@ namespace YamyProject.UI.Reports
             else if (type == "Prepaid Expense List") { query = "SELECT * FROM tbl_prepaid_expense"; }
             else if (type == "Prepaid Expense Category List") { query = "SELECT * FROM tbl_prepaid_expense_category"; }
             else if (type == "Vendor List") { query = "SELECT * FROM tbl_vendor"; }
+            else if (type == "Vendor Phone List") { query = "SELECT id, concat(code,name) name, main_phone FROM tbl_vendor"; }
+            else if (type == "Vendor Contact List")
+            {
+                query = @"SELECT c.id, CONCAT(c.code,c.name) Name, c.main_phone 'Main Phone', c.work_phone 'Work Phone',c.mobile 'Mobile', 
+                                                                    COALESCE(t.Amount, 0) AS 'Balance' FROM tbl_vendor c LEFT JOIN (SELECT hum_id, SUM(debit - credit) AS Amount FROM 
+                                                                    tbl_transaction WHERE state = 0 AND type IN ('Vendor Payment','Petty Cash','Purchase Invoice','Vendor Opening Balance','Vendor Advance Payment','Check Cancel (Vendor)','Purchase Return Invoice','Debit Note','PDC Payable') GROUP BY hum_id) t ON t.hum_id = c.id";
+            }
             else if (type == "Vendor Category List") { query = "SELECT * FROM tbl_vendor_category"; }
 
             if (string.IsNullOrWhiteSpace(query))
@@ -116,6 +133,12 @@ namespace YamyProject.UI.Reports
                 case "Customer List":
                     form = new frmViewCustomer(refId);
                     break;
+                case "Customer Phone List":
+                    form = new frmViewCustomer(refId);
+                    break;
+                case "Customer Contact List":
+                    form = new frmViewCustomer(refId);
+                    break;
                 case "Customer Category List":
                     form = new frmViewCustomerCategory(refId);
                     break;
@@ -135,6 +158,9 @@ namespace YamyProject.UI.Reports
                     form = new frmViewItem(refId); // or a specific form like frmFixedAssetItem
                     break;
                 case "Item List":
+                    form = new frmViewItem(refId);
+                    break;
+                case "Item Price List":
                     form = new frmViewItem(refId);
                     break;
                 case "Item Category List":
@@ -180,7 +206,7 @@ namespace YamyProject.UI.Reports
             this.Close();
         }
 
-        private void BtnPDF_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             if (dgvData.Rows.Count == 0)
             {
@@ -253,7 +279,7 @@ namespace YamyProject.UI.Reports
             using (SaveFileDialog sfd = new SaveFileDialog()
             {
                 Filter = "PDF Files (*.pdf)|*.pdf",
-                FileName = type.Trim().Replace(" ","")+".pdf"
+                FileName = type.Trim().Replace(" ", "") + ".pdf"
             })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
@@ -264,7 +290,7 @@ namespace YamyProject.UI.Reports
             }
         }
 
-        private void BtnExcel_Click(object sender, EventArgs e)
+        private void btn_Excel_Click(object sender, EventArgs e)
         {
             if (dgvData.Rows.Count == 0)
             {
@@ -328,32 +354,6 @@ namespace YamyProject.UI.Reports
 
                     MessageBox.Show("Excel file saved successfully.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-        }
-
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-            //maximize the form
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            // minimize the form
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Minimized;
             }
         }
     }

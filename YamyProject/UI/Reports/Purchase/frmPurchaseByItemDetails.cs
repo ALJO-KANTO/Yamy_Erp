@@ -62,6 +62,14 @@ namespace YamyProject
             dgvSales.Columns["id"].Visible = false;
 
             dgvSales.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvSales.Columns["qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns["qty"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["price"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["amount"].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns["balance"].DefaultCellStyle.Format = "N2";
 
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.BackColor = System.Drawing.Color.White;

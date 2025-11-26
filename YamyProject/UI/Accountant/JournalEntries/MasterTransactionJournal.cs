@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -68,7 +67,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',
@@ -95,7 +94,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',
@@ -122,7 +121,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                 ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
                                 tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
                                 tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, tbl_customer.name AS Partner
@@ -139,12 +138,33 @@ namespace YamyProject
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvJournal.Columns["transaction_id"].Visible = dgvJournal.Columns["Description"].Visible = false;
             }
+            else if (type.ToLower() == "sales return")
+            {
+                dt = DBClass.ExecuteDataTable(@"SELECT 
+                                ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
+                                tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
+                                tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
+                                tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, tbl_customer.name AS Partner
+                                FROM tbl_transaction  INNER JOIN tbl_coa_level_4 ON tbl_transaction.account_id = tbl_coa_level_4.id 
+                                INNER JOIN tbl_sales_return ON tbl_transaction.transaction_id = tbl_sales_return.id INNER JOIN 
+                                tbl_customer ON tbl_sales_return.customer_id = tbl_customer.id where transaction_id=@id and tbl_transaction.t_type = 'SALES RETURN'",
+                                parameters.ToArray());
+                decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
+                decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
+
+                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dgvJournal.DataSource = dt;
+                dgvJournal.Columns["sn"].Width = 50;
+                dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvJournal.Columns["transaction_id"].Visible = dgvJournal.Columns["Description"].Visible = false;
+            }
             else if (type.ToLower() == "purchase")
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (
                                 ORDER BY tbl_transaction.date) AS `SN`,
-                                 concat('000', transaction_id) as `Ref Id`,
+                                 LPAD(transaction_id, 4, '0') as `Ref Id`,
                                  tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
                                  tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
                                  tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, tbl_vendor.name AS Partner
@@ -169,7 +189,7 @@ namespace YamyProject
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (
                                 ORDER BY tbl_transaction.date) AS `SN`,
-                                 concat('000', transaction_id) as `Ref Id`,
+                                 LPAD(transaction_id, 4, '0') as `Ref Id`,
                                  tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
                                  tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
                                  tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, tbl_vendor.name AS Partner
@@ -194,7 +214,7 @@ namespace YamyProject
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                              ROW_NUMBER() OVER (
                             ORDER BY tbl_transaction.date) AS `SN`,
-                                                            concat('000', transaction_id) as `Ref Id`,
+                                                            LPAD(transaction_id, 4, '0') as `Ref Id`,
                              tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
                              tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
                              tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, CASE WHEN tbl_payment_voucher.type = 'Vendor' THEN (
@@ -235,7 +255,7 @@ namespace YamyProject
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (
                                 ORDER BY tbl_transaction.date) AS `SN`,
-                                                                concat('000', transaction_id) as `Ref Id`,
+                                                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                  tbl_transaction.date, tbl_transaction.transaction_id,tbl_transaction.type `Type`,  tbl_coa_level_4.code AS 'A/C CODE', 
                                  tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
                                  tbl_transaction.debit AS DEBIT, tbl_transaction.credit AS CREDIT, CASE WHEN tbl_receipt_voucher.type = 'Customer' THEN (
@@ -270,7 +290,7 @@ namespace YamyProject
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (
                                 ORDER BY tbl_transaction.date) AS `SN`,
-                                                                concat('000', transaction_id) as `Ref Id`,
+                                                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                  tbl_transaction.date, tbl_transaction.transaction_id,
                                  tbl_transaction.type `Type`, tbl_coa_level_4.code AS 'A/C CODE', 
                                  tbl_coa_level_4.name AS 'A/C NAME', tbl_transaction.description AS Description, 
@@ -295,7 +315,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',
@@ -322,7 +342,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',
@@ -355,7 +375,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',
@@ -395,7 +415,7 @@ namespace YamyProject
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
-                                concat('000', transaction_id) as `Ref Id`,
+                                LPAD(transaction_id, 4, '0') as `Ref Id`,
                                 tbl_transaction.date AS `Date`, tbl_transaction.transaction_id,
                                 tbl_transaction.type `Type`,
                                 tbl_coa_level_4.code AS 'A/C Code',

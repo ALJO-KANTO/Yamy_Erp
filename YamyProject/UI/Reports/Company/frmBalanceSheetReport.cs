@@ -1,5 +1,4 @@
-﻿using DocumentFormat.OpenXml.Office.Word;
-using MigraDoc.DocumentObjectModel;
+﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -10,15 +9,18 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
     public partial class frmBalanceSheetReport : Form
     {
-        public frmBalanceSheetReport()
+        string type = "";
+        public frmBalanceSheetReport(string type)
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            this.type = type;
         }
 
         private void frmBalanceSheetReport_Load(object sender, EventArgs e)
@@ -33,27 +35,106 @@ namespace YamyProject
                 }
             }
             btnPrint.Text = "Print ▼";
+            if(type == "detail")
+            {
+                label1.Text = label1.Text + " Detail";
+                dateTimePicker2.Visible = true;
+            }
+            else if (type == "Prev Year Comparison")
+            {
+                label1.Text = label1.Text + " " + type;
+                dateTimePicker2.Visible = true;
+            }
+            else if (type == "by Class")
+            {
+                label1.Text = label1.Text + " By Class";
+                dateTimePicker2.Visible = false;
+            }
+
             LoadData();
         }
         private void LoadData()
         {
+            dateChangeTo();
+            if (type == "detail")
+            {
+                dgvReport.Dock = panel2.Dock = DockStyle.Fill;
+            }
+
             AddDGVColumns();
             BindDGV();
         }
+        DateTime prevFrom;
+        DateTime prevTo;
+        private void dateChangeTo()
+        {
+            if (type == "Prev Year Comparison")
+            {
+                dateTimePicker1.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+            prevFrom = new DateTime(dateTimePicker1.Value.Year, 1, 1);
+            prevTo = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, DateTime.DaysInMonth(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month));
+        }
         private void AddDGVColumns()
         {
-            dgvReport.Columns.Add("state", "");
-            dgvReport.Columns.Add("loadState", "");
-            dgvReport.Columns.Add("currLvl", "");
-            dgvReport.Columns.Add("lvl1", "Account Name");
-            dgvReport.Columns.Add("id", "");
-            dgvReport.Columns.Add("currname", "");
-            dgvReport.Columns.Add("balance", "Amount");
-            LocalizationManager.LocalizeDataGridViewHeaders(dgvReport);
-            dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
+            if (type == "Prev Year Comparison")
+            {
+                dgvReport.Columns.Add("state", "");
+                dgvReport.Columns.Add("loadState", "");
+                dgvReport.Columns.Add("currLvl", "");
+                dgvReport.Columns.Add("lvl1", "Account Name");
+                dgvReport.Columns.Add("id", "");
+                dgvReport.Columns.Add("currname", "");
+                string currentPeriod = $"{dateTimePicker1.Value:MMM dd} – {dateTimePicker2.Value:MMM dd yy}";
+                string previousPeriod = $"{prevFrom:MMM dd} – {prevTo:MMM dd yy}";
+                dgvReport.Columns.Add("balance1", currentPeriod);
+                dgvReport.Columns.Add("balance2", previousPeriod);
+                dgvReport.Columns.Add("change", "Change");
+                dgvReport.Columns.Add("change_percentage", "% Change");
 
-            //dgvReport.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
+
+                dgvReport.Columns["balance1"].DefaultCellStyle.Alignment = dgvReport.Columns["balance2"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvReport.Columns["change"].DefaultCellStyle.Alignment = dgvReport.Columns["change_percentage"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            else
+            {
+                dgvReport.Columns.Add("state", "");
+                dgvReport.Columns.Add("loadState", "");
+                dgvReport.Columns.Add("currLvl", "");
+                dgvReport.Columns.Add("lvl1", "Account Name");
+                dgvReport.Columns.Add("id", "");
+                dgvReport.Columns.Add("currname", "");
+                if (type == "detail")
+                {
+                    dgvReport.Columns.Add("date", "Date");
+                    dgvReport.Columns.Add("num", "Num");
+                    dgvReport.Columns.Add("adj", "Adj");
+                    dgvReport.Columns.Add("name", "Name");
+                    dgvReport.Columns.Add("memo", "Memo");
+                    dgvReport.Columns.Add("clr", "Clr");
+                    dgvReport.Columns.Add("split", "Split");
+                    dgvReport.Columns.Add("debit", "Debit");
+                    dgvReport.Columns.Add("credit", "Credit");
+                }
+                if (type == "by Class")
+                    dgvReport.Columns.Add("balance0", "Unclassified");
+
+                dgvReport.Columns.Add("balance", "Balance");
+                dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
+                if (type == "detail")
+                {
+                    dgvReport.Columns["debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvReport.Columns["credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+                if (type == "by Class")
+                    dgvReport.Columns["balance0"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvReport.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
             dgvReport.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             dgvReport.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
@@ -61,12 +142,125 @@ namespace YamyProject
 
             dgvReport.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvReport);
         }
 
         public void BindDGV()
         {
             dgvReport.Rows.Clear();
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+            string filterDate = (type == "detail" || type == "Prev Year Comparison")
+                                ? " AND t.date BETWEEN @fromDate AND @toDate"
+                                : " AND t.date <= @fromDate";
+            if (type == "Prev Year Comparison")
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                            WITH AccountBalances AS (
+                                -- Calculate balances for Income, Cost, and Expense categories (for P&L integration)
+                                SELECT 
+                                    l1.category_code AS Category, 
+                                    COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END), 0) AS Balance1,
+                                    COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END), 0) AS Balance2
+                                FROM tbl_coa_level_1 l1
+                                LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                                LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                                LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                                LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                                WHERE l1.category_code IN ('INCOME', 'COST', 'EXPENSE')
+                                  AND t.state = 0
+                                GROUP BY l1.category_code
+                            ),
+
+                            FinalBalance AS (
+                                -- Compute retained earnings = Income - Cost - Expenses
+                                SELECT 
+                                    'Final Balance (Income - Cost - Expenses)' AS Category,
+                                    COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='INCOME'),0)
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='COST'),0)
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance1,
+
+                                    COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='INCOME'),0)
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='COST'),0)
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance2
+                            ),
+
+                            EquityBalances AS (
+                                -- Compute balances for Asset, Liability, and Equity categories
+                                SELECT 
+                                    l1.name,
+                                    l1.id,
+                                    l1.category_code,
+                                    COALESCE(SUM(CASE WHEN t.date BETWEEN @currentFrom AND @currentTo THEN t.debit - t.credit END), 0) AS Balance1,
+                                    COALESCE(SUM(CASE WHEN t.date BETWEEN @prevFrom AND @prevTo THEN t.debit - t.credit END), 0) AS Balance2
+                                FROM tbl_coa_level_1 l1
+                                LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                                LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                                LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                                LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                                WHERE l1.category_code IN ('ASSET', 'LIABILITY', 'EQUITY')
+                                  AND t.state = 0
+                                GROUP BY l1.id, l1.name, l1.category_code
+                            )
+
+                            SELECT 
+                                eb.name,
+                                eb.id,
+                                CASE 
+                                    WHEN eb.category_code = 'EQUITY' THEN eb.Balance1 + (SELECT Balance1 FROM FinalBalance)
+                                    ELSE eb.Balance1
+                                END AS Balance1,
+                                CASE 
+                                    WHEN eb.category_code = 'EQUITY' THEN eb.Balance2 + (SELECT Balance2 FROM FinalBalance)
+                                    ELSE eb.Balance2
+                                END AS Balance2
+                            FROM EquityBalances eb
+                            ORDER BY eb.id;
+                            ",
+                        DBClass.CreateParameter("@currentFrom", dateTimePicker1.Value.Date),
+                        DBClass.CreateParameter("@currentTo", dateTimePicker2.Value.Date),
+                        DBClass.CreateParameter("@prevFrom", prevFrom),
+                        DBClass.CreateParameter("@prevTo", prevTo)))
+                {
+                    while (reader.Read())
+                    {
+                        if (type == "detail")
+                        {
+                            dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                                reader["id"].ToString(), reader["name"].ToString(),
+                                " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                                Utilities.FormatDecimal(reader["balance"].ToString()));
+                        }
+                        else if(type == "Prev Year Comparison")
+                        {
+                            decimal bal1 = Convert.ToDecimal(reader["Balance1"]);
+                            decimal bal2 = Convert.ToDecimal(reader["Balance2"]);
+                            decimal change = bal1 - bal2;
+                            decimal changePerc = (bal2 != 0) ? (change / Math.Abs(bal2)) * 100 : 0;
+                            dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(bal1.ToString()),
+                            Utilities.FormatDecimal(bal2.ToString()),
+                            Utilities.FormatDecimal(change.ToString()),
+                            Utilities.FormatDecimal(changePerc.ToString()) + " %");
+                        }
+                        else
+                        {
+                            dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                            reader["id"].ToString(), reader["name"].ToString(),
+                            Utilities.FormatDecimal(reader["balance"].ToString()));
+                        }
+                    }
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvReport.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
+                }
+            }
+            else
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                     WITH AccountBalances AS (
                         SELECT 
                             l1.category_code AS Category, 
@@ -78,7 +272,7 @@ namespace YamyProject
                         LEFT JOIN tbl_transaction t ON t.account_id = l4.id
                         WHERE l1.category_code IN ('INCOME', 'COST', 'EXPENSE') 
                           AND t.state = 0
-                          AND t.date <= @dated
+                            " + filterDate + @"
                         GROUP BY l1.category_code
                     ),
 
@@ -104,7 +298,7 @@ namespace YamyProject
                         LEFT JOIN tbl_transaction t ON t.account_id = l4.id
                         WHERE t.state = 0 
                           AND l1.category_code IN ('ASSET', 'LIABILITY', 'EQUITY')
-                          AND t.date <= @dated
+                          " + filterDate + @"
                         GROUP BY l1.id, l1.name, l1.category_code
                     )
 
@@ -120,17 +314,37 @@ namespace YamyProject
                     FROM EquityBalances eb
                     ORDER BY eb.id;
                     ",
-                    DBClass.CreateParameter("@dated", dateTimePicker1.Value.Date)))
-            {
-                while (reader.Read())
-                    dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
-                        reader["id"].ToString(), reader["name"].ToString(),
-                        reader["balance"].ToString());
-
-                // Auto-expand everything
-                for (int i = 0; i < dgvReport.Rows.Count; i++)
+                        DBClass.CreateParameter("@fromDate", dateTimePicker1.Value.Date),
+                        DBClass.CreateParameter("@toDate", dateTimePicker2.Value.Date)))
                 {
-                    ExpandRowRecursively(i);
+                    while (reader.Read())
+                    {
+                        if (type == "detail")
+                        {
+                            dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                                reader["id"].ToString(), reader["name"].ToString(),
+                                " ", " ", " ", " ", " ", " ", " ", " ", " ",
+                                Utilities.FormatDecimal(reader["balance"].ToString()));
+                        }
+                        else
+                        {
+                            if (type == "by Class")
+                                dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                                reader["id"].ToString(), reader["name"].ToString(),
+                                Utilities.FormatDecimal(reader["balance"].ToString()),
+                                Utilities.FormatDecimal(reader["balance"].ToString()));
+                            else
+                                dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
+                                reader["id"].ToString(), reader["name"].ToString(),
+                                Utilities.FormatDecimal(reader["balance"].ToString()));
+                        }
+                    }
+
+                    // Auto-expand everything
+                    for (int i = 0; i < dgvReport.Rows.Count; i++)
+                    {
+                        ExpandRowRecursively(i);
+                    }
                 }
             }
         }
@@ -166,21 +380,190 @@ namespace YamyProject
                     {
                         string nextState = (currLvl + 1 == 4) ? "n" : "e";
                         string nextIcon = (currLvl + 1 == 4) ? "  " : "►";
-                        var balanceData = GetBalanceData(currLvl + 1, int.Parse(reader["id"].ToString()), dateTimePicker1.Value.Date);
-                        if (balanceData != null)
+
+                        var newRow = new DataGridViewRow();
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
+                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
+                        if (type == "detail")
                         {
-                            var newRow = new DataGridViewRow();
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                            var balanceData = GetBalanceData(currLvl + 1, int.Parse(reader["id"].ToString()), dateTimePicker1.Value, dateTimePicker2.Value.Date);
+                            if (balanceData != null)
+                            {
+
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+
+                                newRow.Height = row.Height;
+
+                                ApplyRowStyle(newRow, currLvl + 1);
+                                newRows.Add(newRow);
+                            }
+                            if (currLvl + 1 == 4)
+                            {
+                                using (MySqlDataReader tReader = DBClass.ExecuteReader(@"
+                                        SELECT 
+                                                t.id,
+                                                t.type,
+                                                t.date,
+                                                t.voucher_no AS num,
+                                                '' AS adjustment,
+
+                                                COALESCE(
+                                                    CASE 
+                                                        WHEN t.type IN ('Customer','Sales Invoice Cash','Sales Invoice','Credit Note','SalesReturn Invoice','Customer Receipt','Customer Opening Balance','Customer Advance Payment','Check Cancel (Customer)','PDC Receivable') THEN
+                                                            (SELECT concat(c.code,' ', c.name) 
+                                                             FROM tbl_customer c
+                                                             JOIN tbl_transaction x ON x.hum_id = c.id 
+                                                             WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type 
+                                                             LIMIT 1)
+                                                        WHEN t.type IN ('Vendor','Purchase Invoice','Vendor Payment','Subcontractor Payment','Purchase Invoice Cash','Purchase Return Invoice','Debit Note','Vendor Opening Balance','Vendor Advance Payment','Check Cancel (Vendor)','PDC Payable') THEN
+                                                            (SELECT concat(v.code,' ', v.name) 
+                                                             FROM tbl_vendor v
+                                                             JOIN tbl_transaction x ON x.hum_id = v.id
+                                                             WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type 
+                                                             LIMIT 1)
+                                                        WHEN t.type IN ('Employee','Petty Cash','Employee Salary Payment','Employee Loan Payment','Check Cancel (Employee)','Employee Salary') THEN
+                                                            (SELECT concat(e.code,' ', e.name) 
+                                                             FROM tbl_employee e
+                                                             JOIN tbl_transaction x ON x.hum_id = e.id
+                                                             WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type 
+                                                             LIMIT 1)
+                                                        ELSE ''
+                                                    END, ''
+                                                ) AS name,
+
+                                                COALESCE((
+                                                    SELECT concat(lev4.code,' ',lev4.name)
+                                                    FROM tbl_transaction x 
+                                                    JOIN tbl_coa_level_4 lev4 ON lev4.id = x.account_id
+                                                    WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type AND x.hum_id>0
+                                                    LIMIT 1
+                                                ), '') AS AccountNamed,
+
+                                                COALESCE(t.description, '') AS memo,
+                                                '' AS clr,
+                                                COALESCE((SELECT name FROM tbl_coa_level_4 WHERE id=t.account_id LIMIT 1), '') AS split,
+
+                                                COALESCE((
+                                                    SELECT x.debit 
+                                                    FROM tbl_transaction x 
+                                                    WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type AND x.hum_id>0 
+                                                    LIMIT 1
+                                                ), 0) AS debit,
+
+                                                COALESCE((
+                                                    SELECT x.credit 
+                                                    FROM tbl_transaction x 
+                                                    WHERE x.transaction_id = t.transaction_id AND x.TYPE = t.type AND x.hum_id>0 
+                                                    LIMIT 1
+                                                ), 0) AS credit,
+
+                                                (SELECT COALESCE(SUM(tt.debit - tt.credit),0) 
+                                                 FROM tbl_transaction tt 
+                                                 WHERE tt.transaction_id = t.transaction_id AND tt.type=t.type 
+                                                   AND tt.id <= t.id AND tt.hum_id>0) AS running_balance
+
+                                            FROM tbl_transaction t
+                                            WHERE t.account_id = @acctId AND t.date BETWEEN @fromDate AND @toDate
+                                            ORDER BY t.date, t.id;
+                                    ",
+                                    DBClass.CreateParameter("acctId", int.Parse(reader["id"].ToString())),
+                                    DBClass.CreateParameter("fromDate", dateTimePicker1.Value),
+                                    DBClass.CreateParameter("toDate", dateTimePicker2.Value)))
+                                {
+                                    while (tReader.Read())
+                                    {
+                                        string trans_type = tReader["type"]?.ToString() ?? "";
+                                        string _dateStr = "";
+                                        if (tReader["date"] != DBNull.Value)
+                                        {
+                                            DateTime dt;
+                                            if (DateTime.TryParse(tReader["date"].ToString(), out dt))
+                                                _dateStr = dt.ToString("MM/dd/yyyy");
+                                        }
+                                        string _num = tReader["num"]?.ToString() ?? "";
+                                        string _adj = tReader["adjustment"]?.ToString() ?? "";
+                                        string _trName = tReader["name"]?.ToString() ?? "";
+                                        string _AcName = tReader["AccountNamed"]?.ToString() ?? "";
+                                        string _memo = tReader["memo"]?.ToString() ?? "";
+                                        string _clr = tReader["clr"]?.ToString() ?? "";
+                                        string _split = tReader["split"]?.ToString() ?? "";
+                                        string debit = Utilities.FormatDecimal(tReader["debit"].ToString());
+                                        string credit = Utilities.FormatDecimal(tReader["credit"].ToString());
+                                        string running = Utilities.FormatDecimal(tReader["running_balance"].ToString());
+
+                                        newRow = new DataGridViewRow();
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + "     " + trans_type });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["id"].ToString() });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["name"].ToString() });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _dateStr });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _num });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _adj });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _trName });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _memo });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _clr });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _split });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = debit });
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = credit });
+                                        decimal _bal = decimal.Parse(debit) - decimal.Parse(credit);
+                                        newRow.Cells.Add(new DataGridViewTextBoxCell { Value = _bal.ToString("N2") });
+                                        newRow.Height = row.Height;
+
+                                        ApplyRowStyle(newRow, currLvl + 1);
+                                        newRows.Add(newRow);
+                                    }
+                                }
+                            }
+                        }
+                        else if (type == "Prev Year Comparison")
+                        {
+                            var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dateTimePicker1.Value, dateTimePicker2.Value, prevFrom, prevTo);
+                            decimal balance1 = balanceData.balance1;
+                            decimal balance2 = balanceData.balance2;
+                            decimal change = balance1 - balance2;
+                            decimal percentChange = (balance2 != 0) ? (change / balance2) * 100 : 0;
+
+
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData.balance1) });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData.balance2) });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(change) });
+                            newRow.Cells.Add(new DataGridViewTextBoxCell { Value = $"{percentChange:N1}%" });
+
                             newRow.Height = row.Height;
 
                             ApplyRowStyle(newRow, currLvl + 1);
                             newRows.Add(newRow);
+                        }
+                        else
+                        {
+                            var balanceData = GetBalanceData(currLvl + 1, int.Parse(reader["id"].ToString()), dateTimePicker1.Value, dateTimePicker2.Value.Date);
+                            if (balanceData != null)
+                            {
+                                if (type == "by Class")
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+
+                                newRow.Height = row.Height;
+
+                                ApplyRowStyle(newRow, currLvl + 1);
+                                newRows.Add(newRow);
+                            }
                         }
                     }
 
@@ -192,6 +575,34 @@ namespace YamyProject
                 }
 
                 row.Cells["loadState"].Value = "l";
+
+                bool isStandard = (type == "detail" ? false : type == "Prev Year Comparison" ? false : type == "by Class" ? false : true);
+                if (isStandard)
+                {
+                    decimal subgroupTotal = 0;
+
+                    foreach (var newRow in newRows)
+                    {
+                        if (decimal.TryParse(newRow.Cells["balance"].Value?.ToString(), out decimal val))
+                            subgroupTotal += val;
+                    }
+
+                    // After all subgroup rows inserted
+                    var totalRow = new DataGridViewRow();
+                    totalRow.DefaultCellStyle.Font = new System.Drawing.Font(dgvReport.Font, FontStyle.Bold);
+                    totalRow.DefaultCellStyle.BackColor = System.Drawing.Color.Beige;
+
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "n" }); // state
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "l" }); // loadState
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 }); // currLvl
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + "Total " + row.Cells["lvl1"].Value.ToString().Trim() });
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = row.Cells["id"].Value.ToString() });
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "TotalRow" });
+                    totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(subgroupTotal) });
+
+                    // Insert total after children
+                    dgvReport.Rows.Insert(rowIndex + newRows.Count + 1, totalRow);
+                }
             }
 
             row.Cells["lvl1"].Value = cellValue.Replace("►", "▼");
@@ -264,7 +675,7 @@ namespace YamyProject
             companyText.Font.Size = 12;
 
             // "Balance Sheet Summary" - Bold, size 10
-            FormattedText summaryText = center.AddFormattedText("Balance Sheet Summary\n", TextFormat.Bold);
+            FormattedText summaryText = type == "detail" ? center.AddFormattedText("Balance Sheet Detail\n", TextFormat.Bold) : center.AddFormattedText("Balance Sheet Summary\n", TextFormat.Bold);
             summaryText.Font.Size = 12;
 
             // "All Transactions" - Regular, size 9
@@ -281,52 +692,128 @@ namespace YamyProject
             line.Format.Borders.Bottom.Width = 2;
             line.Format.SpaceAfter = "0.5cm";
 
-            // Table for data
-            Table dataTable = section.AddTable();
-            dataTable.Borders.Width = 0;
-            dataTable.AddColumn("10cm");
-            dataTable.AddColumn("5cm");
-
-            decimal totalAmount = 0;
-
-            // Load from DataGridView
-            foreach (DataGridViewRow row in dgvReport.Rows)
+            if (type != "detail")
             {
-                if (row.IsNewRow) continue;
+                // Table for data
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                dataTable.AddColumn("10cm");
+                dataTable.AddColumn("5cm");
 
-                string account = row.Cells["lvl1"].Value?.ToString() ?? "";
-                if (account.ToUpper().Contains("TOTAL")) continue;
+                decimal totalAmount = 0;
 
-                string amountStr = row.Cells["balance"].Value?.ToString() ?? "0";
-                account = account.Replace("▶", "").Trim();
-                amountStr = amountStr.Replace("◀", "").Trim();
+                // Load from DataGridView
+                foreach (DataGridViewRow row in dgvReport.Rows)
+                {
+                    if (row.IsNewRow) continue;
 
-                decimal amount = 0;
-                decimal.TryParse(amountStr, out amount);
+                    string account = row.Cells["lvl1"].Value?.ToString() ?? "";
+                    if (account.ToUpper().Contains("TOTAL")) continue;
 
-                Row tRow = dataTable.AddRow();
-                tRow.Cells[0].AddParagraph(account);
-                tRow.Cells[1].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    string amountStr = row.Cells["balance"].Value?.ToString() ?? "0";
+                    account = account.Replace("▶", "").Trim();
+                    amountStr = amountStr.Replace("◀", "").Trim();
 
-                totalAmount += amount;
+                    decimal amount = 0;
+                    decimal.TryParse(amountStr, out amount);
+
+                    Row tRow = dataTable.AddRow();
+                    tRow.Cells[0].AddParagraph(account);
+                    tRow.Cells[1].AddParagraph(amount.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+
+                    totalAmount += amount;
+                }
+
+                // TOTAL row
+                Row totalRow = dataTable.AddRow();
+                totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+                Paragraph totalText = totalRow.Cells[1].AddParagraph(totalAmount.ToString("N2"));
+                totalText.Format.Font.Bold = true;
+                totalText.Format.Font.Underline = Underline.Single;
+                totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
+
+                //section.Add(dataTable);
+            } else if(type == "detail")
+            {
+                Table dataTable = section.AddTable();
+                dataTable.Borders.Width = 0;
+                dataTable.AddColumn("6cm");
+                dataTable.AddColumn("2cm");
+                dataTable.AddColumn("1cm");
+                dataTable.AddColumn("0.5cm");
+                dataTable.AddColumn("2cm");
+                dataTable.AddColumn("2cm");
+                dataTable.AddColumn("0.5cm");
+                dataTable.AddColumn("1cm");
+                dataTable.AddColumn("2cm");
+                dataTable.AddColumn("2cm");
+                dataTable.AddColumn("3cm");
+
+                decimal totalBalance = 0;
+                decimal totalDebit = 0;
+                decimal totalCredit = 0;
+
+                foreach(DataGridViewRow row in dgvReport.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string _account = row.Cells["lvl1"].Value?.ToString() ?? "";
+                    if (_account.ToUpper().Contains("TOTAL")) continue;
+
+                    string _date = row.Cells["date"].Value?.ToString() ?? "";
+                    string _num = row.Cells["num"].Value?.ToString()??"";
+                    string _adj = row.Cells["adj"].Value?.ToString() ?? "";
+                    string _name = row.Cells["name"].Value?.ToString() ?? "";
+                    string _memo = row.Cells["memo"].Value?.ToString() ?? "";
+                    string _clr = row.Cells["clr"].Value?.ToString() ?? "";
+                    string _split = row.Cells["split"].Value?.ToString() ?? "";
+                    string _debit = row.Cells["debit"].Value?.ToString() ?? "0";
+                    string _credit = row.Cells["credit"].Value?.ToString() ?? "0";
+                    string _balance = row.Cells["balance"].Value?.ToString() ?? "0";
+
+                    decimal balance = 0;
+                    decimal.TryParse(_balance, out balance);
+                    decimal debit = 0;
+                    decimal.TryParse(_debit, out  debit);
+                    decimal credit = 0;
+                    decimal.TryParse(_credit, out  credit);
+
+                    Row tRow = dataTable.AddRow();
+                    tRow.Cells[0].AddParagraph(_account);
+                    tRow.Cells[1].AddParagraph(_date);
+                    tRow.Cells[2].AddParagraph(_num);
+                    tRow.Cells[3].AddParagraph(_adj);
+                    tRow.Cells[4].AddParagraph(_num);
+                    tRow.Cells[5].AddParagraph(_name);
+                    tRow.Cells[6].AddParagraph(_memo);
+                    tRow.Cells[7].AddParagraph(_clr);
+                    tRow.Cells[8].AddParagraph(_split);
+                    tRow.Cells[9].AddParagraph(debit.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    tRow.Cells[10].AddParagraph(credit.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    tRow.Cells[11].AddParagraph(balance.ToString("N2")).Format.Alignment = ParagraphAlignment.Right;
+                    
+                    totalDebit += debit;
+                    totalCredit += credit;
+                    totalBalance += balance;
+                }
+
+                // TOTAL row
+                Row totalRow = dataTable.AddRow();
+                totalRow.Cells[1].AddParagraph("TOTAL").Format.Font.Bold = true;
+                totalRow.Cells[9].AddParagraph(totalDebit.ToString("N2"));
+                totalRow.Cells[10].AddParagraph(totalCredit.ToString("N2"));
+                Paragraph totalText = totalRow.Cells[11].AddParagraph(totalBalance.ToString("N2"));
+                totalText.Format.Font.Bold = true;
+                totalText.Format.Font.Underline = Underline.Single;
+                totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
+
             }
-
-            // TOTAL row
-            Row totalRow = dataTable.AddRow();
-            totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
-            Paragraph totalText = totalRow.Cells[1].AddParagraph(totalAmount.ToString("N2"));
-            totalText.Format.Font.Bold = true;
-            totalText.Format.Font.Underline = Underline.Single;
-            totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
-
-            //section.Add(dataTable);
-
             // Render and save
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
             renderer.Document = doc;
             renderer.RenderDocument();
 
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "CustomerBalanceSummary.pdf");
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), type == "detail" ? "BalanceSheetDetail.pdf" : "BalanceSheet.pdf");
             renderer.PdfDocument.Save(filePath);
             Process.Start("explorer.exe", filePath);
         }
@@ -337,71 +824,223 @@ namespace YamyProject
             {
                 saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
                 saveDialog.Title = "Save Excel File";
-                saveDialog.FileName = "BalanceSheet.xlsx";
+                saveDialog.FileName = type == "detail" ? "BalanceSheetDetail.xlsx" : type == "Prev Year Comparison" ? "BalanceSheetPrevYearComparison.xlsx" : type == "by Class" ? "BalanceSheetByClass" : "BalanceSheet.xlsx";
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var excelApp = new Excel.Application();
                     excelApp.Visible = false;
                     var workbook = excelApp.Workbooks.Add(Type.Missing);
-                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
-                    worksheet.Name = "Balance Sheet";
-
+                    var worksheet = (Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = (type == "detail" ? "BalanceSheetDetail" : type == "Prev Year Comparison" ? "BalanceSheetPrevYearComparison" : type == "by Class" ? "BalanceSheetByClass" : "BalanceSheet");
+                    
+                    Excel.Range headerRange0 = type == "detail" ? worksheet.Range["D1", "J1"] : type == "Prev Year Comparison" ? worksheet.Range["C1", "F1"] : worksheet.Range["A1", "B1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = lblCompany.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = type == "detail" ? worksheet.Range["D2", "J2"] : type == "Prev Year Comparison" ? worksheet.Range["C2", "F2"] : worksheet.Range["A2", "B2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = label1.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = type == "detail" ? worksheet.Range["D3", "J3"] : type == "Prev Year Comparison" ? worksheet.Range["C3", "F3"] : worksheet.Range["A3", "B3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dateTimePicker1.Text + " - To " + dateTimePicker2.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     // Merge and format header row (Date)
-                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["B1", "C1"];
-                    headerRange.Merge();
-                    headerRange.Value = DateTime.Now.ToString("MMM dd, yy");
-                    headerRange.Font.Bold = true;
-                    headerRange.Font.Name = "Times New Roman";
-                    headerRange.Font.Size = 10;
-                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange3 = type == "detail" ? worksheet.Range["B4", "C4"] : type == "Prev Year Comparison" ? worksheet.Range["C4", "F4"] : worksheet.Range["A4", "B4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    int rowIndex = 5;
 
-                    int rowIndex = 2;
+                    // 1️⃣ Write header row first
+                    for (int col = 0; col < dgvReport.Columns.Count; col++)
+                    {
+                        var column = dgvReport.Columns[col];
+
+                        // Skip hidden columns if needed
+                        if (!column.Visible) continue;
+                        if (column.HeaderText.Length > 0)
+                        {
+                            var headerCell = worksheet.Cells[rowIndex, col];
+                            headerCell.Value = column.HeaderText;  // show column header
+                            headerCell.Font.Bold = true;
+                            headerCell.Font.Name = "Times New Roman";
+                            headerCell.Font.Size = 11;
+                            headerCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        }
+                    }
+
+                    // 2️⃣ Write data rows
+                    rowIndex++; // move to next row for data
                     foreach (DataGridViewRow row in dgvReport.Rows)
                     {
                         if (row.IsNewRow) continue;
 
                         string account = row.Cells["lvl1"].Value?.ToString();
-                        string amount = row.Cells["balance"].Value?.ToString();
 
                         var accountCell = worksheet.Cells[rowIndex, 2];
-                        var amountCell = worksheet.Cells[rowIndex, 3];
-
-                        accountCell.Value = account.Replace("▶", "").Trim().Replace("▼","").Trim();
-                        amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
-
-                        accountCell.Font.Name = "Times New Roman";
-                        amountCell.Font.Name = "Times New Roman";
-
-                        if (account.ToUpper().Contains("TOTAL"))
+                        if (type == "detail")
                         {
-                            accountCell.Font.Size = 10;
-                            accountCell.Font.Bold = true;
+                            string _date = row.Cells["date"].Value?.ToString();
+                            string _num = row.Cells["num"].Value?.ToString();
+                            string _adj = row.Cells["adj"].Value?.ToString();
+                            string _name = row.Cells["name"].Value?.ToString();
+                            string _memo = row.Cells["memo"].Value?.ToString();
+                            string _clr = row.Cells["clr"].Value?.ToString();
+                            string _split = row.Cells["split"].Value?.ToString();
+                            string _debit = row.Cells["debit"].Value?.ToString();
+                            string _credit = row.Cells["credit"].Value?.ToString();
 
-                            amountCell.Font.Size = 10;
-                            amountCell.Font.Bold = true;
-                            amountCell.Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            string _balance = row.Cells["balance"].Value?.ToString();
+                            worksheet.Cells[rowIndex, 2].Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            worksheet.Cells[rowIndex, 3].Value = _date;
+                            worksheet.Cells[rowIndex, 4].Value = _num;
+                            worksheet.Cells[rowIndex, 5].Value = _adj;
+                            worksheet.Cells[rowIndex, 6].Value = _name;
+                            worksheet.Cells[rowIndex, 7].Value = _memo;
+                            worksheet.Cells[rowIndex, 8].Value = _clr;
+                            worksheet.Cells[rowIndex, 9].Value = _split;
+                            worksheet.Cells[rowIndex, 10].Value = _debit;
+                            worksheet.Cells[rowIndex, 11].Value = _credit;
+                            worksheet.Cells[rowIndex, 12].Value = _balance;
+                            for (int col = 2; col <= 12; col++)
+                            {
+                                var cell = worksheet.Cells[rowIndex, col];
+                                cell.Font.Name = "Times New Roman";
+                                if (account.ToUpper().Contains("TOTAL"))
+                                {
+                                    cell.Font.Size = 10;
+                                    cell.Font.Bold = true;
+                                    if (col == 12) // Balance column
+                                    {
+                                        cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                                    }
+                                }
+                                else
+                                {
+                                    cell.Font.Size = 9;
+                                }
+                                if (col == 10 || col == 11 || col == 12) // Debit, Credit, Balance columns
+                                {
+                                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                                }
+                            }
+                        }
+                        else if (type == "Prev Year Comparison")
+                        {
+                            string amount1Value = row.Cells["balance1"].Value?.ToString();
+                            string amount2Value = row.Cells["balance2"].Value?.ToString();
+                            //amount1HeaderCell.Value = dgvCustomer.Columns["balance1"].HeaderCell.Value;
+                            //amount2HeaderCell.Value = dgvCustomer.Columns["balance2"].HeaderCell.Value;
+                            //changeHeaderCell.Value = dgvCustomer.Columns["change"].HeaderCell.Value;
+                            //changePercentageHeaderCell.Value = dgvCustomer.Columns["change_percentage"].HeaderCell.Value;
+
+                            var accountHeaderCell = worksheet.Cells[rowIndex, 2];
+                            var amount1HeaderCell = worksheet.Cells[rowIndex, 3];
+                            var amount2HeaderCell = worksheet.Cells[rowIndex, 4];
+                            var changeHeaderCell = worksheet.Cells[rowIndex, 5];
+                            var changePercentageHeaderCell = worksheet.Cells[rowIndex, 6];
+
+
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amount1HeaderCell.Value = amount1Value.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+                            amount2HeaderCell.Value = amount2Value.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amount1HeaderCell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount1HeaderCell.Font.Size = 10;
+                                amount1HeaderCell.Font.Bold = true;
+                                amount1HeaderCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+
+                                amount2HeaderCell.Font.Size = 10;
+                                amount2HeaderCell.Font.Bold = true;
+                                amount2HeaderCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount1HeaderCell.Font.Size = 9;
+                                amount2HeaderCell.Font.Size = 9;
+                            }
+
+                            amount1HeaderCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            amount2HeaderCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         }
                         else
                         {
-                            accountCell.Font.Size = 10;
-                            accountCell.Font.Bold = true;
+                            string amount = row.Cells["balance"].Value?.ToString();
+                            var amount0Cell = worksheet.Cells[rowIndex, 3];
+                            var amountCell = worksheet.Cells[rowIndex, 4];
 
-                            amountCell.Font.Size = 9;
+                            accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            amount0Cell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+                            amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
+
+                            accountCell.Font.Name = "Times New Roman";
+                            amount0Cell.Font.Name = "Times New Roman";
+                            amountCell.Font.Name = "Times New Roman";
+
+                            if (account.ToUpper().Contains("TOTAL"))
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount0Cell.Font.Size = 10;
+                                amountCell.Font.Size = 10;
+                                amount0Cell.Font.Bold = true;
+                                amountCell.Font.Bold = true;
+                                amount0Cell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                                amountCell.Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                            }
+                            else
+                            {
+                                accountCell.Font.Size = 10;
+                                accountCell.Font.Bold = true;
+
+                                amount0Cell.Font.Size = 9;
+                                amountCell.Font.Size = 9;
+                            }
+
+                            amount0Cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            amountCell.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                         }
 
-                        amountCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
                         rowIndex++;
                     }
 
                     worksheet.Columns[2].AutoFit();
                     worksheet.Columns[3].AutoFit();
+                    worksheet.Columns[4].AutoFit();
 
                     workbook.SaveAs(saveDialog.FileName);
                     workbook.Close();
                     excelApp.Quit();
 
                     MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //open same excel file
+                    Process.Start("explorer.exe", saveDialog.FileName);
                 }
             }
         }
@@ -419,7 +1058,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions By Account", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString())));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Transactions By Account", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()), dateTimePicker1.Value.ToString(), dateTimePicker1.Value.ToString()));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -447,7 +1086,7 @@ namespace YamyProject
                             {
                                 string nextState = (currLvl + 1 == 4) ? "n" : "e";
                                 string nextIcon = (currLvl + 1 == 4) ? "  " : "►";
-                                var balanceData = GetBalanceData(currLvl + 1, int.Parse(reader["id"].ToString()), dateTimePicker1.Value.Date);
+                                var balanceData = GetBalanceData(currLvl + 1, int.Parse(reader["id"].ToString()), dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
                                 if (balanceData != null)
                                 {
                                     var newRow = new DataGridViewRow();
@@ -457,7 +1096,7 @@ namespace YamyProject
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = balanceData });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                                     newRow.Height = dgvReport.Rows[e.RowIndex].Height;
 
                                     ApplyRowStyle(newRow, currLvl + 1);
@@ -487,7 +1126,7 @@ namespace YamyProject
                 }
                 else if (state == "c")
                 {
-                    var parentBalanceData = GetBalanceData(currLvl, int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString().Replace("▼", "")), dateTimePicker1.Value.Date);
+                    var parentBalanceData = GetBalanceData(currLvl, int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString().Replace("▼", "")), dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
 
                     if (!string.IsNullOrEmpty(parentBalanceData))
                     {
@@ -514,66 +1153,86 @@ namespace YamyProject
                 row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
 
-        private string GetBalanceData(int level, int id, DateTime cutoffDate)
+        private string GetBalanceData(int level, int id, DateTime cutoffDate, DateTime toDated)
         {
-            using (MySqlDataReader read = DBClass.ExecuteReader($@"
-        SELECT 
-            t1.id AS level1_id, 
-            t2.id AS level2_id, 
-            t3.id AS level3_id, 
-            t4.id AS level4_id,
+            // Determine date filter dynamically
+            string filterDate = (type == "detail")
+                ? " AND tt.date BETWEEN @fromDate AND @toDate"
+                : " AND tt.date <= @fromDate";
 
-            -- Balance for Level 1 (Summing all child transactions)
-            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
-             FROM tbl_transaction tt
-             WHERE tt.state=0 AND tt.date <= @dated
-               AND tt.account_id IN (
-                   SELECT id FROM tbl_coa_level_4 
-                   WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
-                                     WHERE main_id IN (SELECT id FROM tbl_coa_level_2 
-                                                       WHERE main_id = t1.id))
-               )
-            ) AS level1_balance,
+            string query = $@"
+                            SELECT 
+                                t1.id AS level1_id, 
+                                t2.id AS level2_id, 
+                                t3.id AS level3_id, 
+                                t4.id AS level4_id,
 
-            -- Balance for Level 2 (Summing its child transactions)
-            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
-             FROM tbl_transaction tt
-             WHERE tt.state=0 AND tt.date <= @dated
-               AND tt.account_id IN (
-                   SELECT id FROM tbl_coa_level_4 
-                   WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
-                                     WHERE main_id = t2.id)
-               )
-            ) AS level2_balance,
+                                -- Balance for Level 1
+                                (
+                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    FROM tbl_transaction tt
+                                    WHERE tt.state = 0 {filterDate}
+                                    AND tt.account_id IN (
+                                        SELECT id FROM tbl_coa_level_4 
+                                        WHERE main_id IN (
+                                            SELECT id FROM tbl_coa_level_3 
+                                            WHERE main_id IN (
+                                                SELECT id FROM tbl_coa_level_2 
+                                                WHERE main_id = t1.id
+                                            )
+                                        )
+                                    )
+                                ) AS level1_balance,
 
-            -- Balance for Level 3 (Summing only Level 4 transactions)
-            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
-             FROM tbl_transaction tt
-             WHERE tt.state=0 AND tt.date <= @dated
-               AND tt.account_id IN (
-                   SELECT id FROM tbl_coa_level_4 
-                   WHERE main_id = t3.id
-               )
-            ) AS level3_balance,
+                                -- Balance for Level 2
+                                (
+                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    FROM tbl_transaction tt
+                                    WHERE tt.state = 0 {filterDate}
+                                    AND tt.account_id IN (
+                                        SELECT id FROM tbl_coa_level_4 
+                                        WHERE main_id IN (
+                                            SELECT id FROM tbl_coa_level_3 
+                                            WHERE main_id = t2.id
+                                        )
+                                    )
+                                ) AS level2_balance,
 
-            -- Balance for Level 4 (Direct transactions only)
-            COALESCE(SUM(CASE WHEN tt.state=0 AND tt.date <= @dated 
-                              THEN tt.debit - tt.credit 
-                              ELSE 0 END), 0) AS level4_balance
+                                -- Balance for Level 3
+                                (
+                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    FROM tbl_transaction tt
+                                    WHERE tt.state = 0 {filterDate}
+                                    AND tt.account_id IN (
+                                        SELECT id FROM tbl_coa_level_4 
+                                        WHERE main_id = t3.id
+                                    )
+                                ) AS level3_balance,
 
-        FROM tbl_coa_level_1 t1
-        LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
-        LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
-        LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
-        LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
+                                -- Balance for Level 4
+                                (
+                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    FROM tbl_transaction tt
+                                    WHERE tt.state = 0 {filterDate}
+                                    AND tt.account_id = t4.id
+                                ) AS level4_balance
 
-        WHERE t1.category_code IN ('ASSET', 'LIABILITY', 'EQUITY') 
-          AND t{level}.id = @id
+                            FROM tbl_coa_level_1 t1
+                            LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                            LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                            LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
 
-        GROUP BY t1.id, t2.id, t3.id, t4.id;
-        ",
+                            WHERE t1.category_code IN ('ASSET', 'LIABILITY', 'EQUITY') 
+                              AND t{level}.id = @id
+
+                            GROUP BY t1.id, t2.id, t3.id, t4.id;
+                        ";
+
+            using (MySqlDataReader read = DBClass.ExecuteReader(
+                query,
                 DBClass.CreateParameter("@id", id),
-                DBClass.CreateParameter("@dated", cutoffDate)))
+                DBClass.CreateParameter("@fromDate", cutoffDate),
+                DBClass.CreateParameter("@toDate", toDated)))
             {
                 if (read.Read())
                 {
@@ -584,7 +1243,155 @@ namespace YamyProject
             return "0";
         }
 
-        private string GetBalanceDataX(int level, string name)
+        private (decimal balance1, decimal balance2) GetBalanceData(int level, string name, DateTime currentFrom, DateTime currentTo, DateTime previousFrom, DateTime previousTo)
+        {
+            string query = $@"
+                                SELECT 
+                                    t1.id AS level1_id, 
+                                    t2.id AS level2_id, 
+                                    t3.id AS level3_id, 
+                                    t4.id AS level4_id,
+
+                                    -- Current Period Balance for Level 1
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @currFrom AND @currTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id IN (
+                                                  SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id IN (
+                                                      SELECT id FROM tbl_coa_level_2 
+                                                      WHERE main_id = t1.id
+                                                  )
+                                              )
+                                          )
+                                    ) AS level1_balance_curr,
+
+                                    -- Previous Period Balance for Level 1
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @prevFrom AND @prevTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id IN (
+                                                  SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id IN (
+                                                      SELECT id FROM tbl_coa_level_2 
+                                                      WHERE main_id = t1.id
+                                                  )
+                                              )
+                                          )
+                                    ) AS level1_balance_prev,
+
+                                    -- Current Period Balance for Level 2
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @currFrom AND @currTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id IN (
+                                                  SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id = t2.id
+                                              )
+                                          )
+                                    ) AS level2_balance_curr,
+
+                                    -- Previous Period Balance for Level 2
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @prevFrom AND @prevTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id IN (
+                                                  SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id = t2.id
+                                              )
+                                          )
+                                    ) AS level2_balance_prev,
+
+                                    -- Current Period Balance for Level 3
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @currFrom AND @currTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id = t3.id
+                                          )
+                                    ) AS level3_balance_curr,
+
+                                    -- Previous Period Balance for Level 3
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @prevFrom AND @prevTo
+                                          AND tt.account_id IN (
+                                              SELECT id FROM tbl_coa_level_4 
+                                              WHERE main_id = t3.id
+                                          )
+                                    ) AS level3_balance_prev,
+
+                                    -- Current Period Balance for Level 4
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @currFrom AND @currTo
+                                          AND tt.account_id = t4.id
+                                    ) AS level4_balance_curr,
+
+                                    -- Previous Period Balance for Level 4
+                                    (
+                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        FROM tbl_transaction tt
+                                        WHERE tt.state = 0
+                                          AND tt.date BETWEEN @prevFrom AND @prevTo
+                                          AND tt.account_id = t4.id
+                                    ) AS level4_balance_prev
+
+                                FROM tbl_coa_level_1 t1
+                                LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                                LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                                LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+
+                                WHERE t1.category_code IN ('ASSET', 'LIABILITY', 'EQUITY') 
+                                  AND t{level}.name = @name
+
+                                GROUP BY t1.id, t2.id, t3.id, t4.id;
+                                ";
+
+            using (MySqlDataReader read = DBClass.ExecuteReader(
+                query,
+                DBClass.CreateParameter("@name", name),
+                DBClass.CreateParameter("@currFrom", currentFrom),
+                DBClass.CreateParameter("@currTo", currentTo),
+                DBClass.CreateParameter("@prevFrom", previousFrom),
+                DBClass.CreateParameter("@prevTo", previousTo)
+            ))
+            {
+                if (read.Read())
+                {
+                    decimal curr = Convert.ToDecimal(read[$"level{level}_balance_curr"]);
+                    decimal prev = Convert.ToDecimal(read[$"level{level}_balance_prev"]);
+                    return (curr, prev);
+                }
+            }
+            return (0, 0);
+
+        }
+
+        private string GetBalanceDataXOld(int level, string name)
         {
             using (MySqlDataReader read = DBClass.ExecuteReader($@"SELECT 
                         t1.name AS level1_name, 
@@ -751,7 +1558,6 @@ namespace YamyProject
             if (comboBox1.SelectedItem != null)
             {
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dateTimePicker1, dateTimePicker1);
-                AddDGVColumns();
                 BindDGV();
             }
         }

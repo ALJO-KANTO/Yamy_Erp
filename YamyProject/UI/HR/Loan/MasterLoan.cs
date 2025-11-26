@@ -81,24 +81,13 @@ namespace YamyProject
             LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
         }
 
-        private void HideUnusedColumns()
-        {
-            string[] hiddenColumns = { "id", "work_phone", "main_phone", "category", "trn", "email", "region" };
-            foreach (var col in hiddenColumns)
-                dgvEmployee.Columns[col].Visible = false;
-        }
-
-        private void BindVendorInvoice()
-        {
-            BindEmployeeInfo();
-        }
-
         private void BindEmployeeInfo()
         {
             if (dgvEmployee.SelectedRows.Count == 0)
                 return;
 
             string empCode = dgvEmployee.SelectedRows[0].Cells["Employee Code"].Value.ToString();
+            string empId = dgvEmployee.SelectedRows[0].Cells["id"].Value.ToString();
 
             // Fetch Employee Personal Info
             string employeeQuery = @"
@@ -111,12 +100,12 @@ namespace YamyProject
                                         e.phone
                                     FROM tbl_employee e
                                     LEFT JOIN tbl_position p ON e.Position_id = p.id  
-                                    WHERE e.code = @empCode;
+                                    WHERE e.id = @id;
                                     ";
 
                     var employeeParams = new List<MySqlParameter>
                 {
-                    new MySqlParameter("@empCode", empCode)
+                    new MySqlParameter("@id", empId)
                 };
 
             DataTable empDt = DBClass.ExecuteDataTable(employeeQuery, employeeParams.ToArray());
@@ -136,7 +125,54 @@ namespace YamyProject
             }
 
             // Fetch Salary Records and Display in dgvInvoice
-            BindEmployeeSalary(empCode);
+            // BindEmployeeSalary(empCode);
+            BindLoan(empCode);
+        }
+
+        private void BindLoan(string empCode)
+        {
+            string loanQuery = @"
+                SELECT id, code, LoanDate, EmployeeID, EmployeeName, RequestAmount,
+                       Installments, StartDate, EndDate, Description, pay, `change`
+                FROM (
+                    SELECT *,
+                           ROW_NUMBER() OVER (PARTITION BY code ORDER BY id) AS rn
+                    FROM tbl_loan
+                ) x
+                WHERE rn = 1 AND EmployeeID = @empCode;";
+
+            DataTable loanDt = DBClass.ExecuteDataTable(loanQuery,
+                new MySqlParameter("@empCode", empCode));
+
+            // Optional total row for line total
+            if (loanDt.Rows.Count > 0)
+            {
+                decimal finalBalance = Convert.ToDecimal(loanDt.Rows[loanDt.Rows.Count - 1]["RequestAmount"]);
+                decimal finalTotalTimes = Convert.ToDecimal(loanDt.Rows[loanDt.Rows.Count - 1]["Installments"]);
+                DataRow totalRow = loanDt.NewRow();
+                totalRow["EmployeeName"] = "Total";
+                totalRow["Description"] = DBNull.Value;
+                totalRow["code"] = DBNull.Value;
+                totalRow["pay"] = DBNull.Value;
+                totalRow["change"] = DBNull.Value;
+                totalRow["RequestAmount"] = finalBalance;
+                totalRow["Installments"] = finalTotalTimes;
+
+                loanDt.Rows.Add(totalRow);
+            }
+
+            dgvInvoice.DataSource = loanDt;
+            dgvInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvInvoice.Columns["RequestAmount"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["pay"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["change"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["Installments"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["RequestAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["pay"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["change"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["LoanDate"].DefaultCellStyle.Format = "dd-MM-yyyy";
+            dgvInvoice.Columns["id"].Visible = false;
         }
 
         private void BindEmployeeSalary(string empCode)
@@ -219,9 +255,10 @@ namespace YamyProject
                 //editCustomerToolStripMenuItem1.v
             }
         }
+        
         private void dgvInvoice_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvInvoice.Rows[e.RowIndex].Cells["Type"].Value?.ToString() == "Total")
+            if (dgvInvoice.Rows[e.RowIndex].Cells["EmployeeName"].Value?.ToString() == "Total")
             {
                 e.CellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold); 
                 e.CellStyle.BackColor = Color.LightGray;
@@ -238,35 +275,6 @@ namespace YamyProject
             if (e.RowIndex >= 0)
                 BindEmployeeInfo();
         }
-        private void customerListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void transactionListToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "Word Documents|*.docx",
-                Title = "Save Word Document"
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                OpenXmlWordExporter wordExporter = new OpenXmlWordExporter();
-                wordExporter.ExportToWord(dgvEmployee, saveFileDialog.FileName);
-            }
-        }
-
-        private void editCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void receivePaymentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnExpand_Click(object sender, EventArgs e)
         {
@@ -282,13 +290,23 @@ namespace YamyProject
             }
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void loanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportPrinter reportPrinter = new ReportPrinter(dgvEmployee, "Employee Data Report \n ( Employee ) \n All Employee", true);
+            frmLogin.frmMain.openChildForm(new frmViewLoan(0));
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmViewLoan());
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportPrinter reportPrinter = new ReportPrinter(dgvInvoice, "Employee Loan Report ", true);
             reportPrinter.Print();
         }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -298,100 +316,19 @@ namespace YamyProject
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ExcelExporter exporter = new ExcelExporter(dgvEmployee);
+                ExcelExporter exporter = new ExcelExporter(dgvInvoice);
                 exporter.ExportToExcel(saveFileDialog.FileName);
             }
         }
 
-        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        private void dgvInvoice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            // open loan details form
+            if (e.RowIndex >= 0 && dgvInvoice.Rows[e.RowIndex].Cells["code"].Value != DBNull.Value)
             {
-                Filter = "Word Documents|*.docx",
-                Title = "Save Word Document"
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                OpenXmlWordExporter wordExporter = new OpenXmlWordExporter();
-                wordExporter.ExportToWord(dgvEmployee, saveFileDialog.FileName);
+                int loanId = Convert.ToInt32(dgvInvoice.Rows[e.RowIndex].Cells["id"].Value);
+                frmLogin.frmMain.openChildForm(new frmViewLoan(loanId));
             }
-        }
-
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new MasterAttendanceSheet(0));
-        }
-
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmSalarySheet(0));
-        }
-
-        private void endOfServicesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmLeaveSalary(0));
-        }
-
-        private void endOfServicesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmEndOfService(0));
-        }
-
-        private void loanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewLoan(0));
-        }
-
-        private void finalSettlementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmFinalSettlement(0));
-        }
-
-        private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewEmployee(0));
-        }
-
-        private void editEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewEmployee(int.Parse(dgvEmployee.SelectedRows[0].Cells["id"].Value.ToString())));
-        }
-        private void deleteEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvEmployee.Rows.Count == 0)
-                return;
-            int _id = (int.Parse(dgvEmployee.SelectedRows[0].Cells["id"].Value.ToString()));
-
-            if (dgvInvoice.Rows.Count <= 1)
-            {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    DeleteData(_id);
-                }
-                else
-                {
-                    MessageBox.Show("Deletion canceled.", "Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Employee has transactions. Cannot delete.", "Cannot Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void DeleteData(int _id)
-        {
-            DBClass.ExecuteNonQuery(@"Delete from tbl_employee where id = @id;Delete from tbl_transaction where transaction_id=@id and type='Employee Payment'",
-                DBClass.CreateParameter("id", _id));
-            Utilities.LogAudit(frmLogin.userId, "Delete", "Employee", _id, "Deleted Employee with ID: " + _id);
-            BindEmployee();
-            MessageBox.Show("Employee deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
-        {
-            frmLogin.frmMain.openChildForm(new frmViewLoan());
         }
     }
 }

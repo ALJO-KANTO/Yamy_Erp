@@ -1285,8 +1285,8 @@ namespace YamyProject
                 if (!AllowItemWithOutQty)
                 {
                     int _itemId = int.Parse(dgvItems.Rows[i].Cells["itemId"].Value.ToString());
-                    int _qty = int.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString());
-                    if (CheckItemValidity(_itemId, _qty))
+                    decimal _qty = decimal.Parse(dgvItems.Rows[i].Cells["qty"].Value.ToString());
+                    if (!CheckItemValidity(_itemId, _qty))
                     {
                         MessageBox.Show("Qty not available for " + (dgvItems.Rows[i].Index + 1) + " Can't Allow");
                         return false;

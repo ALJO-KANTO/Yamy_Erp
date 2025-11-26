@@ -50,72 +50,78 @@ namespace YamyProject
         private string GetQuery()
         {
             string query = cmbSelectionMethod.Text == "Default" ? GetDefaultQuery() : GetDetailedQuery();
-            return query;
+            string whereClause = GetWhereClause();
+            string finalWhere = "WHERE tbl_sales_proforma.state = 0";
+            if (!string.IsNullOrWhiteSpace(whereClause))
+                finalWhere += " AND " + whereClause;
+
+            // GROUP BY section differs by query type
+            string groupBy = cmbSelectionMethod.Text != "Default"
+                ? @"GROUP BY tbl_sales_proforma.id, tbl_sales_proforma.date, tbl_sales_proforma.invoice_id, 
+                     tbl_customer.code, tbl_customer.name, tbl_sales_proforma.total, 
+                     ti.code, ti.name, ts.qty, ts.price, ts.vat, ts.total"
+                : @"GROUP BY tbl_sales_proforma.id, tbl_sales_proforma.date, tbl_sales_proforma.invoice_id, 
+                     tbl_customer.code, tbl_customer.name, tbl_sales_proforma.total";
+
+            // Return full combined query
+            return $"{query} {finalWhere} {groupBy};";
         }
         private string GetWhereClause()
         {
             List<string> filters = new List<string>();
 
-            if (cmbCustomer.Text != "" && !chkCustomer.Checked)
-            {
+            if (!string.IsNullOrWhiteSpace(cmbCustomer.Text) && !chkCustomer.Checked)
                 filters.Add("tbl_sales_proforma.customer_id = @id");
-            }
-            if (cmbPaymentMethod.Text != "" && !chkPayment.Checked)
-            {
+
+            if (!string.IsNullOrWhiteSpace(cmbPaymentMethod.Text) && !chkPayment.Checked)
                 filters.Add("tbl_sales_proforma.payment_method = @payment");
-            }
+
             if (!chkDate.Checked)
-            {
-                filters.Add("tbl_sales_proforma.date >= @dateFrom and tbl_sales_proforma.date <= @dateTo");
-            }
+                filters.Add("tbl_sales_proforma.date >= @dateFrom AND tbl_sales_proforma.date <= @dateTo");
 
             return string.Join(" AND ", filters);
         }
         private string GetDefaultQuery()
         {
             return @"SELECT 
-                        ROW_NUMBER() OVER (ORDER BY tbl_sales_proforma.date) AS `SN`, 
-                        tbl_sales_proforma.date AS Date, 
-                        tbl_sales_proforma.id,
-                        tbl_sales_proforma.invoice_id AS 'INV NO', 
-                        CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
-                        tbl_sales_proforma.payment_method AS 'Payment Method',
-                        tbl_sales_proforma.total AS Total,
-                        tbl_sales_proforma.vat AS Vat,
-                        tbl_sales_proforma.net AS 'Net',
-                        tbl_sales_proforma.sales_id AS 'SalesId',
-                        tbl_sales_proforma.tranfer_status
-                    FROM tbl_sales_proforma
-                    INNER JOIN tbl_customer ON tbl_sales_proforma.customer_id = tbl_customer.id
-                    WHERE tbl_sales_proforma.state = 0
-                    GROUP BY tbl_sales_proforma.id, tbl_sales_proforma.date, tbl_sales_proforma.invoice_id, tbl_customer.code, tbl_customer.name, tbl_sales_proforma.total;";
+                ROW_NUMBER() OVER (ORDER BY tbl_sales_proforma.date) AS SN, 
+                tbl_sales_proforma.date AS Date, 
+                tbl_sales_proforma.id,
+                tbl_sales_proforma.invoice_id AS 'INV NO', 
+                CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
+                tbl_sales_proforma.payment_method AS 'Payment Method',
+                tbl_sales_proforma.total AS Total,
+                tbl_sales_proforma.vat AS Vat,
+                tbl_sales_proforma.net AS Net,
+                tbl_sales_proforma.sales_id AS SalesId,
+                tbl_sales_proforma.tranfer_status
+            FROM tbl_sales_proforma
+            INNER JOIN tbl_customer ON tbl_sales_proforma.customer_id = tbl_customer.id";
         }
 
         private string GetDetailedQuery()
         {
             return @"SELECT 
-                        ROW_NUMBER() OVER (ORDER BY tbl_sales_proforma.date) AS `SN`, 
-                        tbl_sales_proforma.date AS Date, 
-                        tbl_sales_proforma.id,
-                        tbl_sales_proforma.invoice_id AS 'INV NO', 
-                        CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
-                        tbl_sales_proforma.payment_method AS 'Payment Method',
-                        tbl_sales_proforma.total AS Total,
-                        tbl_sales_proforma.vat AS Vat,
-                        tbl_sales_proforma.net AS 'Net',
-                        tbl_sales_proforma.sales_id AS 'SalesId',
-                        tbl_sales_proforma.tranfer_status,
-                        CONCAT(ti.code, ' - ', ti.name) AS 'Item Name',
-                        ts.qty AS Qty,
-                        ts.price AS Price,
-                        ts.vat AS 'Item Vat',
-                        ts.total AS 'Item Total'
-                    FROM tbl_sales_proforma
-                    INNER JOIN tbl_sales_proforma_details ts ON tbl_sales_proforma.id = ts.sales_id
-                    INNER JOIN tbl_items ti ON ts.item_id = ti.id
-                    INNER JOIN tbl_customer ON tbl_sales_proforma.customer_id = tbl_customer.id
-                    WHERE tbl_sales_proforma.state = 0
-                    GROUP BY tbl_sales_proforma.id, tbl_sales_proforma.date, tbl_sales_proforma.invoice_id, tbl_customer.code, tbl_customer.name, tbl_sales_proforma.total, ti.code, ti.name, ts.qty, ts.price, ts.vat, ts.total;";
+                ROW_NUMBER() OVER (ORDER BY tbl_sales_proforma.date) AS SN, 
+                tbl_sales_proforma.date AS Date, 
+                tbl_sales_proforma.id,
+                tbl_sales_proforma.invoice_id AS 'INV NO', 
+                CONCAT(tbl_customer.code, ' - ', tbl_customer.name) AS 'Customer Name', 
+                tbl_sales_proforma.payment_method AS 'Payment Method',
+                tbl_sales_proforma.total AS Total,
+                tbl_sales_proforma.vat AS Vat,
+                tbl_sales_proforma.net AS Net,
+                tbl_sales_proforma.sales_id AS SalesId,
+                tbl_sales_proforma.tranfer_status,
+                CONCAT(ti.code, ' - ', ti.name) AS 'Item Name',
+                ts.qty AS Qty,
+                ts.price AS Price,
+                ts.vat AS 'Item Vat',
+                ts.total AS 'Item Total'
+            FROM tbl_sales_proforma
+            INNER JOIN tbl_sales_proforma_details ts ON tbl_sales_proforma.id = ts.sales_id
+            INNER JOIN tbl_items ti ON ts.item_id = ti.id
+            INNER JOIN tbl_customer ON tbl_sales_proforma.customer_id = tbl_customer.id";
         }
 
         private List<MySqlParameter> GetQueryParameters()
@@ -276,6 +282,16 @@ namespace YamyProject
         {
             this.WindowState = FormWindowState.Minimized;
 
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
         }
     }
 }
