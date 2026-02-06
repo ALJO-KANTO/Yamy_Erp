@@ -84,6 +84,7 @@ namespace YamyProject
             BindCombos.PopulateTenderNames(cmbTenderName);
 
             BindCombo();
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
 
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)

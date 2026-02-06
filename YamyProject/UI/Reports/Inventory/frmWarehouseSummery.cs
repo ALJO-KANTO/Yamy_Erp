@@ -49,6 +49,18 @@ namespace YamyProject
 
         public void BindInvoices()
         {
+            // ware house wise stock report
+            string ddd = @"									SELECT 
+                                ROW_NUMBER() OVER (ORDER BY w.id DESC) AS SN,
+                                w.id,w.Name as `WarehouseName`,
+                                i.id AS `ItemId`,CONCAT(i.code,' - ',i.name) AS `ItemName`,
+                                (t.qty_in-t.qty_out) AS `Qty`
+                            FROM tbl_warehouse w
+                            INNER JOIN tbl_item_transaction t ON t.warehouse_id = w.id 
+									 INNER JOIN tbl_items i 
+									 ON t.item_id = i.id AND i.state = 0
+                         WHERE w.id = @warehouseId ORDER BY w.id DESC";
+
             bool isLoading = false;
             string query = @"
                             SELECT 

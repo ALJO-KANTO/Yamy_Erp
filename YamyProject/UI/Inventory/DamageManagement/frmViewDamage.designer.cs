@@ -165,7 +165,7 @@
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11F);
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
@@ -744,7 +744,7 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1150, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1150, 30);
             this.headerUC1.TabIndex = 0;
             // 
             // frmViewDamage

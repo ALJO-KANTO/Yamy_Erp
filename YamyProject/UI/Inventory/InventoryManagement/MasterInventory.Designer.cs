@@ -584,7 +584,7 @@
             this.headerUC1.Location = new System.Drawing.Point(2, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1300, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1300, 30);
             this.headerUC1.TabIndex = 238;
             // 
             // guna2Button3

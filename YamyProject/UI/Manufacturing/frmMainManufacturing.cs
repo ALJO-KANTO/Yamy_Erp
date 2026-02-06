@@ -105,7 +105,7 @@ namespace YamyProject.UI.Manufacturing
             var btnC = (Control)sender;
             //Pages.SetPage(btn.Tag.ToString());     
             indicator.Top = btnC.Top + (btnC.Height / 2 - indicator.Height / 2);
-            addcontrols2(new frmManScreen());
+            addcontrols2(new frmManMachineScreen());
         }
 
         private void btnOrderD_Click(object sender, EventArgs e)
@@ -218,12 +218,36 @@ namespace YamyProject.UI.Manufacturing
                     indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
                     addcontrols2(new frmManEmployeeReportSummary());
                 };
+                ToolStripMenuItem item7 = new ToolStripMenuItem("CategoryWiseItem Report");
+                item7.Click += (s, args) =>
+                {
+                    indicator.Visible = true;
+                    indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
+                    addcontrols2(new frmManCategoryWiseItemDetails(0));
+                };
+                ToolStripMenuItem item8 = new ToolStripMenuItem("Packing Report");
+                item8.Click += (s, args) =>
+                {
+                    indicator.Visible = true;
+                    indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
+                    addcontrols2(new frmManPackingReport(0));
+                };
+                ToolStripMenuItem item9 = new ToolStripMenuItem("CategoryWiseItem Monthly");
+                item9.Click += (s, args) =>
+                {
+                    indicator.Visible = true;
+                    indicator.Top = ((Control)sender).Top + (((Control)sender).Height / 2 - indicator.Height / 2);
+                    addcontrols2(new frmManCategoryWiseItemMonthly(0));
+                };
                 contextMenuStrip1.Items.Add(item1);
                 contextMenuStrip1.Items.Add(item2);
                 contextMenuStrip1.Items.Add(item3);
                 contextMenuStrip1.Items.Add(item4);
                 contextMenuStrip1.Items.Add(item5);
                 contextMenuStrip1.Items.Add(item6);
+                contextMenuStrip1.Items.Add(item7);
+                contextMenuStrip1.Items.Add(item8);
+                contextMenuStrip1.Items.Add(item9);
             }
             contextMenuStrip1.Show(guna2CircleButton1, new Point(0, guna2CircleButton1.Height));
         }

@@ -1,7 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -69,6 +71,12 @@ namespace YamyProject
             pnlAssembly.Visible = true;
             if (id != 0)
                 BindItem();
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
+
+            lstAccountSuggestions.Parent = dgvItems.Parent;
+            lstAccountSuggestions.Visible = false;
+
         }
         private void bindItemList()
         {
@@ -506,9 +514,8 @@ namespace YamyProject
                 if (e.ColumnIndex == dgvItems.Columns["code"].Index)
                 {
                     string codeValue = row.Cells["code"].Value?.ToString();
-                    //DataGridViewComboBoxCell comboCell = row.Cells["name"] as DataGridViewComboBoxCell;
-                    //if (comboCell != null)
-                    //    insertItemThroughCodeOrCombo("code", comboCell, null);
+                    if (!string.IsNullOrWhiteSpace(codeValue))
+                        insertItemThroughCodeOrText("code", codeValue);
                 }
                 else if (e.ColumnIndex == dgvItems.Columns["name"].Index)
                 {
@@ -518,21 +525,89 @@ namespace YamyProject
                     {
                         row.Cells["code"].Value = refId + FormatItemSl(dgvItems.Rows.Count-1).ToString();
                     }
+                    if (!string.IsNullOrWhiteSpace(nameValue))
+                        insertItemThroughCodeOrText("name", nameValue);
                 }
-                    decimal cost = dgvItems.CurrentRow.Cells["cost"].Value==null ? 0: decimal.Parse(dgvItems.CurrentRow.Cells["cost"].Value.ToString());
-                decimal qty = dgvItems.CurrentRow.Cells["qty"].Value==null? 0 : decimal.Parse(dgvItems.CurrentRow.Cells["qty"].Value.ToString());
+                    decimal cost = row.Cells["cost"].Value==null ? 0: decimal.Parse(row.Cells["cost"].Value.ToString());
+                decimal qty = row.Cells["qty"].Value==null? 0 : decimal.Parse(row.Cells["qty"].Value.ToString());
 
                 if (cost == 0 || qty == 0)
-                    dgvItems.CurrentRow.Cells["total"].Value = "0";
+                    row.Cells["total"].Value = "0";
                 else
                 {
                     decimal totalAmount = qty * cost;
-                    dgvItems.CurrentRow.Cells["total"].Value = totalAmount.ToString("N2");
+                    row.Cells["total"].Value = totalAmount.ToString("N2");
                 }
                 calculateCost();
             }
         }
+        private void insertItemThroughCodeOrText(string type, string inputText = null)
+        {
+            if (string.IsNullOrWhiteSpace(inputText))
+                return;
 
+            MySqlDataReader reader = null;
+            try
+            {
+                if (type == "code")
+                {
+                    reader = DBClass.ExecuteReader(@"
+                            SELECT id, method, type, code, sales_price, cost_price, name 
+                            FROM tbl_items 
+                            WHERE code = @code",
+                        DBClass.CreateParameter("code", inputText.Trim()));
+                }
+                else if (type == "name")
+                {
+                    // Search by name (case-insensitive)
+                    reader = DBClass.ExecuteReader(@"
+                                SELECT id, method, type, code, sales_price, cost_price, name 
+                                FROM tbl_items 
+                                WHERE name = @name COLLATE utf8mb4_general_ci LIMIT 1",
+                        DBClass.CreateParameter("name", inputText.Trim()));
+                }
+
+                if (reader != null && reader.Read())
+                {
+                    dgvItems.CurrentRow.Cells["qty"].Value = 0;
+                    //dgvItems.CurrentRow.Cells["discount"].Value = 0;
+                    dgvItems.CurrentRow.Cells["itemId"].Value = reader["id"].ToString();
+                    dgvItems.CurrentRow.Cells["cost"].Value = reader["cost_price"].ToString();
+                    //dgvItems.CurrentRow.Cells["price"].Value = reader["sales_price"];
+                    //dgvItems.CurrentRow.Cells["method"].Value = reader["method"];
+                    //dgvItems.CurrentRow.Cells["type"].Value = reader["type"];
+                    dgvItems.CurrentRow.Cells["code"].Value = reader["code"].ToString();
+                    dgvItems.CurrentRow.Cells["name"].Value = reader["name"].ToString();
+
+                    // Optional default VAT
+                    //if (!string.IsNullOrEmpty(defaultTax))
+                    //{
+                    //    dgvItems.CurrentRow.Cells["vat"].Value = int.Parse(defaultTax);
+                    //}
+                }
+                else
+                {
+                    DataGridViewRow row = dgvItems.CurrentRow;
+                    if (row != null)
+                    {
+                        row.Cells["itemId"].Value = null;
+                        row.Cells["cost"].Value = null;
+                        row.Cells["qty"].Value = null;
+                        row.Cells["total"].Value = null;
+                        row.Cells["no"].Value = null;
+                        if (type == "name")
+                            row.Cells["code"].Value = null;
+                        if (type == "code")
+                            row.Cells["name"].Value = null;
+                    }
+                }
+            }
+            finally
+            {
+                reader?.Close();
+                reader?.Dispose();
+            }
+        }
         private void insertItemThroughCodeOrComboX(string type, DataGridViewComboBoxCell comboCell, ComboBox comboBox)
         {
             MySqlDataReader reader = null;
@@ -634,14 +709,247 @@ namespace YamyProject
 
         private void dgvItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            if (e.Control is TextBox textBox0)
+            {
+                textBox0.TextChanged -= ItemCode_TextChanged;
+                textBox0.TextChanged -= ItemName_TextChanged;
+                textBox0.KeyPress -= NumericColumn_KeyPress;
+
+                if (lstAccountSuggestions.Visible)
+                {
+                    lstAccountSuggestions.Visible = false;
+                }
+                lstAccountSuggestions.SendToBack();
+            }
+
             if (dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["name"].Index)
             {
-                ComboBox comboBox = e.Control as ComboBox;
-                if (comboBox != null)
+                if (e.Control is TextBox textBox)
                 {
-                    comboBox.SelectedIndexChanged -= new EventHandler(ComboBoxName_SelectedIndexChanged);
-                    comboBox.SelectedIndexChanged += new EventHandler(ComboBoxName_SelectedIndexChanged);
+                    textBox.TextChanged -= ItemName_TextChanged;
+                    textBox.TextChanged += ItemName_TextChanged;
+
+                    lstAccountSuggestions.Tag = textBox;
                 }
+                //ComboBox comboBox = e.Control as ComboBox;
+                //if (comboBox != null)
+                //{
+                //    comboBox.SelectedIndexChanged -= new EventHandler(ComboBoxName_SelectedIndexChanged);
+                //    comboBox.SelectedIndexChanged += new EventHandler(ComboBoxName_SelectedIndexChanged);
+                //}
+            }
+            else if (dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["code"].Index)
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.TextChanged -= ItemCode_TextChanged;
+                    textBox.TextChanged += ItemCode_TextChanged;
+
+                    lstAccountSuggestions.Tag = textBox;
+                }
+            }
+            else if (dgvItems.CurrentCell.OwningColumn.Name == "qty" ||
+                     dgvItems.CurrentCell.OwningColumn.Name == "cost" ||
+                     dgvItems.CurrentCell.OwningColumn.Name == "total")
+            {
+                if (e.Control is TextBox textBox)
+                {
+                    textBox.KeyPress -= NumericColumn_KeyPress;
+                    textBox.KeyPress += NumericColumn_KeyPress;
+                }
+            }
+            else
+            {
+                lstAccountSuggestions.Visible = false;
+                lstAccountSuggestions.Tag = null;
+            }
+        }
+        private void NumericColumn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; // block anything that's not a digit or decimal point
+            }
+
+            // Allow only one decimal point
+            TextBox txt = sender as TextBox;
+            if (e.KeyChar == '.' && txt.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ItemCode_TextChanged(object sender, EventArgs e)
+        {
+            TextBox editingTextBox = sender as TextBox;
+            if (editingTextBox == null) return;
+
+            string input = editingTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(input))
+            {
+                lstAccountSuggestions.Visible = false;
+                return;
+            }
+            DataTable filtered = GetFilteredProductsByCode(input);
+
+            lstAccountSuggestions.Items.Clear();
+
+            foreach (DataRow row in filtered.Rows)
+            {
+                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+            }
+
+            if (lstAccountSuggestions.Items.Count > 0)
+            {
+                // Get cell location
+                var cellRect = dgvItems.GetCellDisplayRectangle(dgvItems.CurrentCell.ColumnIndex, dgvItems.CurrentCell.RowIndex, true);
+                Point locationOnForm = dgvItems.PointToScreen(cellRect.Location);
+                Point locationRelativeToForm = this.PointToClient(locationOnForm);
+
+                lstAccountSuggestions.SetBounds(
+                    locationRelativeToForm.X,
+                    locationRelativeToForm.Y - cellRect.Height - 40,
+                    cellRect.Width + 100,
+                    120
+                );
+
+                lstAccountSuggestions.Tag = editingTextBox;
+                lstAccountSuggestions.Visible = true;
+                lstAccountSuggestions.BringToFront();
+            }
+            else
+            {
+                lstAccountSuggestions.Visible = false;
+            }
+        }
+
+        private void ItemName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox editingTextBox = sender as TextBox;
+            if (editingTextBox == null) return;
+
+            string input = editingTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(input))
+            {
+                lstAccountSuggestions.Visible = false;
+                return;
+            }
+            DataTable filtered = GetFilteredProductsByName(input);
+
+            lstAccountSuggestions.Items.Clear();
+
+            foreach (DataRow row in filtered.Rows)
+            {
+                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+            }
+
+            if (lstAccountSuggestions.Items.Count > 0)
+            {
+                // Get cell location
+                var cellRect = dgvItems.GetCellDisplayRectangle(dgvItems.CurrentCell.ColumnIndex, dgvItems.CurrentCell.RowIndex, true);
+                Point locationOnForm = dgvItems.PointToScreen(cellRect.Location);
+                Point locationRelativeToForm = this.PointToClient(locationOnForm);
+
+                lstAccountSuggestions.SetBounds(
+                    locationRelativeToForm.X,
+                    locationRelativeToForm.Y - cellRect.Height-40,
+                    cellRect.Width + 100,
+                    120
+                );
+
+                lstAccountSuggestions.Tag = editingTextBox;
+                lstAccountSuggestions.Visible = true;
+                lstAccountSuggestions.BringToFront();
+            }
+            else
+            {
+                lstAccountSuggestions.Visible = false;
+            }
+        }
+        private DataTable GetFilteredProductsByName(string name = "")
+        {
+            string query = "select code,name from tbl_items where state = 0 AND active = 0";
+            var parameters = new List<MySqlParameter>();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query += " AND name LIKE @name";
+                parameters.Add(new MySqlParameter("@name", $"%{name}%"));
+            }
+
+            query += " ORDER BY name LIMIT 20";
+
+            return DBClass.ExecuteDataTable(query, parameters.ToArray());
+        }
+
+        private DataTable GetFilteredProductsByCode(string code = "")
+        {
+            
+            string query = "select code,name from tbl_items where state = 0 AND active = 0";
+            var parameters = new List<MySqlParameter>();
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                query += " AND code LIKE @code";
+                parameters.Add(new MySqlParameter("@code", $"%{code}%"));
+            }
+
+            query += " ORDER BY code Limit 20";
+
+            return DBClass.ExecuteDataTable(query, parameters.ToArray());
+        }
+
+        private void dgvItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            var row = dgvItems.Rows[e.RowIndex];
+            var columnName = dgvItems.Columns[e.ColumnIndex].Name;
+            string inputText = row.Cells[e.ColumnIndex].Value?.ToString()?.Trim();
+            var itemId = row.Cells["itemId"].Value?.ToString();
+
+            if (!string.IsNullOrWhiteSpace(itemId) || string.IsNullOrWhiteSpace(inputText))
+                return;
+
+            if ((columnName == "code" || columnName == "name") && lstAccountSuggestions.Items.Count <= 0)
+            {
+                ItemNotFoundMessage(inputText);
+            }
+        }
+
+        private void ItemNotFoundMessage(string name)
+        {
+            var result = MessageBox.Show(
+                                            $"'{name}' not found!\nDo you want to create it?",
+                                            "Invalid Item",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning
+                                        );
+
+            if (result == DialogResult.Yes)
+            {
+                new frmViewItem().ShowDialog();
+            }
+
+            DataGridViewRow row = dgvItems.CurrentRow;
+            if (row != null)
+            {
+                row.Cells["itemid"].Value = null;
+                row.Cells["cost_price"].Value = null;
+                row.Cells["price"].Value = null;
+                row.Cells["method"].Value = null;
+                row.Cells["type"].Value = null;
+                row.Cells["vat"].Value = null;
+                row.Cells["name"].Value = null;
+                row.Cells["code"].Value = null;
+            }
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            using (frmViewItem frm = new frmViewItem())
+            {
+                frm.ShowDialog();
             }
         }
 
@@ -674,6 +982,34 @@ namespace YamyProject
             {
                 return itemSlStr;
             }
+        }
+
+        private void lstAccountSuggestions_Click(object sender, EventArgs e)
+        {
+            if (lstAccountSuggestions.SelectedItem == null)
+                return;
+
+            string selected = lstAccountSuggestions.SelectedItem.ToString();
+
+            int separatorIndex = selected.IndexOf('-');
+            if (separatorIndex == -1) return;
+
+            string selectedCode = selected.Substring(0, separatorIndex).Trim();
+            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+
+            if (lstAccountSuggestions.Tag is TextBox textBox)
+            {
+                if (dgvItems.CurrentCell != null && dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["code"].Index)
+                {
+                    dgvItems.CurrentCell.Value = selectedCode;
+                }
+                else if (dgvItems.CurrentCell != null && dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["name"].Index)
+                {
+                    dgvItems.CurrentCell.Value = selectedName;
+                }
+            }
+
+            lstAccountSuggestions.Visible = false;
         }
     }
 }

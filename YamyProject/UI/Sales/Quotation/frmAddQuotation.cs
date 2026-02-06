@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Settings;
@@ -42,7 +43,7 @@ namespace YamyProject
                 this.id = _id;
                 txtPONO.Text = "";
             }
-            headerUC1.FormText = _id == 0 ? "New Proforma Invoice" : "Edit Proforma Invoice";
+            headerUC1.FormText = _id == 0 ? "New Quotation Invoice" : "Edit Quotation Invoice";
         }
         private void frmAddQuotation_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -426,6 +427,12 @@ namespace YamyProject
             insertInvItems();
             Utilities.LogAudit(frmLogin.userId, "Update Quotation", "Quotation", id, "Updated Quotation: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
+
             return true;
         }
 
@@ -467,6 +474,11 @@ namespace YamyProject
                 insertInvItems();
 
             Utilities.LogAudit(frmLogin.userId, "Add Quotation", "Quotation", (int)invId, "Added Quotation: " + txtNextCode.Text);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
 
             return true;
         }
@@ -1372,6 +1384,23 @@ namespace YamyProject
             DataTable subreportData = new DataTable();
             // Your logic to fetch data for subreport 4
             return subreportData;
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "SALES QUOTATION",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
     }
 }

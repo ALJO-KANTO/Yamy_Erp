@@ -47,6 +47,8 @@ namespace YamyProject
             BindCombo();
             if (id != 0)
                 BindData();
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
         private void BindData()
         {
@@ -770,6 +772,9 @@ namespace YamyProject
 
         private void dgvItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             if (dgvItems.Rows.Count > 1)
             {
                 var row = dgvItems.Rows[e.RowIndex];

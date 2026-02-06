@@ -679,7 +679,7 @@ public class frmImportItems : Form
                     dtFiltered.Columns.Add("Warehouse");
 
                     var ws = package.Workbook.Worksheets[0];
-                    for (int row = ws.Dimension.Start.Row + 1; row <= ws.Dimension.End.Row; row++)
+                    for (int row = startCol; row <= endCol; row++)
                     {
                         if (IsRowEmpty(ws, row, endCol)) continue;
 

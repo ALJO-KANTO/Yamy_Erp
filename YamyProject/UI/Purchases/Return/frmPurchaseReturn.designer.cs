@@ -96,6 +96,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.cmbVendor = new System.Windows.Forms.ComboBox();
             this.txtVendorCode = new Guna.UI2.WinForms.Guna2TextBox();
@@ -150,7 +151,7 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
-            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -216,12 +217,12 @@
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(2, 303);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(2, 296);
             this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.ShadowDecoration.BorderRadius = 0;
             this.guna2GroupBox4.ShadowDecoration.Depth = 0;
-            this.guna2GroupBox4.Size = new System.Drawing.Size(1036, 189);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(1036, 196);
             this.guna2GroupBox4.TabIndex = 10;
             // 
             // dgvItems
@@ -284,7 +285,7 @@
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvItems.Size = new System.Drawing.Size(1036, 189);
+            this.dgvItems.Size = new System.Drawing.Size(1036, 196);
             this.dgvItems.TabIndex = 7;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -463,7 +464,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 159);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 152);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1036, 144);
@@ -1159,10 +1160,26 @@
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.label13);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(2, 121);
+            this.panel7.Location = new System.Drawing.Point(2, 114);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1036, 38);
             this.panel7.TabIndex = 43;
+            // 
+            // guna2Button6
+            // 
+            this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Button6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.guna2Button6.BorderRadius = 5;
+            this.guna2Button6.BorderThickness = 3;
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
+            this.guna2Button6.ForeColor = System.Drawing.Color.White;
+            this.guna2Button6.Location = new System.Drawing.Point(683, 6);
+            this.guna2Button6.Name = "guna2Button6";
+            this.guna2Button6.Size = new System.Drawing.Size(123, 27);
+            this.guna2Button6.TabIndex = 16;
+            this.guna2Button6.Text = "Add More Items";
+            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
             // 
             // guna2Button5
             // 
@@ -1242,7 +1259,7 @@
             // 
             this.panel9.Controls.Add(this.tabControl2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(2, 37);
+            this.panel9.Location = new System.Drawing.Point(2, 30);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1036, 84);
             this.panel9.TabIndex = 42;
@@ -1535,7 +1552,7 @@
             this.guna2TileButton16.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton16.TabIndex = 30;
             this.guna2TileButton16.Text = "Attach File";
-            this.guna2TileButton16.Visible = false;
+            this.guna2TileButton16.Click += new System.EventHandler(this.guna2TileButton16_Click);
             // 
             // guna2VSeparator10
             // 
@@ -1956,24 +1973,12 @@
             this.headerUC1.Location = new System.Drawing.Point(2, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1036, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1036, 30);
             this.headerUC1.TabIndex = 0;
             // 
-            // guna2Button6
+            // openFileDialog1
             // 
-            this.guna2Button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.guna2Button6.BorderRadius = 5;
-            this.guna2Button6.BorderThickness = 3;
-            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
-            this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(683, 6);
-            this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(123, 27);
-            this.guna2Button6.TabIndex = 16;
-            this.guna2Button6.Text = "Add More Items";
-            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmPurchaseReturn
             // 
@@ -2134,5 +2139,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewComboBoxColumn Cost_Center;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

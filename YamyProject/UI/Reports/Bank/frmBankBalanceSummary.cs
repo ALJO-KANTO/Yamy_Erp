@@ -83,7 +83,7 @@ namespace YamyProject
                                                 FROM tbl_transaction t
                                                 JOIN tbl_bank_card bc ON t.account_id = bc.account_id
                                                 JOIN tbl_bank b ON bc.bank_id = b.id
-                                                WHERE t.`type` IN ('PDC Payable','PDC Receivable')
+                                                WHERE t.`type` IN ('PDC Payable','PDC Receivable','Bank') AND t.hum_id != 0
                                                 GROUP BY b.name, bc.account_name;
                                             "))
             {
@@ -355,6 +355,11 @@ namespace YamyProject
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

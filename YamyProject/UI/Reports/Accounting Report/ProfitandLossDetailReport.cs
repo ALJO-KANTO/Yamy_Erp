@@ -147,7 +147,7 @@ namespace YamyProject
                     LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                     LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                     LEFT JOIN tbl_transaction t ON t.account_id = l4.id AND t.date BETWEEN @fromDate AND @toDate
-                    WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                    WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                     GROUP BY l1.id , l1.name , l2.name, l3.name, l4.id
                     ORDER BY l1.id, l4.code;
                 ", DBClass.CreateParameter("fromDate", from), DBClass.CreateParameter("toDate", to)))
@@ -156,7 +156,7 @@ namespace YamyProject
                 {
                     string accountFull = (acctReader["level4_code"] != DBNull.Value ? acctReader["level4_code"].ToString() + " - " : "") + acctReader["level4_name"].ToString();
                     string accountName = acctReader["level4_name"].ToString();
-                    string acctId = acctReader["level4_id"].ToString();
+                    string acctId = string.IsNullOrEmpty(acctReader["level4_id"].ToString()) ? "0" : acctReader["level4_id"].ToString();
                     string acctBalance = Utilities.FormatDecimal(acctReader["account_balance"].ToString());
 
                     // Account header row
@@ -535,7 +535,7 @@ namespace YamyProject
                         LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
                         LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
 
-                        WHERE t1.category_code IN ('Income', 'Cost', 'General & Direct Expenses') AND t{level}.name = @name
+                        WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE') AND t{level}.name = @name
 
                         GROUP BY t1.id, t2.id, t3.id, t4.id;
                         ", DBClass.CreateParameter("name", name)))

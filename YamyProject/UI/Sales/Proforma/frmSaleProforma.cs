@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Settings;
@@ -348,6 +350,11 @@ namespace YamyProject
 
             Utilities.LogAudit(frmLogin.userId, "Update Proforma Invoice", "Proforma Invoice", Convert.ToInt32(id), "Updated Proforma Invoice: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
         }
 
@@ -390,6 +397,10 @@ namespace YamyProject
             insertInvItems();
             Utilities.LogAudit(frmLogin.userId, "Add Proforma Invoice", "Proforma Invoice", Convert.ToInt32(invId), "Added Proforma Invoice: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
             return true;
         }
 
@@ -1278,6 +1289,23 @@ namespace YamyProject
                     newRow.Cells["code"].Value = null;
                 }
             }
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "SALES PROFORMA",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
     }
 }

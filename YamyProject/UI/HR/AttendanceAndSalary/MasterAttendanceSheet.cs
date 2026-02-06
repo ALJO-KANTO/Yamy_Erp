@@ -24,6 +24,11 @@ namespace YamyProject
         TimeSpan defaultTimeIn = TimeSpan.Zero;
 
         private Dictionary<string, DataTable> loadedExcelTables = new Dictionary<string, DataTable>();
+
+        // REQUIRED for Activator.CreateInstance
+        public MasterAttendanceSheet() : this(0)
+        {
+        }
         public MasterAttendanceSheet(int id = 0)
         {
             InitializeComponent();
@@ -381,10 +386,14 @@ namespace YamyProject
             BindCombos.PopulateEmployeesForLoan(cmbEmployees);
             cmbEmployees.SelectedIndex = -1;
 
-            cmbMonths.Items.AddRange(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames
-                .Where(m => !string.IsNullOrEmpty(m)).ToArray());
+            var EnglishMonths = new CultureInfo("en-US")
+                .DateTimeFormat.MonthNames
+                .Where(m => !string.IsNullOrEmpty(m))
+                .ToArray();
 
-            cmbMonths.SelectedItem = DateTime.Now.ToString("MMMM");
+            cmbMonths.Items.AddRange(EnglishMonths);
+
+            cmbMonths.SelectedItem = DateTime.Now.ToString("MMMM", new CultureInfo("en-US"));
             cmbMonths.SelectedIndex = -1;
         }
 
@@ -488,7 +497,7 @@ namespace YamyProject
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvAttendance);
             string selectedMonth = cmbMonths.SelectedItem.ToString();
-            int monthNumber = DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.InvariantCulture).Month;
+            int monthNumber = DateTime.ParseExact(selectedMonth.Trim(), "MMMM", new CultureInfo("en-US")).Month;
             int year = DateTime.Now.Year;
 
             DateTime startDate = new DateTime(year, monthNumber, 1);

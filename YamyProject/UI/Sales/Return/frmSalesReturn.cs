@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -270,6 +272,12 @@ namespace YamyProject
             transaction();
             Utilities.LogAudit(frmLogin.userId, "Update Sales Return Invoice", "Sales Return", id, "Updated Sales Return Invoice: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
+
             return true;
         }
 
@@ -387,6 +395,11 @@ namespace YamyProject
 
             transaction();
             Utilities.LogAudit(frmLogin.userId, "Add Sales Return Invoice", "Sales Return", (int)invId, "Added Sales Return Invoice: " + txtNextCode.Text);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
 
             return true;
         }
@@ -1091,6 +1104,24 @@ namespace YamyProject
                 }
             }
         }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "SALES RETURN",
+                    fId,
+                    openFileDialog1.FileName
+                );
+        }
+
         int salesId = 0;
         private void guna2Button3_Click(object sender, EventArgs e)
         {

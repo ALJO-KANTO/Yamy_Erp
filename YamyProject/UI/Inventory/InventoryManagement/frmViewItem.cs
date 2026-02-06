@@ -247,15 +247,25 @@ namespace YamyProject
             if (cmbType.Text == "13 - Inventory Assembly")
                 insertItemsAssembly(id);
 
-            //if (txtOnHand.Text.Trim() != "0" && cmbType.Text != "12 - Service")
-            //{
-                DBClass.ExecuteNonQuery(@"DELETE FROM tbl_item_transaction where type = 'Opening Qty' and item_id = @id;DELETE FROM tbl_transaction where type = 'Opening Qty' AND transaction_id= @id", DBClass.CreateParameter("id", id));
-                DBClass.ExecuteNonQuery("DELETE FROM tbl_item_card_details WHERE `trans_type` = 'Opening Qty' and itemId = @id", DBClass.CreateParameter("id", id));
-                
-                insertItemTransaction();
-                insertItemJournal();
-            //}
+            DBClass.ExecuteNonQuery(@"DELETE FROM tbl_item_transaction where type = 'Opening Qty' and item_id = @id;DELETE FROM tbl_transaction where type = 'Opening Qty' AND transaction_id= @id", DBClass.CreateParameter("id", id));
+            DBClass.ExecuteNonQuery("DELETE FROM tbl_item_card_details WHERE `trans_type` = 'Opening Qty' and itemId = @id", DBClass.CreateParameter("id", id));
+            if (txtOnHand.Text.Trim() != "0" && cmbType.Text != "12 - Service")
+            {
+                if (isUpdateOpening()) {
+                    insertItemTransaction();
+                    insertItemJournal();
+                }
+            }
             Utilities.LogAudit(frmLogin.userId, "Update Item", "Item", id, "Updated Item: " + txtName.Text + " with Code: " + itemCode);
+
+            return true;
+        }
+        private bool isUpdateOpening()
+        {
+            if (decimal.Parse(txtOnHand.Text.ToString()) <= 0)
+            {
+                return false;
+            }
 
             return true;
         }
@@ -320,8 +330,11 @@ namespace YamyProject
                 insertItemsAssembly(id);
             if (txtOnHand.Text.Trim() != "0" && cmbType.Text != "12 - Service")
             {
-                insertItemTransaction();
-                insertItemJournal();
+                if (isUpdateOpening())
+                {
+                    insertItemTransaction();
+                    insertItemJournal();
+                }
             }
             Utilities.LogAudit(frmLogin.userId, "Insert Item", "Item", id, "Inserted Item: " + txtName.Text + " with Code: " + itemCode);
             return true;

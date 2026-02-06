@@ -27,7 +27,6 @@ namespace YamyProject.UI.Manufacturing.Models
             InitializeComponent();
         }
 
-        private DataTable dataTable;
         private void frmManAddWorkOrder_Load(object sender, EventArgs e)
         {
             dtInv.Value = DateTime.Now.Date;
@@ -74,12 +73,45 @@ namespace YamyProject.UI.Manufacturing.Models
             cmbProduct.SelectedIndex = -1;
             BindCombos.PopulateWarehouse(cmbWarehouseFrom);
             BindCombos.PopulateWarehouse(cmbWarehouseTo);
+
+            GenerateNextCode();
         }
 
+        private void GenerateNextCode()
+        {
+            //tbl_manufacturer_batch
+            string newCode = "B-0001";
 
+            using (var reader = DBClass.ExecuteReader("SELECT MAX(id) AS lastCode FROM tbl_manufacturer_batch"))
+            {
+                if (reader.Read() && reader["lastCode"] != DBNull.Value)
+                {
+                    int code = int.Parse(reader["lastCode"].ToString()) + 1;
+                    newCode = "B-" + code.ToString("D4");
+                }
+            }
+
+            guna2TextBox3.Text = newCode;
+            txtname.Text = newCode;
+        }
         private void getdata()
         {
-            string qry1 = @"Select id,code,name,cost_price from  tbl_items order by name";
+            string qry1 = @"SELECT 
+                                a.id,
+                                a.code,
+                                a.name,
+                                IFNULL(
+                                    (SELECT b.cost_price 
+                                     FROM tbl_item_transaction b 
+                                     WHERE b.item_id = a.id 
+                                     ORDER BY b.id DESC   -- ensures the latest record
+                                     LIMIT 1
+                                    ),
+                                    a.cost_price
+                                ) AS cost_price
+                            FROM tbl_items a
+                            ORDER BY a.name;
+                            ";
             DataTable DT = DBClass.ExecuteDataTable(qry1);
             dgvitem2.DataSource = DT;
             dgvitem2.Columns[0].Visible = false;
@@ -88,8 +120,21 @@ namespace YamyProject.UI.Manufacturing.Models
         }
         private void getdatasearchname(string st)
         {
-
-            string qry1 = @"Select id,code,name,cost_price from  tbl_items where name like '%" + st + "%'";
+            string qry1 = @"SELECT 
+                                a.id,
+                                a.code,
+                                a.name,
+                                IFNULL(
+                                    (SELECT b.cost_price 
+                                     FROM tbl_item_transaction b 
+                                     WHERE b.item_id = a.id 
+                                     ORDER BY b.id DESC   -- ensures the latest record
+                                     LIMIT 1
+                                    ),
+                                    a.cost_price
+                                ) AS cost_price
+                            FROM tbl_items a 
+                            where a.name like '%" + st + "%'";
 
             DataTable DT = DBClass.ExecuteDataTable(qry1);
             dgvitem2.DataSource = DT;
@@ -110,7 +155,8 @@ namespace YamyProject.UI.Manufacturing.Models
                     if (double.TryParse(Convert.ToString(row.Cells["DGVTOTATL"].Value), out tot))
                     {
                         gtot += tot;
-                        lbtotal.Text = gtot.ToString();
+                        lbtotal.Text = gtot.ToString("N2");
+                        txtamount.Text = gtot.ToString("N2");
                     }
                 }
             }
@@ -451,15 +497,15 @@ namespace YamyProject.UI.Manufacturing.Models
                                                       MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    //if (AllowItemWithOutQty)
-                    //{
+                    if (AllowItemWithOutQty)
+                    {
                         Save_Action();
                         isSaved = true;
-                    //}
-                    //else
-                    //{
-                    //    isSaved = false;
-                    //}
+                    }
+                    else
+                    {
+                        isSaved = false;
+                    }
                 }
             }
         }
@@ -1077,14 +1123,49 @@ namespace YamyProject.UI.Manufacturing.Models
         {
             if (cmbProduct.SelectedIndex == -1) return;
 
-            EnsureValidItemSelected();
+            if (EnsureValidItemSelected())
+            {
+                // Valid item selected, proceed with any additional logic if needed
+                fetchExistingIngredient();
+            }
+        }
+
+        private void fetchExistingIngredient()
+        {
+            if (id > 0)
+                return;
+
+            dgvItems.Rows.Clear();
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                SELECT a.*,b.code,b.name FROM tbl_manufacturer_batchdetails a, tbl_items b WHERE a.itemid = b.id and a.batchId = (SELECT id FROM tbl_manufacturer_batch WHERE product_id = @itemId order by date LIMIT 1)",
+                DBClass.CreateParameter("@itemId", cmbProduct.SelectedValue)))
+            {
+                //sn, dgvId, Procode, dgvproducts, dgvCost, Dgvqty, DGVTOTATL
+                while (reader.Read())
+                {
+                    dgvItems.Rows.Add(
+                        null,
+                        reader["itemid"].ToString(),
+                        reader["code"].ToString(),
+                        reader["name"].ToString(),
+                        reader["cost"].ToString(),
+                        reader["qty"].ToString(),
+                        reader["Total"].ToString()
+                    );
+                }
+            }
+            grandtotal();
         }
 
         private void cmbProduct_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(cmbProduct.Text))
             {
-                EnsureValidItemSelected();
+                if (EnsureValidItemSelected())
+                {
+                    // Valid item selected, proceed with any additional logic if needed
+                    fetchExistingIngredient();
+                }
             }
         }
 

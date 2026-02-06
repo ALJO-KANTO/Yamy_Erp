@@ -115,6 +115,7 @@ namespace YamyProject.Localization
                 if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
                 {
                     control.RightToLeft = RightToLeft.Yes;
+
                     if (control is Form form)
                         form.RightToLeftLayout = true;
                 }
@@ -158,6 +159,11 @@ namespace YamyProject.Localization
                 //if (!string.IsNullOrEmpty(localizedHeader) && localizedHeader != column.HeaderText)
                 //    Console.WriteLine($"no translation for {column.HeaderText}");
             }
+        }
+        public static void LocalizeContextMenu(ContextMenuStrip menu)
+        {
+            if (menu == null) return;
+            LocalizeToolStripItems(menu.Items);
         }
 
         // Recursive method to localize ToolStripMenuItems and other ToolStripItems

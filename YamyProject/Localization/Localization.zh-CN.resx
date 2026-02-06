@@ -258,7 +258,7 @@
   <data name="Total_Vat" xml:space="preserve">
     <value>总增值税</value>
   </data>
-  <data name="Check_No" xml:space="preserve">
+  <data name="Cheque_No" xml:space="preserve">
     <value>支票号码</value>
   </data>
   <data name="Agreement_Total" xml:space="preserve">
@@ -267,7 +267,7 @@
   <data name="Total_Invoice" xml:space="preserve">
     <value>发票总额</value>
   </data>
-  <data name="Check_Date" xml:space="preserve">
+  <data name="Cheque_Date" xml:space="preserve">
     <value>检查日期</value>
   </data>
   <data name="Depreciation_Expence" xml:space="preserve">
@@ -447,7 +447,7 @@
   <data name="Bank_Account_Name" xml:space="preserve">
     <value>银行账户名称</value>
   </data>
-  <data name="Check_Name" xml:space="preserve">
+  <data name="Cheque_Name" xml:space="preserve">
     <value>检查姓名</value>
   </data>
   <data name="id" xml:space="preserve">
@@ -498,7 +498,7 @@
   <data name="Cash" xml:space="preserve">
     <value>现金</value>
   </data>
-  <data name="Check" xml:space="preserve">
+  <data name="Cheque" xml:space="preserve">
     <value>查看</value>
   </data>
   <data name="Transfer" xml:space="preserve">
@@ -738,7 +738,7 @@
   <data name="Reconciliation" xml:space="preserve">
     <value>和解</value>
   </data>
-  <data name="BankReconciliation" xml:space="preserve">
+  <data name="Bank_Reconciliation" xml:space="preserve">
     <value>银行对账单</value>
   </data>
   <data name="Empty_by_default" xml:space="preserve">
@@ -933,7 +933,7 @@
   <data name="Donors/Grants_Report" xml:space="preserve">
     <value>捐赠者/赠款报告</value>
   </data>
-  <data name="Budget_vs._Actual_by_Program/Projects" xml:space="preserve">
+  <data name="Budget_vs._Actual_by_Programs/Projects" xml:space="preserve">
     <value>各计划/项目的预算与实际对比</value>
   </data>
   <data name="Budget_vs._Actual_by_Donors/Grants" xml:space="preserve">
@@ -975,11 +975,8 @@
   <data name="Statement_of_Cash_Flow" xml:space="preserve">
     <value>现金流量表</value>
   </data>
-  <data name="Deposit_Detail" xml:space="preserve">
+  <data name="Deposits_Detail" xml:space="preserve">
     <value>存款详情</value>
-  </data>
-  <data name="Check_Detail" xml:space="preserve">
-    <value>查看详情</value>
   </data>
   <data name="Customer_Snapshot" xml:space="preserve">
     <value>客户快照</value>
@@ -1911,6 +1908,9 @@
   <data name="Sales" xml:space="preserve">
     <value>销售量</value>
   </data>
+  <data name="&amp;Sales" xml:space="preserve">
+    <value>销售量</value>
+  </data>
   <data name="Quotation" xml:space="preserve">
     <value>引述</value>
   </data>
@@ -2608,6 +2608,9 @@
     <value>雇员</value>
   </data>
   <data name="Purchases" xml:space="preserve">
+    <value>购买</value>
+  </data>
+  <data name="&amp;Purchases" xml:space="preserve">
     <value>购买</value>
   </data>
   <data name="Report_Access" xml:space="preserve">
@@ -3974,5 +3977,479 @@
   </data>
   <data name="Subcontractor_Category" xml:space="preserve">
     <value>分包商类别</value>
+  </data>
+  <data name="Day_of_Week" xml:space="preserve">
+    <value>星期几</value>
+  </data>
+  <data name="Emp_Name" xml:space="preserve">
+    <value>员工姓名</value>
+  </data>
+  <data name="Cheque_Detail" xml:space="preserve">
+    <value>查看详情</value>
+  </data>
+  <data name="Project_Information" xml:space="preserve">
+    <value>项目信息</value>
+  </data>
+  <data name="Estimate_Start_Date" xml:space="preserve">
+    <value>预计开始日期</value>
+  </data>
+  <data name="Estimate_End_Date" xml:space="preserve">
+    <value>预计结束日期</value>
+  </data>
+  <data name="Tender_Name" xml:space="preserve">
+    <value>招标名称</value>
+  </data>
+  <data name="plot_number" xml:space="preserve">
+    <value>地块编号</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="Site_Name" xml:space="preserve">
+    <value>网站名称</value>
+  </data>
+  <data name="Project_Location" xml:space="preserve">
+    <value>项目位置</value>
+  </data>
+  <data name="Project_Type" xml:space="preserve">
+    <value>项目类型</value>
+  </data>
+  <data name="Project_Status" xml:space="preserve">
+    <value>项目状态</value>
+  </data>
+  <data name="Reported_By" xml:space="preserve">
+    <value>报告人</value>
+  </data>
+  <data name="New_Planning" xml:space="preserve">
+    <value>新规划</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>费率</value>
+  </data>
+  <data name="Labor_Attendance" xml:space="preserve">
+    <value>劳动出勤</value>
+  </data>
+  <data name="TimeSheet_Report" xml:space="preserve">
+    <value>时间表报告</value>
+  </data>
+  <data name="Report_Center" xml:space="preserve">
+    <value>报表中心</value>
+  </data>
+  <data name="Company_&amp;&amp;_&amp;Financial" xml:space="preserve">
+    <value>公司 &amp;&amp; &amp; 财务</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_&amp;Standard" xml:space="preserve">
+    <value>利润与损失 &amp; 标准</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_&amp;Detail" xml:space="preserve">
+    <value>利润与损失明细</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_&amp;YTD_Comparison" xml:space="preserve">
+    <value>利润与损失及年度累计比较</value>
+  </data>
+  <data name="&amp;Profit_&amp;&amp;_Loss_Prev_Year_Comparison" xml:space="preserve">
+    <value>利润与损失去年同期比较</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_by_&amp;Job" xml:space="preserve">
+    <value>按工作划分的利润与损失</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_by_&amp;Class" xml:space="preserve">
+    <value>按类别的利润与损失</value>
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_&amp;Unclassified" xml:space="preserve">
+    <value>利润与损失及未分类</value>
+  </data>
+  <data name="&amp;Income_by_Customer_Summary" xml:space="preserve">
+    <value>&amp;按客户收入汇总</value>
+  </data>
+  <data name="&amp;Income_by_Customer_Detail" xml:space="preserve">
+    <value>&amp;按客戶明細收入 ...</value>
+  </data>
+  <data name="&amp;Expense_by_Vendor_Summary" xml:space="preserve">
+    <value>&amp;按供应商费用汇总</value>
+  </data>
+  <data name="E&amp;xpense_by_Vendor_Detail" xml:space="preserve">
+    <value>按供应商明细的费用</value>
+  </data>
+  <data name="Income_Expense_&amp;Statement" xml:space="preserve">
+    <value>收入支出表</value>
+  </data>
+  <data name="&amp;Balance_Sheet_Standard" xml:space="preserve">
+    <value>&amp;资产负债表标准</value>
+  </data>
+  <data name="B&amp;alance_Sheet_Detail" xml:space="preserve">
+    <value>资产负债表明细</value>
+  </data>
+  <data name="Ba&amp;lance_Sheet_Summary" xml:space="preserve">
+    <value>资产负债表摘要</value>
+  </data>
+  <data name="Balance_Sheet_Prev_Year_Comparison" xml:space="preserve">
+    <value>资产负债表去年比较</value>
+  </data>
+  <data name="Balance_Sheet_by_Class" xml:space="preserve">
+    <value>按类别的资产负债表</value>
+  </data>
+  <data name="User_Activity_Report" xml:space="preserve">
+    <value>用户活动报告</value>
+  </data>
+  <data name="Cash_Flow_Forecast" xml:space="preserve">
+    <value>现金流预测</value>
+  </data>
+  <data name="&amp;Customer_&amp;&amp;_Receivable" xml:space="preserve">
+    <value>&amp;客户 &amp;&amp; 应收账款</value>
+  </data>
+  <data name="&amp;A/R_Aging_Summary" xml:space="preserve">
+    <value>&amp;A/R账龄汇总</value>
+  </data>
+  <data name="A/R_Aging_&amp;Detail" xml:space="preserve">
+    <value>应收账款账龄及明细</value>
+  </data>
+  <data name="Customer_Balance_&amp;Summary" xml:space="preserve">
+    <value>客户余额与摘要</value>
+  </data>
+  <data name="Customer_&amp;Balance_Detail" xml:space="preserve">
+    <value>客户及余额明细</value>
+  </data>
+  <data name="&amp;Open_Invoices" xml:space="preserve">
+    <value>&amp;未结发票</value>
+  </data>
+  <data name="Co&amp;llections_Report" xml:space="preserve">
+    <value>收藏报告</value>
+  </data>
+  <data name="Average_Days_to_Pay" xml:space="preserve">
+    <value>平均付款天数</value>
+  </data>
+  <data name="Unbilled_Costs_by_Job" xml:space="preserve">
+    <value>按工作未结算费用</value>
+  </data>
+  <data name="Transaction_List_by_Customer" xml:space="preserve">
+    <value>按客户的交易列表</value>
+  </data>
+  <data name="Customer_Phone_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Contact_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Item_Price_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sales_by_Ship_To_Address" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Pending_Sales" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vendors_&amp;&amp;_Payables" xml:space="preserve">
+    <value />
+  </data>
+  <data name="A/P_Aging_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transaction_List_by_Vendor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sales_Tax_Liability" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sales_Tax_Revenue_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vendor_Phone_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vendor_Contact_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Purchase_by_Item_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Open_Purchase_Orders" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Open_Purchase_Orders_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Open_Purchase_Orders_by_Job" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Valuation_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Valuation_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Stock_Status_by_Item" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Stock_Status_by_Vendor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Turnover_by_Item" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Assembly_Shortage_by_Item" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Assembly_Shortage_by_Vendor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Physical_Inventory_Worksheet" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Pending_Builds" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Negative_Inventory_Listing" xml:space="preserve">
+    <value />
+  </data>
+  <data name="WarehouseTransfer_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Employees_&amp;&amp;_Payroll" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Client-Ready_Payroll_Reports" xml:space="preserve">
+    <value />
+  </data>
+  <data name="State_Mandated_Retirement" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Employee_Contact_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Emergency_Contact_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="New_Hire_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Missing_Cheque" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reconciliation_Discrepancy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Previous_Reconciliation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Accountant_&amp;&amp;_Taxes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transaction_Detail_by_Account" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Closing_Date_Exception_Report" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Voided/Deleted_Transactions_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Voided/Deleted_Transactions_Details" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transaction_List_by_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Account_Listing" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Fixed_Asset_Listing" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Income_Tax_Preparation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Income_Tax_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Income_Tax_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Budgets_&amp;&amp;_Forecasts" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Budget_Overview" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Budget_vs._Actual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_Budget_Performance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Forecast_Overview" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Forecast_vs._Actual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Retail_Reports" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Profit_&amp;&amp;_Loss_Monthly_Comparison" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Balance_Sheet_Monthly_Comparison" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Gross_Margin_by_Inventory" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customer_Payments_by_Payment_Item" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Monthly_Sales_by_Customer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bills_by_Due_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Purchase_Volume_by_Vendor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vendor_Returns_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vendor_Returns_Detail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Open_Purchase_Orders_by_Vendor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Nonprofit_Reports" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Donor_Contribution_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Program/Projects_Report" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Terminated_Employees_List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Journal" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Calculation_Method" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Target_Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Projects" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Phases" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Milestones" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Deliverables" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Hours" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Average_KPI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Top_Project_Profit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AvgScore" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ProfitPercent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineering_Consultancy_Dashboard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Client_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Evaluation_Period_:" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Actual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contracting" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cost_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="actual_cost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="planned_cost" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cost_type" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Code" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Weight_%" xml:space="preserve">
+    <value />
+  </data>
+  <data name="contact_person" xml:space="preserve">
+    <value />
+  </data>
+  <data name="client_id" xml:space="preserve">
+    <value />
+  </data>
+  <data name="recognition_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="recognized_amount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="completion_percent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="recognition_method" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="contract_value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="contract_no" xml:space="preserve">
+    <value />
+  </data>
+  <data name="signed_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Assigned_To" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Created_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value />
   </data>
 </root>

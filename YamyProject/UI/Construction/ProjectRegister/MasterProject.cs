@@ -34,7 +34,7 @@ namespace YamyProject
         }
         public void ProjectData()
         {
-            DataTable dT = DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY id) AS SN, id,code, name, Category, start_date StartDate, end_date EndDate FROM tbl_projects");
+            DataTable dT = DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY id) AS SN, id,code, name, Category, start_date `Start Date`, end_date `End Date` FROM tbl_projects");
             if (dT == null)
                 return;
 
@@ -50,6 +50,7 @@ namespace YamyProject
             //{
             //    btnRemove.Enabled = UserPermissions.canDelete("Project Center");
             //}
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
         }
         private void btnRemove_Click(object sender, EventArgs e)
         {

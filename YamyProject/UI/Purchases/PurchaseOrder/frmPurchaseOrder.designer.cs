@@ -141,6 +141,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.lstAccountSuggestions = new System.Windows.Forms.ListBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -223,12 +224,12 @@
             this.guna2GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox4.Location = new System.Drawing.Point(2, 269);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(2, 262);
             this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.ShadowDecoration.BorderRadius = 0;
             this.guna2GroupBox4.ShadowDecoration.Depth = 0;
-            this.guna2GroupBox4.Size = new System.Drawing.Size(1311, 228);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(1311, 235);
             this.guna2GroupBox4.TabIndex = 10;
             // 
             // dgvItems
@@ -289,7 +290,7 @@
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvItems.Size = new System.Drawing.Size(1311, 228);
+            this.dgvItems.Size = new System.Drawing.Size(1311, 235);
             this.dgvItems.TabIndex = 7;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -452,7 +453,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 159);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 152);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1311, 110);
@@ -1119,20 +1120,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1313, 159);
+            this.panel4.Location = new System.Drawing.Point(1313, 152);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 481);
+            this.panel4.Size = new System.Drawing.Size(2, 488);
             this.panel4.TabIndex = 13;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 159);
+            this.panel3.Location = new System.Drawing.Point(0, 152);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 481);
+            this.panel3.Size = new System.Drawing.Size(2, 488);
             this.panel3.TabIndex = 12;
             // 
             // headerUC1
@@ -1144,7 +1145,7 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1315, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1315, 30);
             this.headerUC1.TabIndex = 238;
             // 
             // guna2Button4
@@ -1203,7 +1204,7 @@
             // 
             this.panel9.Controls.Add(this.tabControl2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 37);
+            this.panel9.Location = new System.Drawing.Point(0, 30);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1315, 84);
             this.panel9.TabIndex = 40;
@@ -1557,7 +1558,7 @@
             this.guna2TileButton16.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton16.TabIndex = 30;
             this.guna2TileButton16.Text = "Attach File";
-            this.guna2TileButton16.Visible = false;
+            this.guna2TileButton16.Click += new System.EventHandler(this.guna2TileButton16_Click);
             // 
             // guna2TileButton20
             // 
@@ -1689,6 +1690,7 @@
             this.guna2TileButton17.Size = new System.Drawing.Size(54, 47);
             this.guna2TileButton17.TabIndex = 26;
             this.guna2TileButton17.Text = "Email";
+            this.guna2TileButton17.Click += new System.EventHandler(this.guna2TileButton17_Click);
             // 
             // tabPage4
             // 
@@ -1862,7 +1864,7 @@
             this.panel7.Controls.Add(this.label20);
             this.panel7.Controls.Add(this.label21);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 121);
+            this.panel7.Location = new System.Drawing.Point(0, 114);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1315, 38);
             this.panel7.TabIndex = 41;
@@ -1954,6 +1956,10 @@
             this.lstAccountSuggestions.TabStop = false;
             this.lstAccountSuggestions.Visible = false;
             this.lstAccountSuggestions.Click += new System.EventHandler(this.lstAccountSuggestions_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmPurchaseOrder
             // 
@@ -2102,5 +2108,6 @@
         private System.Windows.Forms.TextBox txtId;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

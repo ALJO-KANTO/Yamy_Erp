@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -176,21 +178,21 @@ namespace YamyProject
             if (!chkRequireData())
                 return false;
             DBClass.ExecuteNonQuery(@"
-        UPDATE tbl_advance_payment_voucher 
-        SET 
-            date = @date,
-            pv_code = @pv_code,
-            type = @type,
-            method = @method,
-            amount = @amount,
-            debit_account_id = @debit_account_id,
-            debit_cost_center_id = @debit_cost_center_id,
-            description = @description,
-            credit_account_id = @credit_account_id,
-            credit_cost_center_id = @credit_cost_center_id,
-            modified_by = @modified_by,
-            modified_date = @modified_date
-        WHERE id = @id",
+                UPDATE tbl_advance_payment_voucher 
+                SET 
+                    date = @date,
+                    pv_code = @pv_code,
+                    type = @type,
+                    method = @method,
+                    amount = @amount,
+                    debit_account_id = @debit_account_id,
+                    debit_cost_center_id = @debit_cost_center_id,
+                    description = @description,
+                    credit_account_id = @credit_account_id,
+                    credit_cost_center_id = @credit_cost_center_id,
+                    modified_by = @modified_by,
+                    modified_date = @modified_date
+                WHERE id = @id",
                 DBClass.CreateParameter("id", id),
                 DBClass.CreateParameter("date", dtOpen.Value.Date),
                 DBClass.CreateParameter("pv_code", code),
@@ -279,9 +281,13 @@ namespace YamyProject
             }
             insertINV(id);
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "AdvancePayment");
-            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "AdvancePayment", "Advance Payment Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
-            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "AdvancePayment", "Advance Payment Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
+            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "AdvancePayment", "Advance Payment Debit Entry", (cmbDebitCostCenter.SelectedValue ?? 0).ToString());
+            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "AdvancePayment", "Advance Payment Credit Entry", (cmbCreditCostCenter.SelectedValue ?? 0).ToString());
             Utilities.LogAudit(frmLogin.userId, "Update Advance Payment Voucher", "Advance Payment Voucher", id, "Updated Advance Payment Voucher: " + code);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
 
             return true;
         }
@@ -350,9 +356,14 @@ namespace YamyProject
                 }
             }
             insertINV(id);
-            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", invId.ToString(), "AdvancePayment", "Advance Payment Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
-            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), invId.ToString(), "AdvancePayment", "Advance Payment Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
+            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", invId.ToString(), "AdvancePayment", "Advance Payment Debit Entry", (cmbDebitCostCenter.SelectedValue ?? 0).ToString());
+            CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), invId.ToString(), "AdvancePayment", "Advance Payment Credit Entry", (cmbCreditCostCenter.SelectedValue ?? 0).ToString());
             Utilities.LogAudit(frmLogin.userId, "Insert Advance Payment Voucher", "Advance Payment Voucher", id, "Inserted Advance Payment Voucher: " + code);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
         private void insertINV(int pvId)
@@ -427,12 +438,12 @@ namespace YamyProject
                 tType = "Customer Advance Payment";
             }
             CommonInsert.addTransactionEntry(dtOpen.Value.Date,
-                       cmbDebitAccountName.SelectedValue.ToString(),
+                       (cmbDebitAccountName.SelectedValue ?? 0).ToString(),
                        amount, "0", id.ToString(), humId, tType, "Advance PAYMENT", "ADVANCE Payment Voucher NO. " + code,
                        frmLogin.userId, DateTime.Now.Date, txtPVCode.Text);
 
             CommonInsert.addTransactionEntry(dtOpen.Value.Date,
-                    cmbCreditAccountName.SelectedValue.ToString(),
+                    (cmbCreditAccountName.SelectedValue ?? 0).ToString(),
                     "0", amount, id.ToString(), "0", tType, "Advance PAYMENT", "ADVANCE Payment Voucher NO. " + code,
                     frmLogin.userId, DateTime.Now.Date, txtPVCode.Text);
         }
@@ -1206,6 +1217,22 @@ namespace YamyProject
                 dgvPartner.CurrentCell.Value = code;
                 lstAccountSuggestions.Visible = false;
             }
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "ADVANCE PAYMENT VOUCHER",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
 
         private void lstAccountSuggestions_Click(object sender, EventArgs e)

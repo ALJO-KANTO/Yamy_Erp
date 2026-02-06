@@ -54,6 +54,8 @@ namespace YamyProject
                 dgvItems.Columns["date"].ReadOnly = true;
                 dgvItems.Columns["amount"].ReadOnly = true;
             }
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
     }
 }

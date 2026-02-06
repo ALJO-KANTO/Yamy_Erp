@@ -55,6 +55,8 @@ namespace YamyProject
             {
                 tabControl1.Visible = false;
             }
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
         private void LoaddgvItems()
         {

@@ -1,25 +1,36 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.ExtendedProperties;
+using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using YamyProject;
 using YamyProject.RMS.Class;
 using YamyProject.UI.Manufacturing.Models;
 
-
 namespace YamyProject.UI.Manufacturing.Viewform
 {
-    public partial class frmManScreen : Form
+    public partial class frmManMachineScreen : Form
     {
-        string status;
-        public frmManScreen()
+        bool FINISHED_GOODS_SAVE_WITHOUT_QTY = true;
+        public frmManMachineScreen()
         {
             InitializeComponent();
         }
 
         public void GetOrdersDraft()
         {
-            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Clear(); 
+            var generalS = Utilities.GeneralSettingsState("FINISHED GOODS SAVE WITHOUT QTY");
+            if (!string.IsNullOrEmpty(generalS) & int.Parse(generalS) > 0)
+            {
+                FINISHED_GOODS_SAVE_WITHOUT_QTY = true;
+            }
+            else
+            {
+                FINISHED_GOODS_SAVE_WITHOUT_QTY = false;
+            }
 
             string qry1 = "SELECT * FROM tbl_fixed_assets WHERE manufacture = 1 AND manufactureStatus = 'Draft'";
             MySqlCommand cmd1 = new MySqlCommand(qry1, RMSClass.conn());
@@ -107,6 +118,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
                 b.Location = new Point((btnPanel.Width - b.Width) / 2, (btnPanel.Height - b.Height) / 2);
                 b.Click += (sender, e) =>
                 {
+
                     frmManforManagetheBatchTask frm = new frmManforManagetheBatchTask(this);
                     frm.idmach = Convert.ToInt32(row["id"].ToString());
                     frm.nameMachin = (row["name"].ToString());
@@ -120,196 +132,196 @@ namespace YamyProject.UI.Manufacturing.Viewform
         }
 
         public void GetOrdersProgress()
-    {
-        flowLayoutPanel2.Controls.Clear();
-
-        string qry1 = "SELECT * FROM tbl_fixed_assets WHERE manufacture = 1 AND manufactureStatus = 'Progress'";
-        MySqlCommand cmd1 = new MySqlCommand(qry1, RMSClass.conn());
-
-        DataTable dt1 = new DataTable();
-        new MySqlDataAdapter(cmd1).Fill(dt1);
-
-        foreach (DataRow row in dt1.Rows)
         {
-            int machid = Convert.ToInt32(row["id"]);
+            flowLayoutPanel2.Controls.Clear();
 
-            FlowLayoutPanel P1 = new FlowLayoutPanel
+            string qry1 = "SELECT * FROM tbl_fixed_assets WHERE manufacture = 1 AND manufactureStatus = 'Progress'";
+            MySqlCommand cmd1 = new MySqlCommand(qry1, RMSClass.conn());
+
+            DataTable dt1 = new DataTable();
+            new MySqlDataAdapter(cmd1).Fill(dt1);
+
+            foreach (DataRow row in dt1.Rows)
             {
-                AutoSize = true,
-                Width = 230,
-                Height = 450,
-                FlowDirection = FlowDirection.TopDown,
-                Margin = new Padding(10),
-                BackColor = Color.LightGray,
-                BorderStyle = BorderStyle.None
-            };
+                int machid = Convert.ToInt32(row["id"]);
 
-            P1.Paint += (s, e) =>
-            {
-                int radius = 5;
-                var path = new System.Drawing.Drawing2D.GraphicsPath();
-                path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
-                path.AddArc(P1.Width - radius * 2 - 1, 0, radius * 2, radius * 2, 270, 90);
-                path.AddArc(P1.Width - radius * 2 - 1, P1.Height - radius * 2 - 1, radius * 2, radius * 2, 0, 90);
-                path.AddArc(0, P1.Height - radius * 2 - 1, radius * 2, radius * 2, 90, 90);
-                path.CloseAllFigures();
-
-                P1.Region = new Region(path);
-
-                using (var pen = new Pen(Color.LightGray, 1))
+                FlowLayoutPanel P1 = new FlowLayoutPanel
                 {
-                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    e.Graphics.DrawPath(pen, path);
-                }
-            };
+                    AutoSize = true,
+                    Width = 230,
+                    Height = 450,
+                    FlowDirection = FlowDirection.TopDown,
+                    Margin = new Padding(10),
+                    BackColor = Color.LightGray,
+                    BorderStyle = BorderStyle.None
+                };
 
-            Panel picPanel = new Panel
-            {
-                Width = P1.Width,
-                Height = 110
-            };
+                P1.Paint += (s, e) =>
+                {
+                    int radius = 5;
+                    var path = new System.Drawing.Drawing2D.GraphicsPath();
+                    path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
+                    path.AddArc(P1.Width - radius * 2 - 1, 0, radius * 2, radius * 2, 270, 90);
+                    path.AddArc(P1.Width - radius * 2 - 1, P1.Height - radius * 2 - 1, radius * 2, radius * 2, 0, 90);
+                    path.AddArc(0, P1.Height - radius * 2 - 1, radius * 2, radius * 2, 90, 90);
+                    path.CloseAllFigures();
 
-            PictureBox pic = new PictureBox
-            {
-                Image = YamyProject.Properties.Resources._1493__2_,
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Size = new Size(100, 100),
-                Location = new Point((picPanel.Width - 100) / 2, 5)
-            };
-            picPanel.Controls.Add(pic);
-            P1.Controls.Add(picPanel);
+                    P1.Region = new Region(path);
 
-            string qry2 = $@"
-            SELECT 
-                t.id,
-                t.StartTime,
-                t.EndTime,
-                b.batchname
-            FROM 
-                tbl_manufacturer_task t
-            INNER JOIN 
-                tbl_manufacturer_batch b 
-            ON 
-                t.BatchID = b.id
-            WHERE 
-                t.MachineID = {machid}
-           and 
-                t.Status ='Progress'
-            LIMIT 1
-        ";
+                    using (var pen = new Pen(Color.LightGray, 1))
+                    {
+                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                        e.Graphics.DrawPath(pen, path);
+                    }
+                };
 
-            MySqlCommand cmd2 = new MySqlCommand(qry2, RMSClass.conn());
-            DataTable dt2 = new DataTable();
-            new MySqlDataAdapter(cmd2).Fill(dt2);
+                Panel picPanel = new Panel
+                {
+                    Width = P1.Width,
+                    Height = 110
+                };
 
-            string batchName = "";
-            string startTimeStr = "";
-            string endTimeStr = "";
+                PictureBox pic = new PictureBox
+                {
+                    Image = YamyProject.Properties.Resources._1493__2_,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Size = new Size(100, 100),
+                    Location = new Point((picPanel.Width - 100) / 2, 5)
+                };
+                picPanel.Controls.Add(pic);
+                P1.Controls.Add(picPanel);
+
+                string qry2 = $@"
+                                    SELECT 
+                                        t.id,
+                                        t.StartTime,
+                                        t.EndTime,
+                                        b.batchname
+                                    FROM 
+                                        tbl_manufacturer_task t
+                                    INNER JOIN 
+                                        tbl_manufacturer_batch b 
+                                    ON 
+                                        t.BatchID = b.id
+                                    WHERE 
+                                        t.MachineID = {machid}
+                                   and 
+                                        t.Status ='Progress'
+                                    LIMIT 1
+                                ";
+
+                MySqlCommand cmd2 = new MySqlCommand(qry2, RMSClass.conn());
+                DataTable dt2 = new DataTable();
+                new MySqlDataAdapter(cmd2).Fill(dt2);
+
+                string batchName = "";
+                string startTimeStr = "";
+                string endTimeStr = "";
                 int batchid = 0;
 
-            DateTime startTime = DateTime.MinValue;
-            DateTime endTime = DateTime.MinValue;
+                DateTime startTime = DateTime.MinValue;
+                DateTime endTime = DateTime.MinValue;
 
-            if (dt2.Rows.Count > 0)
-            {
-                var taskRow = dt2.Rows[0];
-                batchName = taskRow["batchname"].ToString();
-                startTimeStr = taskRow["StartTime"].ToString();
-                endTimeStr = taskRow["EndTime"].ToString();
-                    batchid = Convert.ToInt32(taskRow["id"].ToString());
-                DateTime.TryParse(startTimeStr, out startTime);
-                DateTime.TryParse(endTimeStr, out endTime);
-            }
-
-            string labelText = $"Machine Name: {row["name"]}";
-            if (!string.IsNullOrEmpty(batchName))
-            {
-                labelText += $"\nBatch: {batchName}\nStart: {startTimeStr}\nEnd: {endTimeStr}";
-            }
-
-            Label lb1 = new Label
-            {
-                Text = labelText,
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(252, 147, 69),
-                AutoSize = false,
-                Padding = new Padding(5),
-                Margin = new Padding(0, 10, 0, 0),
-                Width = P1.Width,
-                Height = 100,
-                TextAlign = ContentAlignment.MiddleLeft
-            };
-            P1.Controls.Add(lb1);
-
-            Label lblCountdown = new Label
-            {
-                ForeColor = Color.Black,
-                BackColor = Color.Transparent,
-                Font = new Font("Segoe UI", 18, FontStyle.Bold),
-                AutoSize = false,
-                Width = P1.Width,
-                Height = 50,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Margin = new Padding(0, 5, 0, 0)
-            };
-            P1.Controls.Add(lblCountdown);
-
-            Timer timer = new Timer();
-            timer.Interval = 1000; 
-
-            timer.Tick += (s, e) =>
-            {
-                var now = DateTime.Now;
-                if (endTime > now)
+                if (dt2.Rows.Count > 0)
                 {
-                    TimeSpan remaining = endTime - now;
-                    lblCountdown.Text = string.Format("{0:D2}:{1:D2}:{2:D2}",
-                        remaining.Hours + remaining.Days * 24, 
-                        remaining.Minutes,
-                        remaining.Seconds);
+                    var taskRow = dt2.Rows[0];
+                    batchName = taskRow["batchname"].ToString();
+                    startTimeStr = taskRow["StartTime"].ToString();
+                    endTimeStr = taskRow["EndTime"].ToString();
+                    batchid = Convert.ToInt32(taskRow["id"].ToString());
+                    DateTime.TryParse(startTimeStr, out startTime);
+                    DateTime.TryParse(endTimeStr, out endTime);
+                }
+
+                string labelText = $"Machine Name: {row["name"]}";
+                if (!string.IsNullOrEmpty(batchName))
+                {
+                    labelText += $"\nBatch: {batchName}\nStart: {startTimeStr}\nEnd: {endTimeStr}";
+                }
+
+                Label lb1 = new Label
+                {
+                    Text = labelText,
+                    ForeColor = Color.White,
+                    BackColor = Color.FromArgb(252, 147, 69),
+                    AutoSize = false,
+                    Padding = new Padding(5),
+                    Margin = new Padding(0, 10, 0, 0),
+                    Width = P1.Width,
+                    Height = 100,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+                P1.Controls.Add(lb1);
+
+                Label lblCountdown = new Label
+                {
+                    ForeColor = Color.Black,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Segoe UI", 18, FontStyle.Bold),
+                    AutoSize = false,
+                    Width = P1.Width,
+                    Height = 50,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Margin = new Padding(0, 5, 0, 0)
+                };
+                P1.Controls.Add(lblCountdown);
+
+                Timer timer = new Timer();
+                timer.Interval = 1000;
+
+                timer.Tick += (s, e) =>
+                {
+                    var now = DateTime.Now;
+                    if (endTime > now)
+                    {
+                        TimeSpan remaining = endTime - now;
+                        lblCountdown.Text = string.Format("{0:D2}:{1:D2}:{2:D2}",
+                            remaining.Hours + remaining.Days * 24,
+                            remaining.Minutes,
+                            remaining.Seconds);
+                    }
+                    else
+                    {
+                        lblCountdown.Text = "Finished";
+                        timer.Stop();
+                    }
+                };
+
+                if (startTime != DateTime.MinValue && endTime != DateTime.MinValue)
+                {
+                    timer.Start();
                 }
                 else
                 {
-                    lblCountdown.Text = "Finished";
-                    timer.Stop();
+                    lblCountdown.Text = "No Timing Info";
                 }
-            };
 
-            if (startTime != DateTime.MinValue && endTime != DateTime.MinValue)
-            {
-                timer.Start();
-            }
-            else
-            {
-                lblCountdown.Text = "No Timing Info";
-            }
+                Panel btnPanel = new Panel
+                {
+                    Width = P1.Width,
+                    Height = 50,
+                    Margin = new Padding(0, 10, 0, 10)
+                };
 
-            Panel btnPanel = new Panel
-            {
-                Width = P1.Width,
-                Height = 50,
-                Margin = new Padding(0, 10, 0, 10)
-            };
+                Guna.UI2.WinForms.Guna2Button b = new Guna.UI2.WinForms.Guna2Button
+                {
+                    AutoRoundedCorners = true,
+                    Size = new Size(100, 35),
+                    FillColor = Color.Green,
+                    Text = "Finish",
+                    Tag = row["id"].ToString(),
+                    Location = new Point((btnPanel.Width / 2) - 105, (btnPanel.Height - 35) / 2)
+                };
 
-            Guna.UI2.WinForms.Guna2Button b = new Guna.UI2.WinForms.Guna2Button
-            {
-                AutoRoundedCorners = true,
-                Size = new Size(100, 35),
-                FillColor = Color.Green,
-                Text = "Finish",
-                Tag = row["id"].ToString(),
-                Location = new Point((btnPanel.Width / 2) - 105, (btnPanel.Height - 35) / 2)
-            };
-
-            Guna.UI2.WinForms.Guna2Button b2 = new Guna.UI2.WinForms.Guna2Button
-            {
-                AutoRoundedCorners = true,
-                Size = new Size(100, 35),
-                FillColor = Color.Red,
-                Text = "Cancel",
-                Tag = row["id"].ToString(),
-                Location = new Point((btnPanel.Width / 2) + 5, (btnPanel.Height - 35) / 2)
-            };
+                Guna.UI2.WinForms.Guna2Button b2 = new Guna.UI2.WinForms.Guna2Button
+                {
+                    AutoRoundedCorners = true,
+                    Size = new Size(100, 35),
+                    FillColor = Color.Red,
+                    Text = "Cancel",
+                    Tag = row["id"].ToString(),
+                    Location = new Point((btnPanel.Width / 2) + 5, (btnPanel.Height - 35) / 2)
+                };
 
                 b.Click += (sender, e) =>
                 {
@@ -324,7 +336,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                         if (result == DialogResult.Yes)
                         {
-                            UpdateFinshed(machid);
+                            UpdateFinished(machid);
                             UpdateFinishTask(batchid);
                             GetOrdersDraft();
                             GetOrdersProgress();
@@ -332,7 +344,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
                     }
                     else if ((startTime - endTime).TotalSeconds <= 0)
                     {
-                        UpdateFinshed(machid);
+                        UpdateFinished(machid);
                         UpdateFinishTask(batchid);
                         GetOrdersDraft();
                         GetOrdersProgress();
@@ -350,25 +362,22 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                     if (result == DialogResult.Yes)
                     {
-                        UpdateFinshed(machid);
+                        UpdateFinished(machid);
                         UpdateCancelTask(batchid);
                         GetOrdersDraft();
                         GetOrdersProgress();
                     }
                 };
 
-
                 btnPanel.Controls.Add(b);
-            btnPanel.Controls.Add(b2);
-            P1.Controls.Add(btnPanel);
+                btnPanel.Controls.Add(b2);
+                P1.Controls.Add(btnPanel);
 
-            flowLayoutPanel2.Controls.Add(P1);
+                flowLayoutPanel2.Controls.Add(P1);
+            }
         }
-    }
 
-
-
-        private void UpdateFinshed(int id)
+        private void UpdateFinished(int id)
         {
             string qry1 = @"update  tbl_fixed_assets set manufactureStatus= @manufactureStatus where id =@ID";
             MySqlCommand cmd = new MySqlCommand(qry1, RMSClass.conn());
@@ -427,8 +436,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
         }
         private void ShowFinishedGoodsDialog(int id)
         {
-            string query = @"SELECT b.id,c.name,b.product_id,b.warehouse_id,
-                            (SELECT SUM(mbd.Total) FROM tbl_manufacturer_batchdetails mbd WHERE mbd.batchID=b.id) costPrice
+            string query = @"SELECT b.id, c.name, b.product_id, b.warehouse_id, (b.amount/b.product_qty) costPrice
                                 FROM tbl_manufacturer_task a, tbl_manufacturer_batch b,tbl_items c WHERE a.BatchID = b.id AND a.MachineID = b.fixedassetsID AND b.product_id = c.id AND a.id = @id";
             using (var reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("id", id)))
             {
@@ -439,17 +447,42 @@ namespace YamyProject.UI.Manufacturing.Viewform
                     string productId = Convert.ToString(reader["product_id"]);
                     string warehouseId = Convert.ToString(reader["warehouse_id"]);
                     decimal costPrice = Convert.ToDecimal(reader["costPrice"]);
-                    using (var dialog = new FinishedGoodsDialog(ItemName))
+                    if (!FINISHED_GOODS_SAVE_WITHOUT_QTY)
                     {
-                        if (dialog.ShowDialog() == DialogResult.OK)
+                        using (var dialog = new FinishedGoodsDialog(ItemName, int.Parse(warehouseId)))
                         {
-                            decimal finishedQty = dialog.FinishedQty;
-                            decimal sellingPrice = dialog.SellingPrice;
-                            DateTime date = DateTime.Now.Date;
+                            if (dialog.ShowDialog() == DialogResult.OK)
+                            {
+                                decimal finishedQty = dialog.FinishedQty;
+                                decimal sellingPrice = dialog.SellingPrice;
+                                string finishedItemWarehouse = int.Parse(dialog.WarehouseId) > 0 ? dialog.WarehouseId : warehouseId;
+                                DateTime date = DateTime.Now.Date;
+                                costPrice = decimal.Parse(costPrice.ToString("N2"));
 
-                            InsertFinishedGoodsItemTransaction(date, finishedQty, costPrice, sellingPrice, mId, productId, warehouseId);
-                            InsertFinishedGoodsItemJournal(date, finishedQty, costPrice, sellingPrice, mId, productId, warehouseId);
+                                DBClass.ExecuteNonQuery(@"UPDATE tbl_manufacturer_batch SET product_qty = @finishedQty WHERE product_id =@productId and id = @bId",
+                                    DBClass.CreateParameter("finishedQty", finishedQty),
+                                    DBClass.CreateParameter("productId", productId),
+                                    DBClass.CreateParameter("bId", id));
+                                InsertFinishedGoodsItemTransaction(date, finishedQty, costPrice, sellingPrice, mId, productId, finishedItemWarehouse);
+                                InsertFinishedGoodsItemJournal(date, finishedQty, costPrice, sellingPrice, mId, productId, finishedItemWarehouse);
+                            }
                         }
+                    }
+                    else
+                    {
+                        decimal finishedQty = 0;
+                        decimal sellingPrice = 0;
+                        string finishedItemWarehouse = warehouseId;
+                        DateTime date = DateTime.Now.Date;
+                        costPrice = decimal.Parse(costPrice.ToString("N2")); 
+                        sellingPrice = costPrice;
+
+                        DBClass.ExecuteNonQuery(@"UPDATE tbl_manufacturer_batch SET product_qty = @finishedQty WHERE product_id =@productId and id = @bId",
+                            DBClass.CreateParameter("finishedQty", finishedQty),
+                            DBClass.CreateParameter("productId", productId),
+                            DBClass.CreateParameter("bId", id));
+                        InsertFinishedGoodsItemTransaction(date, finishedQty, costPrice, sellingPrice, mId, productId, finishedItemWarehouse);
+                        InsertFinishedGoodsItemJournal(date, finishedQty, costPrice, sellingPrice, mId, productId, finishedItemWarehouse);
                     }
                 }
             }
@@ -501,9 +534,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
         }
     }
-
 }
-
 
 public class FinishedGoodsDialog : Form
 {
@@ -512,6 +543,7 @@ public class FinishedGoodsDialog : Form
     private TextBox txtSellingPrice;
     private Button btnSave;
     private Button btnClose;
+    Guna2ComboBox cmbWarehouse;
 
     public string ItemName
     {
@@ -551,20 +583,28 @@ public class FinishedGoodsDialog : Form
         }
     }
 
-    public FinishedGoodsDialog(string itemName)
+    public string WarehouseId
+    {
+        get { return cmbWarehouse.SelectedValue?.ToString(); }
+        set { cmbWarehouse.SelectedValue = value; }
+    }
+
+    public FinishedGoodsDialog(string itemName,int warehouseId)
     {
         InitializeDynamicComponents();
 
         // Set item name and make it read-only
         txtItemName.Text = itemName;
         txtItemName.ReadOnly = true;
+        BindCombos.PopulateWarehouse(cmbWarehouse);
+        cmbWarehouse.SelectedValue = warehouseId;
     }
 
     private void InitializeDynamicComponents()
     {
         // Form properties
         this.Text = "Finished Goods";
-        this.ClientSize = new Size(360, 200);
+        this.ClientSize = new Size(360, 250);
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
         this.StartPosition = FormStartPosition.CenterParent;
         this.MaximizeBox = false;
@@ -574,19 +614,24 @@ public class FinishedGoodsDialog : Form
         Label lblItemName = new Label() { Text = "Item Name:", Location = new Point(20, 23), AutoSize = true };
         Label lblFinishedQty = new Label() { Text = "Finished Qty:", Location = new Point(20, 63), AutoSize = true };
         Label lblSellingPrice = new Label() { Text = "Selling Price:", Location = new Point(20, 103), AutoSize = true };
+        Label lblWarehouse = new Label() { Text = "Warehouse:", Location = new Point(20, 143), AutoSize = true };
 
         // Create TextBoxes
         txtItemName = new TextBox() { Location = new Point(130, 20), Size = new Size(200, 22), ReadOnly = true };
         txtFinishedQty = new TextBox() { Location = new Point(130, 60), Size = new Size(200, 22) };
         txtSellingPrice = new TextBox() { Location = new Point(130, 100), Size = new Size(200, 22) };
-        
+        // Create ComboBox
+        cmbWarehouse = new Guna2ComboBox() { Location = new Point(130, 140), Size = new Size(200, 22) };
+        //warehouse font size
+        cmbWarehouse.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+
         // Add KeyPress events to restrict to decimals only
         txtFinishedQty.KeyPress += NumericTextBox_KeyPress;
         txtSellingPrice.KeyPress += NumericTextBox_KeyPress;
 
         // Create Buttons
-        btnSave = new Button() { Text = "Save", Location = new Point(130, 140), Size = new Size(90, 30) };
-        btnClose = new Button() { Text = "Close", Location = new Point(240, 140), Size = new Size(90, 30) };
+        btnSave = new Button() { Text = "Save", Location = new Point(130, 180), Size = new Size(90, 30) };
+        btnClose = new Button() { Text = "Close", Location = new Point(240, 180), Size = new Size(90, 30) };
 
         // Add event handlers
         btnSave.Click += BtnSave_Click;
@@ -599,6 +644,8 @@ public class FinishedGoodsDialog : Form
         this.Controls.Add(txtFinishedQty);
         this.Controls.Add(lblSellingPrice);
         this.Controls.Add(txtSellingPrice);
+        this.Controls.Add(lblWarehouse);
+        this.Controls.Add(cmbWarehouse);
         this.Controls.Add(btnSave);
         this.Controls.Add(btnClose);
     }

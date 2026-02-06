@@ -42,11 +42,14 @@ namespace YamyProject
             dgvCustomer.Enabled = false;
             dgvCustomer.Columns.Clear();
 
+            dgvCustomer.Columns.Add("id", "Id");
+            dgvCustomer.Columns.Add("account_id", "account_id");
             dgvCustomer.Columns.Add("date", "Date");
             dgvCustomer.Columns.Add("type", "Type");
             dgvCustomer.Columns.Add("hum_id", "HumID");
+            dgvCustomer.Columns.Add("name", "Name");
             dgvCustomer.Columns.Add("description", "Description");
-            dgvCustomer.Columns.Add("transaction_id", "TransactionID");
+            dgvCustomer.Columns.Add("transaction_id", "Num");
             dgvCustomer.Columns.Add("debit", "Debit");
             dgvCustomer.Columns.Add("credit", "Credit");
             dgvCustomer.Columns.Add("Amount", "Balance");
@@ -89,21 +92,140 @@ namespace YamyProject
                 parameters.Add(DBClass.CreateParameter("startDate", from));
                 parameters.Add(DBClass.CreateParameter("endDate", to));
             }
-
+            string whereC = account_id > 0 ? " WHERE t.account_id = @id " : " WHERE t.account_id > 0 ";
             string query = $@"
                             SELECT 
-                                t.date,
-                                t.type,
-                                t.hum_id,
-                                t.description,
-                                t.transaction_id,
-                                t.debit,
-                                t.credit,
-                                SUM(t.debit - t.credit) OVER (PARTITION BY t.account_id ORDER BY t.date, t.id) AS Amount
-                            FROM tbl_transaction t
-                            WHERE t.account_id = @id
-                            {dateFilter}
-                            ORDER BY t.date, t.id;";
+	                                 t.id,
+	                                 t.account_id,
+                                    t.date,
+                                    t.type,
+                                    t.hum_id,
+
+                                    -- Party / Account Name
+                                    IFNULL(
+                                        CASE 
+                                            WHEN t.type IN (
+                                                'Customer Receipt','Sales Invoice','Customer Opening Balance',
+                                                'Customer Advance Payment','Check Cancel (Customer)',
+                                                'SalesReturn Invoice','Credit Note','PDC Receivable'
+                                            ) THEN 
+                                                (SELECT name FROM tbl_customer WHERE id = t.hum_id)
+
+                                            WHEN t.type IN (
+                                                'Vendor Payment','Purchase Invoice','Vendor Opening Balance',
+                                                'Vendor Advance Payment','Check Cancel (Vendor)',
+                                                'Purchase Return Invoice','Debit Note','PDC Payable'
+                                            ) THEN
+                                                (SELECT name FROM tbl_vendor WHERE id = t.hum_id)
+
+                                            WHEN t.type IN (
+                                                'Employee','Employee Loan Payment','Employee Salary Payment',
+                                                'Employee Petty Cash Payment','Employee Salary'
+                                            ) THEN
+                                                (SELECT name FROM tbl_employee WHERE id = t.hum_id)
+
+                                            ELSE 
+                                                (SELECT name FROM tbl_coa_level_4 WHERE id = t.account_id)
+                                        END
+                                    ,'') AS name,
+
+                                    t.description,
+                                    t.transaction_id,
+                                    t.debit,
+                                    t.credit,
+
+                                    -- Running Balance (P&L-safe)
+                                    SUM(
+                                        CASE 
+                                            WHEN l1.category_code = 'Income'
+                                                THEN t.credit - t.debit
+                                            ELSE
+                                                t.debit - t.credit
+                                        END
+                                    ) OVER (
+                                        PARTITION BY t.account_id
+                                        ORDER BY t.date, t.id
+                                        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                                    ) AS running_balance
+
+                                FROM tbl_transaction t
+                                JOIN tbl_coa_level_4 l4 ON l4.id = t.account_id
+                                JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
+                                JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
+                                JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
+
+                                WHERE t.account_id >0  
+                                                            {dateFilter}
+
+                                ORDER BY t.date, t.id;";
+            if (account_id > 0)
+            {
+                query = $@"
+                            SELECT 
+	                                 t.id,
+	                                 t.account_id,
+                                    t.date,
+                                    t.type,
+                                    t.hum_id,
+
+                                    -- Party / Account Name
+                                    IFNULL(
+                                        CASE 
+                                            WHEN t.type IN (
+                                                'Customer Receipt','Sales Invoice','Customer Opening Balance',
+                                                'Customer Advance Payment','Check Cancel (Customer)',
+                                                'SalesReturn Invoice','Credit Note','PDC Receivable'
+                                            ) THEN 
+                                                (SELECT name FROM tbl_customer WHERE id = t.hum_id)
+
+                                            WHEN t.type IN (
+                                                'Vendor Payment','Purchase Invoice','Vendor Opening Balance',
+                                                'Vendor Advance Payment','Check Cancel (Vendor)',
+                                                'Purchase Return Invoice','Debit Note','PDC Payable'
+                                            ) THEN
+                                                (SELECT name FROM tbl_vendor WHERE id = t.hum_id)
+
+                                            WHEN t.type IN (
+                                                'Employee','Employee Loan Payment','Employee Salary Payment',
+                                                'Employee Petty Cash Payment','Employee Salary'
+                                            ) THEN
+                                                (SELECT name FROM tbl_employee WHERE id = t.hum_id)
+
+                                            ELSE 
+                                                (SELECT name FROM tbl_coa_level_4 WHERE id = t.account_id)
+                                        END
+                                    ,'') AS name,
+
+                                    t.description,
+                                    t.transaction_id,
+                                    t.debit,
+                                    t.credit,
+
+                                    -- Running Balance (P&L-safe)
+                                    SUM(
+                                        CASE 
+                                            WHEN l1.category_code = 'Income'
+                                                THEN t.credit - t.debit
+                                            ELSE
+                                                t.debit - t.credit
+                                        END
+                                    ) OVER (
+                                        PARTITION BY t.account_id
+                                        ORDER BY t.date, t.id
+                                        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                                    ) AS running_balance
+
+                                FROM tbl_transaction t
+                                JOIN tbl_coa_level_4 l4 ON l4.id = t.account_id
+                                JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
+                                JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
+                                JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
+
+                                WHERE t.account_id = @id 
+                                                            {dateFilter}
+
+                                ORDER BY t.date, t.id;";
+            }
 
             Task.Run(() =>
             {
@@ -118,20 +240,22 @@ namespace YamyProject
                     foreach (DataRow row in dt.Rows)
                     {
                         dgvCustomer.Rows.Add(
+                            row["id"].ToString(),
+                            row["account_id"].ToString(),
                             Convert.ToDateTime(row["date"]).ToString("yyyy-MM-dd"),
                             row["type"].ToString(),
                             row["hum_id"].ToString(),
+                            row["name"].ToString(),
                             row["description"].ToString(),
                             row["transaction_id"].ToString(),
                             Convert.ToDecimal(row["debit"]).ToString("N2"),
                             Convert.ToDecimal(row["credit"]).ToString("N2"),
-                            Convert.ToDecimal(row["Amount"]).ToString("N2")
+                            Convert.ToDecimal(row["running_balance"]).ToString("N2")
                         );
                     }
 
                     // Format columns
-                    dgvCustomer.Columns["hum_id"].Visible = false;
-                    dgvCustomer.Columns["transaction_id"].Visible = false;
+                    dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["hum_id"].Visible = dgvCustomer.Columns["account_id"].Visible = false;
                     dgvCustomer.Columns["description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dgvCustomer.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvCustomer.Columns["date"].Width = 65;
@@ -321,12 +445,12 @@ namespace YamyProject
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
-            bindDGVAccount();
+            //bindDGVAccount();
         }
 
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
-            bindDGVAccount();
+            //bindDGVAccount();
         }
 
         private void guna2Button7_Click(object sender, EventArgs e)

@@ -656,6 +656,25 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
+        public static ComboBox PopulateCountries(ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "select id,name from tbl_country";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+            //DataTable dt = DBClass.ExecuteDataTable("select id,name from tbl_country");
+            //if (isAddOption)
+            //{
+            //    // Add the "<< Add >>" row at the top
+            //    DataRow newRow = dt.NewRow();
+            //    newRow["id"] = 0;
+            //    newRow["name"] = "<< Add >>";
+            //    dt.Rows.InsertAt(newRow, 0);
+            //}
+            //cmb.ValueMember = "id";
+            //cmb.DisplayMember = "name";
+            //cmb.DataSource = dt;
+            //return cmb;
+        }
         public static Guna2ComboBox PopulatePrepaidExpenseCategories(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
         {
             string query = "select id,name from tbl_prepaid_expense_category";

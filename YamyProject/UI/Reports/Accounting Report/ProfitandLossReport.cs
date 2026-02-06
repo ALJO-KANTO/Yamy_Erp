@@ -242,75 +242,168 @@ namespace YamyProject
                 dgvCustomer.Rows.Clear();
                 using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                         WITH AccountBalances AS (
-                            -- Calculate balances for Income, Cost, and Expenses
-                            SELECT 
-                                l1.name AS Category, 
-                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
-                            FROM tbl_coa_level_1 l1
-                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
-                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
-                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
-                            GROUP BY l1.name
-                        ),
-
-                        FinalBalance AS (
-                            -- Calculate final balance: Income - Cost - Expenses
-                            SELECT 
-                                'Final Balance (Income - Cost - Expenses)' AS Category,
-                                COALESCE(
-                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Income'), 0
-                                ) -
-                                COALESCE(
-                                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
-                                ) -
-                                COALESCE(
-                                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
-                                ) AS Balance
-                        ),
-
-                        EquityBalances AS (
-                            -- Calculate balances for Assets, Liabilities, and Equity
-                            SELECT 
-                                l1.name, 
-                                l1.id, 
-                                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
-                            FROM tbl_coa_level_1 l1
-                            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
-                            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
-                            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-                            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
-                            GROUP BY l1.id, l1.name
-                        )
-
-                        -- Final result combining the balances
                         SELECT 
-                            eb.name, 
-                            eb.id, 
+                            l1.id,
+                            l1.name,
+                            l1.category_code,
                             CASE 
-                                -- For Equity, add the final balance from Income - Cost - Expenses to Retained Earnings
-                                WHEN eb.name = 'Equity' THEN 
-                                    eb.balance + 
-                                    (SELECT Balance FROM FinalBalance)
-                                ELSE 
-                                    eb.balance
-                            END AS balance
-                        FROM EquityBalances eb
-                        ORDER BY eb.id;
+                                WHEN l1.category_code = 'Income'
+                                    THEN COALESCE(SUM(t.credit) - SUM(t.debit), 0)
+                                ELSE
+                                    COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+                            END AS balance,
+                            CASE
+                                WHEN l1.category_code = 'Income'  THEN 1
+                                WHEN l1.category_code = 'Cost'    THEN 2
+                                WHEN l1.category_code = 'EXPENSE' THEN 4
+                            END AS sort_order
+                        FROM tbl_coa_level_1 l1
+                        LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                        LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                        LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                        LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                        WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
+                        GROUP BY l1.id, l1.name, l1.category_code
+                    ),
+
+                    TotalIncome AS (
+                        SELECT
+                            -1 AS id,
+                            'Total Income' AS name,
+                            'TOTAL_INCOME' AS category_code,
+                            SUM(balance) AS balance,
+                            1.5 AS sort_order
+                        FROM AccountBalances
+                        WHERE category_code = 'Income'
+                    ),
+
+                    GrossProfit AS (
+                        SELECT
+                            0 AS id,
+                            'Gross Profit' AS name,
+                            'GROSS_PROFIT' AS category_code,
+                            COALESCE(
+                                (SELECT SUM(balance) FROM AccountBalances WHERE category_code = 'Income'), 0
+                            ) -
+                            COALESCE(
+                                (SELECT SUM(balance) FROM AccountBalances WHERE category_code = 'Cost'), 0
+                            ) AS balance,
+                            3 AS sort_order
+                    ),
+
+                    TotalExpenses AS (
+                        SELECT
+                            -2 AS id,
+                            'Total Expenses' AS name,
+                            'TOTAL_EXPENSE' AS category_code,
+                            SUM(balance) AS balance,
+                            4.5 AS sort_order
+                        FROM AccountBalances
+                        WHERE category_code = 'EXPENSE'
+                    )
+
+                    SELECT id, name, balance, sort_order
+                    FROM AccountBalances
+                    WHERE category_code IN ('Income', 'Cost')
+
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM TotalIncome
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM GrossProfit
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM AccountBalances WHERE category_code = 'EXPENSE'
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM TotalExpenses
+
+                    ORDER BY sort_order;
 
                         "))
                 {
                     while (reader.Read())
+                    {
                         dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                             reader["id"].ToString(), reader["name"].ToString(),
-                            Utilities.FormatDecimal(reader["balance"].ToString()));
-
+                            Utilities.FormatDecimal(reader["balance"].ToString().Replace("-", "")));
+                    }
                     // Auto-expand everything
                     for (int i = 0; i < dgvCustomer.Rows.Count; i++)
                     {
                         ExpandRowRecursively(i);
+                    }
+
+                    // ===============================
+                    // APPEND GROSS & NET PROFIT LAST
+                    // ===============================
+
+                    // Calculate totals from already-expanded rows
+                    decimal totalIncome = 0;
+                    decimal totalCOGS = 0;
+                    decimal totalExpense = 0;
+
+                    foreach (DataGridViewRow row in dgvCustomer.Rows)
+                    {
+                        string name = row.Cells["currname"].Value?.ToString()?.ToUpper() ?? "";
+                        decimal amount = 0;
+                        decimal.TryParse(row.Cells["balance"].Value?.ToString(), out amount);
+                        int currLvl = int.Parse(row.Cells["currLvl"].Value.ToString());
+
+                        //if (name == ("INCOME") && totalIncome == 0)
+                        //    totalIncome += decimal.Parse(GetBalanceData(1, name));
+
+                        //else if (name == ("COST") && totalCOGS ==0)
+                        //    totalCOGS += decimal.Parse(GetBalanceData(1, name));
+
+                        //else if (name == ("EXPENSE") && totalExpense ==0)
+                        //    totalExpense += decimal.Parse(GetBalanceData(1, name));
+                    }
+                    using(MySqlDataReader mySqlDataReader = DBClass.ExecuteReader(@"
+                            SELECT
+                                t1.category_code,
+                                IFNULL(COALESCE(SUM(tt.debit) - SUM(tt.credit), 0),0) AS total_balance
+                            FROM tbl_coa_level_1 t1
+                            JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                            JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                            JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+                            LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id
+                            WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE')
+                            GROUP BY t1.category_code;
+                            ")
+                        )
+                    {
+                        while (mySqlDataReader.Read())
+                        {
+                            string categoryCode = mySqlDataReader["category_code"].ToString();
+                            decimal totalBalance = Convert.ToDecimal(mySqlDataReader["total_balance"].ToString().Replace("-",""));
+                            if (categoryCode.ToLower() == "income")
+                                totalIncome = totalBalance;
+                            else if (categoryCode.ToLower() == "cost")
+                                totalCOGS = totalBalance;
+                            else if (categoryCode.ToLower() == "expense")
+                                totalExpense = totalBalance;
+                        }
+                    }
+
+                    // Calculate profits
+                    decimal grossProfit = totalIncome - totalCOGS;
+                    decimal netProfit = grossProfit - totalExpense;
+
+                    // Net Profit row
+                    dgvCustomer.Rows.Add(
+                        "n", "l", "1",
+                        "   Net Profit",
+                        "0", "Net Profit",
+                        Utilities.FormatDecimal(netProfit)
+                    );
+
+                    // Make them bold
+                    foreach (DataGridViewRow row in dgvCustomer.Rows)
+                    {
+                        string text = row.Cells["lvl1"].Value?.ToString()?.ToUpper() ?? "";
+                        if (text.Contains("GROSS PROFIT") || text.Contains("NET PROFIT") || text.Contains("TOTAL"))
+                        {
+                            row.DefaultCellStyle.Font =
+                                new System.Drawing.Font(dgvCustomer.Font, FontStyle.Bold);
+                        }
                     }
                 }
             }
@@ -331,7 +424,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.name
                         ),
 
@@ -341,11 +434,11 @@ namespace YamyProject
                                 'Final Balance (Income - Cost - Expenses)' AS Category,
                                 COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Income'),0) 
                                     - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Cost'),0)
-                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance1,
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance1,
 
                                 COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Income'),0) 
                                     - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Cost'),0)
-                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance2
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance2
                         ),
 
                         EquityBalances AS (
@@ -360,7 +453,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.id, l1.name
                         )
 
@@ -416,7 +509,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.name
                         ),
 
@@ -426,11 +519,11 @@ namespace YamyProject
                                 'Final Balance (Income - Cost - Expenses)' AS Category,
                                 COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Income'),0) 
                                     - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='Cost'),0)
-                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance1,
+                                    - COALESCE((SELECT Balance1 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance1,
 
                                 COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Income'),0) 
                                     - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='Cost'),0)
-                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='General & Direct Expenses'),0) AS Balance2
+                                    - COALESCE((SELECT Balance2 FROM AccountBalances WHERE Category='EXPENSE'),0) AS Balance2
                         ),
 
                         EquityBalances AS (
@@ -445,7 +538,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.id, l1.name
                         )
 
@@ -518,7 +611,7 @@ namespace YamyProject
                                                                                 WHERE 
                                                                                     (tx.id = t.id
                                                                                      OR (tx.type = t.type AND tx.transaction_id = t.transaction_id))
-                                                                                  AND l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                                                                                  AND l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                                                                             )
                                                                           AND t.type IN (
                                                                                 'Customer Receipt',
@@ -589,7 +682,7 @@ namespace YamyProject
                                         WHERE 
                                             (tx.id = t.id
                                              OR (tx.type = t.type AND tx.transaction_id = t.transaction_id))
-                                          AND lx1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                                          AND lx1.category_code IN ('Income', 'Cost', 'EXPENSE')
                                     )
                                   AND t.type IN (
                                         'Customer Receipt',
@@ -632,7 +725,7 @@ namespace YamyProject
                 //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                 //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                 //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                //            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                //            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                 //            GROUP BY l1.name
                 //        ),
 
@@ -647,7 +740,7 @@ namespace YamyProject
                 //                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
                 //                ) -
                 //                COALESCE(
-                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'EXPENSE'), 0
                 //                ) AS Balance
                 //        ),
 
@@ -662,7 +755,7 @@ namespace YamyProject
                 //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                 //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                 //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                //            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                //            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                 //            GROUP BY l1.id, l1.name
                 //        )
 
@@ -728,7 +821,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.name
                         ),
 
@@ -743,7 +836,7 @@ namespace YamyProject
                                     (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
                                 ) -
                                 COALESCE(
-                                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'EXPENSE'), 0
                                 ) AS Balance
                         ),
 
@@ -758,7 +851,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.id, l1.name
                         )
 
@@ -808,7 +901,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.name
                         ),
 
@@ -823,7 +916,7 @@ namespace YamyProject
                                     (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
                                 ) -
                                 COALESCE(
-                                    (SELECT Balance FROM AccountBalances WHERE Category = 'General & Direct Expenses'), 0
+                                    (SELECT Balance FROM AccountBalances WHERE Category = 'EXPENSE'), 0
                                 ) AS Balance
                         ),
 
@@ -838,7 +931,7 @@ namespace YamyProject
                             LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                             LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
                             LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                            WHERE l1.category_code IN ('Income', 'Cost', 'General & Direct Expenses')
+                            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY l1.id, l1.name
                         )
 
@@ -900,11 +993,14 @@ namespace YamyProject
                         {
                             int insertIndex = rowIndex + 1;
                             if (reportType == "standard" || reportType == "Unclassified")
-                                dgvCustomer.Rows[rowIndex].Cells["balance"].Value = "";
+                                if(int.Parse(row.Cells["id"].Value.ToString()) > 0 )
+                                    dgvCustomer.Rows[rowIndex].Cells["balance"].Value = "";
                             else if (reportType == "YTS Comparison")
-                                dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = dgvCustomer.Rows[rowIndex].Cells["balance2"].Value = "";
+                                    if (int.Parse(row.Cells["id"].Value.ToString()) > 0) 
+                                        dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = dgvCustomer.Rows[rowIndex].Cells["balance2"].Value = "";
                             else if (reportType == "by Class")
-                                dgvCustomer.Rows[rowIndex].Cells["balance"].Value = dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = "";
+                                        if (int.Parse(row.Cells["id"].Value.ToString()) > 0) 
+                                            dgvCustomer.Rows[rowIndex].Cells["balance"].Value = dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = "";
 
                             while (reader.Read())
                             {
@@ -927,7 +1023,7 @@ namespace YamyProject
                                 else if (reportType == "standard" || reportType == "Unclassified")
                                 {
                                     var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData).Replace("-", "") });
                                 } else if (reportType == "Prev Year Comparison")
                                 {
                                     var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
@@ -1106,7 +1202,7 @@ namespace YamyProject
                         if (balanceData != null)
                         {
 
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData);
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData.Replace("-", ""));
                         }
                     }
                     if (reportType == "YTS Comparison")
@@ -1114,19 +1210,19 @@ namespace YamyProject
                         var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
                         if (balances.balance1 != null && balances.balance2 != null)
                         {
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1).Replace("-", "");
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2).Replace("-", "");
                         }
                     }
                     else if (reportType == "Prev Year Comparison")
                     {
                         var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
 
-                        dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
-                        dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1).Replace("-", "");
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2).Replace("-", "");
                         decimal change = balances.balance1 - balances.balance2;
                         decimal percentChange = (balances.balance2 != 0) ? (change / balances.balance2) * 100 : 0;
-                        dgvCustomer.Rows[e.RowIndex].Cells["change"].Value = Utilities.FormatDecimal(change);
+                        dgvCustomer.Rows[e.RowIndex].Cells["change"].Value = Utilities.FormatDecimal(change).Replace("-", "");
                         dgvCustomer.Rows[e.RowIndex].Cells["change_percentage"].Value = $"{percentChange:N1}%";
                     }
             
@@ -1202,14 +1298,14 @@ namespace YamyProject
                         LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
                         LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
 
-                        WHERE t1.category_code IN ('Income', 'Cost', 'General & Direct Expenses') AND t{level}.name = @name
+                        WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE') AND t{level}.name = @name
 
                         GROUP BY t1.id, t2.id, t3.id, t4.id;
                         ", DBClass.CreateParameter("name", name)))
             {
                 if (read.Read())
                 {
-                    return read[$"level{level}_balance"].ToString();
+                    return read[$"level{level}_balance"].ToString().Replace("-", "");
                 }
             }
 
@@ -1420,6 +1516,16 @@ namespace YamyProject
 
                             var accountCell = worksheet.Cells[rowIndex, 2];
                             var amountCell = worksheet.Cells[rowIndex, 3];
+
+
+                            //accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
+                            string safeText = account.Replace("▶", "").Replace("▼", "").Trim();
+
+                            // Excel max cell length
+                            if (safeText.Length > 32767)
+                                safeText = safeText.Substring(0, 32767);
+
+                            accountCell.Value2 = safeText;
 
                             accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
                             amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();

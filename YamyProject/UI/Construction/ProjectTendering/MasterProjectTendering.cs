@@ -90,6 +90,8 @@ namespace YamyProject
             } 
             else
                 dgvItems.DataSource = null;
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgView);
         }
 
         private void bindInvoiceItems()
@@ -120,6 +122,7 @@ namespace YamyProject
                                                      DBClass.CreateParameter("id", dgView.SelectedRows[0].Cells["id"].Value.ToString()));
             dgvItems.DataSource = dt;
             dgvItems.Columns["item name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
 
         private void cmbTenderName_SelectedIndexChanged(object sender, EventArgs e)

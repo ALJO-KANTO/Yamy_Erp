@@ -60,10 +60,10 @@ namespace YamyProject
             dgvCustomer.Refresh();
             dgvCustomer.DataSource = chkDate.Checked ? DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY cd.date) AS `SN`, 
                pv.date AS 'TRS Date',
-               cd.check_date AS 'Check Date',cd.id, pass_date,return_date,hold_date,cancel_date,
+               cd.check_date AS 'Cheque Date',cd.id, pass_date,return_date,hold_date,cancel_date,
                pv.code AS 'TRS REF',
-               cd.check_no AS 'Check No',
-               cd.check_name AS 'Check Name', 
+               cd.check_no AS 'Cheque No',
+               cd.check_name AS 'Cheque Name', 
                '' AS 'Bank Name',
                pv.id AS 'REFID',
                cast( cd.Amount as decimal(18,3)) AS Amount,cd.State
@@ -76,10 +76,10 @@ namespace YamyProject
                                                                 DBClass.CreateParameter("type", radPayable.Checked ? "Payment" : "Receipt"))
        : DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY cd.date) AS `SN`, 
                                pv.date AS 'TRS Date',
-                               cd.check_date AS 'Check Date',cd.id, pass_date,return_date,hold_date,cancel_date,
+                               cd.check_date AS 'Cheque Date',cd.id, pass_date,return_date,hold_date,cancel_date,
                                pv.code AS 'TRS REF',
-                               cd.check_no AS 'Check No',
-                               cd.check_name AS 'Check Name', 
+                               cd.check_no AS 'Cheque No',
+                               cd.check_name AS 'Cheque Name', 
                                '' AS 'Bank Name',
                pv.id AS 'REFID',
                                cast( cd.Amount as decimal(18,3)) AS Amount,cd.State

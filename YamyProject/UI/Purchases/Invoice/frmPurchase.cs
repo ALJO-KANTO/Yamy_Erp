@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Settings;
@@ -455,6 +457,10 @@ namespace YamyProject
                 if (insertInvoice())
                 {
                     int pId = int.Parse(invId.ToString());
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        AddFileData(pId);
+                    }
                     int cId = cmbFixedAssetCategory.SelectedValue == null ? 0 : int.Parse(cmbFixedAssetCategory.SelectedValue.ToString());
                     if (pId > 0 && cId > 0)
                     {
@@ -476,6 +482,10 @@ namespace YamyProject
                 if (updateInvoice())
                 {
                     int pId = int.Parse(id.ToString());
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        AddFileData(pId);
+                    }
                     int cId = cmbFixedAssetCategory.SelectedValue == null ? 0 : int.Parse(cmbFixedAssetCategory.SelectedValue.ToString());
                     if (pId > 0 && cId > 0)
                     {
@@ -1030,6 +1040,10 @@ namespace YamyProject
                 if (insertInvoice())
                 {
                     int pId = int.Parse(invId.ToString());
+                    if(string.IsNullOrEmpty(filePath))
+                    {
+                        AddFileData(pId);
+                    }
                     int cId = cmbFixedAssetCategory.SelectedValue == null ? 0 : int.Parse(cmbFixedAssetCategory.SelectedValue.ToString());
                     if (pId > 0 && cId > 0)
                     {
@@ -1041,12 +1055,7 @@ namespace YamyProject
                         EventHub.RefreshPurchaseOrder();
                     }
                     loadPrint();
-
-
-
-
                     this.Close();
-
                 }
             }
             else
@@ -1054,6 +1063,10 @@ namespace YamyProject
                 if (updateInvoice())
                 {
                     int pId = int.Parse(invId.ToString());
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        AddFileData(pId);
+                    }
                     int cId = cmbFixedAssetCategory.SelectedValue == null ? 0 : int.Parse(cmbFixedAssetCategory.SelectedValue.ToString());
                     if (pId > 0 && cId > 0)
                     {
@@ -1065,6 +1078,14 @@ namespace YamyProject
                 }
             }
 
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "PURCHASE INVOICE",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
         private void txtSalesPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1809,7 +1830,6 @@ namespace YamyProject
                     cmbShipVia.Text = reader["ship_via"].ToString();
                     richTextDescription.Text = reader["description"].ToString();
                     cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
-                    txtNextCode.Text = reader["invoice_id"].ToString();
                     invId = id;
                     txtInvoiceId.Text = invId.ToString();
                     txtBillTo.Text = reader["bill_to"].ToString();
@@ -1928,11 +1948,10 @@ namespace YamyProject
 
         private void cmbPaymentTerms_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cmbPaymentTerms.Text))
-            {
-                int numberOfDays = Convert.ToInt32(cmbPaymentTerms.Text);
-                dtPaymentTerms.Value = dtPaymentTerms.Value.AddDays(numberOfDays);
-            }
+            if (cmbPaymentMethod.Text == "Credit")
+                dtPaymentTerms.Value = dtInv.Value.AddDays(int.Parse(cmbPaymentTerms.Text));
+            else
+                dtPaymentTerms.Value = dtInv.Value;
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -2008,6 +2027,22 @@ namespace YamyProject
                 int numberOfDays = Convert.ToInt32(cmbPaymentTerms.Text);
                 dtPaymentTerms.Value = dtPaymentTerms.Value.AddDays(numberOfDays);
             }
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            //if (id > 0)
+            //{
+            //    //open in dialog box
+            //    AttachmentManager.OpenAttachmentByType(id, "PURCHASE INVOICE");
+            //}
+            //else
+            //{
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog1.FileName;
+                }
+            //}
         }
 
         private void guna2TileButton26_Click(object sender, EventArgs e)

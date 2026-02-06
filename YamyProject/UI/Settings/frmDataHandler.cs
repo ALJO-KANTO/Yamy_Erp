@@ -45,81 +45,122 @@ namespace YamyProject
                                 if (ChkAll.Checked)
                                 {
                                     query = @"
-                            TRUNCATE TABLE tbl_attendancesheet;
-                            TRUNCATE TABLE tbl_attendance_salary;
-                            TRUNCATE TABLE tbl_bank_card;
-                            TRUNCATE TABLE tbl_bank_register;
-                            TRUNCATE TABLE tbl_bank;
-                            TRUNCATE TABLE tbl_check_details;
-                            TRUNCATE TABLE tbl_cheque;
-                            TRUNCATE TABLE tbl_corporate_tax_configration;
-                            TRUNCATE TABLE tbl_cost_center;
-                            TRUNCATE TABLE tbl_credit_note;
-                            TRUNCATE TABLE tbl_credit_note_details;
-                            TRUNCATE TABLE tbl_customer;
-                            TRUNCATE TABLE tbl_customer_category;
-                            TRUNCATE TABLE tbl_damage;
-                            TRUNCATE TABLE tbl_damage_details;
-                            TRUNCATE TABLE tbl_debit_note;
-                            TRUNCATE TABLE tbl_debit_note_details;
-                            TRUNCATE TABLE tbl_departments;
-                            TRUNCATE TABLE tbl_employee;
-                            TRUNCATE TABLE tbl_end_of_service;
-                            TRUNCATE TABLE tbl_final_settlement;
-                            TRUNCATE TABLE tbl_fixed_assets;
-                            TRUNCATE TABLE tbl_fixed_assets_category;
-                            TRUNCATE TABLE tbl_items;
-                            TRUNCATE TABLE tbl_items_unit;
-                            TRUNCATE TABLE tbl_items_warehouse;
-                            TRUNCATE TABLE tbl_item_assembly;
-                            TRUNCATE TABLE tbl_item_category;
-                            TRUNCATE TABLE tbl_item_stock_settlement;
-                            TRUNCATE TABLE tbl_item_stock_settlement_details;
-                            TRUNCATE TABLE tbl_item_transaction;
-                            TRUNCATE TABLE tbl_item_warehouse_transaction;
-                            TRUNCATE TABLE tbl_journal_voucher;
-                            TRUNCATE TABLE tbl_journal_voucher_details;
-                            TRUNCATE TABLE tbl_leave_salary;
-                            TRUNCATE TABLE tbl_loan;
-                            TRUNCATE TABLE tbl_payment_voucher;
-                            TRUNCATE TABLE tbl_payment_voucher_details;
-                            TRUNCATE TABLE tbl_petty_cash_card;
-                            TRUNCATE TABLE tbl_petty_cash_category;
-                            TRUNCATE TABLE tbl_petty_cash_request;
-                            TRUNCATE TABLE tbl_petty_cash_submition;
-                            TRUNCATE TABLE tbl_petty_cash_submition_details;
-                            TRUNCATE TABLE tbl_petty_cash;
-                            TRUNCATE TABLE tbl_petty_cash_details;
-                            TRUNCATE TABLE tbl_position;
-                            TRUNCATE TABLE tbl_prepaid_expense;
-                            TRUNCATE TABLE tbl_prepaid_expense_category;
-                            TRUNCATE TABLE tbl_purchase;
-                            TRUNCATE TABLE tbl_purchase_details;
-                            TRUNCATE TABLE tbl_purchase_order;
-                            TRUNCATE TABLE tbl_purchase_order_details;
-                            TRUNCATE TABLE tbl_purchase_return;
-                            TRUNCATE TABLE tbl_purchase_return_details;
-                            TRUNCATE TABLE tbl_receipt_voucher;
-                            TRUNCATE TABLE tbl_receipt_voucher_details;
-                            TRUNCATE TABLE tbl_salary;
-                            TRUNCATE TABLE tbl_sales;
-                            TRUNCATE TABLE tbl_sales_details;
-                            TRUNCATE TABLE tbl_sales_order;
-                            TRUNCATE TABLE tbl_sales_order_details;
-                            TRUNCATE TABLE tbl_sales_quotation;
-                            TRUNCATE TABLE tbl_sales_quotation_details;
-                            TRUNCATE TABLE tbl_sales_return;
-                            TRUNCATE TABLE tbl_sales_return_details;
-                            TRUNCATE TABLE tbl_transaction;
-                            TRUNCATE TABLE tbl_sub_cost_center;
-                            TRUNCATE TABLE tbl_unit;
-                            TRUNCATE TABLE tbl_vat;
-                            TRUNCATE TABLE tbl_vendor;
-                            TRUNCATE TABLE tbl_vendor_category;
-                            TRUNCATE TABLE tbl_warehouse;
-                            TRUNCATE TABLE tbl_salary_adjustments;
-                            TRUNCATE TABLE tbl_advance_payment_voucher;
-                            TRUNCATE TABLE tbl_advance_payment_voucher_details;";
+                                            TRUNCATE TABLE tbl_advance_payment_voucher;
+                                            TRUNCATE TABLE tbl_advance_payment_voucher_details;
+                                            TRUNCATE TABLE tbl_attendancesheet;
+                                            TRUNCATE TABLE tbl_attendance_salary;
+                                            TRUNCATE TABLE tbl_bank_card;
+                                            TRUNCATE TABLE tbl_bank_register;
+                                            TRUNCATE TABLE tbl_bank;
+                                            TRUNCATE TABLE tbl_check_details;
+                                            TRUNCATE TABLE tbl_cheque;
+                                            TRUNCATE TABLE tbl_contractor;
+                                            TRUNCATE TABLE tbl_corporate_tax_configration;
+                                            TRUNCATE TABLE tbl_cost_center;
+                                            TRUNCATE TABLE tbl_cost_center_transaction;
+                                            TRUNCATE TABLE tbl_credit_note;
+                                            TRUNCATE TABLE tbl_credit_note_details;
+                                            TRUNCATE TABLE tbl_crmcustomer;
+                                            TRUNCATE TABLE tbl_customer;
+                                            TRUNCATE TABLE tbl_customer_category;
+                                            TRUNCATE TABLE tbl_damage;
+                                            TRUNCATE TABLE tbl_damage_details;
+                                            TRUNCATE TABLE tbl_debit_note;
+                                            TRUNCATE TABLE tbl_debit_note_details;
+                                            TRUNCATE TABLE tbl_departments;
+                                            TRUNCATE TABLE tbl_employee;
+                                            TRUNCATE TABLE tbl_end_of_service;
+                                            TRUNCATE TABLE tbl_final_settlement;
+                                            TRUNCATE TABLE tbl_fixed_assets;
+                                            TRUNCATE TABLE tbl_fixed_assets_category;
+                                            TRUNCATE TABLE tbl_item_assembly;
+                                            TRUNCATE TABLE tbl_item_assembly_bos;
+                                            TRUNCATE TABLE tbl_item_card_details;
+                                            TRUNCATE TABLE tbl_item_category;
+                                            TRUNCATE TABLE tbl_item_serial;
+                                            TRUNCATE TABLE tbl_item_stock_settlement;
+                                            TRUNCATE TABLE tbl_item_stock_settlement_details;
+                                            TRUNCATE TABLE tbl_item_transaction;
+                                            TRUNCATE TABLE tbl_item_warehouse_transaction;
+                                            TRUNCATE TABLE tbl_items;
+                                            TRUNCATE TABLE tbl_items_boq;
+                                            TRUNCATE TABLE tbl_items_boq_details;
+                                            TRUNCATE TABLE tbl_items_unit;
+                                            TRUNCATE TABLE tbl_items_warehouse;
+                                            TRUNCATE TABLE tbl_journal_voucher;
+                                            TRUNCATE TABLE tbl_journal_voucher_details;
+                                            TRUNCATE TABLE tbl_labor_attendance;
+                                            TRUNCATE TABLE tbl_leave_salary;
+                                            TRUNCATE TABLE tbl_loan;
+                                            TRUNCATE TABLE tbl_manufacturer_batch;
+                                            TRUNCATE TABLE tbl_manufacturer_batchdetails;
+                                            TRUNCATE TABLE tbl_manufacturer_task;
+                                            TRUNCATE TABLE tbl_manufacturer_task_details;
+                                            TRUNCATE TABLE tbl_manufacturing_steps;
+                                            TRUNCATE TABLE tbl_payment_voucher;
+                                            TRUNCATE TABLE tbl_payment_voucher_details;
+                                            TRUNCATE TABLE tbl_petty_cash;
+                                            TRUNCATE TABLE tbl_petty_cash_card;
+                                            TRUNCATE TABLE tbl_petty_cash_category;
+                                            TRUNCATE TABLE tbl_petty_cash_details;
+                                            TRUNCATE TABLE tbl_petty_cash_request;
+                                            TRUNCATE TABLE tbl_petty_cash_submition;
+                                            TRUNCATE TABLE tbl_petty_cash_submition_details;
+                                            TRUNCATE TABLE tbl_position;
+                                            TRUNCATE TABLE tbl_prepaid_expense;
+                                            TRUNCATE TABLE tbl_prepaid_expense_category;
+                                            TRUNCATE TABLE tbl_project_activity;
+                                            TRUNCATE TABLE tbl_project_activity_assignment;
+                                            TRUNCATE TABLE tbl_project_estimate;
+                                            TRUNCATE TABLE tbl_project_management;
+                                            TRUNCATE TABLE tbl_project_material_requests;
+                                            TRUNCATE TABLE tbl_project_plan;
+                                            TRUNCATE TABLE tbl_project_planning;
+                                            TRUNCATE TABLE tbl_project_resource;
+                                            TRUNCATE TABLE tbl_project_role;
+                                            TRUNCATE TABLE tbl_project_sites;
+                                            TRUNCATE TABLE tbl_project_tender;
+                                            TRUNCATE TABLE tbl_project_tender_details;
+                                            TRUNCATE TABLE tbl_project_work_done;
+                                            TRUNCATE TABLE tbl_project_work_done_details;
+                                            TRUNCATE TABLE tbl_projects;
+                                            TRUNCATE TABLE tbl_purchase;
+                                            TRUNCATE TABLE tbl_purchase_details;
+                                            TRUNCATE TABLE tbl_purchase_order;
+                                            TRUNCATE TABLE tbl_purchase_order_details;
+                                            TRUNCATE TABLE tbl_purchase_return;
+                                            TRUNCATE TABLE tbl_purchase_return_details;
+                                            TRUNCATE TABLE tbl_receipt_voucher;
+                                            TRUNCATE TABLE tbl_receipt_voucher_details;
+                                            TRUNCATE TABLE tbl_reconciliation;
+                                            TRUNCATE TABLE tbl_reconciliation_item;
+                                            TRUNCATE TABLE tbl_rmsdetails;
+                                            TRUNCATE TABLE tbl_rmsmain;
+                                            TRUNCATE TABLE tbl_rmstables;
+                                            TRUNCATE TABLE tbl_salary;
+                                            TRUNCATE TABLE tbl_salary_adjustments;
+                                            TRUNCATE TABLE tbl_sales;
+                                            TRUNCATE TABLE tbl_sales_details;
+                                            TRUNCATE TABLE tbl_sales_order;
+                                            TRUNCATE TABLE tbl_sales_order_details;
+                                            TRUNCATE TABLE tbl_sales_proforma;
+                                            TRUNCATE TABLE tbl_sales_proforma_details;
+                                            TRUNCATE TABLE tbl_sales_quotation;
+                                            TRUNCATE TABLE tbl_sales_quotation_details;
+                                            TRUNCATE TABLE tbl_sales_return;
+                                            TRUNCATE TABLE tbl_sales_return_details;
+                                            TRUNCATE TABLE tbl_sub_contract;
+                                            TRUNCATE TABLE tbl_sub_contract_category;
+                                            TRUNCATE TABLE tbl_sub_cost_center;
+                                            TRUNCATE TABLE tbl_tax;
+                                            TRUNCATE TABLE tbl_tender_names;
+                                            TRUNCATE TABLE tbl_transaction;
+                                            TRUNCATE TABLE tbl_unit;
+                                            TRUNCATE TABLE tbl_vat_configration;
+                                            TRUNCATE TABLE tbl_vendor;
+                                            TRUNCATE TABLE tbl_vendor_category;
+                                            TRUNCATE TABLE tbl_warehouse;
+                                        ";
                                 }
                                 else
                                 {
@@ -132,7 +173,12 @@ namespace YamyProject
                                     {
                                         foreach (string item in ChkBoxTables.CheckedItems)
                                         {
-                                            if (item == "Attendance Sheet")
+                                            if (item == "Advance Payment Voucher")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_advance_payment_voucher; TRUNCATE TABLE tbl_advance_payment_voucher_details;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Customer Advance Payment','Vendor Advance Payment');";
+                                            }
+                                            else if (item == "Attendance Sheet")
                                             {
                                                 query += "TRUNCATE TABLE tbl_attendancesheet;";
                                             }
@@ -167,6 +213,7 @@ namespace YamyProject
                                             else if (item == "Cost Center")
                                             {
                                                 query += "TRUNCATE TABLE tbl_cost_center;";
+                                                query += "TRUNCATE TABLE tbl_sub_cost_center;TRUNCATE TABLE tbl_cost_center_transaction;";
                                             }
                                             else if (item == "Credit Note")
                                             {
@@ -237,11 +284,10 @@ namespace YamyProject
                                             else if (item == "Items Warehouse")
                                             {
                                                 query += "TRUNCATE TABLE tbl_items_warehouse;";
-                                                query += "TRUNCATE TABLE tbl_item_warehouse_transaction;";
                                             }
                                             else if (item == "Item Assembly")
                                             {
-                                                query += "TRUNCATE TABLE tbl_item_assembly;";
+                                                query += "TRUNCATE TABLE tbl_item_assembly;TRUNCATE TABLE tbl_item_assembly_bos;";
                                             }
                                             else if (item == "Item Category")
                                             {
@@ -251,6 +297,14 @@ namespace YamyProject
                                             {
                                                 query += "TRUNCATE TABLE tbl_item_stock_settlement;TRUNCATE TABLE tbl_item_stock_settlement_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type = 'Stock Settlement';";
+                                            }
+                                            else if (item == "Item BOQ")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_items_boq;TRUNCATE TABLE tbl_items_boq_details;";
+                                            }
+                                            else if (item == "Item Serial")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_item_serial;";
                                             }
                                             else if (item == "journal Voucher")
                                             {
@@ -266,6 +320,33 @@ namespace YamyProject
                                             {
                                                 query += "TRUNCATE TABLE tbl_loan;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Loan Request');";
+                                            }
+                                            else if (item == "Labor Attendance")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_labor_attendance;";
+                                            }
+                                            else if (item == "Manufacture Batch")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_manufacturer_batch;TRUNCATE TABLE tbl_manufacturer_batchdetails;";
+                                                query += "DELETE FROM tbl_transaction WHERE type = 'Manufacturing';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type = 'Manufacturing';";
+                                                query += "DELETE FROM tbl_item_card_details WHERE trans_type='Manufacturing';";
+                                            }
+                                            else if (item == "Manufacture Task")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_manufacturer_task;TRUNCATE TABLE tbl_manufacturer_task_details;";
+                                                query += "DELETE FROM tbl_transaction WHERE type = 'Manufacturing';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Manufacturing';";
+                                                query += "DELETE FROM tbl_item_card_details WHERE trans_type='Manufacturing';";
+                                            }
+                                            else if (item == "Manufacturing Steps")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_manufacturing_steps;";
+                                            }
+                                            else if (item == "Manufacture Packing")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_manufacturer_packing;";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Manufacture Packing';";
                                             }
                                             else if (item == "Payment")
                                             {
@@ -307,11 +388,62 @@ namespace YamyProject
                                                 query += "TRUNCATE TABLE tbl_prepaid_expense; TRUNCATE TABLE tbl_prepaid_expense_category;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Prepaid Expense');";
                                             }
+                                            else if (item == "Projects")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_projects;";
+                                            }
+                                            else if (item == "Project Activity")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_activity;";
+                                            }
+                                            else if (item == "Project Activity Assignment")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_activity_assignment;";
+                                            }
+                                            else if (item == "Project Estimate")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_estimate;";
+                                            }
+                                            else if (item == "Project Management")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_management;";
+                                            }
+                                            else if (item == "Project Material Requests")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_material_requests;";
+                                            }
+                                            else if (item == "Project Planning")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_planning;TRUNCATE TABLE tbl_project_plan;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Project Planning');";
+                                            }
+                                            else if (item == "Project Tender")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_tender;TRUNCATE TABLE tbl_project_tender_details;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Project Tender');";
+                                            }
+                                            else if (item == "Project Resource")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_resource;";
+                                            }
+                                            else if (item == "Project Role")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_role;";
+                                            }
+                                            else if (item == "Project Sites")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_sites;";
+                                            }
+                                            else if (item == "Project Work Done")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_project_work_done;TRUNCATE TABLE tbl_project_work_done_details;";
+                                            }
                                             else if (item == "Purchase")
                                             {
                                                 query += "TRUNCATE TABLE tbl_purchase; TRUNCATE TABLE tbl_purchase_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Purchase Invoice','Purchase Invoice Cash');";
                                                 query += "DELETE FROM tbl_cost_center_transaction WHERE type = 'Purchase';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Purchase Invoice';";
                                             }
                                             else if (item == "Purchase Order")
                                             {
@@ -322,6 +454,7 @@ namespace YamyProject
                                                 query += "TRUNCATE TABLE tbl_purchase_return; TRUNCATE TABLE tbl_purchase_return_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Purchase Return Invoice','Purchase Return Invoice Cash');";
                                                 query += "DELETE FROM tbl_cost_center_transaction WHERE type = 'Purchase Return';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Purchase Return Invoice';";
                                             }
                                             else if (item == "Receipt Voucher")
                                             {
@@ -329,16 +462,36 @@ namespace YamyProject
                                                 query += "TRUNCATE TABLE tbl_receipt_voucher; TRUNCATE TABLE tbl_receipt_voucher_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Customer Receipt','PDC Receivable');";
                                             }
+                                            else if (item == "Reconciliation")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_reconciliation; TRUNCATE TABLE tbl_reconciliation_item;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Reconciliation');";
+                                            }
+                                            else if (item == "RMS Main")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_rmsmain;TRUNCATE TABLE tbl_rmsdetails;";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Reconciliation');";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='RMS Bill';";
+                                            }
+                                            else if (item == "RMS Tables")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_rmstables;";
+                                            }
                                             else if (item == "Salary")
                                             {
                                                 query += "TRUNCATE TABLE tbl_salary;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Employee Salary');";
+                                            }
+                                            else if (item == "Salary Adjustments")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_salary_adjustments;";
                                             }
                                             else if (item == "Sales")
                                             {
                                                 query += "TRUNCATE TABLE tbl_sales; TRUNCATE TABLE tbl_sales_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('Sales Invoice','Sales Invoice Cash');";
                                                 query += "DELETE FROM tbl_cost_center_transaction WHERE type = 'Sales';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Sales Invoice';";
                                             }
                                             else if (item == "Sales Order")
                                             {
@@ -357,10 +510,20 @@ namespace YamyProject
                                                 query += "TRUNCATE TABLE tbl_sales_return; TRUNCATE TABLE tbl_sales_return_details;";
                                                 query += "DELETE FROM tbl_transaction WHERE type IN ('SalesReturn Invoice','SalesReturn Invoice Cash');";
                                                 query += "DELETE FROM tbl_cost_center_transaction WHERE type = 'Sales Return';";
+                                                query += "DELETE FROM tbl_item_transaction WHERE type='Sales Return Invoice';";
                                             }
-                                            else if (item == "Sub Cost Center")
+                                            else if (item == "Sub Contract")
                                             {
-                                                query += "TRUNCATE TABLE tbl_sub_cost_center;TRUNCATE TABLE tbl_cost_center_transaction;";
+                                                query += "DELETE FROM tbl_vendor where type='SubContract';";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Subcontractor Payment','Subcontractor Opening Balance');";
+                                            }
+                                            else if (item == "Tax")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_tax;";
+                                            }
+                                            else if (item == "Tender Names")
+                                            {
+                                                query += "TRUNCATE TABLE tbl_tender_names;";
                                             }
                                             else if (item == "Unit")
                                             {
@@ -373,7 +536,7 @@ namespace YamyProject
                                             else if (item == "Vendor")
                                             {
                                                 query += "TRUNCATE TABLE tbl_vendor;";
-                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Vendor Opening Balance','Vendor Advance Payment','Vendor Payment','Subcontractor Payment','Subcontractor Opening Balance');";
+                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Vendor Opening Balance','Vendor Advance Payment','Vendor Payment');";
                                             }
                                             else if (item == "Vendor Category")
                                             {
@@ -383,14 +546,9 @@ namespace YamyProject
                                             {
                                                 query += "TRUNCATE TABLE tbl_warehouse;";
                                             }
-                                            else if (item == "Salary Adjustments")
+                                            else if (item == "Warehouse Transaction")
                                             {
-                                                query += "TRUNCATE TABLE tbl_salary_adjustments;";
-                                            }
-                                            else if (item == "Advance Payment Voucher")
-                                            {
-                                                query += "TRUNCATE TABLE tbl_advance_payment_voucher; TRUNCATE TABLE tbl_advance_payment_voucher_details;";
-                                                query += "DELETE FROM tbl_transaction WHERE type IN ('Customer Advance Payment','Vendor Advance Payment');";
+                                                query += "TRUNCATE TABLE tbl_item_warehouse_transaction;";
                                             }
                                         }
                                     }

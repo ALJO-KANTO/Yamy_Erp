@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.BtnLPO = new Guna.UI2.WinForms.Guna2Button();
             this.btnProcessStage = new Guna.UI2.WinForms.Guna2Button();
             this.lblStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -47,18 +48,6 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.BtnLPO = new Guna.UI2.WinForms.Guna2Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +59,17 @@
             this.dgvReceiveQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DGVTOTATL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2ShadowPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -96,6 +96,27 @@
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(1091, 88);
             this.guna2ShadowPanel1.TabIndex = 24;
+            // 
+            // BtnLPO
+            // 
+            this.BtnLPO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnLPO.BorderRadius = 5;
+            this.BtnLPO.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLPO.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnLPO.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnLPO.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnLPO.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.BtnLPO.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnLPO.ForeColor = System.Drawing.Color.White;
+            this.BtnLPO.Image = global::YamyProject.Properties.Resources.Create_Order1;
+            this.BtnLPO.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnLPO.Location = new System.Drawing.Point(693, 43);
+            this.BtnLPO.Name = "BtnLPO";
+            this.BtnLPO.Size = new System.Drawing.Size(84, 30);
+            this.BtnLPO.TabIndex = 33;
+            this.BtnLPO.Text = "LPO";
+            this.BtnLPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BtnLPO.Click += new System.EventHandler(this.BtnLPO_Click);
             // 
             // btnProcessStage
             // 
@@ -331,7 +352,7 @@
             this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -392,26 +413,86 @@
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentClick);
             // 
-            // BtnLPO
+            // sn
             // 
-            this.BtnLPO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnLPO.BorderRadius = 5;
-            this.BtnLPO.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnLPO.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.BtnLPO.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.BtnLPO.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnLPO.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.BtnLPO.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BtnLPO.ForeColor = System.Drawing.Color.White;
-            this.BtnLPO.Image = global::YamyProject.Properties.Resources.Create_Order1;
-            this.BtnLPO.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.BtnLPO.Location = new System.Drawing.Point(693, 43);
-            this.BtnLPO.Name = "BtnLPO";
-            this.BtnLPO.Size = new System.Drawing.Size(84, 30);
-            this.BtnLPO.TabIndex = 33;
-            this.BtnLPO.Text = "LPO";
-            this.BtnLPO.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.BtnLPO.Click += new System.EventHandler(this.BtnLPO_Click);
+            this.sn.FillWeight = 25.28115F;
+            this.sn.HeaderText = "SN#";
+            this.sn.MinimumWidth = 4;
+            this.sn.Name = "sn";
+            this.sn.ReadOnly = true;
+            // 
+            // dgvid
+            // 
+            this.dgvid.HeaderText = "id";
+            this.dgvid.MinimumWidth = 6;
+            this.dgvid.Name = "dgvid";
+            this.dgvid.ReadOnly = true;
+            this.dgvid.Visible = false;
+            // 
+            // dgvItemId
+            // 
+            this.dgvItemId.HeaderText = "itemId";
+            this.dgvItemId.Name = "dgvItemId";
+            this.dgvItemId.ReadOnly = true;
+            this.dgvItemId.Visible = false;
+            // 
+            // Procode
+            // 
+            this.Procode.HeaderText = "dgvcode";
+            this.Procode.MinimumWidth = 6;
+            this.Procode.Name = "Procode";
+            this.Procode.ReadOnly = true;
+            this.Procode.Visible = false;
+            // 
+            // dgvproducts
+            // 
+            this.dgvproducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgvproducts.FillWeight = 101.1246F;
+            this.dgvproducts.HeaderText = "Products";
+            this.dgvproducts.MinimumWidth = 120;
+            this.dgvproducts.Name = "dgvproducts";
+            this.dgvproducts.ReadOnly = true;
+            // 
+            // Dgvqty
+            // 
+            this.Dgvqty.FillWeight = 25.28115F;
+            this.Dgvqty.HeaderText = "QTY";
+            this.Dgvqty.Name = "Dgvqty";
+            this.Dgvqty.ReadOnly = true;
+            // 
+            // DgvAvailQty
+            // 
+            this.DgvAvailQty.FillWeight = 19.01925F;
+            this.DgvAvailQty.HeaderText = "AvailableQty";
+            this.DgvAvailQty.Name = "DgvAvailQty";
+            this.DgvAvailQty.ReadOnly = true;
+            // 
+            // dgvRequestQty
+            // 
+            this.dgvRequestQty.FillWeight = 19.01925F;
+            this.dgvRequestQty.HeaderText = "Request Qty";
+            this.dgvRequestQty.Name = "dgvRequestQty";
+            // 
+            // dgvReceiveQty
+            // 
+            this.dgvReceiveQty.FillWeight = 19.01925F;
+            this.dgvReceiveQty.HeaderText = "ReceiveQty";
+            this.dgvReceiveQty.Name = "dgvReceiveQty";
+            // 
+            // dgvCost
+            // 
+            this.dgvCost.FillWeight = 19.01925F;
+            this.dgvCost.HeaderText = "Cost";
+            this.dgvCost.Name = "dgvCost";
+            this.dgvCost.ReadOnly = true;
+            // 
+            // DGVTOTATL
+            // 
+            this.DGVTOTATL.FillWeight = 31.69875F;
+            this.DGVTOTATL.HeaderText = "Subtotal";
+            this.DGVTOTATL.MinimumWidth = 10;
+            this.DGVTOTATL.Name = "DGVTOTATL";
+            this.DGVTOTATL.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -495,7 +576,6 @@
             this.dataGridViewTextBoxColumn9.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 86;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -513,87 +593,6 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 143;
-            // 
-            // sn
-            // 
-            this.sn.FillWeight = 25.28115F;
-            this.sn.HeaderText = "SN#";
-            this.sn.MinimumWidth = 4;
-            this.sn.Name = "sn";
-            this.sn.ReadOnly = true;
-            // 
-            // dgvid
-            // 
-            this.dgvid.HeaderText = "id";
-            this.dgvid.MinimumWidth = 6;
-            this.dgvid.Name = "dgvid";
-            this.dgvid.ReadOnly = true;
-            this.dgvid.Visible = false;
-            // 
-            // dgvItemId
-            // 
-            this.dgvItemId.HeaderText = "itemId";
-            this.dgvItemId.Name = "dgvItemId";
-            this.dgvItemId.ReadOnly = true;
-            this.dgvItemId.Visible = false;
-            // 
-            // Procode
-            // 
-            this.Procode.HeaderText = "dgvcode";
-            this.Procode.MinimumWidth = 6;
-            this.Procode.Name = "Procode";
-            this.Procode.ReadOnly = true;
-            this.Procode.Visible = false;
-            // 
-            // dgvproducts
-            // 
-            this.dgvproducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgvproducts.FillWeight = 101.1246F;
-            this.dgvproducts.HeaderText = "Products";
-            this.dgvproducts.MinimumWidth = 120;
-            this.dgvproducts.Name = "dgvproducts";
-            this.dgvproducts.ReadOnly = true;
-            // 
-            // Dgvqty
-            // 
-            this.Dgvqty.FillWeight = 25.28115F;
-            this.Dgvqty.HeaderText = "QTY";
-            this.Dgvqty.Name = "Dgvqty";
-            this.Dgvqty.ReadOnly = true;
-            // 
-            // DgvAvailQty
-            // 
-            this.DgvAvailQty.FillWeight = 19.01925F;
-            this.DgvAvailQty.HeaderText = "AvailableQty";
-            this.DgvAvailQty.Name = "DgvAvailQty";
-            this.DgvAvailQty.ReadOnly = true;
-            // 
-            // dgvRequestQty
-            // 
-            this.dgvRequestQty.FillWeight = 19.01925F;
-            this.dgvRequestQty.HeaderText = "Request Qty";
-            this.dgvRequestQty.Name = "dgvRequestQty";
-            // 
-            // dgvReceiveQty
-            // 
-            this.dgvReceiveQty.FillWeight = 19.01925F;
-            this.dgvReceiveQty.HeaderText = "ReceiveQty";
-            this.dgvReceiveQty.Name = "dgvReceiveQty";
-            // 
-            // dgvCost
-            // 
-            this.dgvCost.FillWeight = 19.01925F;
-            this.dgvCost.HeaderText = "Cost";
-            this.dgvCost.Name = "dgvCost";
-            this.dgvCost.ReadOnly = true;
-            // 
-            // DGVTOTATL
-            // 
-            this.DGVTOTATL.FillWeight = 31.69875F;
-            this.DGVTOTATL.HeaderText = "Subtotal";
-            this.DGVTOTATL.MinimumWidth = 10;
-            this.DGVTOTATL.Name = "DGVTOTATL";
-            this.DGVTOTATL.ReadOnly = true;
             // 
             // frmManWorkOrderDetails
             // 

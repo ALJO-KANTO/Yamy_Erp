@@ -15,7 +15,7 @@ namespace YamyProject
     public partial class frmLogin : Form
     {
         public static int userId, RoleId;
-        public static string userFName, userLName,userName;
+        public static string userFName, userLName,userName, userRole;
         public frmLogin()
         {
             InitializeComponent();
@@ -41,6 +41,9 @@ namespace YamyProject
                         userLName = reader["Last_name"].ToString();
                         userName = reader["User_Name"].ToString();
 
+                        object obj = DBClass.ExecuteScalar("SELECT name FROM tbl_sec_roles WHERE id = @id", DBClass.CreateParameter("@id", frmLogin.RoleId));
+                        userRole = obj != null ? obj.ToString() : "";
+
                         loadUserPermission(userId);
                         this.Hide();
                         frmMain = new MainForm();
@@ -49,43 +52,46 @@ namespace YamyProject
                 }
             }
             else
-            { 
-            using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                                 SELECT id, role_id, first_name, last_name, user_name, passwordhash, salt, active FROM tbl_sec_users WHERE User_Name = @UserName",
-                                DBClass.CreateParameter("@UserName", username)))
-                if (reader.Read())
-                {
-                    if (reader["active"].ToString() != "0")
+                                    DBClass.CreateParameter("@UserName", username)))
+                    if (reader.Read())
                     {
-                        lblError.Text = " User Is Not Active.";
-                        lblError.Visible = true;
-                        return;
-                    }
-                    if (PasswordHelper.VerifyPassword(txtPassword.Text, reader["PasswordHash"].ToString(), reader["salt"].ToString()))
-                    {
+                        if (reader["active"].ToString() != "0")
+                        {
+                            lblError.Text = " User Is Not Active.";
+                            lblError.Visible = true;
+                            return;
+                        }
+                        if (PasswordHelper.VerifyPassword(txtPassword.Text, reader["PasswordHash"].ToString(), reader["salt"].ToString()))
+                        {
 
-                        userId = int.Parse(reader["id"].ToString());
-                        RoleId = int.Parse(reader["role_id"].ToString());
-                        userFName = reader["first_name"].ToString();
-                        userLName = reader["Last_name"].ToString();
-                        userName = reader["User_Name"].ToString();
+                            userId = int.Parse(reader["id"].ToString());
+                            RoleId = int.Parse(reader["role_id"].ToString());
+                            userFName = reader["first_name"].ToString();
+                            userLName = reader["Last_name"].ToString();
+                            userName = reader["User_Name"].ToString();
+                            object obj = DBClass.ExecuteScalar("SELECT name FROM tbl_sec_roles WHERE id = @id", DBClass.CreateParameter("@id", frmLogin.RoleId));
+                            userRole = obj != null ? obj.ToString() : "";
 
-                        loadUserPermission(userId);
-                        this.Hide();
-                        frmMain = new MainForm();
-                        frmMain.Show();
+
+                            loadUserPermission(userId);
+                            this.Hide();
+                            frmMain = new MainForm();
+                            frmMain.Show();
+                        }
+                        else
+                        {
+                            lblError.Text = "Invalid Username or Password.";
+                            lblError.Visible = true;
+                        }
                     }
                     else
                     {
-                        lblError.Text = "Invalid Username or Password.";
+                        lblError.Text = "Invalid Username.";
                         lblError.Visible = true;
                     }
-                }
-                else
-                {
-                    lblError.Text = "Invalid Username.";
-                    lblError.Visible = true;
-                }
             }
         }
         private void loadUserPermission(int _userId)

@@ -11,14 +11,14 @@ namespace YamyProject.UI.Manufacturing.Models
 {
     public partial class frmManforManagetheBatchTask : Form
     {
-        private frmManScreen _formA;
+        private frmManMachineScreen _formA;
 
         public int idmach;
         public string nameMachin;
         private List<EmployeeModel> employeesList;
         private List<EmployeeModel> selectedEmployees;
 
-        public frmManforManagetheBatchTask(frmManScreen formA)
+        public frmManforManagetheBatchTask(frmManMachineScreen formA)
         {
             InitializeComponent();
             _formA = formA;
@@ -99,7 +99,7 @@ namespace YamyProject.UI.Manufacturing.Models
 
             if (guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "Add...")
             {
-                using(MySqlDataReader reader = DBClass.ExecuteReader(
+                using (MySqlDataReader reader = DBClass.ExecuteReader(
                     @"SELECT e.id, CONCAT(e.CODE, ' - ', e.Name) AS Name, 
                       CONCAT(d.id, ' - ', d.name, d.Department) AS Department, 
                       CONCAT(p.id, ' - ', p.name) AS Position
@@ -125,7 +125,11 @@ namespace YamyProject.UI.Manufacturing.Models
                     }
                 }
             }
-            if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "dgvlinkResource") {
+            if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "dgvlinkResource")
+            {
+                if (isFinished())
+                    return;
+
                 frmManEmployeeSelectionForm form = new frmManEmployeeSelectionForm(employeesList);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -145,9 +149,12 @@ namespace YamyProject.UI.Manufacturing.Models
                         }
                     }
                 }
-            } 
+            }
             else
             {
+                if (isFinished())
+                    return;
+
                 string message = "Do you want to run this machine production: '" + nameMachin + "'\n" +
                  "Start Task: '" + Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvName"].Value) + "'";
 
@@ -187,6 +194,19 @@ namespace YamyProject.UI.Manufacturing.Models
                     }
                 }
             }
+        }
+
+        private bool isFinished()
+        {
+            object vResult = DBClass.ExecuteScalar(
+                        @" SELECT Status FROM tbl_manufacturer_task WHERE batchId = (SELECT id FROM tbl_manufacturer_batch where batchname = @bName);",
+                        DBClass.CreateParameter("bName", Convert.ToString(guna2DataGridView1.CurrentRow.Cells["dgvName"].Value))
+                    );
+
+            if (vResult == null || vResult == DBNull.Value)
+                return false;
+
+            return string.Equals(vResult.ToString(), "Done", StringComparison.OrdinalIgnoreCase);
         }
 
         private void doprogress()

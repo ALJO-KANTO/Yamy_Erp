@@ -153,7 +153,7 @@ namespace YamyProject
                 {
                     CommonInsert.UpdateTransactionEntry(int.Parse(reader["id"].ToString()), dtInv.Value.Date,
                            cmbAccountName.SelectedValue.ToString(),
-                           txtTotal.Text, "0", invId.ToString(), cmbCustomer.SelectedValue.ToString(), "Damage Invoice", "Damage Invoice NO. " + invCode,
+                           txtTotal.Text, "0", invId.ToString(), cmbCustomer.SelectedValue.ToString(), "Damage Invoice", "Damage Invoice", "Damage Invoice NO. " + invCode,
                            frmLogin.userId, DateTime.Now.Date);
                 }
             using (var reader = DBClass.ExecuteReader(@"select * from tbl_transaction where transaction_id =@id and ( description like 'Item Damage For Damage%')",

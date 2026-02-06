@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Settings;
@@ -378,6 +380,11 @@ namespace YamyProject
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Receipt", "Receipt Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Receipt", "Receipt Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
             Utilities.LogAudit(frmLogin.userId, "Update Receipt Voucher", "Receipt Voucher", id, "Updated Receipt Voucher: " + code);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
 
@@ -455,6 +462,10 @@ namespace YamyProject
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Receipt", "Receipt Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Receipt", "Receipt Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
             Utilities.LogAudit(frmLogin.userId, "Create Receipt Voucher", "Receipt Voucher", id, "Created Receipt Voucher: " + code);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
         public static int GetChequeBookIdByCompanyOrFirst()
@@ -1612,6 +1623,23 @@ namespace YamyProject
                     txt.KeyPress += Txt_KeyPress;
                 }
             }
+        }
+
+        static string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "RECEIPT VOUCHER",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
 
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)

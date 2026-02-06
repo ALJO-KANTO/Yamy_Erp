@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -143,12 +144,61 @@ namespace YamyProject
             List<MySqlParameter> parameters = GetQueryParameters();
 
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
-
-            BindDataToGrid(dt);
-            HandleInvoiceItems();
-            dgvInvoice.Enabled = true;
+            if (dt != null)
+            {
+                BindDataToGrid(dt);
+                HandleInvoiceItems();
+                dgvInvoice.Enabled = true;
+                AddViewDocImageColumn();
+            }
         }
 
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgvInvoice.Columns.Contains("ViewDoc"))
+            {
+                SetViewDocIcons();
+            }
+        }
+        System.Drawing.Image enabledIcon = Properties.Resources.doc_icon;   // regular icon
+        System.Drawing.Image disabledIcon = null; // or Properties.Resources.doc_icon_disabled
+
+        private void SetViewDocIcons()
+        {
+            foreach (DataGridViewRow row in dgvInvoice.Rows)
+            {
+                int purchaseId = Convert.ToInt32(row.Cells["id"].Value);
+
+                bool hasAttachment = AttachmentManager.HasAttachment(purchaseId, "SALES INVOICE");
+                // You need a function to check if an invoice has attachments
+                row.Cells["ViewDoc"].Value = hasAttachment ? enabledIcon : disabledIcon;
+            }
+        }
+
+        private void AddViewDocImageColumn()
+        {
+            if (!dgvInvoice.Columns.Contains("ViewDoc"))
+            {
+                DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
+                imgColumn.Name = "ViewDoc";
+                imgColumn.HeaderText = "View Doc";
+                //imgColumn.Image = Properties.Resources.doc_icon; // <-- your image here
+                imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom; // fit nicely
+                dgvInvoice.Columns.Add(imgColumn);
+            }
+        }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvInvoice.Columns[e.ColumnIndex].Name == "ViewDoc")
+            {
+                var cell = dgvInvoice.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value == null) return; // no attachment, do nothing
+
+                int purchaseId = Convert.ToInt32(dgvInvoice.Rows[e.RowIndex].Cells["id"].Value);
+                AttachmentManager.OpenAttachmentByType(purchaseId, "SALES INVOICE");
+            }
+        }
         private string GetQuery()
         {
             string query = cmbSelectionMethod.Text == "Default" ? GetDefaultQuery() : GetDetailedQuery();

@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -325,7 +327,21 @@ namespace YamyProject
             addJournalTransaction();
             Utilities.LogAudit(frmLogin.userId, "Edit Purchase Return Invoice", "Purchase Return", id, "Edited Purchase Return Invoice No. " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
+        }
+
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "PURCHASE RETURN",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
         private void addJournalTransaction()
         {
@@ -395,8 +411,11 @@ namespace YamyProject
                    DBClass.CreateParameter("created_by", frmLogin.userId),
                    DBClass.CreateParameter("created_date", DateTime.Now.Date),
                    DBClass.CreateParameter("state", 0)).ToString());
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
 
-            
             insertInvItems();
             //txtInvoiceId.Text = invCode.ToString();
             addJournalTransaction();
@@ -1439,6 +1458,14 @@ namespace YamyProject
                 }
             }
             ;
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)

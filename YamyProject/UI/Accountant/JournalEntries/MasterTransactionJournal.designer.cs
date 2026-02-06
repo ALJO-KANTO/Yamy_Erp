@@ -79,7 +79,7 @@
             this.dgvJournal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -204,6 +204,7 @@
             "Loan Request",
             "Vendor Advance Payment",
             "Customer Advance Payment",
+            "Bank",
             "RMS Bill",
             "Manufacturing"});
             this.cmbSelectionMethod.Location = new System.Drawing.Point(1039, 3);
@@ -399,7 +400,7 @@
             this.headerUC1.Location = new System.Drawing.Point(2, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1234, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1234, 30);
             this.headerUC1.TabIndex = 238;
             // 
             // Lbheader
@@ -407,7 +408,7 @@
             this.Lbheader.BackColor = System.Drawing.Color.Transparent;
             this.Lbheader.Location = new System.Drawing.Point(0, 0);
             this.Lbheader.Name = "Lbheader";
-            this.Lbheader.Size = new System.Drawing.Size(0, 0);
+            this.Lbheader.Size = new System.Drawing.Size(3, 2);
             this.Lbheader.TabIndex = 0;
             this.Lbheader.Text = null;
             // 

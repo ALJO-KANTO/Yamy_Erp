@@ -1,4 +1,5 @@
 ﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,9 +9,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.RMS;
+using YamyProject.UI.Accountant;
+using YamyProject.UI.Banking;
 using YamyProject.UI.Construction.ProjectPlanning;
 using YamyProject.UI.CRM;
 using YamyProject.UI.Default;
@@ -21,7 +23,7 @@ using YamyProject.UI.Reports.Bank;
 using YamyProject.UI.Reports.Construction;
 using YamyProject.UI.Settings;
 using YamyProject.UI.Settings.Color_theme;
-using YamyProject.UI.Test;
+using YamyProject.UI.Settings.Company;
 using YamyProject.UI.VAT;
 
 namespace YamyProject
@@ -34,6 +36,7 @@ namespace YamyProject
         bool IsClick = false;
         private Dictionary<string, List<SubMenu>> menuData = new Dictionary<string, List<SubMenu>>();
         EventHandler roleEvent;
+        private bool isNotificationAllowed = false;
         public MainForm()
         {
             InitializeComponent();
@@ -44,7 +47,65 @@ namespace YamyProject
             roleEvent = (sender, args) => LoadUserPermissions(frmLogin.RoleId);
             EventHub.Roles += roleEvent;
             LoadAllMenuData();
+
+            if (isNotificationAllowed)
+                loadNotification();
         }
+
+        private void loadNotification()
+        {
+            bool isViewLessStockItems = UserPermissions.canView("LessStockItem Notification");
+            bool isViewPurchaseOrder = UserPermissions.canView("PurchaseOrder Notification");
+            bool isViewProductionItemRequest = UserPermissions.canView("Production ItemRequest Notification");
+            //ShowToast("Item added successfully!", ToastType.Production, 3000, () =>
+            //{
+            //    MessageBox.Show("You clicked Production toast!");
+            //});
+            if (isViewPurchaseOrder)
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_purchase_order WHERE tranfer_status=0;"))
+                {
+                    if (reader.Read())
+                    {
+                        int val = int.Parse(reader["c"].ToString());
+                        if (val <= 0)
+                            return;
+
+                        ShowToast(val + " Order are pending!", ToastType.PurchaseOrder, 10000, () =>
+                        {
+                            openChildFormX(new MasterPurchaseOrder());
+                            //MessageBox.Show("You clicked Purchase Order toast!");
+                        });
+                    }
+                }
+            }
+            if (isViewProductionItemRequest)
+            {
+                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_manufacturer_batchdetails WHERE qty>0 and RequestQty>0 and ReceiveQty=0;"))
+                {
+                    if (reader.Read())
+                    {
+                        int val = int.Parse(reader["c"].ToString());
+                        if (val <= 0)
+                            return;
+
+                        ShowToast(val + "Production item request are pending!", ToastType.PurchaseOrder, 10000, () =>
+                        {
+                            openChildFormX(new frmPurchaseOrder());
+                            //MessageBox.Show("You clicked Purchase Order toast!");
+                        });
+                    }
+                }
+            }
+            if (isViewLessStockItems)
+            {
+                ShowToast("Stock is low!", ToastType.LowStock, 8000, () =>
+                {
+                    MessageBox.Show("Check Stock report");
+                });
+            }
+        }
+
         //private void ApplyTheme(Control parent)
         //{
         //    parent.BackColor = AppTheme.BackgroundColor;
@@ -229,7 +290,7 @@ namespace YamyProject
             btnLanguage.Text = savedCulture;
 
             // default form
-            openChildFormX(new FrmDashboard());
+            openChildFormX(new frmHome());
 
             // Hide Modules based on permissions
             //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;
@@ -237,7 +298,9 @@ namespace YamyProject
             BtnManufacture.Visible = toolStripMenuItem6.Visible = Utilities.GetModules("Manufacture");
             BtnRestaurant.Visible = Utilities.GetModules("Restaurant");
             constructionToolStripMenuItem.Visible = Utilities.GetModules("Construction");
-
+            toolStripMenuItemEngConsultancy.Visible = Utilities.GetModules("Eng Consultants");
+            toolStripMenuItemContracting.Visible = Utilities.GetModules("Contracting");
+            
             // do a function call after 2 seconds
             var timer = new Timer { Interval = 2000 };
             timer.Tick += (s, args) =>
@@ -345,6 +408,7 @@ namespace YamyProject
                 {
                     frmAuditTrailToolStripMenuItem.Visible = true;
                 }
+                isNotificationAllowed = UserPermissions.canView("Project Estimate");
             }
         }
 
@@ -1574,6 +1638,7 @@ namespace YamyProject
         private void profitLossToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new ProfitandLossReport("standard"));
+            //new ProfitandLossDetailReport("","2024-01-01","2026-12-31").Show();
         }
 
         private void customerBalanceSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -2176,7 +2241,8 @@ namespace YamyProject
 
         private void profitLossDetailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("Detail"));
+            //openChildForm(new ProfitandLossReport("Detail"));
+            openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", 0, "2000-01-01", DateTime.Now.Date.ToShortDateString()));
         }
 
         private void profitLossYTDComparisonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2386,12 +2452,12 @@ namespace YamyProject
 
         private void inventoryValuationSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmInventoryValuationSummary());
+            openChildForm(new frmInventoryValuationSummary());
         }
 
         private void inventToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmInventoryValuationDetail());
+            openChildForm(new frmInventoryValuationDetail());
         }
 
         private void timeSheetReportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2407,6 +2473,341 @@ namespace YamyProject
         private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmUserActivityReport());
+        }
+        public enum ToastType
+        {
+            Production,
+            PurchaseOrder,
+            LowStock
+        }
+
+        public delegate void ToastClickAction();
+
+        Queue<(string msg, ToastType type, int duration, ToastClickAction action)> toastQueue = new Queue<(string, ToastType, int, ToastClickAction)>();
+
+        bool toastShowing = false;
+
+        public void ShowToast(string message, ToastType type, int duration = 3000, ToastClickAction action = null)
+        {
+            toastQueue.Enqueue((message, type, duration, action));
+
+            if (!toastShowing)
+                ShowNextToast();
+        }
+
+        private void ShowNextToast()
+        {
+            if (toastQueue.Count == 0)
+            {
+                toastShowing = false;
+                return;
+            }
+
+            toastShowing = true;
+
+            var (message, type, duration, action) = toastQueue.Dequeue();
+
+            // Create toast panel
+            Panel toast = new Panel();
+            toast.Size = new Size(300, 60);
+            toast.BorderStyle = BorderStyle.FixedSingle;
+
+            // Choose color + icon based on type
+            Color bgColor = Color.FromArgb(35, 35, 35);
+            string title = "";
+
+            switch (type)
+            {
+                case ToastType.Production:
+                    bgColor = Color.FromArgb(30, 90, 200); // blue
+                    title = "Production Request";
+                    break;
+
+                case ToastType.PurchaseOrder:
+                    bgColor = Color.FromArgb(0, 140, 70); // green
+                    title = "Purchase Order";
+                    break;
+
+                case ToastType.LowStock:
+                    bgColor = Color.FromArgb(200, 40, 40); // red
+                    title = "Low Stock Warning";
+                    break;
+            }
+
+            toast.BackColor = bgColor;
+            toast.ForeColor = Color.White;
+
+            toast.Location = new Point(
+                this.ClientSize.Width - toast.Width - 10,
+                this.ClientSize.Height
+            );
+
+            toast.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            // TITLE label
+            Label lblTitle = new Label();
+            lblTitle.Text = title;
+            lblTitle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Dock = DockStyle.Top;
+            lblTitle.Height = 24;
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitle.Padding = new Padding(8, 0, 0, 0);
+
+            // MESSAGE label
+            Label lblMsg = new Label();
+            lblMsg.Text = message;
+            lblMsg.Font = new Font("Segoe UI", 10);
+            lblMsg.Dock = DockStyle.Fill;
+            lblMsg.ForeColor = Color.White;
+            lblMsg.Padding = new Padding(8, 3, 8, 5);
+            lblMsg.TextAlign = ContentAlignment.MiddleLeft;
+
+            toast.Controls.Add(lblMsg);
+            toast.Controls.Add(lblTitle);
+            this.Controls.Add(toast);
+            toast.BringToFront();
+
+            // CLICK ACTION (panel + children)
+            if (action != null)
+            {
+                toast.Cursor = Cursors.Hand;
+
+                // When panel is clicked:
+                toast.Click += (s, e) =>
+                {
+                    action.Invoke();
+                    toast.Dispose();
+                };
+
+                // Also make inside controls clickable
+                foreach (Control ctrl in toast.Controls)
+                {
+                    ctrl.Cursor = Cursors.Hand;
+                    ctrl.Click += (s, e) =>
+                    {
+                        action.Invoke();
+                        toast.Dispose();
+                    };
+                }
+            }
+
+            // Animation timers
+            Timer slideIn = new Timer();
+            Timer hold = new Timer();
+            Timer slideOut = new Timer();
+
+            slideIn.Interval = 10;
+            hold.Interval = duration;
+            slideOut.Interval = 10;
+
+            // Slide In
+            slideIn.Tick += (s, e) =>
+            {
+                if (toast.Top > this.ClientSize.Height - toast.Height - 10)
+                {
+                    toast.Top -= 5;
+                }
+                else
+                {
+                    slideIn.Stop();
+                    hold.Start();
+                }
+            };
+
+            // Hold
+            hold.Tick += (s, e) =>
+            {
+                hold.Stop();
+                slideOut.Start();
+            };
+
+            // Slide Out
+            slideOut.Tick += (s, e) =>
+            {
+                if (toast.Top < this.ClientSize.Height)
+                {
+                    toast.Top += 5;
+                }
+                else
+                {
+                    slideOut.Stop();
+                    toast.Dispose();
+                    ShowNextToast();
+                }
+            };
+
+            slideIn.Start();
+        }
+
+        private void constructionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void valuationStockStatusByItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmInventoryStockStatusByItem());
+        }
+
+        private void inventoryStockStatusByVendorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmInventoryStockStatusByVendor());
+        }
+
+        private void inventoryTurnoverByItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmInventoryTurnoverByItem());
+        }
+
+        private void assemblyShortageByItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmAssemblyShortageByItem());
+        }
+
+        private void assemblyShortageByVendorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmAssemblyShortageByVendor());
+        }
+
+        private void physicalInventoryWorksheetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPhysicalInventoryWorksheet());
+        }
+
+        private void pendingBuildsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPendingBuilds());
+        }
+
+        private void negativeInventoryListingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmNegativeInventoryListing());
+        }
+
+        private void clientReadyPayrollReportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterAttendanceSheet());
+        }
+
+        private void stateMandatedRetirementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmStateMandatedRetirementReport());
+        }
+
+        private void bankTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterBankTransactions());
+        }
+
+        private void batchEnterTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FrmBatchEnterTransactions());
+        }
+
+        private void toolStripMenuItemEngConsultancy_Click(object sender, EventArgs e)
+        {
+            new frmMainEngineeringConsultancy().Show();
+        }
+
+        private void toolStripMenuItemContracting_Click(object sender, EventArgs e)
+        {
+            new frmMainContracting().Show();
+        }
+
+        private void employeeContactListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void emergencyContactListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void newHireListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void terminatedEmployeesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void depositeDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void checkDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void missingChecksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void reconciliationDiscrepancyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void previousReconciliationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void profitLossMonthlyComparisonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void balanceSheetMonthlyComparisonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void gressMarginByInventoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void purchaseVolumeByVendorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void vendorReturnsSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void vendorReturnsDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void biggestDonorsGrantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void statementOfFinancialIncomeAndExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void writeChequeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmWriteCheque());
+        }
+
+        private void documentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmDocCenter());
         }
     }
 

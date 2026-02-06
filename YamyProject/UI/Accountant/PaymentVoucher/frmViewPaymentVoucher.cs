@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using static YamyProject.BindCombos;
 
@@ -397,6 +399,10 @@ namespace YamyProject
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Payment", "Payment Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
 
             Utilities.LogAudit(frmLogin.userId, "Update Payment Voucher", "Payment Voucher", id, "Updated Payment Voucher: " + code);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
         private bool insertPV()
@@ -460,6 +466,10 @@ namespace YamyProject
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Payment", "Payment Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Payment", "Payment Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
 
             return true;
         }
@@ -2402,6 +2412,22 @@ namespace YamyProject
             {
                 AutoFillCheckNameEmployee();
             });
+        }
+        static string filePath = "";
+        private void BtnAttach_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "PAYMENT VOUCHER",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
 
         public void ShowReport3()

@@ -1,6 +1,6 @@
 ﻿namespace YamyProject.UI.Manufacturing.Viewform
 {
-    partial class frmManScreen
+    partial class frmManMachineScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -177,7 +177,7 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(944, 388);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
-            // frmManScreen
+            // frmManMachineScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,7 +191,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmManScreen";
+            this.Name = "frmManMachineScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmManScreencs";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -49,6 +49,29 @@ namespace YamyProject
                 parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
                 parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
             }
+            /* ---------- TOTAL ROW ---------- */
+            query += @"
+                    UNION ALL
+                    SELECT 
+                        NULL AS DATE,
+                        '' AS 'Inv No',
+                        'TOTAL' AS 'Customer Name',
+                        '' AS 'Item Name',
+                        SUM(tsd.cost_price) AS 'Cost Price',
+                        SUM(tsd.price) AS 'Sales Price',
+                        SUM(tsd.qty) AS Qty,
+                        SUM(tsd.cost_price * tsd.qty) AS 'Cost Amount',
+                        SUM(tsd.price * tsd.qty) AS 'Sales Amount',
+                        SUM((tsd.price - tsd.cost_price) * tsd.qty) AS 'Profit'
+                    FROM tbl_sales_details tsd
+                    INNER JOIN tbl_sales ts ON tsd.sales_id = ts.id
+                    WHERE 1 = 1";
+
+            if (!chkDate.Checked)
+            {
+                query += " AND ts.date >= @dateFrom AND ts.date <= @dateTo";
+            }
+
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["Item name"].Width = 250;

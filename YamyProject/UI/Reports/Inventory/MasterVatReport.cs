@@ -110,6 +110,31 @@ namespace YamyProject
                                         DBClass.CreateParameter("dateTo", dtTo.Value.Date));
             }
             dgvCustomer.DataSource = dt;
+            //add total row
+            decimal totalAmountBeforeVat = 0m;
+            decimal totalVatAmount = 0m;
+            decimal totalAmount = 0m;
+            decimal totalAmountAfterVat = 0m;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                decimal amountBeforeVat = 0m;
+                decimal vatAmount = 0m;
+                decimal amount = 0m;
+                decimal.TryParse(row["Amount Before Vat"].ToString(), NumberStyles.Any, CultureInfo.CurrentCulture, out amountBeforeVat);
+                decimal.TryParse(row["Vat Amount"].ToString(), NumberStyles.Any, CultureInfo.CurrentCulture, out vatAmount);
+                decimal.TryParse(row["Total Amount"].ToString(), NumberStyles.Any, CultureInfo.CurrentCulture, out amount);
+                totalAmountBeforeVat += amountBeforeVat;
+                totalVatAmount += vatAmount;
+                totalAmount += amount;
+            }
+            DataRow totalRow = dt.NewRow();
+            totalRow["Name"] = "TOTAL";
+            totalRow["Amount Before Vat"] = totalAmountBeforeVat;
+            totalRow["Vat Amount"] = totalVatAmount;
+            totalRow["Total Amount"] = totalAmount;
+            dt.Rows.Add(totalRow);
+
             dgvCustomer.Columns["id"].Visible = false;
             dgvCustomer.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvCustomer.Columns["Amount Before Vat"].Width = dgvCustomer.Columns["Vat Amount"].Width = dgvCustomer.Columns["Total Amount"].Width = 160;

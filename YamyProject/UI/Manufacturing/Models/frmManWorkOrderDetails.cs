@@ -10,7 +10,9 @@ namespace YamyProject.UI.Manufacturing.Viewform
     public partial class frmManWorkOrderDetails : Form
     {
         bool AllowItemWithOutQty = true;
-        int workOrderId = 0, warehouseId = 0;
+        int workOrderId = 0, warehouseFromId = 0, warehouseToId = 0;
+        DateTime date;
+
         public List<int> SelectedStepIds { get; private set; } = new List<int>();
 
         public frmManWorkOrderDetails(int _wId)
@@ -57,7 +59,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             dgvItems.Rows.Clear();
             if (workOrderId > 0)
             {
-                string qry = @" SELECT a.id, a.batchname, a.hours, a.amount, a.Description, IFNULL(b.status,'Pending') status,a.warehouse_id,a.warehouse_to_id,a.process_stage FROM tbl_manufacturer_batch a LEFT JOIN (
+                string qry = @" SELECT a.id, a.batchname, a.date, a.hours, a.amount, a.Description, IFNULL(b.status,'Pending') status,a.warehouse_id,a.warehouse_to_id,a.process_stage FROM tbl_manufacturer_batch a LEFT JOIN (
                                 SELECT t.batchId,t.status FROM tbl_manufacturer_task t WHERE t.id IN (SELECT MAX(id) FROM tbl_manufacturer_task GROUP BY BatchID)
                             ) b ON b.BatchID = a.id WHERE a.id = '" + workOrderId + "'";
 
@@ -68,7 +70,9 @@ namespace YamyProject.UI.Manufacturing.Viewform
                         status = reader["status"].ToString();
                         lblBatchName.Text = reader["batchname"].ToString();
                         lblStatus.Text = status;
-                        warehouseId = Convert.ToInt32(reader["warehouse_id"]);
+                        warehouseFromId = Convert.ToInt32(reader["warehouse_id"]);
+                        warehouseToId = Convert.ToInt32(reader["warehouse_to_id"]);
+                        date = Convert.ToDateTime(reader["date"]);
                         GetMaterialDetails(workOrderId);
                         string stageString = reader["process_stage"].ToString();
 
@@ -101,7 +105,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             else
             {
                 bool isValid = true;
-                decimal _receiveQty = 0, _requestQty = 0, _qty = 0;
+                decimal _receiveQty = 0, _requestQty = 0, _qty = 0, _availableQty = 0;
                 foreach (DataGridViewRow row in dgvItems.Rows)
                 {
                     if (row != null && row.Cells["dgvqty"].Value != DBNull.Value)
@@ -115,6 +119,10 @@ namespace YamyProject.UI.Manufacturing.Viewform
                     if (row != null && row.Cells["dgvRequestQty"].Value != DBNull.Value)
                     {
                         decimal.TryParse(row.Cells["dgvRequestQty"].Value?.ToString(), out _requestQty);
+                    }
+                    if (row != null && row.Cells["dgvAvailQty"].Value != DBNull.Value)
+                    {
+                        decimal.TryParse(row.Cells["dgvAvailQty"].Value?.ToString(), out _availableQty);
                     }
                     if (_receiveQty > _requestQty)
                     {
@@ -141,10 +149,31 @@ namespace YamyProject.UI.Manufacturing.Viewform
                         isValid = false;
                         break;
                     }
+
+                    if (_receiveQty > _availableQty)
+                    {
+                        MessageBox.Show(
+                            "Receive Qty is no in stock please purchase",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+
+                        isValid = false;
+                        break;
+                    }
+
                 }
                 if (isValid)
                 {
                     string stages = SelectedStepIds.Count > 0 ? string.Join(",", SelectedStepIds) : "";
+                    
+                    // Remove previous batch details and stock consumption
+                    DBClass.ExecuteNonQuery(@"DELETE FROM tbl_item_transaction 
+                                  WHERE reference=@invId AND type='Manufacturing';
+                                  DELETE FROM tbl_item_card_details 
+                                  WHERE trans_type='Manufacturing' AND trans_no=@invId",
+                                          DBClass.CreateParameter("@invId", workOrderId));
                     foreach (DataGridViewRow row in dgvItems.Rows)
                     {
                         int id = Convert.ToInt32(row.Cells["dgvid"].Value);
@@ -157,70 +186,108 @@ namespace YamyProject.UI.Manufacturing.Viewform
                             DBClass.CreateParameter("id", id),
                             DBClass.CreateParameter("requestQty", _requestQty),
                             DBClass.CreateParameter("receiveQty", _receiveQty));
-                        //using (MySqlDataReader itemReader = DBClass.ExecuteReader("select * from tbl_items where id = @id", DBClass.CreateParameter("id", Convert.ToInt32(itemId))))
-                        //{
-                        //    if (_receiveQty > 0)
-                        //    {
-                        //        if (itemReader.Read())
-                        //        {
-                        //            string itemType = Convert.ToString(itemReader["type"]);
-                        //            string method = Convert.ToString(itemReader["method"]);
-                        //            string salesPrice = Convert.ToString(itemReader["sales_price"]);
-                        //            decimal qty = _receiveQty;
 
-                        //            decimal costAmount = 0;
+                        if (_receiveQty>0)
+                        {
+                            // --------------------------------------------
+                            // Save Batch Raw Material Details + Deduct Stock
+                            // --------------------------------------------
+                            //    foreach (DataGridViewRow row in dgvItems.Rows)
+                            //    {
+                            //        if (row.IsNewRow) continue;
+                            //        if (row.Cells[3].Value == null) continue;
 
-                        //            if (itemType == "12 - Service")
-                        //            {
-                        //                //
-                        //            }
-                        //            else if (itemType == "13 - Inventory Assembly")
-                        //            {
-                        //                using (MySqlDataReader componentReader = DBClass.ExecuteReader(@"
-                        //                SELECT itemid, qty,(select method FROM tbl_items WHERE tbl_items.id = tbl_manufacturer_batchdetails.itemid) as method 
-                        //                FROM tbl_manufacturer_batchdetails WHERE batchid = @assemblyId",
-                        //                    DBClass.CreateParameter("assemblyId", itemId)))
-                        //                {
-                        //                    while (componentReader.Read())
-                        //                    {
-                        //                        int componentId = Convert.ToInt32(componentReader["item_id"]);
-                        //                        decimal componentQty = Convert.ToDecimal(componentReader["qty"]) * qty;
-                        //                        string methodOfIngrediant = componentReader["method"].ToString().Trim();
+                            //        int itemId = Convert.ToInt32(row.Cells["dgvid"].Value);
+                            decimal qtyUsed = Convert.ToDecimal(row.Cells["Dgvqty"].Value);
+                            decimal cost = Convert.ToDecimal(row.Cells["dgvCost"].Value);
 
-                        //                        DBClass.ExecuteNonQuery(@"
-                        //                    UPDATE tbl_items 
-                        //                    SET on_hand = on_hand - @qty 
-                        //                    WHERE id = @componentId",
-                        //                            DBClass.CreateParameter("qty", componentQty),
-                        //                            DBClass.CreateParameter("componentId", componentId));
+                            //        // 1. Save batch details
+                            //        string qry2 = @"INSERT INTO tbl_manufacturer_batchdetails
+                            //(batchID, itemid, cost, qty, Total)
+                            //VALUES
+                            //(@batchID, @itemid, @cost, @qty, @Total)";
 
-                        //                        decimal costReturned = InsertItemTransaction(componentId, componentQty, methodOfIngrediant, salesPrice);
-                        //                        costAmount = costReturned;
-                        //                        //totalCostAllItems += costReturned;
-                        //                    }
-                        //                }
-                        //            }
-                        //            else
-                        //            {
-                        //                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_items WHERE id=@id",
-                        //               DBClass.CreateParameter("id", itemId)))
-                        //                {
-                        //                    if (reader.Read())
-                        //                    {
-                        //                        decimal onHand = Convert.ToDecimal(reader["on_hand"]);
-                        //                        DBClass.ExecuteNonQuery("UPDATE tbl_items SET on_hand = @newQty WHERE id = @id",
-                        //                            DBClass.CreateParameter("newQty", onHand - qty),
-                        //                            DBClass.CreateParameter("id", itemId));
+                            //        DBClass.ExecuteNonQuery(qry2,
+                            //            DBClass.CreateParameter("@batchID", id),
+                            //            DBClass.CreateParameter("@itemid", itemId),
+                            //            DBClass.CreateParameter("@cost", cost),
+                            //            DBClass.CreateParameter("@qty", qtyUsed),
+                            //            DBClass.CreateParameter("@Total", Convert.ToDecimal(row.Cells["DGVTOTATL"].Value))
+                            //        );
 
-                        //                        decimal costReturned = InsertItemTransaction(itemId, qty, method, salesPrice);
-                        //                        costAmount = costReturned;
-                        //                        //totalCostAllItems += costReturned;
-                        //                    }
-                        //                }
-                        //            }
-                        //        }
-                        //    }
-                        //}
+                            // -----------------------------------------
+                            // 2. Deduct stock from tbl_item_transaction
+                            // -----------------------------------------
+                            //From Warehouse
+                            CommonInsert.InsertItemTransaction(date.Date, "Manufacturing", workOrderId.ToString(), itemId.ToString(), cost.ToString(), "0", "0", qtyUsed.ToString(), "0", "Material Transfer IN to Production Store for Batch " + lblBatchName.Text, warehouseFromId.ToString());
+                            //To Warehouse
+                            CommonInsert.InsertItemTransaction(date.Date, "Manufacturing", workOrderId.ToString(), itemId.ToString(), cost.ToString(), qtyUsed.ToString(), "0", "0", "0", "Material Consumed in Manufacturing for Batch " + lblBatchName.Text, warehouseToId.ToString());
+                            //}
+                            //using (MySqlDataReader itemReader = DBClass.ExecuteReader("select * from tbl_items where id = @id", DBClass.CreateParameter("id", Convert.ToInt32(itemId))))
+                            //{
+                            //    if (_receiveQty > 0)
+                            //    {
+                            //        if (itemReader.Read())
+                            //        {
+                            //            string itemType = Convert.ToString(itemReader["type"]);
+                            //            string method = Convert.ToString(itemReader["method"]);
+                            //            string salesPrice = Convert.ToString(itemReader["sales_price"]);
+                            //            decimal qty = _receiveQty;
+
+                            //            decimal costAmount = 0;
+
+                            //            if (itemType == "12 - Service")
+                            //            {
+                            //                //
+                            //            }
+                            //            else if (itemType == "13 - Inventory Assembly")
+                            //            {
+                            //                using (MySqlDataReader componentReader = DBClass.ExecuteReader(@"
+                            //                SELECT itemid, qty,(select method FROM tbl_items WHERE tbl_items.id = tbl_manufacturer_batchdetails.itemid) as method 
+                            //                FROM tbl_manufacturer_batchdetails WHERE batchid = @assemblyId",
+                            //                    DBClass.CreateParameter("assemblyId", itemId)))
+                            //                {
+                            //                    while (componentReader.Read())
+                            //                    {
+                            //                        int componentId = Convert.ToInt32(componentReader["item_id"]);
+                            //                        decimal componentQty = Convert.ToDecimal(componentReader["qty"]) * qty;
+                            //                        string methodOfIngrediant = componentReader["method"].ToString().Trim();
+
+                            //                        DBClass.ExecuteNonQuery(@"
+                            //                    UPDATE tbl_items 
+                            //                    SET on_hand = on_hand - @qty 
+                            //                    WHERE id = @componentId",
+                            //                            DBClass.CreateParameter("qty", componentQty),
+                            //                            DBClass.CreateParameter("componentId", componentId));
+
+                            //                        decimal costReturned = InsertItemTransaction(componentId, componentQty, methodOfIngrediant, salesPrice);
+                            //                        costAmount = costReturned;
+                            //                        //totalCostAllItems += costReturned;
+                            //                    }
+                            //                }
+                            //            }
+                            //            else
+                            //            {
+                            //                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_items WHERE id=@id",
+                            //               DBClass.CreateParameter("id", itemId)))
+                            //                {
+                            //                    if (reader.Read())
+                            //                    {
+                            //                        decimal onHand = Convert.ToDecimal(reader["on_hand"]);
+                            //                        DBClass.ExecuteNonQuery("UPDATE tbl_items SET on_hand = @newQty WHERE id = @id",
+                            //                            DBClass.CreateParameter("newQty", onHand - qty),
+                            //                            DBClass.CreateParameter("id", itemId));
+
+                            //                        decimal costReturned = InsertItemTransaction(itemId, qty, method, salesPrice);
+                            //                        costAmount = costReturned;
+                            //                        //totalCostAllItems += costReturned;
+                            //                    }
+                            //                }
+                            //            }
+                            //        }
+                            //    }
+                            //}
+                        }
                     }
                     DBClass.ExecuteNonQuery("UPDATE tbl_manufacturer_batch set process_stage=@stages where id = @id",
                             DBClass.CreateParameter("id", workOrderId),
@@ -240,7 +307,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             }
         }
 
-        private decimal InsertItemTransactionOld(int itemId, decimal qty, string method, string sales_price)
+        private decimal InsertItemTransactionOldXXX(int itemId, decimal qty, string method, string sales_price)
         {
             string invId = workOrderId.ToString();
             DateTime dated = DateTime.Now;
@@ -266,7 +333,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                 CommonInsert.InsertItemTransaction(dated.Date, "Manufacturing", invId.ToString(), itemId.ToString(),
                     cost_price.ToString(), "0", sales_price, qty.ToString(), "0",
-                    "Manufacturing (Negative Stock)", warehouseId.ToString());
+                    "Manufacturing (Negative Stock)", warehouseFromId.ToString());
 
                 return totalCost;
             }
@@ -305,7 +372,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                         CommonInsert.InsertItemTransaction(dated.Date, "Manufacturing", invId.ToString(), itemId.ToString(),
                             cost_price.ToString(), "0", sales_price, qtyToUse.ToString(), "0",
-                            "Manufacturing . ", warehouseId.ToString());
+                            "Manufacturing . ", warehouseFromId.ToString());
 
                         DBClass.ExecuteNonQuery("UPDATE tbl_item_transaction SET qty_inc = qty_inc - @qty WHERE id = @id",
                             DBClass.CreateParameter("qty", qtyToUse),
@@ -330,7 +397,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                         CommonInsert.InsertItemTransaction(dated.Date, "Manufacturing", invId.ToString(), itemId.ToString(),
                             cost_price.ToString(), "0", sales_price, remainingQty.ToString(), "0",
-                            "Manufacturing No. " + " (Neg. Stock)", warehouseId.ToString());
+                            "Manufacturing No. " + " (Neg. Stock)", warehouseFromId.ToString());
                     }
                 }
                 else
@@ -354,7 +421,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                     CommonInsert.InsertItemTransaction(dated.Date, "Manufacturing", invId.ToString(), itemId.ToString(),
                         cost_price.ToString(), "0", sales_price.ToString(), qty.ToString(), "0",
-                        "Manufacturing No. ", warehouseId.ToString());
+                        "Manufacturing No. ", warehouseFromId.ToString());
 
                     using (MySqlDataReader dr = DBClass.ExecuteReader(@"SELECT (balance / qty_balance) cost FROM tbl_item_card_details 
                                 WHERE DATE <= @date AND trans_type = 'Purchase Invoice' AND itemId = @itemId

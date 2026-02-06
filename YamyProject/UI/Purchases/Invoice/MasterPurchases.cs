@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -17,7 +18,10 @@ namespace YamyProject
         int _pageSize = 50; // Or any default rows per page
         int _totalRecords = 0;
         int _totalPages = 0;
-
+        // REQUIRED for Activator.CreateInstance
+        public MasterPurchases() : this(false)
+        {
+        }
         public MasterPurchases(bool _cbSubcontractorsChecked=false)
         {
             InitializeComponent();
@@ -169,6 +173,7 @@ namespace YamyProject
                     dgvItems.DataSource = null;
 
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+                AddViewDocImageColumn();
             }
 
             lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
@@ -186,6 +191,52 @@ namespace YamyProject
             dgvItems.Columns["item name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
+        }
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgvCustomer.Columns.Contains("ViewDoc"))
+            {
+                SetViewDocIcons();
+            }
+        }
+        System.Drawing.Image enabledIcon = Properties.Resources.doc_icon;   // regular icon
+        System.Drawing.Image disabledIcon = null; // or Properties.Resources.doc_icon_disabled
+
+        private void SetViewDocIcons()
+        {
+            foreach (DataGridViewRow row in dgvCustomer.Rows)
+            {
+                int purchaseId = Convert.ToInt32(row.Cells["id"].Value);
+
+                bool hasAttachment = AttachmentManager.HasAttachment(purchaseId, "PURCHASE INVOICE");
+                // You need a function to check if an invoice has attachments
+                row.Cells["ViewDoc"].Value = hasAttachment ? enabledIcon : disabledIcon;
+            }
+        }
+
+        private void AddViewDocImageColumn()
+        {
+            if (!dgvCustomer.Columns.Contains("ViewDoc"))
+            {
+                DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
+                imgColumn.Name = "ViewDoc";
+                imgColumn.HeaderText = "View Doc";
+                //imgColumn.Image = Properties.Resources.doc_icon; // <-- your image here
+                imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom; // fit nicely
+                dgvCustomer.Columns.Add(imgColumn);
+            }
+        }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvCustomer.Columns[e.ColumnIndex].Name == "ViewDoc")
+            {
+                var cell = dgvCustomer.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value == null) return; // no attachment, do nothing
+
+                int purchaseId = Convert.ToInt32(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value);
+                AttachmentManager.OpenAttachmentByType(purchaseId, "PURCHASE INVOICE");
+            }
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)

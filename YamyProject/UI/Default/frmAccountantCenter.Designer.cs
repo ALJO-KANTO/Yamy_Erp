@@ -30,22 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccountantCenter));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle241 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle242 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle243 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle244 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle245 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle246 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle247 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle248 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle249 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle250 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle253 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle254 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle251 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle252 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle255 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle256 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -59,43 +59,43 @@
             this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.pnlNonProfit = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.pnlAccounting = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.linkLabel9 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel36 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.pnlVendor = new System.Windows.Forms.Panel();
+            this.linkLabel32 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel33 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel34 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel35 = new System.Windows.Forms.LinkLabel();
+            this.pnlCustomers = new System.Windows.Forms.Panel();
+            this.linkLabel12 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel18 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel10 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel11 = new System.Windows.Forms.LinkLabel();
+            this.pnlCompany = new System.Windows.Forms.Panel();
+            this.linkLabel13 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel16 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel17 = new System.Windows.Forms.LinkLabel();
+            this.pnlEmployee = new System.Windows.Forms.Panel();
+            this.linkLabel20 = new System.Windows.Forms.LinkLabel();
             this.cmbMemorized = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pnlVendor = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.pnlCustomers = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pnlCompany = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.pnlEmployee = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
             this.pnlBanking = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.linkLabel14 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel15 = new System.Windows.Forms.LinkLabel();
+            this.pnlNonProfit = new System.Windows.Forms.Panel();
+            this.linkLabel27 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel26 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel25 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel24 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel23 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel22 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel19 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel21 = new System.Windows.Forms.LinkLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Separator3 = new Guna.UI2.WinForms.Guna2Separator();
@@ -105,6 +105,11 @@
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvReconcile = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.col_ac_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.account = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_last_reco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_reco_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_curr_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -120,15 +125,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.account = new System.Windows.Forms.DataGridViewLinkColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_ac_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_last_reco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_reco_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_curr_bal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -137,13 +137,13 @@
             this.panel2.SuspendLayout();
             this.guna2ShadowPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.pnlNonProfit.SuspendLayout();
             this.pnlAccounting.SuspendLayout();
             this.pnlVendor.SuspendLayout();
             this.pnlCustomers.SuspendLayout();
             this.pnlCompany.SuspendLayout();
             this.pnlEmployee.SuspendLayout();
             this.pnlBanking.SuspendLayout();
+            this.pnlNonProfit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -198,30 +198,30 @@
             this.dgvTools2.AllowUserToDeleteRows = false;
             this.dgvTools2.AllowUserToResizeColumns = false;
             this.dgvTools2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvTools2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle241.BackColor = System.Drawing.Color.White;
+            this.dgvTools2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle241;
             this.dgvTools2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTools2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvTools2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTools2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle242.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle242.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle242.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle242.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle242.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle242.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle242.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTools2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle242;
             this.dgvTools2.ColumnHeadersHeight = 30;
             this.dgvTools2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTools2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle243.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle243.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle243.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle243.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle243.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle243.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle243.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTools2.DefaultCellStyle = dataGridViewCellStyle243;
             this.dgvTools2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools2.Location = new System.Drawing.Point(313, 37);
             this.dgvTools2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -229,14 +229,14 @@
             this.dgvTools2.Name = "dgvTools2";
             this.dgvTools2.ReadOnly = true;
             this.dgvTools2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTools2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle244.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle244.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle244.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle244.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle244.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle244.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle244.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTools2.RowHeadersDefaultCellStyle = dataGridViewCellStyle244;
             this.dgvTools2.RowHeadersVisible = false;
             this.dgvTools2.RowHeadersWidth = 51;
             this.dgvTools2.RowTemplate.Height = 30;
@@ -265,8 +265,8 @@
             this.dgvTools2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools2.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTools2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools2_CellClick);
-            this.dgvTools2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools2_CellMouseEnter);
-            this.dgvTools2.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools2_CellMouseLeave);
+            this.dgvTools2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools_CellMouseEnter);
+            this.dgvTools2.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools_CellMouseLeave);
             // 
             // label30
             // 
@@ -315,30 +315,30 @@
             this.dgvTools.AllowUserToDeleteRows = false;
             this.dgvTools.AllowUserToResizeColumns = false;
             this.dgvTools.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.dgvTools.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle245.BackColor = System.Drawing.Color.White;
+            this.dgvTools.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle245;
             this.dgvTools.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTools.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dgvTools.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTools.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle246.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle246.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle246.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle246.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle246.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle246.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle246.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTools.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle246;
             this.dgvTools.ColumnHeadersHeight = 30;
             this.dgvTools.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTools.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle247.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle247.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle247.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle247.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle247.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle247.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle247.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTools.DefaultCellStyle = dataGridViewCellStyle247;
             this.dgvTools.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools.Location = new System.Drawing.Point(0, 37);
             this.dgvTools.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -346,14 +346,14 @@
             this.dgvTools.Name = "dgvTools";
             this.dgvTools.ReadOnly = true;
             this.dgvTools.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTools.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle248.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle248.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle248.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle248.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle248.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle248.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle248.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTools.RowHeadersDefaultCellStyle = dataGridViewCellStyle248;
             this.dgvTools.RowHeadersVisible = false;
             this.dgvTools.RowHeadersWidth = 51;
             this.dgvTools.RowTemplate.Height = 30;
@@ -441,187 +441,300 @@
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.pnlNonProfit);
             this.panel6.Controls.Add(this.pnlAccounting);
-            this.panel6.Controls.Add(this.cmbMemorized);
-            this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.pnlVendor);
             this.panel6.Controls.Add(this.pnlCustomers);
             this.panel6.Controls.Add(this.pnlCompany);
             this.panel6.Controls.Add(this.pnlEmployee);
+            this.panel6.Controls.Add(this.cmbMemorized);
+            this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.pnlBanking);
+            this.panel6.Controls.Add(this.pnlNonProfit);
             this.panel6.Location = new System.Drawing.Point(10, 48);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(296, 288);
             this.panel6.TabIndex = 149;
             // 
-            // pnlNonProfit
-            // 
-            this.pnlNonProfit.Controls.Add(this.label27);
-            this.pnlNonProfit.Controls.Add(this.label26);
-            this.pnlNonProfit.Controls.Add(this.label25);
-            this.pnlNonProfit.Controls.Add(this.label24);
-            this.pnlNonProfit.Controls.Add(this.label23);
-            this.pnlNonProfit.Controls.Add(this.label22);
-            this.pnlNonProfit.Controls.Add(this.label19);
-            this.pnlNonProfit.Controls.Add(this.label21);
-            this.pnlNonProfit.Location = new System.Drawing.Point(8, 50);
-            this.pnlNonProfit.Name = "pnlNonProfit";
-            this.pnlNonProfit.Size = new System.Drawing.Size(282, 223);
-            this.pnlNonProfit.TabIndex = 151;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label27.Location = new System.Drawing.Point(17, 197);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(195, 13);
-            this.label27.TabIndex = 142;
-            this.label27.Text = "Statement of Functional Expenses (990)";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label26.Location = new System.Drawing.Point(17, 172);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(152, 13);
-            this.label26.TabIndex = 142;
-            this.label26.Text = "Statement of Financial Position";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label25.Location = new System.Drawing.Point(17, 148);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(215, 13);
-            this.label25.TabIndex = 142;
-            this.label25.Text = "Statement of Financial Income and Expense";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label24.Location = new System.Drawing.Point(17, 123);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(129, 13);
-            this.label24.TabIndex = 142;
-            this.label24.Text = "Programs/Projects Report";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label23.Location = new System.Drawing.Point(17, 98);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(112, 13);
-            this.label23.TabIndex = 142;
-            this.label23.Text = "Donors/Grants Report";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label22.Location = new System.Drawing.Point(17, 71);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(190, 13);
-            this.label22.TabIndex = 142;
-            this.label22.Text = "Budget vs. Actual by Program/Projects";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label19.Location = new System.Drawing.Point(17, 45);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(178, 13);
-            this.label19.TabIndex = 142;
-            this.label19.Text = "Budget vs. Actual by Donors/Grants";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label21.Location = new System.Drawing.Point(17, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(115, 13);
-            this.label21.TabIndex = 142;
-            this.label21.Text = "Biggest Donors/Grants";
-            // 
             // pnlAccounting
             // 
-            this.pnlAccounting.Controls.Add(this.label9);
-            this.pnlAccounting.Controls.Add(this.label8);
-            this.pnlAccounting.Controls.Add(this.label7);
-            this.pnlAccounting.Controls.Add(this.label6);
-            this.pnlAccounting.Controls.Add(this.label36);
-            this.pnlAccounting.Controls.Add(this.label5);
-            this.pnlAccounting.Location = new System.Drawing.Point(7, 42);
+            this.pnlAccounting.Controls.Add(this.linkLabel9);
+            this.pnlAccounting.Controls.Add(this.linkLabel8);
+            this.pnlAccounting.Controls.Add(this.linkLabel7);
+            this.pnlAccounting.Controls.Add(this.linkLabel6);
+            this.pnlAccounting.Controls.Add(this.linkLabel36);
+            this.pnlAccounting.Controls.Add(this.linkLabel5);
+            this.pnlAccounting.Location = new System.Drawing.Point(8, 39);
             this.pnlAccounting.Name = "pnlAccounting";
             this.pnlAccounting.Size = new System.Drawing.Size(282, 186);
             this.pnlAccounting.TabIndex = 148;
             // 
-            // label9
+            // linkLabel9
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label9.Location = new System.Drawing.Point(17, 147);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 142;
-            this.label9.Text = "Profit Loss";
+            this.linkLabel9.AutoSize = true;
+            this.linkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel9.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel9.Location = new System.Drawing.Point(17, 147);
+            this.linkLabel9.Name = "linkLabel9";
+            this.linkLabel9.Size = new System.Drawing.Size(56, 13);
+            this.linkLabel9.TabIndex = 142;
+            this.linkLabel9.TabStop = true;
+            this.linkLabel9.Text = "Profit Loss";
+            this.linkLabel9.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel9_LinkClicked);
             // 
-            // label8
+            // linkLabel8
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label8.Location = new System.Drawing.Point(17, 121);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(194, 13);
-            this.label8.TabIndex = 142;
-            this.label8.Text = "Journal Entries Entered/Modified Today";
+            this.linkLabel8.AutoSize = true;
+            this.linkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel8.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel8.Location = new System.Drawing.Point(17, 121);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(194, 13);
+            this.linkLabel8.TabIndex = 142;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = "Journal Entries Entered/Modified Today";
+            this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel8_LinkClicked);
             // 
-            // label7
+            // linkLabel7
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label7.Location = new System.Drawing.Point(17, 94);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
-            this.label7.TabIndex = 142;
-            this.label7.Text = "General Ledger";
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel7.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel7.Location = new System.Drawing.Point(17, 94);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(80, 13);
+            this.linkLabel7.TabIndex = 142;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "General Ledger";
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
-            // label6
+            // linkLabel6
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label6.Location = new System.Drawing.Point(17, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 142;
-            this.label6.Text = "Balance Sheet";
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel6.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel6.Location = new System.Drawing.Point(17, 69);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(77, 13);
+            this.linkLabel6.TabIndex = 142;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = "Balance Sheet";
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
             // 
-            // label36
+            // linkLabel36
             // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label36.Location = new System.Drawing.Point(17, 20);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(113, 13);
-            this.label36.TabIndex = 142;
-            this.label36.Text = "Adjusted Trial Balance";
+            this.linkLabel36.AutoSize = true;
+            this.linkLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel36.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel36.Location = new System.Drawing.Point(17, 20);
+            this.linkLabel36.Name = "linkLabel36";
+            this.linkLabel36.Size = new System.Drawing.Size(113, 13);
+            this.linkLabel36.TabIndex = 142;
+            this.linkLabel36.TabStop = true;
+            this.linkLabel36.Text = "Adjusted Trial Balance";
+            this.linkLabel36.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel36_LinkClicked);
             // 
-            // label5
+            // linkLabel5
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label5.Location = new System.Drawing.Point(17, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 13);
-            this.label5.TabIndex = 142;
-            this.label5.Text = "Adjusting Journal Entries";
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel5.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel5.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(122, 13);
+            this.linkLabel5.TabIndex = 142;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "Adjusting Journal Entries";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
+            // 
+            // pnlVendor
+            // 
+            this.pnlVendor.Controls.Add(this.linkLabel32);
+            this.pnlVendor.Controls.Add(this.linkLabel33);
+            this.pnlVendor.Controls.Add(this.linkLabel34);
+            this.pnlVendor.Controls.Add(this.linkLabel35);
+            this.pnlVendor.Location = new System.Drawing.Point(8, 42);
+            this.pnlVendor.Name = "pnlVendor";
+            this.pnlVendor.Size = new System.Drawing.Size(282, 128);
+            this.pnlVendor.TabIndex = 154;
+            // 
+            // linkLabel32
+            // 
+            this.linkLabel32.AutoSize = true;
+            this.linkLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel32.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel32.Location = new System.Drawing.Point(17, 98);
+            this.linkLabel32.Name = "linkLabel32";
+            this.linkLabel32.Size = new System.Drawing.Size(129, 13);
+            this.linkLabel32.TabIndex = 142;
+            this.linkLabel32.TabStop = true;
+            this.linkLabel32.Text = "Vendor Balance Summary";
+            // 
+            // linkLabel33
+            // 
+            this.linkLabel33.AutoSize = true;
+            this.linkLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel33.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel33.Location = new System.Drawing.Point(17, 71);
+            this.linkLabel33.Name = "linkLabel33";
+            this.linkLabel33.Size = new System.Drawing.Size(113, 13);
+            this.linkLabel33.TabIndex = 142;
+            this.linkLabel33.TabStop = true;
+            this.linkLabel33.Text = "Vendor Balance Detail";
+            // 
+            // linkLabel34
+            // 
+            this.linkLabel34.AutoSize = true;
+            this.linkLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel34.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel34.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel34.Name = "linkLabel34";
+            this.linkLabel34.Size = new System.Drawing.Size(92, 13);
+            this.linkLabel34.TabIndex = 142;
+            this.linkLabel34.TabStop = true;
+            this.linkLabel34.Text = "Unpaid Bills Detail";
+            // 
+            // linkLabel35
+            // 
+            this.linkLabel35.AutoSize = true;
+            this.linkLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel35.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel35.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel35.Name = "linkLabel35";
+            this.linkLabel35.Size = new System.Drawing.Size(102, 13);
+            this.linkLabel35.TabIndex = 142;
+            this.linkLabel35.TabStop = true;
+            this.linkLabel35.Text = "A/P Aging Summary";
+            // 
+            // pnlCustomers
+            // 
+            this.pnlCustomers.Controls.Add(this.linkLabel12);
+            this.pnlCustomers.Controls.Add(this.linkLabel18);
+            this.pnlCustomers.Controls.Add(this.linkLabel10);
+            this.pnlCustomers.Controls.Add(this.linkLabel11);
+            this.pnlCustomers.Location = new System.Drawing.Point(8, 42);
+            this.pnlCustomers.Name = "pnlCustomers";
+            this.pnlCustomers.Size = new System.Drawing.Size(282, 128);
+            this.pnlCustomers.TabIndex = 152;
+            // 
+            // linkLabel12
+            // 
+            this.linkLabel12.AutoSize = true;
+            this.linkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel12.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel12.Location = new System.Drawing.Point(17, 94);
+            this.linkLabel12.Name = "linkLabel12";
+            this.linkLabel12.Size = new System.Drawing.Size(76, 13);
+            this.linkLabel12.TabIndex = 143;
+            this.linkLabel12.TabStop = true;
+            this.linkLabel12.Text = "Open Invoices";
+            this.linkLabel12.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel12_LinkClicked);
+            // 
+            // linkLabel18
+            // 
+            this.linkLabel18.AutoSize = true;
+            this.linkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel18.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel18.Location = new System.Drawing.Point(17, 70);
+            this.linkLabel18.Name = "linkLabel18";
+            this.linkLabel18.Size = new System.Drawing.Size(139, 13);
+            this.linkLabel18.TabIndex = 144;
+            this.linkLabel18.TabStop = true;
+            this.linkLabel18.Text = "Customer Balance Summary";
+            // 
+            // linkLabel10
+            // 
+            this.linkLabel10.AutoSize = true;
+            this.linkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel10.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel10.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel10.Name = "linkLabel10";
+            this.linkLabel10.Size = new System.Drawing.Size(123, 13);
+            this.linkLabel10.TabIndex = 142;
+            this.linkLabel10.TabStop = true;
+            this.linkLabel10.Text = "Customer Balance Detail";
+            this.linkLabel10.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel10_LinkClicked);
+            // 
+            // linkLabel11
+            // 
+            this.linkLabel11.AutoSize = true;
+            this.linkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel11.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel11.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel11.Name = "linkLabel11";
+            this.linkLabel11.Size = new System.Drawing.Size(103, 13);
+            this.linkLabel11.TabIndex = 142;
+            this.linkLabel11.TabStop = true;
+            this.linkLabel11.Text = "A/R Aging Summary";
+            this.linkLabel11.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel11_LinkClicked);
+            // 
+            // pnlCompany
+            // 
+            this.pnlCompany.Controls.Add(this.linkLabel13);
+            this.pnlCompany.Controls.Add(this.linkLabel16);
+            this.pnlCompany.Controls.Add(this.linkLabel17);
+            this.pnlCompany.Location = new System.Drawing.Point(8, 42);
+            this.pnlCompany.Name = "pnlCompany";
+            this.pnlCompany.Size = new System.Drawing.Size(282, 108);
+            this.pnlCompany.TabIndex = 150;
+            // 
+            // linkLabel13
+            // 
+            this.linkLabel13.AutoSize = true;
+            this.linkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel13.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel13.Location = new System.Drawing.Point(17, 69);
+            this.linkLabel13.Name = "linkLabel13";
+            this.linkLabel13.Size = new System.Drawing.Size(124, 13);
+            this.linkLabel13.TabIndex = 142;
+            this.linkLabel13.TabStop = true;
+            this.linkLabel13.Text = "Statement of Cash Flows";
+            this.linkLabel13.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel13_LinkClicked);
+            // 
+            // linkLabel16
+            // 
+            this.linkLabel16.AutoSize = true;
+            this.linkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel16.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel16.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel16.Name = "linkLabel16";
+            this.linkLabel16.Size = new System.Drawing.Size(56, 13);
+            this.linkLabel16.TabIndex = 142;
+            this.linkLabel16.TabStop = true;
+            this.linkLabel16.Text = "Profit Loss";
+            this.linkLabel16.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel16_LinkClicked);
+            // 
+            // linkLabel17
+            // 
+            this.linkLabel17.AutoSize = true;
+            this.linkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel17.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel17.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel17.Name = "linkLabel17";
+            this.linkLabel17.Size = new System.Drawing.Size(77, 13);
+            this.linkLabel17.TabIndex = 142;
+            this.linkLabel17.TabStop = true;
+            this.linkLabel17.Text = "Balance Sheet";
+            this.linkLabel17.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel17_LinkClicked);
+            // 
+            // pnlEmployee
+            // 
+            this.pnlEmployee.Controls.Add(this.linkLabel20);
+            this.pnlEmployee.Location = new System.Drawing.Point(8, 42);
+            this.pnlEmployee.Name = "pnlEmployee";
+            this.pnlEmployee.Size = new System.Drawing.Size(282, 77);
+            this.pnlEmployee.TabIndex = 153;
+            // 
+            // linkLabel20
+            // 
+            this.linkLabel20.AutoSize = true;
+            this.linkLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel20.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel20.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel20.Name = "linkLabel20";
+            this.linkLabel20.Size = new System.Drawing.Size(67, 13);
+            this.linkLabel20.TabIndex = 142;
+            this.linkLabel20.TabStop = true;
+            this.linkLabel20.Text = "Salary Sheet";
             // 
             // cmbMemorized
             // 
@@ -641,6 +754,7 @@
             this.cmbMemorized.Name = "cmbMemorized";
             this.cmbMemorized.Size = new System.Drawing.Size(206, 24);
             this.cmbMemorized.TabIndex = 147;
+            this.cmbMemorized.SelectedIndexChanged += new System.EventHandler(this.cmbMemorized_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -654,194 +768,152 @@
             this.label4.TabIndex = 146;
             this.label4.Text = "Select Group";
             // 
-            // pnlVendor
-            // 
-            this.pnlVendor.Controls.Add(this.label32);
-            this.pnlVendor.Controls.Add(this.label33);
-            this.pnlVendor.Controls.Add(this.label34);
-            this.pnlVendor.Controls.Add(this.label35);
-            this.pnlVendor.Location = new System.Drawing.Point(3, 43);
-            this.pnlVendor.Name = "pnlVendor";
-            this.pnlVendor.Size = new System.Drawing.Size(282, 128);
-            this.pnlVendor.TabIndex = 154;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label32.Location = new System.Drawing.Point(17, 98);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(129, 13);
-            this.label32.TabIndex = 142;
-            this.label32.Text = "Vendor Balance Summary";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label33.Location = new System.Drawing.Point(17, 71);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(113, 13);
-            this.label33.TabIndex = 142;
-            this.label33.Text = "Vendor Balance Detail";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label34.Location = new System.Drawing.Point(17, 45);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(92, 13);
-            this.label34.TabIndex = 142;
-            this.label34.Text = "Unpaid Bills Detail";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label35.Location = new System.Drawing.Point(17, 21);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(102, 13);
-            this.label35.TabIndex = 142;
-            this.label35.Text = "A/P Aging Summary";
-            // 
-            // pnlCustomers
-            // 
-            this.pnlCustomers.Controls.Add(this.label12);
-            this.pnlCustomers.Controls.Add(this.label18);
-            this.pnlCustomers.Controls.Add(this.label10);
-            this.pnlCustomers.Controls.Add(this.label11);
-            this.pnlCustomers.Location = new System.Drawing.Point(5, 53);
-            this.pnlCustomers.Name = "pnlCustomers";
-            this.pnlCustomers.Size = new System.Drawing.Size(282, 128);
-            this.pnlCustomers.TabIndex = 152;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label12.Location = new System.Drawing.Point(17, 94);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 13);
-            this.label12.TabIndex = 143;
-            this.label12.Text = "Open Invoices";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label18.Location = new System.Drawing.Point(17, 70);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(139, 13);
-            this.label18.TabIndex = 144;
-            this.label18.Text = "Customer Balance Summary";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label10.Location = new System.Drawing.Point(17, 45);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 13);
-            this.label10.TabIndex = 142;
-            this.label10.Text = "Customer Balance Detail";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label11.Location = new System.Drawing.Point(17, 21);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 13);
-            this.label11.TabIndex = 142;
-            this.label11.Text = "A/R Aging Summary";
-            // 
-            // pnlCompany
-            // 
-            this.pnlCompany.Controls.Add(this.label13);
-            this.pnlCompany.Controls.Add(this.label16);
-            this.pnlCompany.Controls.Add(this.label17);
-            this.pnlCompany.Location = new System.Drawing.Point(5, 47);
-            this.pnlCompany.Name = "pnlCompany";
-            this.pnlCompany.Size = new System.Drawing.Size(282, 108);
-            this.pnlCompany.TabIndex = 150;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label13.Location = new System.Drawing.Point(17, 69);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
-            this.label13.TabIndex = 142;
-            this.label13.Text = "Statement of Cash Flows";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label16.Location = new System.Drawing.Point(17, 45);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 13);
-            this.label16.TabIndex = 142;
-            this.label16.Text = "Profit Loss";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label17.Location = new System.Drawing.Point(17, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 13);
-            this.label17.TabIndex = 142;
-            this.label17.Text = "Balance Sheet";
-            // 
-            // pnlEmployee
-            // 
-            this.pnlEmployee.Controls.Add(this.label20);
-            this.pnlEmployee.Location = new System.Drawing.Point(12, 48);
-            this.pnlEmployee.Name = "pnlEmployee";
-            this.pnlEmployee.Size = new System.Drawing.Size(282, 77);
-            this.pnlEmployee.TabIndex = 153;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label20.Location = new System.Drawing.Point(17, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 142;
-            this.label20.Text = "Salary Sheet";
-            // 
             // pnlBanking
             // 
-            this.pnlBanking.Controls.Add(this.label14);
-            this.pnlBanking.Controls.Add(this.label15);
-            this.pnlBanking.Location = new System.Drawing.Point(8, 43);
+            this.pnlBanking.Controls.Add(this.linkLabel14);
+            this.pnlBanking.Controls.Add(this.linkLabel15);
+            this.pnlBanking.Location = new System.Drawing.Point(8, 42);
             this.pnlBanking.Name = "pnlBanking";
             this.pnlBanking.Size = new System.Drawing.Size(282, 96);
             this.pnlBanking.TabIndex = 149;
             // 
-            // label14
+            // linkLabel14
             // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label14.Location = new System.Drawing.Point(17, 45);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 13);
-            this.label14.TabIndex = 142;
-            this.label14.Text = "Deposit Detail";
+            this.linkLabel14.AutoSize = true;
+            this.linkLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel14.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel14.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel14.Name = "linkLabel14";
+            this.linkLabel14.Size = new System.Drawing.Size(73, 13);
+            this.linkLabel14.TabIndex = 142;
+            this.linkLabel14.TabStop = true;
+            this.linkLabel14.Text = "Deposit Detail";
+            this.linkLabel14.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel14_LinkClicked);
             // 
-            // label15
+            // linkLabel15
             // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.label15.Location = new System.Drawing.Point(17, 21);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 13);
-            this.label15.TabIndex = 142;
-            this.label15.Text = "Check Detail";
+            this.linkLabel15.AutoSize = true;
+            this.linkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel15.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel15.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel15.Name = "linkLabel15";
+            this.linkLabel15.Size = new System.Drawing.Size(68, 13);
+            this.linkLabel15.TabIndex = 142;
+            this.linkLabel15.TabStop = true;
+            this.linkLabel15.Text = "Check Detail";
+            this.linkLabel15.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel15_LinkClicked);
+            // 
+            // pnlNonProfit
+            // 
+            this.pnlNonProfit.Controls.Add(this.linkLabel27);
+            this.pnlNonProfit.Controls.Add(this.linkLabel26);
+            this.pnlNonProfit.Controls.Add(this.linkLabel25);
+            this.pnlNonProfit.Controls.Add(this.linkLabel24);
+            this.pnlNonProfit.Controls.Add(this.linkLabel23);
+            this.pnlNonProfit.Controls.Add(this.linkLabel22);
+            this.pnlNonProfit.Controls.Add(this.linkLabel19);
+            this.pnlNonProfit.Controls.Add(this.linkLabel21);
+            this.pnlNonProfit.Location = new System.Drawing.Point(8, 42);
+            this.pnlNonProfit.Name = "pnlNonProfit";
+            this.pnlNonProfit.Size = new System.Drawing.Size(282, 223);
+            this.pnlNonProfit.TabIndex = 151;
+            // 
+            // linkLabel27
+            // 
+            this.linkLabel27.AutoSize = true;
+            this.linkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel27.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel27.Location = new System.Drawing.Point(17, 197);
+            this.linkLabel27.Name = "linkLabel27";
+            this.linkLabel27.Size = new System.Drawing.Size(195, 13);
+            this.linkLabel27.TabIndex = 142;
+            this.linkLabel27.TabStop = true;
+            this.linkLabel27.Text = "Statement of Functional Expenses (990)";
+            this.linkLabel27.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel27_LinkClicked);
+            // 
+            // linkLabel26
+            // 
+            this.linkLabel26.AutoSize = true;
+            this.linkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel26.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel26.Location = new System.Drawing.Point(17, 172);
+            this.linkLabel26.Name = "linkLabel26";
+            this.linkLabel26.Size = new System.Drawing.Size(152, 13);
+            this.linkLabel26.TabIndex = 142;
+            this.linkLabel26.TabStop = true;
+            this.linkLabel26.Text = "Statement of Financial Position";
+            // 
+            // linkLabel25
+            // 
+            this.linkLabel25.AutoSize = true;
+            this.linkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel25.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel25.Location = new System.Drawing.Point(17, 148);
+            this.linkLabel25.Name = "linkLabel25";
+            this.linkLabel25.Size = new System.Drawing.Size(215, 13);
+            this.linkLabel25.TabIndex = 142;
+            this.linkLabel25.TabStop = true;
+            this.linkLabel25.Text = "Statement of Financial Income and Expense";
+            // 
+            // linkLabel24
+            // 
+            this.linkLabel24.AutoSize = true;
+            this.linkLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel24.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel24.Location = new System.Drawing.Point(17, 123);
+            this.linkLabel24.Name = "linkLabel24";
+            this.linkLabel24.Size = new System.Drawing.Size(129, 13);
+            this.linkLabel24.TabIndex = 142;
+            this.linkLabel24.TabStop = true;
+            this.linkLabel24.Text = "Programs/Projects Report";
+            // 
+            // linkLabel23
+            // 
+            this.linkLabel23.AutoSize = true;
+            this.linkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel23.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel23.Location = new System.Drawing.Point(17, 98);
+            this.linkLabel23.Name = "linkLabel23";
+            this.linkLabel23.Size = new System.Drawing.Size(112, 13);
+            this.linkLabel23.TabIndex = 142;
+            this.linkLabel23.TabStop = true;
+            this.linkLabel23.Text = "Donors/Grants Report";
+            // 
+            // linkLabel22
+            // 
+            this.linkLabel22.AutoSize = true;
+            this.linkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel22.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel22.Location = new System.Drawing.Point(17, 71);
+            this.linkLabel22.Name = "linkLabel22";
+            this.linkLabel22.Size = new System.Drawing.Size(190, 13);
+            this.linkLabel22.TabIndex = 142;
+            this.linkLabel22.TabStop = true;
+            this.linkLabel22.Text = "Budget vs. Actual by Program/Projects";
+            // 
+            // linkLabel19
+            // 
+            this.linkLabel19.AutoSize = true;
+            this.linkLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel19.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel19.Location = new System.Drawing.Point(17, 45);
+            this.linkLabel19.Name = "linkLabel19";
+            this.linkLabel19.Size = new System.Drawing.Size(178, 13);
+            this.linkLabel19.TabIndex = 142;
+            this.linkLabel19.TabStop = true;
+            this.linkLabel19.Text = "Budget vs. Actual by Donors/Grants";
+            // 
+            // linkLabel21
+            // 
+            this.linkLabel21.AutoSize = true;
+            this.linkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.linkLabel21.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel21.Location = new System.Drawing.Point(17, 21);
+            this.linkLabel21.Name = "linkLabel21";
+            this.linkLabel21.Size = new System.Drawing.Size(115, 13);
+            this.linkLabel21.TabIndex = 142;
+            this.linkLabel21.TabStop = true;
+            this.linkLabel21.Text = "Biggest Donors/Grants";
             // 
             // pictureBox3
             // 
@@ -942,20 +1014,19 @@
             this.dgvReconcile.AllowUserToDeleteRows = false;
             this.dgvReconcile.AllowUserToResizeColumns = false;
             this.dgvReconcile.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            this.dgvReconcile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle249.BackColor = System.Drawing.Color.White;
+            this.dgvReconcile.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle249;
             this.dgvReconcile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReconcile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dgvReconcile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReconcile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle250.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle250.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle250.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle250.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle250.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle250.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle250.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReconcile.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle250;
             this.dgvReconcile.ColumnHeadersHeight = 30;
             this.dgvReconcile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvReconcile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -964,14 +1035,14 @@
             this.col_last_reco,
             this.col_reco_bal,
             this.col_curr_bal});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReconcile.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle253.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle253.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
+            dataGridViewCellStyle253.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle253.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle253.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle253.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle253.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReconcile.DefaultCellStyle = dataGridViewCellStyle253;
             this.dgvReconcile.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvReconcile.Location = new System.Drawing.Point(4, 40);
             this.dgvReconcile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -979,14 +1050,14 @@
             this.dgvReconcile.Name = "dgvReconcile";
             this.dgvReconcile.ReadOnly = true;
             this.dgvReconcile.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReconcile.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle254.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle254.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle254.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle254.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle254.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle254.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle254.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReconcile.RowHeadersDefaultCellStyle = dataGridViewCellStyle254;
             this.dgvReconcile.RowHeadersVisible = false;
             this.dgvReconcile.RowHeadersWidth = 51;
             this.dgvReconcile.RowTemplate.Height = 30;
@@ -1016,6 +1087,51 @@
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvReconcile.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReconcile_CellClick);
             this.dgvReconcile.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReconcile_CellContentClick);
+            // 
+            // col_ac_id
+            // 
+            this.col_ac_id.HeaderText = "Acc Id";
+            this.col_ac_id.Name = "col_ac_id";
+            this.col_ac_id.ReadOnly = true;
+            this.col_ac_id.Visible = false;
+            // 
+            // account
+            // 
+            this.account.HeaderText = "ACCOUNT";
+            this.account.MinimumWidth = 6;
+            this.account.Name = "account";
+            this.account.ReadOnly = true;
+            this.account.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.account.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // col_last_reco
+            // 
+            this.col_last_reco.HeaderText = "LAST RECONCILED";
+            this.col_last_reco.MinimumWidth = 6;
+            this.col_last_reco.Name = "col_last_reco";
+            this.col_last_reco.ReadOnly = true;
+            // 
+            // col_reco_bal
+            // 
+            dataGridViewCellStyle251.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle251.Format = "N2";
+            dataGridViewCellStyle251.NullValue = null;
+            this.col_reco_bal.DefaultCellStyle = dataGridViewCellStyle251;
+            this.col_reco_bal.HeaderText = "RECONCILED BALANCE";
+            this.col_reco_bal.MinimumWidth = 6;
+            this.col_reco_bal.Name = "col_reco_bal";
+            this.col_reco_bal.ReadOnly = true;
+            // 
+            // col_curr_bal
+            // 
+            dataGridViewCellStyle252.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle252.Format = "N2";
+            dataGridViewCellStyle252.NullValue = null;
+            this.col_curr_bal.DefaultCellStyle = dataGridViewCellStyle252;
+            this.col_curr_bal.HeaderText = "CURRENT BALANCE";
+            this.col_curr_bal.MinimumWidth = 6;
+            this.col_curr_bal.Name = "col_curr_bal";
+            this.col_curr_bal.ReadOnly = true;
             // 
             // label29
             // 
@@ -1210,15 +1326,6 @@
             this.panel7.Size = new System.Drawing.Size(2, 599);
             this.panel7.TabIndex = 145;
             // 
-            // account
-            // 
-            this.account.HeaderText = "ACCOUNT";
-            this.account.MinimumWidth = 6;
-            this.account.Name = "account";
-            this.account.ReadOnly = true;
-            this.account.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.account.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "ACCOUNT";
@@ -1238,10 +1345,10 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle255.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle255.Format = "N2";
+            dataGridViewCellStyle255.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle255;
             this.dataGridViewTextBoxColumn3.HeaderText = "RECONCILED BALANCE";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -1250,51 +1357,15 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N2";
-            dataGridViewCellStyle16.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle256.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle256.Format = "N2";
+            dataGridViewCellStyle256.NullValue = null;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle256;
             this.dataGridViewTextBoxColumn4.HeaderText = "CURRENT BALANCE";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 151;
-            // 
-            // col_ac_id
-            // 
-            this.col_ac_id.HeaderText = "Acc Id";
-            this.col_ac_id.Name = "col_ac_id";
-            this.col_ac_id.ReadOnly = true;
-            this.col_ac_id.Visible = false;
-            // 
-            // col_last_reco
-            // 
-            this.col_last_reco.HeaderText = "LAST RECONCILED";
-            this.col_last_reco.MinimumWidth = 6;
-            this.col_last_reco.Name = "col_last_reco";
-            this.col_last_reco.ReadOnly = true;
-            // 
-            // col_reco_bal
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.col_reco_bal.DefaultCellStyle = dataGridViewCellStyle11;
-            this.col_reco_bal.HeaderText = "RECONCILED BALANCE";
-            this.col_reco_bal.MinimumWidth = 6;
-            this.col_reco_bal.Name = "col_reco_bal";
-            this.col_reco_bal.ReadOnly = true;
-            // 
-            // col_curr_bal
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.col_curr_bal.DefaultCellStyle = dataGridViewCellStyle12;
-            this.col_curr_bal.HeaderText = "CURRENT BALANCE";
-            this.col_curr_bal.MinimumWidth = 6;
-            this.col_curr_bal.Name = "col_curr_bal";
-            this.col_curr_bal.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -1337,8 +1408,6 @@
             this.guna2ShadowPanel3.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.pnlNonProfit.ResumeLayout(false);
-            this.pnlNonProfit.PerformLayout();
             this.pnlAccounting.ResumeLayout(false);
             this.pnlAccounting.PerformLayout();
             this.pnlVendor.ResumeLayout(false);
@@ -1351,6 +1420,8 @@
             this.pnlEmployee.PerformLayout();
             this.pnlBanking.ResumeLayout(false);
             this.pnlBanking.PerformLayout();
+            this.pnlNonProfit.ResumeLayout(false);
+            this.pnlNonProfit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -1382,42 +1453,36 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel pnlNonProfit;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.LinkLabel linkLabel27;
+        private System.Windows.Forms.LinkLabel linkLabel26;
+        private System.Windows.Forms.LinkLabel linkLabel25;
+        private System.Windows.Forms.LinkLabel linkLabel24;
+        private System.Windows.Forms.LinkLabel linkLabel23;
+        private System.Windows.Forms.LinkLabel linkLabel22;
+        private System.Windows.Forms.LinkLabel linkLabel19;
+        private System.Windows.Forms.LinkLabel linkLabel21;
         private System.Windows.Forms.Panel pnlCustomers;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.LinkLabel linkLabel12;
+        private System.Windows.Forms.LinkLabel linkLabel18;
+        private System.Windows.Forms.LinkLabel linkLabel10;
+        private System.Windows.Forms.LinkLabel linkLabel11;
         private System.Windows.Forms.Panel pnlCompany;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.LinkLabel linkLabel13;
+        private System.Windows.Forms.LinkLabel linkLabel16;
+        private System.Windows.Forms.LinkLabel linkLabel17;
         private System.Windows.Forms.Panel pnlEmployee;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.LinkLabel linkLabel20;
         private System.Windows.Forms.Panel pnlBanking;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.LinkLabel linkLabel14;
+        private System.Windows.Forms.LinkLabel linkLabel15;
         private System.Windows.Forms.Panel pnlAccounting;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2ComboBox cmbMemorized;
         internal System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlVendor;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.LinkLabel linkLabel32;
+        private System.Windows.Forms.LinkLabel linkLabel33;
+        private System.Windows.Forms.LinkLabel linkLabel34;
+        private System.Windows.Forms.LinkLabel linkLabel35;
         private Guna.UI2.WinForms.Guna2DataGridView dgvTools2;
         private System.Windows.Forms.Panel panel8;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbheader;
@@ -1448,5 +1513,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_last_reco;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_reco_bal;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_curr_bal;
+        private System.Windows.Forms.LinkLabel linkLabel9;
+        private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.LinkLabel linkLabel7;
+        private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel linkLabel36;
+        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }

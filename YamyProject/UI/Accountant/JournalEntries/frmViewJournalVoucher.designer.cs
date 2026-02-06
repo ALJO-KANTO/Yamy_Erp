@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.txtCreditAmount = new Guna.UI2.WinForms.Guna2TextBox();
@@ -92,6 +92,10 @@
             this.guna2TileButton24 = new Guna.UI2.WinForms.Guna2TileButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2VSeparator9 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.BtnAttach = new Guna.UI2.WinForms.Guna2TileButton();
+            this.guna2VSeparator10 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJV)).BeginInit();
@@ -241,10 +245,10 @@
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(3, 199);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(3, 192);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1208, 506);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1208, 513);
             this.guna2GroupBox1.TabIndex = 3;
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
             // 
@@ -282,19 +286,19 @@
             this.dgvJV.AllowUserToDeleteRows = false;
             this.dgvJV.AllowUserToResizeColumns = false;
             this.dgvJV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.dgvJV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            this.dgvJV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvJV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
             this.dgvJV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvJV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvJV.ColumnHeadersHeight = 20;
             this.dgvJV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvJV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -307,14 +311,14 @@
             this.description,
             this.partner_name,
             this.delete});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJV.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJV.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvJV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvJV.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvJV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -325,13 +329,13 @@
             this.dgvJV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvJV.RowHeadersVisible = false;
             this.dgvJV.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.dgvJV.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.dgvJV.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvJV.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvJV.RowTemplate.Height = 25;
             this.dgvJV.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvJV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvJV.Size = new System.Drawing.Size(1208, 476);
+            this.dgvJV.Size = new System.Drawing.Size(1208, 483);
             this.dgvJV.TabIndex = 8;
             this.dgvJV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvJV.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F);
@@ -468,7 +472,7 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 146);
+            this.panel2.Location = new System.Drawing.Point(3, 139);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1208, 53);
@@ -565,7 +569,7 @@
             this.headerUC1.Location = new System.Drawing.Point(3, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1208, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1208, 30);
             this.headerUC1.TabIndex = 238;
             // 
             // guna2Button2
@@ -644,7 +648,7 @@
             // 
             this.panel9.Controls.Add(this.tabControl2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 37);
+            this.panel9.Location = new System.Drawing.Point(3, 30);
             this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1208, 109);
@@ -668,6 +672,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage3.Controls.Add(this.guna2VSeparator9);
+            this.tabPage3.Controls.Add(this.BtnAttach);
+            this.tabPage3.Controls.Add(this.guna2VSeparator10);
             this.tabPage3.Controls.Add(this.txtJvId);
             this.tabPage3.Controls.Add(this.btnNext);
             this.tabPage3.Controls.Add(this.btnPrevious);
@@ -1113,6 +1120,48 @@
             this.guna2DragControl1.TargetControl = this.LbHeader;
             this.guna2DragControl1.TransparentWhileDrag = false;
             // 
+            // guna2VSeparator9
+            // 
+            this.guna2VSeparator9.Location = new System.Drawing.Point(755, 14);
+            this.guna2VSeparator9.Name = "guna2VSeparator9";
+            this.guna2VSeparator9.Size = new System.Drawing.Size(8, 46);
+            this.guna2VSeparator9.TabIndex = 34;
+            // 
+            // BtnAttach
+            // 
+            this.BtnAttach.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAttach.BorderColor = System.Drawing.Color.Transparent;
+            this.BtnAttach.BorderRadius = 10;
+            this.BtnAttach.BorderThickness = 2;
+            this.BtnAttach.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.BtnAttach.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnAttach.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnAttach.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnAttach.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnAttach.FillColor = System.Drawing.Color.Transparent;
+            this.BtnAttach.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAttach.ForeColor = System.Drawing.Color.Black;
+            this.BtnAttach.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.BtnAttach.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.BtnAttach.Image = global::YamyProject.Properties.Resources.attachN;
+            this.BtnAttach.Location = new System.Drawing.Point(701, 15);
+            this.BtnAttach.Name = "BtnAttach";
+            this.BtnAttach.Size = new System.Drawing.Size(54, 47);
+            this.BtnAttach.TabIndex = 33;
+            this.BtnAttach.Text = "Attach File";
+            this.BtnAttach.Click += new System.EventHandler(this.BtnAttach_Click);
+            // 
+            // guna2VSeparator10
+            // 
+            this.guna2VSeparator10.Location = new System.Drawing.Point(693, 14);
+            this.guna2VSeparator10.Name = "guna2VSeparator10";
+            this.guna2VSeparator10.Size = new System.Drawing.Size(8, 46);
+            this.guna2VSeparator10.TabIndex = 32;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmViewJournalVoucher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1208,5 +1257,9 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2ImageButton1;
         private System.Windows.Forms.ListBox lstAccountSuggestions;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator9;
+        private Guna.UI2.WinForms.Guna2TileButton BtnAttach;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

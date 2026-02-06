@@ -35,6 +35,8 @@ namespace YamyProject
 
             if (id != 0)
                 BindData();
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
         private void LoaddgvItems()
         {

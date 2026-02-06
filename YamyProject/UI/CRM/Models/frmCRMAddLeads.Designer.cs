@@ -373,7 +373,7 @@
             this.cmbCust.Name = "cmbCust";
             this.cmbCust.Size = new System.Drawing.Size(265, 24);
             this.cmbCust.TabIndex = 47;
-            this.cmbCust.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox3_SelectedIndexChanged);
+            this.cmbCust.SelectedIndexChanged += new System.EventHandler(this.cmbCust_SelectedIndexChanged);
             // 
             // txtnotes
             // 
@@ -390,9 +390,9 @@
             this.panel1.Controls.Add(this.guna2Button3);
             this.panel1.Controls.Add(this.guna2Button4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 510);
+            this.panel1.Location = new System.Drawing.Point(2, 508);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 44);
+            this.panel1.Size = new System.Drawing.Size(416, 44);
             this.panel1.TabIndex = 50;
             // 
             // guna2Button3
@@ -413,6 +413,7 @@
             this.guna2Button3.Size = new System.Drawing.Size(87, 33);
             this.guna2Button3.TabIndex = 51;
             this.guna2Button3.Text = "Save";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button4
             // 
@@ -431,6 +432,7 @@
             this.guna2Button4.Size = new System.Drawing.Size(87, 33);
             this.guna2Button4.TabIndex = 50;
             this.guna2Button4.Text = "CANCEL";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // formRightBoarder
             // 
@@ -439,7 +441,7 @@
             this.formRightBoarder.Location = new System.Drawing.Point(418, 31);
             this.formRightBoarder.Margin = new System.Windows.Forms.Padding(2);
             this.formRightBoarder.Name = "formRightBoarder";
-            this.formRightBoarder.Size = new System.Drawing.Size(2, 479);
+            this.formRightBoarder.Size = new System.Drawing.Size(2, 523);
             this.formRightBoarder.TabIndex = 150;
             // 
             // formLeftBoarder
@@ -449,14 +451,14 @@
             this.formLeftBoarder.Location = new System.Drawing.Point(0, 31);
             this.formLeftBoarder.Margin = new System.Windows.Forms.Padding(2);
             this.formLeftBoarder.Name = "formLeftBoarder";
-            this.formLeftBoarder.Size = new System.Drawing.Size(2, 479);
+            this.formLeftBoarder.Size = new System.Drawing.Size(2, 523);
             this.formLeftBoarder.TabIndex = 151;
             // 
             // formBottomBoarder
             // 
             this.formBottomBoarder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.formBottomBoarder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.formBottomBoarder.Location = new System.Drawing.Point(2, 508);
+            this.formBottomBoarder.Location = new System.Drawing.Point(2, 552);
             this.formBottomBoarder.Margin = new System.Windows.Forms.Padding(2);
             this.formBottomBoarder.Name = "formBottomBoarder";
             this.formBottomBoarder.Size = new System.Drawing.Size(416, 2);

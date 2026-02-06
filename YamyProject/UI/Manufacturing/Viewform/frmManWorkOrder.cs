@@ -117,11 +117,12 @@ namespace YamyProject.UI.Manufacturing.Viewform
 
                 if (status == "Done")
                 {
-                    string productName = dgvItems.Rows[e.RowIndex].Cells["ProductName"].Value?.ToString();
-                    string batchNo = dgvItems.Rows[e.RowIndex].Cells["BatchNo"].Value?.ToString();
+                    string productName = dgvItems.Rows[e.RowIndex].Cells["dgvdescription"].Value?.ToString();
+                    string batchNo = dgvItems.Rows[e.RowIndex].Cells["dgvbatchNo"].Value?.ToString();
+                    int dId = int.Parse(dgvItems.Rows[e.RowIndex].Cells["dgvid"].Value?.ToString());
 
                     // Open Packing Form
-                    frmManProductPacking packingForm = new frmManProductPacking();
+                    frmManProductPacking packingForm = new frmManProductPacking(dId);
 
                     // Optional: send the data to the form
                     // packingForm.SetInitialData(productName, batchNo);

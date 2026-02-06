@@ -68,6 +68,8 @@ namespace YamyProject
                             SUM(CASE WHEN t.type = 'Purchase Return Invoice' THEN (t.qty_out) ELSE 0 END) AS PurchaseReturn,
                             SUM(CASE WHEN t.type = 'Sales Return Invoice' THEN (t.qty_in) ELSE 0 END) AS SalesReturn,
                             SUM(CASE WHEN t.type = 'Damage' THEN (t.qty_out) ELSE 0 END) AS Damage,
+                            SUM(CASE WHEN t.type = 'Manufacturing' THEN (t.qty_in - t.qty_out) ELSE 0 END) AS Productions,
+                            SUM(CASE WHEN t.type = 'Manufacture Packing' THEN (t.qty_in - t.qty_out) ELSE 0 END) AS Packing,
                             SUM(t.qty_in - t.qty_out) AS `BalanceQty`
                         FROM
                             tbl_items i
@@ -102,7 +104,7 @@ namespace YamyProject
 
                     string[] numericColumns = {
                         "CostPrice", "SalesPrice", "OpeningQty", "Purchase",
-                        "Sales", "PurchaseReturn", "SalesReturn", "Damage", "BalanceQty"
+                        "Sales", "PurchaseReturn", "SalesReturn", "Damage", "Productions", "Packing", "BalanceQty"
                     };
 
                     foreach (DataGridViewColumn column in dgvItems.Columns)
@@ -222,6 +224,7 @@ namespace YamyProject
                     column.Name == "OpeningQty" || column.Name == "Purchase" ||
                     column.Name == "Sales" || column.Name == "PurchaseReturn" ||
                     column.Name == "SalesReturn" || column.Name == "Damage" ||
+                    column.Name == "Productions" || column.Name == "Packing" ||
                     column.Name == "BalanceQty")
                 {
                     // Format the decimal columns (for example, for cost and sales prices)
@@ -272,7 +275,7 @@ namespace YamyProject
             var numericColumns = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "CostPrice", "SalesPrice", "OpeningQty", "Purchase",
-                "Sales", "PurchaseReturn", "SalesReturn", "Damage", "BalanceQty"
+                "Sales", "PurchaseReturn", "SalesReturn", "Damage", "Productions", "Packing", "BalanceQty"
             };
 
             // Sum totals
@@ -448,7 +451,7 @@ namespace YamyProject
             var numericColumns = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "CostPrice", "SalesPrice", "OpeningQty", "Purchase",
-                "Sales", "PurchaseReturn", "SalesReturn", "Damage", "BalanceQty"
+                "Sales", "PurchaseReturn", "SalesReturn", "Damage", "Productions", "Packing", "BalanceQty"
             };
 
             using (SaveFileDialog saveDialog = new SaveFileDialog())

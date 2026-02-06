@@ -121,11 +121,17 @@ namespace YamyProject
             BindCombos.PopulateProjectResourceLabor(cmbEmployees);
             cmbEmployees.SelectedIndex = -1;
 
-            cmbMonths.Items.AddRange(CultureInfo.CurrentCulture.DateTimeFormat.MonthNames
-                .Where(m => !string.IsNullOrEmpty(m)).ToArray());
+            var EnglishMonths = new CultureInfo("en-US")
+                .DateTimeFormat.MonthNames
+                .Where(m => !string.IsNullOrEmpty(m))
+                .ToArray();
+
+            cmbMonths.Items.AddRange(EnglishMonths);
 
             cmbMonths.SelectedItem = DateTime.Now.ToString("MMMM");
             cmbMonths.SelectedIndex = -1;
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvAttendance);
         }
 
         //private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)

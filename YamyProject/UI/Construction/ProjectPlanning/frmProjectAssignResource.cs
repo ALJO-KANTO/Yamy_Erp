@@ -33,6 +33,7 @@ namespace YamyProject
             LoaddgvItems();
             if (id != 0)
                 BindData();
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvResource);
         }
         public void LoaddgvItems()
         {

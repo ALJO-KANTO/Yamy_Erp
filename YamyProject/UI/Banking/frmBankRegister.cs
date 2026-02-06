@@ -243,5 +243,10 @@ namespace YamyProject
                 this.Close();
             }
         }
+
+        private void headerUC1_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

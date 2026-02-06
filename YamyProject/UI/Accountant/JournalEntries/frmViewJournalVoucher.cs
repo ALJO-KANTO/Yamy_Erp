@@ -1,11 +1,13 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -32,11 +34,13 @@ namespace YamyProject
             //BindCombos.PopulateAllLevel4Account(cmbCostCenter);
             //BindCombos.PopulateEmployees(cmbEmployee);
             //cmbCostCenter.SelectedIndex = -1;
-            if (id != 0)
-                BindJournal();
             txt_jv_code.Text = GenerateNextJournalCode();
             txtJvId.Text = GenerateNextJournalId();
             LoadComboAccount();
+
+            if (id != 0)
+                BindJournal();
+
         }
         private string GenerateNextJournalId()
         {
@@ -292,6 +296,10 @@ namespace YamyProject
             CommonInsert.DeleteTransactionEntry(id, "JOURNAL");
             insertJvDetails(id.ToString());
             Utilities.LogAudit(frmLogin.userId, "Update Journal Voucher", "Journal Voucher", id, "Updated Journal Voucher: " + invCode);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
         private bool insertJV()
@@ -309,6 +317,10 @@ namespace YamyProject
                                                           DBClass.CreateParameter("state", 0)).ToString());
             insertJvDetails(id.ToString());
             Utilities.LogAudit(frmLogin.userId, "Create Journal Voucher", "Journal Voucher", id, "Created Journal Voucher: " + invCode);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
             return true;
         }
         private void insertJvDetails(string inv_id)
@@ -1079,6 +1091,23 @@ namespace YamyProject
         {
             nameslistView.Visible = false;
             nameslistView.SendToBack();
+        }
+
+        static string filePath = "";
+        private void BtnAttach_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "JOURNAL VOUCHER",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
     }
 }

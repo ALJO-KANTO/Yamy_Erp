@@ -30,7 +30,7 @@ namespace YamyProject.UI.CRM.Models
 
         private void frmCRMAddLeads_Load(object sender, EventArgs e)
         {
-      BindCombos.PopulateCustomers(cmbCust);
+            BindCombos.PopulateCustomers(cmbCust);
             if (cmbstage.Text == "Prospecting")
             {
                 opnlvl = "Open";
@@ -61,7 +61,7 @@ namespace YamyProject.UI.CRM.Models
             }
         }
 
-        private void guna2ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCust_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCust.SelectedValue == null)
             {

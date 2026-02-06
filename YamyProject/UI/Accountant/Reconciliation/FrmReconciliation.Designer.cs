@@ -269,7 +269,7 @@ namespace YamyProject
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(920, 40);
+            this.headerUC1.Size = new System.Drawing.Size(920, 30);
             this.headerUC1.TabIndex = 3;
             this.headerUC1.TabStop = false;
             // 

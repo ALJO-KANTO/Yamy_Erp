@@ -32,6 +32,8 @@ namespace YamyProject
             BindCombos.PopulateAllLevel4Account(cmbFundAccount);
             BindCombo();
             BindInvoice();
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvMilestones);
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvQuantitySurvey);
         }
         public void BindCombo()
         {

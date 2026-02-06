@@ -97,11 +97,101 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;A/R Aging Summary.
+        /// </summary>
+        public static string _A_R_Aging_Summary {
+            get {
+                return ResourceManager.GetString("&A/R_Aging_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (All).
         /// </summary>
         public static string _All_ {
             get {
                 return ResourceManager.GetString("(All)", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Balance Sheet Standard.
+        /// </summary>
+        public static string _Balance_Sheet_Standard {
+            get {
+                return ResourceManager.GetString("&Balance_Sheet_Standard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Customer &amp;&amp; Receivable.
+        /// </summary>
+        public static string _Customer____Receivable {
+            get {
+                return ResourceManager.GetString("&Customer_&&_Receivable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Expense by Vendor Summary.
+        /// </summary>
+        public static string _Expense_by_Vendor_Summary {
+            get {
+                return ResourceManager.GetString("&Expense_by_Vendor_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Income by Customer Detail.
+        /// </summary>
+        public static string _Income_by_Customer_Detail {
+            get {
+                return ResourceManager.GetString("&Income_by_Customer_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Income by Customer Summary.
+        /// </summary>
+        public static string _Income_by_Customer_Summary {
+            get {
+                return ResourceManager.GetString("&Income_by_Customer_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open Invoices.
+        /// </summary>
+        public static string _Open_Invoices {
+            get {
+                return ResourceManager.GetString("&Open_Invoices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Profit &amp;&amp; Loss Prev Year Comparison.
+        /// </summary>
+        public static string _Profit____Loss_Prev_Year_Comparison {
+            get {
+                return ResourceManager.GetString("&Profit_&&_Loss_Prev_Year_Comparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchases.
+        /// </summary>
+        public static string _Purchases {
+            get {
+                return ResourceManager.GetString("&Purchases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales.
+        /// </summary>
+        public static string _Sales {
+            get {
+                return ResourceManager.GetString("&Sales", resourceCulture);
             }
         }
         
@@ -124,11 +214,29 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A/P Aging Detail.
+        /// </summary>
+        public static string A_P_Aging_Detail {
+            get {
+                return ResourceManager.GetString("A/P_Aging_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A/P Aging Summary.
         /// </summary>
         public static string A_P_Aging_Summary {
             get {
                 return ResourceManager.GetString("A/P_Aging_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A/R Aging &amp;Detail.
+        /// </summary>
+        public static string A_R_Aging__Detail {
+            get {
+                return ResourceManager.GetString("A/R_Aging_&Detail", resourceCulture);
             }
         }
         
@@ -250,6 +358,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Listing.
+        /// </summary>
+        public static string Account_Listing {
+            get {
+                return ResourceManager.GetString("Account_Listing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account Name.
         /// </summary>
         public static string Account_Name {
@@ -336,6 +453,15 @@ namespace YamyProject.Localization {
         public static string Accountant {
             get {
                 return ResourceManager.GetString("Accountant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accountant &amp;&amp; Taxes.
+        /// </summary>
+        public static string Accountant____Taxes {
+            get {
+                return ResourceManager.GetString("Accountant_&&_Taxes", resourceCulture);
             }
         }
         
@@ -952,6 +1078,24 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assembly Shortage by Item.
+        /// </summary>
+        public static string Assembly_Shortage_by_Item {
+            get {
+                return ResourceManager.GetString("Assembly_Shortage_by_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assembly Shortage by Vendor.
+        /// </summary>
+        public static string Assembly_Shortage_by_Vendor {
+            get {
+                return ResourceManager.GetString("Assembly_Shortage_by_Vendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Asset Account.
         /// </summary>
         public static string Asset_Account {
@@ -1033,6 +1177,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average Days to Pay.
+        /// </summary>
+        public static string Average_Days_to_Pay {
+            get {
+                return ResourceManager.GetString("Average_Days_to_Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Average Days To Pay Summary.
         /// </summary>
         public static string Average_Days_To_Pay_Summary {
@@ -1065,6 +1218,24 @@ namespace YamyProject.Localization {
         public static string AVG_Price {
             get {
                 return ResourceManager.GetString("AVG_Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to B&amp;alance Sheet Detail.
+        /// </summary>
+        public static string B_alance_Sheet_Detail {
+            get {
+                return ResourceManager.GetString("B&alance_Sheet_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ba&amp;lance Sheet Summary.
+        /// </summary>
+        public static string Ba_lance_Sheet_Summary {
+            get {
+                return ResourceManager.GetString("Ba&lance_Sheet_Summary", resourceCulture);
             }
         }
         
@@ -1137,6 +1308,33 @@ namespace YamyProject.Localization {
         public static string Balance_Sheet {
             get {
                 return ResourceManager.GetString("Balance_Sheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance Sheet by Class.
+        /// </summary>
+        public static string Balance_Sheet_by_Class {
+            get {
+                return ResourceManager.GetString("Balance_Sheet_by_Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance Sheet Monthly Comparison.
+        /// </summary>
+        public static string Balance_Sheet_Monthly_Comparison {
+            get {
+                return ResourceManager.GetString("Balance_Sheet_Monthly_Comparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance Sheet Prev Year Comparison.
+        /// </summary>
+        public static string Balance_Sheet_Prev_Year_Comparison {
+            get {
+                return ResourceManager.GetString("Balance_Sheet_Prev_Year_Comparison", resourceCulture);
             }
         }
         
@@ -1294,6 +1492,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Reconciliation.
+        /// </summary>
+        public static string Bank_Reconciliation {
+            get {
+                return ResourceManager.GetString("Bank_Reconciliation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank Statement Balance Amount.
         /// </summary>
         public static string Bank_Statement_Balance_Amount {
@@ -1326,15 +1533,6 @@ namespace YamyProject.Localization {
         public static string Banking_Access {
             get {
                 return ResourceManager.GetString("Banking_Access", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BankReconciliation.
-        /// </summary>
-        public static string BankReconciliation {
-            get {
-                return ResourceManager.GetString("BankReconciliation", resourceCulture);
             }
         }
         
@@ -1438,6 +1636,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bills by Due Date.
+        /// </summary>
+        public static string Bills_by_Due_Date {
+            get {
+                return ResourceManager.GetString("Bills_by_Due_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Book NO.
         /// </summary>
         public static string Book_NO {
@@ -1483,6 +1690,24 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Budget Overview.
+        /// </summary>
+        public static string Budget_Overview {
+            get {
+                return ResourceManager.GetString("Budget_Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Budget vs. Actual.
+        /// </summary>
+        public static string Budget_vs__Actual {
+            get {
+                return ResourceManager.GetString("Budget_vs._Actual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Budget vs. Actual by Donors/Grants.
         /// </summary>
         public static string Budget_vs__Actual_by_Donors_Grants {
@@ -1497,6 +1722,15 @@ namespace YamyProject.Localization {
         public static string Budget_vs__Actual_by_Program_Projects {
             get {
                 return ResourceManager.GetString("Budget_vs._Actual_by_Program/Projects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Budgets &amp;&amp; Forecasts.
+        /// </summary>
+        public static string Budgets____Forecasts {
+            get {
+                return ResourceManager.GetString("Budgets_&&_Forecasts", resourceCulture);
             }
         }
         
@@ -1551,6 +1785,15 @@ namespace YamyProject.Localization {
         public static string Cash {
             get {
                 return ResourceManager.GetString("Cash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash Flow Forecast.
+        /// </summary>
+        public static string Cash_Flow_Forecast {
+            get {
+                return ResourceManager.GetString("Cash_Flow_Forecast", resourceCulture);
             }
         }
         
@@ -1699,56 +1942,11 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check.
-        /// </summary>
-        public static string Check {
-            get {
-                return ResourceManager.GetString("Check", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Check Book Qty.
         /// </summary>
         public static string Check_Book_Qty {
             get {
                 return ResourceManager.GetString("Check_Book_Qty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check Date.
-        /// </summary>
-        public static string Check_Date {
-            get {
-                return ResourceManager.GetString("Check_Date", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check Detail.
-        /// </summary>
-        public static string Check_Detail {
-            get {
-                return ResourceManager.GetString("Check_Detail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check Name.
-        /// </summary>
-        public static string Check_Name {
-            get {
-                return ResourceManager.GetString("Check_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Check No.
-        /// </summary>
-        public static string Check_No {
-            get {
-                return ResourceManager.GetString("Check_No", resourceCulture);
             }
         }
         
@@ -1762,11 +1960,38 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check Register.
+        ///   Looks up a localized string similar to Cheque Register.
         /// </summary>
         public static string Check_Register {
             get {
                 return ResourceManager.GetString("Check_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque.
+        /// </summary>
+        public static string Cheque {
+            get {
+                return ResourceManager.GetString("Cheque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque Date.
+        /// </summary>
+        public static string Cheque_Date {
+            get {
+                return ResourceManager.GetString("Cheque_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque Detail.
+        /// </summary>
+        public static string Cheque_Detail {
+            get {
+                return ResourceManager.GetString("Cheque_Detail", resourceCulture);
             }
         }
         
@@ -1794,6 +2019,24 @@ namespace YamyProject.Localization {
         public static string Cheque_List {
             get {
                 return ResourceManager.GetString("Cheque_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque Name.
+        /// </summary>
+        public static string Cheque_Name {
+            get {
+                return ResourceManager.GetString("Cheque_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheque No.
+        /// </summary>
+        public static string Cheque_No {
+            get {
+                return ResourceManager.GetString("Cheque_No", resourceCulture);
             }
         }
         
@@ -1897,6 +2140,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client-Ready Payroll Reports.
+        /// </summary>
+        public static string Client_Ready_Payroll_Reports {
+            get {
+                return ResourceManager.GetString("Client-Ready_Payroll_Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Close {
@@ -1911,6 +2163,24 @@ namespace YamyProject.Localization {
         public static string Close_All {
             get {
                 return ResourceManager.GetString("Close_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closing Date Exception Report.
+        /// </summary>
+        public static string Closing_Date_Exception_Report {
+            get {
+                return ResourceManager.GetString("Closing_Date_Exception_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Co&amp;llections Report.
+        /// </summary>
+        public static string Co_llections_Report {
+            get {
+                return ResourceManager.GetString("Co&llections_Report", resourceCulture);
             }
         }
         
@@ -1974,6 +2244,15 @@ namespace YamyProject.Localization {
         public static string Company {
             get {
                 return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company &amp;&amp; &amp;Financial.
+        /// </summary>
+        public static string Company_____Financial {
+            get {
+                return ResourceManager.GetString("Company_&&_&Financial", resourceCulture);
             }
         }
         
@@ -2500,6 +2779,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer &amp;Balance Detail.
+        /// </summary>
+        public static string Customer__Balance_Detail {
+            get {
+                return ResourceManager.GetString("Customer_&Balance_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer/ New Customer.
         /// </summary>
         public static string Customer__New_Customer {
@@ -2532,6 +2820,15 @@ namespace YamyProject.Localization {
         public static string Customer_Aging_Summary {
             get {
                 return ResourceManager.GetString("Customer_Aging_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Balance &amp;Summary.
+        /// </summary>
+        public static string Customer_Balance__Summary {
+            get {
+                return ResourceManager.GetString("Customer_Balance_&Summary", resourceCulture);
             }
         }
         
@@ -2599,6 +2896,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer Contact List.
+        /// </summary>
+        public static string Customer_Contact_List {
+            get {
+                return ResourceManager.GetString("Customer_Contact_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer Income Summary.
         /// </summary>
         public static string Customer_Income_Summary {
@@ -2631,6 +2937,24 @@ namespace YamyProject.Localization {
         public static string Customer_Name {
             get {
                 return ResourceManager.GetString("Customer_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Payments by Payment Item.
+        /// </summary>
+        public static string Customer_Payments_by_Payment_Item {
+            get {
+                return ResourceManager.GetString("Customer_Payments_by_Payment_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Phone List.
+        /// </summary>
+        public static string Customer_Phone_List {
+            get {
+                return ResourceManager.GetString("Customer_Phone_List", resourceCulture);
             }
         }
         
@@ -2820,6 +3144,15 @@ namespace YamyProject.Localization {
         public static string Day {
             get {
                 return ResourceManager.GetString("Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day of Week.
+        /// </summary>
+        public static string Day_of_Week {
+            get {
+                return ResourceManager.GetString("Day_of_Week", resourceCulture);
             }
         }
         
@@ -3148,11 +3481,11 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deposit Detail.
+        ///   Looks up a localized string similar to Deposits Detail.
         /// </summary>
-        public static string Deposit_Detail {
+        public static string Deposits_Detail {
             get {
-                return ResourceManager.GetString("Deposit_Detail", resourceCulture);
+                return ResourceManager.GetString("Deposits_Detail", resourceCulture);
             }
         }
         
@@ -3265,6 +3598,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Donor Contribution Summary.
+        /// </summary>
+        public static string Donor_Contribution_Summary {
+            get {
+                return ResourceManager.GetString("Donor_Contribution_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Donors/Grants Report.
         /// </summary>
         public static string Donors_Grants_Report {
@@ -3324,6 +3666,15 @@ namespace YamyProject.Localization {
         public static string E_mai_l {
             get {
                 return ResourceManager.GetString("E-mai&l", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E&amp;xpense by Vendor Detail.
+        /// </summary>
+        public static string E_xpense_by_Vendor_Detail {
+            get {
+                return ResourceManager.GetString("E&xpense_by_Vendor_Detail", resourceCulture);
             }
         }
         
@@ -3571,6 +3922,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Emergency Contact List.
+        /// </summary>
+        public static string Emergency_Contact_List {
+            get {
+                return ResourceManager.GetString("Emergency_Contact_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Emergency Info.
         /// </summary>
         public static string Emergency_Info {
@@ -3652,6 +4012,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Emp Name.
+        /// </summary>
+        public static string Emp_Name {
+            get {
+                return ResourceManager.GetString("Emp_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Employee.
         /// </summary>
         public static string Employee {
@@ -3702,6 +4071,15 @@ namespace YamyProject.Localization {
         public static string Employee_Code {
             get {
                 return ResourceManager.GetString("Employee_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee Contact List.
+        /// </summary>
+        public static string Employee_Contact_List {
+            get {
+                return ResourceManager.GetString("Employee_Contact_List", resourceCulture);
             }
         }
         
@@ -3774,6 +4152,15 @@ namespace YamyProject.Localization {
         public static string Employees {
             get {
                 return ResourceManager.GetString("Employees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees &amp;&amp; Payroll.
+        /// </summary>
+        public static string Employees____Payroll {
+            get {
+                return ResourceManager.GetString("Employees_&&_Payroll", resourceCulture);
             }
         }
         
@@ -4026,6 +4413,24 @@ namespace YamyProject.Localization {
         public static string EOS_Remaining_Days {
             get {
                 return ResourceManager.GetString("EOS_Remaining_Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimate End Date.
+        /// </summary>
+        public static string Estimate_End_Date {
+            get {
+                return ResourceManager.GetString("Estimate_End_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimate Start Date.
+        /// </summary>
+        public static string Estimate_Start_Date {
+            get {
+                return ResourceManager.GetString("Estimate_Start_Date", resourceCulture);
             }
         }
         
@@ -4309,6 +4714,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fixed Asset Listing.
+        /// </summary>
+        public static string Fixed_Asset_Listing {
+            get {
+                return ResourceManager.GetString("Fixed_Asset_Listing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fixed Asset Summary.
         /// </summary>
         public static string Fixed_Asset_Summary {
@@ -4359,6 +4773,24 @@ namespace YamyProject.Localization {
         public static string Fixed_Assets_List {
             get {
                 return ResourceManager.GetString("Fixed_Assets_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forecast Overview.
+        /// </summary>
+        public static string Forecast_Overview {
+            get {
+                return ResourceManager.GetString("Forecast_Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forecast vs. Actual.
+        /// </summary>
+        public static string Forecast_vs__Actual {
+            get {
+                return ResourceManager.GetString("Forecast_vs._Actual", resourceCulture);
             }
         }
         
@@ -4503,6 +4935,15 @@ namespace YamyProject.Localization {
         public static string Gross_Margin {
             get {
                 return ResourceManager.GetString("Gross_Margin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gross Margin by Inventory.
+        /// </summary>
+        public static string Gross_Margin_by_Inventory {
+            get {
+                return ResourceManager.GetString("Gross_Margin_by_Inventory", resourceCulture);
             }
         }
         
@@ -4768,11 +5209,47 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Income Expense &amp;Statement.
+        /// </summary>
+        public static string Income_Expense__Statement {
+            get {
+                return ResourceManager.GetString("Income_Expense_&Statement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Income Expense Statement.
         /// </summary>
         public static string Income_Expense_Statement {
             get {
                 return ResourceManager.GetString("Income_Expense_Statement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income Tax Detail.
+        /// </summary>
+        public static string Income_Tax_Detail {
+            get {
+                return ResourceManager.GetString("Income_Tax_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income Tax Preparation.
+        /// </summary>
+        public static string Income_Tax_Preparation {
+            get {
+                return ResourceManager.GetString("Income_Tax_Preparation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Income Tax Summary.
+        /// </summary>
+        public static string Income_Tax_Summary {
+            get {
+                return ResourceManager.GetString("Income_Tax_Summary", resourceCulture);
             }
         }
         
@@ -4935,6 +5412,51 @@ namespace YamyProject.Localization {
         public static string Inventory_Items {
             get {
                 return ResourceManager.GetString("Inventory_Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory Stock Status by Item.
+        /// </summary>
+        public static string Inventory_Stock_Status_by_Item {
+            get {
+                return ResourceManager.GetString("Inventory_Stock_Status_by_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory Stock Status by Vendor.
+        /// </summary>
+        public static string Inventory_Stock_Status_by_Vendor {
+            get {
+                return ResourceManager.GetString("Inventory_Stock_Status_by_Vendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory Turnover by Item.
+        /// </summary>
+        public static string Inventory_Turnover_by_Item {
+            get {
+                return ResourceManager.GetString("Inventory_Turnover_by_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory Valuation Detail.
+        /// </summary>
+        public static string Inventory_Valuation_Detail {
+            get {
+                return ResourceManager.GetString("Inventory_Valuation_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory_Valuation_Summary.
+        /// </summary>
+        public static string Inventory_Valuation_Summary {
+            get {
+                return ResourceManager.GetString("Inventory_Valuation_Summary", resourceCulture);
             }
         }
         
@@ -5164,6 +5686,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Price List.
+        /// </summary>
+        public static string Item_Price_List {
+            get {
+                return ResourceManager.GetString("Item_Price_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Profit.
         /// </summary>
         public static string Item_Profit {
@@ -5241,6 +5772,15 @@ namespace YamyProject.Localization {
         public static string Items___Services {
             get {
                 return ResourceManager.GetString("Items_&_Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Journal.
+        /// </summary>
+        public static string Journal {
+            get {
+                return ResourceManager.GetString("Journal", resourceCulture);
             }
         }
         
@@ -5331,6 +5871,15 @@ namespace YamyProject.Localization {
         public static string L_S_Used_Days {
             get {
                 return ResourceManager.GetString("L.S_Used_Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labor Attendance.
+        /// </summary>
+        public static string Labor_Attendance {
+            get {
+                return ResourceManager.GetString("Labor_Attendance", resourceCulture);
             }
         }
         
@@ -5623,6 +6172,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string location {
+            get {
+                return ResourceManager.GetString("location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to log Out.
         /// </summary>
         public static string Log_Out {
@@ -5893,6 +6451,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Missing Cheque.
+        /// </summary>
+        public static string Missing_Cheque {
+            get {
+                return ResourceManager.GetString("Missing_Cheque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile.
         /// </summary>
         public static string Mobile {
@@ -5938,6 +6505,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monthly Sales by Customer.
+        /// </summary>
+        public static string Monthly_Sales_by_Customer {
+            get {
+                return ResourceManager.GetString("Monthly_Sales_by_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More.
         /// </summary>
         public static string More {
@@ -5979,6 +6555,15 @@ namespace YamyProject.Localization {
         public static string Name__ {
             get {
                 return ResourceManager.GetString("Name_:", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Negative Inventory Listing.
+        /// </summary>
+        public static string Negative_Inventory_Listing {
+            get {
+                return ResourceManager.GetString("Negative_Inventory_Listing", resourceCulture);
             }
         }
         
@@ -6127,6 +6712,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Hire List.
+        /// </summary>
+        public static string New_Hire_List {
+            get {
+                return ResourceManager.GetString("New_Hire_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Invoice.
         /// </summary>
         public static string New_Invoice {
@@ -6168,6 +6762,15 @@ namespace YamyProject.Localization {
         public static string New_Loan {
             get {
                 return ResourceManager.GetString("New_Loan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Planning.
+        /// </summary>
+        public static string New_Planning {
+            get {
+                return ResourceManager.GetString("New_Planning", resourceCulture);
             }
         }
         
@@ -6325,6 +6928,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nonprofit Reports.
+        /// </summary>
+        public static string Nonprofit_Reports {
+            get {
+                return ResourceManager.GetString("Nonprofit_Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         public static string Normal {
@@ -6438,6 +7050,42 @@ namespace YamyProject.Localization {
         public static string OPEN_LEADS {
             get {
                 return ResourceManager.GetString("OPEN_LEADS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Purchase Orders.
+        /// </summary>
+        public static string Open_Purchase_Orders {
+            get {
+                return ResourceManager.GetString("Open_Purchase_Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Purchase Orders by Job.
+        /// </summary>
+        public static string Open_Purchase_Orders_by_Job {
+            get {
+                return ResourceManager.GetString("Open_Purchase_Orders_by_Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Purchase Orders by Vendor.
+        /// </summary>
+        public static string Open_Purchase_Orders_by_Vendor {
+            get {
+                return ResourceManager.GetString("Open_Purchase_Orders_by_Vendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Purchase Orders Detail.
+        /// </summary>
+        public static string Open_Purchase_Orders_Detail {
+            get {
+                return ResourceManager.GetString("Open_Purchase_Orders_Detail", resourceCulture);
             }
         }
         
@@ -6892,11 +7540,29 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending Builds.
+        /// </summary>
+        public static string Pending_Builds {
+            get {
+                return ResourceManager.GetString("Pending_Builds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pending Order.
         /// </summary>
         public static string Pending_Order {
             get {
                 return ResourceManager.GetString("Pending_Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending Sales.
+        /// </summary>
+        public static string Pending_Sales {
+            get {
+                return ResourceManager.GetString("Pending_Sales", resourceCulture);
             }
         }
         
@@ -7081,11 +7747,29 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Physical Inventory Worksheet.
+        /// </summary>
+        public static string Physical_Inventory_Worksheet {
+            get {
+                return ResourceManager.GetString("Physical_Inventory_Worksheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill in all required fields correctly..
         /// </summary>
         public static string Please_fill_in_all_required_fields_correctly_ {
             get {
                 return ResourceManager.GetString("Please_fill_in_all_required_fields_correctly.", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plot Number.
+        /// </summary>
+        public static string plot_number {
+            get {
+                return ResourceManager.GetString("plot_number", resourceCulture);
             }
         }
         
@@ -7230,6 +7914,15 @@ namespace YamyProject.Localization {
         public static string Previous {
             get {
                 return ResourceManager.GetString("Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Reconciliation.
+        /// </summary>
+        public static string Previous_Reconciliation {
+            get {
+                return ResourceManager.GetString("Previous_Reconciliation", resourceCulture);
             }
         }
         
@@ -7387,6 +8080,78 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss &amp;Detail.
+        /// </summary>
+        public static string Profit____Loss__Detail {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_&Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss &amp;Standard.
+        /// </summary>
+        public static string Profit____Loss__Standard {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_&Standard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss &amp;Unclassified.
+        /// </summary>
+        public static string Profit____Loss__Unclassified {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_&Unclassified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss &amp;YTD Comparison.
+        /// </summary>
+        public static string Profit____Loss__YTD_Comparison {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_&YTD_Comparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss Budget Performance.
+        /// </summary>
+        public static string Profit____Loss_Budget_Performance {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_Budget_Performance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss by &amp;Class.
+        /// </summary>
+        public static string Profit____Loss_by__Class {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_by_&Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss by &amp;Job.
+        /// </summary>
+        public static string Profit____Loss_by__Job {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_by_&Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit &amp;&amp; Loss Monthly Comparison.
+        /// </summary>
+        public static string Profit____Loss_Monthly_Comparison {
+            get {
+                return ResourceManager.GetString("Profit_&&_Loss_Monthly_Comparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profit &amp; loss.
         /// </summary>
         public static string Profit___loss {
@@ -7410,6 +8175,15 @@ namespace YamyProject.Localization {
         public static string Proforma_Invoice {
             get {
                 return ResourceManager.GetString("Proforma_Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program/Projects Report.
+        /// </summary>
+        public static string Program_Projects_Report {
+            get {
+                return ResourceManager.GetString("Program/Projects_Report", resourceCulture);
             }
         }
         
@@ -7495,6 +8269,24 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Information.
+        /// </summary>
+        public static string Project_Information {
+            get {
+                return ResourceManager.GetString("Project_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Location.
+        /// </summary>
+        public static string Project_Location {
+            get {
+                return ResourceManager.GetString("Project_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Management.
         /// </summary>
         public static string Project_Management {
@@ -7558,6 +8350,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Status.
+        /// </summary>
+        public static string Project_Status {
+            get {
+                return ResourceManager.GetString("Project_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Summary.
         /// </summary>
         public static string Project_Summary {
@@ -7581,6 +8382,15 @@ namespace YamyProject.Localization {
         public static string Project_Time_Line {
             get {
                 return ResourceManager.GetString("Project_Time_Line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Type.
+        /// </summary>
+        public static string Project_Type {
+            get {
+                return ResourceManager.GetString("Project_Type", resourceCulture);
             }
         }
         
@@ -7626,6 +8436,15 @@ namespace YamyProject.Localization {
         public static string Purchase_By_Customer_Details {
             get {
                 return ResourceManager.GetString("Purchase_By_Customer_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase by Item Detail.
+        /// </summary>
+        public static string Purchase_by_Item_Detail {
+            get {
+                return ResourceManager.GetString("Purchase_by_Item_Detail", resourceCulture);
             }
         }
         
@@ -7734,6 +8553,15 @@ namespace YamyProject.Localization {
         public static string Purchase_Type {
             get {
                 return ResourceManager.GetString("Purchase_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Volume by Vendor.
+        /// </summary>
+        public static string Purchase_Volume_by_Vendor {
+            get {
+                return ResourceManager.GetString("Purchase_Volume_by_Vendor", resourceCulture);
             }
         }
         
@@ -8062,6 +8890,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate (%).
         /// </summary>
         public static string Rate____ {
@@ -8211,6 +9048,15 @@ namespace YamyProject.Localization {
         public static string Reconciliation {
             get {
                 return ResourceManager.GetString("Reconciliation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reconciliation Discrepancy.
+        /// </summary>
+        public static string Reconciliation_Discrepancy {
+            get {
+                return ResourceManager.GetString("Reconciliation_Discrepancy", resourceCulture);
             }
         }
         
@@ -8377,11 +9223,29 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Center.
+        /// </summary>
+        public static string Report_Center {
+            get {
+                return ResourceManager.GetString("Report_Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report with grid lines.
         /// </summary>
         public static string Report_with_grid_lines {
             get {
                 return ResourceManager.GetString("Report_with_grid_lines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reported By.
+        /// </summary>
+        public static string Reported_By {
+            get {
+                return ResourceManager.GetString("Reported_By", resourceCulture);
             }
         }
         
@@ -8544,6 +9408,15 @@ namespace YamyProject.Localization {
         public static string Resturen_System {
             get {
                 return ResourceManager.GetString("Resturen_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retail Reports.
+        /// </summary>
+        public static string Retail_Reports {
+            get {
+                return ResourceManager.GetString("Retail_Reports", resourceCulture);
             }
         }
         
@@ -8836,6 +9709,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sales by Ship To Address.
+        /// </summary>
+        public static string Sales_by_Ship_To_Address {
+            get {
+                return ResourceManager.GetString("Sales_by_Ship_To_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Center.
         /// </summary>
         public static string Sales_Center {
@@ -8940,6 +9822,24 @@ namespace YamyProject.Localization {
         public static string Sales_Return {
             get {
                 return ResourceManager.GetString("Sales_Return", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales Tax Liability.
+        /// </summary>
+        public static string Sales_Tax_Liability {
+            get {
+                return ResourceManager.GetString("Sales_Tax_Liability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales Tax Revenue Summary.
+        /// </summary>
+        public static string Sales_Tax_Revenue_Summary {
+            get {
+                return ResourceManager.GetString("Sales_Tax_Revenue_Summary", resourceCulture);
             }
         }
         
@@ -9367,6 +10267,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Site Name.
+        /// </summary>
+        public static string Site_Name {
+            get {
+                return ResourceManager.GetString("Site_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sn.
         /// </summary>
         public static string Sn {
@@ -9489,6 +10398,15 @@ namespace YamyProject.Localization {
         public static string State {
             get {
                 return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State Mandated Retirement.
+        /// </summary>
+        public static string State_Mandated_Retirement {
+            get {
+                return ResourceManager.GetString("State_Mandated_Retirement", resourceCulture);
             }
         }
         
@@ -9835,6 +10753,24 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tender Name.
+        /// </summary>
+        public static string Tender_Name {
+            get {
+                return ResourceManager.GetString("Tender_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminated Employees List.
+        /// </summary>
+        public static string Terminated_Employees_List {
+            get {
+                return ResourceManager.GetString("Terminated_Employees_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Terms.
         /// </summary>
         public static string Terms {
@@ -10002,6 +10938,15 @@ namespace YamyProject.Localization {
         public static string Timeline {
             get {
                 return ResourceManager.GetString("Timeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TimeSheet Report.
+        /// </summary>
+        public static string TimeSheet_Report {
+            get {
+                return ResourceManager.GetString("TimeSheet_Report", resourceCulture);
             }
         }
         
@@ -10258,6 +11203,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction Detail by Account.
+        /// </summary>
+        public static string Transaction_Detail_by_Account {
+            get {
+                return ResourceManager.GetString("Transaction_Detail_by_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction History.
         /// </summary>
         public static string Transaction_History {
@@ -10290,6 +11244,33 @@ namespace YamyProject.Localization {
         public static string Transaction_List {
             get {
                 return ResourceManager.GetString("Transaction_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction List by Customer.
+        /// </summary>
+        public static string Transaction_List_by_Customer {
+            get {
+                return ResourceManager.GetString("Transaction_List_by_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction List by Date.
+        /// </summary>
+        public static string Transaction_List_by_Date {
+            get {
+                return ResourceManager.GetString("Transaction_List_by_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction List by Vendor.
+        /// </summary>
+        public static string Transaction_List_by_Vendor {
+            get {
+                return ResourceManager.GetString("Transaction_List_by_Vendor", resourceCulture);
             }
         }
         
@@ -10465,6 +11446,24 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unbilled Costs by Job.
+        /// </summary>
+        public static string Unbilled_Costs_by_Job {
+            get {
+                return ResourceManager.GetString("Unbilled_Costs_by_Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit.
+        /// </summary>
+        public static string Unit {
+            get {
+                return ResourceManager.GetString("Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unit Name.
         /// </summary>
         public static string Unit_Name {
@@ -10542,6 +11541,15 @@ namespace YamyProject.Localization {
         public static string User___Roles {
             get {
                 return ResourceManager.GetString("User_-_Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Activity Report.
+        /// </summary>
+        public static string User_Activity_Report {
+            get {
+                return ResourceManager.GetString("User_Activity_Report", resourceCulture);
             }
         }
         
@@ -10834,6 +11842,15 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vendor Contact List.
+        /// </summary>
+        public static string Vendor_Contact_List {
+            get {
+                return ResourceManager.GetString("Vendor_Contact_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vendor Income Summary.
         /// </summary>
         public static string Vendor_Income_Summary {
@@ -10870,6 +11887,33 @@ namespace YamyProject.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vendor Phone List.
+        /// </summary>
+        public static string Vendor_Phone_List {
+            get {
+                return ResourceManager.GetString("Vendor_Phone_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor Returns Detail.
+        /// </summary>
+        public static string Vendor_Returns_Detail {
+            get {
+                return ResourceManager.GetString("Vendor Returns Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor Returns Summary.
+        /// </summary>
+        public static string Vendor_Returns_Summary {
+            get {
+                return ResourceManager.GetString("Vendor_Returns_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vendor Snapshot.
         /// </summary>
         public static string Vendor_Snapshot {
@@ -10893,6 +11937,15 @@ namespace YamyProject.Localization {
         public static string Vendors {
             get {
                 return ResourceManager.GetString("Vendors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendors &amp;&amp; Payables.
+        /// </summary>
+        public static string Vendors____Payables {
+            get {
+                return ResourceManager.GetString("Vendors_&&_Payables", resourceCulture);
             }
         }
         
@@ -10929,6 +11982,24 @@ namespace YamyProject.Localization {
         public static string View_Open_Invoice {
             get {
                 return ResourceManager.GetString("View_Open_Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voided/Deleted Transactions Details.
+        /// </summary>
+        public static string Voided_Deleted_Transactions_Details {
+            get {
+                return ResourceManager.GetString("Voided/Deleted_Transactions_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voided/Deleted Transactions Summary.
+        /// </summary>
+        public static string Voided_Deleted_Transactions_Summary {
+            get {
+                return ResourceManager.GetString("Voided/Deleted_Transactions_Summary", resourceCulture);
             }
         }
         
@@ -11055,6 +12126,15 @@ namespace YamyProject.Localization {
         public static string Warehouse_Summary {
             get {
                 return ResourceManager.GetString("Warehouse_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WarehouseTransfer Summary.
+        /// </summary>
+        public static string WarehouseTransfer_Summary {
+            get {
+                return ResourceManager.GetString("WarehouseTransfer_Summary", resourceCulture);
             }
         }
         

@@ -51,7 +51,7 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(808, 37);
+            this.headerUC1.Size = new System.Drawing.Size(808, 30);
             this.headerUC1.TabIndex = 1;
             // 
             // btnClear
@@ -76,6 +76,7 @@
             // 
             this.ChkBoxTables.FormattingEnabled = true;
             this.ChkBoxTables.Items.AddRange(new object[] {
+            "Advance Payment Voucher",
             "Attendance Sheet",
             "Attendance Salary",
             "Bank Card",
@@ -103,35 +104,60 @@
             "Item Assembly",
             "Item Category",
             "Item Stock Settlement",
+            "Item BOQ",
+            "Item Serial",
             "journal Voucher",
             "Leave Salary",
             "Loan",
+            "Labor Attendance",
+            "Manufacture Batch",
+            "Manufacture Task",
+            "Manufacturing Steps",
+            "Manufacture Packing",
             "Payment",
+            "Petty Cash",
             "Petty Cash Card",
             "petty Cash Category",
             "petty Cash Request",
             "petty Cash Submission",
-            "Petty Cash",
             "Position",
             "Prepaid Expense",
+            "Prepaid Expense Category",
+            "Projects",
+            "Project Activity",
+            "Project Activity Assignment",
+            "Project Estimate",
+            "Project Management",
+            "Project Material Requests",
+            "Project Planning",
+            "Project Tender",
+            "Project Resource",
+            "Project Role",
+            "Project Sites",
+            "Project Work Done",
             "Purchase",
             "Purchase Order",
             "Purchase Return",
             "Receipt Voucher",
+            "Reconciliation",
+            "RMS Main",
+            "RMS Tables",
             "Salary",
+            "Salary Adjustments",
             "Sales",
             "Sales Order",
             "Sales Quotation",
             "Sales Return",
             "Sales Performa",
-            "Sub Cost Center",
+            "Sub Contract",
+            "Tax",
+            "Tender Names",
             "Unit",
             "Vat",
             "Vendor",
             "Vendor Category",
             "Warehouse",
-            "Salary Adjustments",
-            "Advance Payment Voucher"});
+            "Warehouse Transaction"});
             this.ChkBoxTables.Location = new System.Drawing.Point(12, 52);
             this.ChkBoxTables.Name = "ChkBoxTables";
             this.ChkBoxTables.Size = new System.Drawing.Size(477, 484);

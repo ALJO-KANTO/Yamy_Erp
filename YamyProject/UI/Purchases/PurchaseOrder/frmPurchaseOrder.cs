@@ -1,6 +1,7 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using OfficeOpenXml;
 using System;
@@ -8,8 +9,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Windows.Forms;
+using YamyProject;
+using YamyProject.DAL;
 using YamyProject.Localization;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace YamyProject
 {
@@ -31,6 +37,7 @@ namespace YamyProject
             EventHub.wareHouse += warehouseUpdatedHandler;
             EventHub.Vendor += vendorUpdatedHandler;
             this.id = id;
+            headerUC1.FormText = this.Text;
         }
         private void frmPurchaseOrder_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -310,6 +317,11 @@ namespace YamyProject
             insertInvItems();
             Utilities.LogAudit(frmLogin.userId, "Update Purchase Order", "Purchase Order", id, "Updated Purchase Order: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
         }
         private bool insertInvoice()
@@ -352,6 +364,11 @@ namespace YamyProject
             insertInvItems();
 
             Utilities.LogAudit(frmLogin.userId, "Add Purchase Order", "Purchase Order", (int)invId, "Added Purchase Order: " + txtNextCode.Text);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
+
             return true;
         }
 
@@ -1159,8 +1176,14 @@ namespace YamyProject
             txtId.Text = GenerateNextSalesId();
             id = 0;
         }
-
-
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "PURCHASE ORDER",
+                    fId,
+                    openFileDialog1.FileName
+                );
+        }
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -1607,7 +1630,100 @@ namespace YamyProject
 
         private void guna2TileButton15_Click(object sender, EventArgs e)
         {
-            //guna2TileButton15
+            string query = @"SELECT a.id, a.batchname, a.date
+                        FROM tbl_manufacturer_batch a 
+                        LEFT JOIN (
+                            SELECT t.batchId,t.status 
+                            FROM tbl_manufacturer_task t 
+                            WHERE t.id IN (SELECT MAX(id) 
+                                           FROM tbl_manufacturer_task GROUP BY BatchID)
+                        ) b ON b.BatchID = a.id";
+
+            using (DataTable dt = DBClass.ExecuteDataTable(query))
+            {
+                frmBatchSelector dlg = new frmBatchSelector(dt);
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    int bId = dlg.SelectedID;
+
+                    // Use it anywhere:
+                    // LoadBatchDetails(id);
+                    id = 0;
+                    dgvItems.Rows.Clear();
+                    using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT b.id,b.itemid as item_id,b.cost as cost_price,b.RequestQty qty,a.sales_price price,0 discount,0 vat,0 vatP,a.type,method, a.code, a.name 
+                                                                            FROM tbl_manufacturer_batchdetails b
+                                                                            INNER JOIN tbl_items a ON b.itemid = a.id 
+                                                                            WHERE b.batchID = @id;",
+                                                                    DBClass.CreateParameter("id", bId)))
+                        while (reader.Read())
+                        {
+                            dgvItems.Rows.Add(reader["item_id"].ToString(), "", reader["code"].ToString(), reader["name"].ToString(), Utilities.FormatDecimal(reader["qty"]),
+                                Utilities.FormatDecimal(reader["cost_price"]), Utilities.FormatDecimal(reader["price"]), Utilities.FormatDecimal(reader["discount"]));
+                            DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                            if (comboCell != null && reader["vat"].ToString() != "0")
+                            {
+                                comboCell.Value = int.Parse(reader["vat"].ToString());
+                                dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value = decimal.Parse(reader["vatP"].ToString());
+                            }
+                            //net_price
+                            decimal netPrice = (decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) * decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_price"].Value.ToString())
+                                - decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["discount"].Value.ToString()));
+                            dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = netPrice
+                              + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString());
+
+                            dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = reader["method"].ToString();
+                            dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = reader["type"].ToString();
+                        }
+                }
+            }
+        }
+
+        private void guna2TileButton17_Click(object sender, EventArgs e)
+        {
+            string sendersId = "mohammedsafvan@hotmail.com";
+            string receiverId = "mohammedsafvan@tanweerco.co";
+            string senderPass = "42344063";
+            string domainAddress = "smtp.office365.com";
+            int port = 587;
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(sendersId);
+                mail.To.Add(receiverId);
+                mail.Subject = "Test Email from WinForms";
+                mail.Body = "Hello! This is a test email sent from a C# WinForms app.";
+
+                SmtpClient smtp = new SmtpClient(domainAddress, port);
+                smtp.Credentials = new NetworkCredential(sendersId, senderPass);
+                smtp.EnableSsl = true;
+
+                smtp.Send(mail);
+
+                MessageBox.Show("Email sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            //if (id > 0)
+            //{
+            //    //open in dialog box
+            //    AttachmentManager.OpenAttachmentByType(id, "PURCHASE ORDER");
+            //}
+            //else
+            //{
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog1.FileName;
+                }
+            //}
         }
     }
 }
@@ -1786,5 +1902,126 @@ public class frmImportPurchaseOrder : Form
             columnNumber = (columnNumber - 1) / 26;
         }
         return columnString;
+    }
+}
+
+public partial class frmBatchSelector : Form
+{
+    public int SelectedID { get; private set; }
+    private DataGridView dgvBatchList;
+    private DataTable dt;
+    HeaderUC headerUC1 = new HeaderUC();
+    System.Windows.Forms.Panel panel3 = new System.Windows.Forms.Panel();
+    System.Windows.Forms.Panel panel1 = new System.Windows.Forms.Panel();
+    System.Windows.Forms.Panel panel2 = new System.Windows.Forms.Panel();
+
+    public frmBatchSelector(DataTable dt)
+    {
+        this.dt = dt;
+        this.Width = 600;
+        this.Height = 400;
+        // Create dynamic form
+        this.Text = "Select Batch for Production BOM";
+        this.StartPosition = FormStartPosition.CenterParent;
+        this.Size = new System.Drawing.Size(400, 500);
+        this.FormBorderStyle = FormBorderStyle.None;
+        // 
+        // headerUC1
+        // 
+        headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+        headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+        headerUC1.FormText = "";
+        headerUC1.HeaderText = "";
+        headerUC1.Location = new System.Drawing.Point(0, 0);
+        headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+        headerUC1.Name = "headerUC1";
+        headerUC1.Size = new System.Drawing.Size(325, 37);
+        headerUC1.TabIndex = 1;
+        headerUC1.FormText = "Manufacturing Steps";
+        // 
+        // panel3
+        // 
+        panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+        panel3.Dock = System.Windows.Forms.DockStyle.Left;
+        panel3.Location = new System.Drawing.Point(0, 41);
+        panel3.Margin = new System.Windows.Forms.Padding(2);
+        panel3.Name = "panel3";
+        panel3.Size = new System.Drawing.Size(2, 235);
+        panel3.TabIndex = 13;
+        // 
+        // panel1
+        // 
+        panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+        panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+        panel1.Location = new System.Drawing.Point(2, 274);
+        panel1.Margin = new System.Windows.Forms.Padding(2);
+        panel1.Name = "panel1";
+        panel1.Size = new System.Drawing.Size(309, 2);
+        panel1.TabIndex = 14;
+        // 
+        // panel2
+        // 
+        panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+        panel2.Dock = System.Windows.Forms.DockStyle.Right;
+        panel2.Location = new System.Drawing.Point(309, 41);
+        panel2.Margin = new System.Windows.Forms.Padding(2);
+        panel2.Name = "panel2";
+        panel2.Size = new System.Drawing.Size(2, 233);
+        panel2.TabIndex = 15;
+        // 
+        // dgvBatchList
+        // 
+        dgvBatchList = new DataGridView();
+        dgvBatchList.Name = "dgvBatchList";
+        dgvBatchList.Dock = DockStyle.Fill;
+        dgvBatchList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvBatchList.CellContentClick += dgvBatchList_CellContentClick;
+        dgvBatchList.RowHeadersVisible = false;
+        dgvBatchList.ReadOnly = true;
+
+        this.Controls.Add(dgvBatchList);
+        this.Controls.Add(headerUC1);
+        this.Controls.Add(panel2);
+        this.Controls.Add(panel1);
+        this.Controls.Add(panel3);
+        // manually attach load event
+        this.Load += frmBatchSelector_Load;
+    }
+
+    private void frmBatchSelector_Load(object sender, EventArgs e)
+    {
+        LoadBatchData();
+    }
+
+    private void LoadBatchData()
+    {
+        if (dt != null)
+        {
+            dgvBatchList.DataSource = dt;
+
+            // Make clicking easy
+            if (!dgvBatchList.Columns.Contains("Select"))
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.Name = "Select";
+                btn.HeaderText = "Select";
+                btn.Text = "Choose";
+                btn.UseColumnTextForButtonValue = true;
+                dgvBatchList.Columns.Add(btn);
+            }
+        }
+    }
+
+    private void dgvBatchList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex < 0) return;
+
+        if (dgvBatchList.Columns[e.ColumnIndex].Name == "Select")
+        {
+            SelectedID = Convert.ToInt32(dgvBatchList.Rows[e.RowIndex].Cells["id"].Value);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }

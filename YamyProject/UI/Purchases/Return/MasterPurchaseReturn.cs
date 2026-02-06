@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -107,22 +108,71 @@ namespace YamyProject
             _totalPages = (_totalRecords + _pageSize - 1) / _pageSize;
 
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
-            dgvCustomer.DataSource = dt;
-            dgvCustomer.Columns["Vendor Name"].MinimumWidth = 200;
-            dgvCustomer.Columns["Vendor Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCustomer.Columns["id"].Visible =false;
-            if (dgvCustomer.Rows.Count > 0)
+            if (dt != null)
             {
-                btnEdit.Enabled = UserPermissions.canEdit("Purchase Return");
-                btnDelete.Enabled = btnRestore.Enabled = UserPermissions.canDelete("Purchase Return");
+                dgvCustomer.DataSource = dt;
+                dgvCustomer.Columns["Vendor Name"].MinimumWidth = 200;
+                dgvCustomer.Columns["Vendor Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvCustomer.Columns["id"].Visible = false;
+                if (dgvCustomer.Rows.Count > 0)
+                {
+                    btnEdit.Enabled = UserPermissions.canEdit("Purchase Return");
+                    btnDelete.Enabled = btnRestore.Enabled = UserPermissions.canDelete("Purchase Return");
+                }
+                LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+                AddViewDocImageColumn();
             }
-            LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
-
             lblPageInfo.Text = $"Page {_currentPage} of {_totalPages}";
             btnPrev.Enabled = btnFirst.Enabled = _currentPage > 1;
             btnNext.Enabled = btnLast.Enabled = _currentPage < _totalPages;
         }
 
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgvCustomer.Columns.Contains("ViewDoc"))
+            {
+                SetViewDocIcons();
+            }
+        }
+        System.Drawing.Image enabledIcon = Properties.Resources.doc_icon;   // regular icon
+        System.Drawing.Image disabledIcon = null; // or Properties.Resources.doc_icon_disabled
+
+        private void SetViewDocIcons()
+        {
+            foreach (DataGridViewRow row in dgvCustomer.Rows)
+            {
+                int purchaseId = Convert.ToInt32(row.Cells["id"].Value);
+
+                bool hasAttachment = AttachmentManager.HasAttachment(purchaseId, "PURCHASE RETURN");
+                // You need a function to check if an invoice has attachments
+                row.Cells["ViewDoc"].Value = hasAttachment ? enabledIcon : disabledIcon;
+            }
+        }
+
+        private void AddViewDocImageColumn()
+        {
+            if (!dgvCustomer.Columns.Contains("ViewDoc"))
+            {
+                DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
+                imgColumn.Name = "ViewDoc";
+                imgColumn.HeaderText = "View Doc";
+                //imgColumn.Image = Properties.Resources.doc_icon; // <-- your image here
+                imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom; // fit nicely
+                dgvCustomer.Columns.Add(imgColumn);
+            }
+        }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvCustomer.Columns[e.ColumnIndex].Name == "ViewDoc")
+            {
+                var cell = dgvCustomer.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value == null) return; // no attachment, do nothing
+
+                int purchaseId = Convert.ToInt32(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value);
+                AttachmentManager.OpenAttachmentByType(purchaseId, "PURCHASE RETURN");
+            }
+        }
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentPage = 1;

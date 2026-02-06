@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>28</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -88,15 +88,6 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DlhSoft.DataControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6071b28da0134838, processorArchitecture=MSIL">
       <HintPath>..\packages\DlhSoft.GanttChartLibrary.WindowsForms.2.0.0.7\lib\net20\DlhSoft.DataControlLibrary.dll</HintPath>
     </Reference>
@@ -368,6 +359,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DAL\AppTheme.cs" />
+    <Compile Include="DAL\AttachmentManager.cs" />
     <Compile Include="DAL\BindCombos.cs" />
     <Compile Include="DAL\BindDataTable.cs" />
     <Compile Include="DAL\CalendarColumn.cs" />
@@ -392,11 +384,6 @@
     <Compile Include="DAL\ReportPrinter.cs" />
     <Compile Include="DAL\SecurityConfig.cs" />
     <Compile Include="DAL\Utilities.cs" />
-    <Compile Include="Localization\Localization.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Localization.resx</DependentUpon>
-    </Compile>
     <Compile Include="Localization\LocalizationManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -493,6 +480,18 @@
     </Compile>
     <Compile Include="UI\Accountant\CostCenter\MasterCostCenter.designer.cs">
       <DependentUpon>MasterCostCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accountant\FrmBatchEnterTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accountant\FrmBatchEnterTransactions.Designer.cs">
+      <DependentUpon>FrmBatchEnterTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accountant\frmCustomizeColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accountant\frmCustomizeColumns.Designer.cs">
+      <DependentUpon>frmCustomizeColumns.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accountant\JournalEntries\frmTransactionJournal.cs">
       <SubType>Form</SubType>
@@ -626,11 +625,41 @@
     <Compile Include="UI\Banking\BankReconcilation\MasterBankReconciliation.designer.cs">
       <DependentUpon>MasterBankReconciliation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Banking\BankTransactions\frmBankTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Banking\BankTransactions\frmBankTransaction.Designer.cs">
+      <DependentUpon>frmBankTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Banking\frmCheckStateDate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Banking\frmCheckStateDate.Designer.cs">
       <DependentUpon>frmCheckStateDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Banking\BankTransactions\MasterBankTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Banking\BankTransactions\MasterBankTransactions.designer.cs">
+      <DependentUpon>MasterBankTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Banking\frmMasterCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Banking\frmMasterCreditCard.Designer.cs">
+      <DependentUpon>frmMasterCreditCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Banking\frmCreditCardRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Banking\frmCreditCardRegister.Designer.cs">
+      <DependentUpon>frmCreditCardRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Banking\frmWriteCheque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Banking\frmWriteCheque.Designer.cs">
+      <DependentUpon>frmWriteCheque.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Banking\MasterPDC.cs">
       <SubType>Form</SubType>
@@ -844,6 +873,180 @@
     <Compile Include="UI\Construction\ProjectTendering\MasterProjectTendering.designer.cs">
       <DependentUpon>MasterProjectTendering.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\ContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\ContractForm.Designer.cs">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\CRMControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\CRMControl.Designer.cs">
+      <DependentUpon>CRMControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\FollowUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\CRM\FollowUpForm.Designer.cs">
+      <DependentUpon>FollowUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentControl.Designer.cs">
+      <DependentUpon>EquipmentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentForm.Designer.cs">
+      <DependentUpon>EquipmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\ExpenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\ExpenseForm.Designer.cs">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\FinanceControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\FinanceControl.Designer.cs">
+      <DependentUpon>FinanceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\InvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\InvoiceForm.Designer.cs">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\ProfitLossForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\FinanceBilling\ProfitLossForm.Designer.cs">
+      <DependentUpon>ProfitLossForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\HRPayrollControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\HRPayrollControl.Designer.cs">
+      <DependentUpon>HRPayrollControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\PayrollForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\HRPayroll\PayrollForm.Designer.cs">
+      <DependentUpon>PayrollForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Inventory\InventoryControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Inventory\InventoryControl.Designer.cs">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Inventory\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Inventory\MaterialForm.Designer.cs">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrderForm.Designer.cs">
+      <DependentUpon>JobOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrdersControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrdersControl.Designer.cs">
+      <DependentUpon>JobOrdersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIControl.Designer.cs">
+      <DependentUpon>KPIControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIDashboardForm.Designer.cs">
+      <DependentUpon>KPIDashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIEntryForm.Designer.cs">
+      <DependentUpon>KPIEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Labor\LaborAssignmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Labor\LaborAssignmentForm.Designer.cs">
+      <DependentUpon>LaborAssignmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Labor\LaborControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Labor\LaborControl.Designer.cs">
+      <DependentUpon>LaborControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceControl.Designer.cs">
+      <DependentUpon>MaintenanceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceRequestForm.Designer.cs">
+      <DependentUpon>MaintenanceRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\ProcurementControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\ProcurementControl.Designer.cs">
+      <DependentUpon>ProcurementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\PurchaseOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\PurchaseOrderForm.Designer.cs">
+      <DependentUpon>PurchaseOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\SupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\Procurement\SupplierForm.Designer.cs">
+      <DependentUpon>SupplierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectManagementControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectManagementControl.Designer.cs">
+      <DependentUpon>ProjectManagementControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CRM\frmCRMmain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -934,6 +1137,12 @@
     </Compile>
     <Compile Include="UI\Default\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Default\FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Default\FrmProgress.Designer.cs">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Default\frmSignup.cs">
       <SubType>Form</SubType>
@@ -1050,6 +1259,230 @@
     </Compile>
     <Compile Include="UI\Default\MasterReportView.Designer.cs">
       <DependentUpon>MasterReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\frmMainEngineeringConsultancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\frmMainEngineeringConsultancy.Designer.cs">
+      <DependentUpon>frmMainEngineeringConsultancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\KpiCalculationService.cs" />
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngApprovalLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngApprovalLog.Designer.cs">
+      <DependentUpon>frmEngApprovalLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngLookups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngLookups.Designer.cs">
+      <DependentUpon>frmEngLookups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngSettings.Designer.cs">
+      <DependentUpon>frmEngSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmCRMLeads.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmCRMLeads.Designer.cs">
+      <DependentUpon>frmCRMLeads.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngClientList.Designer.cs">
+      <DependentUpon>frmEngClientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngContract.Designer.cs">
+      <DependentUpon>frmEngContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngProposal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngProposal.Designer.cs">
+      <DependentUpon>frmEngProposal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentRevision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentRevision.Designer.cs">
+      <DependentUpon>frmEngDocumentRevision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentUpload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentUpload.Designer.cs">
+      <DependentUpon>frmEngDocumentUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngApprovalWorkflow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngApprovalWorkflow.Designer.cs">
+      <DependentUpon>frmEngApprovalWorkflow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\frmEngDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Design Management\frmEngDocuments.Designer.cs">
+      <DependentUpon>frmEngDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\frmEngDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\frmEngDashboard.Designer.cs">
+      <DependentUpon>frmEngDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngBonusSimulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngBonusSimulation.Designer.cs">
+      <DependentUpon>frmEngBonusSimulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboard.Designer.cs">
+      <DependentUpon>frmEngExecutiveDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboardOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboardOld.Designer.cs">
+      <DependentUpon>frmEngExecutiveDashboardOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPICalculation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPICalculation.Designer.cs">
+      <DependentUpon>frmEngKPICalculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIHistory.Designer.cs">
+      <DependentUpon>frmEngKPIHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIMaster.Designer.cs">
+      <DependentUpon>frmEngKPIMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIReportView.Designer.cs">
+      <DependentUpon>frmEngKPIReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIs.Designer.cs">
+      <DependentUpon>frmEngKPIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngMyKPIs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngMyKPIs.Designer.cs">
+      <DependentUpon>frmEngMyKPIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngTeamKPIs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngTeamKPIs.Designer.cs">
+      <DependentUpon>frmEngTeamKPIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\FrmEngKpiDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\KPIs\FrmEngKpiDashboard.Designer.cs">
+      <DependentUpon>FrmEngKpiDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectCosting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectCosting.Designer.cs">
+      <DependentUpon>frmEngProjectCosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectProfitability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectProfitability.Designer.cs">
+      <DependentUpon>frmEngProjectProfitability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngRevenueRecognition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngRevenueRecognition.Designer.cs">
+      <DependentUpon>frmEngRevenueRecognition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngDeliverables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngDeliverables.Designer.cs">
+      <DependentUpon>frmEngDeliverables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngMilestones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngMilestones.Designer.cs">
+      <DependentUpon>frmEngMilestones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectDashboard.Designer.cs">
+      <DependentUpon>frmEngProjectDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectList.Designer.cs">
+      <DependentUpon>frmEngProjectList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectPhases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectPhases.Designer.cs">
+      <DependentUpon>frmEngProjectPhases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectSetup.Designer.cs">
+      <DependentUpon>frmEngProjectSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CommonExport.cs" />
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngProductivityReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngProductivityReport.Designer.cs">
+      <DependentUpon>frmEngProductivityReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngResourceUtilization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngResourceUtilization.Designer.cs">
+      <DependentUpon>frmEngResourceUtilization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetApproval.Designer.cs">
+      <DependentUpon>frmEngTimesheetApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetEntry.Designer.cs">
+      <DependentUpon>frmEngTimesheetEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\HR\AttendanceAndSalary\frmAmountAdjustments.cs">
       <SubType>Form</SubType>
@@ -1237,6 +1670,24 @@
     <Compile Include="UI\Manufacturing\Models\frmManAddProcessStage.Designer.cs">
       <DependentUpon>frmManAddProcessStage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManCategoryWiseItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManCategoryWiseItemDetails.designer.cs">
+      <DependentUpon>frmManCategoryWiseItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManPackingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManPackingReport.designer.cs">
+      <DependentUpon>frmManPackingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManCategoryWiseItemMonthly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Manufacturing\Report\frmManCategoryWiseItemMonthly.designer.cs">
+      <DependentUpon>frmManCategoryWiseItemMonthly.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Manufacturing\Viewform\frmManProductionStage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1254,6 +1705,12 @@
     </Compile>
     <Compile Include="UI\Manufacturing\Workflow\frmManWorkFlowStageReport.Designer.cs">
       <DependentUpon>frmManWorkFlowStageReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\frmMainContracting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContractingGeneralMaintenance\frmMainContracting.Designer.cs">
+      <DependentUpon>frmMainContracting.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Purchases\Return\frmViewPurchaseList.cs">
       <SubType>Form</SubType>
@@ -1327,6 +1784,12 @@
     <Compile Include="UI\Reports\Customer\frmOpenInvoicesReport.designer.cs">
       <DependentUpon>frmOpenInvoicesReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\Employee\frmStateMandatedRetirementReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\frmStateMandatedRetirementReport.designer.cs">
+      <DependentUpon>frmStateMandatedRetirementReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\frmListReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1338,6 +1801,66 @@
     </Compile>
     <Compile Include="UI\Reports\frmReminders.Designer.cs">
       <DependentUpon>frmReminders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmAssemblyShortageByVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmAssemblyShortageByVendor.designer.cs">
+      <DependentUpon>frmAssemblyShortageByVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmAssemblyShortageByItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmAssemblyShortageByItem.designer.cs">
+      <DependentUpon>frmAssemblyShortageByItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmNegativeInventoryListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmNegativeInventoryListing.designer.cs">
+      <DependentUpon>frmNegativeInventoryListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmPendingBuilds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmPendingBuilds.designer.cs">
+      <DependentUpon>frmPendingBuilds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmPhysicalInventoryWorksheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmPhysicalInventoryWorksheet.designer.cs">
+      <DependentUpon>frmPhysicalInventoryWorksheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryTurnoverByItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryTurnoverByItem.designer.cs">
+      <DependentUpon>frmInventoryTurnoverByItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryStockStatusByVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryStockStatusByVendor.designer.cs">
+      <DependentUpon>frmInventoryStockStatusByVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryStockStatusByItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryStockStatusByItem.designer.cs">
+      <DependentUpon>frmInventoryStockStatusByItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryValuationSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryValuationSummary.designer.cs">
+      <DependentUpon>frmInventoryValuationSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryValuationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmInventoryValuationDetail.designer.cs">
+      <DependentUpon>frmInventoryValuationDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Inventory\frmWarehouseDetail.cs">
       <SubType>Form</SubType>
@@ -1557,11 +2080,11 @@
     <Compile Include="UI\Manufacturing\Viewform\frmManMachinRecordView.Designer.cs">
       <DependentUpon>frmManMachinRecordView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Manufacturing\Viewform\frmManScreen.cs">
+    <Compile Include="UI\Manufacturing\Viewform\frmManMachineScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Manufacturing\Viewform\frmManScreen.designer.cs">
-      <DependentUpon>frmManScreen.cs</DependentUpon>
+    <Compile Include="UI\Manufacturing\Viewform\frmManMachineScreen.designer.cs">
+      <DependentUpon>frmManMachineScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Manufacturing\Viewform\frmManStaff.cs">
       <SubType>Form</SubType>
@@ -2376,6 +2899,12 @@
     <Compile Include="UI\Settings\Color theme\frmColorThempickercs.Designer.cs">
       <DependentUpon>frmColorThempickercs.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Settings\Company\frmDocCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Settings\Company\frmDocCenter.Designer.cs">
+      <DependentUpon>frmDocCenter.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Settings\Company\frmModules.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2633,6 +3162,7 @@
     <Content Include="Resources\Dashboard22 Layout.png" />
     <None Include="Resources\deleteN.png" />
     <None Include="Resources\deilvery handcart.png" />
+    <None Include="Resources\doc_icon.png" />
     <Content Include="Resources\Edit Row.ico" />
     <None Include="Resources\empolyees.png" />
     <None Include="Resources\empolyees1.png" />
@@ -2770,11 +3300,7 @@
     <EmbeddedResource Include="Localization\Localization.hi.resx" />
     <EmbeddedResource Include="Localization\Localization.ja.resx" />
     <EmbeddedResource Include="Localization\Localization.ko.resx" />
-    <EmbeddedResource Include="Localization\Localization.resx">
-      <SubType>Designer</SubType>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Localization.resx" />
     <EmbeddedResource Include="Localization\Localization.ur.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -2825,6 +3351,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\CostCenter\MasterCostCenter.resx">
       <DependentUpon>MasterCostCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accountant\FrmBatchEnterTransactions.resx">
+      <DependentUpon>FrmBatchEnterTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accountant\frmCustomizeColumns.resx">
+      <DependentUpon>frmCustomizeColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\JournalEntries\frmTransactionJournal.resx">
       <DependentUpon>frmTransactionJournal.cs</DependentUpon>
@@ -2892,8 +3424,23 @@
     <EmbeddedResource Include="UI\Banking\BankReconcilation\MasterBankReconciliation.resx">
       <DependentUpon>MasterBankReconciliation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Banking\BankTransactions\frmBankTransaction.resx">
+      <DependentUpon>frmBankTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Banking\frmCheckStateDate.resx">
       <DependentUpon>frmCheckStateDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Banking\BankTransactions\MasterBankTransactions.resx">
+      <DependentUpon>MasterBankTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Banking\frmMasterCreditCard.resx">
+      <DependentUpon>frmMasterCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Banking\frmCreditCardRegister.resx">
+      <DependentUpon>frmCreditCardRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Banking\frmWriteCheque.resx">
+      <DependentUpon>frmWriteCheque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Banking\MasterPDC.resx">
       <DependentUpon>MasterPDC.cs</DependentUpon>
@@ -3000,6 +3547,93 @@
     <EmbeddedResource Include="UI\Construction\ProjectTendering\MasterProjectTendering.resx">
       <DependentUpon>MasterProjectTendering.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\CRM\ContractForm.resx">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\CRM\CRMControl.resx">
+      <DependentUpon>CRMControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\CRM\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\CRM\FollowUpForm.resx">
+      <DependentUpon>FollowUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentControl.resx">
+      <DependentUpon>EquipmentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Equipment\EquipmentForm.resx">
+      <DependentUpon>EquipmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\FinanceBilling\ExpenseForm.resx">
+      <DependentUpon>ExpenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\FinanceBilling\FinanceControl.resx">
+      <DependentUpon>FinanceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\FinanceBilling\InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\FinanceBilling\ProfitLossForm.resx">
+      <DependentUpon>ProfitLossForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\HRPayroll\EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\HRPayroll\HRPayrollControl.resx">
+      <DependentUpon>HRPayrollControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\HRPayroll\PayrollForm.resx">
+      <DependentUpon>PayrollForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Inventory\InventoryControl.resx">
+      <DependentUpon>InventoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Inventory\MaterialForm.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrderForm.resx">
+      <DependentUpon>JobOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\JobOrders\JobOrdersControl.resx">
+      <DependentUpon>JobOrdersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIControl.resx">
+      <DependentUpon>KPIControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIDashboardForm.resx">
+      <DependentUpon>KPIDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\KPIDashboard\KPIEntryForm.resx">
+      <DependentUpon>KPIEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Labor\LaborAssignmentForm.resx">
+      <DependentUpon>LaborAssignmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Labor\LaborControl.resx">
+      <DependentUpon>LaborControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceControl.resx">
+      <DependentUpon>MaintenanceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Maintenance\MaintenanceRequestForm.resx">
+      <DependentUpon>MaintenanceRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Procurement\ProcurementControl.resx">
+      <DependentUpon>ProcurementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Procurement\PurchaseOrderForm.resx">
+      <DependentUpon>PurchaseOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\Procurement\SupplierForm.resx">
+      <DependentUpon>SupplierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\ProjectManagement\ProjectManagementControl.resx">
+      <DependentUpon>ProjectManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CRM\frmCRMmain.resx">
       <DependentUpon>frmCRMmain.cs</DependentUpon>
     </EmbeddedResource>
@@ -3044,6 +3678,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Default\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Default\FrmProgress.resx">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Default\frmSignup.resx">
       <DependentUpon>frmSignup.cs</DependentUpon>
@@ -3106,6 +3743,117 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Default\MasterReportView.resx">
       <DependentUpon>MasterReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\frmMainEngineeringConsultancy.resx">
+      <DependentUpon>frmMainEngineeringConsultancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngApprovalLog.resx">
+      <DependentUpon>frmEngApprovalLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngLookups.resx">
+      <DependentUpon>frmEngLookups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Common\frmEngSettings.resx">
+      <DependentUpon>frmEngSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\CRM\frmCRMLeads.resx">
+      <DependentUpon>frmCRMLeads.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngClientList.resx">
+      <DependentUpon>frmEngClientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngContract.resx">
+      <DependentUpon>frmEngContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\CRM\frmEngProposal.resx">
+      <DependentUpon>frmEngProposal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngApprovalWorkflow.resx">
+      <DependentUpon>frmEngApprovalWorkflow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentRevision.resx">
+      <DependentUpon>frmEngDocumentRevision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Design Management\Docs\frmEngDocumentUpload.resx">
+      <DependentUpon>frmEngDocumentUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Design Management\frmEngDocuments.resx">
+      <DependentUpon>frmEngDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\frmEngDashboard.resx">
+      <DependentUpon>frmEngDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngBonusSimulation.resx">
+      <DependentUpon>frmEngBonusSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboard.resx">
+      <DependentUpon>frmEngExecutiveDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngExecutiveDashboardOld.resx">
+      <DependentUpon>frmEngExecutiveDashboardOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPICalculation.resx">
+      <DependentUpon>frmEngKPICalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIHistory.resx">
+      <DependentUpon>frmEngKPIHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIMaster.resx">
+      <DependentUpon>frmEngKPIMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIReportView.resx">
+      <DependentUpon>frmEngKPIReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngKPIs.resx">
+      <DependentUpon>frmEngKPIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngMyKPIs.resx">
+      <DependentUpon>frmEngMyKPIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\frmEngTeamKPIs.resx">
+      <DependentUpon>frmEngTeamKPIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\KPIs\FrmEngKpiDashboard.resx">
+      <DependentUpon>FrmEngKpiDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectCosting.resx">
+      <DependentUpon>frmEngProjectCosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngProjectProfitability.resx">
+      <DependentUpon>frmEngProjectProfitability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Finance\frmEngRevenueRecognition.resx">
+      <DependentUpon>frmEngRevenueRecognition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngDeliverables.resx">
+      <DependentUpon>frmEngDeliverables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngMilestones.resx">
+      <DependentUpon>frmEngMilestones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectDashboard.resx">
+      <DependentUpon>frmEngProjectDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectList.resx">
+      <DependentUpon>frmEngProjectList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectPhases.resx">
+      <DependentUpon>frmEngProjectPhases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Project Management\frmEngProjectSetup.resx">
+      <DependentUpon>frmEngProjectSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngProductivityReport.resx">
+      <DependentUpon>frmEngProductivityReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngResourceUtilization.resx">
+      <DependentUpon>frmEngResourceUtilization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetApproval.resx">
+      <DependentUpon>frmEngTimesheetApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EngineeringConsultancy\ViewForm\Timesheet Resources\frmEngTimesheetEntry.resx">
+      <DependentUpon>frmEngTimesheetEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HR\AttendanceAndSalary\frmAmountAdjustments.resx">
       <DependentUpon>frmAmountAdjustments.cs</DependentUpon>
@@ -3200,6 +3948,15 @@
     <EmbeddedResource Include="UI\Manufacturing\Models\frmManAddProcessStage.resx">
       <DependentUpon>frmManAddProcessStage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Report\frmManCategoryWiseItemDetails.resx">
+      <DependentUpon>frmManCategoryWiseItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Report\frmManPackingReport.resx">
+      <DependentUpon>frmManPackingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Manufacturing\Report\frmManCategoryWiseItemMonthly.resx">
+      <DependentUpon>frmManCategoryWiseItemMonthly.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManProductionStage.resx">
       <DependentUpon>frmManProductionStage.cs</DependentUpon>
     </EmbeddedResource>
@@ -3208,6 +3965,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Manufacturing\Workflow\frmManWorkFlowStageReport.resx">
       <DependentUpon>frmManWorkFlowStageReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ContractingGeneralMaintenance\frmMainContracting.resx">
+      <DependentUpon>frmMainContracting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchases\Return\frmViewPurchaseList.resx">
       <DependentUpon>frmViewPurchaseList.cs</DependentUpon>
@@ -3246,11 +4006,44 @@
       <DependentUpon>frmOpenInvoicesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Design\Report1.rdlc" />
+    <EmbeddedResource Include="UI\Reports\Employee\frmStateMandatedRetirementReport.resx">
+      <DependentUpon>frmStateMandatedRetirementReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\frmListReport.resx">
       <DependentUpon>frmListReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\frmReminders.resx">
       <DependentUpon>frmReminders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmAssemblyShortageByVendor.resx">
+      <DependentUpon>frmAssemblyShortageByVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmAssemblyShortageByItem.resx">
+      <DependentUpon>frmAssemblyShortageByItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmNegativeInventoryListing.resx">
+      <DependentUpon>frmNegativeInventoryListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmPendingBuilds.resx">
+      <DependentUpon>frmPendingBuilds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmPhysicalInventoryWorksheet.resx">
+      <DependentUpon>frmPhysicalInventoryWorksheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryTurnoverByItem.resx">
+      <DependentUpon>frmInventoryTurnoverByItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryStockStatusByVendor.resx">
+      <DependentUpon>frmInventoryStockStatusByVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryStockStatusByItem.resx">
+      <DependentUpon>frmInventoryStockStatusByItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryValuationSummary.resx">
+      <DependentUpon>frmInventoryValuationSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryValuationDetail.resx">
+      <DependentUpon>frmInventoryValuationDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Inventory\frmWarehouseDetail.resx">
       <DependentUpon>frmWarehouseDetail.cs</DependentUpon>
@@ -3360,8 +4153,8 @@
     <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManMachinRecordView.resx">
       <DependentUpon>frmManMachinRecordView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManScreen.resx">
-      <DependentUpon>frmManScreen.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManMachineScreen.resx">
+      <DependentUpon>frmManMachineScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Manufacturing\Viewform\frmManStaff.resx">
       <DependentUpon>frmManStaff.cs</DependentUpon>
@@ -3802,6 +4595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\Color theme\frmColorThempickercs.resx">
       <DependentUpon>frmColorThempickercs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Settings\Company\frmDocCenter.resx">
+      <DependentUpon>frmDocCenter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\Company\frmModules.resx">
       <DependentUpon>frmModules.cs</DependentUpon>

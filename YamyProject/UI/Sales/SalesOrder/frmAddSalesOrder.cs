@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Settings;
@@ -375,6 +377,12 @@ namespace YamyProject
             insertInvItems();
             Utilities.LogAudit(frmLogin.userId, "Update Sales Order", "Sales Order", (int)id, "Updated Sales Order: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
+
             return true;
         }
 
@@ -417,6 +425,11 @@ namespace YamyProject
             insertInvItems();
 
             Utilities.LogAudit(frmLogin.userId, "Add Sales Order", "Sales Order", (int)invId, "Added Sales Order: " + txtNextCode.Text);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
 
             return true;
         }
@@ -1300,6 +1313,23 @@ namespace YamyProject
         {
             if (id > 0)
                 ShowReport();
+        }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "SALES ORDER",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
     }
 }

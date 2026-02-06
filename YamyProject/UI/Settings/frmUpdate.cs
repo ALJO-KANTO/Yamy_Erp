@@ -786,6 +786,36 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
+                query = @"CREATE TABLE IF NOT EXISTS tbl_Manufacturing_Steps (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code VARCHAR(20) NOT NULL,
+                            step_name VARCHAR(100) NOT NULL,
+                            description VARCHAR(500),
+                            step_order INT NOT NULL,
+                            is_completed TINYINT(1) DEFAULT 0,
+                            created_by INT,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_manufacturer_packing (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            item_id INT,
+                            batch_id INT,
+                            variant VARCHAR(255) NOT NULL DEFAULT(''),
+                            quantity DECIMAL(18,2) DEFAULT 0,
+                            batch_number VARCHAR(255),
+                            packing_date DATE NOT NULL,
+                            rack_no VARCHAR(255) DEFAULT '1',
+                            created_by INT DEFAULT 0,
+                            warehouse_id INT DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
                 MessageBox.Show("Database Updated");
             }
             catch (Exception ex)

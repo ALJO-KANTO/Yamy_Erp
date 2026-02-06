@@ -176,7 +176,7 @@ namespace YamyProject
             DBClass.CreateParameter("voucher_no", VoucherNo));
         }
         public static void UpdateTransactionEntry(int journalId, DateTime date, string accountId, string debit, string credit,
-                                      string transactionId, string humId, string type, string description, int modifiedBy, DateTime modifiedDate)
+                                      string transactionId, string humId, string type, string tType, string description, int modifiedBy, DateTime modifiedDate)
         {
             DBClass.ExecuteNonQuery(@"UPDATE tbl_transaction 
                             SET date = @date, 
@@ -186,6 +186,7 @@ namespace YamyProject
                                 transaction_id = @transactionId, 
                                 hum_id =@hum_id,
                                 type = @type,
+                                t_type = @tType,
                                 description = @description, 
                                 modified_by = @modifiedBy, 
                                 modified_date = @modifiedDate
@@ -197,6 +198,7 @@ namespace YamyProject
                 DBClass.CreateParameter("@transactionId", transactionId),
                 DBClass.CreateParameter("@hum_id", humId),
                 DBClass.CreateParameter("@type", type),
+                DBClass.CreateParameter("@tType", tType),
                 DBClass.CreateParameter("@description", description),
                 DBClass.CreateParameter("@modifiedBy", modifiedBy),
                 DBClass.CreateParameter("@modifiedDate", modifiedDate),

@@ -4,11 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
@@ -499,6 +497,18 @@ namespace YamyProject
                 else if (sub_menu.Equals("Project Planning", StringComparison.OrdinalIgnoreCase))
                 {
                     CBProjectPlanning.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("LessStockItem Notification"))
+                {
+                    CKBLessStockItem.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("PurchaseOrder Notification"))
+                {
+                    CKBLpo.Checked = Convert.ToBoolean(row["can_view"]);
+                }
+                else if (sub_menu.Equals("Production ItemRequest Notification"))
+                {
+                    CKBRequest.Checked = Convert.ToBoolean(row["can_view"]);
                 }
                 // CBProjectDashBoard.Checked && CBProjectTender.Checked && CBProjectEstimate.Checked && CBProjectPlanning
             }
@@ -3275,6 +3285,33 @@ namespace YamyProject
                 return;
 
             frmLogin.frmMain.LoadFormIntoPanel(new frmUserActivityReport(int.Parse(dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString())));
+        }
+
+        private void CKBLessStockItem_CheckedChanged(object sender, EventArgs e)
+        {
+            updateOrEditData(
+             subMenuId: subMenuId("LessStockItem Notification"),
+             canView: CKBLessStockItem.Checked,
+             canEdit: false,
+             canDelete: false);
+        }
+
+        private void CKBLpo_CheckedChanged(object sender, EventArgs e)
+        {
+            updateOrEditData(
+             subMenuId: subMenuId("PurchaseOrder Notification"),
+             canView: CKBLpo.Checked,
+             canEdit: false,
+             canDelete: false);
+        }
+
+        private void CKBRequest_CheckedChanged(object sender, EventArgs e)
+        {
+            updateOrEditData(
+             subMenuId: subMenuId("Production ItemRequest Notification"),
+             canView: CKBRequest.Checked,
+             canEdit: false,
+             canDelete: false);
         }
     }
 }

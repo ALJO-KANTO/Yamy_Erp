@@ -34,6 +34,7 @@ namespace YamyProject
         {
             BindCombos.PopulateProjects(cmbProject);
             BindData();
+            LocalizationManager.LocalizeDataGridViewHeaders(dgView);
         }
         public void BindData()
         {

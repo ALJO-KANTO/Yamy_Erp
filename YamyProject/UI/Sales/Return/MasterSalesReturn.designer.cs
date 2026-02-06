@@ -204,7 +204,7 @@
             this.dgvInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInvoice.RowHeadersVisible = false;
             this.dgvInvoice.RowTemplate.Height = 30;
-            this.dgvInvoice.Size = new System.Drawing.Size(1215, 481);
+            this.dgvInvoice.Size = new System.Drawing.Size(1215, 488);
             this.dgvInvoice.TabIndex = 6;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -227,8 +227,9 @@
             this.dgvInvoice.ThemeStyle.RowsStyle.Height = 30;
             this.dgvInvoice.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvInvoice.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvInvoice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoice_CellContentClick);
+            this.dgvInvoice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgvInvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellDoubleClick);
+            this.dgvInvoice.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
             this.dgvInvoice.MouseLeave += new System.EventHandler(this.dgvCustomer_Leave);
             this.dgvInvoice.MouseHover += new System.EventHandler(this.dgvCustomer_MouseHover);
             // 
@@ -249,7 +250,7 @@
             this.panel2.Controls.Add(this.cmbCustomer);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1215, 48);
             this.panel2.TabIndex = 7;
@@ -497,9 +498,9 @@
             // 
             this.panel3.Controls.Add(this.dgvInvoice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 85);
+            this.panel3.Location = new System.Drawing.Point(0, 78);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1215, 481);
+            this.panel3.Size = new System.Drawing.Size(1215, 488);
             this.panel3.TabIndex = 8;
             // 
             // headerUC1
@@ -511,7 +512,7 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1215, 37);
+            this.headerUC1.Size = new System.Drawing.Size(1215, 30);
             this.headerUC1.TabIndex = 0;
             // 
             // guna2Button1

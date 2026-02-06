@@ -49,6 +49,7 @@ namespace YamyProject
             //{
             //    btnRemove.Enabled = UserPermissions.canDelete("Project Center");
             //}
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
         }
         private void btnRemove_Click(object sender, EventArgs e)
         {

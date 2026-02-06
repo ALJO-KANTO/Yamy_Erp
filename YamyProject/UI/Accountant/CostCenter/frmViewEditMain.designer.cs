@@ -193,7 +193,7 @@
             this.headerUC1.Location = new System.Drawing.Point(3, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(410, 34);
+            this.headerUC1.Size = new System.Drawing.Size(410, 30);
             this.headerUC1.TabIndex = 145;
             // 
             // frmViewEditMain

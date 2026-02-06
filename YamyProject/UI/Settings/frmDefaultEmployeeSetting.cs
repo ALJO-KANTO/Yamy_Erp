@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -25,7 +26,8 @@ namespace YamyProject
             cmbYear.SelectedItem = DateTime.Now.Year; // Set default to current year
 
             // Fill Month ComboBox
-            string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+
+            string[] months = new CultureInfo("en-US").DateTimeFormat.MonthNames;
             foreach (string month in months)
             {
                 if (!string.IsNullOrEmpty(month)) // Avoid empty entry

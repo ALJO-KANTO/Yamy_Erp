@@ -30,6 +30,8 @@ namespace YamyProject
             BindCombos.PopulateProjects(cmbProject);
             BindCombos.PopulateTenderNames(cmbTenderName);
             BindInvoices();
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
+            LocalizationManager.LocalizeDataGridViewHeaders(dgView);
         }
         public void BindInvoices()
         {

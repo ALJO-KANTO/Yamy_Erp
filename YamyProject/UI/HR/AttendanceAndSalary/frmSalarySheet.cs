@@ -16,6 +16,10 @@ namespace YamyProject
 {
     public partial class frmSalarySheet : Form
     {
+        // REQUIRED for Activator.CreateInstances
+        public frmSalarySheet() : this(0)
+        {
+        }
         public frmSalarySheet(int id = 0)
         {
             InitializeComponent();

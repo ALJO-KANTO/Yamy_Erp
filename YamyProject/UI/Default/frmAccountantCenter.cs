@@ -11,12 +11,14 @@ namespace YamyProject
 {
     public partial class frmAccountantCenter : Form
     {
+        private Font _normalFont;
+        private Font _hoverFont;
+        private DataGridViewCell _lastCell = null; // track last hovered cell
 
         public frmAccountantCenter()
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            LoadTools();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -25,11 +27,11 @@ namespace YamyProject
 
         private void frmAccountantCenter_Load(object sender, EventArgs e)
         {
+            _normalFont = new Font("Segoe UI", 9F, FontStyle.Regular);
+            _hoverFont = new Font("Segoe UI", 9F, FontStyle.Underline);
+
             Lbheader.Text = "Accountant Center";
             LoadTools();
-            dgvTools.CellClick += dgvTools_CellClick;
-            //dgvTools2_CellClick += dgvTools2_CellClick;
-            customize.Click += customize_Click;
 
             cmbMemorized.Items.Add("Accountant");
             cmbMemorized.Items.Add("Banking");
@@ -46,7 +48,7 @@ namespace YamyProject
             ShowPanel("Accountant");
 
             // Attach event handler for selection change
-            cmbMemorized.SelectedIndexChanged += cmbMemorized_SelectedIndexChanged;
+            //cmbMemorized.SelectedIndexChanged += cmbMemorized_SelectedIndexChanged;
             //dgvReconcile.Rows.Add("Petty Cash");
             //dgvReconcile.Rows[0].Cells["account"].Style.ForeColor = Color.Blue;
             //dgvReconcile.Rows[0].Cells["account"].Style.Font = new Font(dgvReconcile.Font, FontStyle.Underline);
@@ -121,7 +123,27 @@ namespace YamyProject
             try
             {
                 string query = "SELECT id, tool_name FROM tbl_tools WHERE is_selected = 0";
-                DataTable dt = DBClass.ExecuteDataTable(query);
+                DataTable dt = new DataTable();// DBClass.ExecuteDataTable(query);
+                dt.Columns.Add("id", typeof(int));
+                dt.Columns.Add("tool_name", typeof(string));
+                dt.Rows.Add(1, "Chart Of Account");
+                dt.Rows.Add(1, "Cost Center");
+                dt.Rows.Add(1, "Fixed Assets");
+                dt.Rows.Add(1, "Payment Voucher");
+                dt.Rows.Add(1, "Receipt Voucher");
+                dt.Rows.Add(1, "Petty Cash");
+                dt.Rows.Add(1, "Prepaid Expense");
+                dt.Rows.Add(1, "Bank Card");
+                dt.Rows.Add(1, "Bank Register");
+                dt.Rows.Add(1, "Cheques");
+                dt.Rows.Add(1, "PDC");
+                dt.Rows.Add(1, "Customer Center");
+                dt.Rows.Add(1, "Sales Center");
+                dt.Rows.Add(1, "Vendor Center");
+                dt.Rows.Add(1, "Purchases Center");
+                dt.Rows.Add(1, "Employee Center");
+                dt.Rows.Add(1, "Attendance Sheet Center");
+                dt.Rows.Add(1, "Salary Sheet");
 
                 // Clone schema for each table
                 DataTable dtLeft = dt.Clone();
@@ -166,8 +188,8 @@ namespace YamyProject
         }
         private void CustomizeDataGridView(DataGridView dgv)
         {
-            Font linkFont = new Font("Segoe UI", 9F, FontStyle.Underline); // Match "Customize"/"Refresh"
-            Color linkColor = Color.Blue;
+            Font linkFont = new Font("Segoe UI", 9F, FontStyle.Regular); // Match "Customize"/"Refresh"
+            Color linkColor = Color.RoyalBlue;
 
             dgv.DefaultCellStyle.Font = linkFont;
             dgv.DefaultCellStyle.ForeColor = linkColor;
@@ -212,22 +234,58 @@ namespace YamyProject
         }
         private void OpenToolForm(string toolText)
         {
-                string query = "SELECT form_name FROM tbl_set_menu_forms WHERE form_text = @formText LIMIT 1";
-                DataTable dt = DBClass.ExecuteDataTable(query, new MySqlParameter("@formText", toolText));
+            string query = "SELECT form_name FROM tbl_set_menu_forms WHERE form_text = @formText LIMIT 1";
+            DataTable dt = new DataTable(); //DBClass.ExecuteDataTable(query, new MySqlParameter("@formText", toolText));
+            dt.Columns.Add("form_name", typeof(string));
+            if(toolText.Equals("Chart Of Account"))
+                dt.Rows.Add("MasterChartOfAccount"); // MasterChartOfAccount
+            else if (toolText.Equals("Cost Center"))
+                dt.Rows.Add("MasterCostCenter"); // MasterCostCenter
+            else if (toolText.Equals("Fixed Assets"))
+                dt.Rows.Add("MasterFixedAssets"); // MasterFixedAssets
+            else if (toolText.Equals("Payment Voucher"))
+                dt.Rows.Add("MasterPaymentVoucher"); // MasterPaymentVoucher
+            else if (toolText.Equals("Receipt Voucher"))
+                dt.Rows.Add("MasterReceiptVoucher"); // MasterReceiptVoucher
+            else if (toolText.Equals("Petty Cash"))
+                dt.Rows.Add("MasterPettyCash"); // MasterPettyCash
+            else if (toolText.Equals("Prepaid Expense"))
+                dt.Rows.Add("MasterPrepaidExpense");// MasterPrepaidExpense
+            else if (toolText.Equals("Bank Card"))
+                dt.Rows.Add("MasterBankCard"); // MasterBankCard
+            else if (toolText.Equals("Bank Register"))
+                dt.Rows.Add("MasterBanking"); // MasterBanking
+            else if (toolText.Equals("Cheques"))
+                dt.Rows.Add("MasterCheque"); // MasterCheque
+            else if (toolText.Equals("PDC"))
+                dt.Rows.Add("MasterPDC"); // MasterPDC
+            else if (toolText.Equals("Customer Center"))
+                dt.Rows.Add("MasterCustomer"); // MasterCustomer
+            else if (toolText.Equals("Sales Center"))
+                dt.Rows.Add("MasterSales"); // MasterSales
+            else if (toolText.Equals("Vendor Center"))
+                dt.Rows.Add("MasterVendor"); // MasterVendor
+            else if (toolText.Equals("Purchases Center"))
+                dt.Rows.Add("MasterPurchases"); // MasterPurchases
+            else if (toolText.Equals("Employee Center"))
+                dt.Rows.Add("MasterEmployee"); // MasterEmployee
+            else if (toolText.Equals("Attendance Sheet Center"))
+                dt.Rows.Add("MasterAttendanceSheet"); // MasterAttendanceSheet
+            else if (toolText.Equals("Salary Sheet"))
+                dt.Rows.Add("frmSalarySheet"); // frmSalarySheet
 
-                if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
+            {
+                string formName = dt.Rows[0]["form_name"].ToString();
+                Type formType = Type.GetType($"YamyProject.{formName}");
+
+                if (formType != null)
                 {
-                    string formName = dt.Rows[0]["form_name"].ToString();
-                    Type formType = Type.GetType($"YamyProject.{formName}");
-
-                    if (formType != null)
-                    {
-                    //Form formToOpen = (Form)Activator.CreateInstance(formType);
+                    //Form formToOpen = (Form)Activator.CreateInstance(formType);MasterPurchases
                     //formToOpen.Show();
                     frmLogin.frmMain.openChildForm((Form)Activator.CreateInstance(formType));
-                    }
+                }
             }
-
         }
         private void dgvTools_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -338,23 +396,29 @@ namespace YamyProject
 
         private void dgvTools_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) ((DataGridView)sender).Cursor = Cursors.Hand;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
+            DataGridView dgv = sender as DataGridView;
+            dgv.Cursor = Cursors.Hand;
+
+            // Reset previous hovered cell
+            if (_lastCell != null)
+                _lastCell.Style.Font = _normalFont;
+
+            // Apply underline to current cell
+            _lastCell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            _lastCell.Style.Font = _hoverFont;
         }
 
         private void dgvTools_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) ((DataGridView)sender).Cursor = Cursors.Default;
-        }
+            if (_lastCell != null)
+                _lastCell.Style.Font = _normalFont;
 
-        private void dgvTools2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) ((DataGridView)sender).Cursor = Cursors.Hand;
-        }
+            DataGridView dgv = sender as DataGridView;
+            dgv.Cursor = Cursors.Default;
 
-        private void dgvTools2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) ((DataGridView)sender).Cursor = Cursors.Default;
+            _lastCell = null;
         }
 
         private void guna2Separator3_Click(object sender, EventArgs e)
@@ -411,6 +475,81 @@ namespace YamyProject
 
                 frmLogin.frmMain.openChildForm(new FrmAccountDetails(accountId, accountName));
             }
+        }
+
+        private void linkLabel36_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //frmLogin.frmMain.openChildForm(new 
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new MasterJournalVoucher());
+        }
+
+        private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmBankBalanceSummary());
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmGeneralLedger());
+        }
+
+        private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new MasterJournalVoucher());
+        }
+
+        private void linkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new ProfitandLossReport(""));
+        }
+
+        private void linkLabel27_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmExpenseByVendorSummary());
+        }
+
+        private void linkLabel14_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new MasterPDC());
+        }
+
+        private void linkLabel15_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new MasterCheque());
+        }
+
+        private void linkLabel13_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmCashFlowStatement());
+        }
+
+        private void linkLabel16_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new ProfitandLossReport(""));
+        }
+
+        private void linkLabel17_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmBalanceSheetReport(""));
+        }
+
+        private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmCustomerBalanceDetails());
+        }
+
+        private void linkLabel11_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmCustomerAgingSummary());
+        }
+
+        private void linkLabel12_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmSalesByCustomerSummary());
         }
     }
 }

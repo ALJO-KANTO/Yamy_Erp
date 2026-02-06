@@ -1,6 +1,7 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -651,6 +653,11 @@ namespace YamyProject
             Transaction();
             Utilities.LogAudit(frmLogin.userId, "Update Sales Invoice", "Sales Invoice", id, "Updated Sales Invoice: " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
         }
         private void ReturnItemsToInventory()
@@ -795,6 +802,10 @@ namespace YamyProject
             Transaction();
             Utilities.LogAudit(frmLogin.userId, "Create Invoice", "Sales Invoice", (int)invId, "Created Sales Invoice No. " + txtNextCode.Text);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData((int)invId);
+            }
             return true;
         }
         private void Transaction()
@@ -822,21 +833,7 @@ namespace YamyProject
 
                 object netResult = DBClass.ExecuteScalar("SELECT account_id FROM tbl_warehouse WHERE id = @id", DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
                 int level4Id = netResult != DBNull.Value ? Convert.ToInt32(netResult) : 0;
-                if (itemInventoryCost>0)
-                {
-                    CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                        level4COGS.ToString(), itemInventoryCost.ToString("N2"), "0",
-                        invId.ToString(), "0", "Sales Invoice", "SALES",
-                        "COGS For Sales No. " + txtNextCode.Text,
-                        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
-
-                    CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                            level4Id.ToString(), "0", itemInventoryCost.ToString("N2"),
-                            invId.ToString(), "0", "Sales Invoice", "SALES",
-                            "Item Sold For Sales No. " + txtNextCode.Text,
-                            frmLogin.userId, DateTime.Now.Date, txtNextCode.Text
-                        );
-                }
+                
             }
         }
         private void TransferSale()
@@ -1013,38 +1010,227 @@ namespace YamyProject
             //if (totalCostAllItems > 0)
             //{
             //    itemInventoryCost = totalCostAllItems;
-                //    CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                //        level4COGS.ToString(), totalCostAllItems.ToString(), "0",
-                //        invId.ToString(), "0", "Sales Invoice", "SALES",
-                //        "COGS For Sales No. " + invCode,
-                //        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            //    CommonInsert.addTransactionEntry(dtInv.Value.Date,
+            //        level4COGS.ToString(), totalCostAllItems.ToString(), "0",
+            //        invId.ToString(), "0", "Sales Invoice", "SALES",
+            //        "COGS For Sales No. " + invCode,
+            //        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
-                //    if (Utilities.InventoryAssetFromProduct())
-                //    {
-                //        foreach (var costOfItem in costList)
-                //        {
-                //            string level4AccountId = costOfItem.Level4Id.ToString();
-                //            string itemAmount = costOfItem.Amount.ToString("N2");
-                //            CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                //                level4AccountId.ToString(), "0", itemAmount.ToString(),
-                //                invId.ToString(), "0", "Sales Invoice", "SALES",
-                //                "Item Sold For Sales No. " + invCode,
-                //                frmLogin.userId, DateTime.Now.Date, txtNextCode.Text
-                //            );
-                //        }
-                //    }
-                //    else
-                //    {
-                //        CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                //                level4Inventory.ToString(), "0", totalCostAllItems.ToString(),
-                //                invId.ToString(), "0", "Sales Invoice", "SALES",
-                //                "Item Sold For Sales No. " + invCode,
-                //                frmLogin.userId, DateTime.Now.Date, txtNextCode.Text
-                //            );
-                //    }
+            //    if (Utilities.InventoryAssetFromProduct())
+            //    {
+            //        foreach (var costOfItem in costList)
+            //        {
+            //            string level4AccountId = costOfItem.Level4Id.ToString();
+            //            string itemAmount = costOfItem.Amount.ToString("N2");
+            //            CommonInsert.addTransactionEntry(dtInv.Value.Date,
+            //                level4AccountId.ToString(), "0", itemAmount.ToString(),
+            //                invId.ToString(), "0", "Sales Invoice", "SALES",
+            //                "Item Sold For Sales No. " + invCode,
+            //                frmLogin.userId, DateTime.Now.Date, txtNextCode.Text
+            //            );
+            //        }
+            //    }
+            //    else
+            //    {
+            //        CommonInsert.addTransactionEntry(dtInv.Value.Date,
+            //                level4Inventory.ToString(), "0", totalCostAllItems.ToString(),
+            //                invId.ToString(), "0", "Sales Invoice", "SALES",
+            //                "Item Sold For Sales No. " + invCode,
+            //                frmLogin.userId, DateTime.Now.Date, txtNextCode.Text
+            //            );
+            //    }
             //}
+            if (totalCostAllItems > 0)
+            {
+                itemInventoryCost = totalCostAllItems;
+
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                    level4COGS.ToString(), totalCostAllItems.ToString(), "0", invId.ToString(),
+                    "0", "Sales Invoice", "SALES",
+                    "COGS For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+
+                //Credit Inventory Asset
+                CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                    level4Inventory.ToString(), "0", totalCostAllItems.ToString(),
+                    invId.ToString(), "0", "Sales Invoice", "SALES",
+                    "Inventory Reduction For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            }
+
         }
         private decimal InsertItemTransaction(DataGridViewRow row, int itemId, decimal qty, string method)
+        {
+            if (itemId <= 0 || qty <= 0)
+                return 0;
+
+            decimal totalCost = 0;
+            decimal cost_price = 0;
+
+            /* =========================================================
+               NEGATIVE STOCK ALLOWED
+               ========================================================= */
+            if (AllowItemWithOutQty)
+            {
+                object result = DBClass.ExecuteScalar(@"
+                                SELECT cost_price
+                                FROM tbl_item_transaction
+                                WHERE item_id = @id
+                                  AND qty_in > 0
+                                  AND date <= @date
+                                ORDER BY date DESC, id DESC
+                                LIMIT 1;",
+                                DBClass.CreateParameter("@id", itemId),
+                                DBClass.CreateParameter("@date", dtInv.Value));
+
+                if (result != null && result != DBNull.Value)
+                    cost_price = Convert.ToDecimal(result);
+
+                totalCost = cost_price * qty;
+
+                CommonInsert.InsertItemTransaction(
+                    dtInv.Value.Date,
+                    "Sales Invoice",
+                    invId.ToString(),
+                    itemId.ToString(),
+                    cost_price.ToString("N6"),
+                    "0",
+                    row.Cells["price"].Value.ToString(),
+                    qty.ToString("N6"),
+                    "0",
+                    $"Sales Invoice No. {txtNextCode.Text} (Negative Stock)",
+                    cmbWarehouse.SelectedValue.ToString()
+                );
+
+                return totalCost;
+            }
+
+            /* =========================================================
+               FIFO / LIFO
+               ========================================================= */
+            if (method == "fifo" || method == "lifo")
+            {
+                string orderBy = method == "fifo" ? "ASC" : "DESC";
+                decimal remainingQty = qty;
+
+                using (var reader = DBClass.ExecuteReader($@"
+                            SELECT id, qty_in, cost_price
+                            FROM tbl_item_transaction
+                            WHERE item_id = @id
+                              AND qty_in > 0
+                              AND date <= @date
+                            ORDER BY date {orderBy}, id {orderBy}
+                            FOR UPDATE;",
+                            DBClass.CreateParameter("@id", itemId),
+                            DBClass.CreateParameter("@date", dtInv.Value)))
+                {
+                    while (reader.Read() && remainingQty > 0)
+                    {
+                        decimal availableQty = Convert.ToDecimal(reader["qty_in"]);
+                        cost_price = Convert.ToDecimal(reader["cost_price"]);
+                        decimal qtyToUse = Math.Min(remainingQty, availableQty);
+
+                        remainingQty -= qtyToUse;
+                        totalCost += cost_price * qtyToUse;
+
+                        CommonInsert.InsertItemTransaction(
+                            dtInv.Value.Date,
+                            "Sales Invoice",
+                            invId.ToString(),
+                            itemId.ToString(),
+                            cost_price.ToString("N6"),
+                            "0",
+                            row.Cells["price"].Value.ToString(),
+                            qtyToUse.ToString("N6"),
+                            "0",
+                            $"Sales Invoice No. {txtNextCode.Text}",
+                            cmbWarehouse.SelectedValue.ToString()
+                        );
+
+                        DBClass.ExecuteNonQuery(
+                            "UPDATE tbl_item_transaction SET qty_in = qty_in - @qty WHERE id = @id",
+                            DBClass.CreateParameter("@qty", qtyToUse),
+                            DBClass.CreateParameter("@id", reader["id"])
+                        );
+                    }
+                }
+
+                /* Remaining quantity → negative stock fallback */
+                if (remainingQty > 0)
+                {
+                    if (cost_price <= 0)
+                    {
+                        object fallbackCost = DBClass.ExecuteScalar(@"
+                                                SELECT cost_price
+                                                FROM tbl_item_transaction
+                                                WHERE item_id = @id
+                                                  AND qty_in > 0
+                                                  AND date <= @date
+                                                ORDER BY date DESC, id DESC
+                                                LIMIT 1;",
+                                                DBClass.CreateParameter("@id", itemId),
+                                                DBClass.CreateParameter("@date", dtInv.Value));
+
+                        if (fallbackCost != null && fallbackCost != DBNull.Value)
+                            cost_price = Convert.ToDecimal(fallbackCost);
+                    }
+
+                    totalCost += cost_price * remainingQty;
+
+                    CommonInsert.InsertItemTransaction(
+                        dtInv.Value.Date,
+                        "Sales Invoice",
+                        invId.ToString(),
+                        itemId.ToString(),
+                        cost_price.ToString("N6"),
+                        "0",
+                        row.Cells["price"].Value.ToString(),
+                        remainingQty.ToString("N6"),
+                        "0",
+                        $"Sales Invoice No. {txtNextCode.Text} (Neg. Stock)",
+                        cmbWarehouse.SelectedValue.ToString()
+                    );
+                }
+
+                return totalCost;
+            }
+
+            /* =========================================================
+               WEIGHTED AVERAGE COST
+               ========================================================= */
+            object avgCostResult = DBClass.ExecuteScalar(@"
+                                    SELECT 
+                                        CASE 
+                                            WHEN SUM(qty_in - qty_out) <= 0 THEN 0
+                                            ELSE SUM((qty_in - qty_out) * cost_price) / SUM(qty_in - qty_out)
+                                        END
+                                    FROM tbl_item_transaction
+                                    WHERE item_id = @id
+                                      AND date <= @date;",
+                                    DBClass.CreateParameter("@id", itemId),
+                                    DBClass.CreateParameter("@date", dtInv.Value));
+
+            if (avgCostResult != null && avgCostResult != DBNull.Value)
+                cost_price = Convert.ToDecimal(avgCostResult);
+
+            totalCost = cost_price * qty;
+
+            CommonInsert.InsertItemTransaction(
+                dtInv.Value.Date,
+                "Sales Invoice",
+                invId.ToString(),
+                itemId.ToString(),
+                cost_price.ToString("N6"),
+                "0",
+                row.Cells["price"].Value.ToString(),
+                qty.ToString("N6"),
+                "0",
+                $"Sales Invoice No. {txtNextCode.Text}",
+                cmbWarehouse.SelectedValue.ToString()
+            );
+
+            return totalCost;
+        }
+
+        private decimal InsertItemTransactionOld(DataGridViewRow row, int itemId, decimal qty, string method)
         {
             if (AllowItemWithOutQty)
             {
@@ -1054,9 +1240,10 @@ namespace YamyProject
 
                 // Try to get a recent cost price (optional, to assign value for accounting)
                 object result = DBClass.ExecuteScalar(@"SELECT cost_price FROM tbl_item_transaction 
-                                            WHERE item_id = @id AND date <= @date 
-                                            ORDER BY date DESC LIMIT 1",
-                                DBClass.CreateParameter("id", itemId), DBClass.CreateParameter("date", dtInv.Value));
+                                            WHERE item_id = @id AND qty_in > 0
+                                            ORDER BY date DESC
+                                            LIMIT 1;",
+                                DBClass.CreateParameter("@id", itemId), DBClass.CreateParameter("@date", dtInv.Value));
 
                 if (result != null && result != DBNull.Value)
                 {
@@ -1090,9 +1277,9 @@ namespace YamyProject
 
                     reader = DBClass.ExecuteReader(@"
                                 SELECT * FROM tbl_item_transaction 
-                                WHERE date <= @date AND qty_inc > 0 AND item_id = @id 
-                                ORDER BY id " + orderBy,
-                        DBClass.CreateParameter("id", itemId), DBClass.CreateParameter("date", dtInv.Value));
+                                WHERE item_id = @id AND qty_in > 0 AND date <= @date
+                                ORDER BY date " + orderBy + ", id " + orderBy,
+                        DBClass.CreateParameter("@id", itemId), DBClass.CreateParameter("@date", dtInv.Value));
 
                     while (reader.Read() && remainingQty > 0)
                     {
@@ -1702,23 +1889,23 @@ namespace YamyProject
             if (AllowItemWithOutQty)
                 return true;
 
-
-            //       "SELECT(SELECT type FROM tbl_items WHERE id = t.item_id)type, sum(t.qty_in - t.qty_out)on_hand  " +
-            //     "FROM tbl_item_transaction  t WHERE t.item_id = @id AND t.reference != @refId AND t.type != 'Sales Invoice'",
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-             @" SELECT
+            string editRef = id > 0 ? " AND t.reference != @refId " : "";
+            string query = @" SELECT
                     IFNULL(
                         (SELECT SUM(t.qty_in - t.qty_out)
                          FROM tbl_item_transaction t
                          WHERE t.item_id = i.id
-                           AND t.reference != @refId
+                           "+editRef+@"
                            AND t.type != 'Sales Invoice'
                            AND t.warehouse_id = @warehouseId),
                         i.on_hand
                     ) AS on_hand,
                     i.type
                 FROM tbl_items i
-                WHERE i.id = @id ;",
+                WHERE i.id = @id ;";
+            //       "SELECT(SELECT type FROM tbl_items WHERE id = t.item_id)type, sum(t.qty_in - t.qty_out)on_hand  " +
+            //     "FROM tbl_item_transaction  t WHERE t.item_id = @id AND t.reference != @refId AND t.type != 'Sales Invoice'",
+            using (MySqlDataReader reader = DBClass.ExecuteReader( query,
 
             DBClass.CreateParameter("id", itemId),
                 DBClass.CreateParameter("refId", id),
@@ -2039,7 +2226,7 @@ namespace YamyProject
         private void cmbPaymentTerms_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbPaymentMethod.Text == "Credit")
-                dtPaymentTerms.Value = dtPaymentTerms.Value.AddDays(int.Parse(cmbPaymentTerms.Text));
+                dtPaymentTerms.Value = dtInv.Value.AddDays(int.Parse(cmbPaymentTerms.Text));
             else
                 dtPaymentTerms.Value = dtInv.Value;
         }
@@ -2433,7 +2620,23 @@ namespace YamyProject
             return DBClass.ExecuteDataTable(@"SELECT s.id,s.date,s.customer_id,s.invoice_id,s.bill_to,s.city,s.sales_man,s.ship_date,s.ship_via,s.ship_to,(SELECT NAME FROM tbl_coa_level_4 WHERE id=s.account_cash_id) accountName,s.po_num,s.payment_method,s.payment_terms,s.payment_date,s.total,s.vat,s.net,s.pay,s.change 
                                     ,c.name customerName,c.main_phone,c.email,c.trn FROM tbl_sales s,tbl_customer c WHERE s.customer_id = c.id AND s.id=@salesId;", DBClass.CreateParameter("@salesId", a1));
         }
+        string filePath = "";
+        private void guna2TileButton16_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
 
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "SALES INVOICE",
+                    fId,
+                    openFileDialog1.FileName
+                );
+        }
         public DataTable ItemDetails(string a1)
         {
             return DBClass.ExecuteDataTable(@"SELECT d.id,d.item_id,i.name,d.qty,d.cost_price,d.price,(d.qty*d.cost_price) subCostTotal,(d.qty*d.price) subPriceTotal,d.discount,((d.qty*d.price)-d.discount) subTotal,d.vatp vatAmount,d.vat vatPercentage,d.total,d.cost_center_id,(SELECT NAME FROM tbl_sub_cost_center WHERE id=cost_center_id) costCenterName,i.type,i.method,i.unit_id,(select name from tbl_unit WHERE id=i.unit_id) unitName, i.code as code FROM tbl_sales_details d 

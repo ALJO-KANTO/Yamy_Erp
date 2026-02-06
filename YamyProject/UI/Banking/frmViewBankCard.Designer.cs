@@ -737,7 +737,7 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(579, 37);
+            this.headerUC1.Size = new System.Drawing.Size(579, 30);
             this.headerUC1.TabIndex = 0;
             // 
             // panel5
