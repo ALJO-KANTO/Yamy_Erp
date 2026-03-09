@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Ocsp;
+using System;
+using System.Windows.Media.Media3D;
 
 namespace YamyProject
 {
@@ -20,6 +22,7 @@ namespace YamyProject
         public static event EventHandler SalesOrder;
         public static event EventHandler SalesQuotation;
         public static event EventHandler SalesProforma;
+        public static event EventHandler DeliveryNote;
         public static event EventHandler SalesReturn;
         public static event EventHandler Vendor;
         public static event EventHandler SubContract;
@@ -27,6 +30,9 @@ namespace YamyProject
         public static event EventHandler SubContractCategory;
         public static event EventHandler PurchaseInv;
         public static event EventHandler PurchaseOrder;
+        public static event EventHandler PurchaseOffer;
+        public static event EventHandler MaterialRequest;
+        public static event EventHandler MaterialReceived;
         public static event EventHandler PurchaseReturn;
         public static event EventHandler DamageInv;
         public static event EventHandler Item;
@@ -69,6 +75,7 @@ namespace YamyProject
         public static void RefreshSalesOrder() => RaiseEvent(SalesOrder);
         public static void RefreshQuotation() => RaiseEvent(SalesQuotation);
         public static void RefreshSalesProforma() => RaiseEvent(SalesProforma); 
+        public static void RefreshDeliveryNote() => RaiseEvent(DeliveryNote); 
         public static void RefreshSalesReturn() => RaiseEvent(SalesReturn);
         public static void RefreshVendor() => RaiseEvent(Vendor);
         public static void RefreshSubContract() => RaiseEvent(SubContract);
@@ -76,6 +83,9 @@ namespace YamyProject
         public static void RefreshSubContractCategory() => RaiseEvent(SubContractCategory);
         public static void RefreshPurchase() => RaiseEvent(PurchaseInv);
         public static void RefreshPurchaseOrder() => RaiseEvent(PurchaseOrder);
+        public static void RefreshPurchaseOffer() => RaiseEvent(PurchaseOffer);
+        public static void RefreshMaterialRequest() => RaiseEvent(MaterialRequest);
+        public static void RefreshMaterialReceived() => RaiseEvent(MaterialReceived);
         public static void RefreshPurchaseReturn() => RaiseEvent(PurchaseReturn);
         public static void RefreshDamage() => RaiseEvent(DamageInv);
         public static void RefreshItem() => RaiseEvent(Item);

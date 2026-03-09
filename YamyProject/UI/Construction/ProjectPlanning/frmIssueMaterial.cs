@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -18,6 +19,8 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             this.master = _master;
             this.id = _id;
             this.planningId = _planningId;

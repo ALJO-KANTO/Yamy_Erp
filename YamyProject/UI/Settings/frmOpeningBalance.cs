@@ -140,6 +140,7 @@ namespace YamyProject
                     string code = (formattedCode + 1).ToString("D5");
                     if (dgvCustomer.Rows[i].Cells["name"].Value != null && dgvCustomer.Rows[i].Cells["name"].Value.ToString() != "")
                     {
+                        code = string.IsNullOrEmpty(dgvCustomer.Rows[i].Cells["code"].Value.ToString()) ? code : dgvCustomer.Rows[i].Cells["code"].Value.ToString();
                         string name = dgvCustomer.Rows[i].Cells["name"].Value.ToString();
                         string debit = dgvCustomer.Rows[i].Cells["debit"].Value.ToString() == "" ? "0" : ConvertFromDecimal(dgvCustomer.Rows[i].Cells["debit"].Value.ToString());
                         string credit = dgvCustomer.Rows[i].Cells["credit"].Value.ToString() == "" ? "0" : ConvertFromDecimal(dgvCustomer.Rows[i].Cells["credit"].Value.ToString());
@@ -593,7 +594,7 @@ namespace YamyProject
 
 public class frmImportOpeningBalance : Form
 {
-    private TextBox txtStartCell, txtEndCell, txtNameCell, txtDebitCell, txtCreditCell, txtPhoneCell, txtMobileCell, txtEmailCell, txtCountryCell, txtCityCell, txtTaxNoCell, txtAddressCell;
+    private TextBox txtStartCell, txtEndCell, txtCodeCell, txtNameCell, txtDebitCell, txtCreditCell, txtPhoneCell, txtMobileCell, txtEmailCell, txtCountryCell, txtCityCell, txtTaxNoCell, txtAddressCell;
     private Button btnLoadExcel, btnImport;
     private DataGridView dataGridView;
     private string excelPath = string.Empty;
@@ -640,6 +641,12 @@ public class frmImportOpeningBalance : Form
         panelTop.Controls.Add(new Label() { Text = "End Cell:", AutoSize = true, Location = new Point(x, 15) });
         x += labelWidth;
         txtEndCell = new TextBox() { Width = textboxWidth, Location = new Point(x - 15, 12) };
+        x += textboxWidth + spacing;
+
+        // Code Cell
+        panelTop.Controls.Add(new Label() { Text = "Code Cell:", AutoSize = true, Location = new Point(x, 15) });
+        x += labelWidth;
+        txtCodeCell = new TextBox() { Width = textboxWidth, Location = new Point(x - 6, 12) };
         x += textboxWidth + spacing;
 
         // Name Cell
@@ -707,6 +714,7 @@ public class frmImportOpeningBalance : Form
         panelTop.Controls.Add(btnImport);
         panelTop.Controls.Add(txtStartCell);
         panelTop.Controls.Add(txtEndCell);
+        panelTop.Controls.Add(txtCodeCell);
         panelTop.Controls.Add(txtNameCell);
         panelTop.Controls.Add(txtDebitCell);
         panelTop.Controls.Add(txtCreditCell);
@@ -749,6 +757,7 @@ public class frmImportOpeningBalance : Form
         txtEndCell.KeyPress += TxtIntOnly_KeyPress;
 
         // Letter-only for others
+        txtCodeCell.KeyPress += TxtLettersOnly_KeyPress;
         txtNameCell.KeyPress += TxtLettersOnly_KeyPress;
         txtDebitCell.KeyPress += TxtLettersOnly_KeyPress;
         txtCreditCell.KeyPress += TxtLettersOnly_KeyPress;
@@ -784,6 +793,7 @@ public class frmImportOpeningBalance : Form
                 }
 
                 // Map specific fields to column numbers
+                int colCode = ExcelColumnNameToNumber(txtCodeCell.Text);
                 int colName = ExcelColumnNameToNumber(txtNameCell.Text);
                 int colDebit = ExcelColumnNameToNumber(txtDebitCell.Text);
                 int colCredit = ExcelColumnNameToNumber(txtCreditCell.Text);
@@ -809,13 +819,13 @@ public class frmImportOpeningBalance : Form
                     dtFiltered.Columns.Add("TRN");
                     dtFiltered.Columns.Add("building_name");
                     var ws = package.Workbook.Worksheets[0];
-                    for (int row = ws.Dimension.Start.Row + 1; row <= ws.Dimension.End.Row; row++)
+                    for (int row = startCol; row <= endCol; row++)
                     {
                         if (IsRowEmpty(ws, row, endCol)) continue;
 
                         DataRow dr = dtFiltered.NewRow();
 
-                        dr["Code"] = "";
+                        dr["Code"] = (colCode != -1) ? ws.Cells[row, colCode].Text : "";
                         dr["Name"] = (colName != -1) ? ws.Cells[row, colName].Text : "";
                         dr["Debit"] = (colDebit != -1) ? ws.Cells[row, colDebit].Text : "0";
                         dr["Credit"] = (colCredit != -1) ? ws.Cells[row, colCredit].Text : "0";

@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -40,6 +41,7 @@ namespace YamyProject
 
         private void frmViewPurchaseList_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvItems);
             if (RefId != 0)
             {
                 DataTable  dt = DBClass.ExecuteDataTable("select id ,invoice_id inv, date, net amount from tbl_purchase WHERE vendor_id = @cId AND id NOT IN (select purchase_ref_id from tbl_purchase_return)",

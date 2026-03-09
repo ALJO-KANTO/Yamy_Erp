@@ -8,6 +8,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.RMS.Reports;
 using YamyProject.UI.Reports.Design;
@@ -26,6 +27,8 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             this.id = id;
             headerUC1.FormText = id == 0 ? "Credit Note - New" : "Credit Note - Edit";
@@ -38,6 +41,7 @@ namespace YamyProject
         private void frmCreditNote_Load(object sender, EventArgs e)
         {
             dtInv.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvItems);
             bindCombo();
             txtInvoiceId.Text = GenerateNextSalesCode();
             txtNextCode.Text = txtInvoiceId.Text;

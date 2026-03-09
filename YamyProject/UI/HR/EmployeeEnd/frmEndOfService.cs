@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -28,6 +29,7 @@ namespace YamyProject
         private void frmEndOfService_Load(object sender, EventArgs e)
         {
             bindEndOfService();
+            AppTheme.DefaultFont(dgvLeaveSalary);
         }
 
         private void bindEndOfService()

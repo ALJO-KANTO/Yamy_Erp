@@ -712,7 +712,12 @@ namespace YamyProject
             if (lstAccountSuggestions.SelectedItem != null && lstAccountSuggestions.Tag is Guna2TextBox targetTextBox)
             {
                 string selected = lstAccountSuggestions.SelectedItem.ToString();
-                string selectedCode = selected.Split('-')[0].Trim();
+                string selectedCode = "";// selected.Split('-')[0].Trim();
+
+                if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+                {
+                    selectedCode = item.Code;
+                }
 
                 targetTextBox.Text = selectedCode;
                 lstAccountSuggestions.Visible = false;
@@ -748,7 +753,7 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {

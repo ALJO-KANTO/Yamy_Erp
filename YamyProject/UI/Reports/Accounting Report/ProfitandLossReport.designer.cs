@@ -78,17 +78,18 @@ namespace YamyProject
             // 
             // guna2HtmlLabel7
             // 
-            this.guna2HtmlLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2HtmlLabel7.AutoSize = false;
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(466, 28);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(0, 22);
             this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(131, 32);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(1040, 32);
             this.guna2HtmlLabel7.TabIndex = 13;
             this.guna2HtmlLabel7.Text = "Profit & Loss";
+            this.guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // comboBox3
             // 
@@ -233,17 +234,18 @@ namespace YamyProject
             // 
             // guna2HtmlLabel10
             // 
-            this.guna2HtmlLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2HtmlLabel10.AutoSize = false;
             this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2HtmlLabel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel10.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel10.Location = new System.Drawing.Point(485, 58);
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(0, 54);
             this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            this.guna2HtmlLabel10.Size = new System.Drawing.Size(84, 17);
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(1040, 17);
             this.guna2HtmlLabel10.TabIndex = 15;
             this.guna2HtmlLabel10.Text = "All Transaction";
+            this.guna2HtmlLabel10.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // guna2HtmlLabel3
             // 
@@ -313,7 +315,7 @@ namespace YamyProject
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.guna2Panel3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 68);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 63);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1040, 32);
@@ -392,7 +394,7 @@ namespace YamyProject
             this.guna2Panel2.Controls.Add(this.btnPrint);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 35);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 30);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1040, 33);
@@ -494,17 +496,18 @@ namespace YamyProject
             // 
             // lblCompany
             // 
-            this.lblCompany.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCompany.AutoSize = false;
             this.lblCompany.BackColor = System.Drawing.Color.Transparent;
+            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(473, 5);
+            this.lblCompany.Location = new System.Drawing.Point(0, 0);
             this.lblCompany.Margin = new System.Windows.Forms.Padding(2);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(115, 22);
+            this.lblCompany.Size = new System.Drawing.Size(1040, 22);
             this.lblCompany.TabIndex = 14;
             this.lblCompany.Text = "Company Name";
+            this.lblCompany.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dgvCustomer
             // 
@@ -512,6 +515,9 @@ namespace YamyProject
             this.dgvCustomer.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
@@ -527,15 +533,14 @@ namespace YamyProject
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomer.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvCustomer.Location = new System.Drawing.Point(115, 0);
+            this.dgvCustomer.Location = new System.Drawing.Point(394, 0);
             this.dgvCustomer.MultiSelect = false;
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomer.RowHeadersVisible = false;
-            this.dgvCustomer.RowTemplate.Height = 30;
-            this.dgvCustomer.Size = new System.Drawing.Size(809, 544);
+            this.dgvCustomer.Size = new System.Drawing.Size(214, 544);
             this.dgvCustomer.TabIndex = 19;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -555,7 +560,7 @@ namespace YamyProject
             this.dgvCustomer.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCustomer.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCustomer.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvCustomer.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvCustomer.ThemeStyle.RowsStyle.Height = 22;
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvCustomer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellDoubleClick);
@@ -563,14 +568,14 @@ namespace YamyProject
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.lblCompany);
-            this.panel1.Controls.Add(this.guna2HtmlLabel10);
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.guna2HtmlLabel10);
             this.panel1.Controls.Add(this.guna2HtmlLabel7);
+            this.panel1.Controls.Add(this.lblCompany);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1040, 81);
@@ -580,10 +585,10 @@ namespace YamyProject
             // 
             this.panel2.Controls.Add(this.dgvCustomer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 181);
+            this.panel2.Location = new System.Drawing.Point(0, 176);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1040, 556);
+            this.panel2.Size = new System.Drawing.Size(1040, 561);
             this.panel2.TabIndex = 21;
             // 
             // headerUC1

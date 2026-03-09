@@ -23,7 +23,17 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
-            headerUC1.FormText = this.Text;
+            if(_type == "SalesTaxLiability")
+            {
+                headerUC1.Text = guna2HtmlLabel7.Text = "Sales Tax Liability Report";
+            }
+            else if(_type == "SalesTaxRevenue")
+            {
+                headerUC1.Text = guna2HtmlLabel7.Text = "Sales Tax Revenue Report";
+            }
+            else
+                headerUC1.FormText = this.Text;
+
             this.reportType = _type;
         }
 
@@ -134,8 +144,8 @@ namespace YamyProject
                                     'No tax vendor'
                                 ) AS tax_vendor,
     
-                                SUM(s.total) AS total_sales,
-                                SUM(CASE WHEN s.vat = 0 THEN s.total ELSE 0 END) AS non_taxable_sales,
+                                SUM(s.net) AS total_sales,
+                                SUM(CASE WHEN s.vat = 0 THEN s.net ELSE 0 END) AS non_taxable_sales,
                                 SUM(CASE WHEN s.vat > 0 THEN s.net ELSE 0 END) AS taxable_sales,
     
                                 CASE 
@@ -186,7 +196,7 @@ namespace YamyProject
 
             using (MySqlDataReader reader = DBClass.ExecuteReader(query, parameters))
             {
-                decimal netTotal = 0, netQtyTotal = 0;
+                decimal totalSalesTotal = 0, nonTaxableSalesTotal = 0, taxableSalesTotal = 0, taxRateTotal = 0, taxCollectedTotal = 0, taxPaidTotal = 0, taxPayableTotal = 0;
                 while (reader.Read())
                 {
                     if (reportType == "SalesTaxLiability")
@@ -210,7 +220,14 @@ namespace YamyProject
                             taxPaid.ToString("N2"),
                             taxPayable.ToString("N2")
                         );
-                        netTotal += totalSales;
+                        totalSalesTotal += totalSales;
+                        nonTaxableSalesTotal += nonTaxableSales;
+                        taxableSalesTotal += taxableSales;
+                        taxRateTotal += taxRate;
+                        taxCollectedTotal += taxCollected;
+                        taxPaidTotal += taxPaid;
+                        taxPayableTotal += taxPayable;
+
                     }
                     else if (reportType == "SalesTaxRevenue")
                     {
@@ -225,7 +242,9 @@ namespace YamyProject
                             nonTaxableSales.ToString("N2"),
                             totalSales.ToString("N2")
                         );
-                        netTotal += totalSales;
+                        taxableSalesTotal += taxableSales;
+                        nonTaxableSalesTotal += nonTaxableSales;
+                        totalSalesTotal += totalSales;
                     }
                 }
 
@@ -235,12 +254,13 @@ namespace YamyProject
                     dgvSales.Rows.Add(
                         "0",
                         "TOTAL",
-                        netTotal.ToString("N2"),
-                        "",
-                        "",
-                        "",
-                        "",
-                        ""
+                        totalSalesTotal.ToString("N2"),
+                        nonTaxableSalesTotal.ToString("N2"),
+                        taxableSalesTotal.ToString("N2"),
+                        taxRateTotal.ToString("N2"),
+                        taxCollectedTotal.ToString("N2"),
+                        taxPaidTotal.ToString("N2"),
+                        taxPayableTotal.ToString("N2")
                     );
                 }
                 else if (reportType == "SalesTaxRevenue")
@@ -249,9 +269,9 @@ namespace YamyProject
                     dgvSales.Rows.Add(
                         "0",
                         "TOTAL",
-                        "",
-                        "",
-                        netTotal.ToString("N2")
+                        taxableSalesTotal.ToString("N2"),
+                        nonTaxableSalesTotal.ToString("N2"),
+                        totalSalesTotal.ToString("N2")
                     );
                 }
                 dgvSales.Rows[dgvSales.Rows.Count - 1].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
@@ -368,22 +388,22 @@ namespace YamyProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                string name = dgvSales.Rows[e.RowIndex].Cells["name"].Value?.ToString();
-                if (string.Equals(name, "TOTAL", StringComparison.OrdinalIgnoreCase))
-                    return;
-                if (dgvSales.Rows[e.RowIndex].Cells["id"].Value != null)
-                {
-                    int _id = int.Parse(dgvSales.Rows[e.RowIndex].Cells["id"].Value.ToString());
-                    var _type = dgvSales.Rows[e.RowIndex].Cells["type"].Value.ToString();
-                    if (_type.Contains("Invoice"))
-                    {
-                        frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvSales.CurrentRow.Cells["id"].Value.ToString())));
-                    }
-                    //else if(_type == "Purchase Return Invoice")
-                    //{
-                    //    frmLogin.frmMain.openChildForm(new frmPurchaseReturn(id));
-                    //}
-                }
+                //string name = dgvSales.Rows[e.RowIndex].Cells["type"].Value?.ToString();
+                //if (string.Equals(name, "TOTAL", StringComparison.OrdinalIgnoreCase))
+                //    return;
+                //if (dgvSales.Rows[e.RowIndex].Cells["id"].Value != null)
+                //{
+                //    int _id = int.Parse(dgvSales.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                //    var _type = dgvSales.Rows[e.RowIndex].Cells["type"].Value.ToString();
+                //    if (_type.Contains("Invoice"))
+                //    {
+                //        frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvSales.CurrentRow.Cells["id"].Value.ToString())));
+                //    }
+                //    //else if(_type == "Purchase Return Invoice")
+                //    //{
+                //    //    frmLogin.frmMain.openChildForm(new frmPurchaseReturn(id));
+                //    //}
+                //}
             }
         }
 

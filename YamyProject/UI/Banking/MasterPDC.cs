@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -40,6 +41,7 @@ namespace YamyProject
         int pdcReceivable = 0, pdcReceivableReturn = 0, pdcReceivableHold = 0;
         private void MasterPDC_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
             var defaultAccounts = BindCombos.LoadDefaultAccounts();
             pdcPayable = defaultAccounts.ContainsKey("PDC Payable") ? defaultAccounts["PDC Payable"] : 0;
             pdcPayableReturn = defaultAccounts.ContainsKey("PDC Payable Return") ? defaultAccounts["PDC Payable Return"] : 0;

@@ -1,7 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
@@ -35,17 +39,17 @@ namespace YamyProject
         {
             DataTable dt;
             string condition = "";
-            
+
             if (cmbSelectionMethod.Text == "General Ledger")
             {
                 condition = " and tbl_transaction.state = 0 and tbl_transaction.hum_id !=0 ";
             }
-            else if(cmbSelectionMethod.Text == "Default")
+            else if (cmbSelectionMethod.Text == "Default")
             {
                 condition = " and tbl_transaction.state = 0 ";
                 //condition = " and tbl_transaction.hum_id =1 ";
             }
-            else if(cmbSelectionMethod.Text == "Inventory Opening Stock")
+            else if (cmbSelectionMethod.Text == "Inventory Opening Stock")
             {
                 condition = " and tbl_transaction.state = 0 and tbl_transaction.type ='Opening Balance' ";
             }
@@ -338,7 +342,7 @@ namespace YamyProject
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvJournal.Columns["transaction_id"].Visible = dgvJournal.Columns["Description"].Visible = false;
             }
-            else if(type.ToLower() == "vat input" || type.ToLower() == "vat output")
+            else if (type.ToLower() == "vat input" || type.ToLower() == "vat output")
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
@@ -352,7 +356,7 @@ namespace YamyProject
                                 tbl_transaction.credit AS `CREDIT`
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
-                            ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition+ @" and tbl_transaction.account_id = (SELECT account_id FROM tbl_coa_config WHERE category = '" + type+"')",
+                            ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition + @" and tbl_transaction.account_id = (SELECT account_id FROM tbl_coa_config WHERE category = '" + type + "')",
                             parameters.ToArray());
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
@@ -371,7 +375,7 @@ namespace YamyProject
                     ex.ToString();
                 }
             }
-            else if (new[] {"Sales All","Purchase All","Purchase Return All","Sales Return All","Debit Note All","Credit Note All","Petty Cash All"}.Contains(type, StringComparer.OrdinalIgnoreCase))
+            else if (new[] { "Sales All", "Purchase All", "Purchase Return All", "Sales Return All", "Debit Note All", "Credit Note All", "Petty Cash All" }.Contains(type, StringComparer.OrdinalIgnoreCase))
             {
                 dt = DBClass.ExecuteDataTable(@"SELECT 
                                  ROW_NUMBER() OVER (ORDER BY tbl_transaction.date) AS `SN`,
@@ -385,7 +389,7 @@ namespace YamyProject
                                 tbl_transaction.credit AS `CREDIT`
                             FROM tbl_transaction 
                             INNER JOIN tbl_coa_level_4 
-                            ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition + @" and tbl_transaction.type Like '" + type.Replace(" All","") + "%'",
+                            ON tbl_transaction.account_id = tbl_coa_level_4.id " + condition + @" and tbl_transaction.type Like '" + type.Replace(" All", "") + "%'",
                             parameters.ToArray());
 
 
@@ -443,7 +447,8 @@ namespace YamyProject
                 {
                     dgvJournal.Columns["A/C name"].Width = 230;
                     dgvJournal.Columns["sn"].Width = 50;
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     ex.ToString();
                 }
@@ -471,7 +476,7 @@ namespace YamyProject
             BindJournal();
         }
 
-       
+
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -501,6 +506,176 @@ namespace YamyProject
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
             BindJournal();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            string companyName = "Journal Transactions";
+
+            // Create PDF document
+            Document doc = new Document();
+            Section section = doc.AddSection();
+
+            // Set margins
+            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.RightMargin = Unit.FromCentimeter(1);
+            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+
+            // Header table
+            Table headerTable = section.AddTable();
+            headerTable.Borders.Width = 0;
+            headerTable.AddColumn("5cm");
+            headerTable.AddColumn("8cm");
+            headerTable.AddColumn("5cm");
+
+            Row headerRow = headerTable.AddRow();
+            Paragraph left = headerRow.Cells[0].AddParagraph();
+            left.Format.Font.Name = "Times New Roman";
+            left.Format.Font.Size = 10;
+            left.Format.Alignment = ParagraphAlignment.Left;
+            left.AddText(DateTime.Now.ToString("hh:mm tt") + "\n");
+            left.AddText(DateTime.Now.ToString("dd/MM/yyyy"));
+
+            Paragraph center = headerRow.Cells[1].AddParagraph();
+            center.Format.Font.Name = "Times New Roman";
+            center.Format.Alignment = ParagraphAlignment.Center;
+            center.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("Journal Transactions\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("All Transactions", TextFormat.NotBold).Font.Size = 9;
+
+            //section.Add(headerTable);
+
+            // Separator line
+            Paragraph line = section.AddParagraph();
+            line.Format.Borders.Bottom.Width = 2;
+            line.Format.SpaceAfter = "0.5cm";
+
+            // Main data table
+            Table dataTable = section.AddTable();
+            dataTable.Borders.Width = 0.75;
+            dataTable.AddColumn("1cm"); // SN
+            dataTable.AddColumn("2cm"); // Ref Id
+            dataTable.AddColumn("2cm"); // Date
+            dataTable.AddColumn("2cm"); // Type
+            dataTable.AddColumn("2cm"); // A/C Code
+            dataTable.AddColumn("3cm"); // A/C Name
+            dataTable.AddColumn("3cm"); // Description
+            dataTable.AddColumn("2cm"); // Debit
+            dataTable.AddColumn("2cm"); // Credit
+
+            dataTable.AddColumn(
+                Unit.FromCentimeter(2)); // Partner
+            dataTable.AddColumn(
+                Unit.FromCentimeter(2)); // Total
+            Row header = dataTable.AddRow();
+            header.Shading.Color = Colors.LightGray;
+            header.Cells[0].AddParagraph("SN").Format.Font.Bold = true;
+            header.Cells[1].AddParagraph("Ref Id").Format.Font.Bold = true;
+            header.Cells[2].AddParagraph("Date").Format.Font.Bold = true;
+            header.Cells[3].AddParagraph("Type").Format.Font.Bold = true;
+            header.Cells[4].AddParagraph("A/C Code").Format.Font.Bold = true;
+            header.Cells[5].AddParagraph("A/C Name").Format.Font.Bold = true;
+            header.Cells[6].AddParagraph("Description").Format.Font.Bold = true;
+            header.Cells[7].AddParagraph("Debit").Format.Font.Bold = true;
+            header.Cells[8].AddParagraph("Credit").Format.Font.Bold = true;
+
+            foreach (DataGridViewRow row in dgvJournal.Rows)
+            {
+                if (row.IsNewRow) continue;
+                Row dataRow = dataTable.AddRow();
+                dataRow.Cells[0].AddParagraph(row.Cells["SN"].Value?.ToString() ?? "");
+                dataRow.Cells[1].AddParagraph(row.Cells["Ref Id"].Value?.ToString() ?? "");
+                dataRow.Cells[2].AddParagraph(row.Cells["Date"].Value?.ToString() ?? "");
+                dataRow.Cells[3].AddParagraph(row.Cells["Type"].Value?.ToString() ?? "");
+                dataRow.Cells[4].AddParagraph(row.Cells["A/C Code"].Value?.ToString() ?? "");
+                dataRow.Cells[5].AddParagraph(row.Cells["A/C Name"].Value?.ToString() ?? "");
+                dataRow.Cells[6].AddParagraph(row.Cells["Description"].Value?.ToString() ?? "");
+                dataRow.Cells[7].AddParagraph(row.Cells["Debit"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
+                dataRow.Cells[8].AddParagraph(row.Cells["Credit"].Value?.ToString() ?? "").Format.Alignment = ParagraphAlignment.Right;
+            }
+
+            // Ask user to save file
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveDialog.Title = "Save Journal Transactions";
+                saveDialog.FileName = "JournalTransactions.pdf";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+                    renderer.Document = doc;
+                    renderer.RenderDocument();
+                    renderer.PdfDocument.Save(saveDialog.FileName);
+                    Process.Start("explorer.exe", saveDialog.FileName);
+                }
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Save Excel File";
+                saveDialog.FileName = "JournalTransactions.xlsx";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    excelApp.Visible = false;
+                    var workbook = excelApp.Workbooks.Add(Type.Missing);
+                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = "Journal Transactions";
+
+                    // Header row (Date)
+                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "C1"];
+                    headerRange.Merge();
+                    headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yyyy");
+                    headerRange.Font.Bold = true;
+                    headerRange.Font.Name = "Times New Roman";
+                    headerRange.Font.Size = 10;
+                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                    // Column headers
+                    string[] columnHeaders = { "SN", "Ref Id", "Date", "Type", "A/C Code", "A/C Name", "Description", "Debit", "Credit" };
+                    for (int i = 0; i < columnHeaders.Length; i++)
+                    {
+                        worksheet.Cells[2, i + 1] = columnHeaders[i];
+                        ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[2, i + 1]).Font.Bold = true;
+                        ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[2, i + 1]).Font.Name = "Times New Roman";
+                        ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[2, i + 1]).Font.Size = 10;
+                        ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[2, i + 1]).Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                    }
+
+                    int rowIndex = 3;
+
+                    foreach (DataGridViewRow row in dgvJournal.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        worksheet.Cells[rowIndex, 1] = row.Cells["SN"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 2] = row.Cells["Ref Id"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 3] = row.Cells["Date"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 4] = row.Cells["Type"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 5] = row.Cells["A/C Code"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 6] = row.Cells["A/C Name"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 7] = row.Cells["Description"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 8] = row.Cells["Debit"].Value?.ToString() ?? "";
+                        worksheet.Cells[rowIndex, 9] = row.Cells["Credit"].Value?.ToString() ?? "";
+                        rowIndex++;
+                    }
+
+                    worksheet.Columns.AutoFit();
+
+                    workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close(false);
+                    excelApp.Quit();
+
+                    MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

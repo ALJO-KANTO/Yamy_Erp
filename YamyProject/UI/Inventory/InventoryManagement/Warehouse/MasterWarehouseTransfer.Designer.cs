@@ -384,7 +384,7 @@
             this.dgvFrom.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvFrom.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvFrom.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvFrom.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvFrom.ThemeStyle.RowsStyle.Height = 25;
             this.dgvFrom.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(234)))), ((int)(((byte)(208)))));
             this.dgvFrom.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
@@ -450,7 +450,7 @@
             this.dgvTo.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvTo.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTo.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvTo.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvTo.ThemeStyle.RowsStyle.Height = 25;
             this.dgvTo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(234)))), ((int)(((byte)(208)))));
             this.dgvTo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 

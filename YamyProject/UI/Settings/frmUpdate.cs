@@ -466,6 +466,9 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `city_id` int NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+                          ALTER TABLE tbl_projects ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_project_planning ADD COLUMN `subcontractor_account_id` int NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_project_planning ADD COLUMN `retention_account_id` int NOT NULL DEFAULT '0';";
@@ -786,19 +789,6 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE IF NOT EXISTS tbl_Manufacturing_Steps (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            code VARCHAR(20) NOT NULL,
-                            step_name VARCHAR(100) NOT NULL,
-                            description VARCHAR(500),
-                            step_order INT NOT NULL,
-                            is_completed TINYINT(1) DEFAULT 0,
-                            created_by INT,
-                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                        );
-                        ";
-                DBClass.ExecuteNonQuery(query);
-
                 query = @"
                         CREATE TABLE IF NOT EXISTS tbl_manufacturer_packing (
                             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -815,6 +805,648 @@ namespace YamyProject
                         );
                         ";
                 DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_project_phases (
+                            phase_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_name VARCHAR(200) NOT NULL,
+                            start_date DATE NOT NULL,
+                            end_date DATE DEFAULT NULL,
+                            weight_percentage DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+                            status VARCHAR(50) NOT NULL,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_project_milestones (
+                            milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+                            phase_id INT NOT NULL,
+                            milestone_name VARCHAR(150),
+                            due_date DATE,
+                            progress_percent DECIMAL(5,2),
+                            status VARCHAR(50),
+                            FOREIGN KEY (phase_id) REFERENCES tbl_eng_project_phases(phase_id)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_project_deliverables (
+                            deliverable_id INT AUTO_INCREMENT PRIMARY KEY,
+                            milestone_id INT NOT NULL,
+                            deliverable_name VARCHAR(200),
+                            deliverable_type VARCHAR(50),
+                            due_date DATE,
+                            status VARCHAR(50),
+                            remarks TEXT
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_timesheets (
+                            timesheet_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NOT NULL,
+                            milestone_id INT NOT NULL,
+                            employee_id INT NOT NULL,
+                            work_date DATE NOT NULL,
+                            hours DECIMAL(5,2) NOT NULL DEFAULT 0,
+                            is_billable TINYINT(1) NOT NULL DEFAULT 0,
+                            remarks VARCHAR(500),
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            is_approved TINYINT(1) NULL DEFAULT '0',
+	                        approved_by INT(10) NULL DEFAULT NULL,
+	                        approved_date DATETIME NULL DEFAULT NULL
+                        )  ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_project_costing (
+                            costing_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NOT NULL,
+                            cost_type VARCHAR(70),
+                            description VARCHAR(500),
+                            planned_cost DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+                            actual_cost DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+                            cost_date DATE NOT NULL,
+                            created_by INT NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        )  ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_project_revenue (
+                            revenue_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NOT NULL,
+                            recognition_method VARCHAR(80) NOT NULL DEFAULT '',
+                            completion_percent DECIMAL(8,2) NOT NULL DEFAULT 0.00,
+                            total_contract_value DECIMAL(14,2) NOT NULL,
+                            recognized_amount DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+                            recognition_date DATE NOT NULL,
+                            approved_by INT NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        )  ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_design_documents (
+                            document_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NOT NULL,
+                            document_name VARCHAR(255) NOT NULL,
+                            document_type VARCHAR(50) NOT NULL,
+                            version VARCHAR(20) NOT NULL,
+                            file_path VARCHAR(500) NOT NULL,
+                            uploaded_by INT NOT NULL,
+                            upload_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            status VARCHAR(70) NOT NULL DEFAULT 'Pending',
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_design_revisions (
+                            revision_id INT AUTO_INCREMENT PRIMARY KEY,
+                            document_id INT NOT NULL,
+                            version VARCHAR(20) NOT NULL,
+                            change_description TEXT NOT NULL,
+                            file_path VARCHAR(500) NOT NULL,
+                            revised_by INT NOT NULL,
+                            revised_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            status VARCHAR(60) NOT NULL DEFAULT 'Pending',
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+                            INDEX idx_document_id (document_id)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_design_approvals (
+                            approval_id INT AUTO_INCREMENT PRIMARY KEY,
+                            document_id INT NOT NULL,
+                            approved_by INT NOT NULL,
+                            approval_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            status VARCHAR(60) NOT NULL DEFAULT 'Pending',
+                            remarks TEXT NULL,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+                            INDEX idx_document_id (document_id),
+                            INDEX idx_approved_by (approved_by)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_crm_proposals (
+                            proposal_id INT AUTO_INCREMENT PRIMARY KEY,
+                            client_id INT NOT NULL,
+                            employee_id INT NOT NULL,
+                            title VARCHAR(255) NOT NULL,
+                            amount DECIMAL(15,2) NOT NULL,
+                            status VARCHAR(60) NOT NULL DEFAULT 'Draft',
+                            created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_crm_contracts (
+                            contract_id INT AUTO_INCREMENT PRIMARY KEY,
+                            client_id INT NOT NULL,
+                            contract_no VARCHAR(100) NOT NULL,
+                            contract_value DECIMAL(18,2) NOT NULL,
+                            start_date DATE NOT NULL,
+                            end_date DATE NOT NULL,
+                            signed_date DATE NOT NULL,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_crm_leads (
+                            lead_id INT AUTO_INCREMENT PRIMARY KEY,
+                            source VARCHAR(200),
+                            created_date DATE,
+                            assigned_to INT,
+                            status VARCHAR(50)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_eng_lookups (
+                            lookup_id INT AUTO_INCREMENT PRIMARY KEY,
+                            lookup_category VARCHAR(100) NOT NULL,
+                            lookup_code VARCHAR(100) NOT NULL,
+                            lookup_value VARCHAR(255) NOT NULL,
+                            is_active TINYINT(1) NOT NULL DEFAULT 1,
+                            sort_order INT NOT NULL DEFAULT 0,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+                            INDEX idx_lookup_category (lookup_category),
+                            INDEX idx_is_active (is_active),
+                            INDEX idx_sort_order (sort_order)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_kpi_master (
+                            kpi_id INT AUTO_INCREMENT PRIMARY KEY,
+                            kpi_code VARCHAR(50) UNIQUE,
+                            kpi_name VARCHAR(200),
+                            kpi_category VARCHAR(50),   -- Productivity, Quality, Finance
+                            weight DECIMAL(18,2),        -- Contribution %
+                            target_value DECIMAL(10,2),
+                            calculation_method VARCHAR(50),
+                            is_active TINYINT(1) DEFAULT 1,
+	                        employee_id INT NOT NULL DEFAULT 0,
+	                        EvaluationPeriod VARCHAR(70)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_kpi_results (
+                            result_id INT AUTO_INCREMENT PRIMARY KEY,
+                            kpi_id INT,
+                            employee_id INT,
+                            period_month INT,
+                            period_year INT,
+                            actual_value DECIMAL(10,2),
+                            score DECIMAL(18,2),
+                            calculated_at DATETIME,
+                            FOREIGN KEY (kpi_id) REFERENCES tbl_kpi_master(kpi_id)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_kpi_comments (
+                            comment_id INT AUTO_INCREMENT PRIMARY KEY,
+                            result_id INT,
+                            commented_by INT,
+                            comment TEXT,
+                            commented_at DATETIME
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_kpi_periods (
+                            period_month INT,
+                            period_year INT,
+                            is_locked TINYINT(1) DEFAULT 0,
+                            locked_at DATETIME,
+                            PRIMARY KEY (period_month, period_year)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_maintenance_requests (
+                            request_id INT AUTO_INCREMENT PRIMARY KEY,
+                            asset_id INT NOT NULL DEFAULT '0',
+                            maintenance_type VARCHAR(50) NOT NULL,
+                            priority VARCHAR(50) NOT NULL,
+                            technician VARCHAR(100),
+                            estimated_cost DECIMAL(18,2),
+                            status VARCHAR(50) DEFAULT 'Open',
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_orders (
+                            job_id INT AUTO_INCREMENT PRIMARY KEY,
+                            job_type ENUM('Work Order','Maintenance Job','Emergency Job') NOT NULL,
+                            project_id INT NULL,
+                            project_name VARCHAR(200) NOT NULL,
+                            asset_id INT NULL,
+                            assigned_to VARCHAR(150) NOT NULL,
+                            estimated_hours DECIMAL(8,2) NOT NULL DEFAULT 0.00,
+                            actual_hours DECIMAL(8,2) NOT NULL DEFAULT 0.00,
+                            estimated_cost DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+                            actual_cost DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+                            status ENUM('Open','Approved','In Progress','Completed','Cancelled') NOT NULL DEFAULT 'Open',
+                            priority ENUM('Low','Medium','High','Critical') NOT NULL DEFAULT 'Medium',
+                            remarks TEXT NULL,
+                            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+                            INDEX idx_status (status),
+                            INDEX idx_job_type (job_type),
+                            INDEX idx_project (project_id),
+                            INDEX idx_asset (asset_id)
+                        ) ENGINE=InnoDB;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_equipment` (
+                            `equipment_id` INT AUTO_INCREMENT PRIMARY KEY,
+                            `name` VARCHAR(200) NOT NULL,
+                            `category` VARCHAR(100) NOT NULL,
+                            `status` ENUM('Available', 'In Use', 'Maintenance', 'Retired') NOT NULL DEFAULT 'Available',
+                            `allocated_to` VARCHAR(200) DEFAULT NULL,
+                            `purchase_date` DATE NOT NULL,
+                            `cost` DECIMAL(20,2) NOT NULL DEFAULT 0.00,
+                            `depreciation` DECIMAL(20,2) NOT NULL DEFAULT 0.00,
+                            `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            `modified_date` DATETIME DEFAULT NULL
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_batch_transaction (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            tran_type VARCHAR(50) NOT NULL,
+                            tran_date DATE NOT NULL,
+                            account_id INT NOT NULL DEFAULT 0,
+                            ref_no VARCHAR(100),
+                            total_amount DECIMAL(15,2) NOT NULL DEFAULT 0.00,
+                            status ENUM('Draft','Posted','Voided') DEFAULT 'Draft',
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            INDEX idx_tran_type (tran_type),
+                            INDEX idx_tran_date (tran_date)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_batch_transaction_detail (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            tran_id INT NOT NULL,
+                            payee_name VARCHAR(255),
+                            payee_id INT NOT NULL DEFAULT 0,
+                            account_name VARCHAR(255),
+                            account_id INT NOT NULL DEFAULT 0,
+                            item_name VARCHAR(255),
+                            item_id INT NOT NULL DEFAULT 0,
+                            description VARCHAR(500),
+                            qty DECIMAL(12,2) DEFAULT 1,
+                            rate DECIMAL(15,4) DEFAULT 0.00,
+                            amount DECIMAL(15,2) NOT NULL,
+                            tax_code VARCHAR(50),
+                            tax_item VARCHAR(100),
+                            tax_amount DECIMAL(15,2) DEFAULT 0.00,
+                            terms VARCHAR(500) DEFAULT(''),
+                            bill_due DATE,
+                            check_no VARCHAR(100) DEFAULT(''),
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_kpi_score_band (
+                            band_id INT AUTO_INCREMENT PRIMARY KEY,
+                            min_pct DECIMAL(5,2),
+                            max_pct DECIMAL(5,2),
+                            score_pct DECIMAL(5,2)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_procurement_tracking (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            purchase_order_id INT NOT NULL,
+                            vendor_id INT NOT NULL,
+                            project_id INT NOT NULL,
+                            amount DECIMAL(18,2) NOT NULL,
+                            approval_status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending',
+                            payment_status ENUM('Unpaid', 'Paid', 'Partial', 'N/A') NOT NULL DEFAULT 'Unpaid',
+                            approved_by VARCHAR(100),
+                            approved_date DATETIME,
+                            remarks VARCHAR(255),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_labor_assignments (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            employee_id INT NOT NULL,
+                            project_id INT NOT NULL,
+                            role VARCHAR(100),
+                            daily_rate DECIMAL(18,2) NOT NULL,
+                            hours_worked DECIMAL(18,2) NOT NULL,
+                            labor_cost DECIMAL(18,2) NOT NULL,
+                            productivity DECIMAL(18,2) NOT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_invoices (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            invoice_no VARCHAR(50) NOT NULL,
+                            customer_id INT NOT NULL,
+                            project_id INT NOT NULL,
+                            amount DECIMAL(18,2) NOT NULL,
+                            status VARCHAR(20) NOT NULL,
+                            invoice_date DATE NOT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_expenses (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            expense_date DATE NOT NULL,
+                            expense_type VARCHAR(100),      -- Rent, Fuel, Salary, Maintenance
+                            description VARCHAR(250),
+                            amount DECIMAL(12,2) NOT NULL,
+                            project_id INT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	                        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_attachments (
+                            attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+                            reference_type VARCHAR(50) NOT NULL,   -- SALES, PURCHASE, PO
+                            reference_id INT NOT NULL,
+                            file_name VARCHAR(255) NOT NULL,
+                            file_type VARCHAR(50),
+                            file_data LONGBLOB NOT NULL,
+                            uploaded_on DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            UNIQUE KEY uq_attachment (reference_type, reference_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+
+                DBClass.ExecuteNonQuery(query);
+
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_documents (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            title VARCHAR(150) NOT NULL,
+                            description VARCHAR(250) NOT NULL,
+                            keywords VARCHAR(250) NOT NULL,
+                            comments VARCHAR(250) NOT NULL,
+                            file_name VARCHAR(255) NOT NULL,
+                            file_type VARCHAR(50),
+                            file_data LONGBLOB NOT NULL,
+                            uploaded_on DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_material_request (
+                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                            request_date DATE NOT NULL,
+                            requested_by INT NOT NULL,        -- link to tbl_users / employee
+                            department_id INT NOT NULL,       -- link to tbl_department
+                            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
+                            remarks VARCHAR(250) default(''),
+                            created_by INT NULL,           -- link to tbl_attachments
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_material_request_item (
+                            mr_item_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_id INT NOT NULL,                 
+                            item_id INT NOT NULL,               
+                            required_qty DECIMAL(18,2) NOT NULL,
+                            uom VARCHAR(10) NOT NULL default(''),           
+                            expected_date DATE NULL,
+                            status ENUM('Pending','Ordered','Received') DEFAULT 'Pending',
+                            remarks VARCHAR(250) default(''),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_material_received (
+                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                            mr_date DATE NOT NULL,
+                            po_id INT NOT NULL default 0,
+                            vendor_id INT NOT NULL,
+                            status VARCHAR(20) DEFAULT 'Partial',
+                            remarks VARCHAR(250) default(''),
+                            created_by INT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_material_received_item (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_id INT NOT NULL,
+                            po_item_id INT NOT NULL,
+                            ordered_qty DECIMAL(18,2) NOT NULL, 
+                            received_qty DECIMAL(18,2) NOT NULL,
+                            uom VARCHAR(10) NOT NULL default(''),
+                            status VARCHAR(20) DEFAULT 'Partial',
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_sales_tax_invoice (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            invoice_no VARCHAR(50),
+                            invoice_date DATE,
+                            customer_id INT,
+                            type VARCHAR(20), -- ADVANCE or RETENTION
+                            subtotal DECIMAL(18,2),
+                            vat DECIMAL(18,2),
+                            total DECIMAL(18,2),
+                            remarks VARCHAR(250) default(''),
+                            state TINYINT DEFAULT 0
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_sales_tax_invoice_item (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            invoice_id INT,
+                            item_id INT,
+                            description VARCHAR(200) default(''),
+                            qty DECIMAL(18,2),
+                            rate DECIMAL(18,2),
+                            vat DECIMAL(18,2),
+                            total DECIMAL(18,2)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_sales_advance` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `date` DATE NOT NULL,
+                            `customer_id` INT NOT NULL,
+                            `sales_order_id` INT DEFAULT NULL,
+                            `invoice_id` INT DEFAULT NULL, -- optional if applied to invoice later
+                            `amount` DECIMAL(20,6) NOT NULL,
+                            `payment_method` VARCHAR(50) DEFAULT NULL,
+                            `form_type` VARCHAR(80) DEFAULT NULL,
+                            `description` VARCHAR(250) DEFAULT NULL,
+                            `account_id` INT NOT NULL, -- liability account
+                            `project_id` INT DEFAULT 0,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_subcontractors` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `code` VARCHAR(50) DEFAULT NULL,
+                            `subcontractor_id` INT NOT NULL,
+                            `project_id` INT NOT NULL,
+                            `contact_no` VARCHAR(50) DEFAULT NULL,
+                            `contract_value` DECIMAL(20,6) NOT NULL,
+                            `contract_date` DATE NOT NULL,
+                            `contract_period` VARCHAR(80) DEFAULT NULL,
+                            `works` VARCHAR(250) DEFAULT NULL,
+                            `worksEn` VARCHAR(250) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_engineers` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `code` VARCHAR(50) DEFAULT NULL,
+                            `name` VARCHAR(250) DEFAULT NULL,
+                            `contact_no` VARCHAR(50) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_engineers` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `engineer_id` INT NOT NULL,
+                            `project_id` INT NOT NULL,
+                            `date` DATE NOT NULL,
+                            `description` VARCHAR(250) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_form_configuration (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            form_name VARCHAR(100) NOT NULL,
+                            affect_stock TINYINT(1) DEFAULT 0,
+                            affect_account TINYINT(1) DEFAULT 0,
+                            is_active TINYINT(1) DEFAULT 1,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        INSERT INTO tbl_form_configuration (form_name, affect_stock, affect_account)
+                        VALUES
+                        -- PURCHASE
+                        ('Material Request', 0, 0),
+                        ('Purchase Order', 0, 0),
+                        ('Purchase', 1, 1),
+                        ('Purchase Return', 1, 1),
+                        -- SALES
+                        ('Sales Quotation', 0, 0),
+                        ('Sales Proforma', 0, 0),
+                        ('Sales Order', 0, 0),
+                        ('Sales', 1, 1),
+                        ('Sales Return', 1, 1),
+                        -- FINANCIAL
+                        ('Receipt Voucher', 0, 1),
+                        ('Payment Voucher', 0, 1),
+                        ('Advance Payment Voucher', 0, 1);
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
 
                 MessageBox.Show("Database Updated");
             }

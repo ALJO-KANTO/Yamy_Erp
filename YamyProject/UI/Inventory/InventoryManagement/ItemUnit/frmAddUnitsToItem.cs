@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -35,6 +36,7 @@ namespace YamyProject
 
         private void frmAddUnitsToItem_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvLvl1);
             BindCombos.PopulateItemUnit(cmbUnit);
             if (id != 0)
             {

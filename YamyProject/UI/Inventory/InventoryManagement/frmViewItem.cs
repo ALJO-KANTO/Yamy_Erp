@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -49,7 +50,8 @@ namespace YamyProject
         }
         private void frmViewItem_Load(object sender, EventArgs e)
         {
-            this.Height = 765 - pnlAssembly.Height;
+            AppTheme.DefaultFont(this.dgvItems);
+            //this.Height = 765 - pnlAssembly.Height;
             bindCombo();
             bindItemAssembly();
             if (id != 0)
@@ -505,20 +507,20 @@ namespace YamyProject
         {
             if (cmbType.Text == "12 - Service")
             {
-                this.Height = 765 - pnlAssembly.Height - pnlOP.Height - pnlSub.Height;
+                //this.Height = 765 - pnlAssembly.Height - pnlOP.Height - pnlSub.Height;
                 pnlSub.Visible = pnlAssembly.Visible = pnlOP.Visible = false;
             }
             else if (cmbType.Text == "11 - Inventory Part")
             {
                 txtCostPrice.Enabled = true;
-                this.Height = 765 - pnlAssembly.Height;
+                //this.Height = 765 - pnlAssembly.Height;
                 pnlAssembly.Visible = false;
                 pnlSub.Visible = pnlOP.Visible = true;
             }
             else if (cmbType.Text == "13 - Inventory Assembly")
             {
                 txtCostPrice.Enabled = false;
-                this.Height = 765;
+                //this.Height = 765;
                 pnlSub.Visible = pnlAssembly.Visible = pnlOP.Visible = true;
             }
         }

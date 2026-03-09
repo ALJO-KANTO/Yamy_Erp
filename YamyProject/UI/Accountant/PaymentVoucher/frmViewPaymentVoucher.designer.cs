@@ -1233,7 +1233,7 @@ namespace YamyProject
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvInv.ColumnHeadersHeight = 35;
+            this.dgvInv.ColumnHeadersHeight = 22;
             this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvInv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -1283,7 +1283,7 @@ namespace YamyProject
             this.dgvInv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvInv.ThemeStyle.HeaderStyle.Height = 35;
+            this.dgvInv.ThemeStyle.HeaderStyle.Height = 22;
             this.dgvInv.ThemeStyle.ReadOnly = false;
             this.dgvInv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;

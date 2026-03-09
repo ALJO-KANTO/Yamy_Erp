@@ -117,6 +117,8 @@
             this.pnlVendorPurchase = new System.Windows.Forms.Panel();
             this.pnlinventory = new System.Windows.Forms.Panel();
             this.pnlCustomersales = new System.Windows.Forms.Panel();
+            this.cmbCustomerAdvance = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.pnlEmplyee = new System.Windows.Forms.Panel();
             this.pnlBank = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -133,7 +135,8 @@
             // 
             this.cmbPurchaseReturnInvoice.BackColor = System.Drawing.Color.Transparent;
             this.cmbPurchaseReturnInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbPurchaseReturnInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPurchaseReturnInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList; 
+            this.cmbPurchaseReturnInvoice.BorderRadius = 5;
             this.cmbPurchaseReturnInvoice.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchaseReturnInvoice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchaseReturnInvoice.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,6 +171,7 @@
             this.cmbPurchaseInvoice.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPurchaseInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPurchaseInvoice.ItemHeight = 23;
+            this.cmbPurchaseInvoice.BorderRadius = 5;
             this.cmbPurchaseInvoice.Location = new System.Drawing.Point(12, 218);
             this.cmbPurchaseInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPurchaseInvoice.Name = "cmbPurchaseInvoice";
@@ -196,7 +200,8 @@
             this.cmbPurchasePaymentCashMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchasePaymentCashMethod.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPurchasePaymentCashMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPurchasePaymentCashMethod.ItemHeight = 23;
+            this.cmbPurchasePaymentCashMethod.ItemHeight = 23; 
+            this.cmbPurchasePaymentCashMethod.BorderRadius = 5;
             this.cmbPurchasePaymentCashMethod.Location = new System.Drawing.Point(14, 146);
             this.cmbPurchasePaymentCashMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPurchasePaymentCashMethod.Name = "cmbPurchasePaymentCashMethod";
@@ -209,6 +214,7 @@
             this.cmbVatInput.BackColor = System.Drawing.Color.Transparent;
             this.cmbVatInput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbVatInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVatInput.BorderRadius = 5;
             this.cmbVatInput.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbVatInput.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbVatInput.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,6 +237,7 @@
             this.cmbVendor.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbVendor.ItemHeight = 23;
+            this.cmbVendor.BorderRadius = 5;
             this.cmbVendor.Location = new System.Drawing.Point(14, 34);
             this.cmbVendor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbVendor.Name = "cmbVendor";
@@ -296,6 +303,7 @@
             this.cmbPettyCashAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPettyCashAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPettyCashAccount.ItemHeight = 23;
+            this.cmbPettyCashAccount.BorderRadius = 5;
             this.cmbPettyCashAccount.Location = new System.Drawing.Point(10, 374);
             this.cmbPettyCashAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPettyCashAccount.Name = "cmbPettyCashAccount";
@@ -358,6 +366,7 @@
             this.cmbFixedAssetCreditAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFixedAssetCreditAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbFixedAssetCreditAccount.ItemHeight = 23;
+            this.cmbFixedAssetCreditAccount.BorderRadius = 5;
             this.cmbFixedAssetCreditAccount.Location = new System.Drawing.Point(517, 379);
             this.cmbFixedAssetCreditAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFixedAssetCreditAccount.Name = "cmbFixedAssetCreditAccount";
@@ -380,6 +389,7 @@
             this.cmbPrepaidExpenseCreditAccount.Name = "cmbPrepaidExpenseCreditAccount";
             this.cmbPrepaidExpenseCreditAccount.Size = new System.Drawing.Size(418, 29);
             this.cmbPrepaidExpenseCreditAccount.TabIndex = 178;
+            this.cmbPrepaidExpenseCreditAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseCreditAccount.Tag = "Gratuit";
             // 
             // cmbFixedAssetDebitAccount
@@ -392,6 +402,7 @@
             this.cmbFixedAssetDebitAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFixedAssetDebitAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbFixedAssetDebitAccount.ItemHeight = 23;
+            this.cmbFixedAssetDebitAccount.BorderRadius = 5;
             this.cmbFixedAssetDebitAccount.Location = new System.Drawing.Point(517, 323);
             this.cmbFixedAssetDebitAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFixedAssetDebitAccount.Name = "cmbFixedAssetDebitAccount";
@@ -409,6 +420,7 @@
             this.cmbPrepaidExpenseDebitAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrepaidExpenseDebitAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPrepaidExpenseDebitAccount.ItemHeight = 23;
+            this.cmbPrepaidExpenseDebitAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseDebitAccount.Location = new System.Drawing.Point(517, 210);
             this.cmbPrepaidExpenseDebitAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPrepaidExpenseDebitAccount.Name = "cmbPrepaidExpenseDebitAccount";
@@ -492,6 +504,7 @@
             this.cmbPDCReceivableHold.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivableHold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivableHold.ItemHeight = 23;
+            this.cmbPDCReceivableHold.BorderRadius = 5;
             this.cmbPDCReceivableHold.Location = new System.Drawing.Point(13, 152);
             this.cmbPDCReceivableHold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivableHold.Name = "cmbPDCReceivableHold";
@@ -509,6 +522,7 @@
             this.cmbPDCPayableHold.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayableHold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayableHold.ItemHeight = 23;
+            this.cmbPDCPayableHold.BorderRadius = 5;
             this.cmbPDCPayableHold.Location = new System.Drawing.Point(10, 323);
             this.cmbPDCPayableHold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayableHold.Name = "cmbPDCPayableHold";
@@ -526,6 +540,7 @@
             this.cmbPDCReceivable.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivable.ItemHeight = 23;
+            this.cmbPDCReceivable.BorderRadius = 5;
             this.cmbPDCReceivable.Location = new System.Drawing.Point(13, 38);
             this.cmbPDCReceivable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivable.Name = "cmbPDCReceivable";
@@ -543,6 +558,7 @@
             this.cmbPDCReceivableReturn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivableReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivableReturn.ItemHeight = 23;
+            this.cmbPDCReceivableReturn.BorderRadius = 5;
             this.cmbPDCReceivableReturn.Location = new System.Drawing.Point(13, 93);
             this.cmbPDCReceivableReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivableReturn.Name = "cmbPDCReceivableReturn";
@@ -560,6 +576,7 @@
             this.cmbPDCPayable.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayable.ItemHeight = 23;
+            this.cmbPDCPayable.BorderRadius = 5;
             this.cmbPDCPayable.Location = new System.Drawing.Point(10, 210);
             this.cmbPDCPayable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayable.Name = "cmbPDCPayable";
@@ -577,6 +594,7 @@
             this.cmbPDCPayableReturn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayableReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayableReturn.ItemHeight = 23;
+            this.cmbPDCPayableReturn.BorderRadius = 5;
             this.cmbPDCPayableReturn.Location = new System.Drawing.Point(10, 265);
             this.cmbPDCPayableReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayableReturn.Name = "cmbPDCPayableReturn";
@@ -594,6 +612,7 @@
             this.cmbCash.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbCash.ItemHeight = 23;
+            this.cmbCash.BorderRadius = 5;
             this.cmbCash.Location = new System.Drawing.Point(519, 38);
             this.cmbCash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCash.Name = "cmbCash";
@@ -628,6 +647,7 @@
             this.cmbOpeningBalanceEquity.Name = "cmbOpeningBalanceEquity";
             this.cmbOpeningBalanceEquity.Size = new System.Drawing.Size(418, 29);
             this.cmbOpeningBalanceEquity.TabIndex = 35;
+            this.cmbOpeningBalanceEquity.BorderRadius = 5;
             this.cmbOpeningBalanceEquity.Tag = "Opening Balance";
             // 
             // label13
@@ -658,6 +678,7 @@
             this.cmbOpeningBalance.Size = new System.Drawing.Size(418, 29);
             this.cmbOpeningBalance.TabIndex = 35;
             this.cmbOpeningBalance.Tag = "Opening Balance";
+            this.cmbOpeningBalance.BorderRadius = 5;
             // 
             // label11
             // 
@@ -687,6 +708,7 @@
             this.cmbInventory.Size = new System.Drawing.Size(418, 29);
             this.cmbInventory.TabIndex = 32;
             this.cmbInventory.Tag = "Inventory";
+            this.cmbInventory.BorderRadius = 5;
             // 
             // cmbStockSettlement
             // 
@@ -704,6 +726,7 @@
             this.cmbStockSettlement.Size = new System.Drawing.Size(418, 29);
             this.cmbStockSettlement.TabIndex = 35;
             this.cmbStockSettlement.Tag = "Stock Settlement";
+            this.cmbStockSettlement.BorderRadius = 5;
             // 
             // cmbItemDamage
             // 
@@ -721,6 +744,7 @@
             this.cmbItemDamage.Size = new System.Drawing.Size(418, 29);
             this.cmbItemDamage.TabIndex = 35;
             this.cmbItemDamage.Tag = "Inventory Damage Account";
+            this.cmbItemDamage.BorderRadius = 5;
             // 
             // cmbItemCogs
             // 
@@ -738,6 +762,7 @@
             this.cmbItemCogs.Size = new System.Drawing.Size(418, 29);
             this.cmbItemCogs.TabIndex = 33;
             this.cmbItemCogs.Tag = "Item COGS";
+            this.cmbItemCogs.BorderRadius = 5;
             // 
             // label5
             // 
@@ -790,6 +815,7 @@
             // cmbSalesReturnInvoice
             // 
             this.cmbSalesReturnInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSalesReturnInvoice.BorderRadius = 5;
             this.cmbSalesReturnInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSalesReturnInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesReturnInvoice.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -819,6 +845,7 @@
             // cmbInvoicePaymentCashMethod
             // 
             this.cmbInvoicePaymentCashMethod.BackColor = System.Drawing.Color.Transparent;
+            this.cmbInvoicePaymentCashMethod.BorderRadius = 5;
             this.cmbInvoicePaymentCashMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbInvoicePaymentCashMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInvoicePaymentCashMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -836,6 +863,7 @@
             // cmbSalesInvoice
             // 
             this.cmbSalesInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSalesInvoice.BorderRadius = 5;
             this.cmbSalesInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbSalesInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesInvoice.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -853,6 +881,7 @@
             // cmbCustomer
             // 
             this.cmbCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCustomer.BorderRadius = 5;
             this.cmbCustomer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCustomer.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -870,6 +899,7 @@
             // cmbVatOutput
             // 
             this.cmbVatOutput.BackColor = System.Drawing.Color.Transparent;
+            this.cmbVatOutput.BorderRadius = 5;
             this.cmbVatOutput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbVatOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVatOutput.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -1219,6 +1249,7 @@
             this.cmbDefaultBankAccount.Name = "cmbDefaultBankAccount";
             this.cmbDefaultBankAccount.Size = new System.Drawing.Size(418, 29);
             this.cmbDefaultBankAccount.TabIndex = 176;
+            this.cmbDefaultBankAccount.BorderRadius = 5;
             this.cmbDefaultBankAccount.Tag = "Gratuit";
             // 
             // panel1
@@ -1278,9 +1309,9 @@
             this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button4.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button4.Location = new System.Drawing.Point(803, 5);
             this.guna2Button4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button4.Name = "guna2Button4";
@@ -1301,9 +1332,9 @@
             this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button2.Location = new System.Drawing.Point(671, 5);
             this.guna2Button2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button2.Name = "guna2Button2";
@@ -1324,9 +1355,9 @@
             this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button6.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button6.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button6.Location = new System.Drawing.Point(502, 5);
             this.guna2Button6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button6.Name = "guna2Button6";
@@ -1347,9 +1378,9 @@
             this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button5.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button5.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button5.Location = new System.Drawing.Point(388, 5);
             this.guna2Button5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button5.Name = "guna2Button5";
@@ -1370,9 +1401,9 @@
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button3.Location = new System.Drawing.Point(233, 5);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button3.Name = "guna2Button3";
@@ -1393,9 +1424,9 @@
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.guna2Button1.Location = new System.Drawing.Point(121, 5);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button1.Name = "guna2Button1";
@@ -1476,6 +1507,8 @@
             // 
             // pnlCustomersales
             // 
+            this.pnlCustomersales.Controls.Add(this.cmbCustomerAdvance);
+            this.pnlCustomersales.Controls.Add(this.label25);
             this.pnlCustomersales.Controls.Add(this.cmbSalesReturnInvoice);
             this.pnlCustomersales.Controls.Add(this.cmbSalesInvoice);
             this.pnlCustomersales.Controls.Add(this.label36);
@@ -1491,6 +1524,36 @@
             this.pnlCustomersales.Name = "pnlCustomersales";
             this.pnlCustomersales.Size = new System.Drawing.Size(1040, 438);
             this.pnlCustomersales.TabIndex = 172;
+            // 
+            // cmbCustomerAdvance
+            // 
+            this.cmbCustomerAdvance.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCustomerAdvance.BorderRadius = 5;
+            this.cmbCustomerAdvance.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCustomerAdvance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCustomerAdvance.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCustomerAdvance.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCustomerAdvance.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCustomerAdvance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbCustomerAdvance.ItemHeight = 23;
+            this.cmbCustomerAdvance.Location = new System.Drawing.Point(15, 392);
+            this.cmbCustomerAdvance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCustomerAdvance.Name = "cmbCustomerAdvance";
+            this.cmbCustomerAdvance.Size = new System.Drawing.Size(418, 29);
+            this.cmbCustomerAdvance.TabIndex = 46;
+            this.cmbCustomerAdvance.Tag = "Sales Invoice Revenue";
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label25.Location = new System.Drawing.Point(15, 361);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(194, 29);
+            this.label25.TabIndex = 47;
+            this.label25.Text = "Customer Advances";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlEmplyee
             // 
@@ -1656,5 +1719,7 @@
         private System.Windows.Forms.Panel pnlBank;
         private System.Windows.Forms.Panel pnlCommon;
         public Guna.UI2.WinForms.Guna2ComboBox cmbStockSettlement;
+        public Guna.UI2.WinForms.Guna2ComboBox cmbCustomerAdvance;
+        private System.Windows.Forms.Label label25;
     }
 }

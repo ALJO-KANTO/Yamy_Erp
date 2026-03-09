@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -28,6 +29,7 @@ namespace YamyProject
 
         private void frmLeaveSalaryStatement_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvLeaveSalary);
             DataTable dt = DBClass.ExecuteDataTable(@"
                                 SELECT 
                                     ROW_NUMBER() OVER (ORDER BY id) AS SN, 

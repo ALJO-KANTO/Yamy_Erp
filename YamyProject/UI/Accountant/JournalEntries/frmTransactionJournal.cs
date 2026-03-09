@@ -1,9 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -20,6 +22,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            AppTheme.DefaultFont(dgvJV);
             this.id = id;
             headerUC1.FormText = this.Text;
             vType = _vType.Trim();

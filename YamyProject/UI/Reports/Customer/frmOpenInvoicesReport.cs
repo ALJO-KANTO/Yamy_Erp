@@ -130,7 +130,7 @@ namespace YamyProject
                                     'Sales Invoice'
                                 )
                         ORDER BY t.date, t.id;";
-            
+
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvSales.DataSource = dt;
             //dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -173,6 +173,15 @@ namespace YamyProject
             //dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             //dgvSales.Rows[totalRow].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //dgvSales.Rows[totalRow].Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            putDateWords();
+        }
+
+        private void putDateWords()
+        {
+            string fromDate = dtpFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtpTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
         }
         private void dgvSales_CellClick(object sender, DataGridViewCellEventArgs e)
         {

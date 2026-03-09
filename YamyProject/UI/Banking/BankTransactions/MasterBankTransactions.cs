@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Banking.BankTransactions;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -41,6 +42,7 @@ namespace YamyProject
         }
         private void MasterBankTransactions_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
             BindBanks();
         }
         public void BindBanks()

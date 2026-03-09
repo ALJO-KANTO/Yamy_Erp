@@ -9,9 +9,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
-using Font = System.Drawing.Font;
 using Excel = Microsoft.Office.Interop.Excel;
+using Font = System.Drawing.Font;
 
 namespace YamyProject
 {
@@ -20,7 +21,11 @@ namespace YamyProject
         public frmCashFlowStatement()
         {
             InitializeComponent();
-            LocalizationManager.LocalizeForm(this);
+            LocalizationManager.LocalizeForm(this); 
+            dgvReport.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvReport);
+            AppTheme.DefaultFont6(dgvReport);
+            headerUC1.FormText = this.Text;
         }
 
         private void frmCashFlowStatement_Load(object sender, EventArgs e)
@@ -42,6 +47,7 @@ namespace YamyProject
         {
             AddDGVColumns();
             BindDGV();
+            putDateWords();
         }
 
         private void AddDGVColumns()
@@ -52,7 +58,7 @@ namespace YamyProject
             dgvReport.Columns.Add("state", "");
             dgvReport.Columns.Add("loadState", "");
             dgvReport.Columns.Add("currLvl", "");
-            dgvReport.Columns.Add("lvl1", "Account Name");
+            dgvReport.Columns.Add("lvl1", "          ");
             dgvReport.Columns.Add("id", "");
             dgvReport.Columns.Add("currname", "");
             dgvReport.Columns.Add("balance", "Amount");
@@ -60,20 +66,25 @@ namespace YamyProject
             dgvReport.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.Columns["state"].Visible = dgvReport.Columns["currname"].Visible = dgvReport.Columns["id"].Visible = dgvReport.Columns["loadState"].Visible = dgvReport.Columns["currLvl"].Visible = false;
             dgvReport.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgvReport.Columns["colName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvReport.Columns["currname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvReport.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             dgvReport.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
             dgvReport.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
-            dgvReport.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            dgvReport.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            //dgvReport.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            //dgvReport.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            //dgvReport.Font = new Font("Segoe UI", 7f, FontStyle.Regular);
+            //dgvReport.DefaultCellStyle = new DataGridViewCellStyle
+            //{
+            //    Font = new Font("Segoe UI", 7f, FontStyle.Regular)
+            //};
         }
 
         public void BindDGV()
         {
             dgvReport.Rows.Clear();
-            decimal totalAmount = 0,totalBalance = 0;
+            decimal totalAmount = 0, totalBalance = 0;
             var parameters = new[]
                 {
                     DBClass.CreateParameter("startDate", dateTimePicker1.Value.Date),
@@ -117,7 +128,7 @@ namespace YamyProject
                             WHERE l1.category_code = 'ASSET'
                             GROUP BY l4.id, l4.name;
                             ";
-            
+
             using (MySqlDataReader reader = DBClass.ExecuteReader(sql, parameters.ToArray()))
             {
                 while (reader.Read())
@@ -130,7 +141,7 @@ namespace YamyProject
                 }
             }
             dgvReport.Rows.Add("e", "n", "2", "         " + "Net cash provided by Operating Activities",
-                        "0", "Net cash provided by Operating Activities",totalBalance.ToString("N2"));
+                        "0", "Net cash provided by Operating Activities", totalBalance.ToString("N2"));
 
             totalAmount = totalBalance;
             totalBalance = 0;
@@ -157,12 +168,12 @@ namespace YamyProject
                     totalBalance += Convert.ToDecimal(reader["balance"] == DBNull.Value ? "0" : reader["balance"]);
                 }
             }
-            
+
             dgvReport.Rows.Add("e", "n", "3", "         " + "Net cash provided by Investing Activities",
                         "0", "Net cash provided by Investing Activities", totalBalance.ToString("N2"));
-            
+
             totalAmount += totalBalance;
-            
+
             dgvReport.Rows.Add("e", "n", "2", "    " + "Net cash increase for period",
                         "0", "Net cash increase for period", totalAmount.ToString("N2"));
             dgvReport.Rows.Add("e", "n", "1", "  " + "Cash at end of period",
@@ -172,7 +183,7 @@ namespace YamyProject
                 if (row.Cells["lvl1"].Value.ToString().ToUpper() == " ►     OPERATING ACTIVITIES" ||
                     row.Cells["lvl1"].Value.ToString().ToUpper() == " ►     INVESTING ACTIVITIES")
                 {
-                    row.DefaultCellStyle.Font = new Font(dgvReport.Font, FontStyle.Bold);
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 7f, FontStyle.Bold);
                 }
             }
 
@@ -262,7 +273,7 @@ namespace YamyProject
         {
             MessageBox.Show("Exporting Report...");
         }
-        
+
         private void SavePDF_Click(object sender, EventArgs e)
         {
             string companyName = lblCompany.Text;
@@ -452,7 +463,7 @@ namespace YamyProject
                         var accountCell = worksheet.Cells[rowIndex, 2];
                         var amountCell = worksheet.Cells[rowIndex, 3];
 
-                        accountCell.Value = account.Replace("▶", "").Trim().Replace("▼","").Trim();
+                        accountCell.Value = account.Replace("▶", "").Trim().Replace("▼", "").Trim();
                         amountCell.Value = amount.Replace("◀", "").Trim().Trim().Replace("▼", "").Trim();
 
                         accountCell.Font.Name = "Times New Roman";
@@ -509,7 +520,7 @@ namespace YamyProject
             if (currLvl > 4) return;
             if (currLvl == 4)
             {
-                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Net",int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()), dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString()));
+                frmLogin.frmMain.openChildForm(new MasterTransactionByAccount("Net", int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()), dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString()));
             }
 
             string state = dgvReport.Rows[e.RowIndex].Cells["state"].Value.ToString();
@@ -523,7 +534,7 @@ namespace YamyProject
                 {
                     if (loadState == "u")
                     {
-                        int parentId = int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                        int parentId = string.IsNullOrEmpty(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString()) ? 0 : int.Parse(dgvReport.Rows[e.RowIndex].Cells["id"].Value.ToString());
                         List<DataGridViewRow> newRows = new List<DataGridViewRow>();
 
                         using (MySqlDataReader reader = DBClass.ExecuteReader($@"SELECT name as currname, concat(code,' - ',name) as name , id FROM tbl_coa_level_" + (currLvl + 1) + " WHERE main_id = @parentId ORDER BY code",
@@ -741,7 +752,7 @@ namespace YamyProject
             {
                 string state = dgvReport.Rows[i].Cells["state"].Value.ToString();
                 string loadState = dgvReport.Rows[i].Cells["loadState"].Value.ToString();
-                int currLvl = int.Parse(dgvReport.Rows[i].Cells["currLvl"].Value.ToString()??"0");
+                int currLvl = int.Parse(dgvReport.Rows[i].Cells["currLvl"].Value.ToString() ?? "0");
 
                 if (state == "e")
                 {
@@ -778,6 +789,13 @@ namespace YamyProject
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void putDateWords()
+        {
+            string fromDate = dateTimePicker1.Value.ToString("MMMM dd, yyyy");
+            string toDate = dateTimePicker2.Value.ToString("MMMM dd, yyyy");
+            label2.Text = $"{fromDate} through {toDate}";
         }
     }
 }

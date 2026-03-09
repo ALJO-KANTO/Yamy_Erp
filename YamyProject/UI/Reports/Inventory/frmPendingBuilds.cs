@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using MigraDoc.DocumentObjectModel;
+﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -65,6 +64,8 @@ namespace YamyProject
                             -- ORDER BY b.date, b.ref_no;
                         ";
 
+            sql = @"SELECT date build_date,id build_num,name AS item_name,on_hand qty,'' memo FROM tbl_items WHERE TYPE ='13 - Inventory Assembly' and date >= @sDate and date <= @eDate";
+
             DataTable dt = DBClass.ExecuteDataTable(sql,
                 DBClass.CreateParameter("sDate", dtpFrom.Value.Date),
                 DBClass.CreateParameter("eDate", dtpTo.Value.Date));
@@ -79,10 +80,10 @@ namespace YamyProject
             {
                 dgvReport.Rows.Add(
                     "",
-                    Convert.ToDateTime(dtpFrom.Value.Date.ToString()).ToString("MM/dd/yyyy"),
+                    Convert.ToDateTime(r["build_date"].ToString()).ToString("MM/dd/yyyy"),
                     r["build_num"].ToString(),
                     r["item_name"].ToString(),
-                    r["qty"].ToString(),
+                    Convert.ToDecimal(r["qty"]).ToString("N2"),
                     r["memo"].ToString()
                 );
             }
@@ -100,7 +101,7 @@ namespace YamyProject
             dgvReport.Columns.Add("Memo", "Memo");
 
             dgvReport.Columns["Blank"].Width = 30;
-            dgvReport.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvReport.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void SavePDF_Click(object sender, EventArgs e)
@@ -406,11 +407,11 @@ namespace YamyProject
 
         private void dgvPurchase_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (Utilities.UserPermissionCheck("CustomerBalanceSummary"))
-            //{
-                //int id = int.Parse(dgvPurchase.CurrentRow.Cells["id"].Value.ToString());
-                //frmLogin.frmMain.openChildForm(new frmPurchaseOrderDetails(id));
-            //}
+            if (e.RowIndex < 0)
+                return;
+
+            int id = int.Parse(dgvReport.CurrentRow.Cells["Num"].Value.ToString());
+            new frmViewItem(id).ShowDialog();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)

@@ -34,6 +34,8 @@ namespace YamyProject
         }
         private void MasterSalesReturn_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvInvoice);
+
             BindCombos.PopulateCustomers(cmbCustomer);
             BindInvoices();
         }

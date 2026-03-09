@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -21,6 +22,8 @@ namespace YamyProject
      
         private void MasterRecycle_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvData);
+
             BindData();
         }
         public void BindData()

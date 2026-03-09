@@ -28,6 +28,8 @@ namespace YamyProject
         public frmSalesReturn(int id)
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateSoledCustomers(cmbCustomer);
             warehouseUpdatedHandler = (sender, args) => BindCombos.PopulateWarehouse(cmbWarehouse);
@@ -82,7 +84,11 @@ namespace YamyProject
                 invId = id;
                 txtBillTo.Text = reader["bill_to"].ToString();
                 txtShipTo.Text = reader["ship_to"].ToString();
-                txtSalesMan.Text = reader["sales_man"].ToString();
+                if (int.TryParse(reader["sales_man"]?.ToString(), out int salesManId))
+                {
+                    if (salesManId > 0)
+                        cmbSalesMan.SelectedValue = salesManId;
+                }
                 richTextDescription.Text = reader["description"].ToString();
                 salesId = int.Parse(reader["sales_ref_id"].ToString());
                 txtRefNo.Text = reader["po_num"].ToString();
@@ -158,6 +164,7 @@ namespace YamyProject
             BindCombos.PopulateSoledCustomers(cmbCustomer);
             BindCombos.PopulateAllLevel4Account(cmbAccountCashName);
             BindCombos.PopulateWarehouse(cmbWarehouse);
+            BindCombos.PopulateEmployees(cmbSalesMan);
             cmbAccountCashName.SelectedValue = BindCombos.SelectDefaultLevelAccount("Invoice Payment Cash Method");
             level4PaymentCreditMethodId = frmLogin.defaultAccounts.ContainsKey("Customer") ? frmLogin.defaultAccounts["Customer"] : 0;
             level4VatId = BindCombos.SelectDefaultLevelAccount("Vat Output");
@@ -245,7 +252,7 @@ namespace YamyProject
                DBClass.CreateParameter("po_num", txtRefNo.Text),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
-               DBClass.CreateParameter("sales_man", txtSalesMan.Text),
+               DBClass.CreateParameter("sales_man", (cmbSalesMan.SelectedValue == null ? "0" : cmbSalesMan.SelectedValue.ToString())),
                DBClass.CreateParameter("ship_via", cmbShipVia.Text),
                DBClass.CreateParameter("ship_to", txtShipTo.Text),
                DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
@@ -374,7 +381,7 @@ namespace YamyProject
                DBClass.CreateParameter("sales_ref_id", salesId),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
-               DBClass.CreateParameter("sales_man", txtSalesMan.Text),
+               DBClass.CreateParameter("sales_man", (cmbSalesMan.SelectedValue == null ? "0" : cmbSalesMan.SelectedValue.ToString())),
                DBClass.CreateParameter("ship_via", cmbShipVia.Text),
                DBClass.CreateParameter("ship_to", txtShipTo.Text),
                DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
@@ -516,7 +523,8 @@ namespace YamyProject
         }
         private void resetTextBox()
         {
-            txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text =
+            cmbSalesMan.SelectedIndex = -1; 
+            txtBillTo.Text = txtShipTo.Text =
                 txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
@@ -599,7 +607,11 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion
+                    {
+                        Code = row["code"].ToString(),
+                        Name = row["name"].ToString()
+                    });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -1052,11 +1064,17 @@ namespace YamyProject
                 return;
 
             string selected = lstAccountSuggestions.SelectedItem.ToString();
-            int separatorIndex = selected.IndexOf('-');
-            if (separatorIndex == -1) return;
+            //int separatorIndex = selected.IndexOf('-');
+            //if (separatorIndex == -1) return;
 
-            string selectedCode = selected.Substring(0, separatorIndex).Trim();
-            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+            string selectedCode = "";// selected.Substring(0, separatorIndex).Trim();
+            string selectedName = "";// selected.Substring(separatorIndex + 1).Trim();
+
+            if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+            {
+                selectedCode = item.Code;
+                selectedName = item.Name;
+            }
 
             if (lstAccountSuggestions.Tag is Guna2TextBox gunaTextBox)
             {

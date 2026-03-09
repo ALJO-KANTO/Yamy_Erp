@@ -118,10 +118,10 @@ namespace YamyProject
             this.panel10 = new System.Windows.Forms.Panel();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -143,7 +143,7 @@ namespace YamyProject
             this.panel2.Controls.Add(this.menuStrip2);
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1040, 36);
@@ -561,10 +561,10 @@ namespace YamyProject
             this.panel3.Controls.Add(this.panel12);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 73);
+            this.panel3.Location = new System.Drawing.Point(0, 66);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(278, 565);
+            this.panel3.Size = new System.Drawing.Size(278, 572);
             this.panel3.TabIndex = 8;
             // 
             // dgvEmployees
@@ -607,8 +607,8 @@ namespace YamyProject
             this.dgvEmployees.RowHeadersWidth = 51;
             this.dgvEmployees.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(234)))), ((int)(((byte)(208)))));
             this.dgvEmployees.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvEmployees.RowTemplate.Height = 30;
-            this.dgvEmployees.Size = new System.Drawing.Size(263, 508);
+            this.dgvEmployees.RowTemplate.Height = 25;
+            this.dgvEmployees.Size = new System.Drawing.Size(263, 515);
             this.dgvEmployees.TabIndex = 6;
             this.dgvEmployees.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvEmployees.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -628,7 +628,7 @@ namespace YamyProject
             this.dgvEmployees.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvEmployees.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvEmployees.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvEmployees.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvEmployees.ThemeStyle.RowsStyle.Height = 25;
             this.dgvEmployees.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(234)))), ((int)(((byte)(208)))));
             this.dgvEmployees.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
@@ -670,13 +670,13 @@ namespace YamyProject
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel14.Location = new System.Drawing.Point(0, 5);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(5, 555);
+            this.panel14.Size = new System.Drawing.Size(5, 562);
             this.panel14.TabIndex = 10;
             // 
             // panel13
             // 
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel13.Location = new System.Drawing.Point(0, 560);
+            this.panel13.Location = new System.Drawing.Point(0, 567);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(268, 5);
             this.panel13.TabIndex = 9;
@@ -687,7 +687,7 @@ namespace YamyProject
             this.panel15.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel15.Location = new System.Drawing.Point(268, 5);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(5, 560);
+            this.panel15.Size = new System.Drawing.Size(5, 567);
             this.panel15.TabIndex = 11;
             // 
             // panel12
@@ -704,7 +704,7 @@ namespace YamyProject
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(273, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 565);
+            this.panel1.Size = new System.Drawing.Size(5, 572);
             this.panel1.TabIndex = 12;
             // 
             // tabControl1
@@ -712,11 +712,11 @@ namespace YamyProject
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(278, 153);
+            this.tabControl1.Location = new System.Drawing.Point(278, 146);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(762, 485);
+            this.tabControl1.Size = new System.Drawing.Size(762, 492);
             this.tabControl1.TabIndex = 16;
             // 
             // tabPage2
@@ -729,7 +729,7 @@ namespace YamyProject
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(754, 459);
+            this.tabPage2.Size = new System.Drawing.Size(754, 466);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Petty Cash Vouchers";
             // 
@@ -737,28 +737,16 @@ namespace YamyProject
             // 
             this.dgvInvoiceCash.AllowUserToAddRows = false;
             this.dgvInvoiceCash.AllowUserToDeleteRows = false;
-            this.dgvInvoiceCash.AllowUserToResizeColumns = false;
-            this.dgvInvoiceCash.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInvoiceCash.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvInvoiceCash.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvInvoiceCash.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInvoiceCash.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvInvoiceCash.ColumnHeadersHeight = 30;
-            this.dgvInvoiceCash.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -770,38 +758,35 @@ namespace YamyProject
             this.dgvInvoiceCash.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoiceCash.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvInvoiceCash.Location = new System.Drawing.Point(2, 2);
-            this.dgvInvoiceCash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dgvInvoiceCash.MultiSelect = false;
             this.dgvInvoiceCash.Name = "dgvInvoiceCash";
             this.dgvInvoiceCash.ReadOnly = true;
-            this.dgvInvoiceCash.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvInvoiceCash.RowHeadersVisible = false;
-            this.dgvInvoiceCash.RowHeadersWidth = 51;
-            this.dgvInvoiceCash.RowTemplate.Height = 30;
-            this.dgvInvoiceCash.Size = new System.Drawing.Size(750, 455);
-            this.dgvInvoiceCash.TabIndex = 8;
+            this.dgvInvoiceCash.Size = new System.Drawing.Size(750, 462);
+            this.dgvInvoiceCash.TabIndex = 0;
             this.dgvInvoiceCash.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoiceCash.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvInvoiceCash.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvInvoiceCash.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvInvoiceCash.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvInvoiceCash.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvInvoiceCash.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoiceCash.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvInvoiceCash.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInvoiceCash.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvInvoiceCash.ThemeStyle.HeaderStyle.Height = 23;
             this.dgvInvoiceCash.ThemeStyle.ReadOnly = true;
             this.dgvInvoiceCash.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvInvoiceCash.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvInvoiceCash.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvInvoiceCash.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvInvoiceCash.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInvoiceCash.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvInvoiceCash.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvInvoiceCash.ThemeStyle.RowsStyle.Height = 22;
             this.dgvInvoiceCash.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvInvoiceCash.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvInvoiceCash.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceCash_CellDoubleClick_1);
+            this.dgvInvoiceCash.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceCash_CellContentClick);
+            this.dgvInvoiceCash.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoiceCash_CellDoubleClick);
+            this.dgvInvoiceCash.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvInvoiceCash_DataBindingComplete);
             // 
             // tabPage3
             // 
@@ -813,7 +798,7 @@ namespace YamyProject
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(754, 459);
+            this.tabPage3.Size = new System.Drawing.Size(754, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Transactions";
             // 
@@ -825,38 +810,27 @@ namespace YamyProject
             this.panel016.Location = new System.Drawing.Point(2, 2);
             this.panel016.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel016.Name = "panel016";
-            this.panel016.Size = new System.Drawing.Size(750, 455);
+            this.panel016.Size = new System.Drawing.Size(750, 462);
             this.panel016.TabIndex = 9;
             // 
             // dgvInvoice
             // 
             this.dgvInvoice.AllowUserToAddRows = false;
             this.dgvInvoice.AllowUserToDeleteRows = false;
-            this.dgvInvoice.AllowUserToResizeColumns = false;
-            this.dgvInvoice.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInvoice.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvInvoice.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvInvoice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvInvoice.ColumnHeadersHeight = 30;
             this.dgvInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -865,35 +839,30 @@ namespace YamyProject
             this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvInvoice.Location = new System.Drawing.Point(0, 0);
-            this.dgvInvoice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.ReadOnly = true;
-            this.dgvInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvInvoice.RowHeadersVisible = false;
-            this.dgvInvoice.RowHeadersWidth = 51;
-            this.dgvInvoice.RowTemplate.Height = 30;
-            this.dgvInvoice.Size = new System.Drawing.Size(750, 455);
-            this.dgvInvoice.TabIndex = 7;
+            this.dgvInvoice.Size = new System.Drawing.Size(750, 462);
+            this.dgvInvoice.TabIndex = 2;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvInvoice.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvInvoice.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgvInvoice.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvInvoice.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Silver;
+            this.dgvInvoice.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvInvoice.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvInvoice.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.dgvInvoice.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInvoice.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvInvoice.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvInvoice.ThemeStyle.HeaderStyle.Height = 30;
+            this.dgvInvoice.ThemeStyle.HeaderStyle.Height = 23;
             this.dgvInvoice.ThemeStyle.ReadOnly = true;
             this.dgvInvoice.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvInvoice.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            this.dgvInvoice.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvInvoice.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvInvoice.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInvoice.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvInvoice.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvInvoice.ThemeStyle.RowsStyle.Height = 22;
             this.dgvInvoice.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvInvoice.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvInvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoice_CellDoubleClick);
@@ -915,7 +884,7 @@ namespace YamyProject
             this.panel16.Controls.Add(this.label10);
             this.panel16.Controls.Add(this.panel17);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel16.Location = new System.Drawing.Point(278, 116);
+            this.panel16.Location = new System.Drawing.Point(278, 109);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(762, 37);
             this.panel16.TabIndex = 16;
@@ -996,7 +965,7 @@ namespace YamyProject
             this.pnlInfo.Controls.Add(this.label3);
             this.pnlInfo.Controls.Add(this.panel10);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlInfo.Location = new System.Drawing.Point(278, 73);
+            this.pnlInfo.Location = new System.Drawing.Point(278, 66);
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(762, 43);
             this.pnlInfo.TabIndex = 15;
@@ -1013,18 +982,6 @@ namespace YamyProject
             this.label3.TabIndex = 8;
             this.label3.Text = "Petty Cash Log";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // headerUC1
-            // 
-            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerUC1.FormText = "";
-            this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1040, 30);
-            this.headerUC1.TabIndex = 238;
             // 
             // guna2ControlBox2
             // 
@@ -1076,6 +1033,18 @@ namespace YamyProject
             this.guna2Button4.Size = new System.Drawing.Size(14, 15);
             this.guna2Button4.TabIndex = 29;
             // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1040, 30);
+            this.headerUC1.TabIndex = 238;
+            // 
             // MasterPettyCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1116,11 +1085,6 @@ namespace YamyProject
             this.pnlInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
-        }
-
-        private void dgvInvoiceCash_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
@@ -1202,9 +1166,9 @@ namespace YamyProject
         private System.Windows.Forms.Label label10;
         private Panel panel016;
         private TabPage tabPage3;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvInvoice;
         private TabPage tabPage2;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvInvoiceCash;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvInvoiceCash;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvInvoice;
     }
 }

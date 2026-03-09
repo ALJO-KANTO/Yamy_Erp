@@ -89,6 +89,10 @@ namespace YamyProject
             this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.txtOpeningBalanceCode = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmbOpeningBalance = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.pnlmanifacuter.SuspendLayout();
@@ -102,7 +106,7 @@ namespace YamyProject
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 458);
+            this.panel1.Location = new System.Drawing.Point(2, 507);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 33);
@@ -195,7 +199,7 @@ namespace YamyProject
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(2, 491);
+            this.panel5.Location = new System.Drawing.Point(2, 540);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(520, 2);
@@ -208,7 +212,7 @@ namespace YamyProject
             this.panel4.Location = new System.Drawing.Point(522, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 493);
+            this.panel4.Size = new System.Drawing.Size(2, 542);
             this.panel4.TabIndex = 13;
             // 
             // panel3
@@ -218,7 +222,7 @@ namespace YamyProject
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 493);
+            this.panel3.Size = new System.Drawing.Size(2, 542);
             this.panel3.TabIndex = 12;
             // 
             // label20
@@ -930,6 +934,10 @@ namespace YamyProject
             // 
             this.guna2GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox1.BorderThickness = 0;
+            this.guna2GroupBox1.Controls.Add(this.txtOpeningBalanceCode);
+            this.guna2GroupBox1.Controls.Add(this.cmbOpeningBalance);
+            this.guna2GroupBox1.Controls.Add(this.label24);
+            this.guna2GroupBox1.Controls.Add(this.label25);
             this.guna2GroupBox1.Controls.Add(this.pnlmanifacuter);
             this.guna2GroupBox1.Controls.Add(this.txtExpenceAccount);
             this.guna2GroupBox1.Controls.Add(this.cmbExpenceAccount);
@@ -983,7 +991,7 @@ namespace YamyProject
             this.guna2GroupBox1.Location = new System.Drawing.Point(2, 0);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(520, 458);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(520, 507);
             this.guna2GroupBox1.TabIndex = 3;
             this.guna2GroupBox1.Text = "Fixed Asset";
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
@@ -994,7 +1002,7 @@ namespace YamyProject
             this.pnlmanifacuter.Controls.Add(this.label22);
             this.pnlmanifacuter.Controls.Add(this.label23);
             this.pnlmanifacuter.Controls.Add(this.guna2ToggleSwitch1);
-            this.pnlmanifacuter.Location = new System.Drawing.Point(10, 420);
+            this.pnlmanifacuter.Location = new System.Drawing.Point(10, 471);
             this.pnlmanifacuter.Margin = new System.Windows.Forms.Padding(2);
             this.pnlmanifacuter.Name = "pnlmanifacuter";
             this.pnlmanifacuter.Size = new System.Drawing.Size(498, 29);
@@ -1061,12 +1069,77 @@ namespace YamyProject
             this.headerUC1.Size = new System.Drawing.Size(520, 30);
             this.headerUC1.TabIndex = 145;
             // 
+            // txtOpeningBalanceCode
+            // 
+            this.txtOpeningBalanceCode.BorderRadius = 7;
+            this.txtOpeningBalanceCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtOpeningBalanceCode.DefaultText = "";
+            this.txtOpeningBalanceCode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtOpeningBalanceCode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtOpeningBalanceCode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOpeningBalanceCode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOpeningBalanceCode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOpeningBalanceCode.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOpeningBalanceCode.ForeColor = System.Drawing.Color.Black;
+            this.txtOpeningBalanceCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOpeningBalanceCode.Location = new System.Drawing.Point(319, 440);
+            this.txtOpeningBalanceCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOpeningBalanceCode.Name = "txtOpeningBalanceCode";
+            this.txtOpeningBalanceCode.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtOpeningBalanceCode.PlaceholderText = "";
+            this.txtOpeningBalanceCode.ReadOnly = true;
+            this.txtOpeningBalanceCode.SelectedText = "";
+            this.txtOpeningBalanceCode.Size = new System.Drawing.Size(188, 24);
+            this.txtOpeningBalanceCode.TabIndex = 229;
+            // 
+            // cmbOpeningBalance
+            // 
+            this.cmbOpeningBalance.BackColor = System.Drawing.Color.Transparent;
+            this.cmbOpeningBalance.BorderRadius = 5;
+            this.cmbOpeningBalance.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbOpeningBalance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOpeningBalance.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbOpeningBalance.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbOpeningBalance.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.cmbOpeningBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbOpeningBalance.ItemHeight = 18;
+            this.cmbOpeningBalance.Location = new System.Drawing.Point(9, 440);
+            this.cmbOpeningBalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbOpeningBalance.Name = "cmbOpeningBalance";
+            this.cmbOpeningBalance.Size = new System.Drawing.Size(308, 24);
+            this.cmbOpeningBalance.TabIndex = 228;
+            this.cmbOpeningBalance.SelectedIndexChanged += new System.EventHandler(this.cmbOpeningBalance_SelectedIndexChanged);
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label24.Location = new System.Drawing.Point(7, 415);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(163, 29);
+            this.label24.TabIndex = 226;
+            this.label24.Text = "Opening Balance Account";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label25.Location = new System.Drawing.Point(319, 415);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(91, 29);
+            this.label25.TabIndex = 227;
+            this.label25.Text = "Account Code";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmViewFixedAssets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(524, 493);
+            this.ClientSize = new System.Drawing.Size(524, 542);
             this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.panel1);
@@ -1146,5 +1219,9 @@ namespace YamyProject
         private System.Windows.Forms.Label label23;
         public Guna.UI2.WinForms.Guna2Panel pnlmanifacuter;
         private HeaderUC headerUC1;
+        private Guna.UI2.WinForms.Guna2TextBox txtOpeningBalanceCode;
+        public Guna.UI2.WinForms.Guna2ComboBox cmbOpeningBalance;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 }

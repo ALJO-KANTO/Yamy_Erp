@@ -70,12 +70,12 @@ namespace YamyProject
 
                 foreach (DataGridViewColumn col in dgvSales.Columns)
                 {
-                    col.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Regular);
+                    col.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                 }
 
                 dgvSales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold);
+                dgvSales.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold);
                 dgvSales.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvSales.EnableHeadersVisualStyles = false;
                 dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -165,10 +165,18 @@ namespace YamyProject
                 totalAmount.ToString("N2")
             );
 
-            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
+            dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline);
             dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
             dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.Rows[totalRow].Cells[3].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            putDateWords();
+        }
+        private void putDateWords()
+        {
+            string fromDate = dtpFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtpTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {

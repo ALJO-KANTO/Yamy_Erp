@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using Guna.UI2.WinForms;
+using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
@@ -12,6 +13,7 @@ using System.Windows.Forms;
 using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
+using YamyProject.UI.Sales;
 using YamyProject.UI.Settings;
 
 namespace YamyProject
@@ -28,6 +30,8 @@ namespace YamyProject
         public frmAddSalesOrder(int id = 0)
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             warehouseUpdatedHandler = (sender, args) => BindCombos.PopulateWarehouse(cmbWarehouse);
@@ -60,6 +64,16 @@ namespace YamyProject
             loadVat();
             cmbPaymentMethod.SelectedIndex = 0;
             bindCombo();
+            var generalS = Utilities.GeneralSettingsState("USE PREPAYMENTS (DEPOSITS) FOR SALES ORDERS");
+            if (!string.IsNullOrEmpty(generalS) & int.Parse(generalS) > 0)
+            {
+                BtnReceivePayments.Visible = true;
+            }
+            else
+            {
+                BtnReceivePayments.Visible = false;
+            }
+
             txtNextCode.Text = GenerateNextSalesCode();
             txtId.Text = GenerateNextSalesId();
             if (id !=0)
@@ -92,7 +106,11 @@ namespace YamyProject
                     invId = id;
                     txtBillTo.Text = reader["bill_to"].ToString();
                     txtShipTo.Text = reader["ship_to"].ToString();
-                    txtSalesMan.Text = reader["sales_man"].ToString();
+                    if (int.TryParse(reader["sales_man"]?.ToString(), out int salesManId))
+                    {
+                        if (salesManId > 0)
+                            cmbSalesMan.SelectedValue = salesManId;
+                    }
                     richTextDescription.Text = reader["description"].ToString();
                     BindInvoiceItems();
                     CalculateTotal();
@@ -130,6 +148,10 @@ namespace YamyProject
             vat.DataSource = dt;
             vat.DisplayMember = "name";
             vat.ValueMember = "id";
+            vat.FlatStyle = FlatStyle.Popup;
+            vat.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            vat.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            vat.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             var dTax = Utilities.GeneralSettings("DEFAULT TAX PERCENTAGE");
             if (!string.IsNullOrEmpty(dTax) & int.Parse(dTax) > 0)
             {
@@ -142,6 +164,7 @@ namespace YamyProject
         {
             BindCombos.PopulateCustomers(cmbCustomer);
             BindCombos.PopulateAllLevel4Account(cmbAccountCashName);
+            BindCombos.PopulateEmployees(cmbSalesMan);
 
             cmbAccountCashName.SelectedValue =frmLogin. defaultAccounts.ContainsKey("Invoice Payment Cash Method")
                 ? frmLogin.defaultAccounts["Invoice Payment Cash Method"] : 0;
@@ -357,7 +380,7 @@ namespace YamyProject
                                        DBClass.CreateParameter("po_num", ""),
                                        DBClass.CreateParameter("bill_to", txtBillTo.Text),
                                        DBClass.CreateParameter("ship_date", dtShip.Value.Date),
-                                       DBClass.CreateParameter("sales_man", txtSalesMan.Text),
+                                       DBClass.CreateParameter("sales_man", (cmbSalesMan.SelectedValue == null ? "0" : cmbSalesMan.SelectedValue.ToString())),
                                        DBClass.CreateParameter("ship_via", cmbShipVia.Text),
                                        DBClass.CreateParameter("ship_to", txtShipTo.Text),
                                        DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
@@ -405,7 +428,7 @@ namespace YamyProject
                DBClass.CreateParameter("po_num", ""),
                DBClass.CreateParameter("bill_to", txtBillTo.Text),
                DBClass.CreateParameter("ship_date", dtShip.Value.Date),
-               DBClass.CreateParameter("sales_man", txtSalesMan.Text),
+               DBClass.CreateParameter("sales_man", (cmbSalesMan.SelectedValue == null ? "0" : cmbSalesMan.SelectedValue.ToString())),
                DBClass.CreateParameter("ship_via", cmbShipVia.Text),
                DBClass.CreateParameter("ship_to", txtShipTo.Text),
                DBClass.CreateParameter("payment_method", cmbPaymentMethod.Text),
@@ -542,7 +565,8 @@ namespace YamyProject
         }
         private void resetTextBox()
         {
-            txtSalesMan.Text = txtBillTo.Text = txtShipTo.Text =
+            cmbSalesMan.SelectedIndex = -1; 
+            txtBillTo.Text = txtShipTo.Text =
                 txtTotal.Text = txtTotalVat.Text = "";
             cmbPaymentMethod.SelectedIndex = id = 0;
             dtInv.Value = DateTime.Now;
@@ -702,7 +726,11 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -747,7 +775,7 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -1245,11 +1273,17 @@ namespace YamyProject
                 return;
 
             string selected = lstAccountSuggestions.SelectedItem.ToString();
-            int separatorIndex = selected.IndexOf('-');
-            if (separatorIndex == -1) return;
+            //int separatorIndex = selected.IndexOf('-');
+            //if (separatorIndex == -1) return;
 
-            string selectedCode = selected.Substring(0, separatorIndex).Trim();
-            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+            string selectedCode = "";// selected.Substring(0, separatorIndex).Trim();
+            string selectedName = "";// selected.Substring(separatorIndex + 1).Trim();
+
+            if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+            {
+                selectedCode = item.Code;
+                selectedName = item.Name;
+            }
 
             if (lstAccountSuggestions.Tag is Guna2TextBox gunaTextBox)
             {
@@ -1330,6 +1364,25 @@ namespace YamyProject
                     fId,
                     openFileDialog1.FileName
                 );
+        }
+
+        private void BtnReceivePayments_Click(object sender, EventArgs e)
+        {
+            if (id == 0)
+            {
+                MessageBox.Show("Please save the sales order before receiving payments.");
+                return;
+            }
+
+            int invoiceId = id;
+            int customerId = cmbCustomer.SelectedValue != null ? int.Parse(cmbCustomer.SelectedValue.ToString()) : 0;
+            string customerName = cmbCustomer.Text;
+            string invoiceNumber = txtNextCode.Text;
+            decimal totalAmount = string.IsNullOrWhiteSpace(txtTotal.Text) ? 0 : decimal.Parse(txtTotal.Text);
+            using (var paymentForm = new frmReceivePayments(0, invoiceId, customerId, customerName, invoiceNumber, totalAmount, 0, "SALES ORDER"))
+            {
+                paymentForm.ShowDialog();
+            }
         }
     }
 }

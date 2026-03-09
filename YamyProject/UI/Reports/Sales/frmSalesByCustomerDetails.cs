@@ -34,6 +34,10 @@ namespace YamyProject
 
         private void frmSalesByCustomerDetails_Load(object sender, EventArgs e)
         {
+            if(tblName == "tbl_sales_order")
+            {
+                headerUC1.FormText = guna2HtmlLabel7.Text = "Pending Sales Order";
+            }
             btnPrint.Text = "Print ▼";
 
             DateTime dated = DateTime.Now;

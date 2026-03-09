@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -26,6 +27,7 @@ namespace YamyProject
 
         private void MasterLoan_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvEmployee);
             ConfigureDataGridViews();
             BindEmployee();
             pnlInfo.Height = 80;

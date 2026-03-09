@@ -193,6 +193,7 @@ namespace YamyProject
                 parameters.Add(DBClass.CreateParameter("dateFrom", dtpFrom.Value.Date));
                 parameters.Add(DBClass.CreateParameter("dateTo", dtpTo.Value.Date.AddDays(1).AddSeconds(-1)));
             }
+            string conditions = id > 0 ? " c.id = @id " : " c.id > 0 ";
 
             string query = $@"
                             SELECT 
@@ -212,7 +213,7 @@ namespace YamyProject
                             JOIN 
                             tbl_vendor c ON t.hum_id = c.id
                             WHERE 
-                            c.id = @id
+                            {conditions}
                             AND t.state = 0
                             AND t.type IN ('Vendor Payment','Purchase Invoice','Check Cancel (Vendor)','Purchase Return Invoice','Credit Note','PDC Payable')
                             {dateFilter}

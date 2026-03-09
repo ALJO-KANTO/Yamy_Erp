@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using Guna.UI2.WinForms;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace YamyProject.DAL
 {
@@ -31,6 +33,34 @@ namespace YamyProject.DAL
         //public static Color ButtonBackColor = PrimaryColor;
         //public static Color ButtonForeColor = Color.White;
         //public static Color ButtonHoverColor = SecondaryColor;
+
+        public static void DefaultFont(Guna2DataGridView dgv)
+        {
+            Font headerFont = new Font("Segoe UI", 8F, FontStyle.Regular);
+            Font cellFont = new Font("Segoe UI", 6.6F, FontStyle.Regular);
+
+            // Header
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.Font = headerFont;
+            dgv.ThemeStyle.HeaderStyle.Font = headerFont;
+
+            // Cells (VERY IMPORTANT – set all)
+            dgv.DefaultCellStyle.Font = cellFont;
+            dgv.RowsDefaultCellStyle.Font = cellFont;
+            dgv.AlternatingRowsDefaultCellStyle.Font = cellFont;
+            dgv.RowTemplate.DefaultCellStyle.Font = cellFont;
+            dgv.ThemeStyle.RowsStyle.Font = cellFont;
+            dgv.ThemeStyle.AlternatingRowsStyle.Font = cellFont;
+
+            // Optional compact height
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgv.RowTemplate.Height = 18;
+        }
+
+        public static void DefaultFont6(Guna2DataGridView dgv)
+        {
+            dgv.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 6F, FontStyle.Regular);
+        }
     }
 
 }

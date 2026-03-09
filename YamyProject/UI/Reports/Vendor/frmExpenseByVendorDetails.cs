@@ -95,13 +95,27 @@ namespace YamyProject
 
             // Calculate running balance
             decimal balance = 0;
+            decimal totalDebit = 0;
+            decimal totalCredit = 0;
             foreach (DataRow row in dt.Rows)
             {
                 decimal debit = row["Debit"] != DBNull.Value ? Convert.ToDecimal(row["Debit"]) : 0;
                 decimal credit = row["Credit"] != DBNull.Value ? Convert.ToDecimal(row["Credit"]) : 0;
-                balance += debit - credit;
+                balance += credit - debit;
                 row["Balance"] = balance;
+                totalCredit += credit;
+                totalDebit += debit;
             }
+            // Create total row
+            DataRow totalRow = dt.NewRow();
+
+            totalRow["Date"] = DBNull.Value;     // keep date empty
+            totalRow["Vendor"] = "TOTAL";   // or any text column you use
+            totalRow["Debit"] = totalDebit;
+            totalRow["Credit"] = totalCredit;
+            totalRow["Balance"] = balance;       // final running balance
+
+            dt.Rows.Add(totalRow);
 
             dgvSales.DataSource = dt;
             dgvSales.Columns["id"].Visible = false;
@@ -116,9 +130,24 @@ namespace YamyProject
             dgvSales.Columns["Balance"].DefaultCellStyle.Format = "N2";
             dgvSales.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            int lastRow = dgvSales.Rows.Count - 1;
+            if (lastRow >= 0)
+            {
+                dgvSales.Rows[lastRow].DefaultCellStyle.Font =
+                    new System.Drawing.Font(dgvSales.Font, System.Drawing.FontStyle.Bold);
+            }
+
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+            DateWords();
         }
 
+        private void DateWords()
+        {
+            string fromDate = dtpFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtpTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
+        }
 
         private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

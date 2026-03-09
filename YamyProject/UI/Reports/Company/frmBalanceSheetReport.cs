@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
@@ -21,8 +22,15 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.type = type;
+            if (type == "detail")
+                headerUC1.FormText = "Balance Sheet Detail";
+            else if (type == "standard")
+                headerUC1.FormText = "Balance Sheet";
+            else
+                headerUC1.FormText = this.Text;
         }
-
+        int RetainedEarningsId = 17; // Assuming this is the ID for Retained Earnings in your database
+        decimal retainedEarningsBalance = 0;
         private void frmBalanceSheetReport_Load(object sender, EventArgs e)
         {
             lblDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
@@ -50,7 +58,7 @@ namespace YamyProject
                 label1.Text = label1.Text + " By Class";
                 dateTimePicker2.Visible = false;
             }
-
+            retainedEarningsBalance = GetNetProfit(dateTimePicker1.Value, dateTimePicker2.Value);
             LoadData();
         }
         private void LoadData()
@@ -82,7 +90,7 @@ namespace YamyProject
                 dgvReport.Columns.Add("state", "");
                 dgvReport.Columns.Add("loadState", "");
                 dgvReport.Columns.Add("currLvl", "");
-                dgvReport.Columns.Add("lvl1", "Account Name");
+                dgvReport.Columns.Add("lvl1", " ");
                 dgvReport.Columns.Add("id", "");
                 dgvReport.Columns.Add("currname", "");
                 string currentPeriod = $"{dateTimePicker1.Value:MMM dd} – {dateTimePicker2.Value:MMM dd yy}";
@@ -103,7 +111,7 @@ namespace YamyProject
                 dgvReport.Columns.Add("state", "");
                 dgvReport.Columns.Add("loadState", "");
                 dgvReport.Columns.Add("currLvl", "");
-                dgvReport.Columns.Add("lvl1", "Account Name");
+                dgvReport.Columns.Add("lvl1", " ");
                 dgvReport.Columns.Add("id", "");
                 dgvReport.Columns.Add("currname", "");
                 if (type == "detail")
@@ -152,6 +160,13 @@ namespace YamyProject
             string filterDate = (type == "detail" || type == "Prev Year Comparison")
                                 ? " AND t.date BETWEEN @fromDate AND @toDate"
                                 : " AND t.date <= @fromDate";
+            bool isStandard = true;
+            decimal totalLandE = 0;
+            decimal totalBal1 = 0;
+            decimal totalBal2 = 0;
+            decimal totalChange = 0;
+            decimal totalChangePerc = 0;
+
             if (type == "Prev Year Comparison")
             {
                 using (MySqlDataReader reader = DBClass.ExecuteReader(@"
@@ -225,13 +240,20 @@ namespace YamyProject
                     {
                         if (type == "detail")
                         {
+                            isStandard = true;
                             dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                                 reader["id"].ToString(), reader["name"].ToString(),
                                 " ", " ", " ", " ", " ", " ", " ", " ", " ",
                                 Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                            if (!CheckNameIsAssets(reader["name"].ToString()))
+                            {
+                                totalLandE += Convert.ToDecimal(reader["balance"]);
+                            }
                         }
                         else if(type == "Prev Year Comparison")
                         {
+                            isStandard = false;
                             decimal bal1 = Convert.ToDecimal(reader["Balance1"]);
                             decimal bal2 = Convert.ToDecimal(reader["Balance2"]);
                             decimal change = bal1 - bal2;
@@ -242,12 +264,24 @@ namespace YamyProject
                             Utilities.FormatDecimal(bal2.ToString()),
                             Utilities.FormatDecimal(change.ToString()),
                             Utilities.FormatDecimal(changePerc.ToString()) + " %");
+
+                            totalBal1 += bal1;
+                            totalBal2 += bal2;
+                            totalChange += change;
+
                         }
                         else
                         {
+                            isStandard = true;
                             dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                             reader["id"].ToString(), reader["name"].ToString(),
                             Utilities.FormatDecimal(reader["balance"].ToString()));
+
+
+                            if (!CheckNameIsAssets(reader["name"].ToString()))
+                            {
+                                totalLandE += Convert.ToDecimal(reader["balance"]);
+                            }
                         }
                     }
 
@@ -256,6 +290,57 @@ namespace YamyProject
                     {
                         ExpandRowRecursively(i);
                     }
+
+                    var totalRow = new DataGridViewRow();
+                    totalRow.CreateCells(dgvReport);
+                    if (isStandard)
+                    {
+                        // Set the label column (adjust index if needed)
+                        int nameColumnIndex = 3;
+                        totalRow.Cells[nameColumnIndex].Value = "          Total Liabilities & Equity";
+
+                        // Set value in the last column dynamically
+                        int lastColumnIndex = dgvReport.Columns.Count - 1;
+                        totalRow.Cells[lastColumnIndex].Value =
+                            Utilities.FormatDecimal(totalLandE.ToString());
+                    }
+                    else
+                    {
+                        if (type == "Prev Year Comparison")
+                        {
+                            if (totalBal2 != 0)
+                                totalChangePerc = (totalChange / Math.Abs(totalBal2)) * 100;
+                            else
+                                totalChangePerc = 0;
+
+                            int nameColumnIndex = 3;
+                            totalRow.Cells[nameColumnIndex].Value =
+                                "          Total Liabilities & Equity";
+
+                            totalRow.Cells[6].Value = Utilities.FormatDecimal(totalBal1.ToString());
+                            totalRow.Cells[7].Value = Utilities.FormatDecimal(totalBal2.ToString());
+                            totalRow.Cells[8].Value = Utilities.FormatDecimal(totalChange.ToString());
+                            totalRow.Cells[9].Value =
+                                Utilities.FormatDecimal(totalChangePerc.ToString()) + " %";
+                        }
+                        else if (type == "by Class")
+                        {
+                            int nameColumnIndex = 3;
+                            totalRow.Cells[nameColumnIndex].Value =
+                                "          Total Liabilities & Equity";
+                            totalRow.Cells[6].Value = Utilities.FormatDecimal(totalBal1.ToString());
+                            totalRow.Cells[7].Value = Utilities.FormatDecimal(totalBal2.ToString());
+                        }
+                    }
+                    // Style
+                    totalRow.DefaultCellStyle.Font =
+                            new System.Drawing.Font(dgvReport.Font, FontStyle.Bold);
+
+                    totalRow.DefaultCellStyle.BackColor =
+                        System.Drawing.Color.Beige;
+
+                    // Add row
+                    dgvReport.Rows.Add(totalRow);
                 }
             }
             else
@@ -264,7 +349,16 @@ namespace YamyProject
                     WITH AccountBalances AS (
                         SELECT 
                             l1.category_code AS Category, 
-                            COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
+                            CASE 
+                               WHEN l1.category_code = 'ASSET'
+                                   THEN COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+
+                               WHEN l1.category_code IN ('LIABILITY','EQUITY','INCOME')
+                                   THEN COALESCE(SUM(t.credit) - SUM(t.debit), 0)
+
+                               WHEN l1.category_code IN ('COST','EXPENSE')
+                                   THEN COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+                            END AS Balance
                         FROM tbl_coa_level_1 l1
                         LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
                         LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
@@ -290,7 +384,16 @@ namespace YamyProject
                             l1.name, 
                             l1.id, 
                             l1.category_code,
-                            COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
+                            CASE 
+                               WHEN l1.category_code = 'ASSET'
+                                   THEN COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+
+                               WHEN l1.category_code IN ('LIABILITY','EQUITY','INCOME')
+                                   THEN COALESCE(SUM(t.credit) - SUM(t.debit), 0)
+
+                               WHEN l1.category_code IN ('COST','EXPENSE')
+                                   THEN COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+                            END AS balance
                         FROM tbl_coa_level_1 l1
                         LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
                         LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
@@ -307,7 +410,8 @@ namespace YamyProject
                         eb.id, 
                         CASE 
                             WHEN eb.category_code = 'EQUITY' THEN 
-                                eb.balance + (SELECT Balance FROM FinalBalance)
+                                eb.balance 
+                                + COALESCE((SELECT Balance FROM FinalBalance), 0)
                             ELSE 
                                 eb.balance
                         END AS balance
@@ -325,18 +429,40 @@ namespace YamyProject
                                 reader["id"].ToString(), reader["name"].ToString(),
                                 " ", " ", " ", " ", " ", " ", " ", " ", " ",
                                 Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                            if (!CheckNameIsAssets(reader["name"].ToString()))
+                            {
+                                totalLandE += Convert.ToDecimal(reader["balance"]);
+                            }
+                            isStandard = true;
                         }
                         else
                         {
                             if (type == "by Class")
+                            {
+                                isStandard = false;
                                 dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                                 reader["id"].ToString(), reader["name"].ToString(),
                                 Utilities.FormatDecimal(reader["balance"].ToString()),
                                 Utilities.FormatDecimal(reader["balance"].ToString()));
+                                if (!CheckNameIsAssets(reader["name"].ToString()))
+                                {
+                                    totalBal1 += Convert.ToDecimal(reader["balance"]);
+                                    totalBal2 += Convert.ToDecimal(reader["balance"]);
+                                }
+                            }
                             else
+                            {
+                                isStandard = true;
                                 dgvReport.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                                 reader["id"].ToString(), reader["name"].ToString(),
                                 Utilities.FormatDecimal(reader["balance"].ToString()));
+
+                                if (!CheckNameIsAssets(reader["name"].ToString()))
+                                {
+                                    totalLandE += Convert.ToDecimal(reader["balance"]);
+                                }
+                            }
                         }
                     }
 
@@ -345,9 +471,82 @@ namespace YamyProject
                     {
                         ExpandRowRecursively(i);
                     }
+
+                    var totalRow = new DataGridViewRow();
+                    totalRow.CreateCells(dgvReport);
+
+
+                    if (isStandard)
+                    {
+                        // Set the label column (adjust index if needed)
+                        int nameColumnIndex = 3;
+                        totalRow.Cells[nameColumnIndex].Value = "          Total Liabilities & Equity";
+
+                        // Set value in the last column dynamically
+                        int lastColumnIndex = dgvReport.Columns.Count - 1;
+                        totalRow.Cells[lastColumnIndex].Value =
+                            Utilities.FormatDecimal((totalLandE).ToString());
+                    }
+                    else
+                    {
+                        if (type == "Prev Year Comparison")
+                        {
+                            if (totalBal2 != 0)
+                                totalChangePerc = (totalChange / Math.Abs(totalBal2)) * 100;
+                            else
+                                totalChangePerc = 0;
+
+                            int nameColumnIndex = 3;
+                            totalRow.Cells[nameColumnIndex].Value =
+                                "          Total Liabilities & Equity";
+
+                            totalRow.Cells[6].Value = Utilities.FormatDecimal(totalBal1.ToString());
+                            totalRow.Cells[7].Value = Utilities.FormatDecimal(totalBal2.ToString());
+                            totalRow.Cells[8].Value = Utilities.FormatDecimal(totalChange.ToString());
+                            totalRow.Cells[9].Value =
+                                Utilities.FormatDecimal(totalChangePerc.ToString()) + " %";
+                        }
+                        else if(type == "by Class")
+                        {
+                            int nameColumnIndex = 3;
+                            totalRow.Cells[nameColumnIndex].Value =
+                                "          Total Liabilities & Equity";
+                            totalRow.Cells[6].Value = Utilities.FormatDecimal(totalBal1.ToString());
+                            totalRow.Cells[7].Value = Utilities.FormatDecimal(totalBal2.ToString());
+                        }
+                    }
+                    // Style
+                    totalRow.DefaultCellStyle.Font =
+                        new System.Drawing.Font(dgvReport.Font, FontStyle.Bold);
+
+                    totalRow.DefaultCellStyle.BackColor =
+                        System.Drawing.Color.Beige;
+
+                    // Add row
+                    dgvReport.Rows.Add(totalRow);
+
                 }
             }
+
+
+            dateWords();
         }
+
+        private bool CheckNameIsAssets(string name)
+        {
+            object result = DBClass.ExecuteScalar("SELECT category_code FROM tbl_coa_level_1 where name = @name", DBClass.CreateParameter("@name", name));
+            if (result != null)
+            {
+                string categoryName = (string)result;
+                if (categoryName != "ASSET")
+                {
+                    return false;
+                }
+                return true;
+            }
+            return true;
+        }
+
         private void ExpandRowRecursively(int rowIndex)
         {
             if (rowIndex < 0 || rowIndex >= dgvReport.Rows.Count)
@@ -595,6 +794,9 @@ namespace YamyProject
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "n" }); // state
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "l" }); // loadState
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 }); // currLvl
+                    int.TryParse(row.Cells["id"].Value.ToString(), out int idL3);
+                    int.TryParse(row.Cells["currLvl"].Value.ToString(), out int L3subId);
+
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + "Total " + row.Cells["lvl1"].Value.ToString().Trim() });
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = row.Cells["id"].Value.ToString() });
                     totalRow.Cells.Add(new DataGridViewTextBoxCell { Value = "TotalRow" });
@@ -1054,6 +1256,9 @@ namespace YamyProject
             //}
             if (e.RowIndex < 0) return;
 
+            if (dgvReport.Rows[e.RowIndex].Cells["currLvl"].Value == null)
+                return;
+
             int currLvl = int.Parse(dgvReport.Rows[e.RowIndex].Cells["currLvl"].Value.ToString());
             if (currLvl > 4) return;
             if (currLvl == 4)
@@ -1152,8 +1357,73 @@ namespace YamyProject
             else
                 row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
+        private string GetBalanceData(int level, int id, DateTime fromDate, DateTime toDate)
+        {
+            string filterDate = (type == "detail")
+                ? " AND tt.date BETWEEN @fromDate AND @toDate"
+                : " AND tt.date <= @toDate";
 
-        private string GetBalanceData(int level, int id, DateTime cutoffDate, DateTime toDated)
+            string query = $@"
+                            SELECT 
+                                COALESCE(SUM(
+                                    CASE 
+                                        WHEN l1.category_code = 'ASSET'
+                                            THEN tt.debit - tt.credit
+
+                                        WHEN l1.category_code IN ('LIABILITY','EQUITY','INCOME')
+                                            THEN tt.credit - tt.debit
+
+                                        WHEN l1.category_code IN ('COST','EXPENSE')
+                                            THEN tt.debit - tt.credit
+                                    END
+                                ),0) AS balance
+
+                            FROM tbl_transaction tt
+                            JOIN tbl_coa_level_4 l4 ON l4.id = tt.account_id
+                            JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
+                            JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
+                            JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
+
+                            WHERE tt.state = 0
+                            {filterDate}
+                            AND (
+                                CASE {level}
+                                    WHEN 1 THEN l1.id = @id
+                                    WHEN 2 THEN l2.id = @id
+                                    WHEN 3 THEN l3.id = @id
+                                    WHEN 4 THEN l4.id = @id
+                                END
+                            )";
+
+            object result = DBClass.ExecuteScalar(
+                query,
+                DBClass.CreateParameter("@id", id),
+                DBClass.CreateParameter("@fromDate", fromDate),
+                DBClass.CreateParameter("@toDate", toDate)
+            );
+
+            string bal = result?.ToString() ?? "0";
+            decimal balance = Convert.ToDecimal(bal);
+
+            if (level == 3 && id == RetainedEarningsId)
+            {
+                balance = GetNetProfit(fromDate, toDate);
+            }
+
+            object result0 = DBClass.ExecuteScalar("SELECT l1.id FROM tbl_coa_level_1 l1 Inner join tbl_coa_level_2 l2 ON l1.id = l2.main_id where category_code = 'EQUITY' and l2.id = @id", DBClass.CreateParameter("@id", id));
+            
+            if(result0 != null)
+            {
+                if (retainedEarningsBalance > 0)
+                {
+                    balance = balance + retainedEarningsBalance;
+                }
+            }
+
+
+            return balance.ToString();
+        }
+        private string GetBalanceDataOrginal(int level, int id, DateTime cutoffDate, DateTime toDated)
         {
             // Determine date filter dynamically
             string filterDate = (type == "detail")
@@ -1169,7 +1439,18 @@ namespace YamyProject
 
                                 -- Balance for Level 1
                                 (
-                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                     FROM tbl_transaction tt
                                     WHERE tt.state = 0 {filterDate}
                                     AND tt.account_id IN (
@@ -1186,7 +1467,18 @@ namespace YamyProject
 
                                 -- Balance for Level 2
                                 (
-                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                     FROM tbl_transaction tt
                                     WHERE tt.state = 0 {filterDate}
                                     AND tt.account_id IN (
@@ -1200,7 +1492,18 @@ namespace YamyProject
 
                                 -- Balance for Level 3
                                 (
-                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                     FROM tbl_transaction tt
                                     WHERE tt.state = 0 {filterDate}
                                     AND tt.account_id IN (
@@ -1211,11 +1514,23 @@ namespace YamyProject
 
                                 -- Balance for Level 4
                                 (
-                                    SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                    SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                     FROM tbl_transaction tt
                                     WHERE tt.state = 0 {filterDate}
                                     AND tt.account_id = t4.id
-                                ) AS level4_balance
+                                ) AS level4_balance,
+                                0 t1main_id,t2.main_id AS t2main_id,t3.main_id AS t3main_id,t4.main_id AS t4main_id
 
                             FROM tbl_coa_level_1 t1
                             LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
@@ -1236,13 +1551,44 @@ namespace YamyProject
             {
                 if (read.Read())
                 {
-                    return read[$"level{level}_balance"].ToString();
+                    decimal balance = Convert.ToDecimal(read[$"level{level}_balance"]);
+                    if(level == 3 && id == RetainedEarningsId)
+                    {
+                        decimal netProfit = GetNetProfit(cutoffDate, toDated);
+                        balance += netProfit;
+                    }
+
+                    return balance.ToString();
                 }
             }
 
             return "0";
         }
+        private decimal GetNetProfit(DateTime fromDate, DateTime toDate)
+        {
+            string query = @"
+                            SELECT 
+                                COALESCE(SUM(CASE WHEN l1.category_code = 'INCOME' 
+                                                  THEN t.credit - t.debit ELSE 0 END),0)
+                              - COALESCE(SUM(CASE WHEN l1.category_code IN ('COST','EXPENSE') 
+                                                  THEN t.debit - t.credit ELSE 0 END),0)
+                            FROM tbl_transaction t
+                            JOIN tbl_coa_level_4 l4 ON l4.id = t.account_id
+                            JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
+                            JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
+                            JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
+                            WHERE t.state = 0
+                              AND t.date <= @toDate";
 
+            object result = DBClass.ExecuteScalar(
+                query,
+                DBClass.CreateParameter("@toDate", toDate)
+            );
+            if (result == null)
+                return 0;
+            else
+                return Convert.ToDecimal(result);
+        }
         private (decimal balance1, decimal balance2) GetBalanceData(int level, string name, DateTime currentFrom, DateTime currentTo, DateTime previousFrom, DateTime previousTo)
         {
             string query = $@"
@@ -1254,7 +1600,18 @@ namespace YamyProject
 
                                     -- Current Period Balance for Level 1
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @currFrom AND @currTo
@@ -1272,7 +1629,18 @@ namespace YamyProject
 
                                     -- Previous Period Balance for Level 1
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @prevFrom AND @prevTo
@@ -1290,7 +1658,18 @@ namespace YamyProject
 
                                     -- Current Period Balance for Level 2
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @currFrom AND @currTo
@@ -1305,7 +1684,18 @@ namespace YamyProject
 
                                     -- Previous Period Balance for Level 2
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @prevFrom AND @prevTo
@@ -1320,7 +1710,18 @@ namespace YamyProject
 
                                     -- Current Period Balance for Level 3
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @currFrom AND @currTo
@@ -1332,7 +1733,18 @@ namespace YamyProject
 
                                     -- Previous Period Balance for Level 3
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @prevFrom AND @prevTo
@@ -1344,7 +1756,18 @@ namespace YamyProject
 
                                     -- Current Period Balance for Level 4
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @currFrom AND @currTo
@@ -1353,7 +1776,18 @@ namespace YamyProject
 
                                     -- Previous Period Balance for Level 4
                                     (
-                                        SELECT COALESCE(SUM(tt.debit - tt.credit), 0)
+                                        SELECT COALESCE(SUM(
+                                        CASE 
+                                            WHEN t1.category_code = 'ASSET' 
+                                                THEN tt.debit - tt.credit
+
+                                            WHEN t1.category_code IN ('LIABILITY','EQUITY','INCOME') 
+                                                THEN tt.credit - tt.debit
+
+                                            WHEN t1.category_code IN ('COST','EXPENSE') 
+                                                THEN tt.debit - tt.credit
+                                        END
+                                    ), 0)
                                         FROM tbl_transaction tt
                                         WHERE tt.state = 0
                                           AND tt.date BETWEEN @prevFrom AND @prevTo
@@ -1460,7 +1894,7 @@ namespace YamyProject
         {
             for (int i = parentRowIndex + 1; i < dgvReport.Rows.Count; i++)
             {
-                int rowLevel = int.Parse(dgvReport.Rows[i].Cells["currLvl"].Value.ToString());
+                int rowLevel = dgvReport.Rows[i].Cells["currLvl"].Value ==null ? 0 : int.Parse(dgvReport.Rows[i].Cells["currLvl"].Value.ToString());
 
                 if (rowLevel > parentLevel)
                 {
@@ -1486,6 +1920,8 @@ namespace YamyProject
 
             for (int i = parentRowIndex + 1; i < dgvReport.Rows.Count; i++)
             {
+                if (dgvReport.Rows[i].Cells["currLvl"].Value == null)
+                    continue;
                 int rowLevel = int.Parse(dgvReport.Rows[i].Cells["currLvl"].Value.ToString());
 
                 if (rowLevel > parentLevel)
@@ -1552,7 +1988,12 @@ namespace YamyProject
         {
             BindDGV();
         }
-
+        private void dateWords()
+        {
+            string fromDate = dateTimePicker1.Value.ToString("MMMM dd, yyyy");
+            //string toDate = dateTimePicker2.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"AS of {fromDate}";
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
@@ -1560,6 +2001,11 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dateTimePicker1, dateTimePicker1);
                 BindDGV();
             }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            //
         }
     }
 }

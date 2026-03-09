@@ -31,6 +31,8 @@ namespace YamyProject
         private void MasterPaymentVoucher_Load(object sender, EventArgs e)
         {
             cmbType.SelectedIndex = 0;
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvDetails);
             StyleGrid(dgvCustomer);
             StyleGrid(dgvDetails);
             guna2HtmlLabel2.Text = "Master Payment Voucher";
@@ -97,6 +99,10 @@ namespace YamyProject
 
             dgvCustomer.DataSource = dt;
             dgvCustomer.Columns["id"].Visible = false;
+            dgvCustomer.Columns["Amount"].DefaultCellStyle.Format = "N2";
+            //dgvCustomer.Columns["Amount"].Width = 100;
+            dgvCustomer.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             if (dgvCustomer.Rows.Count > 0)
             {
                 BindPVDetails();
@@ -220,17 +226,16 @@ namespace YamyProject
         private void BindPVDetails()
         {
             DataTable dt = DBClass.ExecuteDataTable(@"
-                               SELECT 
-                               pd.date,
-                               e.name,
-                               pd.payment,
-                               pd.description
-                            FROM tbl_payment_voucher_details pd
-                            INNER JOIN tbl_employee e ON pd.hum_id = e.id
-                            WHERE pd.payment_id = @id;",
+                               SELECT tp.Id,tp.Date,tp.inv_id `Inv No`,tp.inv_code `Invoice`,tp.Total,tp.Payment,tp.Description
+                                FROM tbl_payment_voucher_details tp WHERE tp.payment_id = @id;",
                       DBClass.CreateParameter("id", dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
 
             dgvDetails.DataSource = dt;
+
+            dgvDetails.Columns["Total"].DefaultCellStyle.Format = dgvDetails.Columns["Payment"].DefaultCellStyle.Format = "N2";
+            //dgvDetails.Columns["Total"].Width = 100;
+            dgvDetails.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvDetails.Columns["Payment"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             LocalizationManager.LocalizeDataGridViewHeaders(dgvDetails);
         }
 

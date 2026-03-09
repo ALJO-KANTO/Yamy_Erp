@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -37,6 +38,8 @@ namespace YamyProject
         }
         private void MasterCustomer_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvInvoiceCash);
+            AppTheme.DefaultFont(dgvTransactions);
             ConfigureDataGridViews();
             BindCustomer();
         }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvJournal = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -51,6 +51,8 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.Lbheader = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournal)).BeginInit();
             this.panel8.SuspendLayout();
@@ -61,9 +63,9 @@
             // 
             this.panel3.Controls.Add(this.dgvJournal);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 91);
+            this.panel3.Location = new System.Drawing.Point(2, 84);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1234, 427);
+            this.panel3.Size = new System.Drawing.Size(1234, 434);
             this.panel3.TabIndex = 8;
             // 
             // dgvJournal
@@ -72,29 +74,29 @@
             this.dgvJournal.AllowUserToDeleteRows = false;
             this.dgvJournal.AllowUserToResizeColumns = false;
             this.dgvJournal.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvJournal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvJournal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvJournal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
             this.dgvJournal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvJournal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJournal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJournal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvJournal.ColumnHeadersHeight = 30;
             this.dgvJournal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJournal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJournal.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvJournal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvJournal.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvJournal.Location = new System.Drawing.Point(0, 0);
@@ -105,7 +107,7 @@
             this.dgvJournal.RowHeadersVisible = false;
             this.dgvJournal.RowHeadersWidth = 51;
             this.dgvJournal.RowTemplate.Height = 30;
-            this.dgvJournal.Size = new System.Drawing.Size(1234, 427);
+            this.dgvJournal.Size = new System.Drawing.Size(1234, 434);
             this.dgvJournal.TabIndex = 7;
             this.dgvJournal.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvJournal.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -125,7 +127,7 @@
             this.dgvJournal.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvJournal.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvJournal.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvJournal.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvJournal.ThemeStyle.RowsStyle.Height = 25;
             this.dgvJournal.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvJournal.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvJournal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJournal_CellContentClick);
@@ -218,6 +220,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.btnExcel);
+            this.panel8.Controls.Add(this.btnPrint);
             this.panel8.Controls.Add(this.label2);
             this.panel8.Controls.Add(this.cmbSelectionMethod);
             this.panel8.Controls.Add(this.dtTo);
@@ -227,7 +231,7 @@
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.menuStrip1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(2, 37);
+            this.panel8.Location = new System.Drawing.Point(2, 30);
             this.panel8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1234, 27);
@@ -341,7 +345,7 @@
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.lblJVNO);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 64);
+            this.panel2.Location = new System.Drawing.Point(2, 57);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1234, 27);
             this.panel2.TabIndex = 7;
@@ -412,6 +416,48 @@
             this.Lbheader.TabIndex = 0;
             this.Lbheader.Text = null;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExcel.BorderRadius = 3;
+            this.btnExcel.BorderThickness = 1;
+            this.btnExcel.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.btnExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExcel.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExcel.Location = new System.Drawing.Point(619, 1);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(76, 23);
+            this.btnExcel.TabIndex = 23;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.BorderRadius = 3;
+            this.btnPrint.BorderThickness = 1;
+            this.btnPrint.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrint.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnPrint.Location = new System.Drawing.Point(539, 1);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(76, 23);
+            this.btnPrint.TabIndex = 24;
+            this.btnPrint.Text = "PDF";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // MasterTransactionJournal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,5 +508,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbheader;
+        private Guna.UI2.WinForms.Guna2Button btnExcel;
+        private Guna.UI2.WinForms.Guna2Button btnPrint;
     }
 }

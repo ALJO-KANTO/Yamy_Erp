@@ -1,4 +1,5 @@
-﻿using MigraDoc.DocumentObjectModel;
+﻿using Guna.UI2.WinForms;
+using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -46,7 +47,7 @@ namespace YamyProject
             dgvReport.Columns.Add("state", "");
             dgvReport.Columns.Add("loadState", "");
             dgvReport.Columns.Add("currLvl", "");
-            dgvReport.Columns.Add("lvl1", "Account Name");
+            dgvReport.Columns.Add("lvl1", " ");
             dgvReport.Columns.Add("id", "");
             dgvReport.Columns.Add("currname", "");
             dgvReport.Columns.Add("balance", "Amount");
@@ -62,8 +63,15 @@ namespace YamyProject
 
             dgvReport.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvReport.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
+            DateWords();
         }
 
+        private void DateWords()
+        {
+            string fromDate = dateTimePicker1.Value.ToString("MMMM dd, yyyy");
+            string toDate = dateTimePicker2.Value.ToString("MMMM dd, yyyy");
+            label2.Text = $"{fromDate} through {toDate}";
+        }
         public void BindDGV()
         {
             dgvReport.Rows.Clear();

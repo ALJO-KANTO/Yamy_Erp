@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -52,6 +53,7 @@ namespace YamyProject
             dgvLeaveSalary.EnableHeadersVisualStyles = false;
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvLeaveSalary);
+            AppTheme.DefaultFont(dgvLeaveSalary);
         }
 
     }

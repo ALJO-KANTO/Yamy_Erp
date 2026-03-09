@@ -25,6 +25,7 @@ namespace YamyProject
             headerUC1.FormText = id == 0 ? "New - Advance Payment Voucher" : "Edit - Advance Payment Voucher";
 
             this.defaultCustomerId = _customerId;
+            AppTheme.DefaultFont(dgvPartner);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -1185,7 +1186,7 @@ namespace YamyProject
             lstAccountSuggestions.Items.Clear();
             foreach (DataRow row in dt.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -1242,7 +1243,11 @@ namespace YamyProject
                 if (lstAccountSuggestions.SelectedItem == null) return;
 
                 string selected = lstAccountSuggestions.SelectedItem.ToString();
-                string code = selected.Split('-')[0].Trim();
+                string code = "";
+                if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+                {
+                    code = item.Code;
+                }
 
                 // Set value to the current cell
                 dgvPartner.CurrentCell.Value = code;

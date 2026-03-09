@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 namespace YamyProject
 {
@@ -29,6 +30,7 @@ namespace YamyProject
         }
         private void MasterTax_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvTax);
             BindTax();
         }
         public void BindTax()

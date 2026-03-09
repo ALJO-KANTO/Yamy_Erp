@@ -23,8 +23,13 @@ namespace YamyProject
         
         private void frmAuditTrail_Load(object sender, EventArgs e)
         {
-            BindCombos.PopulateProjects(cmbCustomer);
-            
+            BindCombos.PopulateUsers(cmbUsers);
+
+            if (chkDate.Checked)
+                dtFrom.Enabled = dtTo.Enabled = false;
+            else
+                dtFrom.Enabled = dtTo.Enabled = true;
+
             BindData();
         }
         public void BindData()
@@ -38,16 +43,27 @@ namespace YamyProject
 
             if (!chkDate.Checked)
             {
-                query += " and a.action_time >= @dateFrom and action_time <= @dateTo";
+                query += " and a.action_time >= @dateFrom and action_time <= @dateTo ";
+                parameters.Add(DBClass.CreateParameter("@dateFrom", dtFrom.Value));
+                parameters.Add(DBClass.CreateParameter("@dateTo", dtTo.Value));
             }
             if (userId != 0)
             {
                 query += " and a.user_id = @userId ";
                 parameters.Add(DBClass.CreateParameter("userId", userId));
             }
+            else if(!chkUsers.Checked)
+            {
+                query += " and a.user_id = @userId ";
+                parameters.Add(DBClass.CreateParameter("userId", cmbUsers.SelectedValue));
+            }
+            if (!chkAction.Checked)
+            {
+                query += " and module_name = @module_name ";
+                parameters.Add(DBClass.CreateParameter("@module_name", cmbActionMethod.SelectedItem));
+            }
+
             query += " ORDER BY a.action_time DESC;";
-            parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value));
-            parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value));
             
             dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
             dgvItems.DataSource = dt;
@@ -65,7 +81,7 @@ namespace YamyProject
             LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
         }
 
-        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbActionMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindData();
         }
@@ -88,18 +104,18 @@ namespace YamyProject
         
         private void chkCustomer_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkCustomer.Checked)
-                cmbCustomer.Enabled = false;
+            if (chkUsers.Checked)
+                cmbUsers.Enabled = false;
             else
-                cmbCustomer.Enabled = true;
+                cmbUsers.Enabled = true;
             BindData();
         }
-        private void chkPayment_CheckedChanged(object sender, EventArgs e)
+        private void chkAction_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkPayment.Checked)
-                cmbPaymentMethod.Enabled = false;
+            if (chkAction.Checked)
+                cmbActionMethod.Enabled = false;
             else
-                cmbPaymentMethod.Enabled = true;
+                cmbActionMethod.Enabled = true;
             BindData();
         }
         private void chkDate_CheckedChanged(object sender, EventArgs e)
@@ -117,11 +133,6 @@ namespace YamyProject
             //    bindInvoiceItems();
             //else
             //    dgvItems.DataSource = null;
-        }
-
-        private void cmbSalesType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindData();
         }
 
         private void dtFrom_VisibleChanged(object sender, EventArgs e)

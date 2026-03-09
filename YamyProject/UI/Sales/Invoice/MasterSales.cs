@@ -35,6 +35,9 @@ namespace YamyProject
         }
         private void MasterSales_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvItems);
+            AppTheme.DefaultFont(dgvInvoice);
+
             btnDelete.Enabled = UserPermissions.canDelete("Create Invoice");
             BindCombos.PopulateCustomers(cmbCustomer);
             BindInvoices();

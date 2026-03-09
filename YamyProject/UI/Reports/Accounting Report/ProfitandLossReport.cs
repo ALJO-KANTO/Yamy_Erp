@@ -46,11 +46,12 @@ namespace YamyProject
                     lblCompany.Text = reader["name"].ToString();
                 }
             }
-
+            dgvCustomer.Font = new System.Drawing.Font("Segoe UI", 7, FontStyle.Bold);
             btnPrint.Text = "Print ▼";
             dateChangeTo();
 
             BindDGV_Data();
+            DateWords();
         }
         DateTime prevFrom;
         DateTime prevTo;
@@ -72,7 +73,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "   ");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 dgvCustomer.Columns.Add("balance", "Amount");
@@ -81,8 +82,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -90,7 +91,7 @@ namespace YamyProject
                 dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
             }
-            else if (reportType == "YTS Comparison")
+            else if (reportType == "YTD Comparison")
             {
                 string currentPeriod = $"{dtFrom.Value:MMM ''yy} – {dtTo.Value:MMM ''yy}";
                 string previousPeriod = $"{prevFrom:MMM ''yy} – {prevTo:MMM ''yy}";
@@ -98,7 +99,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "Ordinary Income/Expense");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 dgvCustomer.Columns.Add("balance1", currentPeriod);
@@ -113,8 +114,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance2"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -128,7 +129,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "    ");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 dgvCustomer.Columns.Add("balance1", currentPeriod);
@@ -150,8 +151,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance1"].HeaderCell.Style.Format = dgvCustomer.Columns["balance2"].HeaderCell.Style.Format = dgvCustomer.Columns["change"].HeaderCell.Style.Format = dgvCustomer.Columns["change_percentage"].HeaderCell.Style.Format = "N2";
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -161,7 +162,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "    ");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 // here i want column name from job name(customer name) from tbl_customer and total amount from tbl_transaction
@@ -171,8 +172,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -185,7 +186,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "    ");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 dgvCustomer.Columns.Add("balance", "Unclassified");
@@ -196,8 +197,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -212,7 +213,7 @@ namespace YamyProject
                 dgvCustomer.Columns.Add("state", "");
                 dgvCustomer.Columns.Add("loadState", "");
                 dgvCustomer.Columns.Add("currLvl", "");
-                dgvCustomer.Columns.Add("lvl1", "Account Name");
+                dgvCustomer.Columns.Add("lvl1", "    ");
                 dgvCustomer.Columns.Add("id", "");
                 dgvCustomer.Columns.Add("currname", "");
                 dgvCustomer.Columns.Add("balance", "Amount");
@@ -221,8 +222,8 @@ namespace YamyProject
                 dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -402,12 +403,12 @@ namespace YamyProject
                         if (text.Contains("GROSS PROFIT") || text.Contains("NET PROFIT") || text.Contains("TOTAL"))
                         {
                             row.DefaultCellStyle.Font =
-                                new System.Drawing.Font(dgvCustomer.Font, FontStyle.Bold);
+                                new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
                         }
                     }
                 }
             }
-            else if (reportType == "YTS Comparison")
+            else if (reportType == "YTD Comparison")
             {
                 dgvCustomer.Rows.Clear();
                 headerUC1.FormText = this.Text + " " + reportType;
@@ -708,100 +709,6 @@ namespace YamyProject
                 dgvCustomer.Columns.Clear();
                 dgvCustomer.DataSource = ResultData;
                 dgvCustomer.Columns["id"].Visible = false;
-                //dgvCustomer.Columns.Add("state", "");
-                //dgvCustomer.Columns.Add("loadState", "");
-                //dgvCustomer.Columns.Add("currLvl", "");
-                //dgvCustomer.Columns.Add("lvl1", "Account Name");
-                //dgvCustomer.Columns.Add("id", "");
-                //dgvCustomer.Columns.Add("currname", "");
-                //using (MySqlDataReader reader = DBClass.ExecuteReader(@"
-                //        WITH AccountBalances AS (
-                //            -- Calculate balances for Income, Cost, and Expenses
-                //            SELECT 
-                //                l1.name AS Category, 
-                //                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS Balance
-                //            FROM tbl_coa_level_1 l1
-                //            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
-                //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
-                //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-                //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                //            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
-                //            GROUP BY l1.name
-                //        ),
-
-                //        FinalBalance AS (
-                //            -- Calculate final balance: Income - Cost - Expenses
-                //            SELECT 
-                //                'Final Balance (Income - Cost - Expenses)' AS Category,
-                //                COALESCE(
-                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'Income'), 0
-                //                ) -
-                //                COALESCE(
-                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'Cost'), 0
-                //                ) -
-                //                COALESCE(
-                //                    (SELECT Balance FROM AccountBalances WHERE Category = 'EXPENSE'), 0
-                //                ) AS Balance
-                //        ),
-
-                //        EquityBalances AS (
-                //            -- Calculate balances for Assets, Liabilities, and Equity
-                //            SELECT 
-                //                l1.name, 
-                //                l1.id, 
-                //                COALESCE(SUM(t.debit) - SUM(t.credit), 0) AS balance
-                //            FROM tbl_coa_level_1 l1
-                //            LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
-                //            LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
-                //            LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-                //            LEFT JOIN tbl_transaction t ON t.account_id = l4.id
-                //            WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
-                //            GROUP BY l1.id, l1.name
-                //        )
-
-                //        -- Final result combining the balances
-                //        SELECT 
-                //            eb.name, 
-                //            eb.id, 
-                //            CASE 
-                //                -- For Equity, add the final balance from Income - Cost - Expenses to Retained Earnings
-                //                WHEN eb.name = 'Equity' THEN 
-                //                    eb.balance + 
-                //                    (SELECT Balance FROM FinalBalance)
-                //                ELSE 
-                //                    eb.balance
-                //            END AS balance
-                //        FROM EquityBalances eb
-                //        ORDER BY eb.id;
-
-                //        "))
-                //{
-                //    while (reader.Read())
-                //        dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
-                //            reader["id"].ToString(), reader["name"].ToString(),
-                //            Utilities.FormatDecimal(reader["balance"].ToString()));
-
-                //    // Auto-expand everything
-                //    for (int i = 0; i < dgvCustomer.Rows.Count; i++)
-                //    {
-                //        ExpandRowRecursively(i);
-                //    }
-                //}
-                //// here i want column name from job name(customer name) from tbl_customer and total amount from tbl_transaction
-                //dgvCustomer.Columns.Add("balance", "Total");
-                //dgvCustomer.Columns["lvl1"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //dgvCustomer.Columns["state"].Visible = dgvCustomer.Columns["currname"].Visible = dgvCustomer.Columns["id"].Visible = dgvCustomer.Columns["loadState"].Visible = dgvCustomer.Columns["currLvl"].Visible = false;
-                //dgvCustomer.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                //dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                //dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                //dgvCustomer.Columns["lvl1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dgvCustomer.Columns["balance"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //dgvCustomer.Columns["balance"].HeaderCell.Style.Format = "N2";
-                //dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                //dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
-                //LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
 
             }
             else if(reportType == "by Class")
@@ -995,7 +902,7 @@ namespace YamyProject
                             if (reportType == "standard" || reportType == "Unclassified")
                                 if(int.Parse(row.Cells["id"].Value.ToString()) > 0 )
                                     dgvCustomer.Rows[rowIndex].Cells["balance"].Value = "";
-                            else if (reportType == "YTS Comparison")
+                            else if (reportType == "YTD Comparison")
                                     if (int.Parse(row.Cells["id"].Value.ToString()) > 0) 
                                         dgvCustomer.Rows[rowIndex].Cells["balance1"].Value = dgvCustomer.Rows[rowIndex].Cells["balance2"].Value = "";
                             else if (reportType == "by Class")
@@ -1014,7 +921,7 @@ namespace YamyProject
                                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
                                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
                                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
-                                if (reportType == "YTS Comparison")
+                                if (reportType == "YTD Comparison")
                                 {
                                     var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
                                     newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData.balance1) });
@@ -1143,7 +1050,7 @@ namespace YamyProject
                                     if (balance != null)
                                         newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balance) });
                                 }
-                                else if (reportType == "YTS Comparison")
+                                else if (reportType == "YTD Comparison")
                                 {
                                     var balances = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
 
@@ -1205,7 +1112,7 @@ namespace YamyProject
                             dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData.Replace("-", ""));
                         }
                     }
-                    if (reportType == "YTS Comparison")
+                    if (reportType == "YTD Comparison")
                     {
                         var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
                         if (balances.balance1 != null && balances.balance2 != null)
@@ -1239,12 +1146,12 @@ namespace YamyProject
 
         private void ApplyRowStyle(DataGridViewRow row, int level)
         {
-            if (level == 2)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            else if (level == 3)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            else
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
+            //if (level == 2)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            //else if (level == 3)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            //else
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
 
         private string GetBalanceData(int level, string name)
@@ -1559,7 +1466,7 @@ namespace YamyProject
                         worksheet.Columns[2].AutoFit();
                         worksheet.Columns[3].AutoFit();
                     }
-                    else if (reportType == "YTS Comparison")
+                    else if (reportType == "YTD Comparison")
                     {
                         Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
                         headerRange0.Merge();
@@ -2159,7 +2066,7 @@ namespace YamyProject
                 totalText.Format.Font.Underline = Underline.Single;
                 totalRow.Cells[1].Format.Alignment = ParagraphAlignment.Right;
             }
-            else if(reportType == "YTS Comparison")
+            else if(reportType == "YTD Comparison")
             {
                 //dynamic columns so i want to create table based on dgv columns
                 Table dataTable = section.AddTable();
@@ -2426,25 +2333,35 @@ namespace YamyProject
                 DateRangeHelper.SetDateRange(comboBox1.SelectedItem.ToString(), dtFrom, dtTo);
                 dateChangeTo();
                 BindDGV_Data();
+                DateWords();
             }
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
-            dateChangeTo();
-            BindDGV_Data();
+            //dateChangeTo();
+            //BindDGV_Data();
+            //DateWords();
         }
 
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
-            dateChangeTo();
-            BindDGV_Data();
+            //dateChangeTo();
+            //BindDGV_Data();
+            //DateWords();
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             dateChangeTo();
             BindDGV_Data();
+            DateWords();
+        }
+        private void DateWords()
+        {
+            string fromDate = dtFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
         }
     }
 }

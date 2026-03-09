@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -30,7 +31,7 @@ namespace YamyProject
         private void frmAmountAdjustments_Load(object sender, EventArgs e)
         {
             dtAdjustments = new DataTable();
-
+            AppTheme.DefaultFont(dgvAdjustments);
             // 💥 Ensure these exact names match everywhere
             dtAdjustments.Columns.Add("Description", typeof(string));
             dtAdjustments.Columns.Add("Amount", typeof(decimal));

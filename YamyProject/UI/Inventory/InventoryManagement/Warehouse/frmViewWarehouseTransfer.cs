@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Reports.Design;
 
@@ -66,6 +67,7 @@ namespace YamyProject
         }
         private void frmViewWarehouseTransfer_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvFrom);
             LoadData();
             dgvFrom.DataSource = dt;
             LocalizationManager.LocalizeDataGridViewHeaders(dgvFrom);

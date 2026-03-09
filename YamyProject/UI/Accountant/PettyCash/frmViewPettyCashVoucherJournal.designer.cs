@@ -208,7 +208,7 @@ namespace YamyProject
             this.txtcostcenter.FillColor = System.Drawing.Color.WhiteSmoke;
             this.txtcostcenter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcostcenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtcostcenter.Location = new System.Drawing.Point(2, 37);
+            this.txtcostcenter.Location = new System.Drawing.Point(2, 30);
             this.txtcostcenter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtcostcenter.Name = "txtcostcenter";
             this.txtcostcenter.Size = new System.Drawing.Size(1045, 90);
@@ -359,7 +359,7 @@ namespace YamyProject
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvInv.ColumnHeadersHeight = 35;
+            this.dgvInv.ColumnHeadersHeight = 25;
             this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvInv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -382,7 +382,7 @@ namespace YamyProject
             this.dgvInv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvInv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvInv.Location = new System.Drawing.Point(2, 127);
+            this.dgvInv.Location = new System.Drawing.Point(2, 120);
             this.dgvInv.MultiSelect = false;
             this.dgvInv.Name = "dgvInv";
             this.dgvInv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -394,7 +394,7 @@ namespace YamyProject
             this.dgvInv.RowTemplate.Height = 25;
             this.dgvInv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvInv.Size = new System.Drawing.Size(1045, 478);
+            this.dgvInv.Size = new System.Drawing.Size(1045, 485);
             this.dgvInv.TabIndex = 8;
             this.dgvInv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -408,7 +408,7 @@ namespace YamyProject
             this.dgvInv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvInv.ThemeStyle.HeaderStyle.Height = 35;
+            this.dgvInv.ThemeStyle.HeaderStyle.Height = 25;
             this.dgvInv.ThemeStyle.ReadOnly = false;
             this.dgvInv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;

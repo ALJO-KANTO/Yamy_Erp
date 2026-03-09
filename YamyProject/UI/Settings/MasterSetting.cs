@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using YamyProject;
 using YamyProject.Localization;
+using YamyProject.UI.Settings;
 
 namespace YamyProject
 {
@@ -100,6 +101,24 @@ namespace YamyProject
                     if (passwordForm.EnteredPassword == SecurityConfig.DeveloperPassword)
                     {
                         new frmModules().ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect password.");
+                    }
+                }
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using(var passwordForm = new PasswordPromptForm("Enter developer password:"))
+{
+                if (passwordForm.ShowDialog() == DialogResult.OK)
+                {
+                    if (passwordForm.EnteredPassword == SecurityConfig.DeveloperPassword)
+                    {
+                        new frmFormConfiguration().ShowDialog();
                     }
                     else
                     {

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +18,8 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            AppTheme.DefaultFont(dgvMilestones);
+            AppTheme.DefaultFont(dgvQuantitySurvey);
             //this.Height = 765;
             //this.Width = 800;
             this.master = _master;

@@ -2,7 +2,9 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
+using YamyProject.UI.Project_Management;
 
 namespace YamyProject
 {
@@ -26,7 +28,8 @@ namespace YamyProject
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            new frmAddProject(this, 0).ShowDialog();
+            //new frmAddProject(this, 0).ShowDialog();
+            new frmProjectsManage().ShowDialog();
         }
         private void MasterProject_Load(object sender, EventArgs e)
         {
@@ -34,7 +37,7 @@ namespace YamyProject
         }
         public void ProjectData()
         {
-            DataTable dT = DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY id) AS SN, id,code, name, Category, start_date `Start Date`, end_date `End Date` FROM tbl_projects");
+            DataTable dT = DBClass.ExecuteDataTable(@"SELECT ROW_NUMBER() OVER (ORDER BY id) AS SN, id,code, name, Category, start_date `Start Date`, end_date `End Date`,updated_at 'Updated On' FROM tbl_projects");
             if (dT == null)
                 return;
 
@@ -51,6 +54,24 @@ namespace YamyProject
             //    btnRemove.Enabled = UserPermissions.canDelete("Project Center");
             //}
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
+
+
+            if (dgvCustomer.Rows != null && dgvCustomer.Rows.Count > 0)
+            {
+                AddViewDocImageColumn();
+            }
+        }
+        private void AddViewDocImageColumn()
+        {
+            if (!dgvCustomer.Columns.Contains("ViewDoc"))
+            {
+                DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
+                imgColumn.Name = "ViewDoc";
+                imgColumn.HeaderText = "View Doc";
+                imgColumn.Image = Properties.Resources.doc_icon; // <-- your image here
+                imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom; // fit nicely
+                dgvCustomer.Columns.Add(imgColumn);
+            }
         }
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -76,8 +97,22 @@ namespace YamyProject
             if (dgvCustomer.Rows.Count == 0)
                 return;
 
-            new frmAddProject(null, int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
+            new frmProjectsManage(int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
+            //new frmAddProject(null, int.Parse(dgvCustomer.CurrentRow.Cells["id"].Value.ToString())).ShowDialog();
         }
 
+        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvCustomer.Columns[e.ColumnIndex].Name == "ViewDoc")
+            {
+                var cell = dgvCustomer.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value == null) return; // no attachment, do nothing
+
+                int _vId = Convert.ToInt32(dgvCustomer.Rows[e.RowIndex].Cells["vrefId"].Value);
+                string type = dgvCustomer.Rows[e.RowIndex].Cells["vVoucherType"].Value.ToString();
+                AttachmentManager.OpenAttachmentByType(_vId, type);
+            }
+        }
     }
 }

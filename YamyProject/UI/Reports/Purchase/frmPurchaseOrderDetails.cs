@@ -95,7 +95,7 @@ namespace YamyProject
                 dgvSales.RowHeadersVisible = false;
                 dgvSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-
+            string conditions = id > 0 ? " s.vendor_id = @cid " : " s.vendor_id > 0 ";
             string salesQuery = @"
                                 SELECT 
                                     s.id AS id,
@@ -114,8 +114,8 @@ namespace YamyProject
                                 JOIN 
                                     tbl_vendor c ON s.vendor_id = c.id
                                 WHERE 
-                                    s.vendor_id = @cid
-                                And s.state = 0
+                                    "+ conditions 
+                                + @"And s.state = 0
                                 AND s.date >= @startDate AND s.date<= @endDate
                                 ORDER BY 
                                     s.date;

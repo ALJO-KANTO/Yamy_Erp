@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -205,6 +206,30 @@ namespace YamyProject
             }
             return false;
         }
+
+        public static bool AffectAccount(string formName)
+        {
+            var dt = DBClass.ExecuteDataTable("SELECT affect_account FROM tbl_form_configuration WHERE form_name=@name", DBClass.CreateParameter("@name", formName));
+            bool affectAccount = Convert.ToBoolean(dt.Rows[0]["affect_account"]);
+            return affectAccount;
+        }
+        public static bool AffectStock(string formName)
+        {
+            var dt = DBClass.ExecuteDataTable("SELECT affect_stock FROM tbl_form_configuration WHERE form_name=@name", DBClass.CreateParameter("@name", formName));
+            bool affectStock = Convert.ToBoolean(dt.Rows[0]["affect_stock"]);
+            return affectStock;
+        }
+    }
+}
+
+public class ItemSuggestion
+{
+    public string Code { get; set; }
+    public string Name { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Code} - {Name}";
     }
 }
 

@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject.UI.Accountant.Reconciliation
@@ -37,6 +38,7 @@ namespace YamyProject.UI.Accountant.Reconciliation
                     lblCompany = reader["name"].ToString();
                 }
             }
+            AppTheme.DefaultFont(dgvTransactions);
         }
 
         private void LoadTransactions()

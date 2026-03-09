@@ -63,6 +63,7 @@ namespace YamyProject
                 { "PurchaseReturn", cmbPurchaseReturnInvoice },
                 { "SalesReturn", cmbSalesReturnInvoice },
                 { "Default Account For Bank", cmbDefaultBankAccount },
+                { "Customer Advances", cmbCustomerAdvance },
             };
         }
 
@@ -119,7 +120,7 @@ namespace YamyProject
             {
                 LoadCombos(new string[]
                 {
-                "Customer", "Invoice Payment Cash Method", "Vat Output", "Sales", "SalesReturn"
+                "Customer", "Invoice Payment Cash Method", "Vat Output", "Sales", "SalesReturn", "Customer Advances"
                 });
             }
             else if (panelToShow == pnlEmplyee)

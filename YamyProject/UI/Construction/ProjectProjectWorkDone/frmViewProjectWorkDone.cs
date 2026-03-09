@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -19,6 +20,10 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
+            dgvPlanning.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvPlanning);
             this.master = _master;
             this.id = _id;
             if (id != 0)

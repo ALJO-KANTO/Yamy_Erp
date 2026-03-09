@@ -34,6 +34,8 @@ namespace YamyProject
         }
         private void MasterSalesProforma_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvItems);
+            AppTheme.DefaultFont(dgvInvoice);
             BindCombos.PopulateCustomers(cmbCustomer);
             BindInvoices();
         }
@@ -342,6 +344,20 @@ namespace YamyProject
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             BindInvoices();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoice.Rows.Count == 0)
+                return;
+            if (int.Parse(dgvInvoice.SelectedRows[0].Cells["tranfer_status"].Value.ToString()) <= 0)
+            {
+                frmLogin.frmMain.openChildForm(new frmSales(int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString()), "SP", int.Parse(cmbCustomer.SelectedValue.ToString())));
+            }
+            else
+            {
+                MessageBox.Show("SalesProforma already created.", "Cannot Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

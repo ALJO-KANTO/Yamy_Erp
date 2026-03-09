@@ -59,6 +59,7 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dgvReport = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCompany = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -261,7 +262,7 @@
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.guna2Panel3.ForeColor = System.Drawing.Color.LightGray;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 68);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 63);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1040, 32);
@@ -278,6 +279,7 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(116, 23);
             this.dateTimePicker2.TabIndex = 40;
             this.dateTimePicker2.Visible = false;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // guna2Button2
             // 
@@ -354,7 +356,7 @@
             this.guna2Panel2.Controls.Add(this.btnPrint);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.ForeColor = System.Drawing.Color.LightGray;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 35);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 30);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1040, 33);
@@ -463,6 +465,9 @@
             this.dgvReport.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
             this.dgvReport.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
@@ -485,15 +490,15 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvReport.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvReport.Location = new System.Drawing.Point(0, 0);
+            this.dgvReport.Location = new System.Drawing.Point(227, 5);
             this.dgvReport.MultiSelect = false;
             this.dgvReport.Name = "dgvReport";
             this.dgvReport.ReadOnly = true;
             this.dgvReport.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvReport.RowHeadersVisible = false;
-            this.dgvReport.RowTemplate.Height = 30;
+            this.dgvReport.RowTemplate.Height = 25;
             this.dgvReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvReport.Size = new System.Drawing.Size(734, 522);
+            this.dgvReport.Size = new System.Drawing.Size(589, 443);
             this.dgvReport.TabIndex = 19;
             this.dgvReport.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvReport.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -513,55 +518,74 @@
             this.dgvReport.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvReport.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvReport.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvReport.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvReport.ThemeStyle.RowsStyle.Height = 25;
             this.dgvReport.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvReport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvReport.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellDoubleClick);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.lblCompany);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.guna2HtmlLabel10);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblCompany);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Location = new System.Drawing.Point(0, 95);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1040, 94);
             this.panel1.TabIndex = 20;
             // 
+            // guna2HtmlLabel10
+            // 
+            this.guna2HtmlLabel10.AutoSize = false;
+            this.guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2HtmlLabel10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel10.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel10.Location = new System.Drawing.Point(0, 53);
+            this.guna2HtmlLabel10.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            this.guna2HtmlLabel10.Size = new System.Drawing.Size(1040, 19);
+            this.guna2HtmlLabel10.TabIndex = 20;
+            this.guna2HtmlLabel10.Text = "All Transaction";
+            this.guna2HtmlLabel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label1
             // 
-            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(572, 37);
+            this.label1.Location = new System.Drawing.Point(0, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 28);
+            this.label1.Size = new System.Drawing.Size(1040, 28);
             this.label1.TabIndex = 19;
             this.label1.Text = "Balance Sheet";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblCompany
             // 
-            this.lblCompany.AutoSize = true;
+            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(585, 6);
+            this.lblCompany.Location = new System.Drawing.Point(0, 0);
             this.lblCompany.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(113, 25);
+            this.lblCompany.Size = new System.Drawing.Size(1040, 25);
             this.lblCompany.TabIndex = 18;
             this.lblCompany.Text = "lblCompany";
+            this.lblCompany.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvReport);
-            this.panel2.Location = new System.Drawing.Point(261, 199);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 189);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(734, 522);
+            this.panel2.Size = new System.Drawing.Size(1040, 451);
             this.panel2.TabIndex = 21;
             // 
             // headerUC1
@@ -639,5 +663,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCompany;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
     }
 }

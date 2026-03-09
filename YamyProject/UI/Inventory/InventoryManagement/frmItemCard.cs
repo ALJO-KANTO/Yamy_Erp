@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject.UI.Inventory.InventoryManagement
@@ -46,6 +47,7 @@ namespace YamyProject.UI.Inventory.InventoryManagement
         List<decimal> qtyList = new List<decimal>();
         private void frmItemCard_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvItems);
             if (!string.IsNullOrEmpty(itemCode))
             {
                 lblCode.Text = itemCode;

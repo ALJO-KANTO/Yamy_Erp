@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -31,6 +32,7 @@ namespace YamyProject
         }
         private void MasterItemCategory_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
             BindItems();
         }
         public void BindItems()

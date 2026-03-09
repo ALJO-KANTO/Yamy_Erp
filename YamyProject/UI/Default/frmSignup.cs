@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.UI.Default;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace YamyProject
 {
@@ -465,7 +464,10 @@ namespace YamyProject
 	                        (40, 'PDC Payable Cancel', 1111003, 34, 0.000, 0.000, NULL),
 	                        (41, 'Sales Discount', 6101004, 25, 0.000, 0.000, NULL),
 	                        (42, 'Cash On Hand', 1103006, 3, 0.000, 0.000, NULL),
-	                        (43, 'Sales Return', 4101003, 19, 0.000, 0.000, NULL);
+	                        (43, 'Sales Return', 4101003, 19, 0.000, 0.000, NULL),
+	                        (44, 'Customer Advances', 2105002, 29, 0.000, 0.000, NULL),
+	                        (45, 'Retention Receivable', 1103007, 3, 0.000, 0.000, NULL),
+	                        (46, 'Retention Payable', 2105003, 29, 0.000, 0.000, NULL);
 
                         INSERT INTO `tbl_coa_config` (`id`, `account_id`, `category`) VALUES
 	                        (1, 23, 'Sales'),
@@ -506,7 +508,8 @@ namespace YamyProject
 	                        (36, 43, 'SalesReturn'),
 	                        (37, 1, 'Default Account For Bank'),
                             (38, 1, 'Salaries'),
-                            (39, 31, 'Stock Settlement');
+                            (39, 31, 'Stock Settlement'),
+                            (40, 44, 'Customer Advances');
 
                         CREATE TABLE IF NOT EXISTS `tbl_company` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -893,7 +896,8 @@ namespace YamyProject
                             (9, 'ENABLE BARCODE', 0, '', 0),
                             (10, 'ENABLE ITEM SERIAL NO', 0, '', 0),
                             (11, 'ENABLE ITEM EXPIREDATE', 0, '', 0),
-                            (12, 'FINISHED GOODS SAVE WITHOUT QTY', 0, '', 0);
+                            (12, 'FINISHED GOODS SAVE WITHOUT QTY', 0, '', 0),
+                            (13, 'USE PREPAYMENTS (DEPOSITS) FOR SALES ORDERS', 0, '', 0);
 
                         CREATE TABLE `tbl_items` (
 	                    `id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -1360,6 +1364,56 @@ namespace YamyProject
                           PRIMARY KEY (`id`) USING BTREE
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+                        CREATE TABLE IF NOT EXISTS `tbl_purchase_offer` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `date` date NOT NULL,
+                          `vendor_id` int NOT NULL DEFAULT '0',
+                          `invoice_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `warehouse_id` int NOT NULL DEFAULT '0',
+                          `po_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `bill_to` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `sales_man` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+                          `ship_date` date DEFAULT NULL,
+                          `ship_via` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                          `ship_to` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `payment_method` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `account_cash_id` int NOT NULL DEFAULT '0',
+                          `payment_terms` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `payment_date` date NOT NULL,
+                          `total` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `vat` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `net` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `pay` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `change` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `created_by` int NOT NULL DEFAULT '0',
+                          `created_date` date NOT NULL,
+                          `modified_by` int DEFAULT NULL,
+                          `modified_date` date DEFAULT NULL,
+                          `state` int NOT NULL DEFAULT '0',
+                          `tranfer_status` int NOT NULL DEFAULT '0',
+                          `purchase_id` int NOT NULL DEFAULT '0',
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                          PRIMARY KEY (`id`) USING BTREE
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+                        CREATE TABLE IF NOT EXISTS `tbl_purchase_offer_details` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `purchase_id` int DEFAULT NULL,
+                          `item_id` int DEFAULT NULL,
+                          `qty` decimal(20,4) DEFAULT NULL,
+                          `cost_price` decimal(20,4) DEFAULT '0.000',
+                          `price` decimal(20,4) DEFAULT '0.000',
+                          `vatp` decimal(20,4) DEFAULT '0.000',
+                          `vat` int DEFAULT NULL,
+                          `total` decimal(20,4) DEFAULT NULL,
+                          `discount` decimal(20,4) DEFAULT NULL,
+                          `cost_center_id` int DEFAULT NULL,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          PRIMARY KEY (`id`) USING BTREE
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_return` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `date` date NOT NULL,
@@ -1527,6 +1581,7 @@ namespace YamyProject
                           `invoice_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `warehouse_id` int NOT NULL DEFAULT '0',
                           `po_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `form_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
                           `bill_to` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `sales_man` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -1537,18 +1592,21 @@ namespace YamyProject
                           `account_cash_id` int NOT NULL DEFAULT '0',
                           `payment_terms` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `payment_date` date NOT NULL,
-                          `total` decimal(20,4) NOT NULL DEFAULT '0.000',
-                          `vat` decimal(20,4) NOT NULL DEFAULT '0.000',
-                          `net` decimal(20,4) NOT NULL DEFAULT '0.000',
-                          `pay` decimal(20,4) NOT NULL DEFAULT '0.000',
-                          `change` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `total` decimal(20,4) NOT NULL DEFAULT '0',
+                          `vat` decimal(20,4) NOT NULL DEFAULT '0',
+                          `net` decimal(20,4) NOT NULL DEFAULT '0',
+                          `pay` decimal(20,4) NOT NULL DEFAULT '0',
+                          `change` decimal(20,4) NOT NULL DEFAULT '0',
                           `created_by` int NOT NULL DEFAULT '0',
                           `created_date` date NOT NULL,
                           `modified_by` int DEFAULT NULL,
                           `modified_date` date DEFAULT NULL,
                           `state` int NOT NULL DEFAULT '0',
-                          `discount` decimal(20,6) NOT NULL DEFAULT '0.000000',
-                          `cost_center_id` decimal(20,6) NOT NULL DEFAULT '0.000000',
+                          `discount` decimal(20,6) NOT NULL DEFAULT '0',
+                          `retention_amount` decimal(20,6) NOT NULL DEFAULT '0',
+                          `retention_percentage` decimal(20,6) NOT NULL DEFAULT '0',
+                          `advance_pay` decimal(20,6) NOT NULL DEFAULT '0',
+                          `cost_center_id` decimal(20,6) NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
                           `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`)
@@ -1771,6 +1829,53 @@ namespace YamyProject
                           `total` decimal(20,4) DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`) USING BTREE
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+                        CREATE TABLE IF NOT EXISTS `tbl_delivery_note` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `date` date NOT NULL,
+                          `customer_id` int NOT NULL DEFAULT '0',
+                          `invoice_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `warehouse_id` int NOT NULL DEFAULT '0',
+                          `po_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `bill_to` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `city` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `address` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `sales_man` int NOT NULL DEFAULT '0',
+                          `ship_date` date DEFAULT NULL,
+                          `ship_via` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                          `ship_to` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
+                          `total` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `vat` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `net` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `pay` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `change` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `created_by` int NOT NULL DEFAULT '0',
+                          `created_date` date NOT NULL,
+                          `modified_by` int DEFAULT NULL,
+                          `modified_date` date DEFAULT NULL,
+                          `state` int NOT NULL DEFAULT '0',
+                          `discount` decimal(20,6) NOT NULL DEFAULT '0.000000',
+                          `cost_center_id` decimal(20,6) NOT NULL DEFAULT '0.000000',
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                          PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+                        CREATE TABLE IF NOT EXISTS `tbl_delivery_note_details` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `sales_id` int DEFAULT NULL,
+                          `item_id` int DEFAULT NULL,
+                          `qty` decimal(20,4) DEFAULT NULL,
+                          `cost_price` decimal(20,4) DEFAULT NULL,
+                          `price` decimal(20,4) DEFAULT NULL,
+                          `vatp` decimal(20,4) DEFAULT '0.000',
+                          `vat` int DEFAULT NULL,
+                          `total` decimal(20,4) DEFAULT NULL,
+                          `discount` decimal(20,4) DEFAULT NULL,
+                          `cost_center_id` int DEFAULT NULL,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_sec_roles` (
@@ -2191,15 +2296,42 @@ namespace YamyProject
 
                         CREATE TABLE IF NOT EXISTS `tbl_projects` (
                           `id` int NOT NULL AUTO_INCREMENT,
-                          `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-                          `name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-                          `category` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-                          `description` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-                          `start_date` date DEFAULT NULL,             
+                          `code` varchar(50) NOT NULL DEFAULT '',
+                          `emirate` varchar(50) NOT NULL DEFAULT '',
+                          `country_id` INT(10) NOT NULL DEFAULT '0',
+                          `city_id` INT(10) NOT NULL DEFAULT '0',
+                          `status` varchar(50) DEFAULT 'Planned',
+                          `type` varchar(50) DEFAULT NULL,
+                          `name` varchar(250) NOT NULL DEFAULT '',
+                          `name_ar` varchar(250) DEFAULT NULL,
+                          `category` varchar(250) DEFAULT '',
+                          `description` varchar(350) DEFAULT '',
+                          `start_date` date DEFAULT NULL,
                           `end_date` date DEFAULT NULL,
-                          `country_id` int NOT NULL DEFAULT '0',
-                          `city_id` int NOT NULL DEFAULT '0',
-                          `status` VARCHAR(50) DEFAULT 'Planned',
+                          `extend_delay` date DEFAULT NULL,
+                          `execution_period_months` int NOT NULL DEFAULT '0',
+                          `customer` varchar(150) DEFAULT '0',
+                          `contractor` varchar(150) DEFAULT '',
+                          `consultant` varchar(150) DEFAULT '',
+                          `location` varchar(350) DEFAULT '',
+                          `details` varchar(350) DEFAULT '',
+                          `contract_value` decimal(15,2) DEFAULT 0,
+                          `additional_value` decimal(15,2) DEFAULT 0,
+                          `deduction_value` decimal(15,2) DEFAULT 0,
+                          `total_value` decimal(15,2) DEFAULT 0,
+                          `billed_to_date` decimal(15,2) DEFAULT 0,
+                          `expenses` decimal(15,2) DEFAULT 0,
+                          `balance` decimal(15,2) DEFAULT 0,
+                          `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                          `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_accounts` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `name` VARCHAR(3250) NOT NULL DEFAULT '',
+                          `project_id` INT(10) NOT NULL DEFAULT '0',
+                          `account_id` INT(10) NOT NULL DEFAULT '0',
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2922,7 +3054,7 @@ namespace YamyProject
                             calculation_method VARCHAR(50),
                             is_active TINYINT(1) DEFAULT 1,
 	                        employee_id INT NOT NULL DEFAULT 0,
-	                        EvaluationPeriod VARCHAR(70),
+	                        EvaluationPeriod VARCHAR(70)
                         ) ENGINE=InnoDB;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -3162,6 +3294,190 @@ namespace YamyProject
                             file_data LONGBLOB NOT NULL,
                             uploaded_on DATETIME DEFAULT CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_request (
+                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                            request_date DATE NOT NULL,
+                            requested_by INT NOT NULL,        -- link to tbl_users / employee
+                            department_id INT NOT NULL,       -- link to tbl_department
+                            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
+                            remarks VARCHAR(250) default(''),
+                            created_by INT NULL,           -- link to tbl_attachments
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_request_item (
+                            mr_item_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_id INT NOT NULL,                 
+                            item_id INT NOT NULL,               
+                            required_qty DECIMAL(18,2) NOT NULL,
+                            uom VARCHAR(10) NOT NULL default(''),           
+                            expected_date DATE NULL,
+                            status ENUM('Pending','Ordered','Received') DEFAULT 'Pending',
+                            remarks VARCHAR(250) default(''),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_received (
+                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                            mr_date DATE NOT NULL,
+                            po_id INT NOT NULL default 0,
+                            vendor_id INT NOT NULL,
+                            status VARCHAR(20) DEFAULT 'Partial',
+                            remarks VARCHAR(250) default(''),
+                            created_by INT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_received_item (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            mr_id INT NOT NULL,
+                            po_item_id INT NOT NULL,
+                            ordered_qty DECIMAL(18,2) NOT NULL, 
+                            received_qty DECIMAL(18,2) NOT NULL,
+                            uom VARCHAR(10) NOT NULL default(''),
+                            status VARCHAR(20) DEFAULT 'Partial',
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_sales_tax_invoice (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            invoice_no VARCHAR(50),
+                            invoice_date DATE,
+                            customer_id INT,
+                            type VARCHAR(20), -- ADVANCE or RETENTION
+                            subtotal DECIMAL(18,2),
+                            vat DECIMAL(18,2),
+                            total DECIMAL(18,2),
+                            remarks VARCHAR(250) default(''),
+                            state TINYINT DEFAULT 0
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_sales_tax_invoice_item (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            invoice_id INT,
+                            item_id INT,
+                            description VARCHAR(200) default(''),
+                            qty DECIMAL(18,2),
+                            rate DECIMAL(18,2),
+                            vat DECIMAL(18,2),
+                            total DECIMAL(18,2)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_sales_advance` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `date` DATE NOT NULL,
+                            `customer_id` INT NOT NULL,
+                            `sales_order_id` INT DEFAULT NULL,
+                            `invoice_id` INT DEFAULT NULL, -- optional if applied to invoice later
+                            `amount` DECIMAL(20,6) NOT NULL,
+                            `payment_method` VARCHAR(50) DEFAULT NULL,
+                            `form_type` VARCHAR(80) DEFAULT NULL,
+                            `description` VARCHAR(250) DEFAULT NULL,
+                            `account_id` INT NOT NULL, -- liability account
+                            `project_id` INT DEFAULT 0,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_subcontractors` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `code` VARCHAR(50) DEFAULT NULL,
+                            `subcontractor_id` INT NOT NULL,
+                            `project_id` INT NOT NULL,
+                            `contact_no` VARCHAR(50) DEFAULT NULL,
+                            `contract_value` DECIMAL(20,6) NOT NULL,
+                            `contract_date` DATE NOT NULL,
+                            `contract_period` VARCHAR(80) DEFAULT NULL,
+                            `works` VARCHAR(250) DEFAULT NULL,
+                            `worksEn` VARCHAR(250) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_engineers` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `code` VARCHAR(50) DEFAULT NULL,
+                            `name` VARCHAR(250) DEFAULT NULL,
+                            `contact_no` VARCHAR(50) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_engineers` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `engineer_id` INT NOT NULL,
+                            `project_id` INT NOT NULL,
+                            `date` DATE NOT NULL,
+                            `description` VARCHAR(250) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_form_configuration (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            form_name VARCHAR(100) NOT NULL,
+                            affect_stock TINYINT(1) DEFAULT 0,
+                            affect_account TINYINT(1) DEFAULT 0,
+                            is_active TINYINT(1) DEFAULT 1,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        INSERT INTO tbl_form_configuration (form_name, affect_stock, affect_account)
+                        VALUES
+                        -- PURCHASE
+                        ('Material Request', 0, 0),
+                        ('Purchase Order', 0, 0),
+                        ('Purchase', 1, 1),
+                        ('Purchase Return', 1, 1),
+                        -- SALES
+                        ('Sales Quotation', 0, 0),
+                        ('Sales Proforma', 0, 0),
+                        ('Sales Order', 0, 0),
+                        ('Sales', 1, 1),
+                        ('Sales Return', 1, 1),
+                        -- FINANCIAL
+                        ('Receipt Voucher', 0, 1),
+                        ('Payment Voucher', 0, 1),
+                        ('Advance Payment Voucher', 0, 1);
                         ";
                 DBClass.ExecuteNonQuery(query);
 

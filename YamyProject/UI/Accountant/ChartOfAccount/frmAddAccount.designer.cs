@@ -150,10 +150,10 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.WhiteSmoke;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 37);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 30);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(595, 348);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(595, 355);
             this.guna2GroupBox2.TabIndex = 4;
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, -6);
             this.guna2GroupBox2.Click += new System.EventHandler(this.guna2GroupBox2_Click);

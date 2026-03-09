@@ -128,11 +128,10 @@ namespace YamyProject.Domain.Models
                     command.CommandText = @"SELECT 
                                                 s.Date AS OrderDate,
                                                 SUM(s.total) AS TotalAmount,
-                                                SUM(sd.qty * sd.cost_price) AS TotalCost
+                                                (SELECT IFNULL(SUM(qty*price)-SUM(qty*cost_price),0) FROM tbl_sales_details where s.id = sales_id) AS TotalProfit 
                                             FROM tbl_sales s
-                                            JOIN tbl_sales_details sd ON s.id = sd.sales_id
                                             WHERE s.Date BETWEEN @fromDate AND @toDate
-                                            GROUP BY s.Date";
+                                            GROUP BY s.Date, s.id";
                     command.Parameters.Add("@fromDate", MySqlDbType.DateTime).Value = startDate;
                     command.Parameters.Add("@toDate", MySqlDbType.DateTime).Value = endDate;
                     var reader = command.ExecuteReader();

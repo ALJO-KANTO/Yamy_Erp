@@ -1,6 +1,7 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Guna.UI2.WinForms;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using OfficeOpenXml;
 using System;
@@ -10,7 +11,9 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using Xceed.Document.NET;
+using YamyProject.DAL;
 using YamyProject.Localization;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace YamyProject
 {
@@ -174,6 +177,7 @@ namespace YamyProject
         private void frmViewPettyCashVoucher_Load(object sender, EventArgs e)
         {
             dtOpen.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvInv);
             DataGridViewCalendarColumn calendarColumn = new DataGridViewCalendarColumn();
             calendarColumn.HeaderText = "Date";
             calendarColumn.Name = "colDate";
@@ -392,6 +396,11 @@ namespace YamyProject
             insertINV(id);
             Utilities.LogAudit(frmLogin.userId, "Insert PettyCash Voucher", "PettyCash Voucher", id, "Inserted PettyCash Voucher: " + code);
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
         }
 
@@ -414,6 +423,12 @@ namespace YamyProject
             insertINV(id);
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "PettyCash");
             Utilities.LogAudit(frmLogin.userId, "Update PettyCash Voucher", "PettyCash Voucher", id, "Updated PettyCash Voucher: " + code);
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                AddFileData(id);
+            }
+
             return true;
         }
 
@@ -1387,6 +1402,23 @@ namespace YamyProject
         {
             nameslistView.Visible = false;
             nameslistView.SendToBack();
+        }
+
+        static string filePath = "";
+        private void guna2TileButton1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+            }
+        }
+        private void AddFileData(int fId)
+        {
+            AttachmentManager.SaveAttachment(
+                    "PETTY CASH",
+                    fId,
+                    openFileDialog1.FileName
+                );
         }
     }
 

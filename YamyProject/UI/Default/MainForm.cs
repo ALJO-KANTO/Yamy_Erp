@@ -18,9 +18,11 @@ using YamyProject.UI.CRM;
 using YamyProject.UI.Default;
 using YamyProject.UI.Default.Dashboard;
 using YamyProject.UI.Manufacturing;
+using YamyProject.UI.Project_Management;
 using YamyProject.UI.Reports;
 using YamyProject.UI.Reports.Bank;
 using YamyProject.UI.Reports.Construction;
+using YamyProject.UI.Sales;
 using YamyProject.UI.Settings;
 using YamyProject.UI.Settings.Color_theme;
 using YamyProject.UI.Settings.Company;
@@ -290,17 +292,20 @@ namespace YamyProject
             btnLanguage.Text = savedCulture;
 
             // default form
-            openChildFormX(new frmHome());
+            openChildFormX(new FrmDashboard());
+            //openChildFormX(new frmHome());
 
             // Hide Modules based on permissions
             //BtnCRM.Visible = BtnManufacture.Visible = BtnRestaurant.Visible = true;
             BtnCRM.Visible = Utilities.GetModules("CRM");
-            BtnManufacture.Visible = toolStripMenuItem6.Visible = Utilities.GetModules("Manufacture");
+            BtnManufacture.Visible = Utilities.GetModules("Manufacture");
             BtnRestaurant.Visible = Utilities.GetModules("Restaurant");
             constructionToolStripMenuItem.Visible = Utilities.GetModules("Construction");
             toolStripMenuItemEngConsultancy.Visible = Utilities.GetModules("Eng Consultants");
             toolStripMenuItemContracting.Visible = Utilities.GetModules("Contracting");
-            
+            if (constructionToolStripMenuItem.Visible || toolStripMenuItemEngConsultancy.Visible || toolStripMenuItemContracting.Visible)
+                toolStripMenuItem6.Visible = true;
+
             // do a function call after 2 seconds
             var timer = new Timer { Interval = 2000 };
             timer.Tick += (s, args) =>
@@ -309,6 +314,22 @@ namespace YamyProject
                 NavigationBar();
             };
             timer.Start();
+
+            if(frmLogin.userRole == "Engineer")
+            {
+                engineerActivityToolStripMenuItem.Visible = true;
+                ganttChartToolStripMenuItem.Visible = false;
+                projectProgressToolStripMenuItem.Visible = false;
+                projectDashBoardToolStripMenuItem.Visible = false;
+                projectManagementToolStripMenuItem.Visible = false;
+                projectWorkDoneToolStripMenuItem.Visible = false;
+                projectToolStripMenuItem1.Visible = false;
+                projectEstimateToolStripMenuItem.Visible = false;
+                projectSetupToolStripMenuItem.Visible = false;
+                // Open Project Center for engineers by default
+                openChildFormX(new frmEngineerActivity());
+                this.Hide();
+            }
         }
         public void openChildFormX(Form childForm)
         {
@@ -1181,7 +1202,7 @@ namespace YamyProject
 
         private void itemCategoryListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewCategory());
+            openChildForm(new MasterItemCategory());
         }
 
         private void itemVatListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1840,7 +1861,8 @@ namespace YamyProject
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmAddProject(this, 0));
+            //openChildForm(new frmAddProject(this, 0));
+            openChildForm(new frmProjectsManage());
         }
 
         private void tenderCenterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2241,13 +2263,14 @@ namespace YamyProject
 
         private void profitLossDetailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //openChildForm(new ProfitandLossReport("Detail"));
-            openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", 0, "2000-01-01", DateTime.Now.Date.ToShortDateString()));
+            string dated = DateTime.Now.ToString();
+            openChildForm(new ProfitandLossDetailReport("Detail", dated, dated));
+            //openChildForm(new MasterTransactionByAccount("Transactions Detail By Account", 0, "2000-01-01", DateTime.Now.Date.ToShortDateString()));
         }
 
         private void profitLossYTDComparisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("YTS Comparison"));
+            openChildForm(new ProfitandLossReport("YTD Comparison"));
         }
 
         private void profitLossPrevYearComparisonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2302,7 +2325,7 @@ namespace YamyProject
 
         private void cashFlowForecastToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCashFlowStatement());
+            openChildForm(new frmCashFlowForecast());
         }
 
         private void aRAgingDetailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2808,6 +2831,46 @@ namespace YamyProject
         private void documentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmDocCenter());
+        }
+
+        private void materialRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterMaterialRequest());
+        }
+
+        private void salesTaxInvoiceAdvanceRetentionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesTaxInvoice());
+        }
+
+        private void purchaseOfferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterPurchaseOffer());
+        }
+
+        private void materialReceivedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterMaterialReceived());
+        }
+
+        private void deliveryNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterDeliveryNote());
+        }
+
+        private void salesByRepSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByRepSummary());
+        }
+
+        private void salesByRepDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSalesByRepDetails());
+        }
+
+        private void engineerActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEngineerActivity());
         }
     }
 

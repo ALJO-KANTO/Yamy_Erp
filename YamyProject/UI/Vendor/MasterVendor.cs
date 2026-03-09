@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -38,6 +39,8 @@ namespace YamyProject
         }
         private void MasterVendor_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvInvoiceCash);
+            AppTheme.DefaultFont(dgvTransactions);
             ConfigureDataGridViews();
             BindVendor();
         }
@@ -447,6 +450,8 @@ namespace YamyProject
                         frmLogin.frmMain.openChildForm(new frmPurchase(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
                     else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Purchase Return")
                         frmLogin.frmMain.openChildForm(new frmPurchaseReturn(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
+                    else if (CommonInsert.GetFormName(dgvTransactions.Rows[e.RowIndex].Cells["type"].Value.ToString()) == "Payment")
+                        frmLogin.frmMain.openChildForm(new frmViewPaymentVoucher(int.Parse(dgvTransactions.Rows[e.RowIndex].Cells["InvoiceId"].Value.ToString())));
                 }
             }
         }

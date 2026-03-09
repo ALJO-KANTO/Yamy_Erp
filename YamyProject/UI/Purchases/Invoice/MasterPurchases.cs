@@ -45,6 +45,8 @@ namespace YamyProject
         }
         private void MasterPurchases_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvItems);
             CbSubcontractors.Checked = CbSubcontractorsChecked;
             btnDelete.Enabled = UserPermissions.canDelete("Create Purchases");
             BindCombos.PopulateVendors(cmbCustomer);

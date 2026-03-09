@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -37,6 +38,8 @@ namespace YamyProject
 
         private void MasterWarehouseTransfer_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvFrom);
+            AppTheme.DefaultFont(dgvTo);
             BindWarehouses();
         }
 

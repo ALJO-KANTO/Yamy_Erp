@@ -7,6 +7,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.RMS.Reports;
 using YamyProject.UI.Reports.Design;
@@ -24,6 +25,8 @@ namespace YamyProject
         public frmDebitNote(int id=0)
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
             this.id = id;
@@ -37,6 +40,7 @@ namespace YamyProject
         private void frmDebitNote_Load(object sender, EventArgs e)
         {
             dtInv.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvItems);
             bindCombo();
             c.Text = GenerateNextSalesCode();
             cmbAccountName.Text = c.Text; 

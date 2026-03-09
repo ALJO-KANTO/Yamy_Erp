@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -27,6 +28,8 @@ namespace YamyProject
         }
         private void MasterDamage_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvItems);
             BindCombos.PopulateEmployees(cmbCustomer);
             BindInvoices();
         }

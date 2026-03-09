@@ -12,7 +12,7 @@ namespace YamyProject
     {
         private static Dictionary<string, DataTable> _caches = new Dictionary<string, DataTable>();
 
-        public static void ClearCache(string key="")
+        public static void ClearCache(string key = "")
         {
             if (key != "")
             {
@@ -28,7 +28,8 @@ namespace YamyProject
                         _caches.Remove(k);
                     }
                 }
-            } else
+            }
+            else
             {
                 _caches.Clear();
             }
@@ -50,8 +51,8 @@ namespace YamyProject
             //}
             //else
             //{
-                dt = DBClass.ExecuteDataTable(query, parameters);
-                //_cache[cacheKey] = dt.Copy();
+            dt = DBClass.ExecuteDataTable(query, parameters);
+            //_cache[cacheKey] = dt.Copy();
             //}
 
             if (isAddOption)
@@ -68,7 +69,7 @@ namespace YamyProject
         }
 
         private static void BindCheckedListBox(
-            CheckedListBox lst, string query, string valueMember,string displayMember,bool isAddOption = false, string addOptionValue = "0", string addOptionText = "<< Add >>", bool forceRefresh = false)
+            CheckedListBox lst, string query, string valueMember, string displayMember, bool isAddOption = false, string addOptionValue = "0", string addOptionText = "<< Add >>", bool forceRefresh = false)
         {
             if (lst == null)
                 throw new ArgumentNullException(nameof(lst)); // make sure not null
@@ -81,7 +82,7 @@ namespace YamyProject
             //}
             //else
             //{
-                dt = DBClass.ExecuteDataTable(query);
+            dt = DBClass.ExecuteDataTable(query);
             //    _cache[query] = dt.Copy();
             //}
 
@@ -129,7 +130,7 @@ namespace YamyProject
             //}
             //else
             //{
-                dt = DBClass.ExecuteDataTable(query, parameters);
+            dt = DBClass.ExecuteDataTable(query, parameters);
             //    _cache[cacheKey] = dt.Copy();
             //}
 
@@ -146,7 +147,7 @@ namespace YamyProject
             cmbColumn.DataSource = dt;
         }
 
-        public static Guna2ComboBox PopulateCustomers(Guna2ComboBox cmb, bool isAddOption=false, bool forceRefresh = false)
+        public static Guna2ComboBox PopulateCustomers(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
         {
             string query = "SELECT CONCAT(CODE ,' - ' , NAME) as name , id FROM tbl_customer";
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
@@ -476,11 +477,11 @@ namespace YamyProject
             return defaultAccounts;
         }
 
-        public static Guna2ComboBox PopulateVendors(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false, string type="")
+        public static Guna2ComboBox PopulateVendors(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false, string type = "")
         {
             string query = "SELECT CONCAT(CODE ,' - ' , NAME) as name , id FROM tbl_vendor";
             if (!string.IsNullOrEmpty(type))
-                query += " WHERE type = '"+type+"'";
+                query += " WHERE type = '" + type + "'";
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
             return cmb;
 
@@ -542,7 +543,7 @@ namespace YamyProject
 
             //lst.DataSource = dt;
             List<ListItemModel> items = new List<ListItemModel>();
-            foreach(DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 items.Add(new ListItemModel
                 {
@@ -551,7 +552,8 @@ namespace YamyProject
                 });
             }
             // Bind the list to the CheckedListBox
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 lst.Items.Add(item);
             }
             lst.DisplayMember = "name";
@@ -576,7 +578,7 @@ namespace YamyProject
             //}
             lst.DisplayMember = "name";
             lst.ValueMember = "id";
-            if(dt != null && dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
                 lst.DataSource = dt;
 
             return lst;
@@ -694,7 +696,7 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
-        public static Guna2ComboBox PopulateCities(Guna2ComboBox cmb,int countryId)
+        public static Guna2ComboBox PopulateCities(Guna2ComboBox cmb, int countryId)
         {
             string query = "select * from tbl_city where country_id=@id";
             BindComboBox(cmb, query, "id", "name", false, null, null, false,
@@ -775,6 +777,14 @@ namespace YamyProject
             //cmb.DisplayMember = "name";
             //cmb.DataSource = dt;
             //return cmb;
+        }
+        public static Guna2ComboBox Populatelevel3AccountAll(Guna2ComboBox cmb, bool isAddOption = false)
+        {
+            int level3Id = 0;
+            string query = "select CONCAT(CODE , ' - ' , NAME) AS name, id from tbl_coa_level_3 ORDER BY code";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", false,
+                DBClass.CreateParameter("id", level3Id));
+            return cmb;
         }
         public static Guna2ComboBox Populatelevel2Account(Guna2ComboBox cmb, int level2Id, bool isAddOption = false)
         {
@@ -1083,7 +1093,7 @@ namespace YamyProject
         public static ListView PopulateAllLevel4AccountList(ListView lst)
         {
             lst.Items.Clear();
-            lst.View = View.Details; 
+            lst.View = View.Details;
             lst.FullRowSelect = true;
             lst.Columns.Clear();
 
@@ -1309,7 +1319,7 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
-        public static Guna2ComboBox PopulateProjectResourceRole(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false )
+        public static Guna2ComboBox PopulateProjectResourceRole(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
         {
             string query = "SELECT CONCAT(CODE ,' - ' , name) as name ,id FROM tbl_project_role";
             BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
@@ -1395,6 +1405,12 @@ namespace YamyProject
             //cmb.DataSource = dt;
             //return cmb;
         }
-    }
 
+        public static Guna2ComboBox PopulateUsers(Guna2ComboBox cmb, bool isAddOption = false, bool forceRefresh = false)
+        {
+            string query = "SELECT user_name as name,id FROM tbl_sec_users";
+            BindComboBox(cmb, query, "id", "name", isAddOption, "0", "<< Add >>", forceRefresh);
+            return cmb;
+        }
+    }
 }

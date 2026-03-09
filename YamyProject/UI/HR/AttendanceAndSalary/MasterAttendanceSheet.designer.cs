@@ -193,7 +193,7 @@
             this.dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAttendance.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvAttendance.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvAttendance.ThemeStyle.RowsStyle.Height = 25;
             this.dgvAttendance.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAttendance.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
@@ -365,7 +365,7 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(467, 67);
             this.label3.Name = "label3";
@@ -376,7 +376,7 @@
             // 
             // lblCode
             // 
-            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCode.ForeColor = System.Drawing.Color.Black;
             this.lblCode.Location = new System.Drawing.Point(399, 67);
             this.lblCode.Name = "lblCode";
@@ -387,7 +387,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(270, 67);
             this.label1.Name = "label1";
@@ -399,11 +399,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(12, 70);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 15);
+            this.label9.Size = new System.Drawing.Size(36, 15);
             this.label9.TabIndex = 120;
             this.label9.Text = "Sheet";
             // 
@@ -522,7 +522,7 @@
             this.dgvdate.MinimumWidth = 70;
             this.dgvdate.Name = "dgvdate";
             this.dgvdate.ReadOnly = true;
-            this.dgvdate.Width = 97;
+            this.dgvdate.Width = 85;
             // 
             // dgvtimeIn
             // 
@@ -569,7 +569,7 @@
             this.guna2Panel1.TabIndex = 22;
             // 
             // guna2NumericUpDown1
-            //
+            // 
             this.guna2NumericUpDown1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2NumericUpDown1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2NumericUpDown1.Location = new System.Drawing.Point(360, 6);
@@ -585,7 +585,7 @@
             0,
             0});
             this.guna2NumericUpDown1.Name = "guna2NumericUpDown1";
-            this.guna2NumericUpDown1.Size = new System.Drawing.Size(86, 24);
+            this.guna2NumericUpDown1.Size = new System.Drawing.Size(86, 23);
             this.guna2NumericUpDown1.TabIndex = 0;
             this.guna2NumericUpDown1.Value = new decimal(new int[] {
             2025,
@@ -744,7 +744,7 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(4, 6);
             this.label6.Name = "label6";
@@ -765,7 +765,7 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(418, 6);
             this.label8.Name = "label8";
@@ -777,11 +777,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(736, 13);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 15);
+            this.label10.Size = new System.Drawing.Size(43, 15);
             this.label10.TabIndex = 120;
             this.label10.Text = "Month";
             // 

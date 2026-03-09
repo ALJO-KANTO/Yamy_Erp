@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -36,6 +37,7 @@ namespace YamyProject
         }
         private void MasterBanking_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
             BindBanks();
         }
         public void BindBanks()

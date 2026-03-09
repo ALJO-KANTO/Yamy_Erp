@@ -1,13 +1,7 @@
-﻿using Guna.UI2.WinForms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Interop;
 using YamyProject.Localization;
-using YamyProject.UI.CRM;
-using YamyProject.UI.Manufacturing.Viewform;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace YamyProject
 {
@@ -39,8 +33,12 @@ namespace YamyProject
             BindCombos.PopulateAllLevel4Account(cmbAccountName);
             BindCombos.PopulateAllLevel4Account(cmbCreditAccount);
             BindCombos.PopulateAllLevel4Account(cmbExpenceAccount);
+            BindCombos.PopulateAllLevel4Account(cmbOpeningBalance);
             cmbCreditAccount.SelectedValue = frmLogin.defaultAccounts.ContainsKey("Fixed Asset Credit Account") ? frmLogin.defaultAccounts["Fixed Asset Credit Account"] : 0;
             cmbAccountName.SelectedValue = frmLogin.defaultAccounts.ContainsKey("Fixed Asset Debit Account") ? frmLogin.defaultAccounts["Fixed Asset Debit Account"] : 0;
+
+            cmbOpeningBalance.SelectedValue = BindCombos.SelectDefaultLevelAccount("Opening Balance Equity");
+
             if (id != 0)
                 BindAsset();
         }
@@ -269,11 +267,11 @@ namespace YamyProject
         public static void UpdateOrAddFixedAssets(int pId,int cId)
         {
             //load from purchase 
-            using (MySqlDataReader reader1 = DBClass.ExecuteReader("select net,(tbl_vendor.name) AS 'Name',tbl_purchase.invoice_id as VoucherNo,tbl_purchase.date as Date from tbl_purchase INNER JOIN tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id where tbl_purchase.id =@id",
+            using (MySqlDataReader reader1 = DBClass.ExecuteReader("select total,(tbl_vendor.name) AS 'Name',tbl_purchase.invoice_id as VoucherNo,tbl_purchase.date as Date from tbl_purchase INNER JOIN tbl_vendor ON tbl_purchase.vendor_id = tbl_vendor.id where tbl_purchase.id =@id",
              DBClass.CreateParameter("id", pId)))
                 if (reader1.Read())
                 {
-                    string PurchasePrice = reader1["net"].ToString();
+                    string PurchasePrice = reader1["total"].ToString();
                     string SupplierName = reader1["Name"].ToString();
                     string Status = "Draft";
                     string voucherNo = reader1["VoucherNo"].ToString();
@@ -301,8 +299,9 @@ namespace YamyProject
 
                             if (reader["expence_account_id"] != DBNull.Value && int.Parse(reader["expence_account_id"].ToString()) > 0)
                                 expense_account_id = int.Parse(reader["expence_account_id"].ToString());
-
+                            
                             string AssetName = reader["category_name"].ToString();
+                            object obItem = DBClass.ExecuteScalar("SELECT i.name FROM tbl_purchase_details pd INNER JOIN tbl_items i ON i.id = pd.item_id WHERE pd.purchase_id = @id", DBClass.CreateParameter("id", pId.ToString()));
 
                             if (PurchasePrice.Trim() != "")
                             {
@@ -399,16 +398,16 @@ namespace YamyProject
             string depexpencac = cmbExpenceAccount.SelectedValue.ToString();
             decimal actualTotal = 0;
 
-            if (txtSupplierName.Enabled)
-            {
+            //if (txtSupplierName.Enabled)
+            //{
                 CommonInsert.InsertTransactionEntry(dtpAssets.Value,
                     cmbAccountName.SelectedValue.ToString(), totalAmount.ToString("F2"), "0", pId.ToString(), "0", "Fixed Assets",
                     txtAssetName.Text + " - Fixed Assets No. " + pId, frmLogin.userId, DateTime.Now.Date);
 
                 CommonInsert.InsertTransactionEntry(dtpAssets.Value,
-                    cmbCreditAccount.SelectedValue.ToString(), "0", totalAmount.ToString("F2"), pId.ToString(), "0", "Fixed Assets",
+                    cmbOpeningBalance.SelectedValue.ToString(), "0", totalAmount.ToString("F2"), pId.ToString(), "0", "Fixed Assets",
                     txtAssetName.Text + " - Fixed Assets No. " + pId, frmLogin.userId, DateTime.Now.Date);
-            }
+            //}
 
             DateTime currentMonthStart = startDate;
 
@@ -527,7 +526,19 @@ namespace YamyProject
                     txtCreditAccountCode.Text = "";
 
         }
-
+        private void cmbOpeningBalance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOpeningBalance.SelectedValue == null)
+            {
+                txtOpeningBalanceCode.Text = "";
+                return;
+            }
+            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_coa_level_4 where id = " + cmbOpeningBalance.SelectedValue.ToString()))
+                if (reader.Read())
+                    txtOpeningBalanceCode.Text = reader["code"].ToString();
+                else
+                    txtOpeningBalanceCode.Text = "";
+        }
         private void txtCreditAccountCode_TextChanged(object sender, EventArgs e)
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_coa_level_4 where code =@code",
@@ -666,5 +677,6 @@ namespace YamyProject
         {
           
         }
+
     }
 }

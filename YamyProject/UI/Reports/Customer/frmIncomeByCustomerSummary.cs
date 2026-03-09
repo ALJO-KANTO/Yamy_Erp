@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using YamyProject.Localization;
 
@@ -88,6 +89,27 @@ namespace YamyProject
                             ";
 
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
+            // Calculate total of Balance column
+            decimal totalBalance = 0;
+
+            if (dt.Columns.Contains("Balance"))
+            {
+                totalBalance = dt.AsEnumerable()
+                                 .Where(r => r["Balance"] != DBNull.Value)
+                                 .Sum(r => Convert.ToDecimal(r["Balance"]));
+            }
+
+            // Create total row
+            DataRow totalRow = dt.NewRow();
+
+            if (dt.Columns.Contains("Name"))
+                totalRow["Name"] = "TOTAL";
+
+            if (dt.Columns.Contains("Balance"))
+                totalRow["Balance"] = totalBalance;
+
+            // Add row to table
+            dt.Rows.Add(totalRow);
             dgvSales.DataSource = dt;
 
             // Use column names instead of indexes to avoid ordering issues
@@ -117,6 +139,14 @@ namespace YamyProject
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+
+            DateWords();
+        }
+        private void DateWords()
+        {
+            string fromDate = dtpFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtpTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
         }
         private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,110 +156,110 @@ namespace YamyProject
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-                string companyName = lblCompany.Text;
-                // Create PDF document
-                Document doc = new Document();
-                Section section = doc.AddSection();
+            string companyName = lblCompany.Text;
+            // Create PDF document
+            Document doc = new Document();
+            Section section = doc.AddSection();
 
-                // Set margins
-                section.PageSetup.TopMargin = Unit.FromCentimeter(1);
-                section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
-                section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
-                section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+            // Set margins
+            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
 
-                // Header table
-                Table headerTable = section.AddTable();
-                headerTable.Borders.Width = 0;
-                headerTable.AddColumn("5cm");
-                headerTable.AddColumn("8cm");
-                headerTable.AddColumn("5cm");
+            // Header table
+            Table headerTable = section.AddTable();
+            headerTable.Borders.Width = 0;
+            headerTable.AddColumn("5cm");
+            headerTable.AddColumn("8cm");
+            headerTable.AddColumn("5cm");
 
-                Row headerRow = headerTable.AddRow();
-                Paragraph left = headerRow.Cells[0].AddParagraph();
-                left.Format.Font.Name = "Times New Roman";
-                left.Format.Font.Size = 10;
-                left.Format.Alignment = ParagraphAlignment.Left;
-                left.AddText(DateTime.Now.ToString("hh:mm tt") + "\n");
-                left.AddText(DateTime.Now.ToString("dd/MM/yyyy"));
+            Row headerRow = headerTable.AddRow();
+            Paragraph left = headerRow.Cells[0].AddParagraph();
+            left.Format.Font.Name = "Times New Roman";
+            left.Format.Font.Size = 10;
+            left.Format.Alignment = ParagraphAlignment.Left;
+            left.AddText(DateTime.Now.ToString("hh:mm tt") + "\n");
+            left.AddText(DateTime.Now.ToString("dd/MM/yyyy"));
 
-                Paragraph center = headerRow.Cells[1].AddParagraph();
-                center.Format.Font.Name = "Times New Roman";
-                center.Format.Alignment = ParagraphAlignment.Center;
-                center.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold).Font.Size = 12;
-                center.AddFormattedText("Income By Customer Summary\n", TextFormat.Bold).Font.Size = 12;
-                center.AddFormattedText("All Transactions", TextFormat.NotBold).Font.Size = 9;
+            Paragraph center = headerRow.Cells[1].AddParagraph();
+            center.Format.Font.Name = "Times New Roman";
+            center.Format.Alignment = ParagraphAlignment.Center;
+            center.AddFormattedText(companyName.ToUpper() + "\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("Income By Customer Summary\n", TextFormat.Bold).Font.Size = 12;
+            center.AddFormattedText("All Transactions", TextFormat.NotBold).Font.Size = 9;
 
-                //section.Add(headerTable);
+            //section.Add(headerTable);
 
-                // Separator line
-                Paragraph line = section.AddParagraph();
-                line.Format.Borders.Bottom.Width = 2;
-                line.Format.SpaceAfter = "0.5cm";
+            // Separator line
+            Paragraph line = section.AddParagraph();
+            line.Format.Borders.Bottom.Width = 2;
+            line.Format.SpaceAfter = "0.5cm";
 
-                // Main data table
-                Table dataTable = section.AddTable();
-                dataTable.Borders.Width = 0.75;
-                dataTable.Format.Font.Name = "Times New Roman";
-                dataTable.Format.Alignment = ParagraphAlignment.Center;
-                dataTable.Format.Font.Size = 9;
+            // Main data table
+            Table dataTable = section.AddTable();
+            dataTable.Borders.Width = 0.75;
+            dataTable.Format.Font.Name = "Times New Roman";
+            dataTable.Format.Alignment = ParagraphAlignment.Center;
+            dataTable.Format.Font.Size = 9;
 
-                dataTable.AddColumn("2cm");  // SN
-                dataTable.AddColumn("11cm"); // Name
-                dataTable.AddColumn("6cm");  // Total Income
+            dataTable.AddColumn("2cm");  // SN
+            dataTable.AddColumn("11cm"); // Name
+            dataTable.AddColumn("6cm");  // Total Income
 
-                Row header = dataTable.AddRow();
-                header.Shading.Color = Colors.LightGray;
-                header.Format.Font.Bold = true;
-                header.Cells[0].AddParagraph("SN");
-                header.Cells[1].AddParagraph("Customer Name");
-                header.Cells[2].AddParagraph("Total Income");
-                decimal totalAmount = 0;
+            Row header = dataTable.AddRow();
+            header.Shading.Color = Colors.LightGray;
+            header.Format.Font.Bold = true;
+            header.Cells[0].AddParagraph("SN");
+            header.Cells[1].AddParagraph("Customer Name");
+            header.Cells[2].AddParagraph("Total Income");
+            decimal totalAmount = 0;
 
-                foreach (DataGridViewRow row in dgvSales.Rows)
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string sn = row.Cells["SN"].Value?.ToString() ?? ""; // Serial Number column
+                string name = row.Cells["Name"].Value?.ToString() ?? "";
+                string incomeStr = row.Cells["Balance"].Value?.ToString() ?? "0";
+
+                decimal income;
+                decimal.TryParse(incomeStr, out income);
+                totalAmount += income;
+
+                Row tRow = dataTable.AddRow();
+                tRow.Cells[0].AddParagraph(sn);
+                tRow.Cells[1].AddParagraph(name);
+                tRow.Cells[2].AddParagraph(income.ToString("N2")).Format.Alignment = ParagraphAlignment.Left;
+            }
+
+            Row totalRow = dataTable.AddRow();
+            totalRow.Cells[0].MergeRight = 1;
+            totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
+
+            Paragraph totalText = totalRow.Cells[2].AddParagraph();
+            totalText.Format.Alignment = ParagraphAlignment.Center;
+            totalText.AddFormattedText(totalAmount.ToString("N2"), TextFormat.Bold).Font.Underline = Underline.Single;
+
+            //section.Add(dataTable);
+
+            // Ask user to save file
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveDialog.Title = "Save Income By Customer Summary";
+                saveDialog.FileName = "IncomeByCustomerSummary.pdf";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (row.IsNewRow) continue;
-
-                    string sn = row.Cells["SN"].Value?.ToString() ?? ""; // Serial Number column
-                    string name = row.Cells["Name"].Value?.ToString() ?? "";
-                    string incomeStr = row.Cells["Balance"].Value?.ToString() ?? "0";
-
-                    decimal income;
-                    decimal.TryParse(incomeStr, out income);
-                    totalAmount += income;
-
-                    Row tRow = dataTable.AddRow();
-                    tRow.Cells[0].AddParagraph(sn);
-                    tRow.Cells[1].AddParagraph(name);
-                    tRow.Cells[2].AddParagraph(income.ToString("N2")).Format.Alignment = ParagraphAlignment.Left;
-                }
-
-                Row totalRow = dataTable.AddRow();
-                totalRow.Cells[0].MergeRight = 1;
-                totalRow.Cells[0].AddParagraph("TOTAL").Format.Font.Bold = true;
-
-                Paragraph totalText = totalRow.Cells[2].AddParagraph();
-                totalText.Format.Alignment = ParagraphAlignment.Center;
-                totalText.AddFormattedText(totalAmount.ToString("N2"), TextFormat.Bold).Font.Underline = Underline.Single;
-
-                //section.Add(dataTable);
-
-                // Ask user to save file
-                using (SaveFileDialog saveDialog = new SaveFileDialog())
-                {
-                    saveDialog.Filter = "PDF Files (*.pdf)|*.pdf";
-                    saveDialog.Title = "Save Income By Customer Summary";
-                    saveDialog.FileName = "IncomeByCustomerSummary.pdf";
-
-                    if (saveDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-                        renderer.Document = doc;
-                        renderer.RenderDocument();
-                        renderer.PdfDocument.Save(saveDialog.FileName);
-                        Process.Start("explorer.exe", saveDialog.FileName);
-                    }
+                    PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+                    renderer.Document = doc;
+                    renderer.RenderDocument();
+                    renderer.PdfDocument.Save(saveDialog.FileName);
+                    Process.Start("explorer.exe", saveDialog.FileName);
                 }
             }
+        }
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
@@ -330,22 +360,27 @@ namespace YamyProject
         private void chkDate_CheckedChanged(object sender, EventArgs e)
         {
             dtpFrom.Enabled = dtpTo.Enabled = !chkDate.Checked;
-            LoadSalesData();
+            //LoadSalesData();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            LoadSalesData();
+            //LoadSalesData();
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            LoadSalesData();
+            //LoadSalesData();
         }
 
         private void guna2Panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            LoadSalesData();
+        }
     }
-    }
+}

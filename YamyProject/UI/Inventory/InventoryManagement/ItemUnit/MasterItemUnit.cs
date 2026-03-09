@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -34,6 +35,7 @@ namespace YamyProject
         }
         private void MasterItemUnit_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvCustomer);
             EventHub.ItemUnit += itemUnitUpdatedHandler;
             BindItems();
         }

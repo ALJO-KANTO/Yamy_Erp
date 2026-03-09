@@ -39,6 +39,7 @@ namespace YamyProject
         private void frmPettyCashSubmission_Load(object sender, EventArgs e)
         {
             dtpPettySubmition.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvPetty);
             this.dgvPetty.Columns.AddRange(new DataGridViewColumn[] {
             this.sn,
             //this.PCDate,

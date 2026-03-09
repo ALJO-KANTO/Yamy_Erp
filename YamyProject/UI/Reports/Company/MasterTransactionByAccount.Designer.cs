@@ -78,7 +78,7 @@
             this.panel2.Controls.Add(this.guna2Panel2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.ForeColor = System.Drawing.Color.LightGray;
-            this.panel2.Location = new System.Drawing.Point(2, 37);
+            this.panel2.Location = new System.Drawing.Point(2, 30);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1036, 93);
             this.panel2.TabIndex = 7;
@@ -97,7 +97,7 @@
             this.guna2Panel3.Controls.Add(this.comboBox1);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.guna2Panel3.ForeColor = System.Drawing.Color.LightGray;
             this.guna2Panel3.Location = new System.Drawing.Point(0, 33);
@@ -252,14 +252,13 @@
             // 
             // lblCompany
             // 
-            this.lblCompany.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCompany.AutoSize = true;
+            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(465, 64);
+            this.lblCompany.Location = new System.Drawing.Point(0, 65);
             this.lblCompany.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(118, 28);
+            this.lblCompany.Size = new System.Drawing.Size(1036, 28);
             this.lblCompany.TabIndex = 19;
             this.lblCompany.Text = "lblCompany";
             this.lblCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -449,20 +448,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1038, 37);
+            this.panel4.Location = new System.Drawing.Point(1038, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 655);
+            this.panel4.Size = new System.Drawing.Size(2, 662);
             this.panel4.TabIndex = 13;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 37);
+            this.panel6.Location = new System.Drawing.Point(0, 30);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2, 655);
+            this.panel6.Size = new System.Drawing.Size(2, 662);
             this.panel6.TabIndex = 12;
             // 
             // pnlHeader
@@ -477,12 +476,12 @@
             // 
             // lblReportName
             // 
-            this.lblReportName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblReportName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblReportName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblReportName.ForeColor = System.Drawing.Color.Black;
-            this.lblReportName.Location = new System.Drawing.Point(330, 3);
+            this.lblReportName.Location = new System.Drawing.Point(0, 0);
             this.lblReportName.Name = "lblReportName";
-            this.lblReportName.Size = new System.Drawing.Size(431, 36);
+            this.lblReportName.Size = new System.Drawing.Size(1036, 36);
             this.lblReportName.TabIndex = 0;
             this.lblReportName.Text = "Transactions By Account";
             this.lblReportName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -494,15 +493,18 @@
             this.panel3.Controls.Add(this.pnlHeader);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.ForeColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(2, 130);
+            this.panel3.Location = new System.Drawing.Point(2, 123);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1036, 524);
+            this.panel3.Size = new System.Drawing.Size(1036, 531);
             this.panel3.TabIndex = 8;
             // 
             // dgvCustomer
             // 
             this.dgvCustomer.AllowUserToAddRows = false;
             this.dgvCustomer.AllowUserToDeleteRows = false;
+            this.dgvCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCustomer.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCustomer.BackgroundColor = System.Drawing.Color.White;
@@ -611,7 +613,6 @@
             this.Text = "Transactions By Account";
             this.Load += new System.EventHandler(this.MasterTransactionByAccount_Load);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);

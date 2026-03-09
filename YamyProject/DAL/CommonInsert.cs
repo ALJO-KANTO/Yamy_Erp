@@ -21,11 +21,11 @@ namespace YamyProject
                                     DBClass.CreateParameter("@type", type),
                                     DBClass.CreateParameter("@reference", reference),
                                     DBClass.CreateParameter("@itemId", itemId),
-                                    DBClass.CreateParameter("@costPrice", costPrice),
-                                    DBClass.CreateParameter("@sales_price", salesPrice),
-                                    DBClass.CreateParameter("@qtyIn", qtyIn),
-                                    DBClass.CreateParameter("@qtyOut", qtyOut),
-                                    DBClass.CreateParameter("@qtyInc", qtyInc),
+                                    DBClass.CreateParameterNew("@costPrice", costPrice),
+                                    DBClass.CreateParameterNew("@sales_price", salesPrice),
+                                    DBClass.CreateParameterNew("@qtyIn", qtyIn),
+                                    DBClass.CreateParameterNew("@qtyOut", qtyOut),
+                                    DBClass.CreateParameterNew("@qtyInc", qtyInc),
                                     DBClass.CreateParameter("@description", description),
                                     DBClass.CreateParameter("warehouseId", warehouseId));
 

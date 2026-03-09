@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject.UI.Banking.BankTransactions
@@ -25,6 +26,7 @@ namespace YamyProject.UI.Banking.BankTransactions
 
         private void frmBankTransaction_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvJV);
             BindCombos.PopulateRegisterBanks(cmbBankName, true);
             cmbBankName.SelectedIndex = -1;
             // Load data once

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Inventory.InventoryManagement;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -41,6 +42,7 @@ namespace YamyProject
         }
         private void MasterInventory_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvDetails);
             BindCombos.PopulateItemsCategory(cmbCategory);
             BindItems();
         }

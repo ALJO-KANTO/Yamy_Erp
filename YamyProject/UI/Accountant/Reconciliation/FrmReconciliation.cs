@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 
 namespace YamyProject
 {
@@ -23,6 +24,7 @@ namespace YamyProject
             // default period (you can wire dtFrom/dtTo pickers)
             dtFrom.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtTo.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvTransactions);
         }
 
         private void EnsureReconciliationTables()

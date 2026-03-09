@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -38,6 +39,7 @@ namespace YamyProject
         private void MasterCheque_Load(object sender, EventArgs e)
         {
             headerUC1.FormText = "Cheque Center";
+            AppTheme.DefaultFont(dgvCustomer);
             BinChq();
         }
 

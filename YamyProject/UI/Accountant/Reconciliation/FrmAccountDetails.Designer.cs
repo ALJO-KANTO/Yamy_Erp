@@ -1,4 +1,6 @@
-﻿namespace YamyProject.UI.Accountant.Reconciliation
+﻿using Guna.UI2.WinForms;
+
+namespace YamyProject.UI.Accountant.Reconciliation
 {
     partial class FrmAccountDetails
     {
@@ -23,13 +25,15 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvTransactions = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvTransactions = new Guna.UI2.WinForms.Guna2DataGridView();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.lblFooterBalance = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.BtnPrint = new Guna.UI2.WinForms.Guna2TileButton();
             this.BtnExcel = new Guna.UI2.WinForms.Guna2TileButton();
+            this.BtnPrint = new Guna.UI2.WinForms.Guna2TileButton();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblFooterBalance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).BeginInit();
             this.pnlFooter.SuspendLayout();
             this.SuspendLayout();
@@ -38,20 +42,56 @@
             // 
             this.dgvTransactions.AllowUserToAddRows = false;
             this.dgvTransactions.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTransactions.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTransactions.ColumnHeadersHeight = 25;
+            this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransactions.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTransactions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTransactions.Location = new System.Drawing.Point(0, 0);
             this.dgvTransactions.MultiSelect = false;
             this.dgvTransactions.Name = "dgvTransactions";
             this.dgvTransactions.ReadOnly = true;
             this.dgvTransactions.RowHeadersVisible = false;
-            this.dgvTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTransactions.Size = new System.Drawing.Size(943, 520);
             this.dgvTransactions.TabIndex = 1;
+            this.dgvTransactions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransactions.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvTransactions.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvTransactions.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvTransactions.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvTransactions.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransactions.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvTransactions.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvTransactions.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvTransactions.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTransactions.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvTransactions.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvTransactions.ThemeStyle.HeaderStyle.Height = 25;
+            this.dgvTransactions.ThemeStyle.ReadOnly = true;
+            this.dgvTransactions.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransactions.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvTransactions.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTransactions.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvTransactions.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvTransactions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvTransactions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTransactions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTransactions_CellFormatting);
             // 
             // pnlFooter
@@ -67,17 +107,51 @@
             this.pnlFooter.Size = new System.Drawing.Size(943, 35);
             this.pnlFooter.TabIndex = 2;
             // 
-            // lblFooterBalance
+            // BtnExcel
             // 
-            this.lblFooterBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFooterBalance.AutoSize = true;
-            this.lblFooterBalance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFooterBalance.ForeColor = System.Drawing.Color.Red;
-            this.lblFooterBalance.Location = new System.Drawing.Point(628, 7);
-            this.lblFooterBalance.Name = "lblFooterBalance";
-            this.lblFooterBalance.Size = new System.Drawing.Size(137, 19);
-            this.lblFooterBalance.TabIndex = 0;
-            this.lblFooterBalance.Text = "ENDING BALANCE :";
+            this.BtnExcel.BackColor = System.Drawing.Color.Transparent;
+            this.BtnExcel.BorderColor = System.Drawing.Color.Silver;
+            this.BtnExcel.BorderRadius = 10;
+            this.BtnExcel.BorderThickness = 2;
+            this.BtnExcel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.BtnExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnExcel.FillColor = System.Drawing.Color.Transparent;
+            this.BtnExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExcel.ForeColor = System.Drawing.Color.Black;
+            this.BtnExcel.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.BtnExcel.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.BtnExcel.Image = global::YamyProject.Properties.Resources.excel___Copy;
+            this.BtnExcel.Location = new System.Drawing.Point(55, 3);
+            this.BtnExcel.Name = "BtnExcel";
+            this.BtnExcel.Size = new System.Drawing.Size(46, 27);
+            this.BtnExcel.TabIndex = 27;
+            this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
+            // 
+            // BtnPrint
+            // 
+            this.BtnPrint.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPrint.BorderColor = System.Drawing.Color.Silver;
+            this.BtnPrint.BorderRadius = 10;
+            this.BtnPrint.BorderThickness = 2;
+            this.BtnPrint.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.BtnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnPrint.FillColor = System.Drawing.Color.Transparent;
+            this.BtnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrint.ForeColor = System.Drawing.Color.Black;
+            this.BtnPrint.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.BtnPrint.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.BtnPrint.Image = global::YamyProject.Properties.Resources.printN;
+            this.BtnPrint.Location = new System.Drawing.Point(3, 4);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(46, 27);
+            this.BtnPrint.TabIndex = 26;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // guna2TextBox1
             // 
@@ -103,51 +177,17 @@
             this.guna2TextBox1.TabIndex = 1;
             this.guna2TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // BtnPrint
+            // lblFooterBalance
             // 
-            this.BtnPrint.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPrint.BorderColor = System.Drawing.Color.Silver;
-            this.BtnPrint.BorderRadius = 10;
-            this.BtnPrint.BorderThickness = 2;
-            this.BtnPrint.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.BtnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.BtnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.BtnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnPrint.FillColor = System.Drawing.Color.Transparent;
-            this.BtnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPrint.ForeColor = System.Drawing.Color.Black;
-            this.BtnPrint.HoverState.BorderColor = System.Drawing.Color.Silver;
-            this.BtnPrint.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.BtnPrint.Image = global::YamyProject.Properties.Resources.printN;
-            this.BtnPrint.Location = new System.Drawing.Point(3, 4);
-            this.BtnPrint.Name = "BtnPrint";
-            this.BtnPrint.Size = new System.Drawing.Size(46, 27);
-            this.BtnPrint.TabIndex = 26;
-            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
-            // 
-            // BtnExcel
-            // 
-            this.BtnExcel.BackColor = System.Drawing.Color.Transparent;
-            this.BtnExcel.BorderColor = System.Drawing.Color.Silver;
-            this.BtnExcel.BorderRadius = 10;
-            this.BtnExcel.BorderThickness = 2;
-            this.BtnExcel.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.BtnExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.BtnExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.BtnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnExcel.FillColor = System.Drawing.Color.Transparent;
-            this.BtnExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExcel.ForeColor = System.Drawing.Color.Black;
-            this.BtnExcel.HoverState.BorderColor = System.Drawing.Color.Silver;
-            this.BtnExcel.HoverState.FillColor = System.Drawing.Color.Silver;
-            this.BtnExcel.Image = global::YamyProject.Properties.Resources.excel___Copy;
-            this.BtnExcel.Location = new System.Drawing.Point(55, 3);
-            this.BtnExcel.Name = "BtnExcel";
-            this.BtnExcel.Size = new System.Drawing.Size(46, 27);
-            this.BtnExcel.TabIndex = 27;
-            this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
+            this.lblFooterBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFooterBalance.AutoSize = true;
+            this.lblFooterBalance.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblFooterBalance.ForeColor = System.Drawing.Color.Red;
+            this.lblFooterBalance.Location = new System.Drawing.Point(628, 7);
+            this.lblFooterBalance.Name = "lblFooterBalance";
+            this.lblFooterBalance.Size = new System.Drawing.Size(137, 19);
+            this.lblFooterBalance.TabIndex = 0;
+            this.lblFooterBalance.Text = "ENDING BALANCE :";
             // 
             // FrmAccountDetails
             // 
@@ -171,7 +211,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dgvTransactions;
+        private Guna2DataGridView dgvTransactions;
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Label lblFooterBalance;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;

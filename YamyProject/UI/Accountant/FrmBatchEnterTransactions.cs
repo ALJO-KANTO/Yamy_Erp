@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.UI.Banking;
 
 namespace YamyProject.UI.Accountant
@@ -22,6 +23,7 @@ namespace YamyProject.UI.Accountant
         int id = 0;
         private void FrmBatchEnterTransactions_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvBatch);
             LoadGridColumns();
             LoadBanks();
             NextId = GenerateNextId();
@@ -332,7 +334,6 @@ namespace YamyProject.UI.Accountant
 
         public void PostTransaction(string type, int headerId, decimal amount, DateTime tranDate, int account_id)
         {
-            // Example: Invoice
             if(type == "Checks")
             {
                 // DR Expense
@@ -369,7 +370,6 @@ namespace YamyProject.UI.Accountant
                 CommonInsert.addTransactionEntry(tranDate, account_id.ToString(), amount.ToString(), "0", headerId.ToString(), "0", "Batch Transaction " + type, "Batch Transaction " + type, "Bills & Bill Credits", frmLogin.userId, DateTime.Now.Date, "");
                 CommonInsert.addTransactionEntry(tranDate, cmbBank.SelectedValue.ToString(), "0", amount.ToString(), headerId.ToString(), "0", "Batch Transaction " + type, "Batch Transaction " + type, "Bills & Bill Credits", frmLogin.userId, DateTime.Now, "");
             }
-            // Extend for other types
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

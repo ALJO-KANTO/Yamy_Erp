@@ -31,6 +31,30 @@ namespace YamyProject
         private void MasterReceiptVoucher_Load(object sender, EventArgs e)
         {
             cmbType.SelectedIndex = 0;
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvDetails);
+            StyleGrid(dgvCustomer);
+            StyleGrid(dgvDetails);
+        }
+        private void StyleGrid(DataGridView dgv)
+        {
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            dgv.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(204, 229, 255);
+            dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            // Header styles
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Silver; // Set header background to Silver
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.Black;  // Keep text black for contrast
+            dgv.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
+
+            // General Grid Appearance
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.RowTemplate.Height = 28;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         public void BindVoucherData(string type)
         {
@@ -72,30 +96,19 @@ namespace YamyProject
             dgvCustomer.Columns["id"].Visible = false;
             dgvCustomer.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
             dgvCustomer.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvCustomer.Columns["Date"].Width = 120;
+            //dgvCustomer.Columns["Date"].Width = 120;
 
-            dgvCustomer.Columns["Receipt Code"].Width = 120;
+            //dgvCustomer.Columns["Receipt Code"].Width = 120;
             dgvCustomer.Columns["Receipt Code"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvCustomer.Columns["Amount"].DefaultCellStyle.Format = "N2";
-            dgvCustomer.Columns["Amount"].Width = 100;
+            dgvCustomer.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvCustomer.Columns["Amount"].Width = 100;
 
-            dgvCustomer.Columns["Debit Account"].Width = 180;
-            dgvCustomer.Columns["Credit Account"].Width = 180;
+            //dgvCustomer.Columns["Debit Account"].Width = 180;
+            //dgvCustomer.Columns["Credit Account"].Width = 180;
 
-            dgvCustomer.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-            dgvCustomer.DefaultCellStyle.SelectionForeColor = Color.Black;  // Text color when a row is selected
 
-            dgvCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 10, FontStyle.Bold); 
-            dgvCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSlateGray; 
-            dgvCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; 
-            dgvCustomer.EnableHeadersVisualStyles = false;
-
-            dgvCustomer.DefaultCellStyle.Font = new Font("Times New Roman", 9); 
-            dgvCustomer.DefaultCellStyle.BackColor = Color.White;  // Default background color for rows
-            dgvCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            dgvCustomer.BorderStyle = BorderStyle.Fixed3D;
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
 
             btnDelete.Enabled = btnEdit.Enabled = UserPermissions.canEdit("Receipt Voucher");
@@ -193,14 +206,15 @@ namespace YamyProject
             DataTable dt = new DataTable();
             if (cmbType.Text == "Customer")
             {
-                dt = DBClass.ExecuteDataTable(@"
-            SELECT *
-            FROM tbl_receipt_voucher_details tp where payment_id = @id
-           ",
-           DBClass.CreateParameter("id",dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
+                dt = DBClass.ExecuteDataTable(@"SELECT tp.Id,tp.Date,tp.inv_id `Inv No`,tp.inv_code `Invoice`,tp.Total,tp.Payment,tp.Description FROM tbl_receipt_voucher_details tp where payment_id = @id ",
+                        DBClass.CreateParameter("id",dgvCustomer.SelectedRows[0].Cells["id"].Value.ToString()));
 
                 dgvDetails.DataSource = dt;
-
+                dgvDetails.Columns["Total"].DefaultCellStyle.Format = dgvDetails.Columns["Payment"].DefaultCellStyle.Format = "N2";
+                dgvDetails.Columns["Total"].Width = 70;
+                dgvDetails.Columns["Payment"].Width = 70;
+                dgvDetails.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetails.Columns["Payment"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
                 //dgvDetails.Columns["date"].HeaderText = "Date";
                 //dgvDetails.Columns["date"].DefaultCellStyle.Format = "yyyy-MM-dd";

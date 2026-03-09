@@ -21,12 +21,16 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.isSubcontractors = isSubcontractors;
-            headerUC1.FormText = this.Text;
+            headerUC1.FormText = isSubcontractors ? "Purchase By Subcontractor Summary" : this.Text;
         }
 
         private void frmPurchaseByVendorSummary_Load(object sender, EventArgs e)
         {
             btnPrint.Text = "Print ▼";
+            if (isSubcontractors)
+            {
+                guna2HtmlLabel7.Text = "Purchase By Subcontractor Summary";
+            }
             LoadPurchaseData();
             using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
                 if (reader.Read())

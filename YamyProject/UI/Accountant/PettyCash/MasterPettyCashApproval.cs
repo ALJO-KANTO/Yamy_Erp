@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -27,6 +28,7 @@ namespace YamyProject
 
         private void MasterPettyCashApproval_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvPetty);
             if (_initialState == "Approved")
             {
                 radioApproved.Checked = true;

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -33,6 +34,7 @@ namespace YamyProject
             pnlInfo.Height = 80;
             //btnExpand.Text = "More";
             headerUC1.FormText = "Employee Center";
+            AppTheme.DefaultFont(dgvTransactions);
         }
         private void MasterEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {

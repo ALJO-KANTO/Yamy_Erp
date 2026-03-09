@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -33,6 +34,9 @@ namespace YamyProject
             dgvMain.Columns.Add("AMOUNT", "AMOUNT");
             dgvMain.Columns.Add("NOTE", "NOTE");
             dgvMain.Columns["note"].Width = 160;
+
+            AppTheme.DefaultFont(dgvCustomer);
+
             BindPrepaid();
 
             dgvCustomer.Columns["code"].Width = dgvCustomer.Columns["sn"].Width = 40;

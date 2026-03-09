@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.UI.Inventory.InventoryManagement;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -40,6 +41,7 @@ namespace YamyProject
 
         private void MasterWarehouseNew_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvDetails);
             BindCombos.PopulateEmployees(cmbEmployee);
             BindCombos.PopulateCityAllNormalComboBox(guna2ComboBox1);
             BindWarehouse();

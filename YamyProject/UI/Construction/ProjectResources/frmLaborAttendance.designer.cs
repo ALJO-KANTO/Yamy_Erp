@@ -35,16 +35,16 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlData = new System.Windows.Forms.Panel();
-            this.cmbSelectionMethod = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cmbMonths = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbEmployees = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.cmbSelectionMethod = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,7 +112,7 @@
             this.dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvAttendance.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAttendance.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvAttendance.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvAttendance.ThemeStyle.RowsStyle.Height = 25;
             this.dgvAttendance.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAttendance.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
@@ -162,6 +162,64 @@
             this.pnlData.Size = new System.Drawing.Size(1188, 87);
             this.pnlData.TabIndex = 11;
             // 
+            // cmbMonths
+            // 
+            this.cmbMonths.BackColor = System.Drawing.Color.Transparent;
+            this.cmbMonths.BorderRadius = 5;
+            this.cmbMonths.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMonths.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMonths.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbMonths.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbMonths.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbMonths.ItemHeight = 18;
+            this.cmbMonths.Location = new System.Drawing.Point(989, 50);
+            this.cmbMonths.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMonths.Name = "cmbMonths";
+            this.cmbMonths.Size = new System.Drawing.Size(189, 24);
+            this.cmbMonths.TabIndex = 243;
+            this.cmbMonths.SelectedIndexChanged += new System.EventHandler(this.cmbMonths_SelectedIndexChanged);
+            // 
+            // cmbEmployees
+            // 
+            this.cmbEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.cmbEmployees.BorderRadius = 5;
+            this.cmbEmployees.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmployees.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbEmployees.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbEmployees.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbEmployees.ItemHeight = 18;
+            this.cmbEmployees.Location = new System.Drawing.Point(463, 50);
+            this.cmbEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbEmployees.Name = "cmbEmployees";
+            this.cmbEmployees.Size = new System.Drawing.Size(298, 24);
+            this.cmbEmployees.TabIndex = 244;
+            this.cmbEmployees.SelectedIndexChanged += new System.EventHandler(this.cmbEmployees_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(381, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 20);
+            this.label6.TabIndex = 241;
+            this.label6.Text = "Labor Name ";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(939, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(43, 15);
+            this.label10.TabIndex = 242;
+            this.label10.Text = "Month";
+            // 
             // cmbSelectionMethod
             // 
             this.cmbSelectionMethod.BackColor = System.Drawing.Color.Transparent;
@@ -190,7 +248,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(12, 50);
             this.label4.Name = "label4";
@@ -198,6 +256,18 @@
             this.label4.TabIndex = 239;
             this.label4.Text = "Selection Type";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(1188, 30);
+            this.headerUC1.TabIndex = 238;
             // 
             // panel3
             // 
@@ -239,76 +309,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1188, 36);
             this.panel1.TabIndex = 5;
-            // 
-            // cmbMonths
-            // 
-            this.cmbMonths.BackColor = System.Drawing.Color.Transparent;
-            this.cmbMonths.BorderRadius = 5;
-            this.cmbMonths.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMonths.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbMonths.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbMonths.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbMonths.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbMonths.ItemHeight = 18;
-            this.cmbMonths.Location = new System.Drawing.Point(989, 50);
-            this.cmbMonths.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbMonths.Name = "cmbMonths";
-            this.cmbMonths.Size = new System.Drawing.Size(189, 24);
-            this.cmbMonths.TabIndex = 243;
-            this.cmbMonths.SelectedIndexChanged += new System.EventHandler(this.cmbMonths_SelectedIndexChanged);
-            // 
-            // cmbEmployees
-            // 
-            this.cmbEmployees.BackColor = System.Drawing.Color.Transparent;
-            this.cmbEmployees.BorderRadius = 5;
-            this.cmbEmployees.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEmployees.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbEmployees.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbEmployees.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbEmployees.ItemHeight = 18;
-            this.cmbEmployees.Location = new System.Drawing.Point(463, 50);
-            this.cmbEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbEmployees.Name = "cmbEmployees";
-            this.cmbEmployees.Size = new System.Drawing.Size(298, 24);
-            this.cmbEmployees.TabIndex = 244;
-            this.cmbEmployees.SelectedIndexChanged += new System.EventHandler(this.cmbEmployees_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(381, 50);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 20);
-            this.label6.TabIndex = 241;
-            this.label6.Text = "Labor Name ";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(939, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 15);
-            this.label10.TabIndex = 242;
-            this.label10.Text = "Month";
-            // 
-            // headerUC1
-            // 
-            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerUC1.FormText = "";
-            this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(1188, 30);
-            this.headerUC1.TabIndex = 238;
             // 
             // dataGridViewTextBoxColumn1
             // 

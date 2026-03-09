@@ -1,20 +1,16 @@
-﻿using Guna.UI2.WinForms;
-using MigraDoc.DocumentObjectModel;
+﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.UI.Default;
-using static Mysqlx.Crud.Insert.Types;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject

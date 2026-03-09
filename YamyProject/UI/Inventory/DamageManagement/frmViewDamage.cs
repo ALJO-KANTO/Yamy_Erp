@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -18,6 +19,8 @@ namespace YamyProject
         public frmViewDamage(MasterDamage _damage, int id)
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             this._damage = _damage;
             this.id = id;
@@ -35,6 +38,7 @@ namespace YamyProject
         private void frmViewDamage_Load(object sender, EventArgs e)
         {
              dtInv.Value =  DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvItems);
             BindCombos.PopulateWarehouse(cmbWarehouse);
             LoaddgvItems();
             bindCombo();

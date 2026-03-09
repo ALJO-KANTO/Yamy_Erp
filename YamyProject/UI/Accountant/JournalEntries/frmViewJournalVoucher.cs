@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
@@ -20,6 +21,7 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            AppTheme.DefaultFont(dgvJV);
             this.id = id;
             headerUC1.FormText = id == 0 ? "New Journal Voucher" : "Edit Journal Voucher";
         }
@@ -581,7 +583,11 @@ namespace YamyProject
             lstAccountSuggestions.Items.Clear();
             foreach (DataRow row in dt.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -607,11 +613,14 @@ namespace YamyProject
         {
             if (lstAccountSuggestions.SelectedItem != null)
             {
-                string selected = lstAccountSuggestions.SelectedItem.ToString();
-                string code = selected.Split('-')[0].Trim();
-
-                dgvJV.CurrentCell.Value = code;
-                lstAccountSuggestions.Visible = false;
+                //string selected = lstAccountSuggestions.SelectedItem.ToString();
+                //string code = selected.Split('-')[0].Trim();
+                if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+                {
+                    string code = item.Code;
+                    dgvJV.CurrentCell.Value = code;
+                    lstAccountSuggestions.Visible = false;
+                }
             }
         }
 

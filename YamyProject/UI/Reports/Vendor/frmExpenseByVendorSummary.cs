@@ -56,7 +56,7 @@ namespace YamyProject
                             FROM (
                                 SELECT 
                                     h.name AS Name,
-                                    SUM(t.debit - t.credit) AS Balance,
+                                    SUM(t.credit - t.debit) AS Balance,
                                     MIN(h.id) AS min_id
                                 FROM 
                                     tbl_transaction t
@@ -73,23 +73,56 @@ namespace YamyProject
                         ";
 
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
+
+            // Calculate total of column index 3
+            decimal totalAmount = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row[3] != DBNull.Value)
+                    totalAmount += Convert.ToDecimal(row[3]);
+            }
+
+            // Create total row
+            DataRow totalRow = dt.NewRow();
+
+            totalRow[2] = "TOTAL";      // Vendor Name column
+            totalRow[3] = totalAmount;  // Amount column
+
+            dt.Rows.Add(totalRow);
             dgvSales.DataSource = dt;
 
             dgvSales.Columns["id"].Visible = false;
             dgvSales.Columns[0].Width = 60;  // SN
             dgvSales.Columns[1].Width = 250; // Vendor Name
             dgvSales.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvSales.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvSales.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSales.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvSales.Columns[2].DefaultCellStyle.Format = "N2";
+            dgvSales.Columns[3].DefaultCellStyle.Format = "N2";
 
             dgvSales.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             dgvSales.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9);
+            int lastRow = dgvSales.Rows.Count - 1;
+
+            if (lastRow >= 0)
+            {
+                dgvSales.Rows[lastRow].DefaultCellStyle.Font =
+                    new System.Drawing.Font(dgvSales.Font, FontStyle.Bold);
+
+                dgvSales.Rows[lastRow].DefaultCellStyle.BackColor =
+                    System.Drawing.Color.LightGray;
+            }
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
+
+            DateWords();
         }
-
-
+        private void DateWords()
+        {
+            string fromDate = dtpFrom.Value.ToString("MMMM dd, yyyy");
+            string toDate = dtpTo.Value.ToString("MMMM dd, yyyy");
+            guna2HtmlLabel10.Text = $"{fromDate} through {toDate}";
+        }
         private void dgvSales_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSales.CurrentRow.Cells["id"].Value == null || dgvSales.CurrentRow.Cells["id"].Value.ToString() == "")
@@ -208,99 +241,99 @@ namespace YamyProject
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-                using (SaveFileDialog saveDialog = new SaveFileDialog())
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Save Excel File";
+                saveDialog.FileName = "ExpensesByVendorSummary.xlsx";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
-                    saveDialog.Title = "Save Excel File";
-                    saveDialog.FileName = "ExpensesByVendorSummary.xlsx";
+                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    excelApp.Visible = false;
+                    var workbook = excelApp.Workbooks.Add(Type.Missing);
+                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    worksheet.Name = "Expenses By Vendor";
 
-                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    // Header row (Date)
+                    Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "C1"];
+                    headerRange.Merge();
+                    headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yyyy");
+                    headerRange.Font.Bold = true;
+                    headerRange.Font.Name = "Times New Roman";
+                    headerRange.Font.Size = 10;
+                    headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+                    // Column headers
+                    worksheet.Cells[2, 1] = "SN";
+                    worksheet.Cells[2, 2] = "Vendor Name";
+                    worksheet.Cells[2, 3] = "Total Expenses";
+
+                    for (int i = 1; i <= 3; i++)
                     {
-                        var excelApp = new Microsoft.Office.Interop.Excel.Application();
-                        excelApp.Visible = false;
-                        var workbook = excelApp.Workbooks.Add(Type.Missing);
-                        var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
-                        worksheet.Name = "Expenses By Vendor";
-
-                        // Header row (Date)
-                        Microsoft.Office.Interop.Excel.Range headerRange = worksheet.Range["A1", "C1"];
-                        headerRange.Merge();
-                        headerRange.Value = "Date: " + DateTime.Now.ToString("MMM dd, yyyy");
-                        headerRange.Font.Bold = true;
-                        headerRange.Font.Name = "Times New Roman";
-                        headerRange.Font.Size = 10;
-                        headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-                        // Column headers
-                        worksheet.Cells[2, 1] = "SN";
-                        worksheet.Cells[2, 2] = "Vendor Name";
-                        worksheet.Cells[2, 3] = "Total Expenses";
-
-                        for (int i = 1; i <= 3; i++)
-                        {
-                            var headerCell = worksheet.Cells[2, i];
-                            headerCell.Font.Bold = true;
-                            headerCell.Font.Name = "Times New Roman";
-                            headerCell.Font.Size = 10;
-                            headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
-                            headerCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-                        }
-
-                        int rowIndex = 3;
-                        decimal totalAmount = 0;
-
-                        foreach (DataGridViewRow row in dgvSales.Rows)
-                        {
-                            if (row.IsNewRow) continue;
-
-                            string sn = row.Cells["SN"].Value?.ToString() ?? "";
-                            string name = row.Cells["Name"].Value?.ToString() ?? "";
-                            string ExpensesStr = row.Cells["Balance"].Value?.ToString() ?? "0";
-
-                            decimal Expenses = 0;
-                            decimal.TryParse(ExpensesStr, out Expenses);
-                            totalAmount += Expenses;
-
-                            worksheet.Cells[rowIndex, 1] = sn;
-                            worksheet.Cells[rowIndex, 2] = name;
-                            worksheet.Cells[rowIndex, 3] = Expenses.ToString("N2");
-
-                            // Formatting for each row
-                            for (int col = 1; col <= 3; col++)
-                            {
-                                var cell = worksheet.Cells[rowIndex, col];
-                                cell.Font.Name = "Times New Roman";
-                                cell.Font.Size = 9;
-
-                                if (col == 3)
-                                    cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
-                                else
-                                    cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-                            }
-
-                            rowIndex++;
-                        }
-
-                        // Add TOTAL row
-                        worksheet.Cells[rowIndex, 1] = "";
-                        worksheet.Cells[rowIndex, 2] = "TOTAL";
-                        worksheet.Cells[rowIndex, 3] = totalAmount.ToString("N2");
-
-                        worksheet.Cells[rowIndex, 2].Font.Bold = true;
-                        worksheet.Cells[rowIndex, 3].Font.Bold = true;
-                        worksheet.Cells[rowIndex, 3].Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
-                        worksheet.Cells[rowIndex, 3].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
-
-                        worksheet.Columns.AutoFit();
-
-                        workbook.SaveAs(saveDialog.FileName);
-                        workbook.Close(false);
-                        excelApp.Quit();
-
-                        MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        var headerCell = worksheet.Cells[2, i];
+                        headerCell.Font.Bold = true;
+                        headerCell.Font.Name = "Times New Roman";
+                        headerCell.Font.Size = 10;
+                        headerCell.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightGray);
+                        headerCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                     }
+
+                    int rowIndex = 3;
+                    decimal totalAmount = 0;
+
+                    foreach (DataGridViewRow row in dgvSales.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        string sn = row.Cells["SN"].Value?.ToString() ?? "";
+                        string name = row.Cells["Name"].Value?.ToString() ?? "";
+                        string ExpensesStr = row.Cells["Balance"].Value?.ToString() ?? "0";
+
+                        decimal Expenses = 0;
+                        decimal.TryParse(ExpensesStr, out Expenses);
+                        totalAmount += Expenses;
+
+                        worksheet.Cells[rowIndex, 1] = sn;
+                        worksheet.Cells[rowIndex, 2] = name;
+                        worksheet.Cells[rowIndex, 3] = Expenses.ToString("N2");
+
+                        // Formatting for each row
+                        for (int col = 1; col <= 3; col++)
+                        {
+                            var cell = worksheet.Cells[rowIndex, col];
+                            cell.Font.Name = "Times New Roman";
+                            cell.Font.Size = 9;
+
+                            if (col == 3)
+                                cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+                            else
+                                cell.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                        }
+
+                        rowIndex++;
+                    }
+
+                    // Add TOTAL row
+                    worksheet.Cells[rowIndex, 1] = "";
+                    worksheet.Cells[rowIndex, 2] = "TOTAL";
+                    worksheet.Cells[rowIndex, 3] = totalAmount.ToString("N2");
+
+                    worksheet.Cells[rowIndex, 2].Font.Bold = true;
+                    worksheet.Cells[rowIndex, 3].Font.Bold = true;
+                    worksheet.Cells[rowIndex, 3].Font.Underline = Microsoft.Office.Interop.Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+                    worksheet.Cells[rowIndex, 3].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+
+                    worksheet.Columns.AutoFit();
+
+                    workbook.SaveAs(saveDialog.FileName);
+                    workbook.Close(false);
+                    excelApp.Quit();
+
+                    MessageBox.Show("Excel exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
 
         private void chkDate_CheckedChanged(object sender, EventArgs e)
         {
@@ -326,5 +359,10 @@ namespace YamyProject
                 LoadSalesData();
             }
         }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            LoadSalesData();
+        }
     }
-    }
+}

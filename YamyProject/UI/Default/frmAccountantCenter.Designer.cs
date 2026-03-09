@@ -261,7 +261,7 @@
             this.dgvTools2.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvTools2.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTools2.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvTools2.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvTools2.ThemeStyle.RowsStyle.Height = 25;
             this.dgvTools2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools2.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTools2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools2_CellClick);
@@ -378,7 +378,7 @@
             this.dgvTools.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.dgvTools.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvTools.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvTools.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvTools.ThemeStyle.RowsStyle.Height = 25;
             this.dgvTools.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvTools.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvTools.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTools_CellClick);
@@ -1082,7 +1082,7 @@
             this.dgvReconcile.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvReconcile.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.dgvReconcile.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvReconcile.ThemeStyle.RowsStyle.Height = 30;
+            this.dgvReconcile.ThemeStyle.RowsStyle.Height = 25;
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvReconcile.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvReconcile.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReconcile_CellClick);

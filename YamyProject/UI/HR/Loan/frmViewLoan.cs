@@ -10,6 +10,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -28,6 +29,7 @@ namespace YamyProject
         private void frmViewLoan_Load(object sender, EventArgs e)
         {
             SetupDataGridView();
+            AppTheme.DefaultFont(dgvLoan);
             BindCombos.PopulateEmployeesForLoan(cmbEmployeeName);
             BindCombos.PopulateAllLevel4Account(cmbAccountNameCredit);
             BindCombos.PopulateAllLevel4Account(cmbAccountNameDebit);

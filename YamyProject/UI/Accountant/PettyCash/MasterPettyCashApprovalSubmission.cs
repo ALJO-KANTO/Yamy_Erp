@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -36,6 +37,8 @@ namespace YamyProject
                 dgvPetty.Columns.Remove("Approve");
             if (dgvPetty.Columns.Contains("Decline"))
                 dgvPetty.Columns.Remove("Decline");
+
+            AppTheme.DefaultFont(dgvPetty);
 
             DataGridViewButtonColumn approveButton = new DataGridViewButtonColumn
             {

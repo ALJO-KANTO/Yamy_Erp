@@ -269,7 +269,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1222, 37);
+            this.panel4.Location = new System.Drawing.Point(1222, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 1235);
@@ -279,7 +279,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1269);
+            this.panel1.Location = new System.Drawing.Point(0, 1262);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1222, 3);
@@ -290,7 +290,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(3, 1232);
@@ -377,7 +377,7 @@
             this.guna2ShadowPanel1.Controls.Add(this.label15);
             this.guna2ShadowPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(3, 37);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(3, 30);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
@@ -623,7 +623,7 @@
             this.panel11.Controls.Add(this.label59);
             this.panel11.Controls.Add(this.guna2Shapes6);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Location = new System.Drawing.Point(3, 773);
+            this.panel11.Location = new System.Drawing.Point(3, 766);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1219, 120);
             this.panel11.TabIndex = 1;
@@ -727,7 +727,7 @@
             this.guna2Panel1.Controls.Add(this.panel9);
             this.guna2Panel1.Controls.Add(this.panel3);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(3, 231);
+            this.guna2Panel1.Location = new System.Drawing.Point(3, 224);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1219, 542);
             this.guna2Panel1.TabIndex = 164;
@@ -1936,7 +1936,7 @@
             this.guna2Panel2.Controls.Add(this.panel16);
             this.guna2Panel2.Controls.Add(this.panel17);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(3, 893);
+            this.guna2Panel2.Location = new System.Drawing.Point(3, 886);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1219, 376);
             this.guna2Panel2.TabIndex = 165;
@@ -2675,7 +2675,7 @@
             this.panel7.Controls.Add(this.label23);
             this.panel7.Controls.Add(this.guna2Shapes4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(3, 1269);
+            this.panel7.Location = new System.Drawing.Point(3, 1262);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(147, 0);
             this.panel7.TabIndex = 167;

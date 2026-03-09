@@ -28,6 +28,11 @@ namespace YamyProject
                 MessageBox.Show("Please Enter Level 4 Name First");
                 return;
             }
+            if(cmbLevel3.SelectedValue == null || cmbLevel3.SelectedValue.ToString() == "0")
+            {
+                MessageBox.Show("Please Select Level 3 Account");
+                return;
+            }
             using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_coa_level_4 where name = @name",
                 DBClass.CreateParameter("name", txtAccount.Text)))
                 if (reader.Read())
@@ -38,12 +43,13 @@ namespace YamyProject
                         return;
                     }
                 }
-            DBClass.ExecuteNonQuery("update tbl_coa_level_4 set name=@name,debit=@debit,credit=@credit,date=@date where id = @id",
+            DBClass.ExecuteNonQuery("update tbl_coa_level_4 set name=@name,debit=@debit,credit=@credit,date=@date,main_id=@main_id where id = @id",
                 DBClass.CreateParameter("id", id),
             DBClass.CreateParameter("name", txtAccount.Text),
                                                DBClass.CreateParameter("debit", txtDebit.Text.ToString()),
                                                DBClass.CreateParameter("credit", txtCredit.Text),
-                                               DBClass.CreateParameter("date", dtOpen.Value));
+                                               DBClass.CreateParameter("date", dtOpen.Value),
+                                               DBClass.CreateParameter("main_id", cmbLevel3.SelectedValue));
 
             Utilities.LogAudit(frmLogin.userId, "Update Level 4 Account", "Level 4 Account", id, "Updated Level 4 Account: " + txtAccount.Text);
             if (!string.IsNullOrEmpty(txtCredit.Text.ToString().Trim()) || !string.IsNullOrEmpty(txtDebit.Text.ToString().Trim()))
@@ -117,7 +123,10 @@ namespace YamyProject
                 btnDelete.Enabled = false;
             }
             btnDelete.Enabled = UserPermissions.canDelete("Chart Of Account");
-            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_coa_level_4 where id = " + id))
+
+            BindCombos.Populatelevel3AccountAll(cmbLevel3);
+            using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT l4.name,l4.debit,l4.credit,l4.date,l4.main_id lvl3_id from tbl_coa_level_4 l4 WHERE l4.id = @id",
+                DBClass.CreateParameter("@id", id)))
                 if (reader.Read())
                 {
                     txtAccount.Text = reader["name"].ToString();
@@ -127,6 +136,8 @@ namespace YamyProject
                     {
                         dtOpen.Value = DateTime.Parse(reader["date"].ToString());
                     }
+                    cmbLevel3.SelectedValue = (reader["lvl3_id"].ToString() == "" ? 0 : (int)reader["lvl3_id"]);
+
                 }
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 namespace YamyProject
 {
@@ -32,6 +33,8 @@ namespace YamyProject
         }
         private void MasterCreditNote_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgvInvoice);
+            AppTheme.DefaultFont(dgvItems);
             BindCombos.PopulateCustomers(cmbCustomer);
             BindInvoices();
         }

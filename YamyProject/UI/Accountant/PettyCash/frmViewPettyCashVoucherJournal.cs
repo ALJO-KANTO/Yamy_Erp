@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using YamyProject;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -34,7 +35,7 @@ namespace YamyProject
         private void frmViewPettyCashVoucherJournal_Load(object sender, EventArgs e)
         {
             dtOpen.Value = DateTime.Now.Date;
-
+            AppTheme.DefaultFont(dgvInv);
             // Load Accounts (Name)
             DataTable dtAccounts = DBClass.ExecuteDataTable("SELECT CONCAT(CODE , ' - ' , NAME) AS name, id FROM tbl_coa_level_4");
             if (dgvInv.Columns.Contains("AC_Name") && dgvInv.Columns["AC_Name"] is DataGridViewComboBoxColumn cmbAccount)

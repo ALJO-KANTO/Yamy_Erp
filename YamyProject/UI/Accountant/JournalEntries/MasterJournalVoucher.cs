@@ -19,6 +19,8 @@ namespace YamyProject
             JournalVoucherUpdatedHandler = (sender, args) => BindVoucherData();
             EventHub.Journal += JournalVoucherUpdatedHandler;
             headerUC1.FormText = this.Text;
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvDetails);
         }
         private void MasterPaymentVoucher_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -191,8 +193,8 @@ namespace YamyProject
         {
             DataTable dt = DBClass.ExecuteDataTable(@"
                            SELECT 
-                           jd.date,
-                           a.name,
+                           jd.Date,
+                           a.Name,
                            jd.debit AS 'Debit Amount',
                            jd.credit AS 'Credit Amount',
                            jd.partner AS Partner,

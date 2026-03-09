@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -34,6 +35,8 @@ namespace YamyProject
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
 
             this.id = _id;
             this.mainItemCode = _mainItemCode;
@@ -796,7 +799,11 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -840,7 +847,11 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -991,11 +1002,16 @@ namespace YamyProject
 
             string selected = lstAccountSuggestions.SelectedItem.ToString();
 
-            int separatorIndex = selected.IndexOf('-');
-            if (separatorIndex == -1) return;
+            //int separatorIndex = selected.IndexOf('-');
+            //if (separatorIndex == -1) return;
 
-            string selectedCode = selected.Substring(0, separatorIndex).Trim();
-            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+            string selectedCode = "";// selected.Substring(0, separatorIndex).Trim();
+            string selectedName = "";// selected.Substring(separatorIndex + 1).Trim();
+            if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+            {
+                selectedCode = item.Code;
+                selectedName = item.Name;
+            }
 
             if (lstAccountSuggestions.Tag is TextBox textBox)
             {

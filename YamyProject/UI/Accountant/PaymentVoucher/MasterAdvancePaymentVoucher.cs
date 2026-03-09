@@ -19,6 +19,8 @@ namespace YamyProject
             PaymentVoucherUpdatedHandler = (sender, args) => BindPayment(cmbType.Text);
             EventHub.PaymentVoucher += PaymentVoucherUpdatedHandler;
             headerUC1.FormText = this.Text;
+            AppTheme.DefaultFont(dgvCustomer);
+            AppTheme.DefaultFont(dgvDetails);
         }
         private void MasterAdvancePaymentVoucher_FormClosing(object sender, FormClosingEventArgs e)
         {

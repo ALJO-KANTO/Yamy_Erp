@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 
 namespace YamyProject.UI.Banking
 {
@@ -25,7 +26,7 @@ namespace YamyProject.UI.Banking
         private void frmWriteCheque_Load(object sender, EventArgs e)
         {
             txtId.Text = txtPVCode.Text = GenerateNextId().ToString();
-
+            AppTheme.DefaultFont(dgvExpenses);
             DataTable dt = DBClass.ExecuteDataTable("SELECT id,name FROM tbl_coa_level_4 WHERE main_id = 1");
             cmbBankAccount.DataSource = dt;
             cmbBankAccount.ValueMember = "id";

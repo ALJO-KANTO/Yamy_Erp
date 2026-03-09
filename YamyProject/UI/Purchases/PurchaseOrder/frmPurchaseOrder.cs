@@ -28,9 +28,11 @@ namespace YamyProject
         int level4PaymentCreditMethodId;
         int id;
 
-        public frmPurchaseOrder(int id = 0)
+        public frmPurchaseOrder(int id = 0, string type = "")
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             vendorUpdatedHandler = (sender, args) => BindCombos.PopulateVendors(cmbVendor);
             warehouseUpdatedHandler = (sender, args) => BindCombos.PopulateWarehouse(cmbWarehouse);
@@ -51,6 +53,7 @@ namespace YamyProject
         private void frmPurchaseOrder_Load(object sender, EventArgs e)
         {
             dtPaymentTerms.Value = dtInv.Value = dtShip.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvItems);
             BindCombos.PopulateWarehouse(cmbWarehouse);
             if (cmbWarehouse.SelectedValue == null)
             {
@@ -182,6 +185,10 @@ namespace YamyProject
             vat.DataSource = dt;
             vat.DisplayMember = "name";
             vat.ValueMember = "id";
+            vat.FlatStyle = FlatStyle.Popup;
+            vat.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            vat.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            vat.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             var dTax = Utilities.GeneralSettings("DEFAULT TAX PERCENTAGE");
             if (!string.IsNullOrEmpty(dTax) & int.Parse(dTax) > 0)
             {
@@ -539,7 +546,11 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion
+                    {
+                        Code = row["code"].ToString(),
+                        Name = row["name"].ToString()
+                    });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -668,7 +679,7 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -712,7 +723,7 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -1544,11 +1555,17 @@ namespace YamyProject
 
             string selected = lstAccountSuggestions.SelectedItem.ToString();
 
-            int separatorIndex = selected.IndexOf('-');
-            if (separatorIndex == -1) return;
+            //int separatorIndex = selected.IndexOf('-');
+            //if (separatorIndex == -1) return;
 
-            string selectedCode = selected.Substring(0, separatorIndex).Trim();
-            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+            string selectedCode = "";// selected.Substring(0, separatorIndex).Trim();
+            string selectedName = "";// selected.Substring(separatorIndex + 1).Trim();
+
+            if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+            {
+                selectedCode = item.Code;
+                selectedName = item.Name;
+            }
 
             if (lstAccountSuggestions.Tag is Guna2TextBox gunaTextBox)
             {

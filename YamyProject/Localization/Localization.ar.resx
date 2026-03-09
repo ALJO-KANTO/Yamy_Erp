@@ -203,7 +203,7 @@
     <value>إيصال جديد</value>
   </data>
   <data name="Cost_Center" xml:space="preserve">
-    <value>قسم التكلفة</value>
+    <value>مركز التكلفة</value>
   </data>
   <data name="Request_Date" xml:space="preserve">
     <value>تاريخ الطلب</value>
@@ -221,7 +221,7 @@
     <value>الجوال</value>
   </data>
   <data name="Sub_Cost_Center" xml:space="preserve">
-    <value>قسم تكلفة فرعي</value>
+    <value>مركز تكلفة فرعي</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
@@ -248,7 +248,7 @@
     <value>كود الحساب</value>
   </data>
   <data name="Petty_Cash_Name" xml:space="preserve">
-    <value>اسم سلفة النثرية</value>
+    <value>اسم السلفة النثرية</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>التاريخ</value>
@@ -296,7 +296,7 @@
     <value>البنك والنقد / مصروف مدفوع مقدماً جديد</value>
   </data>
   <data name="P.C_Request_REF" xml:space="preserve">
-    <value>مرجع طلب سلفة النثرية</value>
+    <value>مرجع طلب السلفة النثرية</value>
   </data>
   <data name="Accumulated_Depreciation" xml:space="preserve">
     <value>الإهلاك المتراكم</value>
@@ -341,7 +341,7 @@
     <value>حذف</value>
   </data>
   <data name="General_Journal" xml:space="preserve">
-    <value>دفتر اليومية العام</value>
+    <value>دفتر الاستاذ</value>
   </data>
   <data name="Partner" xml:space="preserve">
     <value>الشريك</value>
@@ -350,7 +350,7 @@
     <value>إنشاء نسخة</value>
   </data>
   <data name="Email_Later" xml:space="preserve">
-    <value>البريد الإلكتروني لاحقًا</value>
+    <value>ارسل بالبريد الإلكتروني لاحقًا</value>
   </data>
   <data name="Print_Later" xml:space="preserve">
     <value>طباعة لاحقًا</value>
@@ -543,7 +543,7 @@
   </data>
   <data name="Net_Amount" xml:space="preserve">
     <value>صافي المبلغ</value>
-  </data>
+  </data>كظكظ
   <data name="SN#" xml:space="preserve">
     <value>رقم</value>
   </data>
@@ -563,13 +563,13 @@
     <value>ملاحظات</value>
   </data>
   <data name="P.C_A/C" xml:space="preserve">
-    <value>ح/ سلفة ن.</value>
+    <value>ح/ عهده ن.</value>
   </data>
   <data name="P.C_Categoryies" xml:space="preserve">
-    <value>فئات سلفة النثرية</value>
+    <value>فئات عهده النثرية</value>
   </data>
   <data name="P.C_Request" xml:space="preserve">
-    <value>طلب سلفة نثرية</value>
+    <value>طلب عهده نثرية</value>
   </data>
   <data name="Operation" xml:space="preserve">
     <value>عملية</value>
@@ -623,13 +623,13 @@
     <value>تم الموافقة </value>
   </data>
   <data name="Petty_Cash_Approval" xml:space="preserve">
-    <value>موافقة السلفة النثرية</value>
+    <value>موافقة العهده النثرية</value>
   </data>
   <data name="Petty_Cash_Submition_Approval" xml:space="preserve">
-    <value>موافقة تقديم السلفة النثرية</value>
+    <value>موافقة تقديم العهده النثرية</value>
   </data>
   <data name="Petty_Cash_Categories" xml:space="preserve">
-    <value>فئات السلفة النثرية</value>
+    <value>فئات العهده النثرية</value>
   </data>
   <data name="Prepaid_Expense_Center" xml:space="preserve">
     <value>قسم المصروفات المدفوعة مقدماً</value>
@@ -638,7 +638,7 @@
     <value>مستلم من - دائن</value>
   </data>
   <data name="Received_To_-_Debit" xml:space="preserve">
-    <value>مستلم إلى - مدين</value>
+    <value>مسلم إلى - مدين</value>
   </data>
   <data name="Receipt_Voucher" xml:space="preserve">
     <value>سند قبض</value>
@@ -803,7 +803,7 @@
     <value>الدولة</value>
   </data>
   <data name="CHQ_Book_Register" xml:space="preserve">
-    <value>سجل كتاب CHQ</value>
+    <value>تسجيل دفتر شيكات</value>
   </data>
   <data name="Starting_From" xml:space="preserve">
     <value>يبدأ من</value>

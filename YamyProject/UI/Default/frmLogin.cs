@@ -46,8 +46,17 @@ namespace YamyProject
 
                         loadUserPermission(userId);
                         this.Hide();
-                        frmMain = new MainForm();
-                        frmMain.Show();
+                        if (userRole == "Engineer")
+                        {
+                            frmEngineerActivity frm = new frmEngineerActivity();
+                            frm.WindowState = FormWindowState.Maximized;
+                            frm.Show();
+                        }
+                        else
+                        {
+                            frmMain = new MainForm();
+                            frmMain.Show();
+                        }
                     }
                 }
             }
@@ -78,8 +87,18 @@ namespace YamyProject
 
                             loadUserPermission(userId);
                             this.Hide();
-                            frmMain = new MainForm();
-                            frmMain.Show();
+
+                            if (userRole == "Engineer")
+                            {
+                                frmEngineerActivity frm = new frmEngineerActivity();
+                                frm.WindowState = FormWindowState.Maximized;
+                                frm.Show();
+                            }
+                            else
+                            {
+                                frmMain = new MainForm();
+                                frmMain.Show();
+                            }
                         }
                         else
                         {

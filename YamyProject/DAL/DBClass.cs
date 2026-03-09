@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -27,9 +28,33 @@ namespace YamyProject
 
         public static MySqlParameter CreateParameter(string name, object value)
         {
+            // add GetDecimalCell if value is decimal else same
             return new MySqlParameter(name, value);
         }
+        public static MySqlParameter CreateParameterNew(string name, object value)
+        {
+            if (value == null || value == DBNull.Value)
+                return new MySqlParameter(name, DBNull.Value);
 
+            // If already numeric, send directly
+            if (value is decimal || value is int || value is double || value is float)
+                return new MySqlParameter(name, value);
+
+            // If string, try convert to decimal (handles 3,500.00)
+            if (value is string strValue)
+            {
+                if (decimal.TryParse(strValue,
+                                     NumberStyles.Any,
+                                     CultureInfo.CurrentCulture,
+                                     out decimal parsedDecimal))
+                {
+                    return new MySqlParameter(name, parsedDecimal);
+                }
+            }
+
+            // Otherwise send as-is
+            return new MySqlParameter(name, value);
+        }
         public static MySqlTransaction CreateTransaction()
         {
             MySqlConnection connection = new MySqlConnection(GetConnectionString());

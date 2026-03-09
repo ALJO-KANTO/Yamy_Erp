@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Guna.UI2.WinForms;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
@@ -36,6 +37,7 @@ namespace YamyProject
         private void frmViewReceiptVoucher_Load(object sender, EventArgs e)
         {
             dtOpen.Value = dtpTransDate.Value = dt_check_date.Value = DateTime.Now.Date;
+            AppTheme.DefaultFont(dgvInv);
             txtPVCode.Text = GenerateNextReceiptCode();
             txtId.Text = GenerateNextReceiptId();
             BindCombos.PopulateCustomers(cmbCustomer, true);
@@ -811,7 +813,7 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -862,7 +864,7 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -1166,7 +1168,7 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion { Code = row["code"].ToString(), Name = row["name"].ToString() });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -1578,8 +1580,11 @@ namespace YamyProject
             if (lstAccountSuggestions.SelectedItem != null && lstAccountSuggestions.Tag is Guna2TextBox targetTextBox)
             {
                 string selected = lstAccountSuggestions.SelectedItem.ToString();
-                string selectedCode = selected.Split('-')[0].Trim();
-
+                string selectedCode = "";// selected.Split('-')[0].Trim();
+                if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+                {
+                    selectedCode = item.Code;
+                }
                 targetTextBox.Text = selectedCode;
                 lstAccountSuggestions.Visible = false;
 

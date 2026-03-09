@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using MigraDoc.DocumentObjectModel;
+﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -29,13 +28,19 @@ namespace YamyProject
             this.endDate = _endDate;
         }
 
+        DateTime prevFrom;
+        DateTime prevTo;
         void Dates(DateTime d)
         {
             DateTime sDateOfY = new DateTime(d.Year, 1, 1);
             DateTime eDateOfY = new DateTime(d.Year, 12, 31);
-            
+
             dtFrom.Value = sDateOfY;
             dtTo.Value = eDateOfY;
+        }
+        private void dateChangeTo() {
+            prevFrom = new DateTime(dtFrom.Value.Year, 1, 1);
+            prevTo = new DateTime(dtTo.Value.Year, dtTo.Value.Month, DateTime.DaysInMonth(dtTo.Value.Year, dtTo.Value.Month));
         }
 
         private void ProfitandLossDetailReport_Load(object sender, EventArgs e)
@@ -48,6 +53,12 @@ namespace YamyProject
                     lblCompany.Text = reader["name"].ToString();
                 }
             }
+
+            dgvCustomer.Font = new System.Drawing.Font("Segoe UI", 7, FontStyle.Bold);
+            dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
 
             btnPrint.Text = "Print ▼";
 
@@ -67,13 +78,188 @@ namespace YamyProject
                     dtTo.Value = eDate;
                 }
             }
-            if (reportType != "")
-            {
-                headerUC1.FormText = this.Text + reportType;
-                guna2HtmlLabel7.Text = this.Text + reportType;
-            }
+            //if (reportType != "")
+            //{
+            //    headerUC1.FormText = this.Text + reportType;
+            //    guna2HtmlLabel7.Text = this.Text + reportType;
+            //}
             AddDGVColumns();
             BindDGV();
+        }
+
+        private void BindDGV()
+        {
+            dateChangeTo();
+            dgvCustomer.Rows.Clear();
+            using (MySqlDataReader reader = DBClass.ExecuteReader(@"
+                        WITH AccountBalances AS (
+                        SELECT 
+                            l1.id,
+                            l1.name,
+                            l1.category_code,
+                            CASE 
+                                WHEN l1.category_code = 'Income'
+                                    THEN COALESCE(SUM(t.credit) - SUM(t.debit), 0)
+                                ELSE
+                                    COALESCE(SUM(t.debit) - SUM(t.credit), 0)
+                            END AS balance,
+                            CASE
+                                WHEN l1.category_code = 'Income'  THEN 1
+                                WHEN l1.category_code = 'Cost'    THEN 2
+                                WHEN l1.category_code = 'EXPENSE' THEN 4
+                            END AS sort_order
+                        FROM tbl_coa_level_1 l1
+                        LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
+                        LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
+                        LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
+                        LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                        WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
+                        GROUP BY l1.id, l1.name, l1.category_code
+                    ),
+
+                    TotalIncome AS (
+                        SELECT
+                            -1 AS id,
+                            'Total Income' AS name,
+                            'TOTAL_INCOME' AS category_code,
+                            SUM(balance) AS balance,
+                            1.5 AS sort_order
+                        FROM AccountBalances
+                        WHERE category_code = 'Income'
+                    ),
+
+                    GrossProfit AS (
+                        SELECT
+                            0 AS id,
+                            'Gross Profit' AS name,
+                            'GROSS_PROFIT' AS category_code,
+                            COALESCE(
+                                (SELECT SUM(balance) FROM AccountBalances WHERE category_code = 'Income'), 0
+                            ) -
+                            COALESCE(
+                                (SELECT SUM(balance) FROM AccountBalances WHERE category_code = 'Cost'), 0
+                            ) AS balance,
+                            3 AS sort_order
+                    ),
+
+                    TotalExpenses AS (
+                        SELECT
+                            -2 AS id,
+                            'Total Expenses' AS name,
+                            'TOTAL_EXPENSE' AS category_code,
+                            SUM(balance) AS balance,
+                            4.5 AS sort_order
+                        FROM AccountBalances
+                        WHERE category_code = 'EXPENSE'
+                    )
+
+                    SELECT id, name, balance, sort_order
+                    FROM AccountBalances
+                    WHERE category_code IN ('Income', 'Cost')
+
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM TotalIncome
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM GrossProfit
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM AccountBalances WHERE category_code = 'EXPENSE'
+                    UNION ALL
+                    SELECT id, name, balance, sort_order FROM TotalExpenses
+
+                    ORDER BY sort_order;
+
+                        "))
+            {
+                dgvCustomer.Rows.Add("e", "u", "1", "Ordinary Income/Expense", "0", "", "", "", "", "", "", "", "", "", "", "", "");
+                while (reader.Read())
+                {
+                    dgvCustomer.Rows.Add(
+                        "e", 
+                        "u", 
+                        "1", 
+                        "   ►     " + reader["name"].ToString(),
+                        reader["id"].ToString(), 
+                        reader["name"].ToString(),
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        Utilities.FormatDecimal(reader["balance"].ToString().Replace("-", "")));
+
+                }
+                // Auto-expand everything
+                for (int i = 0; i < dgvCustomer.Rows.Count; i++)
+                {
+                    ExpandRowRecursively(i);
+                }
+
+                // Calculate totals from already-expanded rows
+                decimal totalIncome = 0;
+                decimal totalCOGS = 0;
+                decimal totalExpense = 0;
+
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    string name = row.Cells["currname"].Value?.ToString()?.ToUpper() ?? "";
+                    decimal amount = 0;
+                    decimal.TryParse(row.Cells["tranBalance"].Value?.ToString(), out amount);
+                    int currLvl = int.Parse(row.Cells["currLvl"].Value.ToString());
+
+                }
+                using (MySqlDataReader mySqlDataReader = DBClass.ExecuteReader(@"
+                            SELECT
+                                t1.category_code,
+                                IFNULL(COALESCE(SUM(tt.debit) - SUM(tt.credit), 0),0) AS total_balance
+                            FROM tbl_coa_level_1 t1
+                            JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                            JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                            JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+                            LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id
+                            WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE')
+                            GROUP BY t1.category_code;
+                            ")
+                    )
+                {
+                    while (mySqlDataReader.Read())
+                    {
+                        string categoryCode = mySqlDataReader["category_code"].ToString();
+                        decimal totalBalance = Convert.ToDecimal(mySqlDataReader["total_balance"].ToString().Replace("-", ""));
+                        if (categoryCode.ToLower() == "income")
+                            totalIncome = totalBalance;
+                        else if (categoryCode.ToLower() == "cost")
+                            totalCOGS = totalBalance;
+                        else if (categoryCode.ToLower() == "expense")
+                            totalExpense = totalBalance;
+                    }
+                }
+
+                // Calculate profits
+                decimal grossProfit = totalIncome - totalCOGS;
+                decimal netProfit = grossProfit - totalExpense;
+
+                // Net Profit row
+                dgvCustomer.Rows.Add(
+                    "n", "l", "1",
+                    "   Net Profit",
+                    "0", "Net Profit", "", "", "", "", "", "", "", "", "", "",
+                    Utilities.FormatDecimal(netProfit)
+                );
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    string text = row.Cells["lvl1"].Value?.ToString()?.ToUpper() ?? "";
+                    if (text.Contains("GROSS PROFIT") || text.Contains("NET PROFIT") || text.Contains("TOTAL"))
+                    {
+                        row.DefaultCellStyle.Font =
+                            new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
+                    }
+                }
+            }
         }
 
         private void AddDGVColumns()
@@ -115,15 +301,347 @@ namespace YamyProject
 
                 dgvCustomer.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
-                dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvCustomer.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightBlue;
+                //dgvCustomer.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
 
                 dgvCustomer.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                 dgvCustomer.RowsDefaultCellStyle.BackColor = System.Drawing.Color.White;
             
         }
+        private void ExpandRowRecursively(int rowIndex)
+        {
+            if (rowIndex < 0 || rowIndex >= dgvCustomer.Rows.Count)
+                return;
 
-        public void BindDGV()
+            DataGridViewRow row = dgvCustomer.Rows[rowIndex];
+            int currLvl = int.Parse(row.Cells["currLvl"].Value.ToString());
+            string state = row.Cells["state"].Value.ToString();
+            string loadState = row.Cells["loadState"].Value.ToString();
+            string cellValue = row.Cells["lvl1"].Value.ToString();
+            string space = new string(' ', currLvl * 6 + 3);
+            int parentId = int.Parse(row.Cells["id"].Value.ToString());
+
+            try
+            {
+                if (state == "e")
+                {
+                    if (loadState == "u")
+                    {
+                        
+
+                        List<DataGridViewRow> newRows = new List<DataGridViewRow>();
+
+                        using (MySqlDataReader reader = DBClass.ExecuteReader(
+                            $@"SELECT name as currname, concat(code,' - ',name) as name , id 
+                                    FROM tbl_coa_level_" + (currLvl + 1) + " WHERE main_id = @parentId ORDER BY code",
+                            DBClass.CreateParameter("parentId", parentId)))
+                        {
+                            int insertIndex = rowIndex + 1;
+
+                            if (int.Parse(row.Cells["id"].Value.ToString()) > 0)
+                                dgvCustomer.Rows[rowIndex].Cells["tranBalance"].Value = "";
+
+                            
+                            while (reader.Read())
+                            {
+                                string nextState = (currLvl + 1 == 4) ? "n" : "e";
+                                string nextIcon = (currLvl + 1 == 4) ? "  " : "►";
+
+                                var newRow = new DataGridViewRow();
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = nextState });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "u" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = currLvl + 1 });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = space + nextIcon + "     " + reader["name"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["id"].ToString() });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = reader["currname"].ToString() });
+
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+
+                                var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData).Replace("-", "") });
+                                
+                                newRow.Height = dgvCustomer.Rows[rowIndex].Height;
+
+                                ApplyRowStyle(newRow, currLvl + 1);
+                                newRows.Add(newRow);
+
+                                // If this is level 4 → load transactions instead of next COA level
+                                if ((currLvl + 1) == 4)
+                                {
+                                    //object objId = DBClass.ExecuteScalar($@"SELECT id FROM tbl_coa_level_" + (currLvl + 1) + " WHERE main_id = @parentId ORDER BY code", DBClass.CreateParameter("parentId", parentId));
+                                    //int refLevel4Id = objId == null ? 0 : (int)objId;
+                                    if (int.Parse(reader["id"].ToString()) > 0)
+                                    {
+                                        //LoadTransactionsUnderLevel4(newRows, rowIndex + 1, int.Parse(row.Cells["id"].Value.ToString()));
+                                        //return;
+
+                                        insertIndex = rowIndex + 1;
+
+                                        using (MySqlDataReader tReader = DBClass.ExecuteReader(@"
+                                                                    SELECT 
+                                                                        t.id,
+                                                                        t.type,
+                                                                        t.date,
+                                                                        t.voucher_no,
+                                                                        COALESCE(t.debit,0) AS debit,
+                                                                        COALESCE(t.credit,0) AS credit,
+                                                                    CASE WHEN t.type IN (
+	                                                                    'Customer Receipt',
+	                                                                    'Sales Invoice',
+	                                                                    'Customer Opening Balance',
+	                                                                    'Customer Advance Payment',
+	                                                                    'Check Cancel (Customer)',
+	                                                                    'SalesReturn Invoice',
+	                                                                    'Credit Note',
+	                                                                    'PDC Receivable'
+	                                                                ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_customer WHERE t.hum_id),'')
+                                                                    WHEN t.type IN (
+                                                                          'Vendor Payment',
+                                                                          'Petty Cash',
+                                                                          'Purchase Invoice',
+                                                                          'Vendor Opening Balance',
+                                                                          'Vendor Advance Payment',
+                                                                          'Check Cancel (Vendor)',
+                                                                          'Purchase Return Invoice',
+                                                                          'Debit Note',
+                                                                          'PDC Payable'
+                                                                    ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_vendor WHERE t.hum_id),'')
+                                                                    WHEN t.type IN (
+		                                                                'Employee Salary Payment',
+		                                                                'Petty Cash',
+		                                                                'Check Cancel (Employee)',
+		                                                                'Employee Salary',
+		                                                                'Employee Loan Payment',
+		                                                                'Employee Petty Cash Payment'
+	                                                                 ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_employee WHERE t.hum_id),'')
+	                                                                 ELSE '' END AS name,
+                                                                    (SELECT IFNULL(NAME,'') FROM tbl_coa_level_4 WHERE id = t.account_id) Account,
+                                                                        COALESCE(t.description,'') AS memo
+                                                                    FROM tbl_transaction t
+                                                                    WHERE t.account_id = @acctId
+                                                                      -- AND t.date BETWEEN @fromDate AND @toDate
+                                                                    ORDER BY t.date, t.id
+                                                                ",
+                                        DBClass.CreateParameter("acctId", reader["id"].ToString()),
+                                        DBClass.CreateParameter("fromDate", dtFrom.Value),
+                                        DBClass.CreateParameter("toDate", dtTo.Value)))
+                                        {
+                                            while (tReader.Read())
+                                            {
+                                                string indent = new string(' ', 4 * 6 + 3);
+                                                newRow = new DataGridViewRow();
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "n" });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = 5 });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell
+                                                {
+                                                    Value = tReader["id"].ToString()
+                                                });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell
+                                                {
+                                                    Value = indent + "• " + tReader["type"].ToString()
+                                                });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                                string dateStr0 = "";
+                                                if (tReader["date"] != DBNull.Value)
+                                                {
+                                                    DateTime dt;
+                                                    if (DateTime.TryParse(tReader["date"].ToString(), out dt))
+                                                        dateStr0 = dt.ToString("MM/dd/yyyy");
+                                                }
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = dateStr0 });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["voucher_no"].ToString() });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["Name"].ToString() });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["memo"].ToString() });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["Account"].ToString() });
+
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell
+                                                {
+                                                    Value = Utilities.FormatDecimal(tReader["debit"].ToString())
+                                                });
+
+                                                newRow.Cells.Add(new DataGridViewTextBoxCell
+                                                {
+                                                    Value = Utilities.FormatDecimal(tReader["credit"].ToString())
+                                                });
+
+                                                //dgvCustomer.Rows.Insert(insertIndex, newRow);
+                                                newRows.Add(newRow);
+                                                insertIndex++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            foreach (var r in newRows)
+                            {
+                                dgvCustomer.Rows.Insert(insertIndex, r);
+                                insertIndex++;
+                            }
+                        }
+
+                        dgvCustomer.Rows[rowIndex].Cells["loadState"].Value = "l";
+                    }
+                    else
+                    {
+                        dgvCustomer.Rows[rowIndex].Cells["tranBalance"].Value = "";
+                        GetAllChildren(rowIndex);
+                    }
+
+                    dgvCustomer.Rows[rowIndex].Cells["lvl1"].Value = cellValue.Replace("►", "▼");
+                    dgvCustomer.Rows[rowIndex].Cells["state"].Value = "c";
+                }
+
+                // Expand child rows recursively
+                int currentRowLevel = int.Parse(row.Cells["currLvl"].Value.ToString());
+                int nextIndex = rowIndex + 1;
+                while (nextIndex < dgvCustomer.Rows.Count)
+                {
+                    int childLvl = int.Parse(dgvCustomer.Rows[nextIndex].Cells["currLvl"].Value.ToString());
+                    if (childLvl <= currentRowLevel)
+                        break;
+
+                    if (dgvCustomer.Rows[nextIndex].Cells["state"].Value.ToString() == "e")
+                    {
+                        ExpandRowRecursively(nextIndex);
+                    }
+                    nextIndex++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while expanding: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadTransactionsUnderLevel4Old(List<DataGridViewRow> listRows, int rowIndex, int level4Id)
+        {
+            DataGridViewRow row = dgvCustomer.Rows[rowIndex];
+
+            DateTime from = dtFrom.Value.Date;
+            DateTime to = dtTo.Value.Date;
+
+            int insertIndex = rowIndex + 1;
+
+            using (MySqlDataReader tReader = DBClass.ExecuteReader(@"
+                                                                    SELECT 
+                                                                        t.id,
+                                                                        t.type,
+                                                                        t.date,
+                                                                        t.voucher_no,
+                                                                        COALESCE(t.debit,0) AS debit,
+                                                                        COALESCE(t.credit,0) AS credit,
+                                                                    CASE WHEN t.type IN (
+	                                                                    'Customer Receipt',
+	                                                                    'Sales Invoice',
+	                                                                    'Customer Opening Balance',
+	                                                                    'Customer Advance Payment',
+	                                                                    'Check Cancel (Customer)',
+	                                                                    'SalesReturn Invoice',
+	                                                                    'Credit Note',
+	                                                                    'PDC Receivable'
+	                                                                ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_customer WHERE t.hum_id),'')
+                                                                    WHEN t.type IN (
+                                                                          'Vendor Payment',
+                                                                          'Petty Cash',
+                                                                          'Purchase Invoice',
+                                                                          'Vendor Opening Balance',
+                                                                          'Vendor Advance Payment',
+                                                                          'Check Cancel (Vendor)',
+                                                                          'Purchase Return Invoice',
+                                                                          'Debit Note',
+                                                                          'PDC Payable'
+                                                                    ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_vendor WHERE t.hum_id),'')
+                                                                    WHEN t.type IN (
+		                                                                'Employee Salary Payment',
+		                                                                'Petty Cash',
+		                                                                'Check Cancel (Employee)',
+		                                                                'Employee Salary',
+		                                                                'Employee Loan Payment',
+		                                                                'Employee Petty Cash Payment'
+	                                                                 ) Then 
+                                                                    IFNULL((SELECT NAME FROM tbl_employee WHERE t.hum_id),'')
+	                                                                 ELSE '' END AS name,
+                                                                    (SELECT IFNULL(NAME,'') FROM tbl_coa_level_4 WHERE id = t.account_id) Account,
+                                                                        COALESCE(t.description,'') AS memo
+                                                                    FROM tbl_transaction t
+                                                                    WHERE t.account_id = @acctId
+                                                                      -- AND t.date BETWEEN @fromDate AND @toDate
+                                                                    ORDER BY t.date, t.id
+                                                                ",
+            DBClass.CreateParameter("acctId", level4Id),
+            DBClass.CreateParameter("fromDate", from),
+            DBClass.CreateParameter("toDate", to)))
+            {
+                while (tReader.Read())
+                {
+                    string indent = new string(' ', 4 * 6 + 3);
+                    var newRow = new DataGridViewRow();
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "n" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = 5 });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell
+                    {
+                        Value = tReader["id"].ToString()
+                    });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell
+                    {
+                        Value = indent + "• " + tReader["type"].ToString()
+                    });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                    string dateStr0 = "";
+                    if (tReader["date"] != DBNull.Value)
+                    {
+                        DateTime dt;
+                        if (DateTime.TryParse(tReader["date"].ToString(), out dt))
+                            dateStr0 = dt.ToString("MM/dd/yyyy");
+                    }
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = dateStr0 });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["voucher_no"].ToString() });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["Name"].ToString() });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["memo"].ToString() });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
+                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = tReader["Account"].ToString() });
+
+                    newRow.Cells.Add(new DataGridViewTextBoxCell
+                    {
+                        Value = Utilities.FormatDecimal(tReader["debit"].ToString())
+                    });
+
+                    newRow.Cells.Add(new DataGridViewTextBoxCell
+                    {
+                        Value = Utilities.FormatDecimal(tReader["credit"].ToString())
+                    });
+
+                    //dgvCustomer.Rows.Insert(insertIndex, newRow);
+                    listRows.Add(newRow);
+                    insertIndex++;
+                }
+            }
+
+            //dgvCustomer.Rows[rowIndex].Cells["loadState"].Value = "l";
+            //dgvCustomer.Rows[rowIndex].Cells["state"].Value = "c";
+        }
+        public void BindDGVOld()
         {
             dgvCustomer.Rows.Clear();
 
@@ -155,7 +673,7 @@ namespace YamyProject
                 while (acctReader.Read())
                 {
                     string accountFull = (acctReader["level4_code"] != DBNull.Value ? acctReader["level4_code"].ToString() + " - " : "") + acctReader["level4_name"].ToString();
-                    string accountName = acctReader["level4_name"].ToString();
+                    string accountName = acctReader["level1_name"].ToString();
                     string acctId = string.IsNullOrEmpty(acctReader["level4_id"].ToString()) ? "0" : acctReader["level4_id"].ToString();
                     string acctBalance = Utilities.FormatDecimal(acctReader["account_balance"].ToString());
 
@@ -287,7 +805,7 @@ namespace YamyProject
                 }
             }
         }
-        private void ExpandRowRecursively(int rowIndex)
+        private void ExpandRowRecursivelyOld(int rowIndex)
         {
             if (rowIndex < 0 || rowIndex >= dgvCustomer.Rows.Count)
                 return;
@@ -475,16 +993,137 @@ namespace YamyProject
 
         private void ApplyRowStyle(DataGridViewRow row, int level)
         {
-            if (level == 2)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            else if (level == 3)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            else
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
+            //if (level == 2)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            //else if (level == 3)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            //else
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
 
-
         private string GetBalanceData(int level, string name)
+        {
+            using (MySqlDataReader read = DBClass.ExecuteReader($@"SELECT 
+                            t1.name AS level1_name, 
+                            t2.name AS level2_name, 
+                            t3.name AS level3_name, 
+                            t4.name AS level4_name, 
+                            t1.id AS level1_id, 
+                            t2.id AS level2_id, 
+                            t3.id AS level3_id, 
+                            t4.id AS level4_id,
+
+                            -- Balance for Level 1 (Summing all child transactions)
+                            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
+                             FROM tbl_transaction tt
+                             WHERE tt.account_id IN (
+                                 SELECT id FROM tbl_coa_level_4 
+                                 WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id IN (SELECT id FROM tbl_coa_level_2 
+                                                                   WHERE main_id = t1.id))
+                             )
+                            ) AS level1_balance,
+
+                            -- Balance for Level 2 (Summing its child transactions)
+                            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
+                             FROM tbl_transaction tt
+                             WHERE tt.account_id IN (
+                                 SELECT id FROM tbl_coa_level_4 
+                                 WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
+                                                  WHERE main_id = t2.id)
+                             )
+                            ) AS level2_balance,
+
+                            -- Balance for Level 3 (Summing only Level 4 transactions)
+                            (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) 
+                             FROM tbl_transaction tt
+                             WHERE tt.account_id IN (
+                                 SELECT id FROM tbl_coa_level_4 
+                                 WHERE main_id = t3.id
+                             )
+                            ) AS level3_balance,
+
+                            -- Balance for Level 4 (Direct transactions only)
+                            COALESCE(SUM(tt.debit) - SUM(tt.credit), 0) AS level4_balance
+
+                        FROM tbl_coa_level_1 t1
+                        LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                        LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                        LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+                        LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
+
+                        WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE') AND t{level}.name = @name
+
+                        GROUP BY t1.id, t2.id, t3.id, t4.id;
+                        ", DBClass.CreateParameter("name", name)))
+            {
+                if (read.Read())
+                {
+                    return read[$"level{level}_balance"].ToString().Replace("-", "");
+                }
+            }
+
+            return null;
+        }
+        private (decimal balance1, decimal balance2) GetBalanceData(int level, string name, DateTime currentFrom, DateTime currentTo, DateTime previousFrom, DateTime previousTo)
+        {
+            using (MySqlDataReader read = DBClass.ExecuteReader($@"
+                    SELECT
+                        -- Balance for current period
+                        (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit),0)
+                         FROM tbl_transaction tt
+                         WHERE tt.account_id IN (
+                             SELECT id FROM tbl_coa_level_4 
+                             WHERE main_id IN (
+                                 SELECT id FROM tbl_coa_level_3 
+                                 WHERE main_id IN (
+                                     SELECT id FROM tbl_coa_level_2 
+                                     WHERE main_id = t1.id
+                                 )
+                             )
+                         ) AND tt.date BETWEEN @currFrom AND @currTo
+                        ) AS balance1,
+
+                        -- Balance for previous period
+                        (SELECT COALESCE(SUM(tt.debit) - SUM(tt.credit),0)
+                         FROM tbl_transaction tt
+                         WHERE tt.account_id IN (
+                             SELECT id FROM tbl_coa_level_4 
+                             WHERE main_id IN (
+                                 SELECT id FROM tbl_coa_level_3 
+                                 WHERE main_id IN (
+                                     SELECT id FROM tbl_coa_level_2 
+                                     WHERE main_id = t1.id
+                                 )
+                             )
+                         ) AND tt.date BETWEEN @prevFrom AND @prevTo
+                        ) AS balance2
+
+                    FROM tbl_coa_level_1 t1
+                    LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
+                    LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
+                    LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
+                    WHERE t{level}.name = @name
+                    GROUP BY t1.id, t2.id, t3.id, t4.id;
+                ",
+                DBClass.CreateParameter("name", name),
+                DBClass.CreateParameter("currFrom", currentFrom),
+                DBClass.CreateParameter("currTo", currentTo),
+                DBClass.CreateParameter("prevFrom", previousFrom),
+                DBClass.CreateParameter("prevTo", previousTo)
+            ))
+            {
+                if (read.Read())
+                {
+                    decimal b1 = Convert.ToDecimal(read["balance1"]);
+                    decimal b2 = Convert.ToDecimal(read["balance2"]);
+                    return (b1, b2);
+                }
+            }
+            return (0, 0);
+        }
+
+        private string GetBalanceDataOld(int level, string name)
         {
             using (MySqlDataReader read = DBClass.ExecuteReader($@"SELECT 
                             t1.name AS level1_name, 
@@ -886,6 +1525,11 @@ namespace YamyProject
                 //AddDGVColumns();
                 BindDGV();
             }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            BindDGV();
         }
     }
 }

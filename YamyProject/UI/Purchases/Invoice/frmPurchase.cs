@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -34,6 +35,8 @@ namespace YamyProject
         public frmPurchase(int _id = 0, string _PO = "", int _vendorId = 0)
         {
             InitializeComponent();
+            dgvItems.EnableHeadersVisualStyles = false; // important
+            AppTheme.DefaultFont(dgvItems);
             LocalizationManager.LocalizeForm(this);
             vendorUpdatedHandler = (sender, args) => BindCombos.PopulateVendors(cmbVendor);
             itemUpdatedHandler = (sender, args) => RefreshItems();
@@ -43,6 +46,10 @@ namespace YamyProject
             EventHub.Vendor += vendorUpdatedHandler;
             this.PO = _PO;
             if (PO == "PO")
+            {
+                txtPONO.Text = _id.ToString();
+            }
+            else if (PO == "POF")
             {
                 txtPONO.Text = _id.ToString();
             }
@@ -184,8 +191,8 @@ namespace YamyProject
             newRow.Cells["name"].Value = itemName;
             newRow.Cells["qty"].Value = 1;
             newRow.Cells["discount"].Value = 0;
-            newRow.Cells["cost_price"].Value = costPrice;
-            newRow.Cells["price"].Value = salesPrice;
+            newRow.Cells["cost_price"].Value = costPrice.ToString("N2");
+            newRow.Cells["price"].Value = salesPrice.ToString("N2");
             newRow.Cells["method"].Value = itemMethod;
             newRow.Cells["type"].Value = itemType;
 
@@ -393,6 +400,10 @@ namespace YamyProject
             vat.DataSource = dt;
             vat.DisplayMember = "name";
             vat.ValueMember = "id";
+            vat.FlatStyle = FlatStyle.Popup;
+            vat.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            vat.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            vat.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             var dTax = Utilities.GeneralSettings("DEFAULT TAX PERCENTAGE");
             if (!string.IsNullOrEmpty(dTax) & int.Parse(dTax) > 0)
             {
@@ -407,6 +418,10 @@ namespace YamyProject
             col.DataSource = dt;
             col.DisplayMember = "name";
             col.ValueMember = "id";
+            col.FlatStyle = FlatStyle.Popup;
+            col.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void bindCombo()
         {
@@ -470,6 +485,10 @@ namespace YamyProject
                     if (PO == "PO")
                     {
                         EventHub.RefreshPurchaseOrder();
+                    }
+                    else if (PO == "POF")
+                    {
+                        EventHub.RefreshPurchaseOffer();
                     }
                     loadPrint();
                     MessageBox.Show("The Purchase Invoice  Saved");
@@ -785,19 +804,18 @@ namespace YamyProject
 
                 string itemId = row.Cells["itemId"].Value.ToString();
                 decimal qty = row.Cells["qty"].Value == DBNull.Value ? 0 : Convert.ToDecimal(row.Cells["qty"].Value);
-                decimal discount = string.IsNullOrWhiteSpace(row.Cells["discount"].Value?.ToString()) ? 0 : Convert.ToDecimal(row.Cells["discount"].Value);
 
                 // Prepare parameterized values for each row
                 valueList.Add($"(@purchase_id, @item_id{paramIndex}, @qty{paramIndex}, @cost_price{paramIndex}, @price{paramIndex}, @discount{paramIndex}, @vatp{paramIndex}, @vat{paramIndex}, @total{paramIndex}, @costCenter{paramIndex})");
-                parameters.Add(new MySqlParameter($"@item_id{paramIndex}", itemId));
-                parameters.Add(new MySqlParameter($"@qty{paramIndex}", qty));
-                parameters.Add(new MySqlParameter($"@cost_price{paramIndex}", row.Cells["cost_price"].Value ?? 0));
-                parameters.Add(new MySqlParameter($"@price{paramIndex}", row.Cells["price"].Value?.ToString() == "" ? "0" : row.Cells["price"].Value));
-                parameters.Add(new MySqlParameter($"@discount{paramIndex}", discount));
-                parameters.Add(new MySqlParameter($"@vat{paramIndex}", row.Cells["vat"].Value ?? 0));
-                parameters.Add(new MySqlParameter($"@vatp{paramIndex}", row.Cells["vatp"].Value ?? 0));
-                parameters.Add(new MySqlParameter($"@total{paramIndex}", row.Cells["total"].Value ?? 0));
-                parameters.Add(new MySqlParameter($"@costCenter{paramIndex}", row.Cells["cost_center"].Value ?? 0));
+                parameters.Add(DBClass.CreateParameter($"@item_id{paramIndex}", itemId));
+                parameters.Add(DBClass.CreateParameter($"@qty{paramIndex}", qty));
+                parameters.Add(DBClass.CreateParameterNew($"@cost_price{paramIndex}", row.Cells["cost_price"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameterNew($"@price{paramIndex}", row.Cells["price"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameterNew($"@discount{paramIndex}", row.Cells["discount"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameterNew($"@vat{paramIndex}", row.Cells["vat"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameterNew($"@vatp{paramIndex}", row.Cells["vatp"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameterNew($"@total{paramIndex}", row.Cells["total"].Value?.ToString()));
+                parameters.Add(DBClass.CreateParameter($"@costCenter{paramIndex}", row.Cells["cost_center"].Value ?? 0));
                 paramIndex++;
             }
 
@@ -855,6 +873,18 @@ namespace YamyProject
                 if (row.Cells["cost_center"].Value != null && int.Parse(row.Cells["cost_center"].Value.ToString()) > 0)
                     CommonInsert.InsertCostCenterTransaction(dtInv.Value, Convert.ToDecimal(row.Cells["total"].Value ?? 0).ToString(), "0", invId.ToString(), "Purchase", "", (row.Cells["cost_center"].Value ?? 0).ToString());
             }
+        }
+
+        private decimal GetDecimalCellOld(DataGridViewRow row, string columnName)
+        {
+            decimal value = 0;
+            decimal.TryParse(
+                row.Cells[columnName].Value?.ToString(),
+                NumberStyles.Any,
+                CultureInfo.CurrentCulture,
+                out value
+            );
+            return value;
         }
 
         private void HandleAssemblyItems(string assemblyItemId, decimal assemblyQty)
@@ -1040,7 +1070,7 @@ namespace YamyProject
                 if (insertInvoice())
                 {
                     int pId = int.Parse(invId.ToString());
-                    if(string.IsNullOrEmpty(filePath))
+                    if(!string.IsNullOrEmpty(filePath))
                     {
                         AddFileData(pId);
                     }
@@ -1151,7 +1181,11 @@ namespace YamyProject
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                    lstAccountSuggestions.Items.Add(new ItemSuggestion
+                    {
+                        Code = row["code"].ToString(),
+                        Name = row["name"].ToString()
+                    });
                 }
                 if (lstAccountSuggestions.Items.Count > 0)
                 {
@@ -1282,7 +1316,11 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -1326,7 +1364,11 @@ namespace YamyProject
 
             foreach (DataRow row in filtered.Rows)
             {
-                lstAccountSuggestions.Items.Add($"{row["code"]} - {row["name"]}");
+                lstAccountSuggestions.Items.Add(new ItemSuggestion
+                {
+                    Code = row["code"].ToString(),
+                    Name = row["name"].ToString()
+                });
             }
 
             if (lstAccountSuggestions.Items.Count > 0)
@@ -1637,8 +1679,8 @@ namespace YamyProject
                     dgvItems.CurrentRow.Cells["qty"].Value = 0;
                     dgvItems.CurrentRow.Cells["discount"].Value = 0;
                     dgvItems.CurrentRow.Cells["itemId"].Value = reader["id"].ToString();
-                    dgvItems.CurrentRow.Cells["cost_price"].Value = reader["cost_price"].ToString();
-                    dgvItems.CurrentRow.Cells["price"].Value = reader["sales_price"];
+                    dgvItems.CurrentRow.Cells["cost_price"].Value = Convert.ToDecimal(reader["cost_price"]).ToString("N2");
+                    dgvItems.CurrentRow.Cells["price"].Value = Convert.ToDecimal(reader["sales_price"]).ToString("N2");
                     dgvItems.CurrentRow.Cells["method"].Value = reader["method"];
                     dgvItems.CurrentRow.Cells["type"].Value = reader["type"];
                     dgvItems.CurrentRow.Cells["code"].Value = reader["code"].ToString();
@@ -2073,13 +2115,19 @@ namespace YamyProject
             if (lstAccountSuggestions.SelectedItem == null)
                 return;
 
-            string selected = lstAccountSuggestions.SelectedItem.ToString();
+            //string selected = lstAccountSuggestions.SelectedItem.ToString();
 
-            int separatorIndex = selected.IndexOf('-');
-            if (separatorIndex == -1) return;
+            //int separatorIndex = selected.IndexOf('-');
+            //if (separatorIndex == -1) return;
 
-            string selectedCode = selected.Substring(0, separatorIndex).Trim();
-            string selectedName = selected.Substring(separatorIndex + 1).Trim();
+            string selectedCode = ""; // selected.Substring(0, separatorIndex).Trim();
+            string selectedName = ""; // selected.Substring(separatorIndex + 1).Trim();
+            if (lstAccountSuggestions.SelectedItem is ItemSuggestion item)
+            {
+                selectedCode = item.Code;
+                selectedName = item.Name;
+            }
+
 
             if (lstAccountSuggestions.Tag is Guna2TextBox gunaTextBox)
             {

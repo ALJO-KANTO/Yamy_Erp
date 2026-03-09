@@ -72,6 +72,7 @@ namespace YamyProject
             this.panel9 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtPVCode = new System.Windows.Forms.TextBox();
             this.BtnJournal = new Guna.UI2.WinForms.Guna2Button();
@@ -110,6 +111,7 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameslistView = new System.Windows.Forms.ListView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.txtcostcenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).BeginInit();
@@ -265,7 +267,7 @@ namespace YamyProject
             this.txtcostcenter.FillColor = System.Drawing.Color.WhiteSmoke;
             this.txtcostcenter.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcostcenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtcostcenter.Location = new System.Drawing.Point(2, 121);
+            this.txtcostcenter.Location = new System.Drawing.Point(2, 114);
             this.txtcostcenter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtcostcenter.Name = "txtcostcenter";
             this.txtcostcenter.Size = new System.Drawing.Size(1045, 90);
@@ -414,7 +416,7 @@ namespace YamyProject
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvInv.ColumnHeadersHeight = 35;
+            this.dgvInv.ColumnHeadersHeight = 25;
             this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvInv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.no,
@@ -438,7 +440,7 @@ namespace YamyProject
             this.dgvInv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvInv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvInv.Location = new System.Drawing.Point(2, 211);
+            this.dgvInv.Location = new System.Drawing.Point(2, 204);
             this.dgvInv.MultiSelect = false;
             this.dgvInv.Name = "dgvInv";
             this.dgvInv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -450,7 +452,7 @@ namespace YamyProject
             this.dgvInv.RowTemplate.Height = 25;
             this.dgvInv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvInv.Size = new System.Drawing.Size(1045, 394);
+            this.dgvInv.Size = new System.Drawing.Size(1045, 401);
             this.dgvInv.TabIndex = 8;
             this.dgvInv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -464,7 +466,7 @@ namespace YamyProject
             this.dgvInv.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvInv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvInv.ThemeStyle.HeaderStyle.Height = 35;
+            this.dgvInv.ThemeStyle.HeaderStyle.Height = 25;
             this.dgvInv.ThemeStyle.ReadOnly = false;
             this.dgvInv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvInv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
@@ -662,7 +664,7 @@ namespace YamyProject
             // 
             this.panel9.Controls.Add(this.tabControl2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(2, 37);
+            this.panel9.Location = new System.Drawing.Point(2, 30);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1045, 84);
             this.panel9.TabIndex = 41;
@@ -684,6 +686,7 @@ namespace YamyProject
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage3.Controls.Add(this.guna2TileButton1);
             this.tabPage3.Controls.Add(this.txtId);
             this.tabPage3.Controls.Add(this.txtPVCode);
             this.tabPage3.Controls.Add(this.BtnJournal);
@@ -709,6 +712,30 @@ namespace YamyProject
             this.tabPage3.Size = new System.Drawing.Size(1037, 58);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Main";
+            // 
+            // guna2TileButton1
+            // 
+            this.guna2TileButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2TileButton1.BorderColor = System.Drawing.Color.Transparent;
+            this.guna2TileButton1.BorderRadius = 10;
+            this.guna2TileButton1.BorderThickness = 2;
+            this.guna2TileButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.guna2TileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2TileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2TileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2TileButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2TileButton1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TileButton1.ForeColor = System.Drawing.Color.Black;
+            this.guna2TileButton1.HoverState.BorderColor = System.Drawing.Color.Silver;
+            this.guna2TileButton1.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.guna2TileButton1.Image = global::YamyProject.Properties.Resources.attachN;
+            this.guna2TileButton1.Location = new System.Drawing.Point(778, 5);
+            this.guna2TileButton1.Name = "guna2TileButton1";
+            this.guna2TileButton1.Size = new System.Drawing.Size(54, 47);
+            this.guna2TileButton1.TabIndex = 239;
+            this.guna2TileButton1.Text = "Attach File";
+            this.guna2TileButton1.Click += new System.EventHandler(this.guna2TileButton1_Click);
             // 
             // txtId
             // 
@@ -1325,6 +1352,10 @@ namespace YamyProject
             this.nameslistView.Click += new System.EventHandler(this.nameslistView_Click);
             this.nameslistView.Leave += new System.EventHandler(this.nameslistView_Leave);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmViewPettyCashVoucher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1437,5 +1468,7 @@ namespace YamyProject
         private DataGridViewTextBoxColumn Amount;
         private DataGridViewTextBoxColumn colNote;
         private TextBox txtId;
+        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private OpenFileDialog openFileDialog1;
     }
 }

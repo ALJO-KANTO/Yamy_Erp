@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -36,6 +37,10 @@ namespace YamyProject
                 dgvEmployees.Columns["Employee Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             
             LocalizationManager.LocalizeDataGridViewHeaders(dgvEmployees);
+            if (dt != null)
+            {
+                AddViewDocImageColumn();
+            }
         }
 
         bool EnableApproval = false;
@@ -62,6 +67,8 @@ namespace YamyProject
 
             BindEmployees();
             dgvInvoice.ColumnHeadersVisible = false;
+            AppTheme.DefaultFont(dgvInvoice);
+            AppTheme.DefaultFont(dgvInvoiceCash);
         }
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -69,41 +76,61 @@ namespace YamyProject
             if (e.RowIndex >= 0)
             {
                 string empCode = dgvEmployees.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                BindEmployeePettyCash(empCode);
+                string empId = dgvEmployees.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                BindEmployeePettyCash(empId);
                 BindEmployeePettyCashTransaction(empCode);
             }   
         }
 
-        private void BindEmployeePettyCash(string empCode)
+        private void BindEmployeePettyCash(string empId)
         {
             dgvInvoiceCash.DataSource = null;
             dgvInvoiceCash.ColumnHeadersVisible = true;
+
+            dgvInvoiceCash.EnableHeadersVisualStyles = false;
             if (!EnableApproval)
             {
                 dgvInvoiceCash.DataSource = null;
                 dgvInvoiceCash.ColumnHeadersVisible = true;
 
                 dgvInvoiceCash.Rows.Clear();
+                //string query = @"
+                //                SELECT 
+                //                d.id,
+                //                d.date AS `Date`,
+                //                ps.code,
+                //                coa.name AS `Account`,
+                //                d.total AS `Total With VAT`,
+                //                cat.name AS `Category`,
+                //                d.note
+                //                FROM 
+                //                tbl_petty_cash_submition_details d
+                //                INNER JOIN 
+                //                tbl_petty_cash_submition ps ON d.petty_id = ps.id
+                //                INNER JOIN 
+                //                tbl_employee e ON ps.name = e.id
+                //                INNER JOIN tbl_petty_cash_category cat ON d.category = cat.id
+                //                INNER JOIN tbl_coa_level_4 coa ON d.account_id = coa.id
+                //                WHERE e.code = @empCode;";
+
                 string query = @"
                                 SELECT 
-                                d.id,
-                                d.date AS `Date`,
-                                ps.code,
-                                coa.name AS `Account`,
-                                d.total AS `Total With VAT`,
-                                cat.name AS `Category`,
-                                d.note
-                                FROM 
-                                tbl_petty_cash_submition_details d
-                                INNER JOIN 
-                                tbl_petty_cash_submition ps ON d.petty_id = ps.id
-                                INNER JOIN 
-                                tbl_employee e ON ps.name = e.id
-                                INNER JOIN tbl_petty_cash_category cat ON d.category = cat.id
-                                INNER JOIN tbl_coa_level_4 coa ON d.account_id = coa.id
-                                WHERE e.code = @empCode;";
+                                pc.Id,
+                                pc.voucher_date AS `Date`,
+                                pc.Code,
+                                ac.name AS `Account`,
+                                pc.Total as `Total With VAT`,
+                                pc.Notes,
+                                CASE 
+                                    WHEN pc.`status` = 0 THEN 'Pending' 
+                                    ELSE 'Confirmed' 
+                                END AS Status
+                                FROM tbl_petty_cash pc
+                                LEFT JOIN tbl_coa_level_4 ac ON pc.cash_account_id = ac.id
+                                WHERE pc.employee_id = @empId;
+                                ";
 
-                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
+                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empId", empId));
                 dgvInvoiceCash.DataSource = dt;
 
                 if (dt.Rows.Count == 0)
@@ -113,10 +140,10 @@ namespace YamyProject
                 }
 
                 dgvInvoiceCash.Columns["Date"].HeaderText = "Submission Date";
-                dgvInvoiceCash.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                dgvInvoiceCash.Columns["Date"].DefaultCellStyle.Format = "dd-MM-yyyy";
 
                 dgvInvoiceCash.Columns["Account"].HeaderText = "Account";
-                dgvInvoiceCash.Columns["Category"].HeaderText = "Category";
+                //dgvInvoiceCash.Columns["Category"].HeaderText = "Category";
                 //dgvInvoiceCash.Columns["Cost Center"].HeaderText = "Cost Center";
                 //dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Format = "N2";
                 //dgvInvoiceCash.Columns["VAT"].DefaultCellStyle.Format = "N2";
@@ -125,9 +152,8 @@ namespace YamyProject
 
                 dgvInvoiceCash.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvInvoiceCash.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
-                dgvInvoiceCash.DefaultCellStyle.Font = new Font("Times New Roman", 9);
-                dgvInvoiceCash.EnableHeadersVisualStyles = false;
+                //dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+                //dgvInvoiceCash.DefaultCellStyle.Font = new Font("Times New Roman", 9);
                 dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoiceCash);
@@ -146,8 +172,8 @@ namespace YamyProject
                             tbl_petty_cash_card c ON p.employee_id = c.name
                             INNER JOIN 
                             tbl_employee e ON e.id = p.employee_id
-                            WHERE e.code = @empCode;";
-                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
+                            WHERE e.id = @empId ORDER BY p.id;";
+                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empId", empId));
                 dgvInvoiceCash.DataSource = dt;
                 if (dt.Rows.Count == 0)
                 {
@@ -155,14 +181,13 @@ namespace YamyProject
                     return;
                 }
 
-                dgvInvoiceCash.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                dgvInvoiceCash.Columns["Date"].DefaultCellStyle.Format = "dd-MM-yyyy";
                 dgvInvoiceCash.Columns["Total"].DefaultCellStyle.Format = "N2";
                 dgvInvoiceCash.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvInvoiceCash.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvInvoiceCash.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
-                dgvInvoiceCash.DefaultCellStyle.Font = new Font("Times New Roman", 9);
-                dgvInvoiceCash.EnableHeadersVisualStyles = false;
+                //dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+                //dgvInvoiceCash.DefaultCellStyle.Font = new Font("Times New Roman", 9);
                 dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoiceCash);
@@ -173,64 +198,64 @@ namespace YamyProject
         {
             dgvInvoice.DataSource = null;
             dgvInvoice.ColumnHeadersVisible = true;
-            if (!EnableApproval)
-            {
-                dgvInvoice.Rows.Clear();
-                string query = @"
-                            SELECT 
-                            d.id,
-                            d.date AS `Date`,
-                            ps.code,
-                            coa.name AS `Account`,
-                            d.total AS `Total With VAT`,
-                            cat.name AS `Category`,
-                            d.note
-                            FROM 
-                            tbl_petty_cash_submition_details d
-                            INNER JOIN 
-                            tbl_petty_cash_submition ps ON d.petty_id = ps.id
-                            INNER JOIN 
-                            tbl_employee e ON ps.name = e.id
-                            INNER JOIN tbl_petty_cash_category cat ON d.category = cat.id
-                            INNER JOIN tbl_coa_level_4 coa ON d.account_id = coa.id
-                            WHERE e.code = @empCode;";
+            dgvInvoice.EnableHeadersVisualStyles = false;
+            //if (!EnableApproval)
+            //{
+            //    dgvInvoice.Rows.Clear();
+            //    string query = @"
+            //                SELECT 
+            //                d.id,
+            //                d.date AS `Date`,
+            //                ps.code,
+            //                coa.name AS `Account`,
+            //                d.total AS `Total With VAT`,
+            //                cat.name AS `Category`,
+            //                d.note
+            //                FROM 
+            //                tbl_petty_cash_submition_details d
+            //                INNER JOIN 
+            //                tbl_petty_cash_submition ps ON d.petty_id = ps.id
+            //                INNER JOIN 
+            //                tbl_employee e ON ps.name = e.id
+            //                INNER JOIN tbl_petty_cash_category cat ON d.category = cat.id
+            //                INNER JOIN tbl_coa_level_4 coa ON d.account_id = coa.id
+            //                WHERE e.code = @empCode;";
 
-                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
-                dgvInvoice.DataSource = dt;
+            //    DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
+            //    dgvInvoice.DataSource = dt;
 
-                if (dt.Rows.Count == 0)
-                {
-                    dgvInvoice.ColumnHeadersVisible = false;
-                    return;
-                }
+            //    if (dt.Rows.Count == 0)
+            //    {
+            //        dgvInvoice.ColumnHeadersVisible = false;
+            //        return;
+            //    }
 
-                dgvInvoice.Columns["Date"].HeaderText = "Submission Date";
-                dgvInvoice.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            //    dgvInvoice.Columns["Date"].HeaderText = "Submission Date";
+            //    dgvInvoice.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
 
-                dgvInvoice.Columns["Account"].HeaderText = "Account";
-                dgvInvoice.Columns["Category"].HeaderText = "Category";
-                //dgvInvoice.Columns["Cost Center"].HeaderText = "Cost Center";
+            //    dgvInvoice.Columns["Account"].HeaderText = "Account";
+            //    dgvInvoice.Columns["Category"].HeaderText = "Category";
+            //    //dgvInvoice.Columns["Cost Center"].HeaderText = "Cost Center";
 
-                //dgvInvoice.Columns["Amount"].DefaultCellStyle.Format = "N2";
-                //dgvInvoice.Columns["VAT"].DefaultCellStyle.Format = "N2";
-                dgvInvoice.Columns["Total With VAT"].DefaultCellStyle.Format = "N2";
-                dgvInvoiceCash.Columns["Total With VAT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //    //dgvInvoice.Columns["Amount"].DefaultCellStyle.Format = "N2";
+            //    //dgvInvoice.Columns["VAT"].DefaultCellStyle.Format = "N2";
+            //    dgvInvoice.Columns["Total With VAT"].DefaultCellStyle.Format = "N2";
+            //    dgvInvoiceCash.Columns["Total With VAT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                dgvInvoice.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
-                dgvInvoice.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
-                dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
-                dgvInvoice.EnableHeadersVisualStyles = false; 
-                dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
-            }
-            else
-            {
-                dgvInvoice.Rows.Clear();
+            //    dgvInvoice.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+            //    dgvInvoice.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            //    dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+            //    dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
+            //    dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //    LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
+            //}
+            //else
+            //{
+            dgvInvoice.Rows.Clear();
                 dgvInvoice.Columns.Clear();
 
                 // Define columns
-                dgvInvoice.Columns.Add("id", "ID");
+                dgvInvoice.Columns.Add("id", "Id");
                 dgvInvoice.Columns["id"].Visible = false;
 
                 dgvInvoice.Columns.Add("SN", "SN#");
@@ -243,8 +268,8 @@ namespace YamyProject
                 dgvInvoice.Columns.Add("Credit", "Credit");
                 dgvInvoice.Columns.Add("Balance", "Balance");
 
-                // Format numeric columns
-                dgvInvoice.Columns["Debit"].DefaultCellStyle.Format = "N2";
+            // Format numeric columns
+            dgvInvoice.Columns["Debit"].DefaultCellStyle.Format = "N2";
                 dgvInvoice.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvInvoice.Columns["Credit"].DefaultCellStyle.Format = "N2";
                 dgvInvoice.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -289,7 +314,7 @@ namespace YamyProject
                 {
                     decimal debit = row["Debit"] != DBNull.Value ? Convert.ToDecimal(row["Debit"]) : 0;
                     decimal credit = row["Credit"] != DBNull.Value ? Convert.ToDecimal(row["Credit"]) : 0;
-                    balance += credit - debit;
+                balance += debit - credit;
 
                     dgvInvoice.Rows.Add(
                         row["id"],
@@ -308,14 +333,13 @@ namespace YamyProject
                 // Styling
                 dgvInvoice.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvInvoice.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
-                dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
-                dgvInvoice.EnableHeadersVisualStyles = false;
+                //dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+                //dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
 
                 dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 //LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
-            }
+            //}
         }
 
         private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -575,7 +599,7 @@ namespace YamyProject
             }
         }
 
-        private void dgvInvoiceCash_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dgvInvoiceCash_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex >= 0)
             {
@@ -583,19 +607,67 @@ namespace YamyProject
                 if (cell != null && cell.Value != null)
                 {
                     int submissionId = Convert.ToInt32(cell.Value);
-                    if (!EnableApproval)
-                    {
-                        frmLogin.frmMain.openChildForm(new frmPettyCashSubmission(submissionId));
-                    }
-                    else
-                    {
+                    //if (!EnableApproval)
+                    //{
+                    //    frmLogin.frmMain.openChildForm(new frmPettyCashSubmission(submissionId));
+                    //}
+                    //else
+                    //{
                         frmLogin.frmMain.openChildForm(new frmViewPettyCashVoucher(submissionId));
-                    }
+                    //}
                 }
                 else
                 {
                     MessageBox.Show("Invalid or missing ID.");
                 }
+            }
+        }
+
+        private void dgvInvoiceCash_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgvInvoiceCash.Columns.Contains("ViewDoc"))
+            {
+                SetViewDocIcons();
+            }
+        }
+        System.Drawing.Image enabledIcon = Properties.Resources.doc_icon;   // regular icon
+        System.Drawing.Image disabledIcon = null; // or Properties.Resources.doc_icon_disabled
+
+        private void SetViewDocIcons()
+        {
+            foreach (DataGridViewRow row in dgvInvoiceCash.Rows)
+            {
+                int purchaseId = Convert.ToInt32(row.Cells["id"].Value);
+
+                bool hasAttachment = AttachmentManager.HasAttachment(purchaseId, "PETTY CASH");
+                // You need a function to check if an invoice has attachments
+                row.Cells["ViewDoc"].Value = hasAttachment ? enabledIcon : disabledIcon;
+            }
+        }
+
+        private void AddViewDocImageColumn()
+        {
+            if (!dgvInvoiceCash.Columns.Contains("ViewDoc"))
+            {
+                DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
+                imgColumn.Name = "ViewDoc";
+                imgColumn.HeaderText = "View Doc";
+                //imgColumn.Image = Properties.Resources.doc_icon; // <-- your image here
+                imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom; // fit nicely
+                dgvInvoiceCash.Columns.Add(imgColumn);
+            }
+        }
+
+        private void dgvInvoiceCash_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dgvInvoiceCash.Columns[e.ColumnIndex].Name == "ViewDoc")
+            {
+                var cell = dgvInvoiceCash.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value == null) return; // no attachment, do nothing
+
+                int purchaseId = Convert.ToInt32(dgvInvoiceCash.Rows[e.RowIndex].Cells["id"].Value);
+                AttachmentManager.OpenAttachmentByType(purchaseId, "PETTY CASH");
             }
         }
     }

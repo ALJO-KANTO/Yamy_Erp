@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -23,6 +24,11 @@ namespace YamyProject
         }
         private void MasterBankReconciliation_Load(object sender, EventArgs e)
         {
+            AppTheme.DefaultFont(dgv_transactions);
+            AppTheme.DefaultFont(dgv_book);
+            AppTheme.DefaultFont(dgv_reconsolation);
+            AppTheme.DefaultFont(dgv_bank_statement);
+
             BindCombos.PopulateAllLevel4Account(cmbBankName);
             loadBankBalance();
             loadData();
