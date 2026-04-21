@@ -89,7 +89,7 @@ namespace YamyProject
 
             if (id > 0 && tenderId > 0 && int.Parse(dgvResource.CurrentRow.Cells["ResourceId"].Value.ToString()) > 0)
             {
-                new frmProjectResource(this, int.Parse(dgvResource.CurrentRow.Cells["ResourceId"].Value.ToString()), tenderId, planningId).ShowDialog();
+                new frmProjectResource(this, int.Parse(dgvResource.CurrentRow.Cells["ResourceId"].Value.ToString())).ShowDialog();
             }
         }
 
@@ -114,7 +114,7 @@ namespace YamyProject
 
         private void btnAddResource_Click(object sender, EventArgs e)
         {
-            new frmProjectResource(this, 0, 0, 0).ShowDialog();
+            new frmProjectResource(this, 0).ShowDialog();
         }
     }
 }

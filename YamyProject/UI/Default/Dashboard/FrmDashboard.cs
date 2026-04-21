@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using YamyProject.Domain.Models;
+using YamyProject.Localization;
 
 namespace YamyProject.UI.Default.Dashboard
 {
@@ -27,6 +28,7 @@ namespace YamyProject.UI.Default.Dashboard
             model = new DashboardModel();
             LoadData();
             headerUC1.FormText = this.Text;
+            LocalizationManager.LocalizeForm(this);
         }
 
         #endregion Constructor

@@ -36,7 +36,9 @@ namespace YamyProject
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtVat = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtAmount = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTotal = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.txtAmountInWord = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -51,16 +53,6 @@ namespace YamyProject
             this.dtOpen = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvInv = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.humId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostCenter = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -112,6 +104,19 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameslistView = new System.Windows.Forms.ListView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.humId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostCenter = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vat = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.VatP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.txtcostcenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).BeginInit();
@@ -124,7 +129,9 @@ namespace YamyProject
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.txtVat);
             this.panel1.Controls.Add(this.txtAmount);
+            this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.guna2Button3);
             this.panel1.Controls.Add(this.txtAmountInWord);
             this.panel1.Controls.Add(this.btnClose);
@@ -135,6 +142,31 @@ namespace YamyProject
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1045, 33);
             this.panel1.TabIndex = 2;
+            // 
+            // txtVat
+            // 
+            this.txtVat.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtVat.BorderRadius = 5;
+            this.txtVat.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtVat.DefaultText = "";
+            this.txtVat.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtVat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtVat.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVat.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVat.ForeColor = System.Drawing.Color.Black;
+            this.txtVat.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVat.Location = new System.Drawing.Point(522, 16);
+            this.txtVat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtVat.Name = "txtVat";
+            this.txtVat.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtVat.PlaceholderText = "Total";
+            this.txtVat.SelectedText = "";
+            this.txtVat.Size = new System.Drawing.Size(1, 1);
+            this.txtVat.TabIndex = 29;
+            this.txtVat.Visible = false;
             // 
             // txtAmount
             // 
@@ -151,15 +183,40 @@ namespace YamyProject
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
             this.txtAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAmount.Location = new System.Drawing.Point(4, 4);
+            this.txtAmount.Location = new System.Drawing.Point(446, 4);
             this.txtAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtAmount.PlaceholderText = "Amount";
+            this.txtAmount.PlaceholderText = "Total";
             this.txtAmount.SelectedText = "";
-            this.txtAmount.Size = new System.Drawing.Size(152, 25);
-            this.txtAmount.TabIndex = 27;
-            this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
+            this.txtAmount.Size = new System.Drawing.Size(1, 1);
+            this.txtAmount.TabIndex = 28;
+            this.txtAmount.Visible = false;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtTotal.BorderRadius = 5;
+            this.txtTotal.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTotal.DefaultText = "";
+            this.txtTotal.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTotal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTotal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTotal.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTotal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.ForeColor = System.Drawing.Color.Black;
+            this.txtTotal.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTotal.Location = new System.Drawing.Point(4, 4);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtTotal.PlaceholderText = "Total";
+            this.txtTotal.SelectedText = "";
+            this.txtTotal.Size = new System.Drawing.Size(152, 25);
+            this.txtTotal.TabIndex = 27;
+            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // guna2Button3
             // 
@@ -428,6 +485,9 @@ namespace YamyProject
             this.CostCenter,
             this.Description,
             this.Amount,
+            this.vat,
+            this.VatP,
+            this.total,
             this.colNote});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -479,78 +539,6 @@ namespace YamyProject
             this.dgvInv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInv_CellContentClick);
             this.dgvInv.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInv_CellValueChanged);
             this.dgvInv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvInv_EditingControlShowing);
-            // 
-            // no
-            // 
-            this.no.HeaderText = "No";
-            this.no.MinimumWidth = 6;
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 45;
-            // 
-            // colDate
-            // 
-            this.colDate.HeaderText = "Date";
-            this.colDate.Name = "colDate";
-            this.colDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDate.Width = 70;
-            // 
-            // invId
-            // 
-            this.invId.HeaderText = "Ref";
-            this.invId.MinimumWidth = 6;
-            this.invId.Name = "invId";
-            this.invId.Width = 75;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // type
-            // 
-            this.type.HeaderText = "Type";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // humId
-            // 
-            this.humId.HeaderText = "humId";
-            this.humId.Name = "humId";
-            this.humId.ReadOnly = true;
-            this.humId.Visible = false;
-            // 
-            // CostCenter
-            // 
-            this.CostCenter.HeaderText = "Project";
-            this.CostCenter.MinimumWidth = 6;
-            this.CostCenter.Name = "CostCenter";
-            this.CostCenter.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CostCenter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CostCenter.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.MinimumWidth = 6;
-            this.Amount.Name = "Amount";
-            this.Amount.Width = 125;
-            // 
-            // colNote
-            // 
-            this.colNote.HeaderText = "Note";
-            this.colNote.Name = "colNote";
             // 
             // headerUC1
             // 
@@ -1356,6 +1344,94 @@ namespace YamyProject
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // no
+            // 
+            this.no.HeaderText = "No";
+            this.no.MinimumWidth = 6;
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 45;
+            // 
+            // colDate
+            // 
+            this.colDate.HeaderText = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDate.Width = 70;
+            // 
+            // invId
+            // 
+            this.invId.HeaderText = "Ref";
+            this.invId.MinimumWidth = 6;
+            this.invId.Name = "invId";
+            this.invId.Width = 75;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // type
+            // 
+            this.type.HeaderText = "Type";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // humId
+            // 
+            this.humId.HeaderText = "humId";
+            this.humId.Name = "humId";
+            this.humId.ReadOnly = true;
+            this.humId.Visible = false;
+            // 
+            // CostCenter
+            // 
+            this.CostCenter.HeaderText = "Project";
+            this.CostCenter.MinimumWidth = 6;
+            this.CostCenter.Name = "CostCenter";
+            this.CostCenter.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CostCenter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CostCenter.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            this.Amount.Width = 125;
+            // 
+            // vat
+            // 
+            this.vat.HeaderText = "vat";
+            this.vat.Name = "vat";
+            // 
+            // VatP
+            // 
+            this.VatP.HeaderText = "~";
+            this.VatP.Name = "VatP";
+            this.VatP.ReadOnly = true;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            // 
+            // colNote
+            // 
+            this.colNote.HeaderText = "Note";
+            this.colNote.Name = "colNote";
+            // 
             // frmViewPettyCashVoucher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1397,7 +1473,7 @@ namespace YamyProject
         private Guna.UI2.WinForms.Guna2GroupBox txtcostcenter;
         private System.Windows.Forms.DateTimePicker dtOpen;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox txtAmount;
+        private Guna.UI2.WinForms.Guna2TextBox txtTotal;
         private Guna.UI2.WinForms.Guna2TextBox txtAmountInWord;
         private Guna.UI2.WinForms.Guna2DataGridView dgvInv;
         private HeaderUC headerUC1;
@@ -1457,6 +1533,11 @@ namespace YamyProject
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button BtnJournal;
         private System.Windows.Forms.ListView nameslistView;
+        private TextBox txtId;
+        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private OpenFileDialog openFileDialog1;
+        private Guna.UI2.WinForms.Guna2TextBox txtAmount;
+        private Guna.UI2.WinForms.Guna2TextBox txtVat;
         private DataGridViewTextBoxColumn no;
         private DataGridViewTextBoxColumn colDate;
         private DataGridViewTextBoxColumn invId;
@@ -1466,9 +1547,9 @@ namespace YamyProject
         private DataGridViewComboBoxColumn CostCenter;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Amount;
+        private DataGridViewComboBoxColumn vat;
+        private DataGridViewTextBoxColumn VatP;
+        private DataGridViewTextBoxColumn total;
         private DataGridViewTextBoxColumn colNote;
-        private TextBox txtId;
-        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
-        private OpenFileDialog openFileDialog1;
     }
 }

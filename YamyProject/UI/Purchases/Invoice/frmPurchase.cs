@@ -32,7 +32,7 @@ namespace YamyProject
         bool EnableBarcode = false;
         string typed = "";
 
-        public frmPurchase(int _id = 0, string _PO = "", int _vendorId = 0)
+        public frmPurchase(int _id = 0, string _PO = "", int _vendorId = 0,bool _isSubcontractor = false)
         {
             InitializeComponent();
             dgvItems.EnableHeadersVisualStyles = false; // important
@@ -60,6 +60,11 @@ namespace YamyProject
             }
             this.defaultVendorId = _vendorId;
             headerUC1.FormText = this.Text;
+            if(_isSubcontractor)
+            {
+                CbSubcontractors.Checked = true;
+                typed = "Subcontractor";
+            }
         }
 
         private void frmPurchase_FormClosing(object sender, FormClosingEventArgs e)
@@ -428,7 +433,7 @@ namespace YamyProject
             BindCombos.PopulateVendors(cmbVendor);
             BindCombos.PopulateAllLevel4Account(cmbAccountCashName);
             BindCombos.PopulateFixedAssetsCategories(cmbFixedAssetCategory);
-            var defaultAccounts = BindCombos.LoadDefaultAccounts();
+            var defaultAccounts = BindCombos.DefaultAccounts();
 
             cmbAccountCashName.SelectedValue = defaultAccounts.ContainsKey("Purchase Payment Cash Method")
                 ? defaultAccounts["Purchase Payment Cash Method"] : 0;

@@ -92,7 +92,6 @@ namespace YamyProject
                     cmbProject.SelectedValue = reader["project_id"].ToString();
                     cmbAccountName.SelectedValue = reader["account_id"].ToString();
                     cmbTenderName.SelectedValue = reader["tender_name_id"].ToString();
-                    cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
                     dtsd.Value = DateTime.Parse(reader["submission_date"].ToString());
                     var fees = reader["fees"];
 
@@ -192,36 +191,12 @@ namespace YamyProject
                 }
             }
         }
-        private void LoaddgvItems()
-        {
-            dgvItems.Rows.Clear();
-            string condition = "";
-            if (id == 0)
-            {
-                condition = " and type='13 - Inventory Assembly'";
-            }
-                DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items_boq_details where warehouse_id=@id and state = 0 and  active = 0" + condition,
-                                DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
-            DataGridViewComboBoxColumn cmbItemName = (DataGridViewComboBoxColumn)dgvItems.Columns["name"];
-            cmbItemName.DataSource = dt;
-            cmbItemName.DisplayMember = "name";
-            cmbItemName.ValueMember = "code";
-            DataRow newRow = dt.NewRow();
-            newRow["code"] = 0;
-            newRow["name"] = "<< Add Assembly Item >>";
-            dt.Rows.InsertAt(newRow, 0);
-            dt = DBClass.ExecuteDataTable("select id, name from tbl_unit");
-            DataGridViewComboBoxColumn cmbUnit = (DataGridViewComboBoxColumn)dgvItems.Columns["unit"];
-            cmbUnit.DataSource = dt;
-            cmbUnit.DisplayMember = "name";
-            cmbUnit.ValueMember = "id";
-        }
+        
         public void BindCombo()
         {
             BindCombos.PopulateProjects(cmbProject);
             BindCombos.PopulateAllLevel4Account(cmbAccountName);
             BindCombos.PopulateTenderNames(cmbTenderName);
-            BindCombos.PopulateWarehouse(cmbWarehouse);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -254,7 +229,7 @@ namespace YamyProject
                DBClass.CreateParameter("date", dtpt.Value.Date),
                DBClass.CreateParameter("submissionDate", dtsd.Value.Date),
                DBClass.CreateParameter("projectId", cmbProject.SelectedValue),
-               DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
+               DBClass.CreateParameter("warehouse_id", 0),
                DBClass.CreateParameter("account_id", cmbAccountName.SelectedValue),
                DBClass.CreateParameter("tenderNameId", cmbTenderName.SelectedValue),
                DBClass.CreateParameter("fees", txtFees.Text),
@@ -294,7 +269,7 @@ namespace YamyProject
             DBClass.CreateParameter("fees", txtFees.Text),
             DBClass.CreateParameter("submissionDate", dtsd.Value.Date),
             DBClass.CreateParameter("description", txtDescription.Text),
-            DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
+            DBClass.CreateParameter("warehouse_id", 0),
             DBClass.CreateParameter("created_by", frmLogin.userId),
             DBClass.CreateParameter("created_date", DateTime.Now.Date)).ToString());
 
@@ -395,19 +370,6 @@ namespace YamyProject
                 }
             }
         }
-        //private void insertItemTransaction(decimal qty,DateTime dated,decimal cost, string pId, string itemId)
-        //{
-        //    CommonInsert.InsertItemTransaction(dtpt.Value.Date, "Project Tender", pId.ToString(), itemId.ToString(), cost.ToString(),
-        //        qty.ToString(), "0", "0", qty.ToString(), "Project Opening Balance", "0");
-        //}
-        //private void insertItemJournal(decimal qty, DateTime dated, string itemCode, decimal cost,decimal totalValue, string pId)
-        //{
-        //    totalValue = qty * cost;
-        //    CommonInsert.InsertTransactionEntry(dated.Date, BindCombos.SelectDefaultLevelAccount("Inventory").ToString(), totalValue.ToString(), "0",
-        //        pId.ToString(), pId.ToString(), "Project Tender", "Project Opening Balance - Item Code - " + itemCode, frmLogin.userId, DateTime.Now.Date);
-        //    CommonInsert.InsertTransactionEntry(dated.Date, BindCombos.SelectDefaultLevelAccount("Opening Balance Equity").ToString(), "0", totalValue.ToString(),
-        //            pId.ToString(), "0", "Project Tender", "Project Opening Balance Equity - Item Code - " + itemCode, frmLogin.userId, DateTime.Now.Date);
-        //}
 
         private bool chkRequiredDate()
         {
@@ -421,12 +383,6 @@ namespace YamyProject
             {
                 MessageBox.Show("Tender must be selected.");
                 cmbTenderName.Focus();
-                return false;
-            }
-            if (cmbWarehouse.SelectedValue == null)
-            {
-                MessageBox.Show("Warehouse must be selected.");
-                cmbWarehouse.Focus();
                 return false;
             }
             if (dgvImportedItem.Rows.Count == 1)
@@ -613,8 +569,8 @@ namespace YamyProject
                             assemblyForm.FormClosedWithResult += AssemblyForm_FormClosedWithResult;
                             assemblyForm.ShowDialog();
 
-                            DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items_boq_details where warehouse_id=@id and state = 0 and active = 0",
-                                                            DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
+                            DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items_boq_details where state = 0 and active = 0",
+                                                            DBClass.CreateParameter("id", 1));
                             DataGridViewComboBoxColumn name = (DataGridViewComboBoxColumn)dgvItems.Columns["name"];
                             DataRow newRow = dt.NewRow();
                             newRow["code"] = 0;
@@ -803,17 +759,17 @@ namespace YamyProject
             {
                 reader = DBClass.ExecuteReader(@"SELECT *
                   FROM tbl_items_boq_details 
-                  WHERE code = @code AND  warehouse_id = @w",
+                  WHERE code = @code ",
                     DBClass.CreateParameter("code", dgvItems.CurrentRow.Cells["code"].Value.ToString()),
-                    DBClass.CreateParameter("w", cmbWarehouse.SelectedValue.ToString()));
+                    DBClass.CreateParameter("w", 0));
             }
             else if (type == "combo" && comboBox.SelectedValue != null)
             {
                 string selectedItemCode = comboBox.SelectedValue.ToString();
                 reader = DBClass.ExecuteReader(@"SELECT tbl_items_boq_details.id,method,type,code,sales_price,unit_id 
                   FROM tbl_items_boq_details 
-                  WHERE warehouse_id = @id  and code = @code",
-                    DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()),
+                  WHERE code = @code",
+                    DBClass.CreateParameter("id", 0),
                     DBClass.CreateParameter("code", selectedItemCode));
             }
 
@@ -876,10 +832,6 @@ namespace YamyProject
             dgvItems.Rows[e.RowIndex].Cells[1].Value = (e.RowIndex + 1).ToString();
         }
 
-        private void cmbWarehouse_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoaddgvItems();
-        }
 
         private void txtFees_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1019,234 +971,160 @@ namespace YamyProject
 
         private void btn_import_excel_Click(object sender, EventArgs e)
         {
-            
+            if (chkCustomizedFile.Checked)
+            {
                 // Show dialog and pass headers
                 var columnSelectForm = new frmBoqImport();
-            if (columnSelectForm.ShowDialog() == DialogResult.OK)
-            {
-                // Existing setup
-                DataTable table = columnSelectForm.dataTable;
-                dgvImportedItem.Columns.Clear();
-                dgvImportedItem.DataSource = null;
-                dgvImportedItem.DataSource = table;
-                isExported = true;
-                dgvItems.Visible = false;
-                dgvImportedItem.Visible = true;
-
-                // Adjust column widths
-                foreach (DataGridViewColumn column in dgvImportedItem.Columns)
+                if (columnSelectForm.ShowDialog() == DialogResult.OK)
                 {
-                    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" ||
-                        column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                    // Existing setup
+                    DataTable table = columnSelectForm.dataTable;
+                    dgvImportedItem.Columns.Clear();
+                    dgvImportedItem.DataSource = null;
+                    dgvImportedItem.DataSource = table;
+                    isExported = true;
+                    dgvItems.Visible = false;
+                    dgvImportedItem.Visible = true;
+
+                    // Adjust column widths
+                    foreach (DataGridViewColumn column in dgvImportedItem.Columns)
                     {
-                        column.Width = 550;
+                        if (column.HeaderText == "Description of work" || column.HeaderText == "Description" ||
+                            column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                        {
+                            column.Width = 550;
+                        }
+                        else
+                        {
+                            column.Width = 200;
+                        }
                     }
-                    else
+
+                    foreach (DataGridViewRow row in dgvImportedItem.Rows)
                     {
-                        column.Width = 200;
+                        if (row.IsNewRow) continue;
+                        var srValue = row.Cells["Sr."].Value?.ToString().Trim();
+                        if (!string.IsNullOrEmpty(srValue) && Regex.IsMatch(srValue, @"^[A-Za-z]+$"))
+                        {
+                            row.DefaultCellStyle.Font = new Font(dgvImportedItem.Font, FontStyle.Bold);
+                        }
                     }
                 }
-
-                //// Add the "BoM" link column after "Description"
-                //string descriptionColumnName = null;
-                //foreach (DataGridViewColumn column in dgvImportedItem.Columns)
-                //{
-                //    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" ||
-                //        column.HeaderText == "Description of items" || column.HeaderText == "Item")
-                //    {
-                //        descriptionColumnName = column.Name;
-                //        break;
-                //    }
-                //}
-
-                //if (descriptionColumnName != null)
-                //{
-                //    // Create the new link column
-                //    DataGridViewLinkColumn bomLinkColumn = new DataGridViewLinkColumn();
-                //    bomLinkColumn.HeaderText = "View";
-                //    bomLinkColumn.Name = "BoM";
-                //    bomLinkColumn.Text = "BoM";
-                //    bomLinkColumn.UseColumnTextForLinkValue = true;
-
-                //    // Insert it right after the description column
-                //    int insertIndex = dgvImportedItem.Columns[descriptionColumnName].DisplayIndex + 1;
-                //    dgvImportedItem.Columns.Insert(insertIndex, bomLinkColumn);
-                //}
-
-                // Make rows with alphabetic "Sr." bold
-                foreach (DataGridViewRow row in dgvImportedItem.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    var srValue = row.Cells["Sr."].Value?.ToString().Trim();
-                    if (!string.IsNullOrEmpty(srValue) && Regex.IsMatch(srValue, @"^[A-Za-z]+$"))
-                    {
-                        row.DefaultCellStyle.Font = new Font(dgvImportedItem.Font, FontStyle.Bold);
-                    }
-                }
-
-                // Handle click event for "BoM" link
-                //dgvImportedItem.CellContentClick += (s, e) =>
-                //{
-                //    if (e.RowIndex >= 0 && dgvImportedItem.Columns[e.ColumnIndex].Name == "BoM")
-                //    {
-                //        string description = dgvImportedItem.Rows[e.RowIndex].Cells[descriptionColumnName].Value?.ToString();
-                //        MessageBox.Show($"BoM details for: {description}", "BoM Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //};
-
-                //DataTable table = columnSelectForm.dataTable;
-                //dgvImportedItem.Columns.Clear();
-                //dgvImportedItem.DataSource = null;
-                //dgvImportedItem.DataSource = table;
-                //isExported = true;
-                //dgvItems.Visible = false;
-                //dgvImportedItem.Visible = true;
-                //foreach (DataGridViewColumn column in dgvImportedItem.Columns)
-                //{
-                //    if (column.HeaderText == "Description of work" || column.HeaderText == "Description" || column.HeaderText == "Description of items" || column.HeaderText == "Item")
-                //    {
-                //        column.Width = 550;
-                //    }
-                //    else
-                //    {
-                //        column.Width = 200;
-                //    }
-                //}
-                //foreach (DataGridViewRow row in dgvImportedItem.Rows)
-                //{
-                //    if (row.IsNewRow) continue;
-
-                //    var srValue = row.Cells["Sr."].Value?.ToString().Trim();
-
-                //    if (!string.IsNullOrEmpty(srValue) && Regex.IsMatch(srValue, @"^[A-Za-z]+$"))
-                //    {
-                //        row.DefaultCellStyle.Font = new Font(dgvImportedItem.Font, FontStyle.Bold);
-                //    }
-                //}
             }
-
+            else
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    LoadExcelSheets(filePath);
+                }
+            }
         }
         private void LoadExcelSheets(string filePath)
         {
-            //if (!File.Exists(filePath))
-            //{
-            //    MessageBox.Show("The selected file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("The selected file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            //// Load Excel using a library like EPPlus, ClosedXML, or Interop (assuming EPPlus here)
-            //using (var package = new ExcelPackage(new FileInfo(filePath)))
-            //{
-            //    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            //    var worksheet = package.Workbook.Worksheets[0]; // assuming first worksheet
+            using (OfficeOpenXml.ExcelPackage package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
+            {
+                dgvImportedItem.Columns.Clear();
+                dgvImportedItem.DataSource = null;
+                OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                foreach (var sheet in package.Workbook.Worksheets)
+                {
+                    if (sheet.Dimension != null)
+                    {
+                        DataTable dataTable = new DataTable(sheet.Name);
 
-            //    // Read headers from first row (row 1)
-            //    var headers = new Dictionary<string, string>(); // key: column letter, value: header text
+                        for (int col = 1; col <= sheet.Dimension.End.Column; col++)
+                        {
+                            string columnName = sheet.Cells[1, col].Text.Trim();
+                            if (string.IsNullOrWhiteSpace(columnName)) columnName = "Column " + col;
+                            dataTable.Columns.Add(columnName);
+                        }
 
-            //    for (int col = 1; col <= worksheet.Dimension.End.Column; col++)
-            //    {
-            //        string headerText = worksheet.Cells[1, col].Text;
-            //        string colLetter = ExcelCellAddress.GetColumnLetter(1); // e.g., 1 -> A
-            //        headers[colLetter] = headerText;
-            //    }
+                        for (int row = 2; row <= sheet.Dimension.End.Row; row++)
+                        {
+                            bool isRowEmpty = true;
+                            DataRow dataRow = dataTable.NewRow();
 
-            //    // Show dialog and pass headers
-            //    var columnSelectForm = new frmBoqImport(headers);
-            //    if (columnSelectForm.ShowDialog() == DialogResult.OK)
-            //    {
-            //        string snColumn = columnSelectForm.SelectedSnColumn;     // e.g., "A"
-            //        string nameColumn = columnSelectForm.SelectedNameColumn; // e.g., "B"
+                            for (int col = 1; col <= sheet.Dimension.End.Column; col++)
+                            {
+                                string cellValue = sheet.Cells[row, col].Text.Trim();
 
-            //        // Now you can use snColumn, nameColumn in your logic
-            //        MessageBox.Show($"Selected SN Column: {snColumn}, Name Column: {nameColumn}");
-            //    }
-            //}
-            //using (ExcelPackage package = new ExcelPackage(new FileInfo(filePath)))
-            //{
-            //    dgvImportedItem.Columns.Clear();
-            //    dgvImportedItem.DataSource = null;
-            //    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            //    foreach (var sheet in package.Workbook.Worksheets)
-            //    {
-            //        if (sheet.Dimension != null)
-            //        {
-            //            DataTable dataTable = new DataTable(sheet.Name);
+                                if (!string.IsNullOrWhiteSpace(cellValue))
+                                    isRowEmpty = false;
 
-            //            for (int col = 1; col <= sheet.Dimension.End.Column; col++)
-            //            {
-            //                string columnName = sheet.Cells[1, col].Text.Trim();
-            //                if (string.IsNullOrWhiteSpace(columnName)) columnName = "Column " + col;
-            //                dataTable.Columns.Add(columnName);
-            //            }
+                                dataRow[col - 1] = cellValue;
+                            }
 
-            //            for (int row = 2; row <= sheet.Dimension.End.Row; row++)
-            //            {
-            //                bool isRowEmpty = true;
-            //                DataRow dataRow = dataTable.NewRow();
+                            if (!isRowEmpty)
+                                dataTable.Rows.Add(dataRow);
+                        }
 
-            //                for (int col = 1; col <= sheet.Dimension.End.Column; col++)
-            //                {
-            //                    string cellValue = sheet.Cells[row, col].Text.Trim();
+                        RemoveEmptyColumns(dataTable);
 
-            //                    if (!string.IsNullOrWhiteSpace(cellValue))
-            //                        isRowEmpty = false;
+                        // Create DataTable
+                        DataTable table = new DataTable();
+                        table.Columns.Add("Sr.");
+                        table.Columns.Add("Description of work");
+                        table.Columns.Add("Qty");
+                        table.Columns.Add("Unit");
+                        table.Columns.Add("Length");
+                        table.Columns.Add("Width");
+                        table.Columns.Add("Thick");
+                        table.Columns.Add("Rate");
+                        table.Columns.Add("Amount");
+                        table.Columns.Add("Note");
+                        // Fill DataTable from cached Excel data
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            string sn = dataTable.Columns.Contains("Sr") ? row["Sr"].ToString() : "";
+                            string name = dataTable.Columns.Contains("Description") ? row["Description"].ToString() : "";
+                            string amount = dataTable.Columns.Contains("Amount") ? row["Amount"].ToString().Replace(",", "") : "";
+                            string qty = dataTable.Columns.Contains("Qty") ? row["Qty"].ToString().Replace(",", "") : "";
+                            string rate = dataTable.Columns.Contains("Rate") ? row["Rate"].ToString().Replace(",", "") : "";
+                            string unit = dataTable.Columns.Contains("Unit") ? row["Unit"].ToString() : "";
+                            string length = "0";
+                            string width = "0";
+                            string thickness = "0";
+                            string note = "";
 
-            //                    dataRow[col - 1] = cellValue;
-            //                }
+                            if (string.IsNullOrWhiteSpace(name))
+                                continue;
 
-            //                if (!isRowEmpty)
-            //                    dataTable.Rows.Add(dataRow);
-            //            }
+                            table.Rows.Add(sn, name, qty, unit, length, width, thickness, rate, amount, note);
+                            //table.Rows.Add(row);
+                        }
+                        dgvImportedItem.DataSource = table;
+                        isExported = true;
+                        dgvItems.Visible = false;
+                        dgvImportedItem.Visible = true;
+                        foreach (DataGridViewColumn column in dgvImportedItem.Columns)
+                        {
+                            if (column.HeaderText == "Description of work" || column.HeaderText == "Description" || column.HeaderText == "Description of items" || column.HeaderText == "Item")
+                            {
+                                column.Width = 550;
+                            }
+                            else
+                            {
+                                //column.Width = 200;
+                            }
+                        }
 
-            //            RemoveEmptyColumns(dataTable);
+                    }
+                }
 
-            //            //DataColumn checkBoxColumn = new DataColumn("Select", typeof(bool));
-            //            //dataTable.Columns.Add(checkBoxColumn);
-
-            //            dgvImportedItem.DataSource = dataTable;
-            //            isExported = true;
-            //            dgvItems.Visible = false;
-            //            dgvImportedItem.Visible = true;
-            //            //dgvImportedItem.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            //            //dgvImportedItem.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.Fill);
-
-            //            //dgvImportedItem.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
-            //            //dgvImportedItem.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            //            // Optionally, resize rows as well
-            //            //dgvImportedItem.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-            //            //dgvAttendance.Columns["Select"].ReadOnly = false;
-            //            //dgvAttendance.Columns["Select"].Width = 50;
-
-            //            //dgvAttendance.Columns["Select"].HeaderText = " ";
-            //            //dgvAttendance.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //            //AddCheckBoxHeader();
-            //            //cmbSheet.Items.Add(sheet.Name);
-            //            //if (dgvAttendance.Rows.Count == 0)
-            //            //    return;
-            //            //pnlData.Visible = true;
-            //            //lblCode.Text = dgvAttendance.Rows[0].Cells[0].Value.ToString();
-            //            //lblName.Text = dgvAttendance.Rows[0].Cells[1].Value.ToString();
-            //            foreach (DataGridViewColumn column in dgvImportedItem.Columns)
-            //            {
-            //                if (column.HeaderText == "Description of work"|| column.HeaderText == "Description"|| column.HeaderText == "Description of items"|| column.HeaderText == "Item")
-            //                {
-            //                    column.Width = 550;
-            //                }
-            //                else
-            //                {
-            //                    column.Width = 200;
-            //                }
-            //            }
-
-            //        }
-            //    }
-
-            //    //if (cmbSheet.Items.Count > 0)
-            //    //    cmbSheet.SelectedIndex = 0;
-            //    //else
-            //    //    MessageBox.Show("No sheets found in the Excel file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+                //if (cmbSheet.Items.Count > 0)
+                //    cmbSheet.SelectedIndex = 0;
+                //else
+                //    MessageBox.Show("No sheets found in the Excel file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void RemoveEmptyColumns(DataTable dt)
         {
@@ -1471,6 +1349,22 @@ namespace YamyProject
             //        OpenAssemblysOld();
             //    }
             //}
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            // save sample Excel file to desktop from resources folder
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, "BOQ.xlsx");
+            try
+            {
+                File.WriteAllBytes(filePath, Properties.Resources.BOQ);
+                MessageBox.Show($"Sample BOQ Excel file has been saved to your desktop: {filePath}", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while saving the file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //private void CalculateSRAndUpdateDataGridView(string itemType)

@@ -111,6 +111,7 @@ namespace YamyProject.UI.ContractingGeneralMaintenance.CRM
             this.txtPhone.DefaultText = "";
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPhone.Location = new System.Drawing.Point(20, 201);
+            this.txtPhone.MaxLength = 15;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PlaceholderText = "";
             this.txtPhone.SelectedText = "";

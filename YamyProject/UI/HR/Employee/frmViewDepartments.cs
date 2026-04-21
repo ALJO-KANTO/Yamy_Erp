@@ -61,7 +61,15 @@ namespace YamyProject
             {
                 int LastInsertId = DBClass.ExecuteNonQuery("insert into tbl_departments (name) values(@name)",
                     DBClass.CreateParameter("name", txtName.Text));
-                Utilities.LogAudit(frmLogin.userId, "Add Department", "Department", LastInsertId, "Added Department: " + txtName.Text);
+                if (LastInsertId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Department", "Department", LastInsertId, "Added Department: " + txtName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
             {

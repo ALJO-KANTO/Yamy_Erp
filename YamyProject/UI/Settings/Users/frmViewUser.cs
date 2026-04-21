@@ -126,7 +126,8 @@ namespace YamyProject
                     txtLastName.Text = reader["last_name"].ToString();
                     cmbEmployee.SelectedValue = reader["emp_id"].ToString();
                     cmbRoles.SelectedValue = reader["role_id"].ToString();
-                    pnlPassword.Visible = false;
+                    if(frmLogin.userRole != "Admin")
+                        pnlPassword.Visible = false;
                     chkActive.Checked = int.Parse(reader["active"].ToString()) == 0;
                 }
             }

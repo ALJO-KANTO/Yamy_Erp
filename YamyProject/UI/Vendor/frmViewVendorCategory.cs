@@ -59,7 +59,15 @@ namespace YamyProject
             {
                 int refId = DBClass.ExecuteNonQuery("insert into tbl_vendor_category (name) values(@name)",
                     DBClass.CreateParameter("name", txtName.Text));
-                Utilities.LogAudit(frmLogin.userId, "Add Vendor Category", "Vendor Category", refId, "Added Vendor Category: " + txtName.Text);
+                if (refId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Vendor Category", "Vendor Category", refId, "Added Vendor Category: " + txtName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
                 DBClass.ExecuteNonQuery("update tbl_vendor_category set name=@name where id = @id",

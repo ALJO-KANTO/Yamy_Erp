@@ -113,7 +113,7 @@ namespace YamyProject
             using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                 SELECT ROW_NUMBER() OVER (ORDER BY entry_date) AS SN, 
                        dt.id, dt.petty_cash_id, dt.entry_date, dt.ref_id, dt.hum_id, dt.category,
-                       dt.cost_center_id, dt.description, dt.amount, dt.project_id, dt.note
+                       dt.cost_center_id, dt.description, dt.amount,dt.vatP,dt.vat,dt.total, dt.project_id, dt.note
                 FROM tbl_petty_cash_details dt 
                 WHERE dt.petty_cash_id = @id",
                 DBClass.CreateParameter("id", id)))
@@ -125,6 +125,9 @@ namespace YamyProject
                     string inv_date = DateTime.Parse(reader["entry_date"].ToString()).ToShortDateString();
                     string description = reader["description"].ToString();
                     string PettyCashAmount = Utilities.FormatDecimal(reader["amount"].ToString());
+                    string PettyCashVatAmount = Utilities.FormatDecimal(reader["vatP"].ToString());
+                    string PettyCashVat = int.Parse(reader["vat"].ToString()).ToString();
+                    string PettyCashTotal = Utilities.FormatDecimal(reader["total"].ToString());
                     string _humId = reader["hum_id"].ToString();
                     string vCategory = reader["category"].ToString();
                     string colNote = reader["note"].ToString() ?? "";
@@ -134,7 +137,7 @@ namespace YamyProject
                         cost_center_id = null; // optional: null if empty
 
                     // Add row with null placeholder for CostCenter
-                    dgvInv.Rows.Add(serialNumber.ToString(), null, null, null, description, PettyCashAmount, PettyCashAmount, _humId, "View");
+                    dgvInv.Rows.Add(serialNumber.ToString(), null, null, null, description, PettyCashAmount, PettyCashVatAmount, PettyCashTotal, PettyCashTotal, _humId, "View");
 
                     // Get the last added row (always last)
                     DataGridViewComboBoxCell comboCellCostCenter = dgvInv.Rows[dgvInv.Rows.Count - 2].Cells["CostCenter"] as DataGridViewComboBoxCell;
@@ -217,52 +220,159 @@ namespace YamyProject
 
             return true;
         }
-
         private void insertINV(int pvId)
         {
-            // no, AC_Code, AC_Name, CostCenter, Description, Debit, Credit
-            
+            decimal totalCredit = 0; // gross total = amount + vat
+
             for (int i = 0; i < dgvInv.Rows.Count; i++)
             {
-                if (dgvInv.Rows[i].Cells["Debit"].Value == null ||
-                    dgvInv.Rows[i].Cells["Debit"].Value.ToString() == "" ||
-                    decimal.Parse(dgvInv.Rows[i].Cells["Debit"].Value.ToString()) == 0)
+                if (dgvInv.Rows[i].IsNewRow) continue;
+
+                decimal amount = 0;
+                decimal vat = 0;
+
+                decimal.TryParse(dgvInv.Rows[i].Cells["amount"].Value?.ToString(), out amount);
+                decimal.TryParse(dgvInv.Rows[i].Cells["vat"].Value?.ToString(), out vat);
+
+                if (amount <= 0)
                     continue;
 
-                string CostCenterId = dgvInv.Rows[i].Cells["CostCenter"].Value == null ? "0" : dgvInv.Rows[i].Cells["CostCenter"].Value.ToString() ?? "0";
-                //string acCodeId = dgvInv.Rows[i].Cells["AC_Code"].Value.ToString() ?? "0";
-                string acNameId = dgvInv.Rows[i].Cells["AC_Name"].Value.ToString() ?? "0";
-                var description = dgvInv.Rows[i].Cells["Description"].Value?.ToString() ?? "";
-                var amount = dgvInv.Rows[i].Cells["Debit"].Value?.ToString() ?? "0";
-                var _humId = dgvInv.Rows[i].Cells["humId"].Value?.ToString() ?? "0";
+                string costCenterId = dgvInv.Rows[i].Cells["CostCenter"].Value?.ToString() ?? "0";
+                string acNameId = dgvInv.Rows[i].Cells["AC_Name"].Value?.ToString() ?? "0";
+                string description = dgvInv.Rows[i].Cells["Description"].Value?.ToString() ?? "";
+                string humId = dgvInv.Rows[i].Cells["humId"].Value?.ToString() ?? "0";
 
-                CommonInsert.InsertCostCenterTransaction(dtOpen.Value, amount.ToString(), "0", id.ToString(), "PettyCash", "PettyCash Entry", CostCenterId.ToString());
-                //CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", amount.ToString(), id.ToString(), "PettyCash", "PettyCash Credit Entry", CostCenterId.ToString());
+                // Cost center transaction (usually net expense only)
+                CommonInsert.InsertCostCenterTransaction(
+                    dtOpen.Value,
+                    amount.ToString("0.00"),
+                    "0",
+                    id.ToString(),
+                    "PettyCash",
+                    "PettyCash Entry",
+                    costCenterId
+                );
 
-                InsertJournals(amount, description, _humId, acNameId);
-                //}
+                // Journal entries per line
+                InsertJournals(vat, amount, description, humId, acNameId);
+
+                // Gross total for petty cash credit
+                totalCredit += (amount + vat);
             }
-            InsertJournalsTotal(txtAmount.Text, "PETTY CASH NO." + code, "0", pettyCashAccountId.ToString());
-        }
 
-        void InsertJournals(string amount, string description, string hum_id, string AccountId)
+            // Credit petty cash with TOTAL PAID (net + VAT)
+            InsertJournalsTotal(
+                totalCredit.ToString("0.00"),
+                "PETTY CASH NO. " + code,
+                "0",
+                pettyCashAccountId.ToString()
+            );
+        }
+        void InsertJournals(decimal vat, decimal amount, string description, string hum_id, string accountId)
         {
             string tType = "Petty Cash";
 
-            CommonInsert.addTransactionEntry(dtOpen.Value.Date,
-                AccountId,
-                amount, "0", id.ToString(), hum_id, tType, "PettyCash", description,
-                 frmLogin.userId, DateTime.Now.Date, txtNo.Text);
-        }
+            // 1) Debit Expense (Net)
+            CommonInsert.addTransactionEntry(
+                dtOpen.Value.Date,
+                accountId,
+                amount.ToString("0.00"), "0",
+                id.ToString(), hum_id,
+                tType, "PettyCash", description,
+                frmLogin.userId, DateTime.Now.Date, txtNo.Text
+            );
 
-        void InsertJournalsTotal(string amount, string description, string hum_id, string AccountId)
+            // 2) Debit VAT Input
+            if (vat > 0)
+            {
+                int vatInputId = frmLogin.defaultAccounts.ContainsKey("Vat Input")
+                    ? frmLogin.defaultAccounts["Vat Input"]
+                    : 0;
+
+                if (vatInputId <= 0)
+                {
+                    MessageBox.Show("VAT Input account is not configured in default accounts.");
+                    return;
+                }
+
+                CommonInsert.addTransactionEntry(
+                    dtOpen.Value.Date,
+                    vatInputId.ToString(),
+                    vat.ToString("0.00"), "0",
+                    id.ToString(), hum_id,
+                    tType, "PettyCash VAT", description,
+                    frmLogin.userId, DateTime.Now.Date, txtNo.Text
+                );
+            }
+        }
+        void InsertJournalsTotal(string amount, string description, string hum_id, string accountId)
         {
             string tType = "Petty Cash";
-            CommonInsert.addTransactionEntry(dtOpen.Value.Date,
-                                  AccountId,
-                               "0", amount, id.ToString(), hum_id, tType, "PettyCash", description,
-                                   frmLogin.userId, DateTime.Now.Date, txtNo.Text);
+
+            // Credit Petty Cash with total paid
+            CommonInsert.addTransactionEntry(
+                dtOpen.Value.Date,
+                accountId,
+                "0", amount,
+                id.ToString(), hum_id,
+                tType, "PettyCash", description,
+                frmLogin.userId, DateTime.Now.Date, txtNo.Text
+            );
         }
+        //private void insertINV(int pvId)
+        //{
+        //    // no, AC_Code, AC_Name, CostCenter, Description, Debit, Credit
+
+        //    for (int i = 0; i < dgvInv.Rows.Count; i++)
+        //    {
+        //        if (dgvInv.Rows[i].Cells["Debit"].Value == null ||
+        //            dgvInv.Rows[i].Cells["Debit"].Value.ToString() == "" ||
+        //            decimal.Parse(dgvInv.Rows[i].Cells["Debit"].Value.ToString()) == 0)
+        //            continue;
+
+        //        string CostCenterId = dgvInv.Rows[i].Cells["CostCenter"].Value == null ? "0" : dgvInv.Rows[i].Cells["CostCenter"].Value.ToString() ?? "0";
+        //        //string acCodeId = dgvInv.Rows[i].Cells["AC_Code"].Value.ToString() ?? "0";
+        //        string acNameId = dgvInv.Rows[i].Cells["AC_Name"].Value.ToString() ?? "0";
+        //        var description = dgvInv.Rows[i].Cells["Description"].Value?.ToString() ?? "";
+        //        var vat = dgvInv.Rows[i].Cells["vat"].Value?.ToString() ?? "0";
+        //        var amount = dgvInv.Rows[i].Cells["Debit"].Value?.ToString() ?? "0";
+        //        var _humId = dgvInv.Rows[i].Cells["humId"].Value?.ToString() ?? "0";
+
+        //        CommonInsert.InsertCostCenterTransaction(dtOpen.Value, amount.ToString(), "0", id.ToString(), "PettyCash", "PettyCash Entry", CostCenterId.ToString());
+        //        //CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", amount.ToString(), id.ToString(), "PettyCash", "PettyCash Credit Entry", CostCenterId.ToString());
+
+        //        InsertJournals(vat, amount, description, _humId, acNameId);
+        //        //}
+        //    }
+        //    InsertJournalsTotal(txtAmount.Text, "PETTY CASH NO." + code, "0", pettyCashAccountId.ToString());
+        //}
+
+        //void InsertJournals(string vat, string amount, string description, string hum_id, string AccountId)
+        //{
+        //    string tType = "Petty Cash";
+
+        //    CommonInsert.addTransactionEntry(dtOpen.Value.Date,
+        //        AccountId,
+        //        amount, "0", id.ToString(), hum_id, tType, "PettyCash", description,
+        //         frmLogin.userId, DateTime.Now.Date, txtNo.Text);
+        //    if (decimal.Parse(vat) > 0)
+        //    {
+        //        int level4VatId = frmLogin.defaultAccounts.ContainsKey("Vat Output") ? frmLogin.defaultAccounts["Vat Output"] : 0;
+        //        CommonInsert.addTransactionEntry(dtOpen.Value.Date,
+        //            level4VatId.ToString(),
+        //            vat, "0", id.ToString(), hum_id, tType, "PettyCash VAT", description,
+        //             frmLogin.userId, DateTime.Now.Date, txtNo.Text);
+        //    }
+        //}
+
+        //void InsertJournalsTotal(string amount, string description, string hum_id, string AccountId)
+        //{
+        //    string tType = "Petty Cash";
+        //    CommonInsert.addTransactionEntry(dtOpen.Value.Date,
+        //                          AccountId,
+        //                       "0", amount, id.ToString(), hum_id, tType, "PettyCash", description,
+        //                           frmLogin.userId, DateTime.Now.Date, txtNo.Text);
+        //}
 
         private void SetDefault()
         {
@@ -308,7 +418,7 @@ namespace YamyProject
                 txtAmountInWord.Text = "";
                 return;
             }
-            txtAmountInWord.Text = GeneralConfiguration.NumberToWords(decimal.Parse(txtAmount.Text));
+            txtAmountInWord.Text = AmountToWordsHelper.ConvertToSelectedLanguage(decimal.Parse(txtAmount.Text));
         }
 
         private void dgvInv_CellContentClick(object sender, DataGridViewCellEventArgs e)

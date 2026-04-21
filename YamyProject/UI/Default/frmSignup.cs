@@ -256,66 +256,206 @@ namespace YamyProject
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_city` (`name`, `country_id`) VALUES
-	                        ('Dubai', 49),
-	                        ('Abu Dhabi', 49),
-	                        ('Sharjah', 49),
-	                        ('Ajman', 49),
-	                        ('Umm Al-Quwain', 49),
-	                        ('Ras Al Khaimah', 49),
-	                        ('Fujairah', 49),
-	                        ('Tirana', 1),
-	                        ('Algiers', 2),
-	                        ('Andorra la Vella', 3),
-	                        ('Luanda', 4),
-	                        ('Buenos Aires', 5),
-	                        ('Yerevan', 6),
-	                        ('Sydney', 7),
-	                        ('Vienna', 8),
-	                        ('Baku', 9),
-	                        ('Nassau', 10),
-	                        ('Manama', 11),
-	                        ('Dhaka', 12),
-	                        ('Bridgetown', 13),
-	                        ('Minsk', 14),
-	                        ('Brussels', 15),
-	                        ('Belmopan', 16),
-	                        ('Porto-Novo', 17),
-	                        ('Thimphu', 18),
-	                        ('Sucre', 19),
-	                        ('Sarajevo', 20),
-	                        ('Gaborone', 21),
-	                        ('Brasília', 22),
-	                        ('Bandar Seri Begawan', 23),
-	                        ('Sofia', 24),
-	                        ('Ouagadougou', 25),
-	                        ('Bujumbura', 26),
-	                        ('Phnom Penh', 27),
-	                        ('Yaoundé', 28),
-	                        ('Ottawa', 29),
-	                        ('Praia', 30),
-	                        ('Santiago', 31),
-	                        ('Beijing', 32),
-	                        ('Bogotá', 33),
-	                        ('Havana', 34),
-	                        ('Copenhagen', 35),
-	                        ('Cairo', 36),
-	                        ('Paris', 37),
-	                        ('Berlin', 38),
-	                        ('New Delhi', 39),
-	                        ('Rome', 40),
-	                        ('Tokyo', 41),
-	                        ('Mexico City', 42),
-	                        ('Abuja', 43),
-	                        ('Moscow', 44),
-	                        ('Riyadh', 45),
-	                        ('Cape Town', 46),
-	                        ('Madrid', 47),
-	                        ('Ankara', 48),
-	                        ('London', 50),
-	                        ('Washington D.C.', 51),
-	                        ('Hanoi', 52),
-	                        ('Harare', 53);
+                        INSERT INTO `tbl_city` ( `country_id`, `name`) VALUES
+                            (1,'Kabul'),
+                            (2,'Tirana'),
+                            (3,'Algiers'),
+                            (4,'Andorra la Vella'),
+                            (5,'Luanda'),
+                            (6,'Saint John''s'),
+                            (7,'Buenos Aires'),
+                            (8,'Yerevan'),
+                            (9,'Canberra'),
+                            (10,'Vienna'),
+                            (11,'Baku'),
+                            (12,'Nassau'),
+                            (13,'Manama'),
+                            (14,'Dhaka'),
+                            (15,'Bridgetown'),
+                            (16,'Minsk'),
+                            (17,'Brussels'),
+                            (18,'Belmopan'),
+                            (19,'Porto-Novo'),
+                            (20,'Thimphu'),
+                            (21,'Sucre'),
+                            (22,'Sarajevo'),
+                            (23,'Gaborone'),
+                            (24,'Brasilia'),
+                            (25,'Bandar Seri Begawan'),
+                            (26,'Sofia'),
+                            (27,'Ouagadougou'),
+                            (28,'Gitega'),
+                            (29,'Praia'),
+                            (30,'Phnom Penh'),
+                            (31,'Yaounde'),
+                            (32,'Ottawa'),
+                            (33,'Bangui'),
+                            (34,'N''Djamena'),
+                            (35,'Santiago'),
+                            (36,'Beijing'),
+                            (37,'Bogota'),
+                            (38,'Moroni'),
+                            (39,'Brazzaville'),
+                            (40,'San Jose'),
+                            (41,'Zagreb'),
+                            (42,'Havana'),
+                            (43,'Nicosia'),
+                            (44,'Prague'),
+                            (45,'Copenhagen'),
+                            (46,'Djibouti'),
+                            (47,'Roseau'),
+                            (48,'Santo Domingo'),
+                            (49,'Quito'),
+                            (50,'Cairo'),
+                            (51,'San Salvador'),
+                            (52,'Malabo'),
+                            (53,'Asmara'),
+                            (54,'Tallinn'),
+                            (55,'Mbabane'),
+                            (56,'Addis Ababa'),
+                            (57,'Suva'),
+                            (58,'Helsinki'),
+                            (59,'Paris'),
+                            (60,'Libreville'),
+                            (61,'Banjul'),
+                            (62,'Tbilisi'),
+                            (63,'Berlin'),
+                            (64,'Accra'),
+                            (65,'Athens'),
+                            (66,'St George''s'),
+                            (67,'Guatemala City'),
+                            (68,'Conakry'),
+                            (69,'Bissau'),
+                            (70,'Georgetown'),
+                            (71,'Port-au-Prince'),
+                            (72,'Tegucigalpa'),
+                            (73,'Budapest'),
+                            (74,'Reykjavik'),
+                            (75,'New Delhi'),
+                            (76,'Jakarta'),
+                            (77,'Tehran'),
+                            (78,'Baghdad'),
+                            (79,'Dublin'),
+                            (80,'Jerusalem'),
+                            (81,'Rome'),
+                            (82,'Kingston'),
+                            (83,'Tokyo'),
+                            (84,'Amman'),
+                            (85,'Astana'),
+                            (86,'Nairobi'),
+                            (87,'Tarawa'),
+                            (88,'Kuwait City'),
+                            (89,'Bishkek'),
+                            (90,'Vientiane'),
+                            (91,'Riga'),
+                            (92,'Beirut'),
+                            (93,'Maseru'),
+                            (94,'Monrovia'),
+                            (95,'Tripoli'),
+                            (96,'Vaduz'),
+                            (97,'Vilnius'),
+                            (98,'Luxembourg'),
+                            (99,'Antananarivo'),
+                            (100,'Lilongwe'),
+                            (101,'Kuala Lumpur'),
+                            (102,'Male'),
+                            (103,'Bamako'),
+                            (104,'Valletta'),
+                            (105,'Majuro'),
+                            (106,'Nouakchott'),
+                            (107,'Port Louis'),
+                            (108,'Mexico City'),
+                            (109,'Palikir'),
+                            (110,'Chișinău'),
+                            (111,'Monaco'),
+                            (112,'Ulaanbaatar'),
+                            (113,'Podgorica'),
+                            (114,'Rabat'),
+                            (115,'Maputo'),
+                            (116,'Nay Pyi Taw'),
+                            (117,'Windhoek'),
+                            (118,'Nauru'),
+                            (119,'Kathmandu'),
+                            (120,'Amsterdam'),
+                            (121,'Wellington'),
+                            (122,'Managua'),
+                            (123,'Niamey'),
+                            (124,'Abuja'),
+                            (125,'Pyongyang'),
+                            (126,'Skopje'),
+                            (127,'Oslo'),
+                            (128,'Muscat'),
+                            (129,'Islamabad'),
+                            (130,'Ngerulmud'),
+                            (131,'Jerusalem'),
+                            (132,'Panama City'),
+                            (133,'Port Moresby'),
+                            (134,'Asuncion'),
+                            (135,'Lima'),
+                            (136,'Manila'),
+                            (137,'Warsaw'),
+                            (138,'Lisbon'),
+                            (139,'Doha'),
+                            (140,'Bucharest'),
+                            (141,'Moscow'),
+                            (142,'Kigali'),
+                            (143,'Basseterre'),
+                            (144,'Castries'),
+                            (145,'Kingstown'),
+                            (146,'Apia'),
+                            (147,'San Marino'),
+                            (148,'Sao Tome'),
+                            (149,'Riyadh'),
+                            (150,'Dakar'),
+                            (151,'Belgrade'),
+                            (152,'Victoria'),
+                            (153,'Freetown'),
+                            (154,'Singapore'),
+                            (155,'Bratislava'),
+                            (156,'Ljubljana'),
+                            (157,'Honiara'),
+                            (158,'Mogadishu'),
+                            (159,'Pretoria'),
+                            (160,'Seoul'),
+                            (161,'Juba'),
+                            (162,'Madrid'),
+                            (163,'Sri Jayawardenapura Kotte'),
+                            (164,'Khartoum'),
+                            (165,'Paramaribo'),
+                            (166,'Stockholm'),
+                            (167,'Bern'),
+                            (168,'Damascus'),
+                            (169,'Dushanbe'),
+                            (170,'Dodoma'),
+                            (171,'Bangkok'),
+                            (172,'Taipei'),
+                            (173,'Lome'),
+                            (174,'Nuku''alofa'),
+                            (175,'Port of Spain'),
+                            (176,'Tunis'),
+                            (177,'Ankara'),
+                            (178,'Ashgabat'),
+                            (179,'Funafuti'),
+                            (180,'Kampala'),
+                            (181,'Kyiv or Kiev'),
+	                        (182,'Abu Dhabi'),
+	                        (182,'Dubai'),
+	                        (182,'Sharjah'),
+	                        (182,'Ajman'),
+	                        (182,'Umm Al-Quwain'),
+	                        (182,'Ras Al Khaimah'),
+	                        (182,'Fujairah'),
+                            (183,'London'),
+                            (184,'Washington D.C.'),
+                            (185,'Montevideo'),
+                            (186,'Tashkent'),
+                            (187,'Port Vila'),
+                            (188,'Vatican City'),
+                            (189,'Caracas'),
+                            (190,'Hanoi'),
+                            (191,'Sana''a'),
+                            (192,'Lusaka'),
+                            (193,'Harare');
 
                         CREATE TABLE IF NOT EXISTS `tbl_coa_config` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -509,7 +649,9 @@ namespace YamyProject
 	                        (37, 1, 'Default Account For Bank'),
                             (38, 1, 'Salaries'),
                             (39, 31, 'Stock Settlement'),
-                            (40, 44, 'Customer Advances');
+                            (40, 44, 'Customer Advances'),
+                            (41, 45, 'Retention'),
+                            (42, 1, 'Deduction');
 
                         CREATE TABLE IF NOT EXISTS `tbl_company` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -552,60 +694,200 @@ namespace YamyProject
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_country` (`id`, `name`) VALUES
-	                        (1, 'Albania'),
-	                        (2, 'Algeria'),
-	                        (3, 'Andorra'),
-	                        (4, 'Angola'),
-	                        (5, 'Argentina'),
-	                        (6, 'Armenia'),
-	                        (7, 'Australia'),
-	                        (8, 'Austria'),
-	                        (9, 'Azerbaijan'),
-	                        (10, 'The Bahamas'),
-	                        (11, 'Bahrain'),
-	                        (12, 'Bangladesh'),
-	                        (13, 'Barbados'),
-	                        (14, 'Belarus'),
-	                        (15, 'Belgium'),
-	                        (16, 'Belize'),
-	                        (17, 'Benin'),
-	                        (18, 'Bhutan'),
-	                        (19, 'Bolivia'),
-	                        (20, 'Bosnia & Herzegovina'),
-	                        (21, 'Botswana'),
-	                        (22, 'Brazil'),
-	                        (23, 'Brunei'),
-	                        (24, 'Bulgaria'),
-	                        (25, 'Burkina Faso'),
-	                        (26, 'Burundi'),
-	                        (27, 'Cambodia'),
-	                        (28, 'Cameroon'),
-	                        (29, 'Canada'),
-	                        (30, 'Cape Verde'),
-	                        (31, 'Chile'),
-	                        (32, 'China'),
-	                        (33, 'Colombia'),
-	                        (34, 'Cuba'),
-	                        (35, 'Denmark'),
-	                        (36, 'Egypt'),
-	                        (37, 'France'),
-	                        (38, 'Germany'),
-	                        (39, 'India'),
-	                        (40, 'Italy'),
-	                        (41, 'Japan'),
-	                        (42, 'Mexico'),
-	                        (43, 'Nigeria'),
-	                        (44, 'Russia'),
-	                        (45, 'Saudi Arabia'),
-	                        (46, 'South Africa'),
-	                        (47, 'Spain'),
-	                        (48, 'Turkey'),
-	                        (49, 'United Arab Emirates'),
-	                        (50, 'United Kingdom'),
-	                        (51, 'United States'),
-	                        (52, 'Vietnam'),
-	                        (53, 'Zimbabwe');
+                        INSERT INTO `tbl_country` (`name`) VALUES
+	                        ('Afghanistan'),
+                            ('Albania'),
+                            ('Algeria'),
+                            ('Andorra'),
+                            ('Angola'),
+                            ('Antigua and Barbuda'),
+                            ('Argentina'),
+                            ('Armenia'),
+                            ('Australia'),
+                            ('Austria'),
+                            ('Azerbaijan'),
+                            ('Bahamas'),
+                            ('Bahrain'),
+                            ('Bangladesh'),
+                            ('Barbados'),
+                            ('Belarus'),
+                            ('Belgium'),
+                            ('Belize'),
+                            ('Benin'),
+                            ('Bhutan'),
+                            ('Bolivia'),
+                            ('Bosnia and Herzegovina'),
+                            ('Botswana'),
+                            ('Brazil'),
+                            ('Brunei'),
+                            ('Bulgaria'),
+                            ('Burkina Faso'),
+                            ('Burundi'),
+                            ('Cabo Verde'),
+                            ('Cambodia'),
+                            ('Cameroon'),
+                            ('Canada'),
+                            ('Central African Republic'),
+                            ('Chad'),
+                            ('Chile'),
+                            ('China'),
+                            ('Colombia'),
+                            ('Comoros'),
+                            ('Congo'),
+                            ('Costa Rica'),
+                            ('Croatia'),
+                            ('Cuba'),
+                            ('Cyprus'),
+                            ('Czechia'),
+                            ('Denmark'),
+                            ('Djibouti'),
+                            ('Dominica'),
+                            ('Dominican Republic'),
+                            ('Ecuador'),
+                            ('Egypt'),
+                            ('El Salvador'),
+                            ('Equatorial Guinea'),
+                            ('Eritrea'),
+                            ('Estonia'),
+                            ('Eswatini'),
+                            ('Ethiopia'),
+                            ('Fiji'),
+                            ('Finland'),
+                            ('France'),
+                            ('Gabon'),
+                            ('Gambia'),
+                            ('Georgia'),
+                            ('Germany'),
+                            ('Ghana'),
+                            ('Greece'),
+                            ('Grenada'),
+                            ('Guatemala'),
+                            ('Guinea'),
+                            ('Guinea-Bissau'),
+                            ('Guyana'),
+                            ('Haiti'),
+                            ('Honduras'),
+                            ('Hungary'),
+                            ('Iceland'),
+                            ('India'),
+                            ('Indonesia'),
+                            ('Iran'),
+                            ('Iraq'),
+                            ('Ireland'),
+                            ('Israel'),
+                            ('Italy'),
+                            ('Jamaica'),
+                            ('Japan'),
+                            ('Jordan'),
+                            ('Kazakhstan'),
+                            ('Kenya'),
+                            ('Kiribati'),
+                            ('Kuwait'),
+                            ('Kyrgyzstan'),
+                            ('Laos'),
+                            ('Latvia'),
+                            ('Lebanon'),
+                            ('Lesotho'),
+                            ('Liberia'),
+                            ('Libya'),
+                            ('Liechtenstein'),
+                            ('Lithuania'),
+                            ('Luxembourg'),
+                            ('Madagascar'),
+                            ('Malawi'),
+                            ('Malaysia'),
+                            ('Maldives'),
+                            ('Mali'),
+                            ('Malta'),
+                            ('Marshall Islands'),
+                            ('Mauritania'),
+                            ('Mauritius'),
+                            ('Mexico'),
+                            ('Micronesia'),
+                            ('Moldova'),
+                            ('Monaco'),
+                            ('Mongolia'),
+                            ('Montenegro'),
+                            ('Morocco'),
+                            ('Mozambique'),
+                            ('Myanmar'),
+                            ('Namibia'),
+                            ('Nauru'),
+                            ('Nepal'),
+                            ('Netherlands'),
+                            ('New Zealand'),
+                            ('Nicaragua'),
+                            ('Niger'),
+                            ('Nigeria'),
+                            ('North Korea'),
+                            ('North Macedonia'),
+                            ('Norway'),
+                            ('Oman'),
+                            ('Pakistan'),
+                            ('Palau'),
+                            ('Palestine'),
+                            ('Panama'),
+                            ('Papua New Guinea'),
+                            ('Paraguay'),
+                            ('Peru'),
+                            ('Philippines'),
+                            ('Poland'),
+                            ('Portugal'),
+                            ('Qatar'),
+                            ('Romania'),
+                            ('Russia'),
+                            ('Rwanda'),
+                            ('Saint Kitts and Nevis'),
+                            ('Saint Lucia'),
+                            ('Saint Vincent and the Grenadines'),
+                            ('Samoa'),
+                            ('San Marino'),
+                            ('Sao Tome and Principe'),
+                            ('Saudi Arabia'),
+                            ('Senegal'),
+                            ('Serbia'),
+                            ('Seychelles'),
+                            ('Sierra Leone'),
+                            ('Singapore'),
+                            ('Slovakia'),
+                            ('Slovenia'),
+                            ('Solomon Islands'),
+                            ('Somalia'),
+                            ('South Africa'),
+                            ('South Korea'),
+                            ('South Sudan'),
+                            ('Spain'),
+                            ('Sri Lanka'),
+                            ('Sudan'),
+                            ('Suriname'),
+                            ('Sweden'),
+                            ('Switzerland'),
+                            ('Syria'),
+                            ('Tajikistan'),
+                            ('Tanzania'),
+                            ('Thailand'),
+                            ('Taiwan'),
+                            ('Togo'),
+                            ('Tonga'),
+                            ('Trinidad and Tobago'),
+                            ('Tunisia'),
+                            ('Turkey'),
+                            ('Turkmenistan'),
+                            ('Tuvalu'),
+                            ('Uganda'),
+                            ('Ukraine'),
+                            ('United Arab Emirates'),
+                            ('United Kingdom'),
+                            ('United States'),
+                            ('Uruguay'),
+                            ('Uzbekistan'),
+                            ('Vanuatu'),
+                            ('Vatican City'),
+                            ('Venezuela'),
+                            ('Vietnam'),
+                            ('Yemen'),
+                            ('Zambia'),
+                            ('Zimbabwe');
 
                         CREATE TABLE IF NOT EXISTS `tbl_credit_note` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -1205,7 +1487,9 @@ namespace YamyProject
                             voucher_date DATE NOT NULL,
                             cash_account_id INT NOT NULL,
                             employee_id INT NOT NULL,
-                            total decimal(20,6) DEFAULT NULL,
+                            amount decimal(20,6) DEFAULT 0,
+                            vat decimal(20,6) DEFAULT 0,
+                            total decimal(20,6) DEFAULT 0,
                             notes TEXT NULL,
                             created_by INT NULL,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -1225,6 +1509,9 @@ namespace YamyProject
                             cost_center_id INT NOT NULL,
                             description TEXT NULL,
                             amount DECIMAL(18,2) NOT NULL DEFAULT 0,
+                            vatP DECIMAL(18,2) NOT NULL DEFAULT 0,
+                            vat int DEFAULT NULL,
+                            total DECIMAL(18,2) NOT NULL DEFAULT 0,
                             project_id INT(10) NOT NULL DEFAULT '0',
                             note TEXT NULL,
                             PRIMARY KEY (`id`)
@@ -2302,6 +2589,10 @@ namespace YamyProject
                           `city_id` INT(10) NOT NULL DEFAULT '0',
                           `status` varchar(50) DEFAULT 'Planned',
                           `type` varchar(50) DEFAULT NULL,
+                            project_classification VARCHAR(50) DEFAULT 'Design',
+                            priority_level INT DEFAULT 0,
+                            priority_color VARCHAR(20) DEFAULT '',
+                            is_starred TINYINT(1) DEFAULT 0,
                           `name` varchar(250) NOT NULL DEFAULT '',
                           `name_ar` varchar(250) DEFAULT NULL,
                           `category` varchar(250) DEFAULT '',
@@ -2309,8 +2600,10 @@ namespace YamyProject
                           `start_date` date DEFAULT NULL,
                           `end_date` date DEFAULT NULL,
                           `extend_delay` date DEFAULT NULL,
+                            handover_date DATE NULL,
                           `execution_period_months` int NOT NULL DEFAULT '0',
                           `customer` varchar(150) DEFAULT '0',
+                          owner_name VARCHAR(250) DEFAULT '',
                           `contractor` varchar(150) DEFAULT '',
                           `consultant` varchar(150) DEFAULT '',
                           `location` varchar(350) DEFAULT '',
@@ -2322,8 +2615,18 @@ namespace YamyProject
                           `billed_to_date` decimal(15,2) DEFAULT 0,
                           `expenses` decimal(15,2) DEFAULT 0,
                           `balance` decimal(15,2) DEFAULT 0,
+                          `area` varchar(250) DEFAULT '',  
+                          `plot_number` varchar(50) DEFAULT '',
+                            basin_number VARCHAR(50) DEFAULT '',
+                            municipality_project_no VARCHAR(100) DEFAULT '',
+                            bank_project_no VARCHAR(100) DEFAULT '',
+                          `block` varchar(50) DEFAULT '',
+                          `contact_person` varchar(150) DEFAULT '',
+                          `contact_person_number` varchar(50) DEFAULT '',    
                           `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                           `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            last_progress_update DATETIME NULL,
+                          part_no VARCHAR(100) DEFAULT '',
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2398,7 +2701,7 @@ namespace YamyProject
                           `date` date DEFAULT NULL,
                           `project_id` int NOT NULL DEFAULT '0',
                           `location` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
-                          `site` int NOT NULL DEFAULT '0',
+                          `site_id` int NOT NULL DEFAULT '0',
                           `plot_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `start_date` date DEFAULT NULL,
                           `end_date` date DEFAULT NULL,
@@ -2409,13 +2712,13 @@ namespace YamyProject
                           `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           `fund_period` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           `assigned_team` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
-                          `progress` float DEFAULT '0',
+                          `progress` decimal(10,2) NOT NULL DEFAULT '0',
                           `tender_id` int DEFAULT '0',
                           `tender_name_id` int DEFAULT '0',
                           `created_by` int DEFAULT '0',
-                          `created_date` date DEFAULT NULL,
+                          `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
                           `modified_by` int DEFAULT '0',
-                          `modified_date` date DEFAULT NULL,
+                          `modified_date` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                           `state` int DEFAULT '0',
                           `subcontractor_account_id` int NOT NULL DEFAULT '0',
                           `retention_account_id` int NOT NULL DEFAULT '0',
@@ -2428,6 +2731,7 @@ namespace YamyProject
                           `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
                           `name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
                           `location_id` int DEFAULT '0',
+                          `project_id` int NOT NULL DEFAULT '0',  
                           `plot_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           `address` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           PRIMARY KEY (`id`)
@@ -2844,11 +3148,15 @@ namespace YamyProject
                         CREATE TABLE IF NOT EXISTS tbl_eng_project_phases (
                             phase_id INT AUTO_INCREMENT PRIMARY KEY,
                             project_id INT NOT NULL,
+                            template_id INT NULL,
+                            phase_no INT NOT NULL DEFAULT 0,
                             phase_name VARCHAR(200) NOT NULL,
                             start_date DATE NOT NULL,
                             end_date DATE DEFAULT NULL,
+                            completed_on DATETIME NULL,
                             weight_percentage DECIMAL(5,2) NOT NULL DEFAULT 0.00,
                             status VARCHAR(50) NOT NULL,
+                            phase_color VARCHAR(20) DEFAULT 'Gray',
                             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB;
                         ";
@@ -2862,6 +3170,8 @@ namespace YamyProject
                             due_date DATE,
                             progress_percent DECIMAL(5,2),
                             status VARCHAR(50),
+                            percentage DECIMAL(5,2) DEFAULT 0,
+                            amount DECIMAL(18,3) DEFAULT 0,
                             FOREIGN KEY (phase_id) REFERENCES tbl_eng_project_phases(phase_id)
                         ) ENGINE=InnoDB;
                         ";
@@ -3298,69 +3608,6 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
 
                 query = @" USE " + dbName + @";
-                        CREATE TABLE IF NOT EXISTS tbl_material_request (
-                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
-                            mr_no VARCHAR(50) NOT NULL UNIQUE,
-                            request_date DATE NOT NULL,
-                            requested_by INT NOT NULL,        -- link to tbl_users / employee
-                            department_id INT NOT NULL,       -- link to tbl_department
-                            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
-                            remarks VARCHAR(250) default(''),
-                            created_by INT NULL,           -- link to tbl_attachments
-                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-                        ";
-                DBClass.ExecuteNonQuery(query);
-
-                query = @" USE " + dbName + @";
-                        CREATE TABLE IF NOT EXISTS tbl_material_request_item (
-                            mr_item_id INT AUTO_INCREMENT PRIMARY KEY,
-                            mr_id INT NOT NULL,                 
-                            item_id INT NOT NULL,               
-                            required_qty DECIMAL(18,2) NOT NULL,
-                            uom VARCHAR(10) NOT NULL default(''),           
-                            expected_date DATE NULL,
-                            status ENUM('Pending','Ordered','Received') DEFAULT 'Pending',
-                            remarks VARCHAR(250) default(''),
-                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-                        ";
-                DBClass.ExecuteNonQuery(query);
-
-                query = @" USE " + dbName + @";
-                        CREATE TABLE IF NOT EXISTS tbl_material_received (
-                            mr_id INT AUTO_INCREMENT PRIMARY KEY,
-                            mr_no VARCHAR(50) NOT NULL UNIQUE,
-                            mr_date DATE NOT NULL,
-                            po_id INT NOT NULL default 0,
-                            vendor_id INT NOT NULL,
-                            status VARCHAR(20) DEFAULT 'Partial',
-                            remarks VARCHAR(250) default(''),
-                            created_by INT NULL,
-                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-                        ";
-                DBClass.ExecuteNonQuery(query);
-
-                query = @" USE " + dbName + @";
-                        CREATE TABLE IF NOT EXISTS tbl_material_received_item (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            mr_id INT NOT NULL,
-                            po_item_id INT NOT NULL,
-                            ordered_qty DECIMAL(18,2) NOT NULL, 
-                            received_qty DECIMAL(18,2) NOT NULL,
-                            uom VARCHAR(10) NOT NULL default(''),
-                            status VARCHAR(20) DEFAULT 'Partial',
-                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-                        ";
-                DBClass.ExecuteNonQuery(query);
-
-                query = @" USE " + dbName + @";
                         CREATE TABLE IF NOT EXISTS tbl_sales_tax_invoice (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             invoice_no VARCHAR(50),
@@ -3371,7 +3618,9 @@ namespace YamyProject
                             vat DECIMAL(18,2),
                             total DECIMAL(18,2),
                             remarks VARCHAR(250) default(''),
-                            state TINYINT DEFAULT 0
+                            state TINYINT DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -3403,7 +3652,9 @@ namespace YamyProject
                             `description` VARCHAR(250) DEFAULT NULL,
                             `account_id` INT NOT NULL, -- liability account
                             `project_id` INT DEFAULT 0,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -3420,7 +3671,9 @@ namespace YamyProject
                             `contract_period` VARCHAR(80) DEFAULT NULL,
                             `works` VARCHAR(250) DEFAULT NULL,
                             `worksEn` VARCHAR(250) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -3431,7 +3684,9 @@ namespace YamyProject
                             `code` VARCHAR(50) DEFAULT NULL,
                             `name` VARCHAR(250) DEFAULT NULL,
                             `contact_no` VARCHAR(50) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -3443,9 +3698,986 @@ namespace YamyProject
                             `project_id` INT NOT NULL,
                             `date` DATE NOT NULL,
                             `description` VARCHAR(250) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_invoices` (
+                            invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            milestone_id INT NOT NULL,
+                            invoice_number VARCHAR(100) NOT NULL,
+                            invoice_date DATE,
+                            amount DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            vat DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            total DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            status VARCHAR(50) DEFAULT 'Pending',
+                            description VARCHAR(500) NOT NULL DEFAULT '',
+                            account_id INT NOT NULL DEFAULT 0,
+                            cost_center_id INT NOT NULL DEFAULT 0,
+                            payment_status VARCHAR(100) NOT NULL,
+                            paid_amount DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            retention_amount decimal(20,6) NOT NULL DEFAULT 0,
+                            retention_percentage decimal(20,6) NOT NULL DEFAULT 0,
+                            deduction decimal(20,6) NOT NULL DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_receipt_voucher` (
+                                  `id` int NOT NULL AUTO_INCREMENT,
+                                  `date` date DEFAULT NULL,
+                                  `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `method` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `amount` decimal(20, 6) DEFAULT NULL,
+                                  `hum_id` int DEFAULT NULL,
+                                  `credit_account_id` int DEFAULT NULL,
+                                  `credit_cost_center_id` int DEFAULT NULL,
+                                  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `debit_account_id` int DEFAULT NULL,
+                                  `debit_cost_center_id` int DEFAULT NULL,
+                                  `bank_account_id` int DEFAULT NULL,
+                                  `book_no` int DEFAULT NULL,
+                                  `bank_id` int DEFAULT NULL,
+                                  `bank_account` int DEFAULT NULL,
+                                  `bank_code` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_no` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_date` date DEFAULT NULL,
+                                  `trans_date` date DEFAULT NULL,
+                                  `trans_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `trans_ref` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `created_by` int DEFAULT NULL,
+                                  `created_date` date DEFAULT NULL,
+                                  `state` int DEFAULT NULL,
+                                  `modified_by` int DEFAULT NULL,
+                                  `modified_date` date DEFAULT NULL,
+                                  `project_id` INT NOT NULL DEFAULT 0,
+                                  PRIMARY KEY(`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                                        CREATE TABLE IF NOT EXISTS `tbl_projects_receipt_voucher_details` (
+                                              `id` int NOT NULL AUTO_INCREMENT,
+                                              `date` date DEFAULT NULL,
+                                              `payment_id` int DEFAULT NULL,
+                                              `inv_id` int DEFAULT NULL,
+                                              `hum_id` int DEFAULT NULL,
+                                              `inv_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                                              `total` decimal(20, 2) DEFAULT '0.00',
+                                              `payment` decimal(20, 2) DEFAULT '0.00',
+                                              `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                              `cost_center_id` int DEFAULT NULL,
+                                              `project_id` INT NOT NULL DEFAULT 0,
+                                              PRIMARY KEY(`id`)
+                                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_project_payments` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `payment_date` DATE DEFAULT NULL,
+                            `code` VARCHAR(50) DEFAULT '0',
+                            `project_id` INT NOT NULL DEFAULT 0,
+                            `engineer_id` INT NOT NULL DEFAULT 0,
+                            `client_id` INT NOT NULL DEFAULT 0,
+                            `payment_source` VARCHAR(50) DEFAULT NULL, -- Bank / Owner
+                            `project_value` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `consultancy_percentage` DECIMAL(10,4) NOT NULL DEFAULT 0.00,
+                            `consultancy_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            -- DESIGN
+                            `design_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_tax` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_tax_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_balance` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            -- SUPERVISION
+                            `supervision_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_received_percentage` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+                            `supervision_payment_value` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `retention_percentage` DECIMAL(10,2) NOT NULL DEFAULT 10.00,
+                            `retention_amount` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_received_after_retention` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_tax` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_tax_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_balance` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `remarks` TEXT DEFAULT NULL,
+                            `debit_account_id` INT DEFAULT NULL,
+                            `credit_account_id` INT DEFAULT NULL,
+
+                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_site_setup` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `date` date DEFAULT NULL,
+                            `project_id` INT NOT NULL DEFAULT 0,
+                            `site_id` INT NOT NULL DEFAULT 0,
+                            `tender_id` INT NOT NULL DEFAULT 0,
+                            `tender_name_id` INT NOT NULL DEFAULT 0,
+                            `start_date` date DEFAULT NULL,
+                            `end_date` date DEFAULT NULL,
+                            `subcontractor_id` INT NOT NULL DEFAULT 0,
+                            `status` varchar(50) DEFAULT '',
+                            `engineer_supervisor` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                            `created_by` int DEFAULT NULL,
+                            `modified_by` int DEFAULT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            PRIMARY KEY(`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE `tbl_project_zone` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `site_setup_id` INT NOT NULL,
+                            `zone_code` VARCHAR(50) DEFAULT '',
+                            `zone_name` VARCHAR(200) DEFAULT '',
+                            `description` VARCHAR(500) DEFAULT '',
+                            `status` VARCHAR(50) DEFAULT 'Active',
+                            `created_by` INT DEFAULT NULL,
+                            `modified_by` INT DEFAULT NULL,
+                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE `tbl_project_resource_assignment` (
+	                        `id` INT(10) NOT NULL AUTO_INCREMENT,
+	                        `site_setup_id` INT(10) NOT NULL,
+	                        `resource_id` INT(10) NOT NULL,
+                            `project_id` INT(10) NOT NULL,
+                            `tender_id` INT(10) NOT NULL,
+	                        PRIMARY KEY (`id`) USING BTREE
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @"
+                        CREATE TABLE IF NOT EXISTS `tbl_project_wbs` (
+                          `id` INT NOT NULL AUTO_INCREMENT,
+                          `site_setup_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `parent_wbs_id` INT NOT NULL DEFAULT 0,
+                          `code` VARCHAR(50) NOT NULL DEFAULT '',
+                          `name` VARCHAR(300) NOT NULL DEFAULT '',
+                          `wbs_level` INT NOT NULL DEFAULT 1,
+                          `description` VARCHAR(500) DEFAULT '',
+                          `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+                          `created_by` INT NOT NULL DEFAULT 0,
+                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`),
+                          UNIQUE KEY `uq_wbs_code_site` (`site_setup_id`, `code`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @"
+                        CREATE TABLE `tbl_project_activity` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `site_setup_id` INT NOT NULL,
+                            `zone_id` INT DEFAULT NULL,
+                            `wbs_id` INT NOT NULL,
+                            `activity_code` VARCHAR(50) DEFAULT '',
+                            `activity_name` VARCHAR(255) DEFAULT '',
+                            `activity_type` VARCHAR(100) DEFAULT '',
+                            `start_date` DATE DEFAULT NULL,
+                            `end_date` DATE DEFAULT NULL,
+                            `duration_days` INT DEFAULT 0,
+                            `dependency_activity_id` INT DEFAULT NULL,
+                            `responsible_engineer` VARCHAR(255) DEFAULT '',
+                            `planned_qty` DECIMAL(18,3) DEFAULT 0,
+                            `unit` VARCHAR(50) DEFAULT '',
+                            `status` VARCHAR(50) DEFAULT 'Planned',
+                            `progress_percent` DECIMAL(5,2) DEFAULT 0,
+                            `remarks` VARCHAR(500) DEFAULT '',
+                            `created_by` INT DEFAULT NULL,
+                            `modified_by` INT DEFAULT NULL,
+                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"; 
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_project_activity_plan` (
+                          `id` INT NOT NULL AUTO_INCREMENT,
+                          `site_setup_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `wbs_id` INT NOT NULL DEFAULT 0,
+                          `activity_code` VARCHAR(50) NOT NULL DEFAULT '',
+                          `activity_name` VARCHAR(300) NOT NULL DEFAULT '',
+                          `boq_item_id` INT NOT NULL DEFAULT 0,
+                          `planned_qty` DECIMAL(18,3) NOT NULL DEFAULT 0,
+                          `unit` VARCHAR(50) DEFAULT '',
+                          `start_date` DATE DEFAULT NULL,
+                          `end_date` DATE DEFAULT NULL,
+                          `dependency_activity_id` INT NOT NULL DEFAULT 0,
+                          `responsible_resource_id` INT NOT NULL DEFAULT 0,
+                          `remarks` VARCHAR(500) DEFAULT '',
+                          `status` VARCHAR(50) DEFAULT 'Planned',
+                          `created_by` INT NOT NULL DEFAULT 0,
+                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                /********************************************* Optional ******************************************/
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS `tbl_project_daily_work` (
+                //          `id` INT NOT NULL AUTO_INCREMENT,
+                //          `work_date` DATE NOT NULL,
+                //          `project_id` INT NOT NULL DEFAULT 0,
+                //          `site_id` INT NOT NULL DEFAULT 0,
+                //          `zone_id` INT NOT NULL DEFAULT 0,
+                //          `shift_name` VARCHAR(30) DEFAULT '',
+                //          `weather` VARCHAR(100) DEFAULT '',
+                //          `remarks` VARCHAR(500) DEFAULT '',
+                //          `status` VARCHAR(30) NOT NULL DEFAULT 'Draft',
+                //          `created_by` INT NOT NULL DEFAULT 0,
+                //          `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //          `approved_by` INT NOT NULL DEFAULT 0,
+                //          `approved_date` DATETIME DEFAULT NULL,
+                //          PRIMARY KEY (`id`)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS `tbl_project_daily_work_details` (
+                //          `id` INT NOT NULL AUTO_INCREMENT,
+                //          `daily_work_id` INT NOT NULL DEFAULT 0,
+                //          `planning_detail_id` INT NOT NULL DEFAULT 0,
+                //          `project_id` INT NOT NULL DEFAULT 0,
+                //          `site_id` INT NOT NULL DEFAULT 0,
+                //          `zone_id` INT NOT NULL DEFAULT 0,
+                //          `wbs_id` INT NOT NULL DEFAULT 0,
+                //          `activity_id` INT NOT NULL DEFAULT 0,
+                //          `boq_item_id` INT NOT NULL DEFAULT 0,
+
+                //          `today_qty` DECIMAL(20,4) NOT NULL DEFAULT 0.0000,
+                //          `cumulative_qty` DECIMAL(20,4) NOT NULL DEFAULT 0.0000,
+                //          `progress` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+
+                //          `delay_flag` TINYINT(1) NOT NULL DEFAULT 0,
+                //          `delay_reason` VARCHAR(500) DEFAULT '',
+                //          `photo_count` INT NOT NULL DEFAULT 0,
+                //          `remarks` VARCHAR(500) DEFAULT '',
+
+                //          PRIMARY KEY (`id`)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                ////tbl_project_work_order
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_work_order (
+                //            work_order_id INT AUTO_INCREMENT PRIMARY KEY,
+                //            work_order_no VARCHAR(50) NOT NULL UNIQUE,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            zone_id INT NOT NULL DEFAULT 0,
+                //            wbs_id INT NOT NULL DEFAULT 0,
+                //            activity_id INT NOT NULL DEFAULT 0,
+                //            boq_id INT NOT NULL DEFAULT 0,
+                //            cost_code_id INT NOT NULL DEFAULT 0,
+                //            planning_detail_id INT NOT NULL DEFAULT 0,
+                //            description VARCHAR(500) default(''),
+                //            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
+                //            created_by INT NULL,
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_work_order_details
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_work_order_details (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            work_order_id INT NOT NULL,
+                //            description VARCHAR(500) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_site_instruction
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_site_instruction (
+                //            instruction_id INT AUTO_INCREMENT PRIMARY KEY,
+                //            instruction_no VARCHAR(50) NOT NULL UNIQUE,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            zone_id INT NOT NULL DEFAULT 0,
+                //            wbs_id INT NOT NULL DEFAULT 0,
+                //            activity_id INT NOT NULL DEFAULT 0,
+                //            boq_id INT NOT NULL DEFAULT 0,
+                //            cost_code_id INT NOT NULL DEFAULT 0,
+                //            planning_detail_id INT NOT NULL DEFAULT 0,
+                //            description VARCHAR(500) default(''),
+                //            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
+                //            created_by INT NULL,
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_request (
+                //            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                //            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                //            request_date DATE NOT NULL,
+                //            requested_by INT NOT NULL,
+                //            department_id INT NOT NULL,
+                //            status ENUM('Draft','Submitted','Approved','Rejected') DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_by INT NULL,
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_request_item (
+                //            mr_item_id INT AUTO_INCREMENT PRIMARY KEY,
+                //            mr_id INT NOT NULL,                 
+                //            item_id INT NOT NULL,               
+                //            required_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),           
+                //            expected_date DATE NULL,
+                //            status ENUM('Pending','Ordered','Received') DEFAULT 'Pending',
+                //            remarks VARCHAR(250) default(''),
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            zone_id INT NOT NULL DEFAULT 0,
+                //            wbs_id INT NOT NULL DEFAULT 0,
+                //            activity_id INT NOT NULL DEFAULT 0,
+                //            boq_id INT NOT NULL DEFAULT 0,
+                //            cost_code_id INT NOT NULL DEFAULT 0,
+                //            planning_detail_id INT NOT NULL DEFAULT 0,
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_received (
+                //            mr_id INT AUTO_INCREMENT PRIMARY KEY,
+                //            mr_no VARCHAR(50) NOT NULL UNIQUE,
+                //            mr_date DATE NOT NULL,
+                //            po_id INT NOT NULL default 0,
+                //            vendor_id INT NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Partial',
+                //            remarks VARCHAR(250) default(''),
+                //            created_by INT NULL,
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_received_item (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            mr_id INT NOT NULL,
+                //            po_item_id INT NOT NULL,
+                //            ordered_qty DECIMAL(18,2) NOT NULL, 
+                //            received_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),
+                //            status VARCHAR(20) DEFAULT 'Partial',
+                //            warehouse_id INT NOT NULL DEFAULT 0,
+                //            inspection_status VARCHAR(20) DEFAULT 'Pending',
+                //            approved_qty DECIMAL(18,2) NOT NULL DEFAULT 0,
+                //            rejected_qty DECIMAL(18,2) NOT NULL DEFAULT 0,
+                //            batch_number VARCHAR(255) DEFAULT '',
+                //            location_bin VARCHAR(255) DEFAULT '',
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_inspection (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            receipt_id INT NOT NULL,
+                //            inspection_date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                //            warehouse_id INT NOT NULL DEFAULT 0,
+                //            status VARCHAR(20) DEFAULT 'Pending',
+                //            inspected_by INT NOT NULL,
+                //            approved_by INT NOT NULL,
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_inspection_item (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            inspection_id INT NOT NULL,
+                //            receipt_item_id INT NOT NULL,
+                //            item_id INT NOT NULL,
+                //            received_qty DECIMAL(18,2) NOT NULL,
+                //            approved_qty DECIMAL(18,2) NOT NULL,
+                //            rejected_qty DECIMAL(18,2) NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Pending',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_issue (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            issue_no VARCHAR(50) NOT NULL UNIQUE,
+                //            issue_date DATE NOT NULL,
+                //            issued_by INT NOT NULL,
+                //            project_id INT NOT NULL,
+                //            site_id INT NOT NULL,
+                //            zone_id INT NOT NULL,
+                //            wbs_id INT NOT NULL,
+                //            activity_id INT NOT NULL,
+                //            boq_id INT NOT NULL,
+                //            cost_code_id INT NOT NULL,
+                //            planning_detail_id INT NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_issue_item (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            issue_id INT NOT NULL,
+                //            item_id INT NOT NULL,
+                //            issued_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            warehouse_id INT NOT NULL DEFAULT 0,
+                //            batch_number VARCHAR(255) DEFAULT '',
+                //            location_bin VARCHAR(255) DEFAULT '',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                /////Material Consumption
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_consumption (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            project_id INT NOT NULL,
+                //            site_id INT NOT NULL,
+                //            zone_id INT NOT NULL,
+                //            wbs_id INT NOT NULL,
+                //            activity_id INT NOT NULL,
+                //            boq_id INT NOT NULL,
+                //            cost_code_id INT NOT NULL,
+                //            planning_detail_id INT NOT NULL,
+                //            consumption_date DATE NOT NULL,
+                //            item_id INT NOT NULL,
+                //            consumed_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_consumption_item (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            consumption_id INT NOT NULL,
+                //            item_id INT NOT NULL,
+                //            consumed_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            warehouse_id INT NOT NULL DEFAULT 0,
+                //            batch_number VARCHAR(255) DEFAULT '',
+                //            location_bin VARCHAR(255) DEFAULT '',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_return (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            return_no VARCHAR(50) NOT NULL UNIQUE,
+                //            return_date DATE NOT NULL,
+                //            returned_by INT NOT NULL,
+                //            project_id INT NOT NULL,
+                //            site_id INT NOT NULL,
+                //            zone_id INT NOT NULL,
+                //            wbs_id INT NOT NULL,
+                //            activity_id INT NOT NULL,
+                //            boq_id INT NOT NULL,
+                //            cost_code_id INT NOT NULL,
+                //            planning_detail_id INT NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_return_item (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            return_id INT NOT NULL,
+                //            item_id INT NOT NULL,
+                //            returned_qty DECIMAL(18,2) NOT NULL,
+                //            uom VARCHAR(10) NOT NULL default(''),
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            warehouse_id INT NOT NULL DEFAULT 0,
+                //            batch_number VARCHAR(255) DEFAULT '',
+                //            location_bin VARCHAR(255) DEFAULT '',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_transfer (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            transfer_no VARCHAR(50) NOT NULL UNIQUE,
+                //            transfer_date DATE NOT NULL,
+                //            transferred_by INT NOT NULL,
+                //            from_project_id INT NOT NULL,
+                //            from_site_id INT NOT NULL,
+                //            from_zone_id INT NOT NULL,
+                //            from_wbs_id INT NOT NULL,
+                //            from_activity_id INT NOT NULL,
+                //            from_boq_id INT NOT NULL,
+                //            from_cost_code_id INT NOT NULL,
+                //            to_project_id INT NOT NULL,
+                //            to_site_id INT NOT NULL,
+                //            to_zone_id INT NOT NULL,
+                //            to_wbs_id INT NOT NULL,
+                //            to_activity_id INT NOT NULL,
+                //            to_boq_id INT NOT NULL,
+                //            to_cost_code_id INT NOT NULL,
+                //            qty DECIMAL(18,2) NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_material_adjustment with item and qty
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_material_adjustment (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            adjustment_no VARCHAR(50) NOT NULL UNIQUE,
+                //            adjustment_date DATE NOT NULL,
+                //            adjusted_by INT NOT NULL,
+                //            project_id INT NOT NULL,
+                //            site_id INT NOT NULL,
+                //            zone_id INT NOT NULL,
+                //            wbs_id INT NOT NULL,
+                //            activity_id INT NOT NULL,
+                //            boq_id INT NOT NULL,
+                //            qty DECIMAL(18,2) NOT NULL,
+                //            cost_code_id INT NOT NULL,
+                //            planning_detail_id INT NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_stock_reconciliation with item, qty and date
+                // query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_stock_reconciliation (
+                //            id INT AUTO_INCREMENT PRIMARY KEY,
+                //            reconciliation_no VARCHAR(50) NOT NULL UNIQUE,
+                //            reconciliation_date DATE NOT NULL,
+                //            reconciled_by INT NOT NULL,
+                //            project_id INT NOT NULL,
+                //            site_id INT NOT NULL,
+                //            zone_id INT NOT NULL,
+                //            wbs_id INT NOT NULL,
+                //            activity_id INT NOT NULL,
+                //            boq_id INT NOT NULL,
+                //            qty DECIMAL(18,2) NOT NULL,
+                //            cost_code_id INT NOT NULL,
+                //            planning_detail_id INT NOT NULL,
+                //            status VARCHAR(20) DEFAULT 'Draft',
+                //            remarks VARCHAR(250) default(''),
+                //            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_daily_labor
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_daily_labor (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            planning_id INT NOT NULL DEFAULT 0,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            boq_item_id INT NOT NULL DEFAULT 0,
+                //            work_date DATE,
+                //            today_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            cumulative_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            progress DECIMAL(10,2) NOT NULL DEFAULT 0,
+                //            remarks VARCHAR(500) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_daily_equipment
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_daily_equipment (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            planning_id INT NOT NULL DEFAULT 0,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            boq_item_id INT NOT NULL DEFAULT 0,
+                //            work_date DATE,
+                //            today_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            cumulative_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            progress DECIMAL(10,2) NOT NULL DEFAULT 0,
+                //            remarks VARCHAR(500) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_site_expenses
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_site_expenses (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            expense_date DATE,
+                //            amount DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            description VARCHAR(500) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_daily_report
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_daily_report (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            report_date DATE,
+                //            weather VARCHAR(100) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_daily_report_details
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_daily_report_details (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            report_id INT NOT NULL DEFAULT 0,
+                //            boq_item_id INT NOT NULL DEFAULT 0,
+                //            labor_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            equipment_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            material_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            progress DECIMAL(10,2) NOT NULL DEFAULT 0,
+                //            remarks VARCHAR(500) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                ////tbl_project_zone
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_zone (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            parent_zone_id INT NOT NULL DEFAULT 0,
+                //            code VARCHAR(50) NOT NULL DEFAULT '',
+                //            name VARCHAR(150) NOT NULL DEFAULT '',
+                //            zone_type VARCHAR(50) NOT NULL DEFAULT '', -- Block/Floor/Area/Zone
+                //            status VARCHAR(50) NOT NULL DEFAULT 'Active',
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_wbs (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            zone_id INT NOT NULL DEFAULT 0,
+                //            parent_wbs_id INT NOT NULL DEFAULT 0,
+                //            code VARCHAR(50) NOT NULL DEFAULT '',
+                //            name VARCHAR(250) NOT NULL DEFAULT '',
+                //            description VARCHAR(500) DEFAULT '',
+                //            status VARCHAR(50) NOT NULL DEFAULT 'Active',
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_activity_master (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            code VARCHAR(50) NOT NULL DEFAULT '',
+                //            name VARCHAR(250) NOT NULL DEFAULT '',
+                //            uom VARCHAR(20) DEFAULT '',
+                //            category VARCHAR(100) DEFAULT '',
+                //            status VARCHAR(50) NOT NULL DEFAULT 'Active',
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_activity_master (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            code VARCHAR(50) NOT NULL DEFAULT '',
+                //            name VARCHAR(250) NOT NULL DEFAULT '',
+                //            uom VARCHAR(20) DEFAULT '',
+                //            category VARCHAR(100) DEFAULT '',
+                //            status VARCHAR(50) NOT NULL DEFAULT 'Active',
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_planning_details (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            planning_id INT NOT NULL DEFAULT 0,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            zone_id INT NOT NULL DEFAULT 0,
+                //            wbs_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            boq_item_id INT NOT NULL DEFAULT 0,
+                //            activity_id INT NOT NULL DEFAULT 0,
+                //            activity_name VARCHAR(250) NOT NULL DEFAULT '',
+                //            start_date DATE DEFAULT NULL,
+                //            end_date DATE DEFAULT NULL,
+                //            duration_days INT NOT NULL DEFAULT 0,
+                //            planned_qty DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            completed_qty DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            balance_qty DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            planned_daily_qty DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            rate DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            planned_amount DECIMAL(20,4) NOT NULL DEFAULT 0,
+                //            progress DECIMAL(10,2) NOT NULL DEFAULT 0,
+                //            status VARCHAR(50) NOT NULL DEFAULT 'Planned',
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS `tbl_project_wbs` (
+                          `id`           INT NOT NULL AUTO_INCREMENT,
+                          `project_id`   INT NOT NULL DEFAULT 0,
+                          `parent_wbs_id`INT NOT NULL DEFAULT 0,   -- 0 = root level
+                          `code`         VARCHAR(50)  NOT NULL DEFAULT '',
+                          `name`         VARCHAR(300) NOT NULL DEFAULT '',
+                          `wbs_level`    INT NOT NULL DEFAULT 1,
+                          `description`  VARCHAR(500) DEFAULT '',
+                          `is_active`    TINYINT(1)   NOT NULL DEFAULT 1,
+                          `created_by`   INT NOT NULL DEFAULT 0,
+                          `created_at`   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`),
+                          UNIQUE KEY `uq_wbs_code` (`project_id`, `code`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_phase_templates (
+                            template_id INT AUTO_INCREMENT PRIMARY KEY,
+                            phase_no INT NOT NULL,                -- 1,2,3
+                            phase_name VARCHAR(200) NOT NULL,     -- Phase 1, Phase 2, Phase 3
+                            sort_order INT NOT NULL DEFAULT 0,
+                            is_active TINYINT(1) NOT NULL DEFAULT 1
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_phase_task_templates (
+                            task_template_id INT AUTO_INCREMENT PRIMARY KEY,
+                            template_id INT NOT NULL,
+                            task_name VARCHAR(300) NOT NULL,
+                            sort_order INT NOT NULL DEFAULT 0,
+                            is_mandatory TINYINT(1) NOT NULL DEFAULT 1,
+                            is_active TINYINT(1) NOT NULL DEFAULT 1,
+                            FOREIGN KEY (template_id) REFERENCES tbl_project_phase_templates(template_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_phase_tasks (
+                            task_id INT AUTO_INCREMENT PRIMARY KEY,
+                            phase_id INT NOT NULL,
+                            task_template_id INT NULL,
+                            task_name VARCHAR(300) NOT NULL,
+                            is_required TINYINT(1) NOT NULL DEFAULT 1,
+                            is_completed TINYINT(1) NOT NULL DEFAULT 0,
+                            completed_on DATETIME NULL,
+                            completed_by INT NULL,
+                            remarks VARCHAR(500) DEFAULT NULL,
+                            attachment_path VARCHAR(500) DEFAULT NULL,
+                            status VARCHAR(50) NOT NULL DEFAULT 'Pending',
+                            sort_order INT NOT NULL DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            FOREIGN KEY (phase_id) REFERENCES tbl_eng_project_phases(phase_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_stages (
+                            stage_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            stage_no INT NOT NULL,
+                            stage_name VARCHAR(200) NOT NULL,
+                            status VARCHAR(50) NOT NULL DEFAULT 'Pending',
+                            start_date DATE NULL,
+                            end_date DATE NULL,
+                            completed_on DATETIME NULL,
+                            is_current TINYINT(1) DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_notifications (
+                            notification_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NULL,
+                            task_id INT NULL,
+                            user_id INT NULL, -- null = all employees
+                            title VARCHAR(250) NOT NULL,
+                            message VARCHAR(1000) NOT NULL,
+                            notification_type VARCHAR(50) NOT NULL, -- Info, Warning, Alert, Success
+                            is_read TINYINT(1) NOT NULL DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_activity_log (
+                            log_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NULL,
+                            task_id INT NULL,
+                            activity_type VARCHAR(100) NOT NULL,   -- StatusUpdate, PhaseCompleted, DelayWarning, etc.
+                            old_value VARCHAR(250) DEFAULT NULL,
+                            new_value VARCHAR(250) DEFAULT NULL,
+                            remarks VARCHAR(500) DEFAULT NULL,
+                            created_by INT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE tbl_notification_users (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            notification_id INT NOT NULL,
+                            user_id INT NOT NULL,
+                            is_read TINYINT(1) DEFAULT 0,
+                            read_at DATETIME NULL,
+                            FOREIGN KEY (notification_id) REFERENCES tbl_notifications(notification_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE INDEX idx_projects_search ON tbl_projects (owner_name, plot_number, basin_number, municipality_project_no, bank_project_no);
+                        CREATE INDEX idx_phase_project ON tbl_eng_project_phases (project_id);
+                        CREATE INDEX idx_task_phase ON tbl_project_phase_tasks (phase_id);
+                        CREATE INDEX idx_stage_project ON tbl_project_stages (project_id);
+                        CREATE INDEX idx_notifications_project ON tbl_notifications (project_id, is_read);";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE tbl_project_files (
+                            file_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            engineer_id INT NOT NULL,
+                            file_name VARCHAR(250),
+                            file_path VARCHAR(500),
+                            file_type VARCHAR(50),
+                            description VARCHAR(500),
+                            status VARCHAR(50) DEFAULT 'Pending',
+                            uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE tbl_project_classification (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            name_ar VARCHAR(200) NOT NULL,
+                            name_en VARCHAR(200) NOT NULL,
+                            is_active TINYINT(1) DEFAULT 1,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
                 DBClass.ExecuteNonQuery(query);
 
                 query = @" USE " + dbName + @";
@@ -3581,6 +4813,29 @@ namespace YamyProject
                     '" + dbName + "', '" + txtcompany.Text.Trim() + "','" + dbcode + "', '" + txtdescription.Text.Trim() + "', '" + txtphone1.Text.Trim() + "','','" + txtemail.Text.Trim() + "', '', '', '' , '' , NULL,' " + (guna2CustomCheckBox1.Checked ? 1 : 0) + "','"+ customerCode + "'); ";
                 
                 DBClass.ExecuteNonQuery(query);
+
+                //INSERT INTO tbl_project_phase_templates(phase_no, phase_name, sort_order) VALUES
+                //(1, 'Phase 1', 1),
+                //(2, 'Phase 2', 2),
+                //(3, 'Phase 3', 3);
+
+                //INSERT INTO tbl_project_phase_task_templates(template_id, task_name, sort_order) VALUES
+                //(1, '2D proposals submitted and approved by owner', 1),
+                //(1, '3D proposals submitted and approved by owner', 2),
+                //(1, 'Opening project file with municipality', 3),
+                //(1, 'Soil testing', 4);
+
+                //INSERT INTO tbl_project_phase_task_templates(template_id, task_name, sort_order) VALUES
+                //(2, 'Municipality approval of architectural and structural drawings', 1),
+                //(2, 'Interior design and decoration drawings', 2),
+                //(2, 'Tender drawings (architectural + services)', 3),
+                //(2, 'Project pricing file and contractor selection', 4),
+                //(2, 'Project file in bank', 5);
+
+                //INSERT INTO tbl_project_phase_task_templates(template_id, task_name, sort_order) VALUES
+                //(3, 'Project execution on site', 1),
+                //(3, 'Modification of drawings during execution', 2),
+                //(3, 'Completion of execution and project handover', 3);
 
             }
             catch (Exception ex)

@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using PdfSharp.Drawing.BarCodes;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
 using YamyProject.DAL;

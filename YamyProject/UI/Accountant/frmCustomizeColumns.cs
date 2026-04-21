@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.Localization;
 using YamyProject.UI.Banking;
 
 namespace YamyProject.UI.Accountant
@@ -18,6 +19,7 @@ namespace YamyProject.UI.Accountant
         public frmCustomizeColumns(int _typeId)
         {
             InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
             this.typeId = _typeId;
         }
 

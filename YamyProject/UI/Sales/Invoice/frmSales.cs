@@ -21,7 +21,7 @@ namespace YamyProject
         private EventHandler warehouseUpdatedHandler;
 
         decimal invId;
-        int level4PaymentCreditMethodId, level4VatId, level4SalesInvoice, level4COGS, level4Inventory, level4AdvancePayment;
+        int level4PaymentCreditMethodId, level4VatId, level4SalesInvoice, level4COGS, level4Inventory, level4AdvancePayment, level4RetentionAccount, level4DeductionAccount;
         int id,defaultCustomerId=0;
         bool AllowItemWithOutQty = true, EnableBarcode = false, ReceivePayments = false;
         string formType;
@@ -484,6 +484,8 @@ namespace YamyProject
             level4COGS = frmLogin.defaultAccounts.ContainsKey("COGS") ? frmLogin.defaultAccounts["COGS"] : 0;
             level4Inventory = frmLogin.defaultAccounts.ContainsKey("Inventory") ? frmLogin.defaultAccounts["Inventory"] : 0;
             level4AdvancePayment = frmLogin.defaultAccounts.ContainsKey("Customer Advances") ? frmLogin.defaultAccounts["Customer Advances"] : 0;
+            level4RetentionAccount = frmLogin.defaultAccounts.ContainsKey("Retention") ? frmLogin.defaultAccounts["Retention"] : 0;
+            level4DeductionAccount = frmLogin.defaultAccounts.ContainsKey("Deduction") ? frmLogin.defaultAccounts["Deduction"] : 0;
         }
         private string GenerateNextSalesCode()
         {
@@ -969,8 +971,8 @@ namespace YamyProject
                        : cmbAccountCashName.SelectedValue.ToString();
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                        _accountId,
-                       txtTotal.Text, "0", invId.ToString(), cmbCustomer.SelectedValue.ToString(), cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash","SALES", "Sales Invoice NO. " + txtNextCode.Text,
-                       frmLogin.userId, DateTime.Now.Date,txtNextCode.Text);
+                       txtTotal.Text, "0", invId.ToString(), cmbCustomer.SelectedValue.ToString(), cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES", "Sales Invoice NO. " + txtNextCode.Text,
+                       frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
 
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
@@ -980,7 +982,7 @@ namespace YamyProject
                 if (decimal.Parse(txtTotalVat.Text) > 0)
                 {
                     CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                  level4VatId.ToString(), "0", txtTotalVat.Text, invId.ToString(), "0", cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash","SALES",
+                  level4VatId.ToString(), "0", txtTotalVat.Text, invId.ToString(), "0", cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES",
                   "Vat Output For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
                 }
 
@@ -997,6 +999,13 @@ namespace YamyProject
                     CommonInsert.addTransactionEntry(dtInv.Value.Date,
                        _accountId,
                         "0", txtAdvancePayment.Text.Replace(",", ""), invId.ToString(), cmbCustomer.SelectedValue.ToString(), cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES", "Sales Invoice NO. " + txtNextCode.Text + " Customer Advance Payment",
+                       frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+                }
+                if (txtRetentionAmount.Text != "" && decimal.Parse(txtRetentionAmount.Text.Replace(",", "")) > 0)
+                {
+                    CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                       level4RetentionAccount.ToString(),
+                       txtRetentionAmount.Text.Replace(",", ""), "0", invId.ToString(), "0", cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES", "Sales Invoice NO. " + txtNextCode.Text + " Retention Amount",
                        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
                 }
             }
@@ -2939,6 +2948,11 @@ namespace YamyProject
 
                 isUpdatingRetention = false;
             }
+        }
+
+        private void txtTotalBefore_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void CalculateTotalAmount()

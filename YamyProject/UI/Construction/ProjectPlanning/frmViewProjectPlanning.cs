@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Vbe.Interop;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,7 +39,7 @@ namespace YamyProject
 
             //BindCombos.PopulateCitieAllNormalComboBox(cmbProjectLocation);
 
-            var defaultAccounts = BindCombos.LoadDefaultAccounts();
+            var defaultAccounts = BindCombos.DefaultAccounts();
             AccountCashId = defaultAccounts.ContainsKey("Purchase Payment Cash Method")
                 ? defaultAccounts["Purchase Payment Cash Method"] : 0;
             BindCombos.PopulateAllLevel4Account(cmbFundAccount);
@@ -375,7 +376,7 @@ namespace YamyProject
                       TotalAmount.ToString(), "0", id.ToString(), "0",
                       "Project Planning", "PROJECT PLANNING",
                       "Project Planning Invoice NO.",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 // 2. Credit Subcontractor for total invoice
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
@@ -383,7 +384,7 @@ namespace YamyProject
                       "0", TotalAmount.ToString(), id.ToString(), SubcontractorId.ToString(),
                       "Project Planning", "PROJECT PLANNING",
                       "Subcontractor Invoice Payable",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 // 3. Payment to subcontractor (actual paid)
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
@@ -391,14 +392,14 @@ namespace YamyProject
                       paymentAmount.ToString(), "0", id.ToString(), "0",
                       "Project Planning", "PROJECT PLANNING",
                       "Payment made to subcontractor",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      AccountCashId.ToString(),                    // Cash/Bank
                       "0", paymentAmount.ToString(), id.ToString(), "0",
                       "Project Planning", "PROJECT PLANNING",
                       "Cash/Bank payment to subcontractor",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 // 4. Retention withheld
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
@@ -406,14 +407,14 @@ namespace YamyProject
                       RetentionAmount.ToString(), "0", id.ToString(), "0",
                       "Project Planning", "PROJECT PLANNING",
                       "Retention withheld from subcontractor",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      RetentionAccountId.ToString(),               // Retention Payable Account
                       "0", RetentionAmount.ToString(), id.ToString(), "0",
                       "Project Planning", "PROJECT PLANNING",
                       "Retention Payable",
-                      frmLogin.userId, DateTime.Now.Date, "0");
+                      frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
             }
         }
 
@@ -428,18 +429,18 @@ namespace YamyProject
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      cmbFundAccount.SelectedValue.ToString(),
                       TotalAmount.ToString(), "0", id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
-                     frmLogin.userId, DateTime.Now.Date, "0");
+                     frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      AccountCashId.ToString(),
                       "0", paymentAmount.ToString(), id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
-                     frmLogin.userId, DateTime.Now.Date, "0");
+                     frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
 
                 /******************************Retention**************************/
                 CommonInsert.addTransactionEntry(dtInv.Value.Date,
                      AccountCashId.ToString(),
                       "0", RetentionAmount.ToString(), id.ToString(), "0", "Project Planning", "PROJECT PLANNING", "Project Planning Invoice NO. ",
-                     frmLogin.userId, DateTime.Now.Date, "0");
+                     frmLogin.userId, DateTime.Now.Date, "0", Convert.ToInt32(cmbProjectName.SelectedValue));
             }
         }
         private bool insertData()
@@ -1151,6 +1152,11 @@ namespace YamyProject
         private void CalculateRetention()
         {
             txtRetentionAmount.Text = ((decimal.Parse(txtEstimatedBudget.Text) * decimal.Parse(txtRetentionPercentage.Text == "" ? "0" : txtRetentionPercentage.Text)) / 100).ToString("F2");
+        }
+
+        private void txtRetentionAmount_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void ShowGridInsteadOfTabs()

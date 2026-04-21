@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace YamyProject
 {
@@ -139,6 +140,10 @@ namespace YamyProject
             {
                 if (insertEmployee())
                 {
+                    if (ChkEngineer.Checked)
+                    {
+                        SaveEngineer();
+                    }
                     EventHub.RefreshEmployee();
                     this.Close();
                 }
@@ -146,10 +151,57 @@ namespace YamyProject
             else
                 if (updateEmployee())
             {
+                if (ChkEngineer.Checked)
+                {
+                    SaveEngineer();
+                }
                 EventHub.RefreshEmployee();
                 this.Close();
             }
         }
+
+        private void SaveEngineer()
+        {
+            int engineerId = 0;
+            if (id > 0)
+            {
+                object obj = DBClass.ExecuteScalar("Select name from tbl_employee where id = @id", DBClass.CreateParameter("@id", id));
+                if (obj != null)
+                {
+                    if(!string.IsNullOrEmpty(obj.ToString()))
+                    {
+                        object eObj = DBClass.ExecuteScalar("select id from tbl_engineers where name = @name", DBClass.CreateParameter("@name", obj.ToString()));
+                        if (eObj != null)
+                        {
+                            engineerId = Convert.ToInt32(eObj.ToString());
+                        }
+                    }
+                }
+            }
+            if (engineerId > 0)
+            {
+                string updateQuery = "UPDATE tbl_engineers SET name = @name, contact_no = @contact_no WHERE id = @id";
+                DBClass.ExecuteNonQuery(updateQuery,
+                    DBClass.CreateParameter("@name", txtEmpName.Text),
+                    DBClass.CreateParameter("@contact_no", txtPhoneNum.Text),
+                    DBClass.CreateParameter("@id", engineerId)
+                    );
+
+                Utilities.LogAudit(frmLogin.userId, "update Engineer", "Engineer Edit", engineerId, "Update Engineer : " + txtEmpName.Text);
+            }
+            else
+            {
+                string insertQuery = "INSERT INTO tbl_engineers (code, name, contact_no) VALUES (@code, @name, @contact_no)";
+                int codeId = int.Parse(GenerateNextEmployeeCode()) - 1;
+                DBClass.ExecuteNonQuery(insertQuery,
+                    DBClass.CreateParameter("@code", txtEmployeeCode.Text),
+                    DBClass.CreateParameter("@name", txtEmpName.Text),
+                    DBClass.CreateParameter("@contact_no", txtPhoneNum.Text)
+                    );
+                Utilities.LogAudit(frmLogin.userId, "add Engineer", "Engineer Save", 0, "Add Engineer : " + txtEmpName.Text);
+            }
+        }
+
         private bool updateEmployee()
         {
             if (!chkRequiredDate())
@@ -326,9 +378,20 @@ namespace YamyProject
                    DBClass.CreateParameter("Gratuit_id", cmbGratuit.SelectedValue ?? 0),
                    DBClass.CreateParameter("Petty_Cash_id", cmbPettyCash.SelectedValue ?? 0),
                    DBClass.CreateParameter("active", chkActive.Checked ? 0 :1));
-            Utilities.LogAudit(frmLogin.userId, "Insert Employee", "Employee", refId,
+
+            if (refId != 0)
+            {
+                Utilities.LogAudit(frmLogin.userId, "Insert Employee", "Employee", refId,
                 "Inserted Employee: " + txtEmpName.Text + ", Code: " + txtEmployeeCode.Text);
-            return true;
+
+                return true;
+            }
+            else
+            {
+                string message = Utilities.LastLogError();
+                MessageBox.Show("Error Check your data" + message);
+                return false;
+            }
         }
         private bool chkRequiredDate()
         {
@@ -681,6 +744,12 @@ namespace YamyProject
                 if (!reader.Read())
                     cmbAccruedSalaries.SelectedIndex = -1;
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmViewCity().ShowDialog();
+        }
+
         private void FormatNumberWithCommas(TextBox txtBox)
         {
             if (string.IsNullOrWhiteSpace(txtBox.Text))

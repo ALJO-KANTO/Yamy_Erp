@@ -198,7 +198,7 @@ namespace YamyProject
         {
             BindCombos.PopulateVendors(cmbVendor);
             BindCombos.PopulateAllLevel4Account(cmbAccountCashName);
-            var defaultAccounts = BindCombos.LoadDefaultAccounts();
+            var defaultAccounts = BindCombos.DefaultAccounts();
 
             cmbAccountCashName.SelectedValue = defaultAccounts.ContainsKey("Purchase Payment Cash Method")
                 ? defaultAccounts["Purchase Payment Cash Method"] : 0;

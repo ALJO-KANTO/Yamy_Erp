@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using MigraDoc.DocumentObjectModel;
+﻿using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MySql.Data.MySqlClient;
@@ -262,7 +261,7 @@ namespace YamyProject
                         LEFT JOIN tbl_coa_level_2 l2 ON l2.main_id = l1.id
                         LEFT JOIN tbl_coa_level_3 l3 ON l3.main_id = l2.id
                         LEFT JOIN tbl_coa_level_4 l4 ON l4.main_id = l3.id
-                        LEFT JOIN tbl_transaction t ON t.account_id = l4.id
+                        LEFT JOIN tbl_transaction t ON t.account_id = l4.id AND t.date BETWEEN @sDate AND @eDate
                         WHERE l1.category_code IN ('Income', 'Cost', 'EXPENSE')
                         GROUP BY l1.id, l1.name, l1.category_code
                     ),
@@ -318,13 +317,13 @@ namespace YamyProject
 
                     ORDER BY sort_order;
 
-                        "))
+                        ", DBClass.CreateParameter("sDate", dtFrom.Value.Date), DBClass.CreateParameter("eDate", dtTo.Value.Date)))
                 {
                     while (reader.Read())
                     {
                         dgvCustomer.Rows.Add("e", "u", "1", "   ►     " + reader["name"].ToString(),
                             reader["id"].ToString(), reader["name"].ToString(),
-                            Utilities.FormatDecimal(reader["balance"].ToString().Replace("-", "")));
+                            Utilities.FormatDecimal(reader["balance"].ToString()));
                     }
                     // Auto-expand everything
                     for (int i = 0; i < dgvCustomer.Rows.Count; i++)
@@ -365,10 +364,10 @@ namespace YamyProject
                             JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
                             JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
                             JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
-                            LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id
+                            LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id AND tt.date BETWEEN @sDate AND @eDate
                             WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE')
                             GROUP BY t1.category_code;
-                            ")
+                            ", DBClass.CreateParameter("sDate", dtFrom.Value.Date), DBClass.CreateParameter("eDate", dtTo.Value.Date))
                         )
                     {
                         while (mySqlDataReader.Read())
@@ -930,7 +929,7 @@ namespace YamyProject
                                 else if (reportType == "standard" || reportType == "Unclassified")
                                 {
                                     var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
-                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData).Replace("-", "") });
+                                    newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                                 } else if (reportType == "Prev Year Comparison")
                                 {
                                     var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString(), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
@@ -1109,7 +1108,7 @@ namespace YamyProject
                         if (balanceData != null)
                         {
 
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData.Replace("-", ""));
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance"].Value = Utilities.FormatDecimal(balanceData);
                         }
                     }
                     if (reportType == "YTD Comparison")
@@ -1117,19 +1116,19 @@ namespace YamyProject
                         var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
                         if (balances.balance1 != null && balances.balance2 != null)
                         {
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1).Replace("-", "");
-                            dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2).Replace("-", "");
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
+                            dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
                         }
                     }
                     else if (reportType == "Prev Year Comparison")
                     {
                         var balances = GetBalanceData(currLvl, dgvCustomer.Rows[e.RowIndex].Cells["currname"].Value.ToString().Replace("▼", ""), dtFrom.Value, dtTo.Value, prevFrom, prevTo);
 
-                        dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1).Replace("-", "");
-                        dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2).Replace("-", "");
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance1"].Value = Utilities.FormatDecimal(balances.balance1);
+                        dgvCustomer.Rows[e.RowIndex].Cells["balance2"].Value = Utilities.FormatDecimal(balances.balance2);
                         decimal change = balances.balance1 - balances.balance2;
                         decimal percentChange = (balances.balance2 != 0) ? (change / balances.balance2) * 100 : 0;
-                        dgvCustomer.Rows[e.RowIndex].Cells["change"].Value = Utilities.FormatDecimal(change).Replace("-", "");
+                        dgvCustomer.Rows[e.RowIndex].Cells["change"].Value = Utilities.FormatDecimal(change);
                         dgvCustomer.Rows[e.RowIndex].Cells["change_percentage"].Value = $"{percentChange:N1}%";
                     }
             
@@ -1174,7 +1173,7 @@ namespace YamyProject
                                  WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
                                                   WHERE main_id IN (SELECT id FROM tbl_coa_level_2 
                                                                    WHERE main_id = t1.id))
-                             )
+                             ) AND tt.date BETWEEN @fromDate AND @toDate
                             ) AS level1_balance,
 
                             -- Balance for Level 2 (Summing its child transactions)
@@ -1184,7 +1183,7 @@ namespace YamyProject
                                  SELECT id FROM tbl_coa_level_4 
                                  WHERE main_id IN (SELECT id FROM tbl_coa_level_3 
                                                   WHERE main_id = t2.id)
-                             )
+                             ) AND tt.date BETWEEN @fromDate AND @toDate
                             ) AS level2_balance,
 
                             -- Balance for Level 3 (Summing only Level 4 transactions)
@@ -1193,7 +1192,7 @@ namespace YamyProject
                              WHERE tt.account_id IN (
                                  SELECT id FROM tbl_coa_level_4 
                                  WHERE main_id = t3.id
-                             )
+                             ) AND tt.date BETWEEN @fromDate AND @toDate
                             ) AS level3_balance,
 
                             -- Balance for Level 4 (Direct transactions only)
@@ -1203,16 +1202,16 @@ namespace YamyProject
                         LEFT JOIN tbl_coa_level_2 t2 ON t2.main_id = t1.id
                         LEFT JOIN tbl_coa_level_3 t3 ON t3.main_id = t2.id
                         LEFT JOIN tbl_coa_level_4 t4 ON t4.main_id = t3.id
-                        LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id  
+                        LEFT JOIN tbl_transaction tt ON tt.account_id = t4.id AND tt.date BETWEEN @fromDate AND @toDate 
 
                         WHERE t1.category_code IN ('Income', 'Cost', 'EXPENSE') AND t{level}.name = @name
 
                         GROUP BY t1.id, t2.id, t3.id, t4.id;
-                        ", DBClass.CreateParameter("name", name)))
+                        ", DBClass.CreateParameter("name", name), DBClass.CreateParameter("fromDate", dtFrom.Value.Date), DBClass.CreateParameter("toDate", dtTo.Value.Date)))
             {
                 if (read.Read())
                 {
-                    return read[$"level{level}_balance"].ToString().Replace("-", "");
+                    return read[$"level{level}_balance"].ToString();
                 }
             }
 

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using YamyProject.DAL;
+using YamyProject.Localization;
 using YamyProject.UI.Banking;
 
 namespace YamyProject.UI.Accountant
@@ -16,6 +17,7 @@ namespace YamyProject.UI.Accountant
         public FrmBatchEnterTransactions(int _id = 0)
         {
             InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
             this.id = _id;
         }
 

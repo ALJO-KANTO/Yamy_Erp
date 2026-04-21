@@ -76,7 +76,15 @@ namespace YamyProject
                             DBClass.CreateParameter("@account_id", cmbMainAccount.SelectedValue),
                             DBClass.CreateParameter("@created_by", frmLogin.userId),
                             DBClass.CreateParameter("@created_date", DateTime.Now.Date));
-                Utilities.LogAudit(frmLogin.userId, "Add Item Warehouse", "Item Warehouse", refId, "Added Item Warehouse: " + txtName.Text);
+                if (refId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Item Warehouse", "Item Warehouse", refId, "Added Item Warehouse: " + txtName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
             {

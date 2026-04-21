@@ -282,8 +282,17 @@ namespace YamyProject
                     DBClass.CreateParameter("TotalAdditions", txtTotalAdditions.Text),
                     DBClass.CreateParameter("TotalDeductions", txtTotalDeductions.Text),
                     DBClass.CreateParameter("NetAccruals", txtNetAccruals.Text));
-            Utilities.LogAudit(frmLogin.userId, "Insert Final Settlement", "Final Settlement", refId, "Inserted Final Settlement for Employee: " + cmbEmployeeName.Text + " with Code: " + code);
-            return true;
+            if (refId != 0)
+            {
+                Utilities.LogAudit(frmLogin.userId, "Insert Final Settlement", "Final Settlement", refId, "Inserted Final Settlement for Employee: " + cmbEmployeeName.Text + " with Code: " + code);
+                return true;
+            }
+            else
+            {
+                string message = Utilities.LastLogError();
+                MessageBox.Show("Error Check your data" + message);
+                return false;
+            }
         }
 
         private void txtOtherAdditions_TextChanged(object sender, EventArgs e)

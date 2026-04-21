@@ -1,8 +1,6 @@
-﻿using CrystalDecisions.Windows.Forms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using OfficeOpenXml;
-using OfficeOpenXml.Table.PivotTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -45,7 +43,6 @@ namespace YamyProject
         private void frmViewProjectEstimating_Load(object sender, EventArgs e)
         {
             dtpt.Value = DateTime.Now.Date;
-            BindCombos.PopulateWarehouse(cmbWarehouse);
             //LoaddgvItems();
             BindCombo();
             if (id != 0)
@@ -62,7 +59,6 @@ namespace YamyProject
             cmbProject.SelectedValue = reader["project_id"].ToString();
             cmbAccountName.SelectedValue = reader["account_id"].ToString();
             cmbTenderName.SelectedValue = reader["tender_name_id"].ToString();
-            cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
             dtsd.Value = DateTime.Parse(reader["submission_date"].ToString());
             var fees = reader["fees"];
 
@@ -164,18 +160,18 @@ namespace YamyProject
         {
             dgvItems.Rows.Clear();
             string query = "";
-            if (isExported)
-            {
+            //if (isExported)
+            //{
                 query = @"SELECT tbl_project_tender_details.*, tbl_items_boq.id as code,tbl_items_boq.name,tbl_items_boq.type,tbl_items_boq.unit_name as unit_name FROM tbl_project_tender_details 
                                 INNER JOIN tbl_items_boq ON tbl_project_tender_details.tender_id = ref_id AND tbl_project_tender_details.item_id=tbl_items_boq.id
                                 WHERE tbl_project_tender_details.tender_id= @id;";
-            }
-            else
-            {
-                query = @"SELECT tbl_project_tender_details.*, tbl_items.code as code,tbl_items.type,(select name from tbl_unit where id=tbl_project_tender_details.unit_id) as unit_name FROM tbl_project_tender_details INNER JOIN 
-                                                                    tbl_items ON tbl_project_tender_details.item_id = tbl_items.id WHERE 
-                                                                    tbl_project_tender_details.tender_id = @id;";
-            }
+            //}
+            //else
+            //{
+            //    query = @"SELECT tbl_project_tender_details.*, tbl_items.code as code,tbl_items.type,(select name from tbl_unit where id=tbl_project_tender_details.unit_id) as unit_name FROM tbl_project_tender_details INNER JOIN 
+            //                                                        tbl_items ON tbl_project_tender_details.item_id = tbl_items.id WHERE 
+            //                                                        tbl_project_tender_details.tender_id = @id;";
+            //}
             MySqlDataReader reader = DBClass.ExecuteReader(query,
                                                             DBClass.CreateParameter("id", id));
             int count = 0;
@@ -245,22 +241,7 @@ namespace YamyProject
                 }
             }
         }
-        private void LoaddgvItems()
-        {
-            //dgvItems.Rows.Clear();
-            //DataTable dt = DBClass.ExecuteDataTable("select code,name from tbl_items where warehouse_id=@id and state = 0 and  active = 0",
-            //                    DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()));
-            //DataGridViewComboBoxColumn cmbItemName = (DataGridViewComboBoxColumn)dgvItems.Columns["name"];
-            //cmbItemName.DataSource = dt;
-            //cmbItemName.DisplayMember = "name";
-            //cmbItemName.ValueMember = "code";
-            //change it based on selected item SELECT u.id,u.name from tbl_items_unit iu,tbl_unit u WHERE iu.unit_id=u.id AND iu.item_id = 50;
-            //dt = DBClass.ExecuteDataTable("select id, name from tbl_unit");
-            //DataGridViewComboBoxColumn cmbUnit = (DataGridViewComboBoxColumn)dgvItems.Columns["unit"];
-            //cmbUnit.DataSource = dt;
-            //cmbUnit.DisplayMember = "name";
-            //cmbUnit.ValueMember = "id";
-        }
+        
         int cmbIncomeAccount = 0, cmbAssetAccount = 0, cmbCOGSAccount = 0;
         public void BindCombo()
         {
@@ -302,7 +283,7 @@ namespace YamyProject
             DBClass.CreateParameter("date", dtpt.Value.Date),
             DBClass.CreateParameter("submissionDate", dtsd.Value.Date),
             DBClass.CreateParameter("projectId", cmbProject.SelectedValue),
-            DBClass.CreateParameter("warehouse_id", cmbWarehouse.SelectedValue),
+            DBClass.CreateParameter("warehouse_id", 0),
             DBClass.CreateParameter("account_id", cmbAccountName.SelectedValue),
             DBClass.CreateParameter("tenderNameId", cmbTenderName.SelectedValue),
             DBClass.CreateParameter("fees", txtFees.Text),
@@ -328,16 +309,16 @@ namespace YamyProject
         private void insertGridItems()
         {
             int _itemCode = 0;
-            object resultCode = DBClass.ExecuteScalar(@"SELECT IFNULL(MAX(CAST(code AS UNSIGNED)), 0) + 1 AS next_code FROM tbl_items;");
-            int recordCount = (resultCode != null && resultCode != DBNull.Value) ? Convert.ToInt32(resultCode) : 0;
-            if (recordCount > 0)
-            {
-                _itemCode = recordCount;
-            }
+            //object resultCode = DBClass.ExecuteScalar(@"SELECT IFNULL(MAX(CAST(code AS UNSIGNED)), 0) + 1 AS next_code FROM tbl_items;");
+            //int recordCount = (resultCode != null && resultCode != DBNull.Value) ? Convert.ToInt32(resultCode) : 0;
+            //if (recordCount > 0)
+            //{
+            //    _itemCode = recordCount;
+            //}
             
                 string refSr = "";
                 int subId = 0;
-                int assemblyItemId = 0;
+                //int assemblyItemId = 0;
                 for (int i = 0; i < dgvItems.Rows.Count - 1; i++)
                 {
                     string _sr = id > 0 ? (dgvItems.Rows[i].Cells["sr"].Value == null ? "" : dgvItems.Rows[i].Cells["sr"].Value.ToString()) : (dgvItems.Rows[i].Cells["sr"].Value == null ? "" : dgvItems.Rows[i].Cells["sr"].Value.ToString());
@@ -390,45 +371,45 @@ namespace YamyProject
                         if (!string.IsNullOrEmpty(_sr) && Regex.IsMatch(_sr, @"^[A-Za-z]+$"))
                         {
                             refSr = _sr;
-                            assemblyItemId = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_items(
-                                        code, warehouse_id, type, category_id, name, unit_id, barcode, cost_price, 
-                                        cogs_account_id, vendor_id, sales_price, income_account_id, asset_account_id, 
-                                        min_amount, max_amount, on_hand, method, total_value, date, img, active, state, 
-                                        created_By, created_date, Item_type)
-                                    SELECT
-                                        @code, @warehouseId, @type, @category, @name, @unit_id, @barcode, @cost_price, 
-                                        @cogs_account_id, @vendor_id, @sales_price, @income_account_id, @asset_account_id, 
-                                        @min_amount, @max_amount, @on_hand, @method, @total_value, @date, @img, @active, @state, 
-                                        @created_By, @created_date, @Item_type
-                                    WHERE NOT EXISTS (
-                                        SELECT 1 FROM tbl_items WHERE name = @name
-                                    ); SELECT LAST_INSERT_ID();
-                                    ",
-                                DBClass.CreateParameter("code", _itemCode.ToString()),
-                                DBClass.CreateParameter("warehouseId", cmbWarehouse.SelectedValue),
-                                DBClass.CreateParameter("type", "13 - Inventory Assembly"),
-                                DBClass.CreateParameter("category", 0),
-                                DBClass.CreateParameter("name", _description),
-                                DBClass.CreateParameter("unit_id", "0"),
-                                DBClass.CreateParameter("barcode", ""),
-                                DBClass.CreateParameter("cost_price", _rate),
-                                DBClass.CreateParameter("cogs_account_id", cmbCOGSAccount),
-                                DBClass.CreateParameter("vendor_id", 0),
-                                DBClass.CreateParameter("sales_price", "0"),
-                                DBClass.CreateParameter("income_account_id", cmbIncomeAccount),
-                                DBClass.CreateParameter("asset_account_id", cmbAssetAccount),
-                                DBClass.CreateParameter("min_amount", 0),
-                                DBClass.CreateParameter("max_amount", 0),
-                                DBClass.CreateParameter("on_hand", _qty),
-                                DBClass.CreateParameter("method", "fifo"),
-                                DBClass.CreateParameter("total_value", 0),
-                                DBClass.CreateParameter("date", dtpt.Value.Date),
-                                DBClass.CreateParameter("img", ""),
-                                DBClass.CreateParameter("active", 0),
-                                DBClass.CreateParameter("state", 0),
-                                DBClass.CreateParameter("created_By", frmLogin.userId),
-                                DBClass.CreateParameter("created_date", DateTime.Now.Date),
-                                DBClass.CreateParameter("Item_type", "Inventory")).ToString());
+                            //assemblyItemId = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_items(
+                            //            code, warehouse_id, type, category_id, name, unit_id, barcode, cost_price, 
+                            //            cogs_account_id, vendor_id, sales_price, income_account_id, asset_account_id, 
+                            //            min_amount, max_amount, on_hand, method, total_value, date, img, active, state, 
+                            //            created_By, created_date, Item_type)
+                            //        SELECT
+                            //            @code, @warehouseId, @type, @category, @name, @unit_id, @barcode, @cost_price, 
+                            //            @cogs_account_id, @vendor_id, @sales_price, @income_account_id, @asset_account_id, 
+                            //            @min_amount, @max_amount, @on_hand, @method, @total_value, @date, @img, @active, @state, 
+                            //            @created_By, @created_date, @Item_type
+                            //        WHERE NOT EXISTS (
+                            //            SELECT 1 FROM tbl_items WHERE name = @name
+                            //        ); SELECT LAST_INSERT_ID();
+                            //        ",
+                            //    DBClass.CreateParameter("code", _itemCode.ToString()),
+                            //    DBClass.CreateParameter("warehouseId", 0),
+                            //    DBClass.CreateParameter("type", "13 - Inventory Assembly"),
+                            //    DBClass.CreateParameter("category", 0),
+                            //    DBClass.CreateParameter("name", _description),
+                            //    DBClass.CreateParameter("unit_id", "0"),
+                            //    DBClass.CreateParameter("barcode", ""),
+                            //    DBClass.CreateParameter("cost_price", _rate),
+                            //    DBClass.CreateParameter("cogs_account_id", cmbCOGSAccount),
+                            //    DBClass.CreateParameter("vendor_id", 0),
+                            //    DBClass.CreateParameter("sales_price", "0"),
+                            //    DBClass.CreateParameter("income_account_id", cmbIncomeAccount),
+                            //    DBClass.CreateParameter("asset_account_id", cmbAssetAccount),
+                            //    DBClass.CreateParameter("min_amount", 0),
+                            //    DBClass.CreateParameter("max_amount", 0),
+                            //    DBClass.CreateParameter("on_hand", _qty),
+                            //    DBClass.CreateParameter("method", "fifo"),
+                            //    DBClass.CreateParameter("total_value", 0),
+                            //    DBClass.CreateParameter("date", dtpt.Value.Date),
+                            //    DBClass.CreateParameter("img", ""),
+                            //    DBClass.CreateParameter("active", 0),
+                            //    DBClass.CreateParameter("state", 0),
+                            //    DBClass.CreateParameter("created_By", frmLogin.userId),
+                            //    DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                            //    DBClass.CreateParameter("Item_type", "Inventory")).ToString());
                             _itemCode = _itemCode + 1;
                             
                             Utilities.LogAudit(frmLogin.userId, "Add Project Tender Item", "Project Tender", (int)invId, "Added Item: " + _description + ", Code: " + _itemCode + ", Qty: " + _qty + ", Rate: " + _rate);
@@ -492,58 +473,58 @@ namespace YamyProject
                                                      DBClass.CreateParameter("created_date", DateTime.Now.Date),
                                                      DBClass.CreateParameter("refId", _itemId.ToString())).ToString());
 
-                            int itemIdOf = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO `tbl_items`(
-                                    `code`, `warehouse_id`, `type`, category_id, `name`, `unit_id`, `barcode`, `cost_price`, 
-                                    `cogs_account_id`, `vendor_id`, `sales_price`, `income_account_id`, `asset_account_id`, 
-                                    `min_amount`, `max_amount`, `on_hand`, method, `total_value`, `date`, `img`, `active`, `state`, 
-                                    `created_By`, `created_date`, Item_type)
-                                SELECT 
-                                    @code, @warehouseId, @type, @category, @name, @unit_id, @barcode, @cost_price, 
-                                    @cogs_account_id, @vendor_id, @sales_price, @income_account_id, @asset_account_id, 
-                                    @min_amount, @max_amount, @on_hand, @method, @total_value, @date, @img, @active, @state, 
-                                    @created_By, @created_date, @Item_type
-                                WHERE NOT EXISTS (
-                                    SELECT 1 FROM tbl_items WHERE name = @name
-                                ); SELECT LAST_INSERT_ID();
-                                ",
-                            DBClass.CreateParameter("code", _itemCode),
-                            DBClass.CreateParameter("warehouseId", cmbWarehouse.SelectedValue),
-                            DBClass.CreateParameter("type", "11 - Inventory Part"),
-                            DBClass.CreateParameter("category", 0),
-                            DBClass.CreateParameter("name", item.Name),
-                            DBClass.CreateParameter("unit_id", 0),
-                            DBClass.CreateParameter("barcode", ""),
-                            DBClass.CreateParameter("cost_price", decimal.Parse(item.Cost.ToString())),
-                            DBClass.CreateParameter("cogs_account_id", item.COGSAccountId),
-                            DBClass.CreateParameter("vendor_id", item.VendorAccountId),
-                            DBClass.CreateParameter("sales_price", "0"),
-                            DBClass.CreateParameter("income_account_id", item.IncomeAccountId),
-                            DBClass.CreateParameter("asset_account_id", item.AssetAccountId),
-                            DBClass.CreateParameter("min_amount", 0),
-                            DBClass.CreateParameter("max_amount", 0),
-                            DBClass.CreateParameter("on_hand", item.Qty),
-                            DBClass.CreateParameter("method", "fifo"),
-                            DBClass.CreateParameter("total_value", 0),
-                            DBClass.CreateParameter("date", dtpt.Value),
-                            DBClass.CreateParameter("img", ""),
-                            DBClass.CreateParameter("active", 0),
-                            DBClass.CreateParameter("state", 0),
-                            DBClass.CreateParameter("created_By", frmLogin.userId),
-                            DBClass.CreateParameter("created_date", DateTime.Now.Date),
-                            DBClass.CreateParameter("@Item_type", "Inventory")).ToString());
+                            //int itemIdOf = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO `tbl_items`(
+                            //        `code`, `warehouse_id`, `type`, category_id, `name`, `unit_id`, `barcode`, `cost_price`, 
+                            //        `cogs_account_id`, `vendor_id`, `sales_price`, `income_account_id`, `asset_account_id`, 
+                            //        `min_amount`, `max_amount`, `on_hand`, method, `total_value`, `date`, `img`, `active`, `state`, 
+                            //        `created_By`, `created_date`, Item_type)
+                            //    SELECT 
+                            //        @code, @warehouseId, @type, @category, @name, @unit_id, @barcode, @cost_price, 
+                            //        @cogs_account_id, @vendor_id, @sales_price, @income_account_id, @asset_account_id, 
+                            //        @min_amount, @max_amount, @on_hand, @method, @total_value, @date, @img, @active, @state, 
+                            //        @created_By, @created_date, @Item_type
+                            //    WHERE NOT EXISTS (
+                            //        SELECT 1 FROM tbl_items WHERE name = @name
+                            //    ); SELECT LAST_INSERT_ID();
+                            //    ",
+                            //DBClass.CreateParameter("code", _itemCode),
+                            //DBClass.CreateParameter("warehouseId", cmbWarehouse.SelectedValue),
+                            //DBClass.CreateParameter("type", "11 - Inventory Part"),
+                            //DBClass.CreateParameter("category", 0),
+                            //DBClass.CreateParameter("name", item.Name),
+                            //DBClass.CreateParameter("unit_id", 0),
+                            //DBClass.CreateParameter("barcode", ""),
+                            //DBClass.CreateParameter("cost_price", decimal.Parse(item.Cost.ToString())),
+                            //DBClass.CreateParameter("cogs_account_id", item.COGSAccountId),
+                            //DBClass.CreateParameter("vendor_id", item.VendorAccountId),
+                            //DBClass.CreateParameter("sales_price", "0"),
+                            //DBClass.CreateParameter("income_account_id", item.IncomeAccountId),
+                            //DBClass.CreateParameter("asset_account_id", item.AssetAccountId),
+                            //DBClass.CreateParameter("min_amount", 0),
+                            //DBClass.CreateParameter("max_amount", 0),
+                            //DBClass.CreateParameter("on_hand", item.Qty),
+                            //DBClass.CreateParameter("method", "fifo"),
+                            //DBClass.CreateParameter("total_value", 0),
+                            //DBClass.CreateParameter("date", dtpt.Value),
+                            //DBClass.CreateParameter("img", ""),
+                            //DBClass.CreateParameter("active", 0),
+                            //DBClass.CreateParameter("state", 0),
+                            //DBClass.CreateParameter("created_By", frmLogin.userId),
+                            //DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                            //DBClass.CreateParameter("@Item_type", "Inventory")).ToString());
 
-                            DBClass.ExecuteNonQuery("insert into tbl_item_assembly_bos(assembly_id,item_id,qty) values (@assembly_id,@item_id,@qty);insert into tbl_item_assembly(assembly_id,item_id,qty) values (@assembly_item_id,@itemId,@qty)",
-                            DBClass.CreateParameter("assembly_id", _itemId.ToString()),
-                            DBClass.CreateParameter("assembly_item_id", itemIdOf.ToString()),
-                            DBClass.CreateParameter("item_id", assemblyId.ToString()),
-                            DBClass.CreateParameter("itemId", assemblyItemId.ToString()),
-                            DBClass.CreateParameter("qty", _qty));
+                            //DBClass.ExecuteNonQuery("insert into tbl_item_assembly_bos(assembly_id,item_id,qty) values (@assembly_id,@item_id,@qty);insert into tbl_item_assembly(assembly_id,item_id,qty) values (@assembly_item_id,@itemId,@qty)",
+                            //DBClass.CreateParameter("assembly_id", _itemId.ToString()),
+                            //DBClass.CreateParameter("assembly_item_id", itemIdOf.ToString()),
+                            //DBClass.CreateParameter("item_id", assemblyId.ToString()),
+                            //DBClass.CreateParameter("itemId", assemblyItemId.ToString()),
+                            //DBClass.CreateParameter("qty", _qty));
 
-                            if (_qty != "0")
-                            {
-                                insertItemTransaction(item.Qty, dtpt.Value, decimal.Parse(item.Cost.ToString()), invId.ToString(), itemIdOf.ToString());
-                                insertItemJournal(item.Qty, dtpt.Value, _itemCode.ToString(), decimal.Parse(item.Cost.ToString()), 0, invId.ToString());
-                            }
+                            //if (_qty != "0")
+                            //{
+                            //    insertItemTransaction(item.Qty, dtpt.Value, decimal.Parse(item.Cost.ToString()), invId.ToString(), itemIdOf.ToString());
+                            //    insertItemJournal(item.Qty, dtpt.Value, _itemCode.ToString(), decimal.Parse(item.Cost.ToString()), 0, invId.ToString());
+                            //}
                             _itemCode = _itemCode + 1;
 
                             Utilities.LogAudit(frmLogin.userId, "Add Project Tender Item", "Project Tender", (int)invId, "Added Item: " + _description + ", Code: " + _itemCode + ", Qty: " + _qty + ", Rate: " + _rate);
@@ -661,12 +642,12 @@ namespace YamyProject
             selectedRow = dgvItems.CurrentRow;
             if (dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["name"].Index)
             {
-                ComboBox comboBox = e.Control as ComboBox;
-                if (comboBox != null)
-                {
-                    comboBox.SelectedIndexChanged -= new EventHandler(ComboBoxName_SelectedIndexChanged);
-                    comboBox.SelectedIndexChanged += new EventHandler(ComboBoxName_SelectedIndexChanged);
-                }
+                //ComboBox comboBox = e.Control as ComboBox;
+                //if (comboBox != null)
+                //{
+                //    comboBox.SelectedIndexChanged -= new EventHandler(ComboBoxName_SelectedIndexChanged);
+                //    comboBox.SelectedIndexChanged += new EventHandler(ComboBoxName_SelectedIndexChanged);
+                //}
             }
             else if (dgvItems.CurrentCell.ColumnIndex == dgvItems.Columns["unit"].Index)
             {
@@ -718,14 +699,14 @@ namespace YamyProject
         }
         int comboCount = 0;
         string itemTyped = "", selectedItemId = "0";
-        private void ComboBoxName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null && comboBox.SelectedValue != null)
-            {
-                insertItemThroughCodeOrCombo("combo", null, comboBox);
-            }
-        }
+        //private void ComboBoxName_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ComboBox comboBox = sender as ComboBox;
+        //    if (comboBox != null && comboBox.SelectedValue != null)
+        //    {
+        //        insertItemThroughCodeOrCombo("combo", null, comboBox);
+        //    }
+        //}
         //bool checkItemValidty(int itemId)
         //{
             //decimal qty = 0;
@@ -818,10 +799,10 @@ namespace YamyProject
                     {
                         if (e.ColumnIndex == dgvItems.Columns["Code"].Index)
                         {
-                            string codeValue = row.Cells["Code"].Value?.ToString();
-                            DataGridViewComboBoxCell comboCell = row.Cells["name"] as DataGridViewComboBoxCell;
-                            if (comboCell != null)
-                                insertItemThroughCodeOrCombo("code", comboCell, null);
+                            //string codeValue = row.Cells["Code"].Value?.ToString();
+                            //DataGridViewComboBoxCell comboCell = row.Cells["name"] as DataGridViewComboBoxCell;
+                            //if (comboCell != null)
+                            //    insertItemThroughCodeOrCombo("code", comboCell, null);
                         }
                         else if (e.ColumnIndex == dgvItems.Columns["qty"].Index)
                         {
@@ -857,43 +838,43 @@ namespace YamyProject
             else
                 return 0;
         }
-        private void insertItemThroughCodeOrCombo(string type, DataGridViewComboBoxCell comboCell, ComboBox comboBox)
-        {
-            MySqlDataReader reader = null;
+        //private void insertItemThroughCodeOrCombo(string type, DataGridViewComboBoxCell comboCell, ComboBox comboBox)
+        //{
+        //    MySqlDataReader reader = null;
 
-            if (type == "code")
-            {
-                reader = DBClass.ExecuteReader(@"SELECT *
-                  FROM tbl_items 
-                  WHERE code = @code AND  warehouse_id = @w",
-                    DBClass.CreateParameter("code", dgvItems.CurrentRow.Cells["code"].Value.ToString()),
-                    DBClass.CreateParameter("w", cmbWarehouse.SelectedValue.ToString()));
-            }
-            else if (type == "combo" && comboBox.SelectedValue != null)
-            {
-                string selectedItemCode = comboBox.SelectedValue.ToString();
-                reader = DBClass.ExecuteReader(@"SELECT tbl_items.id,method,type,code,sales_price,unit_id 
-                  FROM tbl_items 
-                  WHERE warehouse_id = @id  and code = @code",
-                    DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()),
-                    DBClass.CreateParameter("code", selectedItemCode));
-            }
+        //    if (type == "code")
+        //    {
+        //        reader = DBClass.ExecuteReader(@"SELECT *
+        //          FROM tbl_items 
+        //          WHERE code = @code AND  warehouse_id = @w",
+        //            DBClass.CreateParameter("code", dgvItems.CurrentRow.Cells["code"].Value.ToString()),
+        //            DBClass.CreateParameter("w", cmbWarehouse.SelectedValue.ToString()));
+        //    }
+        //    else if (type == "combo" && comboBox.SelectedValue != null)
+        //    {
+        //        string selectedItemCode = comboBox.SelectedValue.ToString();
+        //        reader = DBClass.ExecuteReader(@"SELECT tbl_items.id,method,type,code,sales_price,unit_id 
+        //          FROM tbl_items 
+        //          WHERE warehouse_id = @id  and code = @code",
+        //            DBClass.CreateParameter("id", cmbWarehouse.SelectedValue.ToString()),
+        //            DBClass.CreateParameter("code", selectedItemCode));
+        //    }
 
-            if (reader != null && reader.Read())
-            {
-                dgvItems.CurrentRow.Cells["qty"].Value = 0;
-                dgvItems.CurrentRow.Cells["code"].Value = reader["code"].ToString();
-                dgvItems.CurrentRow.Cells["itemId"].Value = reader["id"].ToString();
-                dgvItems.CurrentRow.Cells["rate"].Value = Convert.ToDecimal(reader["sales_price"]);
-                dgvItems.CurrentRow.Cells["unitId"].Value = reader["unit_id"].ToString();
-                if (type == "code" && comboCell != null)
-                    comboCell.Value = dgvItems.CurrentRow.Cells["code"].Value.ToString();
+        //    if (reader != null && reader.Read())
+        //    {
+        //        dgvItems.CurrentRow.Cells["qty"].Value = 0;
+        //        dgvItems.CurrentRow.Cells["code"].Value = reader["code"].ToString();
+        //        dgvItems.CurrentRow.Cells["itemId"].Value = reader["id"].ToString();
+        //        dgvItems.CurrentRow.Cells["rate"].Value = Convert.ToDecimal(reader["sales_price"]);
+        //        dgvItems.CurrentRow.Cells["unitId"].Value = reader["unit_id"].ToString();
+        //        if (type == "code" && comboCell != null)
+        //            comboCell.Value = dgvItems.CurrentRow.Cells["code"].Value.ToString();
 
-                string itemType = reader["type"].ToString();
-                string itemMethode = reader["method"].ToString();
-                CalculateSRAndUpdateDataGridView(itemType);
-            }
-        }
+        //        string itemType = reader["type"].ToString();
+        //        string itemMethode = reader["method"].ToString();
+        //        CalculateSRAndUpdateDataGridView(itemType);
+        //    }
+        //}
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
@@ -943,11 +924,6 @@ namespace YamyProject
         private void dgvItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             dgvItems.Rows[e.RowIndex].Cells[1].Value = (e.RowIndex + 1).ToString();
-        }
-
-        private void cmbWarehouse_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoaddgvItems();
         }
 
         private void txtFees_KeyPress(object sender, KeyPressEventArgs e)

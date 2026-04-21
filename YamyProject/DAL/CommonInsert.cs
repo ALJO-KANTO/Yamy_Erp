@@ -157,11 +157,11 @@ namespace YamyProject
             DBClass.CreateParameter("@createdDate", createdDate));
         }
         public static void addTransactionEntry(DateTime date, string accountId, string debit, string credit,
-                               string transactionId, string humId, string type, string voucher_name, string description, int createdBy, DateTime createdDate,string VoucherNo)
+                               string transactionId, string humId, string type, string voucher_name, string description, int createdBy, DateTime createdDate,string VoucherNo,int projectId = 0)
         {
             DBClass.ExecuteNonQuery(@"INSERT INTO tbl_transaction 
-                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state,voucher_no) 
-                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0,@voucher_no);",
+                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state,voucher_no,project_id) 
+                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0,@voucher_no,@projectId);",
             DBClass.CreateParameter("@date", date),
             DBClass.CreateParameter("@accountId", accountId),
             DBClass.CreateParameter("@debit", debit),
@@ -173,7 +173,8 @@ namespace YamyProject
             DBClass.CreateParameter("@description", description),
             DBClass.CreateParameter("@createdBy", createdBy),
             DBClass.CreateParameter("@createdDate", createdDate),
-            DBClass.CreateParameter("voucher_no", VoucherNo));
+            DBClass.CreateParameter("@projectId", projectId),
+            DBClass.CreateParameter("@voucher_no", VoucherNo));
         }
         public static void UpdateTransactionEntry(int journalId, DateTime date, string accountId, string debit, string credit,
                                       string transactionId, string humId, string type, string tType, string description, int modifiedBy, DateTime modifiedDate)

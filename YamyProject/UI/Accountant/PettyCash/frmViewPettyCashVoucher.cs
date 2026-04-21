@@ -237,9 +237,29 @@ namespace YamyProject
             }
             //DataGridViewCell buttonColumn = dgvInv.CurrentRow.Cells["humId"];
             //loadNameList(buttonColumn);
+            loadVat();
             LocalizationManager.LocalizeDataGridViewHeaders(dgvInv);
         }
+        private void loadVat()
+        {
+            DataTable dt = DBClass.ExecuteDataTable("SELECT id, CONCAT(name, '-', value, '%') AS display_text, value FROM tbl_tax");
 
+            DataGridViewComboBoxColumn vatCol = (DataGridViewComboBoxColumn)dgvInv.Columns["vat"];
+            vatCol.DataSource = dt;
+            vatCol.DisplayMember = "display_text";
+            vatCol.ValueMember = "id";
+            vatCol.FlatStyle = FlatStyle.Popup;
+            vatCol.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
+            vatCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            vatCol.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            string dTax = Utilities.GeneralSettings("DEFAULT TAX PERCENTAGE");
+            if (!string.IsNullOrEmpty(dTax) && int.TryParse(dTax, out int val) && val > 0)
+            {
+                defaultTax = dTax;
+            }
+        }
+        string defaultTax = "";
         private void BindVoucher()
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader(@"SELECT * FROM tbl_petty_cash WHERE id = " + id))
@@ -252,7 +272,9 @@ namespace YamyProject
                     string cash_account_id = reader["cash_account_id"].ToString();
                     string employee_id = reader["employee_id"].ToString();
                     cmbPettyCash.SelectedValue = int.Parse(employee_id);
-                    txtAmount.Text = reader["total"].ToString();
+                    txtAmount.Text = reader["amount"].ToString();
+                    txtVat.Text = reader["vat"].ToString();
+                    txtTotal.Text = reader["total"].ToString();
                     //txtDescription1.Text = reader["description"].ToString();
                     //cmbAccountName.SelectedValue = reader["debit_account_id"].ToString();
                     /*
@@ -271,7 +293,7 @@ namespace YamyProject
             using (MySqlDataReader reader = DBClass.ExecuteReader(@"
                 SELECT ROW_NUMBER() OVER (ORDER BY entry_date) AS SN, 
                        dt.id, dt.petty_cash_id, dt.entry_date, dt.ref_id, dt.hum_id, dt.hum_name, dt.category,
-                       dt.cost_center_id, dt.description, dt.amount, dt.project_id, dt.note
+                       dt.cost_center_id, dt.description, dt.amount,dt.vatP,dt.vat,dt.total, dt.project_id, dt.note
                 FROM tbl_petty_cash_details dt 
                 WHERE dt.petty_cash_id = @id",
                 DBClass.CreateParameter("id", id)))
@@ -283,10 +305,17 @@ namespace YamyProject
                     string inv_date = DateTime.Parse(reader["entry_date"].ToString()).ToShortDateString();
                     string description = reader["description"].ToString();
                     string PettyCashAmount = Utilities.FormatDecimal(reader["amount"].ToString());
+                    string PettyCashVatP = Utilities.FormatDecimal(reader["vatP"].ToString());
+                    string PettyCashVat = int.Parse(reader["vat"].ToString()).ToString();
+                    string PettyCashTotal = Utilities.FormatDecimal(reader["total"].ToString());
                     string _humId = reader["hum_id"].ToString();
                     string _humName = reader["hum_name"].ToString();
                     string vCategory = reader["category"].ToString();
                     string colNote = reader["note"].ToString() ?? "";
+                    if (decimal.Parse(PettyCashTotal) == 0)
+                    {
+                        PettyCashTotal = (decimal.Parse(PettyCashVat) + decimal.Parse(PettyCashAmount)).ToString("0.00");
+                    }
 
                     string cost_center_id = reader["cost_center_id"].ToString();
                     if (string.IsNullOrEmpty(cost_center_id))
@@ -294,7 +323,14 @@ namespace YamyProject
 
                     _humId = _humId == "0" ? null : _humId;
                     // Add row with null placeholder for CostCenter
-                    dgvInv.Rows.Add(serialNumber.ToString(), inv_date, inv_id, null, _humName, _humId, null, description, PettyCashAmount, colNote);
+                    dgvInv.Rows.Add(serialNumber.ToString(), inv_date, inv_id, null, _humName, _humId, null, description, PettyCashAmount,null, PettyCashVat, PettyCashTotal, colNote);
+
+                    DataGridViewComboBoxCell comboCell = dgvInv.Rows[dgvInv.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                    if (comboCell != null && reader["vat"].ToString() != "0")
+                    {
+                        comboCell.Value = int.Parse(reader["vat"].ToString());
+                        dgvInv.Rows[dgvInv.Rows.Count - 2].Cells["vatp"].Value = decimal.Parse(reader["vatP"].ToString());
+                    }
 
                     //Get the last added row(always last)
                     DataGridViewComboBoxCell comboCellCategory = dgvInv.Rows[dgvInv.Rows.Count - 2].Cells["category"] as DataGridViewComboBoxCell;
@@ -383,14 +419,16 @@ namespace YamyProject
             if (!chkRequireData())
                 return false;
             code = GenerateNextPettyCashCode();
-            id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_petty_cash(code, voucher_date, cash_account_id, employee_id, notes, total, created_by) 
-                                                            VALUES (@code, @voucher_date, @cash_account_id, @employee_id, @notes, @total, @created_by); SELECT LAST_INSERT_ID();",
+            id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_petty_cash(code, voucher_date, cash_account_id, employee_id, notes, amount, vat, total, created_by) 
+                                                            VALUES (@code, @voucher_date, @cash_account_id, @employee_id, @notes, @amount, @vat, @total, @created_by); SELECT LAST_INSERT_ID();",
                                                             DBClass.CreateParameter("code", code),
                                                             DBClass.CreateParameter("voucher_date", dtOpen.Value.Date),
                                                             DBClass.CreateParameter("cash_account_id", cmbPettyCash.SelectedValue ?? 0),
                                                             DBClass.CreateParameter("employee_id", employeeId),
                                                             DBClass.CreateParameter("notes", ""),
-                                                            DBClass.CreateParameter("total", txtAmount.Text),
+                                                            DBClass.CreateParameter("amount", txtAmount.Text),
+                                                            DBClass.CreateParameter("vat", txtVat.Text),
+                                                            DBClass.CreateParameter("total", txtTotal.Text),
                                                             DBClass.CreateParameter("created_by", frmLogin.userId)).ToString());
 
             insertINV(id);
@@ -408,13 +446,20 @@ namespace YamyProject
         {
             if (!chkRequireData())
                 return false;
-            DBClass.ExecuteScalar(@"UPDATE tbl_petty_cash SET code = @code, voucher_date = @voucher_date, cash_account_id = @cash_account_id, employee_id = @employee_id, total = @total, notes = @notes WHERE id = @id;",
+
+            if(decimal.Parse(txtAmount.Text)== decimal.Parse(txtTotal.Text))
+            {
+                txtVat.Text = "0.00";
+            }
+            DBClass.ExecuteScalar(@"UPDATE tbl_petty_cash SET code = @code, voucher_date = @voucher_date, cash_account_id = @cash_account_id, employee_id = @employee_id, amount = @amount, vat = @vat, total = @total, notes = @notes WHERE id = @id;",
                                     DBClass.CreateParameter("id", id),
                                     DBClass.CreateParameter("code", code),
                                     DBClass.CreateParameter("voucher_date", dtOpen.Value.Date),
                                     DBClass.CreateParameter("cash_account_id", cmbPettyCash.SelectedValue ?? 0),
                                     DBClass.CreateParameter("employee_id", employeeId),
-                                    DBClass.CreateParameter("total", txtAmount.Text),
+                                    DBClass.CreateParameter("amount", txtAmount.Text),
+                                    DBClass.CreateParameter("vat", txtVat.Text),
+                                    DBClass.CreateParameter("total", txtTotal.Text),
                                     DBClass.CreateParameter("notes", "")
                                     );
             DBClass.ExecuteNonQuery("Delete from tbl_petty_cash_details where petty_cash_id=@id", DBClass.CreateParameter("id", id));
@@ -434,7 +479,7 @@ namespace YamyProject
 
         private bool chkRequireData()
         {
-            if (txtAmount.Text.Trim() == "")
+            if (txtTotal.Text.Trim() == "")
             {
                 MessageBox.Show("Please Enter PettyCash Amount.");
                 return false;
@@ -444,7 +489,7 @@ namespace YamyProject
             //    MessageBox.Show("Please Choose Debit Account Name");
             //    return false;
             //}
-            if ((txtAmount.Text == "" || decimal.Parse(txtAmount.Text) == 0) && dgvInv.Rows.Count == 0)
+            if ((txtTotal.Text == "" || decimal.Parse(txtTotal.Text) == 0) && dgvInv.Rows.Count == 0)
             {
                 MessageBox.Show("Enter Amount");
                 return false;
@@ -455,13 +500,13 @@ namespace YamyProject
 
         private void insertINV(int pvId)
         {
-            // no, humId, colDate, invId, Category, CostCenter, Description, Amount, colNote
+            // no, humId, colDate, invId, Category, CostCenter, Description, Amount, vat, total, colNote
 
             for (int i = 0; i < dgvInv.Rows.Count; i++)
             {
-                if (dgvInv.Rows[i].Cells["Amount"].Value == null ||
-                    dgvInv.Rows[i].Cells["Amount"].Value.ToString() == "" ||
-                    decimal.Parse(dgvInv.Rows[i].Cells["Amount"].Value.ToString()) == 0)
+                if (dgvInv.Rows[i].Cells["total"].Value == null ||
+                    dgvInv.Rows[i].Cells["total"].Value.ToString() == "" ||
+                    decimal.Parse(dgvInv.Rows[i].Cells["total"].Value.ToString()) == 0)
                     continue;
                 
                 DateTime date = DateTime.Parse(dgvInv.Rows[i].Cells["colDate"].Value.ToString());
@@ -474,15 +519,21 @@ namespace YamyProject
                 string humName = dgvInv.Rows[i].Cells["type"].Value == null ? "" : dgvInv.Rows[i].Cells["type"].Value?.ToString() ?? "";
                 var description = dgvInv.Rows[i].Cells["Description"].Value?.ToString() ?? "";
                 var amount = dgvInv.Rows[i].Cells["Amount"].Value?.ToString() ?? "0";
+                var vat = dgvInv.Rows[i].Cells["vat"].Value?.ToString() ?? "0";
+                var vatAmount = dgvInv.Rows[i].Cells["vatP"].Value?.ToString() ?? "0";
+                var total = dgvInv.Rows[i].Cells["total"].Value?.ToString() ?? "0";
                 var colNote = dgvInv.Rows[i].Cells["colNote"].Value?.ToString() ?? "";
 
-                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_petty_cash_details(entry_date,petty_cash_id,hum_id, hum_name, ref_id,cost_center_id,amount, description,category, note) 
-                                        VALUES (@date,@Petty_Cash_id,@hum_id , @hum_name, @inv_code, @cost_center_id,@amount, @description,@category, @note);",
+                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_petty_cash_details(entry_date,petty_cash_id,hum_id, hum_name, ref_id,cost_center_id,amount,vatP,vat,total, description,category, note) 
+                                        VALUES (@date,@Petty_Cash_id,@hum_id , @hum_name, @inv_code, @cost_center_id,@amount,@vatP,@vat,@total, @description,@category, @note);",
                                         DBClass.CreateParameter("@Petty_Cash_id", pvId),
                                         DBClass.CreateParameter("@date", date),
                                         DBClass.CreateParameter("@hum_id", humId),
                                         DBClass.CreateParameter("@hum_name", humName),
                                         DBClass.CreateParameter("@amount", amount),
+                                        DBClass.CreateParameter("@vat", vat),
+                                        DBClass.CreateParameter("@vatP", vatAmount),
+                                        DBClass.CreateParameter("@total", total),
                                         DBClass.CreateParameter("@inv_code", invId),
                                         DBClass.CreateParameter("@cost_center_id", CostCenterId),
                                         DBClass.CreateParameter("@description", description),
@@ -528,6 +579,7 @@ namespace YamyProject
         }
         private void calculateTotal()
         {
+            decimal totalTotal = 0, totalVat = 0;
             for (int i = 0; i < dgvInv.Rows.Count; i++)
             {
                 if (dgvInv.Rows[i].Cells["Amount"].Value != null)
@@ -536,18 +588,32 @@ namespace YamyProject
                         continue;
                     totalAmount += decimal.Parse(dgvInv.Rows[i].Cells["Amount"].Value.ToString());
                 }
+                if(dgvInv.Rows[i].Cells["vat"].Value != null)
+                {
+                    if (dgvInv.Rows[i].Cells["vat"].Value.ToString() == "")
+                        continue;
+                    totalVat += decimal.Parse(dgvInv.Rows[i].Cells["vat"].Value.ToString());
+                }
+                if(dgvInv.Rows[i].Cells["total"].Value != null)
+                {
+                    if (dgvInv.Rows[i].Cells["total"].Value.ToString() == "")
+                        continue;
+                    totalTotal += decimal.Parse(dgvInv.Rows[i].Cells["total"].Value.ToString());
+                }
             }
-            txtAmount.Text = totalAmount.ToString();
+            txtAmount.Text = totalAmount.ToString("0.00");
+            txtVat.Text = totalVat.ToString("0.00");
+            txtTotal.Text = totalTotal.ToString("0.00");
             totalAmount = 0;
         }
-        private void txtAmount_TextChanged(object sender, EventArgs e)
+        private void txtTotal_TextChanged(object sender, EventArgs e)
         {
-            if (txtAmount.Text == "")
+            if (txtTotal.Text == "")
             {
                 txtAmountInWord.Text = "";
                 return;
             }
-            txtAmountInWord.Text = GeneralConfiguration.NumberToWords(decimal.Parse(txtAmount.Text));
+            txtAmountInWord.Text = AmountToWordsHelper.ConvertToSelectedLanguage(decimal.Parse(txtTotal.Text));
         }
 
         private void dgvInv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -618,7 +684,7 @@ namespace YamyProject
         {
             double amount = 0;
 
-            bool hasValidAmount = double.TryParse(txtAmount.Text, out amount) && amount > 0;
+            bool hasValidAmount = double.TryParse(txtTotal.Text, out amount) && amount > 0;
 
             if (id > 0 && hasValidAmount)
             {
@@ -1256,7 +1322,9 @@ namespace YamyProject
 
         private void dgvInv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dgvInv.CurrentCell.ColumnIndex == dgvInv.Columns["Amount"].Index)
+            int colIndex = dgvInv.CurrentCell.ColumnIndex;
+
+            if (colIndex == dgvInv.Columns["amount"].Index)
             {
                 TextBox txt = e.Control as TextBox;
                 if (txt != null)
@@ -1266,6 +1334,14 @@ namespace YamyProject
 
                     // Add our event handler
                     txt.KeyPress += Txt_KeyPress;
+                }
+            }
+            else if (colIndex == dgvInv.Columns["vat"].Index)
+            {
+                if (e.Control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndexChanged -= ComboBoxTax_SelectedIndexChanged;
+                    comboBox.SelectedIndexChanged += ComboBoxTax_SelectedIndexChanged;
                 }
             }
             else
@@ -1279,6 +1355,82 @@ namespace YamyProject
             }
         }
 
+        private void ComboBoxTax_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox combo && combo.SelectedItem is DataRowView selectedRow)
+            {
+                if (dgvInv.CurrentCell == null || dgvInv.CurrentCell.ColumnIndex != dgvInv.Columns["vat"].Index)
+                    return;
+
+                var row = dgvInv.CurrentRow;
+                if (row == null) return;
+
+                string taxId = selectedRow["id"].ToString();
+                string taxP = selectedRow["value"].ToString();
+
+                decimal amount = GetDecimalValue(row, "amount");
+
+                if (amount == 0)
+                {
+                    row.Cells["vatp"].Value = row.Cells["total"].Value = "0";
+                }
+                else
+                {
+                    row.Cells["vat"].Value = Convert.ToInt32(taxId);
+                    row.Cells["vatp"].Value = (amount * decimal.Parse(taxP) / 100);
+                    row.Cells["total"].Value = amount + Convert.ToDecimal(row.Cells["vatp"].Value);
+                }
+
+                ChkRowValidity(row);
+            }
+        }
+        private void ChkRowValidity(DataGridViewRow row)
+        {
+            if (row == null) return;
+
+            decimal amount = GetDecimalValue(row, "amount");
+
+            if (amount == 0)
+            {
+                row.Cells["vatp"].Value = "0";
+                row.Cells["total"].Value = "0";
+                return;
+            }
+
+            try
+            {
+                // --- Get VAT value from DataSource by selected VAT ID ---
+                string vatId = row.Cells["vat"].Value?.ToString() ?? "0";
+                string vP = "0";
+
+                DataTable vatTable = ((DataGridViewComboBoxColumn)dgvInv.Columns["vat"]).DataSource as DataTable;
+                if (vatTable != null)
+                {
+                    DataRow[] matches = vatTable.Select("id = " + vatId);
+                    if (matches.Length > 0)
+                    {
+                        vP = matches[0]["value"].ToString();
+                    }
+                }
+
+                decimal vatValue = amount * Convert.ToDecimal(vP) / 100;
+                row.Cells["vatp"].Value = vatValue;
+                row.Cells["total"].Value = amount + vatValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("VAT calc error: " + ex.Message);
+            }
+        }
+        private decimal GetDecimalValue(DataGridViewRow row, string columnName)
+        {
+            decimal result;
+            var cellValue = row.Cells[columnName].Value;
+            if (cellValue != null && decimal.TryParse(cellValue.ToString(), out result))
+                return result;
+            else
+                return 0;
+        }
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Allow control keys (backspace, delete, etc.)

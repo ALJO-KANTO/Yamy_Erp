@@ -121,6 +121,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.pnlEmplyee = new System.Windows.Forms.Panel();
             this.pnlBank = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.cmbRetentionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.cmbDeductionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlCommon.SuspendLayout();
@@ -134,9 +138,9 @@
             // cmbPurchaseReturnInvoice
             // 
             this.cmbPurchaseReturnInvoice.BackColor = System.Drawing.Color.Transparent;
-            this.cmbPurchaseReturnInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbPurchaseReturnInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList; 
             this.cmbPurchaseReturnInvoice.BorderRadius = 5;
+            this.cmbPurchaseReturnInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPurchaseReturnInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPurchaseReturnInvoice.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchaseReturnInvoice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchaseReturnInvoice.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,6 +168,7 @@
             // cmbPurchaseInvoice
             // 
             this.cmbPurchaseInvoice.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPurchaseInvoice.BorderRadius = 5;
             this.cmbPurchaseInvoice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPurchaseInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPurchaseInvoice.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -171,7 +176,6 @@
             this.cmbPurchaseInvoice.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPurchaseInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPurchaseInvoice.ItemHeight = 23;
-            this.cmbPurchaseInvoice.BorderRadius = 5;
             this.cmbPurchaseInvoice.Location = new System.Drawing.Point(12, 218);
             this.cmbPurchaseInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPurchaseInvoice.Name = "cmbPurchaseInvoice";
@@ -194,14 +198,14 @@
             // cmbPurchasePaymentCashMethod
             // 
             this.cmbPurchasePaymentCashMethod.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPurchasePaymentCashMethod.BorderRadius = 5;
             this.cmbPurchasePaymentCashMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPurchasePaymentCashMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPurchasePaymentCashMethod.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchasePaymentCashMethod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbPurchasePaymentCashMethod.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPurchasePaymentCashMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbPurchasePaymentCashMethod.ItemHeight = 23; 
-            this.cmbPurchasePaymentCashMethod.BorderRadius = 5;
+            this.cmbPurchasePaymentCashMethod.ItemHeight = 23;
             this.cmbPurchasePaymentCashMethod.Location = new System.Drawing.Point(14, 146);
             this.cmbPurchasePaymentCashMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPurchasePaymentCashMethod.Name = "cmbPurchasePaymentCashMethod";
@@ -212,9 +216,9 @@
             // cmbVatInput
             // 
             this.cmbVatInput.BackColor = System.Drawing.Color.Transparent;
+            this.cmbVatInput.BorderRadius = 5;
             this.cmbVatInput.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbVatInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVatInput.BorderRadius = 5;
             this.cmbVatInput.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbVatInput.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbVatInput.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,6 +234,7 @@
             // cmbVendor
             // 
             this.cmbVendor.BackColor = System.Drawing.Color.Transparent;
+            this.cmbVendor.BorderRadius = 5;
             this.cmbVendor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbVendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVendor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -237,7 +242,6 @@
             this.cmbVendor.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbVendor.ItemHeight = 23;
-            this.cmbVendor.BorderRadius = 5;
             this.cmbVendor.Location = new System.Drawing.Point(14, 34);
             this.cmbVendor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbVendor.Name = "cmbVendor";
@@ -286,7 +290,7 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label30.Location = new System.Drawing.Point(10, 357);
+            this.label30.Location = new System.Drawing.Point(518, 418);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(105, 13);
             this.label30.TabIndex = 188;
@@ -296,6 +300,7 @@
             // cmbPettyCashAccount
             // 
             this.cmbPettyCashAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPettyCashAccount.BorderRadius = 5;
             this.cmbPettyCashAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPettyCashAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPettyCashAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -303,8 +308,7 @@
             this.cmbPettyCashAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPettyCashAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPettyCashAccount.ItemHeight = 23;
-            this.cmbPettyCashAccount.BorderRadius = 5;
-            this.cmbPettyCashAccount.Location = new System.Drawing.Point(10, 374);
+            this.cmbPettyCashAccount.Location = new System.Drawing.Point(518, 435);
             this.cmbPettyCashAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPettyCashAccount.Name = "cmbPettyCashAccount";
             this.cmbPettyCashAccount.Size = new System.Drawing.Size(418, 29);
@@ -359,6 +363,7 @@
             // cmbFixedAssetCreditAccount
             // 
             this.cmbFixedAssetCreditAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFixedAssetCreditAccount.BorderRadius = 5;
             this.cmbFixedAssetCreditAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbFixedAssetCreditAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFixedAssetCreditAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -366,7 +371,6 @@
             this.cmbFixedAssetCreditAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFixedAssetCreditAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbFixedAssetCreditAccount.ItemHeight = 23;
-            this.cmbFixedAssetCreditAccount.BorderRadius = 5;
             this.cmbFixedAssetCreditAccount.Location = new System.Drawing.Point(517, 379);
             this.cmbFixedAssetCreditAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFixedAssetCreditAccount.Name = "cmbFixedAssetCreditAccount";
@@ -377,6 +381,7 @@
             // cmbPrepaidExpenseCreditAccount
             // 
             this.cmbPrepaidExpenseCreditAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPrepaidExpenseCreditAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseCreditAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPrepaidExpenseCreditAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrepaidExpenseCreditAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -389,12 +394,12 @@
             this.cmbPrepaidExpenseCreditAccount.Name = "cmbPrepaidExpenseCreditAccount";
             this.cmbPrepaidExpenseCreditAccount.Size = new System.Drawing.Size(418, 29);
             this.cmbPrepaidExpenseCreditAccount.TabIndex = 178;
-            this.cmbPrepaidExpenseCreditAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseCreditAccount.Tag = "Gratuit";
             // 
             // cmbFixedAssetDebitAccount
             // 
             this.cmbFixedAssetDebitAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFixedAssetDebitAccount.BorderRadius = 5;
             this.cmbFixedAssetDebitAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbFixedAssetDebitAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFixedAssetDebitAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -402,7 +407,6 @@
             this.cmbFixedAssetDebitAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFixedAssetDebitAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbFixedAssetDebitAccount.ItemHeight = 23;
-            this.cmbFixedAssetDebitAccount.BorderRadius = 5;
             this.cmbFixedAssetDebitAccount.Location = new System.Drawing.Point(517, 323);
             this.cmbFixedAssetDebitAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFixedAssetDebitAccount.Name = "cmbFixedAssetDebitAccount";
@@ -413,6 +417,7 @@
             // cmbPrepaidExpenseDebitAccount
             // 
             this.cmbPrepaidExpenseDebitAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPrepaidExpenseDebitAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseDebitAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPrepaidExpenseDebitAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrepaidExpenseDebitAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -420,7 +425,6 @@
             this.cmbPrepaidExpenseDebitAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrepaidExpenseDebitAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPrepaidExpenseDebitAccount.ItemHeight = 23;
-            this.cmbPrepaidExpenseDebitAccount.BorderRadius = 5;
             this.cmbPrepaidExpenseDebitAccount.Location = new System.Drawing.Point(517, 210);
             this.cmbPrepaidExpenseDebitAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPrepaidExpenseDebitAccount.Name = "cmbPrepaidExpenseDebitAccount";
@@ -444,7 +448,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label10.Location = new System.Drawing.Point(10, 306);
+            this.label10.Location = new System.Drawing.Point(14, 305);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 13);
             this.label10.TabIndex = 174;
@@ -466,7 +470,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(10, 193);
+            this.label14.Location = new System.Drawing.Point(16, 193);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 175;
@@ -488,7 +492,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label15.Location = new System.Drawing.Point(10, 249);
+            this.label15.Location = new System.Drawing.Point(16, 250);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(108, 13);
             this.label15.TabIndex = 176;
@@ -497,6 +501,7 @@
             // cmbPDCReceivableHold
             // 
             this.cmbPDCReceivableHold.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCReceivableHold.BorderRadius = 5;
             this.cmbPDCReceivableHold.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCReceivableHold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCReceivableHold.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -504,7 +509,6 @@
             this.cmbPDCReceivableHold.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivableHold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivableHold.ItemHeight = 23;
-            this.cmbPDCReceivableHold.BorderRadius = 5;
             this.cmbPDCReceivableHold.Location = new System.Drawing.Point(13, 152);
             this.cmbPDCReceivableHold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivableHold.Name = "cmbPDCReceivableHold";
@@ -515,6 +519,7 @@
             // cmbPDCPayableHold
             // 
             this.cmbPDCPayableHold.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCPayableHold.BorderRadius = 5;
             this.cmbPDCPayableHold.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCPayableHold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCPayableHold.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -522,8 +527,7 @@
             this.cmbPDCPayableHold.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayableHold.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayableHold.ItemHeight = 23;
-            this.cmbPDCPayableHold.BorderRadius = 5;
-            this.cmbPDCPayableHold.Location = new System.Drawing.Point(10, 323);
+            this.cmbPDCPayableHold.Location = new System.Drawing.Point(14, 322);
             this.cmbPDCPayableHold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayableHold.Name = "cmbPDCPayableHold";
             this.cmbPDCPayableHold.Size = new System.Drawing.Size(418, 29);
@@ -533,6 +537,7 @@
             // cmbPDCReceivable
             // 
             this.cmbPDCReceivable.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCReceivable.BorderRadius = 5;
             this.cmbPDCReceivable.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCReceivable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCReceivable.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -540,7 +545,6 @@
             this.cmbPDCReceivable.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivable.ItemHeight = 23;
-            this.cmbPDCReceivable.BorderRadius = 5;
             this.cmbPDCReceivable.Location = new System.Drawing.Point(13, 38);
             this.cmbPDCReceivable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivable.Name = "cmbPDCReceivable";
@@ -551,6 +555,7 @@
             // cmbPDCReceivableReturn
             // 
             this.cmbPDCReceivableReturn.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCReceivableReturn.BorderRadius = 5;
             this.cmbPDCReceivableReturn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCReceivableReturn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCReceivableReturn.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -558,7 +563,6 @@
             this.cmbPDCReceivableReturn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCReceivableReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCReceivableReturn.ItemHeight = 23;
-            this.cmbPDCReceivableReturn.BorderRadius = 5;
             this.cmbPDCReceivableReturn.Location = new System.Drawing.Point(13, 93);
             this.cmbPDCReceivableReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCReceivableReturn.Name = "cmbPDCReceivableReturn";
@@ -569,6 +573,7 @@
             // cmbPDCPayable
             // 
             this.cmbPDCPayable.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCPayable.BorderRadius = 5;
             this.cmbPDCPayable.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCPayable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCPayable.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -576,8 +581,7 @@
             this.cmbPDCPayable.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayable.ItemHeight = 23;
-            this.cmbPDCPayable.BorderRadius = 5;
-            this.cmbPDCPayable.Location = new System.Drawing.Point(10, 210);
+            this.cmbPDCPayable.Location = new System.Drawing.Point(16, 210);
             this.cmbPDCPayable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayable.Name = "cmbPDCPayable";
             this.cmbPDCPayable.Size = new System.Drawing.Size(418, 29);
@@ -587,6 +591,7 @@
             // cmbPDCPayableReturn
             // 
             this.cmbPDCPayableReturn.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPDCPayableReturn.BorderRadius = 5;
             this.cmbPDCPayableReturn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPDCPayableReturn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPDCPayableReturn.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -594,8 +599,7 @@
             this.cmbPDCPayableReturn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPDCPayableReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPDCPayableReturn.ItemHeight = 23;
-            this.cmbPDCPayableReturn.BorderRadius = 5;
-            this.cmbPDCPayableReturn.Location = new System.Drawing.Point(10, 265);
+            this.cmbPDCPayableReturn.Location = new System.Drawing.Point(16, 266);
             this.cmbPDCPayableReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPDCPayableReturn.Name = "cmbPDCPayableReturn";
             this.cmbPDCPayableReturn.Size = new System.Drawing.Size(418, 29);
@@ -605,6 +609,7 @@
             // cmbCash
             // 
             this.cmbCash.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCash.BorderRadius = 5;
             this.cmbCash.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCash.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCash.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -612,7 +617,6 @@
             this.cmbCash.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbCash.ItemHeight = 23;
-            this.cmbCash.BorderRadius = 5;
             this.cmbCash.Location = new System.Drawing.Point(519, 38);
             this.cmbCash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCash.Name = "cmbCash";
@@ -635,6 +639,7 @@
             // cmbOpeningBalanceEquity
             // 
             this.cmbOpeningBalanceEquity.BackColor = System.Drawing.Color.Transparent;
+            this.cmbOpeningBalanceEquity.BorderRadius = 5;
             this.cmbOpeningBalanceEquity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbOpeningBalanceEquity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOpeningBalanceEquity.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -647,7 +652,6 @@
             this.cmbOpeningBalanceEquity.Name = "cmbOpeningBalanceEquity";
             this.cmbOpeningBalanceEquity.Size = new System.Drawing.Size(418, 29);
             this.cmbOpeningBalanceEquity.TabIndex = 35;
-            this.cmbOpeningBalanceEquity.BorderRadius = 5;
             this.cmbOpeningBalanceEquity.Tag = "Opening Balance";
             // 
             // label13
@@ -665,6 +669,7 @@
             // cmbOpeningBalance
             // 
             this.cmbOpeningBalance.BackColor = System.Drawing.Color.Transparent;
+            this.cmbOpeningBalance.BorderRadius = 5;
             this.cmbOpeningBalance.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbOpeningBalance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOpeningBalance.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -678,7 +683,6 @@
             this.cmbOpeningBalance.Size = new System.Drawing.Size(418, 29);
             this.cmbOpeningBalance.TabIndex = 35;
             this.cmbOpeningBalance.Tag = "Opening Balance";
-            this.cmbOpeningBalance.BorderRadius = 5;
             // 
             // label11
             // 
@@ -695,6 +699,7 @@
             // cmbInventory
             // 
             this.cmbInventory.BackColor = System.Drawing.Color.Transparent;
+            this.cmbInventory.BorderRadius = 5;
             this.cmbInventory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbInventory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInventory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -708,11 +713,11 @@
             this.cmbInventory.Size = new System.Drawing.Size(418, 29);
             this.cmbInventory.TabIndex = 32;
             this.cmbInventory.Tag = "Inventory";
-            this.cmbInventory.BorderRadius = 5;
             // 
             // cmbStockSettlement
             // 
             this.cmbStockSettlement.BackColor = System.Drawing.Color.Transparent;
+            this.cmbStockSettlement.BorderRadius = 5;
             this.cmbStockSettlement.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbStockSettlement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStockSettlement.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -726,11 +731,11 @@
             this.cmbStockSettlement.Size = new System.Drawing.Size(418, 29);
             this.cmbStockSettlement.TabIndex = 35;
             this.cmbStockSettlement.Tag = "Stock Settlement";
-            this.cmbStockSettlement.BorderRadius = 5;
             // 
             // cmbItemDamage
             // 
             this.cmbItemDamage.BackColor = System.Drawing.Color.Transparent;
+            this.cmbItemDamage.BorderRadius = 5;
             this.cmbItemDamage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbItemDamage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemDamage.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -744,11 +749,11 @@
             this.cmbItemDamage.Size = new System.Drawing.Size(418, 29);
             this.cmbItemDamage.TabIndex = 35;
             this.cmbItemDamage.Tag = "Inventory Damage Account";
-            this.cmbItemDamage.BorderRadius = 5;
             // 
             // cmbItemCogs
             // 
             this.cmbItemCogs.BackColor = System.Drawing.Color.Transparent;
+            this.cmbItemCogs.BorderRadius = 5;
             this.cmbItemCogs.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbItemCogs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemCogs.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -762,7 +767,6 @@
             this.cmbItemCogs.Size = new System.Drawing.Size(418, 29);
             this.cmbItemCogs.TabIndex = 33;
             this.cmbItemCogs.Tag = "Item COGS";
-            this.cmbItemCogs.BorderRadius = 5;
             // 
             // label5
             // 
@@ -1237,6 +1241,7 @@
             // cmbDefaultBankAccount
             // 
             this.cmbDefaultBankAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDefaultBankAccount.BorderRadius = 5;
             this.cmbDefaultBankAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDefaultBankAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDefaultBankAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -1249,7 +1254,6 @@
             this.cmbDefaultBankAccount.Name = "cmbDefaultBankAccount";
             this.cmbDefaultBankAccount.Size = new System.Drawing.Size(418, 29);
             this.cmbDefaultBankAccount.TabIndex = 176;
-            this.cmbDefaultBankAccount.BorderRadius = 5;
             this.cmbDefaultBankAccount.Tag = "Gratuit";
             // 
             // panel1
@@ -1437,6 +1441,10 @@
             // 
             // pnlCommon
             // 
+            this.pnlCommon.Controls.Add(this.label41);
+            this.pnlCommon.Controls.Add(this.cmbDeductionAccount);
+            this.pnlCommon.Controls.Add(this.label40);
+            this.pnlCommon.Controls.Add(this.cmbRetentionAccount);
             this.pnlCommon.Controls.Add(this.label30);
             this.pnlCommon.Controls.Add(this.cmbPettyCashAccount);
             this.pnlCommon.Controls.Add(this.label7);
@@ -1591,6 +1599,64 @@
             this.pnlBank.Size = new System.Drawing.Size(1040, 541);
             this.pnlBank.TabIndex = 174;
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label40.Location = new System.Drawing.Point(14, 363);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(103, 13);
+            this.label40.TabIndex = 190;
+            this.label40.Text = "Retention Account";
+            // 
+            // cmbRetentionAccount
+            // 
+            this.cmbRetentionAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbRetentionAccount.BorderRadius = 5;
+            this.cmbRetentionAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRetentionAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRetentionAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRetentionAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRetentionAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRetentionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbRetentionAccount.ItemHeight = 23;
+            this.cmbRetentionAccount.Location = new System.Drawing.Point(14, 379);
+            this.cmbRetentionAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbRetentionAccount.Name = "cmbRetentionAccount";
+            this.cmbRetentionAccount.Size = new System.Drawing.Size(418, 29);
+            this.cmbRetentionAccount.TabIndex = 189;
+            this.cmbRetentionAccount.Tag = "Gratuit";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label41.Location = new System.Drawing.Point(14, 422);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(106, 13);
+            this.label41.TabIndex = 192;
+            this.label41.Text = "Deduction Account";
+            // 
+            // cmbDeductionAccount
+            // 
+            this.cmbDeductionAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDeductionAccount.BorderRadius = 5;
+            this.cmbDeductionAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbDeductionAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDeductionAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbDeductionAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbDeductionAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeductionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbDeductionAccount.ItemHeight = 23;
+            this.cmbDeductionAccount.Location = new System.Drawing.Point(14, 438);
+            this.cmbDeductionAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDeductionAccount.Name = "cmbDeductionAccount";
+            this.cmbDeductionAccount.Size = new System.Drawing.Size(418, 29);
+            this.cmbDeductionAccount.TabIndex = 191;
+            this.cmbDeductionAccount.Tag = "Gratuit";
+            // 
             // frmDefaultAccountSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1599,12 +1665,12 @@
             this.ClientSize = new System.Drawing.Size(1040, 626);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlCustomersales);
-            this.Controls.Add(this.pnlVendorPurchase);
             this.Controls.Add(this.pnlCommon);
             this.Controls.Add(this.pnlinventory);
             this.Controls.Add(this.pnlBank);
             this.Controls.Add(this.pnlEmplyee);
+            this.Controls.Add(this.pnlCustomersales);
+            this.Controls.Add(this.pnlVendorPurchase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDefaultAccountSetting";
@@ -1721,5 +1787,9 @@
         public Guna.UI2.WinForms.Guna2ComboBox cmbStockSettlement;
         public Guna.UI2.WinForms.Guna2ComboBox cmbCustomerAdvance;
         private System.Windows.Forms.Label label25;
+        internal System.Windows.Forms.Label label40;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbRetentionAccount;
+        internal System.Windows.Forms.Label label41;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbDeductionAccount;
     }
 }

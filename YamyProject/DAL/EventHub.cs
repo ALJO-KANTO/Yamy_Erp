@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Asn1.Ocsp;
-using System;
-using System.Windows.Media.Media3D;
+﻿using System;
 
 namespace YamyProject
 {
@@ -57,6 +55,11 @@ namespace YamyProject
         public static event EventHandler Project;
         public static event EventHandler ProjectPlanning;
         public static event EventHandler ProjectTendering;
+        public static event EventHandler ProjectViewSites;
+        public static event EventHandler ProjectViewResource;
+        public static event EventHandler ProjectInvoice;
+        public static event EventHandler ProjectClassification;
+        public static event EventHandler ProjectPhase;
         private static void RaiseEvent(EventHandler handler)
         {
             handler?.Invoke(null, EventArgs.Empty);
@@ -113,5 +116,10 @@ namespace YamyProject
         public static void RefreshProject() => RaiseEvent(Project);
         public static void RefreshProjectPlanning() => RaiseEvent(ProjectPlanning);
         public static void RefreshProjectTendering() => RaiseEvent(ProjectTendering);
+        public static void RefreshProjectViewSites() => RaiseEvent(ProjectViewSites);
+        public static void RefreshProjectViewResource() => RaiseEvent(ProjectViewResource);
+        public static void RefreshProjectInvoice() => RaiseEvent(ProjectInvoice);
+        public static void RefreshProjectClassification() => RaiseEvent(ProjectClassification);
+        public static void RefreshPhase() => RaiseEvent(ProjectPhase);
     }
 }

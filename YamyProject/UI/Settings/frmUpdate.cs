@@ -345,7 +345,9 @@ namespace YamyProject
                             voucher_date DATE NOT NULL,
                             cash_account_id INT NOT NULL,
                             employee_id INT NOT NULL,
-                            total decimal(20,6) DEFAULT NULL,
+                            amount decimal(20,6) DEFAULT 0,
+                            vat decimal(20,6) DEFAULT 0,
+                            total decimal(20,6) DEFAULT 0,
                             notes TEXT NULL,
                             created_by INT NULL,
                             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -391,7 +393,10 @@ namespace YamyProject
                             category INT(10) NOT NULL DEFAULT '0',
                             cost_center_id INT NOT NULL,
                             description TEXT NULL,
-                            amount DECIMAL(18,2) NOT NULL DEFAULT 0,
+                            amount decimal(20,6) DEFAULT 0,
+                            vatP decimal(20,6) DEFAULT 0,
+                            vat int DEFAULT 0,
+                            total DECIMAL(20,4) NOT NULL DEFAULT 0,
                             project_id INT(10) NOT NULL DEFAULT '0',
                             note TEXT NULL,
                             PRIMARY KEY (`id`)
@@ -458,13 +463,57 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `description` VARCHAR(500) NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `emirate` VARCHAR(500) NULL DEFAULT '' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `type` VARCHAR(500) NULL DEFAULT 'Project' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `start_date` date DEFAULT NULL;";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `end_date` date DEFAULT NULL;";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `extend_delay` date DEFAULT NULL;";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `country_id` int NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `city_id` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `execution_period_months` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `customer` int NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `area` varchar(250) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `plot_number` varchar(50) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `block` varchar(50) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `contract_value` decimal(18,3) NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query); 
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `additional_value` decimal(18,3) NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query); 
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `deduction_value` decimal(18,3) NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query); 
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `total_value` decimal(18,3) NOT NULL DEFAULT '0';";
+                DBClass.ExecuteNonQuery(query); 
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `contact_person` varchar(150) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `contact_person_number` varchar(50) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `contractor` varchar(500) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `consultant` varchar(500) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `location` varchar(500) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `details` varchar(500) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `billed_to_date` decimal(15,2) DEFAULT 0";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `expenses` decimal(15,2) DEFAULT 0";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN `balance` decimal(15,2) DEFAULT 0";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects ADD COLUMN part_no VARCHAR(100) DEFAULT ''";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
                           ALTER TABLE tbl_projects ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;";
@@ -497,9 +546,33 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_sales_return ADD COLUMN `sales_ref_id` INT(10) NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash ADD COLUMN amount decimal(20,6) DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash ADD COLUMN vat decimal(20,6) DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN `hum_name` VARCHAR(300) NOT NULL DEFAULT '';";
                 DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN amount decimal(20,6) DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN vat int DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN vatP decimal(20,6) DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_petty_cash_details ADD COLUMN total decimal(20,6) DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `status` VARCHAR(50) DEFAULT 'Planned' COLLATE 'utf8mb4_general_ci';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects_site_setup add COLUMN `zone_id` INT NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects_site_setup add COLUMN `wbs_id` INT NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects_site_setup add COLUMN `cost_code_id` INT NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects_site_setup add COLUMN `package_code` varchar(50) DEFAULT 'PG-0';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_projects_site_setup add COLUMN `package_name` varchar(250) DEFAULT '';";
+                DBClass.ExecuteNonQuery(query);
+                query = @"ALTER TABLE tbl_project_sites add COLUMN project_id int NOT NULL DEFAULT '0';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"INSERT INTO tbl_general_settings (name, value, description, status)
                         SELECT 'PROJECT OPTION', 0, '', 0
@@ -520,103 +593,10 @@ namespace YamyProject
                         );";
                 DBClass.ExecuteNonQuery(query);
 
-                //string[] tables = {
-                //    "tbl_advance_payment_voucher",
-                //    "tbl_advance_payment_voucher_details",
-                //    "tbl_transaction",
-                //    "tbl_cost_center",
-                //    "tbl_cost_center_transaction",
-                //    "tbl_credit_note",
-                //    "tbl_credit_note_details",
-                //    "tbl_customer",
-                //    "tbl_debit_note",
-                //    "tbl_debit_note_details",
-                //    "tbl_employee",
-                //    "tbl_journal_voucher",
-                //    "tbl_journal_voucher_details",
-                //    "tbl_payment_voucher",
-                //    "tbl_payment_voucher_details",
-                //    "tbl_purchase",
-                //    "tbl_purchase_details",
-                //    "tbl_purchase_order",
-                //    "tbl_purchase_order_details",
-                //    "tbl_purchase_return",
-                //    "tbl_purchase_return_details",
-                //    "tbl_receipt_voucher",
-                //    "tbl_receipt_voucher_details",
-                //    "tbl_sales",
-                //    "tbl_sales_details",
-                //    "tbl_sales_order",
-                //    "tbl_sales_order_details",
-                //    "tbl_sales_proforma",
-                //    "tbl_sales_proforma_details",
-                //    "tbl_sales_quotation",
-                //    "tbl_sales_quotation_details",
-                //    "tbl_sales_return",
-                //    "tbl_sales_return_details",
-                //    "tbl_sub_cost_center",
-                //    "tbl_item_transaction",
-                //    "tbl_item_warehouse_transaction",
-                //    "tbl_vendor"
-                //};
-
-                //foreach (var table in tables)
-                //{
-                //    string sql = $"ALTER TABLE {table} ADD COLUMN `project_id` INT NOT NULL DEFAULT 0;";
-                //    try
-                //    {
-                //        DBClass.ExecuteNonQuery(sql);
-                //    } catch(Exception ex)
-                //    {
-                //        ex.ToString();
-                //    }
-                //}
-
                 query = @"ALTER TABLE tbl_vendor ADD COLUMN `project_site` VARCHAR(150) DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_customer ADD COLUMN `project_site` VARCHAR(150) DEFAULT '' COLLATE 'utf8mb4_general_ci';";
                 DBClass.ExecuteNonQuery(query);
-
-                //query = @"
-                //            ALTER TABLE tbl_advance_payment_voucher ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_advance_payment_voucher_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_transaction ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_cost_center ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_cost_center_transaction ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_credit_note ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_credit_note_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_customer ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_debit_note ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_debit_note_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_employee ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_journal_voucher ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_journal_voucher_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_payment_voucher ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_payment_voucher_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase_order ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase_order_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase_return ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_purchase_return_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_receipt_voucher ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_receipt_voucher_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_order ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_order_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_proforma ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_proforma_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_quotation ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_quotation_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_return ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sales_return_details ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_sub_cost_center ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_transaction ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_item_transaction ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //            ALTER TABLE tbl_item_warehouse_transaction ADD COLUMN project_id INT NOT NULL DEFAULT 0;
-                //        ";
-                //DBClass.ExecuteNonQuery(query);
 
                 query = @"-- Create table if not exists
                         CREATE TABLE IF NOT EXISTS tbl_user (
@@ -828,6 +808,8 @@ namespace YamyProject
                             due_date DATE,
                             progress_percent DECIMAL(5,2),
                             status VARCHAR(50),
+                            percentage DECIMAL(5,2) DEFAULT 0,
+                            amount DECIMAL(18,3) DEFAULT 0,
                             FOREIGN KEY (phase_id) REFERENCES tbl_eng_project_phases(phase_id)
                         ) ENGINE=InnoDB;
                         ";
@@ -1337,7 +1319,9 @@ namespace YamyProject
                             vat DECIMAL(18,2),
                             total DECIMAL(18,2),
                             remarks VARCHAR(250) default(''),
-                            state TINYINT DEFAULT 0
+                            state TINYINT DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -1369,7 +1353,9 @@ namespace YamyProject
                             `description` VARCHAR(250) DEFAULT NULL,
                             `account_id` INT NOT NULL, -- liability account
                             `project_id` INT DEFAULT 0,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -1386,7 +1372,9 @@ namespace YamyProject
                             `contract_period` VARCHAR(80) DEFAULT NULL,
                             `works` VARCHAR(250) DEFAULT NULL,
                             `worksEn` VARCHAR(250) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -1397,7 +1385,9 @@ namespace YamyProject
                             `code` VARCHAR(50) DEFAULT NULL,
                             `name` VARCHAR(250) DEFAULT NULL,
                             `contact_no` VARCHAR(50) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
@@ -1409,8 +1399,23 @@ namespace YamyProject
                             `project_id` INT NOT NULL,
                             `date` DATE NOT NULL,
                             `description` VARCHAR(250) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                            PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_accounts` (
+                          `id` int NOT NULL AUTO_INCREMENT,
+                          `name` VARCHAR(3250) NOT NULL DEFAULT '',
+                          `project_id` INT(10) NOT NULL DEFAULT '0',
+                          `account_id` INT(10) NOT NULL DEFAULT '0',
+                          PRIMARY KEY (`id`),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
                         ";
                 DBClass.ExecuteNonQuery(query);
 
@@ -1447,6 +1452,409 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
+                query = @"ALTER TABLE tbl_eng_project_milestones
+                        ADD COLUMN percentage DECIMAL(5,2) DEFAULT 0,
+                        ADD COLUMN amount DECIMAL(18,3) DEFAULT 0;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_invoices` (
+                            invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            milestone_id INT NOT NULL,
+                            invoice_number VARCHAR(100) NOT NULL,
+                            invoice_date DATE,
+                            amount DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            vat DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            total DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            status VARCHAR(50) DEFAULT 'Pending',
+                            account_id INT NOT NULL DEFAULT 0,
+                            cost_center_id INT NOT NULL DEFAULT 0,
+                            payment_status VARCHAR(100) NOT NULL,
+                            description VARCHAR(500) NOT NULL DEFAULT '',
+                            paid_amount DECIMAL(18,3) NOT NULL DEFAULT 0,
+                            retention_amount decimal(20,6) NOT NULL DEFAULT 0,
+                            retention_percentage decimal(20,6) NOT NULL DEFAULT 0,
+                            deduction decimal(20,6) NOT NULL DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"  ALTER TABLE tbl_projects_invoices ADD COLUMN retention_amount decimal(20,6) NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"  ALTER TABLE tbl_projects_invoices ADD COLUMN retention_percentage decimal(20,6) NOT NULL DEFAULT 0; ";
+                DBClass.ExecuteNonQuery(query);
+                query = @"  ALTER TABLE tbl_projects_invoices ADD COLUMN deduction decimal(20,6) NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_receipt_voucher` (
+                                  `id` int NOT NULL AUTO_INCREMENT,
+                                  `date` date DEFAULT NULL,
+                                  `code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `method` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `amount` decimal(20, 6) DEFAULT NULL,
+                                  `hum_id` int DEFAULT NULL,
+                                  `credit_account_id` int DEFAULT NULL,
+                                  `credit_cost_center_id` int DEFAULT NULL,
+                                  `description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `debit_account_id` int DEFAULT NULL,
+                                  `debit_cost_center_id` int DEFAULT NULL,
+                                  `bank_account_id` int DEFAULT NULL,
+                                  `book_no` int DEFAULT NULL,
+                                  `bank_id` int DEFAULT NULL,
+                                  `bank_account` int DEFAULT NULL,
+                                  `bank_code` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_no` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `check_date` date DEFAULT NULL,
+                                  `trans_date` date DEFAULT NULL,
+                                  `trans_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `trans_ref` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                  `created_by` int DEFAULT NULL,
+                                  `created_date` date DEFAULT NULL,
+                                  `state` int DEFAULT NULL,
+                                  `modified_by` int DEFAULT NULL,
+                                  `modified_date` date DEFAULT NULL,
+                                  `project_id` INT NOT NULL DEFAULT 0,
+                                  PRIMARY KEY(`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                                        CREATE TABLE IF NOT EXISTS `tbl_projects_receipt_voucher_details` (
+                                              `id` int NOT NULL AUTO_INCREMENT,
+                                              `date` date DEFAULT NULL,
+                                              `payment_id` int DEFAULT NULL,
+                                              `inv_id` int DEFAULT NULL,
+                                              `hum_id` int DEFAULT NULL,
+                                              `inv_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                                              `total` decimal(20, 2) DEFAULT '0.00',
+                                              `payment` decimal(20, 2) DEFAULT '0.00',
+                                              `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                                              `cost_center_id` int DEFAULT NULL,
+                                              `project_id` INT NOT NULL DEFAULT 0,
+                                              PRIMARY KEY(`id`)
+                                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                                        ";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_project_payments` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `payment_date` DATE DEFAULT NULL,
+                            `code` VARCHAR(50) DEFAULT '0',
+                            `project_id` INT NOT NULL DEFAULT 0,
+                            `engineer_id` INT NOT NULL DEFAULT 0,
+                            `client_id` INT NOT NULL DEFAULT 0,
+                            `payment_source` VARCHAR(50) DEFAULT NULL, -- Bank / Owner
+                            `project_value` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `consultancy_percentage` DECIMAL(10,4) NOT NULL DEFAULT 0.00,
+                            `consultancy_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            -- DESIGN
+                            `design_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_tax` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_tax_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `design_balance` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            -- SUPERVISION
+                            `supervision_fee` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_received_percentage` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+                            `supervision_payment_value` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `retention_percentage` DECIMAL(10,2) NOT NULL DEFAULT 10.00,
+                            `retention_amount` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_received_after_retention` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_tax` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_tax_received` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `supervision_balance` DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+                            `remarks` TEXT DEFAULT NULL,
+                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_projects_site_setup` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `date` date DEFAULT NULL,
+                            `project_id` INT NOT NULL DEFAULT 0,
+                            `site_id` INT NOT NULL DEFAULT 0,
+                            `tender_id` INT NOT NULL DEFAULT 0,
+                            `tender_name_id` INT NOT NULL DEFAULT 0,
+                            `start_date` date DEFAULT NULL,
+                            `end_date` date DEFAULT NULL,
+                            `subcontractor_id` INT NOT NULL DEFAULT 0,
+                            `status` varchar(50) DEFAULT '',
+                            `engineer_supervisor` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                            `created_by` int DEFAULT NULL,
+                            `modified_by` int DEFAULT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            PRIMARY KEY(`id`)
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+                        ";
+
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE `tbl_project_resource_assignment` (
+	                        `id` INT(10) NOT NULL AUTO_INCREMENT,
+	                        `site_setup_id` INT(10) NOT NULL,
+	                        `resource_id` INT(10) NOT NULL,
+                            `project_id` INT(10) NOT NULL,
+                            `tender_id` INT(10) NOT NULL,
+	                        PRIMARY KEY (`id`) USING BTREE
+                        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE `tbl_project_zone` (
+                            `id` INT NOT NULL AUTO_INCREMENT,
+                            `site_setup_id` INT NOT NULL,
+                            `zone_code` VARCHAR(50) DEFAULT '',
+                            `zone_name` VARCHAR(200) DEFAULT '',
+                            `description` VARCHAR(500) DEFAULT '',
+                            `status` VARCHAR(50) DEFAULT 'Active',
+                            `created_by` INT DEFAULT NULL,
+                            `modified_by` INT DEFAULT NULL,
+                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_general_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_project_wbs` (
+                          `id` INT NOT NULL AUTO_INCREMENT,
+                          `site_setup_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `parent_wbs_id` INT NOT NULL DEFAULT 0,
+                          `code` VARCHAR(50) NOT NULL DEFAULT '',
+                          `name` VARCHAR(300) NOT NULL DEFAULT '',
+                          `wbs_level` INT NOT NULL DEFAULT 1,
+                          `description` VARCHAR(500) DEFAULT '',
+                          `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+                          `created_by` INT NOT NULL DEFAULT 0,
+                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`),
+                          UNIQUE KEY `uq_wbs_code_site` (`site_setup_id`, `code`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"
+                        CREATE TABLE IF NOT EXISTS `tbl_project_activity_plan` (
+                          `id` INT NOT NULL AUTO_INCREMENT,
+                          `site_setup_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,
+                          `wbs_id` INT NOT NULL DEFAULT 0,
+                          `activity_code` VARCHAR(50) NOT NULL DEFAULT '',
+                          `activity_name` VARCHAR(300) NOT NULL DEFAULT '',
+                          `boq_item_id` INT NOT NULL DEFAULT 0,
+                          `planned_qty` DECIMAL(18,3) NOT NULL DEFAULT 0,
+                          `unit` VARCHAR(50) DEFAULT '',
+                          `start_date` DATE DEFAULT NULL,
+                          `end_date` DATE DEFAULT NULL,
+                          `dependency_activity_id` INT NOT NULL DEFAULT 0,
+                          `responsible_resource_id` INT NOT NULL DEFAULT 0,
+                          `remarks` VARCHAR(500) DEFAULT '',
+                          `status` VARCHAR(50) DEFAULT 'Planned',
+                          `created_by` INT NOT NULL DEFAULT 0,
+                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          PRIMARY KEY (`id`)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                //query = @"
+                //        CREATE TABLE IF NOT EXISTS tbl_project_daily_work (
+                //            id INT NOT NULL AUTO_INCREMENT,
+                //            planning_id INT NOT NULL DEFAULT 0,
+                //            project_id INT NOT NULL DEFAULT 0,
+                //            site_id INT NOT NULL DEFAULT 0,
+                //            tender_id INT NOT NULL DEFAULT 0,
+                //            boq_item_id INT NOT NULL DEFAULT 0,
+                //            work_date DATE,
+                //            today_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            cumulative_qty DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //            progress DECIMAL(10,2) NOT NULL DEFAULT 0,
+                //            remarks VARCHAR(500) DEFAULT '',
+                //            created_by INT NOT NULL DEFAULT 0,
+                //            created_date DATETIME,
+                //            modified_by INT NOT NULL DEFAULT 0,
+                //            modified_date DATETIME,
+                //            PRIMARY KEY (id)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                //        ";
+                //DBClass.ExecuteNonQuery(query);
+                query = @"CREATE TABLE IF NOT EXISTS `tbl_project_wbs` (
+                  `id`           INT NOT NULL AUTO_INCREMENT,
+                  `project_id`   INT NOT NULL DEFAULT 0,
+                  `parent_wbs_id`INT NOT NULL DEFAULT 0,   -- 0 = root level
+                  `code`         VARCHAR(50)  NOT NULL DEFAULT '',
+                  `name`         VARCHAR(300) NOT NULL DEFAULT '',
+                  `wbs_level`    INT NOT NULL DEFAULT 1,
+                  `description`  VARCHAR(500) DEFAULT '',
+                  `is_active`    TINYINT(1)   NOT NULL DEFAULT 1,
+                  `created_by`   INT NOT NULL DEFAULT 0,
+                  `created_at`   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `uq_wbs_code` (`project_id`, `code`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"ALTER TABLE tbl_projects
+                        ADD COLUMN owner_name VARCHAR(250) DEFAULT '' AFTER customer,
+                        ADD COLUMN basin_number VARCHAR(50) DEFAULT '' AFTER plot_number,
+                        ADD COLUMN municipality_project_no VARCHAR(100) DEFAULT '' AFTER basin_number,
+                        ADD COLUMN bank_project_no VARCHAR(100) DEFAULT '' AFTER municipality_project_no,
+                        ADD COLUMN project_classification VARCHAR(50) DEFAULT 'Design' AFTER type,
+                        ADD COLUMN priority_level INT DEFAULT 0 AFTER project_classification,
+                        ADD COLUMN priority_color VARCHAR(20) DEFAULT '' AFTER priority_level,
+                        ADD COLUMN is_starred TINYINT(1) DEFAULT 0 AFTER priority_color,
+                        ADD COLUMN last_progress_update DATETIME NULL AFTER updated_at,
+                        ADD COLUMN handover_date DATE NULL AFTER extend_delay;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_phase_templates (
+                            template_id INT AUTO_INCREMENT PRIMARY KEY,
+                            phase_no INT NOT NULL,                -- 1,2,3
+                            phase_name VARCHAR(200) NOT NULL,     -- Phase 1, Phase 2, Phase 3
+                            sort_order INT NOT NULL DEFAULT 0,
+                            is_active TINYINT(1) NOT NULL DEFAULT 1
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_phase_task_templates (
+                            task_template_id INT AUTO_INCREMENT PRIMARY KEY,
+                            template_id INT NOT NULL,
+                            task_name VARCHAR(300) NOT NULL,
+                            sort_order INT NOT NULL DEFAULT 0,
+                            is_mandatory TINYINT(1) NOT NULL DEFAULT 1,
+                            is_active TINYINT(1) NOT NULL DEFAULT 1,
+                            FOREIGN KEY (template_id) REFERENCES tbl_project_phase_templates(template_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"ALTER TABLE tbl_eng_project_phases
+                        ADD COLUMN template_id INT NULL AFTER project_id,
+                        ADD COLUMN phase_no INT NOT NULL DEFAULT 0 AFTER template_id,
+                        ADD COLUMN completed_on DATETIME NULL AFTER end_date,
+                        ADD COLUMN phase_color VARCHAR(20) DEFAULT 'Gray' AFTER status;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_phase_tasks (
+                        task_id INT AUTO_INCREMENT PRIMARY KEY,
+                        phase_id INT NOT NULL,
+                        task_template_id INT NULL,
+                        task_name VARCHAR(300) NOT NULL,
+                        is_required TINYINT(1) NOT NULL DEFAULT 1,
+                        is_completed TINYINT(1) NOT NULL DEFAULT 0,
+                        completed_on DATETIME NULL,
+                        completed_by INT NULL,
+                        remarks VARCHAR(500) DEFAULT NULL,
+                        attachment_path VARCHAR(500) DEFAULT NULL,
+                        status VARCHAR(50) NOT NULL DEFAULT 'Pending',
+                        sort_order INT NOT NULL DEFAULT 0,
+                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        FOREIGN KEY (phase_id) REFERENCES tbl_eng_project_phases(phase_id)
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_stages (
+                            stage_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            stage_no INT NOT NULL,
+                            stage_name VARCHAR(200) NOT NULL,
+                            status VARCHAR(50) NOT NULL DEFAULT 'Pending',
+                            start_date DATE NULL,
+                            end_date DATE NULL,
+                            completed_on DATETIME NULL,
+                            is_current TINYINT(1) DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_notifications (
+                            notification_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NULL,
+                            task_id INT NULL,
+                            user_id INT NULL, -- null = all employees
+                            title VARCHAR(250) NOT NULL,
+                            message VARCHAR(1000) NOT NULL,
+                            notification_type VARCHAR(50) NOT NULL, -- Info, Warning, Alert, Success
+                            is_read TINYINT(1) NOT NULL DEFAULT 0,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_activity_log (
+                            log_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            phase_id INT NULL,
+                            task_id INT NULL,
+                            activity_type VARCHAR(100) NOT NULL,   -- StatusUpdate, PhaseCompleted, DelayWarning, etc.
+                            old_value VARCHAR(250) DEFAULT NULL,
+                            new_value VARCHAR(250) DEFAULT NULL,
+                            remarks VARCHAR(500) DEFAULT NULL,
+                            created_by INT NULL,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE tbl_notification_users (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            notification_id INT NOT NULL,
+                            user_id INT NOT NULL,
+                            is_read TINYINT(1) DEFAULT 0,
+                            read_at DATETIME NULL,
+                            FOREIGN KEY (notification_id) REFERENCES tbl_notifications(notification_id)
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE INDEX idx_projects_search ON tbl_projects (owner_name, plot_number, basin_number, municipality_project_no, bank_project_no);
+                        CREATE INDEX idx_phase_project ON tbl_eng_project_phases (project_id);
+                        CREATE INDEX idx_task_phase ON tbl_project_phase_tasks (phase_id);
+                        CREATE INDEX idx_stage_project ON tbl_project_stages (project_id);
+                        CREATE INDEX idx_notifications_project ON tbl_notifications (project_id, is_read);";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE tbl_project_files (
+                            file_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            engineer_id INT NOT NULL,
+                            file_name VARCHAR(250),
+                            file_path VARCHAR(500),
+                            file_type VARCHAR(50),
+                            description VARCHAR(500),
+                            status VARCHAR(50) DEFAULT 'Pending',
+                            uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE tbl_engineer_activity (
+                            activity_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            engineer_id INT NOT NULL,
+                            activity_type VARCHAR(100),
+                            description TEXT,
+                            status VARCHAR(50),
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE project_Classification (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            name_ar VARCHAR(200) NOT NULL,
+                            name_en VARCHAR(200) NOT NULL,
+                            is_active TINYINT(1) DEFAULT 1,
+                            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
 
                 MessageBox.Show("Database Updated");
             }

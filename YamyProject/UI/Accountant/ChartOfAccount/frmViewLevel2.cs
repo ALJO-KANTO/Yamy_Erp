@@ -114,7 +114,15 @@ namespace YamyProject
                               DBClass.CreateParameter("name", txtLevel2.Text),
                               DBClass.CreateParameter("code", int.Parse(r["code"].ToString()) + 1),
                               DBClass.CreateParameter("main_id", cmbLevel1.SelectedValue.ToString()));
-                            Utilities.LogAudit(frmLogin.userId, "Add Level 2 Account", "Level 2 Account", refID, "Added Level 2 Account: " + txtLevel2.Text);
+                            if (refID != 0)
+                            {
+                                Utilities.LogAudit(frmLogin.userId, "Add Level 2 Account", "Level 2 Account", refID, "Added Level 2 Account: " + txtLevel2.Text);
+                            }
+                            else
+                            {
+                                string message = Utilities.LastLogError();
+                                MessageBox.Show("Error Check your data" + message);
+                            }
                         }
                         else
                         {
@@ -122,7 +130,15 @@ namespace YamyProject
                                 DBClass.CreateParameter("name", txtLevel2.Text),
                                 DBClass.CreateParameter("code", reader["code"].ToString() + "1"),
                                 DBClass.CreateParameter("main_id", cmbLevel1.SelectedValue.ToString()));
-                            Utilities.LogAudit(frmLogin.userId, "Add Level 2 Account", "Level 2 Account", refId, "Added Level 2 Account: " + txtLevel2.Text);
+                            if (refId != 0)
+                            {
+                                Utilities.LogAudit(frmLogin.userId, "Add Level 2 Account", "Level 2 Account", refId, "Added Level 2 Account: " + txtLevel2.Text);
+                            }
+                            else
+                            {
+                                string message = Utilities.LastLogError();
+                                MessageBox.Show("Error Check your data" + message);
+                            }
                         }
                     }
                 }

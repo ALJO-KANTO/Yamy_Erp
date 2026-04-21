@@ -120,15 +120,27 @@ namespace YamyProject
                           DBClass.CreateParameter("name", txtLevel3.Text),
                           DBClass.CreateParameter("code", int.Parse(r["code"].ToString()) + 1),
                           DBClass.CreateParameter("main_id", cmbLevel2.SelectedValue.ToString()));
-                        Utilities.LogAudit(frmLogin.userId, "Add Level 3 Account", "Chart of Account", refId, "Added Level 3 Account: " + txtLevel3.Text);
-                    }
+                        if (refId != 0)
+                            Utilities.LogAudit(frmLogin.userId, "Add Level 3 Account", "Chart of Account", refId, "Added Level 3 Account: " + txtLevel3.Text);
+                        else
+                        {
+                            string message = Utilities.LastLogError();
+                            MessageBox.Show("Error Check your data" + message);
+                        }
+                }
                     else
                     {
                         int refId = DBClass.ExecuteNonQuery("INSERT INTO tbl_coa_level_3 (name, code, main_id) VALUES (@name, @code, @main_id)",
                             DBClass.CreateParameter("name", txtLevel3.Text),
                             DBClass.CreateParameter("code", reader["code"].ToString() + "01"),
                             DBClass.CreateParameter("main_id", cmbLevel2.SelectedValue.ToString()));
-                        Utilities.LogAudit(frmLogin.userId, "Add Level 3 Account", "Chart of Account", refId, "Added Level 3 Account: " + txtLevel3.Text);
+                        if (refId != 0)
+                            Utilities.LogAudit(frmLogin.userId, "Add Level 3 Account", "Chart of Account", refId, "Added Level 3 Account: " + txtLevel3.Text);
+                        else
+                        {
+                            string message = Utilities.LastLogError();
+                            MessageBox.Show("Error Check your data" + message);
+                        }
                     }
                     r.Dispose();
                 }

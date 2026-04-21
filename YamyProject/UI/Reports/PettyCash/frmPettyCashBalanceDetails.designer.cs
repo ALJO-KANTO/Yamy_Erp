@@ -548,6 +548,7 @@
             this.Name = "frmPettyCashBalanceDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "main";
+            this.Text = "Petty Cash Balance Detail";
             this.Load += new System.EventHandler(this.frmPettyCashBalanceDetails_Load);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();

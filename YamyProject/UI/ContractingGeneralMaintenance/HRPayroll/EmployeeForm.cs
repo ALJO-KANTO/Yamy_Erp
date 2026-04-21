@@ -147,10 +147,18 @@ namespace YamyProject.UI.ContractingGeneralMaintenance.HRPayroll
                            DBClass.CreateParameter("Petty_Cash_id", cmbPettyCashId),
                            DBClass.CreateParameter("active", 0));
 
-                    Utilities.LogAudit(frmLogin.userId, "Insert Employee", "Employee", refId,
-                        "Inserted Employee: " + txtName.Text + ", Code: " + EmployeeCode);
+                    if (refId != 0)
+                    {
+                        Utilities.LogAudit(frmLogin.userId, "Insert Employee", "Employee", refId,
+                            "Inserted Employee: " + txtName.Text + ", Code: " + EmployeeCode);
 
-                    MessageBox.Show("Employee Added Successfully.");
+                        MessageBox.Show("Employee Added Successfully.");
+                    }
+                    else
+                    {
+                        string message = Utilities.LastLogError();
+                        MessageBox.Show("Error Check your data" + message);
+                    }
                 }
                 else
                 {

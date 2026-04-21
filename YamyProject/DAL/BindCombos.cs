@@ -452,6 +452,11 @@ namespace YamyProject
                 else return 0;
         }
 
+        public static Dictionary<string, int> DefaultAccounts()
+        {
+            frmLogin.defaultAccounts = LoadDefaultAccounts();
+            return frmLogin.defaultAccounts;
+        }
         public static Dictionary<string, int> LoadDefaultAccounts()
         {
             Dictionary<string, int> defaultAccounts = new Dictionary<string, int>();

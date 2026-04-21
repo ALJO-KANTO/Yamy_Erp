@@ -42,7 +42,7 @@ namespace YamyProject
         private void MasterPDC_Load(object sender, EventArgs e)
         {
             AppTheme.DefaultFont(dgvCustomer);
-            var defaultAccounts = BindCombos.LoadDefaultAccounts();
+            var defaultAccounts = BindCombos.DefaultAccounts();
             pdcPayable = defaultAccounts.ContainsKey("PDC Payable") ? defaultAccounts["PDC Payable"] : 0;
             pdcPayableReturn = defaultAccounts.ContainsKey("PDC Payable Return") ? defaultAccounts["PDC Payable Return"] : 0;
             //pdcPayableCancel = defaultAccounts.ContainsKey("PDC Payable Cancel") ? defaultAccounts["PDC Payable Cancel"] : 0;

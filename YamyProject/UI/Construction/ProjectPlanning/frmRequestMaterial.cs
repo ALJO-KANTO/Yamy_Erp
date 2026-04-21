@@ -118,7 +118,8 @@ namespace YamyProject
                 if (updateData())
                     this.Close();
             }
-            master.BindRequestedDate();
+            if(master != null)
+                master.BindRequestedDate();
         }
 
         private bool updateData()

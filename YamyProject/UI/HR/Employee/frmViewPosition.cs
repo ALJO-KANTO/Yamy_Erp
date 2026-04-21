@@ -66,7 +66,15 @@ namespace YamyProject
                 int lastId = DBClass.ExecuteNonQuery("insert into tbl_position (name,department_id) values(@name,@department_id)",
                     DBClass.CreateParameter("name", txtName.Text),
                     DBClass.CreateParameter("department_id", cmbDepartments.SelectedValue.ToString()));
-                Utilities.LogAudit(frmLogin.userId, "Create Position", "Position", lastId, "Created Position: " + txtName.Text);
+                if (lastId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Create Position", "Position", lastId, "Created Position: " + txtName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
             {

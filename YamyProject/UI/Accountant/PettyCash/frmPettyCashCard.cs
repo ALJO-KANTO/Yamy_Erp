@@ -122,8 +122,17 @@ namespace YamyProject
                         DBClass.CreateParameter("whatsapp_no", txtWhatsappNo.Text),
                         DBClass.CreateParameter("email", txtEmail.Text),
                         DBClass.CreateParameter("accountId", cmbDebitAccountName.SelectedValue.ToString()));
-            Utilities.LogAudit(frmLogin.userId, "Create Petty Cash Card", "Petty Cash Card", refId, "Created Petty Cash Card: " + cmbEmployee.Text);
-            return true;
+            if (refId > 0)
+            {
+                Utilities.LogAudit(frmLogin.userId, "Create Petty Cash Card", "Petty Cash Card", refId, "Created Petty Cash Card: " + cmbEmployee.Text);
+                return true;
+            }
+            else
+            {
+                string message = Utilities.LastLogError();
+                MessageBox.Show("Error Check your data" + message);
+                return false;
+            }
         }
 
         private bool chkRequireData()

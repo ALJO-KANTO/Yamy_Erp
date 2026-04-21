@@ -198,6 +198,7 @@
             this.txtphone1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtphone1.Location = new System.Drawing.Point(556, 314);
             this.txtphone1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtphone1.MaxLength = 15;
             this.txtphone1.Name = "txtphone1";
             this.txtphone1.PlaceholderText = "";
             this.txtphone1.SelectedText = "";

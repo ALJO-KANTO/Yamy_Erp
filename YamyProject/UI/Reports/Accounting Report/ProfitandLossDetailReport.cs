@@ -190,7 +190,7 @@ namespace YamyProject
                         "",
                         "",
                         "",
-                        Utilities.FormatDecimal(reader["balance"].ToString().Replace("-", "")));
+                        Utilities.FormatDecimal(reader["balance"].ToString()));
 
                 }
                 // Auto-expand everything
@@ -229,7 +229,7 @@ namespace YamyProject
                     while (mySqlDataReader.Read())
                     {
                         string categoryCode = mySqlDataReader["category_code"].ToString();
-                        decimal totalBalance = Convert.ToDecimal(mySqlDataReader["total_balance"].ToString().Replace("-", ""));
+                        decimal totalBalance = Convert.ToDecimal(mySqlDataReader["total_balance"].ToString());
                         if (categoryCode.ToLower() == "income")
                             totalIncome = totalBalance;
                         else if (categoryCode.ToLower() == "cost")
@@ -367,7 +367,7 @@ namespace YamyProject
                                 newRow.Cells.Add(new DataGridViewTextBoxCell { Value = "" });
 
                                 var balanceData = GetBalanceData(currLvl + 1, reader["currname"].ToString());
-                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData).Replace("-", "") });
+                                newRow.Cells.Add(new DataGridViewTextBoxCell { Value = Utilities.FormatDecimal(balanceData) });
                                 
                                 newRow.Height = dgvCustomer.Rows[rowIndex].Height;
 
@@ -1059,7 +1059,7 @@ namespace YamyProject
             {
                 if (read.Read())
                 {
-                    return read[$"level{level}_balance"].ToString().Replace("-", "");
+                    return read[$"level{level}_balance"].ToString();
                 }
             }
 

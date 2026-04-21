@@ -1,23 +1,12 @@
-﻿using CrystalDecisions.Shared.Json;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Google.Protobuf.Collections;
-using Guna.UI2.WinForms;
-using Microsoft.Win32;
+﻿using Guna.UI2.WinForms;
 using MySql.Data.MySqlClient;
-using PdfSharp.Pdf.Content.Objects;
+using Mysqlx.Crud;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamyProject.DAL;
 using YamyProject.Localization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace YamyProject.UI.Project_Management
 {
@@ -48,10 +37,14 @@ namespace YamyProject.UI.Project_Management
             BindCombos.PopulateProjects(cmbProject4Engineers);
             BindCombos.PopulateProjects(cmbProject4Location);
             BindCombos.PopulateProjects(cmbProject4SubContractor);
+
+            BindCombos.PopulateCountries(cmbCountry);
+
             loadCustomers();
             LoadAccountsCombo();
             LoadSubContractorCombo();
             LoadEngineersCombo();
+            LoadProjectClassification();
 
             var generalS = Utilities.GeneralSettingsState("PROJECT OPTION");
             if (!string.IsNullOrEmpty(generalS) & int.Parse(generalS) > 0)
@@ -65,14 +58,13 @@ namespace YamyProject.UI.Project_Management
 
             if (id != 0)
             {
-                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT a.id,a.code,a.name,a.name_ar,category,description,start_date,a.end_date,a.country_id,a.city_id,a.emirate,a.`status`,a.`type`,a.extend_delay,a.execution_period_months,a.customer,a.contractor,a.consultant,a.location,a.details,a.contract_value,a.additional_value,a.deduction_value,a.total_value,a.billed_to_date,a.expenses,a.balance FROM tbl_projects a where a.id = @id",
+                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT * FROM tbl_projects a where a.id = @id",
                       DBClass.CreateParameter("id", id)))
                     if (reader.Read())
                     {
                         txtCode.Text = reader["code"].ToString();
                         txtProjectName.Text = reader["name"].ToString();
-                        txtProjectNameArabic.Text = reader["name_ar"].ToString();
-                        txtDescription.Text = reader["description"].ToString();
+                        //txtProjectNameArabic.Text = reader["name_ar"].ToString();
                         dtStart.Value = reader["start_date"] != DBNull.Value ? Convert.ToDateTime(reader["start_date"]) : DateTime.Now;
                         dtEnd.Value = reader["end_date"] != DBNull.Value ? Convert.ToDateTime(reader["end_date"]) : DateTime.Now;
                             cmbEmirate.SelectedItem = reader["emirate"].ToString();
@@ -92,13 +84,76 @@ namespace YamyProject.UI.Project_Management
                         txtBilledToDate1.Text = reader["billed_to_date"].ToString();
                         txtExpenses.Text = reader["expenses"].ToString();
                         txtBalance1.Text = reader["balance"].ToString();
-
+                        txtArea.Text = reader["area"].ToString();
+                        txtPlotNumber.Text = reader["plot_number"].ToString();
+                        txtBlock.Text = reader["block"].ToString();
+                        txtContactPerson.Text = reader["contact_person"].ToString();
+                        txtContactPersonNumber.Text = reader["contact_person_number"].ToString();
+                        cmbCountry.SelectedValue = Convert.ToInt32(reader["country_id"]);
+                        cmbCity.SelectedValue = Convert.ToInt32(reader["city_id"]);
+                        cmbClassification.SelectedValue = reader["project_classification"].ToString();
+                        txtPriority.Text = reader["priority_level"].ToString();
+                        cmbPriorityColor.SelectedItem = reader["priority_color"].ToString();
+                        chkStarred.Checked = reader["is_starred"].ToString() == "1" ? true : false;
+                        dtHandoverDate.Value = reader["handover_date"] != DBNull.Value ? Convert.ToDateTime(reader["handover_date"]) : DateTime.Now;
+                        txtOwner.Text = reader["owner_name"].ToString();
+                        txtBasinNo.Text = reader["basin_number"].ToString();
+                        txtMunicipalityNo.Text = reader["municipality_project_no"].ToString();
+                        txtBankProjectNo.Text = reader["bank_project_no"].ToString();
+                        txtPartNo.Text = reader["part_no"].ToString();
                     }
+
+                LoadBalance();
             }
             else
             {
                 txtCode.Text = GenerateNextCode();
             }
+        }
+
+        private void LoadProjectClassification()
+        {
+            cmbClassification.DataSource = DBClass.ExecuteDataTable("SELECT id,name_ar,name_en FROM tbl_project_Classification");
+            cmbClassification.ValueMember = "id";
+            string savedCulture = Properties.Settings.Default.ApplicationLanguage ?? "en";
+            if (savedCulture == "ar")
+                cmbClassification.DisplayMember = "name_ar";
+            else
+                cmbClassification.DisplayMember = "name_en";
+        }
+
+        private void LoadBalance()
+        {
+            //check there in invoice is there then fill the 
+            //summary 1
+            decimal billedToDate1 = Convert.ToDecimal(DBClass.ExecuteScalar(@"
+                            SELECT IFNULL(SUM(total),0)
+                            FROM tbl_projects_invoices
+                            WHERE project_id = @projectId",
+                            DBClass.CreateParameter("@projectId", id)));
+
+            if (billedToDate1 > 0)
+                txtBilledToDate1.Text = billedToDate1.ToString("0.00");
+
+            decimal expensesAmount = Convert.ToDecimal(DBClass.ExecuteScalar(@"
+                            SELECT IFNULL(SUM(amount),0)
+                            FROM tbl_projects_receipt_voucher
+                            WHERE project_id = @projectId",
+                            DBClass.CreateParameter("@projectId", id)));
+
+            if (expensesAmount > 0)
+                txtExpenses.Text = expensesAmount.ToString("0.00");
+
+            decimal balance1 = (billedToDate1 - expensesAmount);
+            if (balance1 > 0)
+                txtBalance1.Text = balance1.ToString("0.00");
+
+            //summary 2
+            decimal  balanceSummery = (Convert.ToDecimal(txtprojectTotalvalue.Text) - billedToDate1);
+
+            txtTotalValueSummary.Text = txtprojectTotalvalue.Text;
+            txtBilledToDate2.Text = billedToDate1.ToString("0.00");
+            txtBalance2.Text = balanceSummery.ToString("0.00"); 
         }
 
         private string GenerateNextCode()
@@ -135,61 +190,89 @@ namespace YamyProject.UI.Project_Management
                     return;
                 }
             }
+            if(cmbCity.SelectedValue == null)
+            {
+                MessageBox.Show("Please Enter City Name");
+                return;
+            }
 
+            int priority = 0;
+            if (!string.IsNullOrEmpty(txtPriority.Text.Trim()))
+            {
+                priority = Convert.ToInt32(txtPriority.Text.Trim());
+            }
 
             if (id == 0)
             {
                 int projectId = Convert.ToInt32(DBClass.ExecuteScalar(@"
-                                                    INSERT INTO tbl_projects (code, name, name_ar, category, description, start_date, end_date, country_id, city_id, emirate, status, type, extend_delay, execution_period_months, customer, contractor, consultant, location, details, contract_value, additional_value, deduction_value, total_value, billed_to_date, expenses, balance) 
-                                                    VALUES (@code, @name, @name_ar, @category, @description, @start_date, @end_date, @country_id, @city_id, @emirate, @status, @type, @extend_delay, @execution_period_months, @customer, @contractor, @consultant, @location, @details, @contract_value, @additional_value, @deduction_value, @total_value, @billed_to_date, @expenses, @balance);
+                                                    INSERT INTO tbl_projects (code, name, name_ar, category, description, start_date, end_date, country_id, city_id, emirate, status, type, extend_delay, execution_period_months, customer, contractor, consultant, location, details, contract_value, additional_value, deduction_value, total_value, billed_to_date, expenses, balance, area,plot_number,block,contact_person,contact_person_number,
+                                                    owner_name,part_no,basin_number,municipality_project_no, bank_project_no,project_classification,priority_level,priority_color,is_starred,last_progress_update,handover_date) 
+                                                    VALUES (@code, @name, @name_ar, @category, @description, @start_date, @end_date, @country_id, @city_id, @emirate, @status, @type, @extend_delay, @execution_period_months, @customer, @contractor, @consultant, @location, @details, @contract_value, @additional_value, @deduction_value, @total_value, @billed_to_date, @expenses, @balance, @area,@plot_number,@block,@contact_person,@contact_person_number,
+                                                    @owner_name,@basin_number,@municipality_project_no, @bank_project_no,@project_classification,@priority_level,@priority_color,@is_starred,@last_progress_update,@handover_date);
                                                     SELECT LAST_INSERT_ID();",
-                                                    DBClass.CreateParameter("@code", txtCode.Text),
-                                                    DBClass.CreateParameter("@name", txtProjectName.Text),
-                                                    DBClass.CreateParameter("@name_ar", txtProjectNameArabic.Text),
+                                                    DBClass.CreateParameter("@code", txtCode.Text.Trim()),
+                                                    DBClass.CreateParameter("@name", txtProjectName.Text.Trim()),
+                                                    DBClass.CreateParameter("@name_ar", ""),
                                                     DBClass.CreateParameter("@category", ""),
-                                                    DBClass.CreateParameter("@description", txtDescription.Text),
+                                                    DBClass.CreateParameter("@description", txtDescription.Text.Trim()),
                                                     DBClass.CreateParameter("@start_date", dtStart.Value.Date),
                                                     DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
-                                                    DBClass.CreateParameter("@country_id", 0),
-                                                    DBClass.CreateParameter("@city_id", 0),
+                                                    DBClass.CreateParameter("@country_id", cmbCountry.SelectedValue),
+                                                    DBClass.CreateParameter("@city_id", cmbCity.SelectedValue),
                                                     DBClass.CreateParameter("@emirate", cmbEmirate.SelectedItem == null ? "" : cmbEmirate.SelectedItem),
                                                     DBClass.CreateParameter("@status", cmbStatus.SelectedItem),
                                                     DBClass.CreateParameter("@type", cmbProjectType.SelectedItem),
                                                     DBClass.CreateParameter("@extend_delay", dtExtendDelay.Value.Date),
-                                                    DBClass.CreateParameter("@execution_period_months", string.IsNullOrWhiteSpace(txtExecutionPeriod.Text) ? 0 : Convert.ToInt32(txtExecutionPeriod.Text)),
+                                                    DBClass.CreateParameter("@execution_period_months", string.IsNullOrWhiteSpace(txtExecutionPeriod.Text.Trim()) ? 0 : Convert.ToInt32(txtExecutionPeriod.Text.Trim())),
                                                     DBClass.CreateParameter("@customer", cmbCustomer.SelectedValue),
-                                                    DBClass.CreateParameter("@contractor", txtContractor.Text),
-                                                    DBClass.CreateParameter("@consultant", txtConsultant.Text),
-                                                    DBClass.CreateParameter("@location", txtLocation.Text),
-                                                    DBClass.CreateParameter("@details", txtDetails.Text),
-                                                    DBClass.CreateParameter("@contract_value", string.IsNullOrWhiteSpace(txtContractValue.Text) ? 0 : Convert.ToDecimal(txtContractValue.Text)),
-                                                    DBClass.CreateParameter("@additional_value", string.IsNullOrWhiteSpace(txtAdditionalValue.Text) ? 0 : Convert.ToDecimal(txtAdditionalValue.Text)),
-                                                    DBClass.CreateParameter("@deduction_value", string.IsNullOrWhiteSpace(txtDeductionValue.Text) ? 0 : Convert.ToDecimal(txtDeductionValue.Text)),
-                                                    DBClass.CreateParameter("@total_value", string.IsNullOrWhiteSpace(txtprojectTotalvalue.Text) ? 0 : Convert.ToDecimal(txtprojectTotalvalue.Text)),
-                                                    DBClass.CreateParameter("@billed_to_date", string.IsNullOrWhiteSpace(txtBilledToDate1.Text) ? 0 : Convert.ToDecimal(txtBilledToDate1.Text)),
-                                                    DBClass.CreateParameter("@expenses", string.IsNullOrWhiteSpace(txtExpenses.Text) ? 0 : Convert.ToDecimal(txtExpenses.Text)),
-                                                    DBClass.CreateParameter("@balance", string.IsNullOrWhiteSpace(txtBalance1.Text) ? 0 : Convert.ToDecimal(txtBalance1.Text))
+                                                    DBClass.CreateParameter("@contractor", txtContractor.Text.Trim()),
+                                                    DBClass.CreateParameter("@consultant", txtConsultant.Text.Trim()),
+                                                    DBClass.CreateParameter("@location", txtLocation.Text.Trim()),
+                                                    DBClass.CreateParameter("@details", txtDetails.Text.Trim()),
+                                                    DBClass.CreateParameter("@contract_value", string.IsNullOrWhiteSpace(txtContractValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtContractValue.Text.Trim())),
+                                                    DBClass.CreateParameter("@additional_value", string.IsNullOrWhiteSpace(txtAdditionalValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtAdditionalValue.Text.Trim())),
+                                                    DBClass.CreateParameter("@deduction_value", string.IsNullOrWhiteSpace(txtDeductionValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtDeductionValue.Text.Trim())),
+                                                    DBClass.CreateParameter("@total_value", string.IsNullOrWhiteSpace(txtprojectTotalvalue.Text.Trim()) ? 0 : Convert.ToDecimal(txtprojectTotalvalue.Text)),
+                                                    DBClass.CreateParameter("@billed_to_date", string.IsNullOrWhiteSpace(txtBilledToDate1.Text.Trim()) ? 0 : Convert.ToDecimal(txtBilledToDate1.Text.Trim())),
+                                                    DBClass.CreateParameter("@expenses", string.IsNullOrWhiteSpace(txtExpenses.Text.Trim()) ? 0 : Convert.ToDecimal(txtExpenses.Text.Trim())),
+                                                    DBClass.CreateParameter("@balance", string.IsNullOrWhiteSpace(txtBalance1.Text.Trim()) ? 0 : Convert.ToDecimal(txtBalance1.Text.Trim())),
+                                                    DBClass.CreateParameter("area", txtArea.Text.Trim()),
+                                                    DBClass.CreateParameter("plot_number", txtPlotNumber.Text.Trim()),
+                                                    DBClass.CreateParameter("block", txtBlock.Text.Trim()),
+                                                    DBClass.CreateParameter("contact_person", txtContactPerson.Text.Trim()),
+                                                    DBClass.CreateParameter("contact_person_number", txtContactPersonNumber.Text.Trim()),
+                                                    DBClass.CreateParameter("owner_name", txtOwner.Text.Trim()),
+                                                    DBClass.CreateParameter("basin_number", txtBasinNo.Text.Trim()),
+                                                    DBClass.CreateParameter("part_no", txtPartNo.Text.Trim()),
+                                                    DBClass.CreateParameter("municipality_project_no", txtMunicipalityNo.Text.Trim()),
+                                                    DBClass.CreateParameter("bank_project_no", txtBankProjectNo.Text.Trim()),
+                                                    DBClass.CreateParameter("project_classification", cmbClassification.SelectedValue),
+                                                    DBClass.CreateParameter("priority_level", priority),
+                                                    DBClass.CreateParameter("priority_color", cmbPriorityColor.SelectedItem),
+                                                    DBClass.CreateParameter("is_starred", chkStarred.Checked ? 1 : 0),
+                                                    DBClass.CreateParameter("last_progress_update", DateTime.Now),
+                                                    DBClass.CreateParameter("handover_date", dtHandoverDate.Value.Date)
                                                 ));
 
                 if (IsProjectOption)
                 {
                     var mainId = DBClass.ExecuteScalar(@"INSERT INTO tbl_cost_center (name, code, project_id)
                                   VALUES (@name, @code, @project_id);SELECT LAST_INSERT_ID();",
-                            DBClass.CreateParameter("name", txtProjectName.Text),
-                            DBClass.CreateParameter("code", txtCode.Text),
+                            DBClass.CreateParameter("name", txtProjectName.Text.Trim()),
+                            DBClass.CreateParameter("code", txtCode.Text.Trim()),
                             DBClass.CreateParameter("project_id", projectId));
 
                     DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sub_cost_center (code, name, main_id, project_id)
                                   VALUES (@code, @name, @main_id, @project_id);",
-                            DBClass.CreateParameter("code", txtCode.Text),
-                            DBClass.CreateParameter("name", txtProjectName.Text),
+                            DBClass.CreateParameter("code", txtCode.Text.Trim()),
+                            DBClass.CreateParameter("name", txtProjectName.Text.Trim()),
                             DBClass.CreateParameter("project_id", projectId),
                             DBClass.CreateParameter("main_id", mainId.ToString()));
                 }
 
-                Utilities.LogAudit(frmLogin.userId, "Add Project", "Project", projectId, "Added New Project: " + txtProjectName.Text + " (Code: " + txtCode.Text + ")");
+                Utilities.LogAudit(frmLogin.userId, "Add Project", "Project", projectId, "Added New Project: " + txtProjectName.Text.Trim() + " (Code: " + txtCode.Text.Trim() + ")");
                 SaveSite(projectId, txtLocation.Text);
-
+                EventHub.RefreshProject();
                 MessageBox.Show("Project Saved");
             }
             else
@@ -198,56 +281,74 @@ namespace YamyProject.UI.Project_Management
                     UPDATE tbl_projects
                     SET code = @code, name = @name, name_ar = @name_ar, category = @category, description = @description, 
                         start_date = @start_date, end_date = @end_date, country_id  = @country_id, city_id = @city_id,emirate = @emirate , status = @status, type = @type, extend_delay = @extend_delay, execution_period_months = @execution_period_months, 
-                        customer = @customer, contractor = @contractor, consultant = @consultant, location = @location, details = @details, contract_value = @contract_value, additional_value = @additional_value, deduction_value = @deduction_value, total_value = @total_value, billed_to_date = @billed_to_date, expenses = @expenses, balance = @balance
+                        customer = @customer, contractor = @contractor, consultant = @consultant, location = @location, details = @details, contract_value = @contract_value, additional_value = @additional_value, deduction_value = @deduction_value, total_value = @total_value, billed_to_date = @billed_to_date, expenses = @expenses, balance = @balance,
+                        area = @area,plot_number = @plot_number,block=@block,contact_person = @contact_person,contact_person_number = @contact_person_number,
+                        owner_name = @owner_name,basin_number = @basin_number,municipality_project_no = @municipality_project_no, bank_project_no = @bank_project_no,project_classification = @project_classification,priority_level = @priority_level,priority_color = @priority_color,is_starred = @is_starred,last_progress_update=@last_progress_update,handover_date=@handover_date
                     WHERE id = @id;",
-                    DBClass.CreateParameter("@code", txtCode.Text),
-                    DBClass.CreateParameter("@name", txtProjectName.Text),
-                    DBClass.CreateParameter("@name_ar", txtProjectNameArabic.Text),
+                    DBClass.CreateParameter("@code", txtCode.Text.Trim()),
+                    DBClass.CreateParameter("@name", txtProjectName.Text.Trim()),
+                    DBClass.CreateParameter("@name_ar", ""),
                     DBClass.CreateParameter("@category", ""),
-                    DBClass.CreateParameter("@description", txtDescription.Text),
+                    DBClass.CreateParameter("@description", txtDescription.Text.Trim()),
                     DBClass.CreateParameter("@start_date", dtStart.Value.Date),
                     DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
-                    DBClass.CreateParameter("@country_id", 0),
-                    DBClass.CreateParameter("@city_id", 0),
+                    DBClass.CreateParameter("@country_id", cmbCountry.SelectedValue),
+                    DBClass.CreateParameter("@city_id", cmbCity.SelectedValue),
                     DBClass.CreateParameter("@emirate", cmbEmirate.SelectedItem == null ? "" : cmbEmirate.SelectedItem),
                     DBClass.CreateParameter("@status", cmbStatus.SelectedItem),
                     DBClass.CreateParameter("@type", cmbProjectType.SelectedItem),
                     DBClass.CreateParameter("@extend_delay", dtExtendDelay.Value.Date),
-                    DBClass.CreateParameter("@execution_period_months", string.IsNullOrWhiteSpace(txtExecutionPeriod.Text) ? 0 : Convert.ToInt32(txtExecutionPeriod.Text)),
+                    DBClass.CreateParameter("@execution_period_months", string.IsNullOrWhiteSpace(txtExecutionPeriod.Text.Trim()) ? 0 : Convert.ToInt32(txtExecutionPeriod.Text.Trim())),
                     DBClass.CreateParameter("@customer", cmbCustomer.SelectedValue),
-                    DBClass.CreateParameter("@contractor", txtContractor.Text),
-                    DBClass.CreateParameter("@consultant", txtConsultant.Text),
-                    DBClass.CreateParameter("@location", txtLocation.Text),
-                    DBClass.CreateParameter("@details", txtDetails.Text),
-                    DBClass.CreateParameter("@contract_value", string.IsNullOrWhiteSpace(txtContractValue.Text) ? 0 : Convert.ToDecimal(txtContractValue.Text)),
-                    DBClass.CreateParameter("@additional_value", string.IsNullOrWhiteSpace(txtAdditionalValue.Text) ? 0 : Convert.ToDecimal(txtAdditionalValue.Text)),
-                    DBClass.CreateParameter("@deduction_value", string.IsNullOrWhiteSpace(txtDeductionValue.Text) ? 0 : Convert.ToDecimal(txtDeductionValue.Text)),
-                    DBClass.CreateParameter("@total_value", string.IsNullOrWhiteSpace(txtprojectTotalvalue.Text) ? 0 : Convert.ToDecimal(txtprojectTotalvalue.Text)),
-                    DBClass.CreateParameter("@billed_to_date", string.IsNullOrWhiteSpace(txtBilledToDate1.Text) ? 0 : Convert.ToDecimal(txtBilledToDate1.Text)),
-                    DBClass.CreateParameter("@expenses", string.IsNullOrWhiteSpace(txtExpenses.Text) ? 0 : Convert.ToDecimal(txtExpenses.Text)),
-                    DBClass.CreateParameter("@balance", string.IsNullOrWhiteSpace(txtBalance1.Text) ? 0 : Convert.ToDecimal(txtBalance1.Text)),
+                    DBClass.CreateParameter("@contractor", txtContractor.Text.Trim()),
+                    DBClass.CreateParameter("@consultant", txtConsultant.Text.Trim()),
+                    DBClass.CreateParameter("@location", txtLocation.Text.Trim()),
+                    DBClass.CreateParameter("@details", txtDetails.Text.Trim()),
+                    DBClass.CreateParameter("@contract_value", string.IsNullOrWhiteSpace(txtContractValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtContractValue.Text.Trim())),
+                    DBClass.CreateParameter("@additional_value", string.IsNullOrWhiteSpace(txtAdditionalValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtAdditionalValue.Text.Trim())),
+                    DBClass.CreateParameter("@deduction_value", string.IsNullOrWhiteSpace(txtDeductionValue.Text.Trim()) ? 0 : Convert.ToDecimal(txtDeductionValue.Text.Trim())),
+                    DBClass.CreateParameter("@total_value", string.IsNullOrWhiteSpace(txtprojectTotalvalue.Text.Trim()) ? 0 : Convert.ToDecimal(txtprojectTotalvalue.Text.Trim())),
+                    DBClass.CreateParameter("@billed_to_date", string.IsNullOrWhiteSpace(txtBilledToDate1.Text.Trim()) ? 0 : Convert.ToDecimal(txtBilledToDate1.Text.Trim())),
+                    DBClass.CreateParameter("@expenses", string.IsNullOrWhiteSpace(txtExpenses.Text.Trim()) ? 0 : Convert.ToDecimal(txtExpenses.Text.Trim())),
+                    DBClass.CreateParameter("@balance", string.IsNullOrWhiteSpace(txtBalance1.Text.Trim()) ? 0 : Convert.ToDecimal(txtBalance1.Text.Trim())),
+                    DBClass.CreateParameter("area", txtArea.Text.Trim()),
+                    DBClass.CreateParameter("plot_number", txtPlotNumber.Text.Trim()),
+                    DBClass.CreateParameter("block", txtBlock.Text.Trim()),
+                    DBClass.CreateParameter("contact_person", txtContactPerson.Text.Trim()),
+                    DBClass.CreateParameter("contact_person_number", txtContactPersonNumber.Text.Trim()),
+                    DBClass.CreateParameter("owner_name", txtOwner.Text.Trim()),
+                    DBClass.CreateParameter("basin_number", txtBasinNo.Text.Trim()),
+                    DBClass.CreateParameter("part_no", txtPartNo.Text.Trim()),
+                    DBClass.CreateParameter("municipality_project_no", txtMunicipalityNo.Text.Trim()),
+                    DBClass.CreateParameter("bank_project_no", txtBankProjectNo.Text.Trim()),
+                    DBClass.CreateParameter("project_classification", cmbClassification.SelectedValue),
+                    DBClass.CreateParameter("priority_level", priority),
+                    DBClass.CreateParameter("priority_color", cmbPriorityColor.SelectedItem),
+                    DBClass.CreateParameter("is_starred", chkStarred.Checked ? 1 : 0),
+                    DBClass.CreateParameter("last_progress_update", DateTime.Now),
+                    DBClass.CreateParameter("handover_date", dtHandoverDate.Value.Date),
                     DBClass.CreateParameter("@id", id)
                 );
-
-
-                Utilities.LogAudit(frmLogin.userId, "Update Project", "Project", id, "Updated Project: " + txtProjectName.Text);
+                
+                Utilities.LogAudit(frmLogin.userId, "Update Project", "Project", id, "Updated Project: " + txtProjectName.Text.Trim());
 
                 if (IsProjectOption)
                 {
                     int cId = 0;
                     using (MySqlDataReader reader0 = DBClass.ExecuteReader("select * from tbl_sub_cost_center where name = @name",
-                        DBClass.CreateParameter("name", txtProjectName.Text)))
+                        DBClass.CreateParameter("name", txtProjectName.Text.Trim())))
                         if (reader0.Read())
                         {
                             cId = int.Parse(reader0["id"].ToString());
 
                             DBClass.ExecuteNonQuery("update tbl_sub_cost_center set name=@name where id = @id",
                                 DBClass.CreateParameter("id", cId),
-                            DBClass.CreateParameter("name", txtProjectName.Text));
+                            DBClass.CreateParameter("name", txtProjectName.Text.Trim()));
                         }
                 }
 
-                SaveSite(id, txtLocation.Text);
+                SaveSite(id, txtLocation.Text.Trim());
+                EventHub.RefreshProject();
 
                 MessageBox.Show("Project Edited");
             }
@@ -275,9 +376,17 @@ namespace YamyProject.UI.Project_Management
                             DBClass.CreateParameter("code", formattedId),
                             DBClass.CreateParameter("name", location),
                             DBClass.CreateParameter("locationId", pId),
-                            DBClass.CreateParameter("plotNumber", ""),
-                            DBClass.CreateParameter("address", ""));
-                Utilities.LogAudit(frmLogin.userId, "Add Project Site", "Project Site", refId, "Added Project Site: " + location);
+                            DBClass.CreateParameter("plotNumber", txtPlotNumber.Text.Trim()),
+                            DBClass.CreateParameter("address", txtArea.Text.Trim()));
+                if (refId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Project Site", "Project Site", refId, "Added Project Site: " + location);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
         }
         private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -298,7 +407,7 @@ namespace YamyProject.UI.Project_Management
         private void txtCustomerCode_TextChanged(object sender, EventArgs e)
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where code =@code",
-                DBClass.CreateParameter("code", txtCustomerCode.Text)))
+                DBClass.CreateParameter("code", txtCustomerCode.Text.Trim())))
                 if (reader.Read())
                     cmbCustomer.SelectedValue = int.Parse(reader["id"].ToString());
 
@@ -348,7 +457,7 @@ namespace YamyProject.UI.Project_Management
         private void txtCustomerCode_Leave(object sender, EventArgs e)
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_customer where code =@code",
-            DBClass.CreateParameter("code", txtCustomerCode.Text)))
+            DBClass.CreateParameter("code", txtCustomerCode.Text.Trim())))
                 if (!reader.Read())
                     cmbCustomer.SelectedIndex = -1;
 
@@ -446,22 +555,12 @@ namespace YamyProject.UI.Project_Management
         private void LoadAccountData()
         {
             dgvAccounts.Rows.Clear();
-            /*
-             * tbl_projects_accounts` (
-                          `id` int NOT NULL AUTO_INCREMENT,
-                          `name` VARCHAR(3250) NOT NULL DEFAULT '',
-                          `project_id` INT(10) NOT NULL DEFAULT '0',
-                          `account_id`
-             */
+
             bool isFirst = true;
             using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT pa.id,pa.name,pa.project_id,pa.account_id,ac.name account,ac.code,ac.name AS NameAr FROM tbl_projects_accounts pa INNER JOIN  tbl_coa_level_4 ac ON ac.id = pa.account_id where pa.project_id = @id",
                 DBClass.CreateParameter("id", cmbProject4Account.SelectedValue)))
                 while (reader.Read())
                 {
-                    // AccountID(ComboBox i want to load all account before but her only set id dataset ValueMember = "id" and displayMember = "name")
-                    // Assuming dgvAccounts has columns: Id, AccountId, Code(TextBox), Name(textbox), Name-Arabic(textbox)
-                    // colId,colCheck,colCategory,colMainAccount,colCode,colName,colNameArabic
-                    // dgvAccounts.Rows.Add(reader["id"].ToString(), reader["name"].ToString(), reader["account_id"].ToString());
                     int rowIndex = dgvAccounts.Rows.Add();
                     DataGridViewRow row = dgvAccounts.Rows[rowIndex];
                     row.Cells["colId"].Value = reader["id"].ToString();
@@ -677,11 +776,17 @@ namespace YamyProject.UI.Project_Management
         {
             txtAdditionalValue.Text = "0";
             txtAttachSearch.Text = "";
+            txtArea.Text = "";
+            txtBankProjectNo.Text = "";
             txtBalance1.Text = "0";
             txtBalance2.Text = "0";
+            txtBasinNo.Text = "";
             txtBilledToDate1.Text = "0";
             txtBilledToDate2.Text = "0";
+            txtBlock.Text = "";
             txtContractValue.Text = "0";
+            txtContactPerson.Text = "";
+            txtContactPersonNumber.Text = "";
             txtContractor.Text = "";
             txtConsultant.Text = "";
             txtCustomerCode.Text = "";
@@ -693,13 +798,19 @@ namespace YamyProject.UI.Project_Management
             txtExpenses.Text = "0";
             txtFilePath.Text = "";
             txtLocation.Text = "";
+            txtMunicipalityNo.Text = "";
+            txtOwner.Text = "";
+            txtPlotNumber.Text = "";
             txtProjectLocation.Text = "";
             txtProjectName.Text = "";
-            txtProjectNameArabic.Text = "";
+            //txtProjectNameArabic.Text = "";
             txtprojectTotalvalue.Text = "0";
+            txtPartNo.Text = "";
+            txtPriority.Text = "0";
             txtSearchCode.Text = "";
             txtSearchName.Text = "";
             txtTotalValueSummary.Text = "0";
+
 
             //cmbCustomer.SelectedIndex = -1;
             //cmbEmirate.SelectedIndex = -1;
@@ -787,7 +898,7 @@ namespace YamyProject.UI.Project_Management
             // This method can be implemented to load vouchers if needed tbl_attachments
             dgvAttachments.Rows.Clear();
             string sql = @"SELECT attachment_id, reference_type, reference_id, file_name, file_type, file_data, uploaded_on FROM tbl_attachments where reference_type='PROJECTS' and file_name like '%@search%' ORDER BY uploaded_on DESC";
-            using (MySqlDataReader reader = DBClass.ExecuteReader(sql, DBClass.CreateParameter("@search", txtAttachSearch.Text)))
+            using (MySqlDataReader reader = DBClass.ExecuteReader(sql, DBClass.CreateParameter("@search", txtAttachSearch.Text.Trim())))
             {
                 while (reader.Read())
                 {
@@ -946,7 +1057,7 @@ namespace YamyProject.UI.Project_Management
         }
         private void LoadEngineersCombo()
         {
-            DataTable dtSubcontractor = DBClass.ExecuteDataTable("SELECT name , id FROM tbl_engineers");
+            DataTable dtSubcontractor = DBClass.ExecuteDataTable("SELECT id,name FROM tbl_engineers");
             // colEngCheck,colEngId,colEngCode,colEngName,colEngPhone,colEng,colEngDate
             DataGridViewComboBoxColumn col =
                 (DataGridViewComboBoxColumn)dgvEngineers.Columns["colEngName"];
@@ -1114,6 +1225,109 @@ namespace YamyProject.UI.Project_Management
             );
 
             dgvEngineers.CurrentRow.Cells["colEngPhone"].Value = contact;
+        }
+
+        private void lnkNewCustomer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmViewCustomer(0).ShowDialog();
+        }
+
+        private void btnProjectEstimateBudget_Click(object sender, EventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmViewProjectTendering(0));
+        }
+
+        private void btnProjectBudgetDeviationReport_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmViewCity().ShowDialog();
+        }
+
+        private void cmbCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCountry.SelectedValue != null)
+                BindCombos.PopulateCities(cmbCity, (int)cmbCountry.SelectedValue);
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmProjectDataExport());
+        }
+
+        private void SaveFromExcel()
+        {
+            int projectId = Convert.ToInt32(DBClass.ExecuteScalar(@"
+                                                    INSERT INTO tbl_projects (code, name, name_ar, category, description, start_date, end_date, country_id, city_id, emirate, status, type, extend_delay, execution_period_months, customer, contractor, consultant, location, details, contract_value, additional_value, deduction_value, total_value, billed_to_date, expenses, balance, area,plot_number,block,contact_person,contact_person_number) 
+                                                    VALUES (@code, @name, @name_ar, @category, @description, @start_date, @end_date, @country_id, @city_id, @emirate, @status, @type, @extend_delay, @execution_period_months, @customer, @contractor, @consultant, @location, @details, @contract_value, @additional_value, @deduction_value, @total_value, @billed_to_date, @expenses, @balance, @area,@plot_number,@block,@contact_person,@contact_person_number);
+                                                    SELECT LAST_INSERT_ID();",
+                                                    DBClass.CreateParameter("@code", txtCode.Text),
+                                                    DBClass.CreateParameter("@name", txtProjectName.Text),
+                                                    DBClass.CreateParameter("@name_ar", ""),
+                                                    DBClass.CreateParameter("@category", ""),
+                                                    DBClass.CreateParameter("@description", txtDescription.Text),
+                                                    DBClass.CreateParameter("@start_date", dtStart.Value.Date),
+                                                    DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
+                                                    DBClass.CreateParameter("@country_id", cmbCountry.SelectedValue),
+                                                    DBClass.CreateParameter("@city_id", cmbCity.SelectedValue),
+                                                    DBClass.CreateParameter("@emirate", cmbEmirate.SelectedItem == null ? "" : cmbEmirate.SelectedItem),
+                                                    DBClass.CreateParameter("@status", cmbStatus.SelectedItem),
+                                                    DBClass.CreateParameter("@type", cmbProjectType.SelectedItem),
+                                                    DBClass.CreateParameter("@extend_delay", dtExtendDelay.Value.Date),
+                                                    DBClass.CreateParameter("@execution_period_months", string.IsNullOrWhiteSpace(txtExecutionPeriod.Text) ? 0 : Convert.ToInt32(txtExecutionPeriod.Text)),
+                                                    DBClass.CreateParameter("@customer", cmbCustomer.SelectedValue),
+                                                    DBClass.CreateParameter("@contractor", txtContractor.Text),
+                                                    DBClass.CreateParameter("@consultant", txtConsultant.Text),
+                                                    DBClass.CreateParameter("@location", txtLocation.Text),
+                                                    DBClass.CreateParameter("@details", txtDetails.Text),
+                                                    DBClass.CreateParameter("@contract_value", string.IsNullOrWhiteSpace(txtContractValue.Text) ? 0 : Convert.ToDecimal(txtContractValue.Text)),
+                                                    DBClass.CreateParameter("@additional_value", string.IsNullOrWhiteSpace(txtAdditionalValue.Text) ? 0 : Convert.ToDecimal(txtAdditionalValue.Text)),
+                                                    DBClass.CreateParameter("@deduction_value", string.IsNullOrWhiteSpace(txtDeductionValue.Text) ? 0 : Convert.ToDecimal(txtDeductionValue.Text)),
+                                                    DBClass.CreateParameter("@total_value", string.IsNullOrWhiteSpace(txtprojectTotalvalue.Text) ? 0 : Convert.ToDecimal(txtprojectTotalvalue.Text)),
+                                                    DBClass.CreateParameter("@billed_to_date", string.IsNullOrWhiteSpace(txtBilledToDate1.Text) ? 0 : Convert.ToDecimal(txtBilledToDate1.Text)),
+                                                    DBClass.CreateParameter("@expenses", string.IsNullOrWhiteSpace(txtExpenses.Text) ? 0 : Convert.ToDecimal(txtExpenses.Text)),
+                                                    DBClass.CreateParameter("@balance", string.IsNullOrWhiteSpace(txtBalance1.Text) ? 0 : Convert.ToDecimal(txtBalance1.Text)),
+                                                    DBClass.CreateParameter("area", txtArea.Text),
+                                                    DBClass.CreateParameter("plot_number", txtPlotNumber.Text),
+                                                    DBClass.CreateParameter("block", txtBlock.Text),
+                                                    DBClass.CreateParameter("contact_person", txtContactPerson.Text),
+                                                    DBClass.CreateParameter("contact_person_number", txtContactPersonNumber.Text)
+                                                ));
+
+            if (IsProjectOption)
+            {
+                var mainId = DBClass.ExecuteScalar(@"INSERT INTO tbl_cost_center (name, code, project_id)
+                                  VALUES (@name, @code, @project_id);SELECT LAST_INSERT_ID();",
+                        DBClass.CreateParameter("name", txtProjectName.Text),
+                        DBClass.CreateParameter("code", txtCode.Text),
+                        DBClass.CreateParameter("project_id", projectId));
+
+                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_sub_cost_center (code, name, main_id, project_id)
+                                  VALUES (@code, @name, @main_id, @project_id);",
+                        DBClass.CreateParameter("code", txtCode.Text),
+                        DBClass.CreateParameter("name", txtProjectName.Text),
+                        DBClass.CreateParameter("project_id", projectId),
+                        DBClass.CreateParameter("main_id", mainId.ToString()));
+            }
+
+            Utilities.LogAudit(frmLogin.userId, "Add Project", "Project", projectId, "Added New Project: " + txtProjectName.Text + " (Code: " + txtCode.Text + ")");
+            SaveSite(projectId, txtLocation.Text);
+        }
+
+        private void txtPriority_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore non-digit input
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmProjectClassification().ShowDialog();
         }
     }
 }

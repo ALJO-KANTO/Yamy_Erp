@@ -60,7 +60,7 @@ namespace YamyProject
                 BindSubmission(_submissionId);
             }
 
-            var defaultAccounts = BindCombos.LoadDefaultAccounts();
+            var defaultAccounts = BindCombos.DefaultAccounts();
             level4VatId = defaultAccounts.ContainsKey("Vat Output") ? defaultAccounts["Vat Input"] : 0;
             level4PaymentCreditMethodId = defaultAccounts.ContainsKey("Petty Cash Account") ? defaultAccounts["Petty Cash Account"] : 0;
 

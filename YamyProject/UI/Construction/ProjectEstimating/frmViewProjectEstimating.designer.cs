@@ -85,10 +85,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbAccountName = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtpt = new System.Windows.Forms.DateTimePicker();
-            this.cmbWarehouse = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -262,7 +260,7 @@
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -362,13 +360,13 @@
             this.sr.HeaderText = "Sr.";
             this.sr.Name = "sr";
             this.sr.ReadOnly = true;
-            this.sr.Width = 44;
+            this.sr.Width = 45;
             // 
             // code
             // 
             this.code.HeaderText = "Item Code";
             this.code.Name = "code";
-            this.code.Width = 86;
+            this.code.Width = 89;
             // 
             // name
             // 
@@ -383,7 +381,7 @@
             this.qty.DefaultCellStyle = dataGridViewCellStyle3;
             this.qty.HeaderText = "QTY";
             this.qty.Name = "qty";
-            this.qty.Width = 53;
+            this.qty.Width = 54;
             // 
             // unit
             // 
@@ -397,7 +395,7 @@
             this.unitId.HeaderText = "UnitId";
             this.unitId.Name = "unitId";
             this.unitId.Visible = false;
-            this.unitId.Width = 66;
+            this.unitId.Width = 63;
             // 
             // rate
             // 
@@ -406,25 +404,25 @@
             this.rate.DefaultCellStyle = dataGridViewCellStyle4;
             this.rate.HeaderText = "Rate";
             this.rate.Name = "rate";
-            this.rate.Width = 54;
+            this.rate.Width = 57;
             // 
             // colLength
             // 
             this.colLength.HeaderText = "Length";
             this.colLength.Name = "colLength";
-            this.colLength.Width = 68;
+            this.colLength.Width = 70;
             // 
             // colWidth
             // 
             this.colWidth.HeaderText = "Width";
             this.colWidth.Name = "colWidth";
-            this.colWidth.Width = 63;
+            this.colWidth.Width = 65;
             // 
             // colThick
             // 
             this.colThick.HeaderText = "Thick";
             this.colThick.Name = "colThick";
-            this.colThick.Width = 60;
+            this.colThick.Width = 61;
             // 
             // amount
             // 
@@ -435,7 +433,7 @@
             this.amount.HeaderText = "Amount";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
-            this.amount.Width = 75;
+            this.amount.Width = 76;
             // 
             // marginPercentage
             // 
@@ -444,7 +442,7 @@
             this.marginPercentage.DefaultCellStyle = dataGridViewCellStyle6;
             this.marginPercentage.HeaderText = "Margin %";
             this.marginPercentage.Name = "marginPercentage";
-            this.marginPercentage.Width = 82;
+            this.marginPercentage.Width = 83;
             // 
             // marginAmount
             // 
@@ -453,7 +451,7 @@
             this.marginAmount.DefaultCellStyle = dataGridViewCellStyle7;
             this.marginAmount.HeaderText = "Margin Amount";
             this.marginAmount.Name = "marginAmount";
-            this.marginAmount.Width = 116;
+            this.marginAmount.Width = 118;
             // 
             // total
             // 
@@ -464,27 +462,27 @@
             this.total.HeaderText = "Total";
             this.total.Name = "total";
             this.total.ReadOnly = true;
-            this.total.Width = 57;
+            this.total.Width = 58;
             // 
             // type
             // 
             this.type.HeaderText = "Type";
             this.type.Name = "type";
             this.type.Visible = false;
-            this.type.Width = 57;
+            this.type.Width = 53;
             // 
             // colNote
             // 
             this.colNote.HeaderText = "Note";
             this.colNote.Name = "colNote";
-            this.colNote.Width = 57;
+            this.colNote.Width = 59;
             // 
             // delete
             // 
             this.delete.HeaderText = "DEL";
             this.delete.Name = "delete";
             this.delete.Text = "x";
-            this.delete.Width = 32;
+            this.delete.Width = 33;
             // 
             // cmbProject
             // 
@@ -507,7 +505,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label7.Location = new System.Drawing.Point(229, 41);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -531,11 +529,9 @@
             this.guna2GroupBox1.Controls.Add(this.label1);
             this.guna2GroupBox1.Controls.Add(this.cmbAccountName);
             this.guna2GroupBox1.Controls.Add(this.dtpt);
-            this.guna2GroupBox1.Controls.Add(this.cmbWarehouse);
             this.guna2GroupBox1.Controls.Add(this.cmbProject);
             this.guna2GroupBox1.Controls.Add(this.txtDescription);
             this.guna2GroupBox1.Controls.Add(this.label4);
-            this.guna2GroupBox1.Controls.Add(this.label14);
             this.guna2GroupBox1.Controls.Add(this.label2);
             this.guna2GroupBox1.Controls.Add(this.label7);
             this.guna2GroupBox1.Controls.Add(this.label11);
@@ -581,7 +577,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label6.Location = new System.Drawing.Point(1237, 107);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -619,7 +615,7 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label5.Location = new System.Drawing.Point(454, 34);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -661,7 +657,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(545, 107);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -699,7 +695,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(1003, 107);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -739,24 +735,6 @@
             this.dtpt.Size = new System.Drawing.Size(189, 23);
             this.dtpt.TabIndex = 6;
             // 
-            // cmbWarehouse
-            // 
-            this.cmbWarehouse.BackColor = System.Drawing.Color.Transparent;
-            this.cmbWarehouse.BorderRadius = 5;
-            this.cmbWarehouse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWarehouse.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbWarehouse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWarehouse.ItemHeight = 18;
-            this.cmbWarehouse.Location = new System.Drawing.Point(28, 113);
-            this.cmbWarehouse.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(190, 24);
-            this.cmbWarehouse.TabIndex = 4;
-            this.cmbWarehouse.SelectedIndexChanged += new System.EventHandler(this.cmbWarehouse_SelectedIndexChanged);
-            // 
             // txtDescription
             // 
             this.txtDescription.BackColor = System.Drawing.Color.Transparent;
@@ -783,7 +761,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(24, 140);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -793,23 +771,10 @@
             this.label4.Text = "Description";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label14.Location = new System.Drawing.Point(25, 86);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 29);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Warehouse";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(228, 86);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -822,7 +787,7 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label11.Location = new System.Drawing.Point(24, 41);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -836,7 +801,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label10.Location = new System.Drawing.Point(1006, 34);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -1044,8 +1009,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbAccountName;
         private System.Windows.Forms.Label label10;
         private Guna.UI2.WinForms.Guna2DataGridView dgvItems;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbWarehouse;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;

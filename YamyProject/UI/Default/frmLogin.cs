@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamyProject.Localization;
 using YamyProject.RMS;
+using YamyProject.UI.EngineeringConsultancy.ViewForm;
 
 namespace YamyProject
 {
@@ -48,7 +49,8 @@ namespace YamyProject
                         this.Hide();
                         if (userRole == "Engineer")
                         {
-                            frmEngineerActivity frm = new frmEngineerActivity();
+                            //frmEngineerActivity frm = new frmEngineerActivity();
+                            frmEngineerTask frm = new frmEngineerTask();
                             frm.WindowState = FormWindowState.Maximized;
                             frm.Show();
                         }
@@ -90,7 +92,8 @@ namespace YamyProject
 
                             if (userRole == "Engineer")
                             {
-                                frmEngineerActivity frm = new frmEngineerActivity();
+                                //frmEngineerActivity frm = new frmEngineerActivity();
+                                frmEngineerTask frm = new frmEngineerTask();
                                 frm.WindowState = FormWindowState.Maximized;
                                 frm.Show();
                             }
@@ -141,8 +144,7 @@ namespace YamyProject
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            if (defaultAccounts == null)
-                defaultAccounts = BindCombos.LoadDefaultAccounts();
+            defaultAccounts = BindCombos.LoadDefaultAccounts();
             //Console.WriteLine("Loading data...");
             //Stopwatch sw = new Stopwatch();
             //sw.Start();

@@ -208,7 +208,14 @@ namespace YamyProject
                         @"INSERT INTO tbl_project_activity_assignment(activity_id, resource_id) VALUES(@id, @resId);",
                         DBClass.CreateParameter("@id", id),
                         DBClass.CreateParameter("@resId", listItem.Id));
-                    Utilities.LogAudit(frmLogin.userId, "Update Project Activity Assignment", "Project Activity Assignment", result1, "Updated Project Activity Assignment: " + listItem.Name);
+                    if (result1 == 0)
+                        Utilities.LogAudit(frmLogin.userId, "Update Project Activity Assignment", "Project Activity Assignment", result1, "Updated Project Activity Assignment: " + listItem.Name);
+                    else
+                    {
+                        string message = Utilities.LastLogError();
+                        MessageBox.Show("Error Check your data" + message);
+                        return false;
+                    }
                 }
             }
 
@@ -251,7 +258,16 @@ namespace YamyProject
                         @"INSERT INTO tbl_project_activity_assignment(activity_id, resource_id) VALUES(@id, @resId);",
                         DBClass.CreateParameter("@id", id),
                         DBClass.CreateParameter("@resId", listItem.Id));
-                    Utilities.LogAudit(frmLogin.userId, "Insert Project Activity Assignment", "Project Activity Assignment", result1, "Inserted Project Activity Assignment: " + listItem.Name);
+                    if (result1 == 0)
+                    {
+                        Utilities.LogAudit(frmLogin.userId, "Insert Project Activity Assignment", "Project Activity Assignment", result1, "Inserted Project Activity Assignment: " + listItem.Name);
+                    }
+                    else
+                    {
+                        string message = Utilities.LastLogError();
+                        MessageBox.Show("Error Check your data" + message);
+                        return false;
+                    }
                 }
             }
             updatePlaning(progress);

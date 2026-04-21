@@ -53,6 +53,9 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpProjectInfo = new System.Windows.Forms.GroupBox();
+            this.linkTemplate = new System.Windows.Forms.LinkLabel();
+            this.cmbPhaseTemplate = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbProject = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblProject = new System.Windows.Forms.Label();
             this.grpPhaseEntry = new System.Windows.Forms.GroupBox();
@@ -87,6 +90,9 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // 
             // grpProjectInfo
             // 
+            this.grpProjectInfo.Controls.Add(this.linkTemplate);
+            this.grpProjectInfo.Controls.Add(this.cmbPhaseTemplate);
+            this.grpProjectInfo.Controls.Add(this.label1);
             this.grpProjectInfo.Controls.Add(this.cmbProject);
             this.grpProjectInfo.Controls.Add(this.lblProject);
             this.grpProjectInfo.Location = new System.Drawing.Point(27, 53);
@@ -95,6 +101,40 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.grpProjectInfo.TabIndex = 9;
             this.grpProjectInfo.TabStop = false;
             this.grpProjectInfo.Text = "Project Information";
+            // 
+            // linkTemplate
+            // 
+            this.linkTemplate.AutoSize = true;
+            this.linkTemplate.Location = new System.Drawing.Point(935, 30);
+            this.linkTemplate.Name = "linkTemplate";
+            this.linkTemplate.Size = new System.Drawing.Size(29, 13);
+            this.linkTemplate.TabIndex = 15;
+            this.linkTemplate.TabStop = true;
+            this.linkTemplate.Text = "New";
+            this.linkTemplate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTemplate_LinkClicked);
+            // 
+            // cmbPhaseTemplate
+            // 
+            this.cmbPhaseTemplate.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPhaseTemplate.BorderRadius = 5;
+            this.cmbPhaseTemplate.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPhaseTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPhaseTemplate.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbPhaseTemplate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPhaseTemplate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbPhaseTemplate.ItemHeight = 20;
+            this.cmbPhaseTemplate.Location = new System.Drawing.Point(656, 26);
+            this.cmbPhaseTemplate.Name = "cmbPhaseTemplate";
+            this.cmbPhaseTemplate.Size = new System.Drawing.Size(273, 26);
+            this.cmbPhaseTemplate.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(563, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Phase Template";
             // 
             // cmbProject
             // 
@@ -421,6 +461,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.Text = "Engineering Project Phases";
             this.Load += new System.EventHandler(this.frmEngProjectPhases_Load);
             this.grpProjectInfo.ResumeLayout(false);
+            this.grpProjectInfo.PerformLayout();
             this.grpPhaseEntry.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numWeight)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -440,5 +481,8 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
         private DataGridViewTextBoxColumn end_date;
         private DataGridViewTextBoxColumn weight_percentage;
         private DataGridViewTextBoxColumn Status;
+        private LinkLabel linkTemplate;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbPhaseTemplate;
+        private Label label1;
     }
 }

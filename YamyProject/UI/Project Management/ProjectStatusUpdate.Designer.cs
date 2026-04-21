@@ -64,17 +64,17 @@
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(562, 30);
+            this.headerUC1.Size = new System.Drawing.Size(712, 30);
             this.headerUC1.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(560, 30);
+            this.panel4.Location = new System.Drawing.Point(710, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 307);
+            this.panel4.Size = new System.Drawing.Size(2, 318);
             this.panel4.TabIndex = 124;
             // 
             // panel1
@@ -82,10 +82,10 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 302);
+            this.panel1.Location = new System.Drawing.Point(2, 313);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(558, 33);
+            this.panel1.Size = new System.Drawing.Size(708, 33);
             this.panel1.TabIndex = 125;
             // 
             // btnClose
@@ -101,7 +101,7 @@
             this.btnClose.FillColor = System.Drawing.Color.White;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.btnClose.Location = new System.Drawing.Point(417, 4);
+            this.btnClose.Location = new System.Drawing.Point(567, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
@@ -122,7 +122,7 @@
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(275, 4);
+            this.btnSave.Location = new System.Drawing.Point(425, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
@@ -137,17 +137,17 @@
             this.formLeftBoarder.Location = new System.Drawing.Point(0, 30);
             this.formLeftBoarder.Margin = new System.Windows.Forms.Padding(2);
             this.formLeftBoarder.Name = "formLeftBoarder";
-            this.formLeftBoarder.Size = new System.Drawing.Size(2, 307);
+            this.formLeftBoarder.Size = new System.Drawing.Size(2, 318);
             this.formLeftBoarder.TabIndex = 150;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(2, 335);
+            this.panel5.Location = new System.Drawing.Point(2, 346);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(558, 2);
+            this.panel5.Size = new System.Drawing.Size(708, 2);
             this.panel5.TabIndex = 151;
             // 
             // label6
@@ -325,7 +325,7 @@
             this.txtName.PlaceholderText = "Name";
             this.txtName.ReadOnly = true;
             this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(402, 24);
+            this.txtName.Size = new System.Drawing.Size(551, 24);
             this.txtName.TabIndex = 152;
             // 
             // lblAttachments
@@ -381,7 +381,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 337);
+            this.ClientSize = new System.Drawing.Size(712, 348);
             this.Controls.Add(this.guna2ImageButton1);
             this.Controls.Add(this.btnChooseFile);
             this.Controls.Add(this.lblAttachments);

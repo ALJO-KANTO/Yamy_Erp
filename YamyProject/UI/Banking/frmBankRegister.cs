@@ -130,7 +130,17 @@ namespace YamyProject
                     DBClass.CreateParameter("countryId", countryId),
                     DBClass.CreateParameter("createdBy", createdBy),
                     DBClass.CreateParameter("createdDate", createdDate));
-                Utilities.LogAudit(frmLogin.userId, "Insert Bank", "Bank", refId, "Inserted Bank: " + bankName + " with code: " + newCode);
+                if (refId == 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Insert Bank", "Bank", refId, "Inserted Bank: " + bankName + " with code: " + newCode);
+                    return true;
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                    return false;
+                }
             }
             else
             {

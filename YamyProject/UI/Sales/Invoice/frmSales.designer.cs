@@ -1361,6 +1361,7 @@ namespace YamyProject
             this.txtTotalBefore.Size = new System.Drawing.Size(134, 29);
             this.txtTotalBefore.TabIndex = 3;
             this.txtTotalBefore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalBefore.TextChanged += new System.EventHandler(this.txtTotalBefore_TextChanged);
             this.txtTotalBefore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesPrice_KeyPress);
             // 
             // txtTotal

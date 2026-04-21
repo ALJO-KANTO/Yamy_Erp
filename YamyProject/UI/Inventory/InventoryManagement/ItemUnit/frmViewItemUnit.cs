@@ -54,7 +54,15 @@ namespace YamyProject
             {
                 int refId = DBClass.ExecuteNonQuery("insert into tbl_unit (name) values(@name)",
                     DBClass.CreateParameter("name", txtName.Text));
-                Utilities.LogAudit(frmLogin.userId, "Add Item Unit", "Item Unit", refId, "Added Item Unit: " + txtName.Text);
+                if (refId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Item Unit", "Item Unit", refId, "Added Item Unit: " + txtName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
             {

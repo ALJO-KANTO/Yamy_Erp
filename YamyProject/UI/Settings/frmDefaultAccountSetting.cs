@@ -64,6 +64,8 @@ namespace YamyProject
                 { "SalesReturn", cmbSalesReturnInvoice },
                 { "Default Account For Bank", cmbDefaultBankAccount },
                 { "Customer Advances", cmbCustomerAdvance },
+                { "Retention", cmbRetentionAccount },
+                { "Deduction", cmbDeductionAccount },
             };
         }
 
@@ -99,7 +101,7 @@ namespace YamyProject
                 "Salaries", "Accrued Salaries", "Default Account For Cash", "Petty Cash Account",
                 "Opening Balance", "Opening Balance Equity", "PDC Receivable", "PDC Receivable Return", "PDC Receivable Hold",
                 "PDC Payable", "PDC Payable Return", "PDC Payable Hold", "Prepaid Expense Debit Account", "Prepaid Expense Credit Account",
-                "Fixed Asset Debit Account", "Fixed Asset Credit Account"
+                "Fixed Asset Debit Account", "Fixed Asset Credit Account", "Retention", "Deduction"
                 });
             }
             else if (panelToShow == pnlVendorPurchase)
@@ -196,6 +198,7 @@ namespace YamyProject
 
                 BindDataTable.LoadConfigData();
                 LoadCache();
+                frmLogin.defaultAccounts = BindCombos.LoadDefaultAccounts();
             }
             catch (Exception ex)
             {

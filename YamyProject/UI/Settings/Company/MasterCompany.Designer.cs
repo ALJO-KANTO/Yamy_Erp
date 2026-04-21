@@ -136,11 +136,11 @@
             this.tbC.Controls.Add(this.tpVATConfig);
             this.tbC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbC.ItemSize = new System.Drawing.Size(220, 40);
-            this.tbC.Location = new System.Drawing.Point(2, 37);
+            this.tbC.Location = new System.Drawing.Point(2, 30);
             this.tbC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbC.Name = "tbC";
             this.tbC.SelectedIndex = 0;
-            this.tbC.Size = new System.Drawing.Size(765, 522);
+            this.tbC.Size = new System.Drawing.Size(765, 529);
             this.tbC.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tbC.TabButtonHoverState.FillColor = System.Drawing.Color.Silver;
             this.tbC.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,7 +194,7 @@
             this.tbpCompany.Location = new System.Drawing.Point(4, 44);
             this.tbpCompany.Name = "tbpCompany";
             this.tbpCompany.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCompany.Size = new System.Drawing.Size(757, 474);
+            this.tbpCompany.Size = new System.Drawing.Size(757, 481);
             this.tbpCompany.TabIndex = 1;
             this.tbpCompany.Text = "General Information";
             this.tbpCompany.UseVisualStyleBackColor = true;
@@ -345,6 +345,7 @@
             this.txtCompanyPhone2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCompanyPhone2.Location = new System.Drawing.Point(370, 115);
             this.txtCompanyPhone2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCompanyPhone2.MaxLength = 15;
             this.txtCompanyPhone2.Name = "txtCompanyPhone2";
             this.txtCompanyPhone2.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyPhone2.PlaceholderText = "";
@@ -393,6 +394,7 @@
             this.txtCompanyTrn.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCompanyTrn.Location = new System.Drawing.Point(114, 324);
             this.txtCompanyTrn.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCompanyTrn.MaxLength = 20;
             this.txtCompanyTrn.Name = "txtCompanyTrn";
             this.txtCompanyTrn.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyTrn.PlaceholderText = "";
@@ -441,6 +443,7 @@
             this.txtCompanyMobile.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCompanyMobile.Location = new System.Drawing.Point(114, 167);
             this.txtCompanyMobile.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCompanyMobile.MaxLength = 15;
             this.txtCompanyMobile.Name = "txtCompanyMobile";
             this.txtCompanyMobile.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyMobile.PlaceholderText = "";
@@ -465,6 +468,7 @@
             this.txtCompanyGmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCompanyGmail.Location = new System.Drawing.Point(370, 168);
             this.txtCompanyGmail.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCompanyGmail.MaxLength = 50;
             this.txtCompanyGmail.Name = "txtCompanyGmail";
             this.txtCompanyGmail.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyGmail.PlaceholderText = "";
@@ -489,6 +493,7 @@
             this.txtCompanyPhone1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCompanyPhone1.Location = new System.Drawing.Point(114, 115);
             this.txtCompanyPhone1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCompanyPhone1.MaxLength = 15;
             this.txtCompanyPhone1.Name = "txtCompanyPhone1";
             this.txtCompanyPhone1.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyPhone1.PlaceholderText = "";
@@ -549,7 +554,7 @@
             this.panel1.Controls.Add(this.guna2Button3);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 438);
+            this.panel1.Location = new System.Drawing.Point(3, 445);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(751, 33);
@@ -749,7 +754,7 @@
             this.tpVATConfig.Controls.Add(this.panel2);
             this.tpVATConfig.Location = new System.Drawing.Point(4, 44);
             this.tpVATConfig.Name = "tpVATConfig";
-            this.tpVATConfig.Size = new System.Drawing.Size(757, 488);
+            this.tpVATConfig.Size = new System.Drawing.Size(757, 474);
             this.tpVATConfig.TabIndex = 2;
             this.tpVATConfig.Text = "VAT Configuration";
             this.tpVATConfig.UseVisualStyleBackColor = true;
@@ -842,7 +847,7 @@
             // label17
             // 
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label17.Location = new System.Drawing.Point(81, 21);
             this.label17.Name = "label17";
@@ -854,7 +859,7 @@
             // CorporateTaxNo
             // 
             this.CorporateTaxNo.BackColor = System.Drawing.Color.Transparent;
-            this.CorporateTaxNo.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.CorporateTaxNo.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.CorporateTaxNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.CorporateTaxNo.Location = new System.Drawing.Point(15, 329);
             this.CorporateTaxNo.Name = "CorporateTaxNo";
@@ -900,7 +905,7 @@
             // label16
             // 
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label16.Location = new System.Drawing.Point(581, 326);
             this.label16.Name = "label16";
@@ -1120,7 +1125,7 @@
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label9.Location = new System.Drawing.Point(10, 22);
             this.label9.Name = "label9";
@@ -1132,7 +1137,7 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label11.Location = new System.Drawing.Point(10, 157);
             this.label11.Name = "label11";
@@ -1144,7 +1149,7 @@
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label12.Location = new System.Drawing.Point(10, 68);
             this.label12.Name = "label12";
@@ -1156,7 +1161,7 @@
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label13.Location = new System.Drawing.Point(10, 112);
             this.label13.Name = "label13";
@@ -1168,7 +1173,7 @@
             // label14
             // 
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label14.Location = new System.Drawing.Point(18, 10);
             this.label14.Name = "label14";
@@ -1214,7 +1219,7 @@
             // label15
             // 
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label15.Location = new System.Drawing.Point(591, 10);
             this.label15.Name = "label15";
@@ -1229,7 +1234,7 @@
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnSaveVat);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 455);
+            this.panel2.Location = new System.Drawing.Point(0, 441);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(757, 33);
@@ -1291,20 +1296,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(767, 37);
+            this.panel4.Location = new System.Drawing.Point(767, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 524);
+            this.panel4.Size = new System.Drawing.Size(2, 531);
             this.panel4.TabIndex = 165;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 524);
+            this.panel3.Size = new System.Drawing.Size(2, 531);
             this.panel3.TabIndex = 164;
             // 
             // headerUC1

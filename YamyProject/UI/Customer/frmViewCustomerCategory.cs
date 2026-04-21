@@ -76,7 +76,15 @@ namespace YamyProject
                 {
                     int refId = DBClass.ExecuteNonQuery("INSERT INTO tbl_customer_category (name) VALUES (@name)",
                         DBClass.CreateParameter("name", categoryName));
-                    Utilities.LogAudit(frmLogin.userId, "Add Customer Category", "Customer Category", refId, "Added Customer Category: " + categoryName);
+                    if (refId != 0)
+                    {
+                        Utilities.LogAudit(frmLogin.userId, "Add Customer Category", "Customer Category", refId, "Added Customer Category: " + categoryName);
+                    }
+                    else
+                    {
+                        string message = Utilities.LastLogError();
+                        MessageBox.Show("Error Check your data" + message);
+                    }
                 }
                 else
                 {

@@ -30,20 +30,58 @@ namespace YamyProject.UI.Project_Management
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPartNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.txtPriority = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtBankProjectNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtOwner = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.dtHandoverDate = new System.Windows.Forms.DateTimePicker();
+            this.chkStarred = new System.Windows.Forms.CheckBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.cmbPriorityColor = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.cmbClassification = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtMunicipalityNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtBasinNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.cmbCity = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbCountry = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtBlock = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.txtPlotNumber = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.txtArea = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.txtLocation = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtContactPersonNumber = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.txtContactPerson = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnNew = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -88,8 +126,6 @@ namespace YamyProject.UI.Project_Management
             this.txtContractValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtDetails = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtLocation = new Guna.UI2.WinForms.Guna2TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtConsultant = new Guna.UI2.WinForms.Guna2TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -112,8 +148,6 @@ namespace YamyProject.UI.Project_Management
             this.label7 = new System.Windows.Forms.Label();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtProjectNameArabic = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtProjectName = new Guna.UI2.WinForms.Guna2TextBox();
             this.LabelType = new System.Windows.Forms.Label();
@@ -206,8 +240,10 @@ namespace YamyProject.UI.Project_Management
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
@@ -242,6 +278,37 @@ namespace YamyProject.UI.Project_Management
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.cmbClassification);
+            this.tabPage1.Controls.Add(this.linkLabel1);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.txtPartNo);
+            this.tabPage1.Controls.Add(this.label57);
+            this.tabPage1.Controls.Add(this.txtPriority);
+            this.tabPage1.Controls.Add(this.label60);
+            this.tabPage1.Controls.Add(this.txtBankProjectNo);
+            this.tabPage1.Controls.Add(this.label53);
+            this.tabPage1.Controls.Add(this.txtOwner);
+            this.tabPage1.Controls.Add(this.label59);
+            this.tabPage1.Controls.Add(this.dtHandoverDate);
+            this.tabPage1.Controls.Add(this.chkStarred);
+            this.tabPage1.Controls.Add(this.label58);
+            this.tabPage1.Controls.Add(this.cmbPriorityColor);
+            this.tabPage1.Controls.Add(this.label55);
+            this.tabPage1.Controls.Add(this.label54);
+            this.tabPage1.Controls.Add(this.label56);
+            this.tabPage1.Controls.Add(this.txtMunicipalityNo);
+            this.tabPage1.Controls.Add(this.txtBasinNo);
+            this.tabPage1.Controls.Add(this.guna2Button5);
+            this.tabPage1.Controls.Add(this.cmbCity);
+            this.tabPage1.Controls.Add(this.cmbCountry);
+            this.tabPage1.Controls.Add(this.label51);
+            this.tabPage1.Controls.Add(this.label52);
+            this.tabPage1.Controls.Add(this.linkLabel2);
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Controls.Add(this.label44);
+            this.tabPage1.Controls.Add(this.txtContactPersonNumber);
+            this.tabPage1.Controls.Add(this.label47);
+            this.tabPage1.Controls.Add(this.txtContactPerson);
             this.tabPage1.Controls.Add(this.btnClear);
             this.tabPage1.Controls.Add(this.btnNew);
             this.tabPage1.Controls.Add(this.btnSave);
@@ -277,8 +344,6 @@ namespace YamyProject.UI.Project_Management
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.txtDetails);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.txtLocation);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.txtConsultant);
             this.tabPage1.Controls.Add(this.label14);
@@ -301,8 +366,6 @@ namespace YamyProject.UI.Project_Management
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.dtEnd);
             this.tabPage1.Controls.Add(this.dtStart);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.txtProjectNameArabic);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.txtProjectName);
             this.tabPage1.Controls.Add(this.LabelType);
@@ -322,6 +385,593 @@ namespace YamyProject.UI.Project_Management
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Projects";
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(8, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 24);
+            this.label5.TabIndex = 233;
+            this.label5.Text = "Part No";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPartNo
+            // 
+            this.txtPartNo.BorderRadius = 5;
+            this.txtPartNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPartNo.DefaultText = "";
+            this.txtPartNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPartNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPartNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPartNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPartNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPartNo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPartNo.ForeColor = System.Drawing.Color.Black;
+            this.txtPartNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPartNo.Location = new System.Drawing.Point(105, 100);
+            this.txtPartNo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtPartNo.Name = "txtPartNo";
+            this.txtPartNo.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtPartNo.PlaceholderText = "";
+            this.txtPartNo.SelectedText = "";
+            this.txtPartNo.Size = new System.Drawing.Size(182, 24);
+            this.txtPartNo.TabIndex = 232;
+            // 
+            // label57
+            // 
+            this.label57.BackColor = System.Drawing.SystemColors.Control;
+            this.label57.Location = new System.Drawing.Point(1046, 100);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(72, 24);
+            this.label57.TabIndex = 231;
+            this.label57.Text = "Priority";
+            this.label57.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPriority
+            // 
+            this.txtPriority.BorderRadius = 5;
+            this.txtPriority.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPriority.DefaultText = "";
+            this.txtPriority.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPriority.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPriority.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPriority.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPriority.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPriority.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPriority.ForeColor = System.Drawing.Color.Black;
+            this.txtPriority.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPriority.Location = new System.Drawing.Point(1114, 100);
+            this.txtPriority.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtPriority.Name = "txtPriority";
+            this.txtPriority.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtPriority.PlaceholderText = "";
+            this.txtPriority.SelectedText = "";
+            this.txtPriority.Size = new System.Drawing.Size(113, 24);
+            this.txtPriority.TabIndex = 230;
+            this.txtPriority.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPriority_KeyPress);
+            // 
+            // label60
+            // 
+            this.label60.BackColor = System.Drawing.SystemColors.Control;
+            this.label60.Location = new System.Drawing.Point(618, 100);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(100, 24);
+            this.label60.TabIndex = 229;
+            this.label60.Text = "Bank Project No";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBankProjectNo
+            // 
+            this.txtBankProjectNo.BorderRadius = 5;
+            this.txtBankProjectNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBankProjectNo.DefaultText = "";
+            this.txtBankProjectNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBankProjectNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBankProjectNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBankProjectNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBankProjectNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBankProjectNo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBankProjectNo.ForeColor = System.Drawing.Color.Black;
+            this.txtBankProjectNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBankProjectNo.Location = new System.Drawing.Point(715, 100);
+            this.txtBankProjectNo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtBankProjectNo.Name = "txtBankProjectNo";
+            this.txtBankProjectNo.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtBankProjectNo.PlaceholderText = "";
+            this.txtBankProjectNo.SelectedText = "";
+            this.txtBankProjectNo.Size = new System.Drawing.Size(182, 24);
+            this.txtBankProjectNo.TabIndex = 228;
+            // 
+            // label53
+            // 
+            this.label53.BackColor = System.Drawing.SystemColors.Control;
+            this.label53.Location = new System.Drawing.Point(469, 27);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(80, 24);
+            this.label53.TabIndex = 214;
+            this.label53.Text = "Owner name";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtOwner
+            // 
+            this.txtOwner.BorderRadius = 5;
+            this.txtOwner.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtOwner.DefaultText = "";
+            this.txtOwner.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtOwner.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtOwner.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOwner.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtOwner.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOwner.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtOwner.ForeColor = System.Drawing.Color.Black;
+            this.txtOwner.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtOwner.Location = new System.Drawing.Point(546, 27);
+            this.txtOwner.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtOwner.Name = "txtOwner";
+            this.txtOwner.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtOwner.PlaceholderText = "";
+            this.txtOwner.SelectedText = "";
+            this.txtOwner.Size = new System.Drawing.Size(300, 24);
+            this.txtOwner.TabIndex = 227;
+            // 
+            // label59
+            // 
+            this.label59.BackColor = System.Drawing.SystemColors.Control;
+            this.label59.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label59.Location = new System.Drawing.Point(554, 156);
+            this.label59.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(90, 24);
+            this.label59.TabIndex = 226;
+            this.label59.Text = "Handover Date";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dtHandoverDate
+            // 
+            this.dtHandoverDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtHandoverDate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtHandoverDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtHandoverDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtHandoverDate.Location = new System.Drawing.Point(643, 157);
+            this.dtHandoverDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtHandoverDate.Name = "dtHandoverDate";
+            this.dtHandoverDate.Size = new System.Drawing.Size(108, 22);
+            this.dtHandoverDate.TabIndex = 225;
+            // 
+            // chkStarred
+            // 
+            this.chkStarred.AutoSize = true;
+            this.chkStarred.Location = new System.Drawing.Point(892, 36);
+            this.chkStarred.Name = "chkStarred";
+            this.chkStarred.Size = new System.Drawing.Size(74, 17);
+            this.chkStarred.TabIndex = 224;
+            this.chkStarred.Text = "Is Starred";
+            this.chkStarred.UseVisualStyleBackColor = true;
+            // 
+            // label58
+            // 
+            this.label58.BackColor = System.Drawing.SystemColors.Control;
+            this.label58.Location = new System.Drawing.Point(1041, 131);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(75, 24);
+            this.label58.TabIndex = 222;
+            this.label58.Text = "Priority Color";
+            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbPriorityColor
+            // 
+            this.cmbPriorityColor.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPriorityColor.BorderRadius = 5;
+            this.cmbPriorityColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPriorityColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPriorityColor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbPriorityColor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbPriorityColor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPriorityColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbPriorityColor.ItemHeight = 18;
+            this.cmbPriorityColor.Items.AddRange(new object[] {
+            "Gray",
+            "Green",
+            "Red",
+            "Yellow"});
+            this.cmbPriorityColor.Location = new System.Drawing.Point(1114, 131);
+            this.cmbPriorityColor.Name = "cmbPriorityColor";
+            this.cmbPriorityColor.Size = new System.Drawing.Size(140, 24);
+            this.cmbPriorityColor.StartIndex = 0;
+            this.cmbPriorityColor.TabIndex = 223;
+            // 
+            // label55
+            // 
+            this.label55.BackColor = System.Drawing.SystemColors.Control;
+            this.label55.Location = new System.Drawing.Point(618, 68);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(100, 24);
+            this.label55.TabIndex = 219;
+            this.label55.Text = "Municipality No";
+            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label54
+            // 
+            this.label54.BackColor = System.Drawing.SystemColors.Control;
+            this.label54.Location = new System.Drawing.Point(309, 100);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(100, 24);
+            this.label54.TabIndex = 217;
+            this.label54.Text = "Basin No";
+            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label56
+            // 
+            this.label56.BackColor = System.Drawing.SystemColors.Control;
+            this.label56.Location = new System.Drawing.Point(787, 130);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(75, 24);
+            this.label56.TabIndex = 220;
+            this.label56.Text = "Classification";
+            this.label56.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbClassification
+            // 
+            this.cmbClassification.BackColor = System.Drawing.Color.Transparent;
+            this.cmbClassification.BorderRadius = 5;
+            this.cmbClassification.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbClassification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClassification.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbClassification.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbClassification.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbClassification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbClassification.ItemHeight = 18;
+            this.cmbClassification.Location = new System.Drawing.Point(860, 130);
+            this.cmbClassification.Name = "cmbClassification";
+            this.cmbClassification.Size = new System.Drawing.Size(175, 24);
+            this.cmbClassification.StartIndex = 0;
+            this.cmbClassification.TabIndex = 221;
+            // 
+            // txtMunicipalityNo
+            // 
+            this.txtMunicipalityNo.BorderRadius = 5;
+            this.txtMunicipalityNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMunicipalityNo.DefaultText = "";
+            this.txtMunicipalityNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMunicipalityNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMunicipalityNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMunicipalityNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMunicipalityNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMunicipalityNo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtMunicipalityNo.ForeColor = System.Drawing.Color.Black;
+            this.txtMunicipalityNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMunicipalityNo.Location = new System.Drawing.Point(715, 68);
+            this.txtMunicipalityNo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtMunicipalityNo.Name = "txtMunicipalityNo";
+            this.txtMunicipalityNo.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtMunicipalityNo.PlaceholderText = "";
+            this.txtMunicipalityNo.SelectedText = "";
+            this.txtMunicipalityNo.Size = new System.Drawing.Size(182, 24);
+            this.txtMunicipalityNo.TabIndex = 218;
+            // 
+            // txtBasinNo
+            // 
+            this.txtBasinNo.BorderRadius = 5;
+            this.txtBasinNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBasinNo.DefaultText = "";
+            this.txtBasinNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBasinNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBasinNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBasinNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBasinNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBasinNo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBasinNo.ForeColor = System.Drawing.Color.Black;
+            this.txtBasinNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBasinNo.Location = new System.Drawing.Point(406, 100);
+            this.txtBasinNo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtBasinNo.Name = "txtBasinNo";
+            this.txtBasinNo.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtBasinNo.PlaceholderText = "";
+            this.txtBasinNo.SelectedText = "";
+            this.txtBasinNo.Size = new System.Drawing.Size(182, 24);
+            this.txtBasinNo.TabIndex = 216;
+            // 
+            // guna2Button5
+            // 
+            this.guna2Button5.BorderRadius = 5;
+            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button5.ForeColor = System.Drawing.Color.White;
+            this.guna2Button5.Location = new System.Drawing.Point(373, 520);
+            this.guna2Button5.Name = "guna2Button5";
+            this.guna2Button5.Size = new System.Drawing.Size(98, 25);
+            this.guna2Button5.TabIndex = 213;
+            this.guna2Button5.Text = "Import Excel";
+            this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
+            // 
+            // cmbCity
+            // 
+            this.cmbCity.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCity.BorderRadius = 5;
+            this.cmbCity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCity.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCity.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbCity.ItemHeight = 18;
+            this.cmbCity.Location = new System.Drawing.Point(946, 317);
+            this.cmbCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCity.Name = "cmbCity";
+            this.cmbCity.Size = new System.Drawing.Size(341, 24);
+            this.cmbCity.TabIndex = 210;
+            // 
+            // cmbCountry
+            // 
+            this.cmbCountry.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCountry.BorderRadius = 5;
+            this.cmbCountry.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCountry.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCountry.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbCountry.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.cmbCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbCountry.ItemHeight = 18;
+            this.cmbCountry.Location = new System.Drawing.Point(703, 317);
+            this.cmbCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCountry.Name = "cmbCountry";
+            this.cmbCountry.Size = new System.Drawing.Size(230, 24);
+            this.cmbCountry.TabIndex = 211;
+            this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCountry_SelectedIndexChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.ForeColor = System.Drawing.Color.Black;
+            this.label51.Location = new System.Drawing.Point(943, 300);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(29, 17);
+            this.label51.TabIndex = 209;
+            this.label51.Text = "City";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.Black;
+            this.label52.Location = new System.Drawing.Point(706, 299);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(53, 17);
+            this.label52.TabIndex = 208;
+            this.label52.Text = "Country";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.Green;
+            this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.LightGreen;
+            this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.ForeColor = System.Drawing.Color.MediumAquamarine;
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkLabel2.Location = new System.Drawing.Point(1283, 317);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(38, 24);
+            this.linkLabel2.TabIndex = 212;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "New";
+            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txtBlock);
+            this.panel3.Controls.Add(this.label50);
+            this.panel3.Controls.Add(this.txtPlotNumber);
+            this.panel3.Controls.Add(this.label49);
+            this.panel3.Controls.Add(this.txtArea);
+            this.panel3.Controls.Add(this.label48);
+            this.panel3.Controls.Add(this.txtLocation);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Location = new System.Drawing.Point(7, 247);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(618, 103);
+            this.panel3.TabIndex = 207;
+            // 
+            // txtBlock
+            // 
+            this.txtBlock.BorderRadius = 5;
+            this.txtBlock.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBlock.DefaultText = "";
+            this.txtBlock.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtBlock.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtBlock.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBlock.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtBlock.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBlock.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBlock.ForeColor = System.Drawing.Color.Black;
+            this.txtBlock.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtBlock.Location = new System.Drawing.Point(267, 70);
+            this.txtBlock.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtBlock.Name = "txtBlock";
+            this.txtBlock.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtBlock.PlaceholderText = "";
+            this.txtBlock.SelectedText = "";
+            this.txtBlock.Size = new System.Drawing.Size(135, 29);
+            this.txtBlock.TabIndex = 168;
+            // 
+            // label50
+            // 
+            this.label50.BackColor = System.Drawing.SystemColors.Control;
+            this.label50.Location = new System.Drawing.Point(210, 70);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(59, 29);
+            this.label50.TabIndex = 169;
+            this.label50.Text = "Block";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPlotNumber
+            // 
+            this.txtPlotNumber.BorderRadius = 5;
+            this.txtPlotNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPlotNumber.DefaultText = "";
+            this.txtPlotNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPlotNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPlotNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlotNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPlotNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPlotNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPlotNumber.ForeColor = System.Drawing.Color.Black;
+            this.txtPlotNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPlotNumber.Location = new System.Drawing.Point(67, 70);
+            this.txtPlotNumber.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtPlotNumber.Name = "txtPlotNumber";
+            this.txtPlotNumber.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtPlotNumber.PlaceholderText = "";
+            this.txtPlotNumber.SelectedText = "";
+            this.txtPlotNumber.Size = new System.Drawing.Size(135, 29);
+            this.txtPlotNumber.TabIndex = 166;
+            // 
+            // label49
+            // 
+            this.label49.BackColor = System.Drawing.SystemColors.Control;
+            this.label49.Location = new System.Drawing.Point(10, 70);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(59, 29);
+            this.label49.TabIndex = 167;
+            this.label49.Text = "Plot Number";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtArea
+            // 
+            this.txtArea.BorderRadius = 5;
+            this.txtArea.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtArea.DefaultText = "";
+            this.txtArea.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtArea.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtArea.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtArea.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtArea.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtArea.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtArea.ForeColor = System.Drawing.Color.Black;
+            this.txtArea.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtArea.Location = new System.Drawing.Point(67, 37);
+            this.txtArea.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtArea.Name = "txtArea";
+            this.txtArea.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtArea.PlaceholderText = "";
+            this.txtArea.SelectedText = "";
+            this.txtArea.Size = new System.Drawing.Size(335, 29);
+            this.txtArea.TabIndex = 164;
+            // 
+            // label48
+            // 
+            this.label48.BackColor = System.Drawing.SystemColors.Control;
+            this.label48.Location = new System.Drawing.Point(10, 37);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(59, 29);
+            this.label48.TabIndex = 165;
+            this.label48.Text = "Area";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.BorderRadius = 5;
+            this.txtLocation.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLocation.DefaultText = "";
+            this.txtLocation.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtLocation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtLocation.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtLocation.ForeColor = System.Drawing.Color.Black;
+            this.txtLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtLocation.Location = new System.Drawing.Point(67, 5);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtLocation.PlaceholderText = "";
+            this.txtLocation.SelectedText = "";
+            this.txtLocation.Size = new System.Drawing.Size(489, 29);
+            this.txtLocation.TabIndex = 162;
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.SystemColors.Control;
+            this.label17.Location = new System.Drawing.Point(10, 5);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 29);
+            this.label17.TabIndex = 163;
+            this.label17.Text = "Location";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label44
+            // 
+            this.label44.BackColor = System.Drawing.SystemColors.Control;
+            this.label44.Location = new System.Drawing.Point(979, 193);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(134, 24);
+            this.label44.TabIndex = 206;
+            this.label44.Text = "Contact Person Number";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtContactPersonNumber
+            // 
+            this.txtContactPersonNumber.BorderRadius = 5;
+            this.txtContactPersonNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtContactPersonNumber.DefaultText = "";
+            this.txtContactPersonNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtContactPersonNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtContactPersonNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContactPersonNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContactPersonNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactPersonNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContactPersonNumber.ForeColor = System.Drawing.Color.Black;
+            this.txtContactPersonNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactPersonNumber.Location = new System.Drawing.Point(1111, 193);
+            this.txtContactPersonNumber.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtContactPersonNumber.MaxLength = 15;
+            this.txtContactPersonNumber.Name = "txtContactPersonNumber";
+            this.txtContactPersonNumber.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtContactPersonNumber.PlaceholderText = "";
+            this.txtContactPersonNumber.SelectedText = "";
+            this.txtContactPersonNumber.Size = new System.Drawing.Size(170, 24);
+            this.txtContactPersonNumber.TabIndex = 205;
+            // 
+            // label47
+            // 
+            this.label47.BackColor = System.Drawing.SystemColors.Control;
+            this.label47.Location = new System.Drawing.Point(682, 193);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(91, 24);
+            this.label47.TabIndex = 204;
+            this.label47.Text = "Contact Person";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtContactPerson
+            // 
+            this.txtContactPerson.BorderRadius = 5;
+            this.txtContactPerson.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtContactPerson.DefaultText = "";
+            this.txtContactPerson.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtContactPerson.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtContactPerson.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContactPerson.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContactPerson.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactPerson.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContactPerson.ForeColor = System.Drawing.Color.Black;
+            this.txtContactPerson.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactPerson.Location = new System.Drawing.Point(769, 193);
+            this.txtContactPerson.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtContactPerson.Name = "txtContactPerson";
+            this.txtContactPerson.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtContactPerson.PlaceholderText = "";
+            this.txtContactPerson.SelectedText = "";
+            this.txtContactPerson.Size = new System.Drawing.Size(210, 24);
+            this.txtContactPerson.TabIndex = 203;
+            // 
             // btnClear
             // 
             this.btnClear.BorderRadius = 5;
@@ -331,7 +981,7 @@ namespace YamyProject.UI.Project_Management
             this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(631, 477);
+            this.btnClear.Location = new System.Drawing.Point(631, 520);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 25);
             this.btnClear.TabIndex = 201;
@@ -347,7 +997,7 @@ namespace YamyProject.UI.Project_Management
             this.btnNew.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNew.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(477, 477);
+            this.btnNew.Location = new System.Drawing.Point(477, 520);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(71, 25);
             this.btnNew.TabIndex = 200;
@@ -363,7 +1013,7 @@ namespace YamyProject.UI.Project_Management
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(554, 477);
+            this.btnSave.Location = new System.Drawing.Point(554, 520);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 25);
             this.btnSave.TabIndex = 199;
@@ -375,7 +1025,7 @@ namespace YamyProject.UI.Project_Management
             this.label38.BackColor = System.Drawing.SystemColors.Control;
             this.label38.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label38.Location = new System.Drawing.Point(226, 550);
+            this.label38.Location = new System.Drawing.Point(226, 593);
             this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(160, 24);
@@ -390,7 +1040,7 @@ namespace YamyProject.UI.Project_Management
             this.dtSearchExtDate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtSearchExtDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtSearchExtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtSearchExtDate.Location = new System.Drawing.Point(385, 551);
+            this.dtSearchExtDate.Location = new System.Drawing.Point(385, 594);
             this.dtSearchExtDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtSearchExtDate.Name = "dtSearchExtDate";
             this.dtSearchExtDate.Size = new System.Drawing.Size(108, 22);
@@ -400,7 +1050,7 @@ namespace YamyProject.UI.Project_Management
             // label37
             // 
             this.label37.BackColor = System.Drawing.SystemColors.Control;
-            this.label37.Location = new System.Drawing.Point(8, 550);
+            this.label37.Location = new System.Drawing.Point(8, 593);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(55, 24);
             this.label37.TabIndex = 195;
@@ -424,7 +1074,7 @@ namespace YamyProject.UI.Project_Management
             "Approved",
             "No-Action",
             "Closed"});
-            this.cmbSearchStatus.Location = new System.Drawing.Point(61, 550);
+            this.cmbSearchStatus.Location = new System.Drawing.Point(61, 593);
             this.cmbSearchStatus.Name = "cmbSearchStatus";
             this.cmbSearchStatus.Size = new System.Drawing.Size(140, 24);
             this.cmbSearchStatus.StartIndex = 0;
@@ -440,7 +1090,7 @@ namespace YamyProject.UI.Project_Management
             this.btnSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1207, 519);
+            this.btnSearch.Location = new System.Drawing.Point(1207, 562);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(71, 24);
             this.btnSearch.TabIndex = 194;
@@ -450,7 +1100,7 @@ namespace YamyProject.UI.Project_Management
             // label36
             // 
             this.label36.BackColor = System.Drawing.SystemColors.Control;
-            this.label36.Location = new System.Drawing.Point(949, 519);
+            this.label36.Location = new System.Drawing.Point(949, 562);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(61, 24);
             this.label36.TabIndex = 192;
@@ -477,7 +1127,7 @@ namespace YamyProject.UI.Project_Management
             "Umm Al Quwain",
             "Ras Al Khaimah",
             "Fujairah"});
-            this.cmbSearchCustomer.Location = new System.Drawing.Point(1008, 519);
+            this.cmbSearchCustomer.Location = new System.Drawing.Point(1008, 562);
             this.cmbSearchCustomer.Name = "cmbSearchCustomer";
             this.cmbSearchCustomer.Size = new System.Drawing.Size(183, 24);
             this.cmbSearchCustomer.TabIndex = 193;
@@ -486,7 +1136,7 @@ namespace YamyProject.UI.Project_Management
             // label33
             // 
             this.label33.BackColor = System.Drawing.SystemColors.Control;
-            this.label33.Location = new System.Drawing.Point(403, 519);
+            this.label33.Location = new System.Drawing.Point(403, 562);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(40, 24);
             this.label33.TabIndex = 190;
@@ -497,7 +1147,7 @@ namespace YamyProject.UI.Project_Management
             // label35
             // 
             this.label35.BackColor = System.Drawing.SystemColors.Control;
-            this.label35.Location = new System.Drawing.Point(58, 519);
+            this.label35.Location = new System.Drawing.Point(58, 562);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(43, 24);
             this.label35.TabIndex = 191;
@@ -518,7 +1168,7 @@ namespace YamyProject.UI.Project_Management
             this.txtSearchName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchName.ForeColor = System.Drawing.Color.Black;
             this.txtSearchName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearchName.Location = new System.Drawing.Point(440, 519);
+            this.txtSearchName.Location = new System.Drawing.Point(440, 562);
             this.txtSearchName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtSearchName.Name = "txtSearchName";
             this.txtSearchName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -531,7 +1181,7 @@ namespace YamyProject.UI.Project_Management
             // label34
             // 
             this.label34.BackColor = System.Drawing.SystemColors.Control;
-            this.label34.Location = new System.Drawing.Point(8, 519);
+            this.label34.Location = new System.Drawing.Point(8, 562);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(48, 24);
             this.label34.TabIndex = 188;
@@ -551,7 +1201,7 @@ namespace YamyProject.UI.Project_Management
             this.txtSearchCode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchCode.ForeColor = System.Drawing.Color.Black;
             this.txtSearchCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearchCode.Location = new System.Drawing.Point(103, 519);
+            this.txtSearchCode.Location = new System.Drawing.Point(103, 562);
             this.txtSearchCode.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtSearchCode.Name = "txtSearchCode";
             this.txtSearchCode.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -565,7 +1215,7 @@ namespace YamyProject.UI.Project_Management
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(8, 502);
+            this.label32.Location = new System.Drawing.Point(8, 545);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(48, 17);
             this.label32.TabIndex = 186;
@@ -581,11 +1231,13 @@ namespace YamyProject.UI.Project_Management
             this.btnProjectBudgetDeviationReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnProjectBudgetDeviationReport.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnProjectBudgetDeviationReport.ForeColor = System.Drawing.Color.White;
-            this.btnProjectBudgetDeviationReport.Location = new System.Drawing.Point(1077, 403);
+            this.btnProjectBudgetDeviationReport.Location = new System.Drawing.Point(1282, 461);
             this.btnProjectBudgetDeviationReport.Name = "btnProjectBudgetDeviationReport";
-            this.btnProjectBudgetDeviationReport.Size = new System.Drawing.Size(201, 25);
+            this.btnProjectBudgetDeviationReport.Size = new System.Drawing.Size(41, 25);
             this.btnProjectBudgetDeviationReport.TabIndex = 182;
             this.btnProjectBudgetDeviationReport.Text = "Project Budget Deviation Report";
+            this.btnProjectBudgetDeviationReport.Visible = false;
+            this.btnProjectBudgetDeviationReport.Click += new System.EventHandler(this.btnProjectBudgetDeviationReport_Click);
             // 
             // btnProjectEstimateBudget
             // 
@@ -596,11 +1248,13 @@ namespace YamyProject.UI.Project_Management
             this.btnProjectEstimateBudget.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnProjectEstimateBudget.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnProjectEstimateBudget.ForeColor = System.Drawing.Color.White;
-            this.btnProjectEstimateBudget.Location = new System.Drawing.Point(1077, 372);
+            this.btnProjectEstimateBudget.Location = new System.Drawing.Point(1301, 415);
             this.btnProjectEstimateBudget.Name = "btnProjectEstimateBudget";
-            this.btnProjectEstimateBudget.Size = new System.Drawing.Size(180, 25);
+            this.btnProjectEstimateBudget.Size = new System.Drawing.Size(20, 25);
             this.btnProjectEstimateBudget.TabIndex = 181;
             this.btnProjectEstimateBudget.Text = "Project Estimate Budget";
+            this.btnProjectEstimateBudget.Visible = false;
+            this.btnProjectEstimateBudget.Click += new System.EventHandler(this.btnProjectEstimateBudget_Click);
             // 
             // txtBalance2
             // 
@@ -616,7 +1270,7 @@ namespace YamyProject.UI.Project_Management
             this.txtBalance2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBalance2.ForeColor = System.Drawing.Color.Black;
             this.txtBalance2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBalance2.Location = new System.Drawing.Point(521, 429);
+            this.txtBalance2.Location = new System.Drawing.Point(521, 472);
             this.txtBalance2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtBalance2.Name = "txtBalance2";
             this.txtBalance2.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -629,7 +1283,7 @@ namespace YamyProject.UI.Project_Management
             // label28
             // 
             this.label28.BackColor = System.Drawing.SystemColors.Control;
-            this.label28.Location = new System.Drawing.Point(462, 429);
+            this.label28.Location = new System.Drawing.Point(462, 472);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(59, 24);
             this.label28.TabIndex = 179;
@@ -649,7 +1303,7 @@ namespace YamyProject.UI.Project_Management
             this.txtBilledToDate2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBilledToDate2.ForeColor = System.Drawing.Color.Black;
             this.txtBilledToDate2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBilledToDate2.Location = new System.Drawing.Point(371, 429);
+            this.txtBilledToDate2.Location = new System.Drawing.Point(371, 472);
             this.txtBilledToDate2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtBilledToDate2.Name = "txtBilledToDate2";
             this.txtBilledToDate2.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -662,7 +1316,7 @@ namespace YamyProject.UI.Project_Management
             // label29
             // 
             this.label29.BackColor = System.Drawing.SystemColors.Control;
-            this.label29.Location = new System.Drawing.Point(109, 429);
+            this.label29.Location = new System.Drawing.Point(109, 472);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(65, 24);
             this.label29.TabIndex = 177;
@@ -672,7 +1326,7 @@ namespace YamyProject.UI.Project_Management
             // label30
             // 
             this.label30.BackColor = System.Drawing.SystemColors.Control;
-            this.label30.Location = new System.Drawing.Point(284, 429);
+            this.label30.Location = new System.Drawing.Point(284, 472);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(87, 24);
             this.label30.TabIndex = 176;
@@ -683,7 +1337,7 @@ namespace YamyProject.UI.Project_Management
             // 
             this.label31.BackColor = System.Drawing.SystemColors.Control;
             this.label31.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(8, 429);
+            this.label31.Location = new System.Drawing.Point(8, 472);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(100, 24);
             this.label31.TabIndex = 175;
@@ -703,7 +1357,7 @@ namespace YamyProject.UI.Project_Management
             this.txtTotalValueSummary.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTotalValueSummary.ForeColor = System.Drawing.Color.Black;
             this.txtTotalValueSummary.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTotalValueSummary.Location = new System.Drawing.Point(174, 429);
+            this.txtTotalValueSummary.Location = new System.Drawing.Point(174, 472);
             this.txtTotalValueSummary.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtTotalValueSummary.Name = "txtTotalValueSummary";
             this.txtTotalValueSummary.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -727,7 +1381,7 @@ namespace YamyProject.UI.Project_Management
             this.txtBalance1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBalance1.ForeColor = System.Drawing.Color.Black;
             this.txtBalance1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBalance1.Location = new System.Drawing.Point(525, 386);
+            this.txtBalance1.Location = new System.Drawing.Point(525, 429);
             this.txtBalance1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtBalance1.Name = "txtBalance1";
             this.txtBalance1.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -740,7 +1394,7 @@ namespace YamyProject.UI.Project_Management
             // label24
             // 
             this.label24.BackColor = System.Drawing.SystemColors.Control;
-            this.label24.Location = new System.Drawing.Point(469, 386);
+            this.label24.Location = new System.Drawing.Point(469, 429);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(56, 24);
             this.label24.TabIndex = 172;
@@ -760,7 +1414,7 @@ namespace YamyProject.UI.Project_Management
             this.txtExpenses.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtExpenses.ForeColor = System.Drawing.Color.Black;
             this.txtExpenses.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtExpenses.Location = new System.Drawing.Point(357, 386);
+            this.txtExpenses.Location = new System.Drawing.Point(357, 429);
             this.txtExpenses.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtExpenses.Name = "txtExpenses";
             this.txtExpenses.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -773,7 +1427,7 @@ namespace YamyProject.UI.Project_Management
             // label25
             // 
             this.label25.BackColor = System.Drawing.SystemColors.Control;
-            this.label25.Location = new System.Drawing.Point(109, 386);
+            this.label25.Location = new System.Drawing.Point(109, 429);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(79, 24);
             this.label25.TabIndex = 170;
@@ -783,7 +1437,7 @@ namespace YamyProject.UI.Project_Management
             // label26
             // 
             this.label26.BackColor = System.Drawing.SystemColors.Control;
-            this.label26.Location = new System.Drawing.Point(293, 386);
+            this.label26.Location = new System.Drawing.Point(293, 429);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(64, 24);
             this.label26.TabIndex = 169;
@@ -794,7 +1448,7 @@ namespace YamyProject.UI.Project_Management
             // 
             this.label27.BackColor = System.Drawing.SystemColors.Control;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(8, 386);
+            this.label27.Location = new System.Drawing.Point(8, 429);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(100, 24);
             this.label27.TabIndex = 168;
@@ -814,7 +1468,7 @@ namespace YamyProject.UI.Project_Management
             this.txtBilledToDate1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBilledToDate1.ForeColor = System.Drawing.Color.Black;
             this.txtBilledToDate1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBilledToDate1.Location = new System.Drawing.Point(188, 386);
+            this.txtBilledToDate1.Location = new System.Drawing.Point(188, 429);
             this.txtBilledToDate1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtBilledToDate1.Name = "txtBilledToDate1";
             this.txtBilledToDate1.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -836,7 +1490,7 @@ namespace YamyProject.UI.Project_Management
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.txtContractValue);
-            this.panel1.Location = new System.Drawing.Point(3, 314);
+            this.panel1.Location = new System.Drawing.Point(3, 357);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1323, 52);
             this.panel1.TabIndex = 166;
@@ -1017,42 +1671,10 @@ namespace YamyProject.UI.Project_Management
             this.txtDetails.Size = new System.Drawing.Size(560, 39);
             this.txtDetails.TabIndex = 164;
             // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.SystemColors.Control;
-            this.label17.Location = new System.Drawing.Point(8, 257);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 39);
-            this.label17.TabIndex = 163;
-            this.label17.Text = "Location";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.BorderRadius = 5;
-            this.txtLocation.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtLocation.DefaultText = "";
-            this.txtLocation.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtLocation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtLocation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtLocation.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtLocation.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtLocation.ForeColor = System.Drawing.Color.Black;
-            this.txtLocation.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLocation.Location = new System.Drawing.Point(65, 257);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtLocation.PlaceholderText = "";
-            this.txtLocation.SelectedText = "";
-            this.txtLocation.Size = new System.Drawing.Size(560, 39);
-            this.txtLocation.TabIndex = 162;
-            // 
             // label16
             // 
             this.label16.BackColor = System.Drawing.SystemColors.Control;
-            this.label16.Location = new System.Drawing.Point(1019, 216);
+            this.label16.Location = new System.Drawing.Point(1019, 225);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 24);
             this.label16.TabIndex = 161;
@@ -1072,7 +1694,7 @@ namespace YamyProject.UI.Project_Management
             this.txtConsultant.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtConsultant.ForeColor = System.Drawing.Color.Black;
             this.txtConsultant.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtConsultant.Location = new System.Drawing.Point(1111, 216);
+            this.txtConsultant.Location = new System.Drawing.Point(1111, 225);
             this.txtConsultant.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtConsultant.Name = "txtConsultant";
             this.txtConsultant.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -1084,7 +1706,7 @@ namespace YamyProject.UI.Project_Management
             // label14
             // 
             this.label14.BackColor = System.Drawing.SystemColors.Control;
-            this.label14.Location = new System.Drawing.Point(682, 216);
+            this.label14.Location = new System.Drawing.Point(682, 225);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 24);
             this.label14.TabIndex = 159;
@@ -1104,7 +1726,7 @@ namespace YamyProject.UI.Project_Management
             this.txtContractor.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtContractor.ForeColor = System.Drawing.Color.Black;
             this.txtContractor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtContractor.Location = new System.Drawing.Point(750, 216);
+            this.txtContractor.Location = new System.Drawing.Point(750, 225);
             this.txtContractor.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtContractor.Name = "txtContractor";
             this.txtContractor.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -1142,7 +1764,7 @@ namespace YamyProject.UI.Project_Management
             this.lnkNewCustomer.DisabledLinkColor = System.Drawing.Color.White;
             this.lnkNewCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkNewCustomer.ForeColor = System.Drawing.Color.Black;
-            this.lnkNewCustomer.LinkColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lnkNewCustomer.LinkColor = System.Drawing.SystemColors.HotTrack;
             this.lnkNewCustomer.Location = new System.Drawing.Point(612, 218);
             this.lnkNewCustomer.Name = "lnkNewCustomer";
             this.lnkNewCustomer.Size = new System.Drawing.Size(50, 18);
@@ -1150,6 +1772,7 @@ namespace YamyProject.UI.Project_Management
             this.lnkNewCustomer.TabStop = true;
             this.lnkNewCustomer.Text = "New";
             this.lnkNewCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkNewCustomer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkNewCustomer_LinkClicked);
             // 
             // label13
             // 
@@ -1189,7 +1812,7 @@ namespace YamyProject.UI.Project_Management
             this.label12.BackColor = System.Drawing.SystemColors.Control;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label12.Location = new System.Drawing.Point(245, 172);
+            this.label12.Location = new System.Drawing.Point(245, 176);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(131, 24);
@@ -1203,7 +1826,7 @@ namespace YamyProject.UI.Project_Management
             this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(375, 173);
+            this.dateTimePicker3.Location = new System.Drawing.Point(375, 177);
             this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(108, 22);
@@ -1214,7 +1837,7 @@ namespace YamyProject.UI.Project_Management
             this.label11.BackColor = System.Drawing.SystemColors.Control;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label11.Location = new System.Drawing.Point(8, 173);
+            this.label11.Location = new System.Drawing.Point(8, 177);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 24);
@@ -1228,7 +1851,7 @@ namespace YamyProject.UI.Project_Management
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(114, 174);
+            this.dateTimePicker2.Location = new System.Drawing.Point(114, 178);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(108, 22);
@@ -1237,7 +1860,7 @@ namespace YamyProject.UI.Project_Management
             // label10
             // 
             this.label10.BackColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(1254, 128);
+            this.label10.Location = new System.Drawing.Point(1254, 157);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 25);
             this.label10.TabIndex = 147;
@@ -1247,7 +1870,7 @@ namespace YamyProject.UI.Project_Management
             // label9
             // 
             this.label9.BackColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(1016, 129);
+            this.label9.Location = new System.Drawing.Point(1016, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 24);
             this.label9.TabIndex = 146;
@@ -1266,7 +1889,7 @@ namespace YamyProject.UI.Project_Management
             this.txtExecutionPeriod.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtExecutionPeriod.ForeColor = System.Drawing.Color.Black;
             this.txtExecutionPeriod.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtExecutionPeriod.Location = new System.Drawing.Point(1114, 129);
+            this.txtExecutionPeriod.Location = new System.Drawing.Point(1114, 158);
             this.txtExecutionPeriod.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtExecutionPeriod.Name = "txtExecutionPeriod";
             this.txtExecutionPeriod.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -1281,7 +1904,7 @@ namespace YamyProject.UI.Project_Management
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label6.Location = new System.Drawing.Point(245, 129);
+            this.label6.Location = new System.Drawing.Point(245, 133);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 24);
@@ -1294,7 +1917,7 @@ namespace YamyProject.UI.Project_Management
             this.label8.BackColor = System.Drawing.SystemColors.Control;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label8.Location = new System.Drawing.Point(563, 127);
+            this.label8.Location = new System.Drawing.Point(563, 131);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 24);
@@ -1308,7 +1931,7 @@ namespace YamyProject.UI.Project_Management
             this.dtExtendDelay.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtExtendDelay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtExtendDelay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtExtendDelay.Location = new System.Drawing.Point(643, 128);
+            this.dtExtendDelay.Location = new System.Drawing.Point(643, 132);
             this.dtExtendDelay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtExtendDelay.Name = "dtExtendDelay";
             this.dtExtendDelay.Size = new System.Drawing.Size(108, 22);
@@ -1319,7 +1942,7 @@ namespace YamyProject.UI.Project_Management
             this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label7.Location = new System.Drawing.Point(8, 129);
+            this.label7.Location = new System.Drawing.Point(8, 133);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 24);
@@ -1333,7 +1956,7 @@ namespace YamyProject.UI.Project_Management
             this.dtEnd.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtEnd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEnd.Location = new System.Drawing.Point(305, 130);
+            this.dtEnd.Location = new System.Drawing.Point(305, 134);
             this.dtEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.Size = new System.Drawing.Size(178, 22);
@@ -1345,52 +1968,20 @@ namespace YamyProject.UI.Project_Management
             this.dtStart.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtStart.Location = new System.Drawing.Point(74, 130);
+            this.dtStart.Location = new System.Drawing.Point(74, 134);
             this.dtStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtStart.Name = "dtStart";
             this.dtStart.Size = new System.Drawing.Size(148, 22);
             this.dtStart.TabIndex = 138;
             // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(429, 88);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 24);
-            this.label5.TabIndex = 137;
-            this.label5.Text = "Project Name (Arabic)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtProjectNameArabic
-            // 
-            this.txtProjectNameArabic.BorderRadius = 5;
-            this.txtProjectNameArabic.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProjectNameArabic.DefaultText = "";
-            this.txtProjectNameArabic.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtProjectNameArabic.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtProjectNameArabic.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProjectNameArabic.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProjectNameArabic.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectNameArabic.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtProjectNameArabic.ForeColor = System.Drawing.Color.Black;
-            this.txtProjectNameArabic.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectNameArabic.Location = new System.Drawing.Point(546, 88);
-            this.txtProjectNameArabic.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.txtProjectNameArabic.Name = "txtProjectNameArabic";
-            this.txtProjectNameArabic.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtProjectNameArabic.PlaceholderText = "";
-            this.txtProjectNameArabic.SelectedText = "";
-            this.txtProjectNameArabic.Size = new System.Drawing.Size(300, 24);
-            this.txtProjectNameArabic.TabIndex = 136;
-            // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(8, 88);
+            this.label4.Location = new System.Drawing.Point(8, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 24);
             this.label4.TabIndex = 135;
-            this.label4.Text = "Project Name (English)";
+            this.label4.Text = "Project Name";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtProjectName
@@ -1405,19 +1996,19 @@ namespace YamyProject.UI.Project_Management
             this.txtProjectName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtProjectName.ForeColor = System.Drawing.Color.Black;
             this.txtProjectName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProjectName.Location = new System.Drawing.Point(131, 88);
+            this.txtProjectName.Location = new System.Drawing.Point(131, 68);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtProjectName.PlaceholderText = "";
             this.txtProjectName.SelectedText = "";
-            this.txtProjectName.Size = new System.Drawing.Size(300, 24);
+            this.txtProjectName.Size = new System.Drawing.Size(474, 24);
             this.txtProjectName.TabIndex = 134;
             // 
             // LabelType
             // 
             this.LabelType.BackColor = System.Drawing.SystemColors.Control;
-            this.LabelType.Location = new System.Drawing.Point(1129, 47);
+            this.LabelType.Location = new System.Drawing.Point(1062, 27);
             this.LabelType.Name = "LabelType";
             this.LabelType.Size = new System.Drawing.Size(55, 24);
             this.LabelType.TabIndex = 132;
@@ -1437,17 +2028,17 @@ namespace YamyProject.UI.Project_Management
             this.cmbProjectType.ItemHeight = 18;
             this.cmbProjectType.Items.AddRange(new object[] {
             "Project",
-            "Cost Center (Job)"});
-            this.cmbProjectType.Location = new System.Drawing.Point(1181, 47);
+            "Cost Center (job)"});
+            this.cmbProjectType.Location = new System.Drawing.Point(1114, 27);
             this.cmbProjectType.Name = "cmbProjectType";
-            this.cmbProjectType.Size = new System.Drawing.Size(140, 24);
+            this.cmbProjectType.Size = new System.Drawing.Size(184, 24);
             this.cmbProjectType.StartIndex = 0;
             this.cmbProjectType.TabIndex = 133;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(905, 47);
+            this.label3.Location = new System.Drawing.Point(1063, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 24);
             this.label3.TabIndex = 130;
@@ -1469,16 +2060,16 @@ namespace YamyProject.UI.Project_Management
             "Approved",
             "No-Action",
             "Closed"});
-            this.cmbStatus.Location = new System.Drawing.Point(957, 47);
+            this.cmbStatus.Location = new System.Drawing.Point(1115, 57);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(140, 24);
+            this.cmbStatus.Size = new System.Drawing.Size(183, 24);
             this.cmbStatus.StartIndex = 0;
             this.cmbStatus.TabIndex = 131;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(611, 47);
+            this.label2.Location = new System.Drawing.Point(179, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 24);
             this.label2.TabIndex = 128;
@@ -1504,7 +2095,7 @@ namespace YamyProject.UI.Project_Management
             "Umm Al Quwain",
             "Ras Al Khaimah",
             "Fujairah"});
-            this.cmbEmirate.Location = new System.Drawing.Point(663, 47);
+            this.cmbEmirate.Location = new System.Drawing.Point(231, 27);
             this.cmbEmirate.Name = "cmbEmirate";
             this.cmbEmirate.Size = new System.Drawing.Size(183, 24);
             this.cmbEmirate.TabIndex = 129;
@@ -1512,7 +2103,7 @@ namespace YamyProject.UI.Project_Management
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(8, 47);
+            this.label1.Location = new System.Drawing.Point(8, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 24);
             this.label1.TabIndex = 127;
@@ -1532,7 +2123,7 @@ namespace YamyProject.UI.Project_Management
             this.txtCode.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCode.ForeColor = System.Drawing.Color.Black;
             this.txtCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(47, 47);
+            this.txtCode.Location = new System.Drawing.Point(47, 27);
             this.txtCode.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtCode.Name = "txtCode";
             this.txtCode.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -1546,7 +2137,7 @@ namespace YamyProject.UI.Project_Management
             // 
             this.lstAccountSuggestions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstAccountSuggestions.FormattingEnabled = true;
-            this.lstAccountSuggestions.Location = new System.Drawing.Point(510, 280);
+            this.lstAccountSuggestions.Location = new System.Drawing.Point(510, 323);
             this.lstAccountSuggestions.Name = "lstAccountSuggestions";
             this.lstAccountSuggestions.Size = new System.Drawing.Size(308, 43);
             this.lstAccountSuggestions.TabIndex = 202;
@@ -1587,18 +2178,18 @@ namespace YamyProject.UI.Project_Management
             // 
             // dgvAccounts
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvAccounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
+            this.dgvAccounts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvAccounts.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAccounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAccounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAccounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvAccounts.ColumnHeadersHeight = 26;
             this.dgvAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1609,14 +2200,14 @@ namespace YamyProject.UI.Project_Management
             this.colCode,
             this.colName,
             this.colNameArabic});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAccounts.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAccounts.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvAccounts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAccounts.Location = new System.Drawing.Point(28, 111);
             this.dgvAccounts.Name = "dgvAccounts";
@@ -1861,29 +2452,29 @@ namespace YamyProject.UI.Project_Management
             this.dgvAttachments.AllowUserToAddRows = false;
             this.dgvAttachments.AllowUserToDeleteRows = false;
             this.dgvAttachments.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvAttachments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
+            this.dgvAttachments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvAttachments.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAttachments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAttachments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dgvAttachments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colAttachId,
             this.colAttachment,
             this.colDesc});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAttachments.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAttachments.DefaultCellStyle = dataGridViewCellStyle30;
             this.dgvAttachments.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAttachments.Location = new System.Drawing.Point(11, 108);
             this.dgvAttachments.Name = "dgvAttachments";
@@ -2033,17 +2624,17 @@ namespace YamyProject.UI.Project_Management
             // 
             // dgvSubcontractor
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvSubcontractor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
+            this.dgvSubcontractor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dgvSubcontractor.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSubcontractor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSubcontractor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvSubcontractor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSubCode,
             this.colSubContractors,
@@ -2053,14 +2644,14 @@ namespace YamyProject.UI.Project_Management
             this.colSubContractPeriod,
             this.colSubWorks,
             this.colSubWorkEn});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSubcontractor.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSubcontractor.DefaultCellStyle = dataGridViewCellStyle33;
             this.dgvSubcontractor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSubcontractor.Location = new System.Drawing.Point(37, 85);
             this.dgvSubcontractor.Name = "dgvSubcontractor";
@@ -2205,17 +2796,17 @@ namespace YamyProject.UI.Project_Management
             // 
             // dgvEngineers
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.dgvEngineers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.White;
+            this.dgvEngineers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
             this.dgvEngineers.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEngineers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEngineers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvEngineers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colEngCheck,
             this.colEngId,
@@ -2224,14 +2815,14 @@ namespace YamyProject.UI.Project_Management
             this.colEngPhone,
             this.colEngDate,
             this.colEngDescription});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEngineers.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEngineers.DefaultCellStyle = dataGridViewCellStyle36;
             this.dgvEngineers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEngineers.Location = new System.Drawing.Point(35, 80);
             this.dgvEngineers.Name = "dgvEngineers";
@@ -2557,6 +3148,23 @@ namespace YamyProject.UI.Project_Management
             this.headerUC1.Size = new System.Drawing.Size(1337, 30);
             this.headerUC1.TabIndex = 239;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.Green;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.ForeColor = System.Drawing.Color.Black;
+            this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabel1.Location = new System.Drawing.Point(995, 114);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(50, 18);
+            this.linkLabel1.TabIndex = 234;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "New";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // frmProjectsManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2573,6 +3181,7 @@ namespace YamyProject.UI.Project_Management
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
@@ -2610,8 +3219,6 @@ namespace YamyProject.UI.Project_Management
         private Guna.UI2.WinForms.Guna2ComboBox cmbProjectType;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2ComboBox cmbStatus;
-        private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2TextBox txtProjectNameArabic;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtProjectName;
         private System.Windows.Forms.Label label7;
@@ -2758,5 +3365,42 @@ namespace YamyProject.UI.Project_Management
         private System.Windows.Forms.DataGridViewTextBoxColumn colEngPhone;
         private frmViewPettyCashVoucher.DataGridViewCalendarColumn colEngDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEngDescription;
+        private System.Windows.Forms.Label label44;
+        private Guna2TextBox txtContactPersonNumber;
+        private System.Windows.Forms.Label label47;
+        private Guna2TextBox txtContactPerson;
+        private System.Windows.Forms.Panel panel3;
+        private Guna2TextBox txtBlock;
+        private System.Windows.Forms.Label label50;
+        private Guna2TextBox txtPlotNumber;
+        private System.Windows.Forms.Label label49;
+        private Guna2TextBox txtArea;
+        private System.Windows.Forms.Label label48;
+        private Guna2ComboBox cmbCity;
+        private Guna2ComboBox cmbCountry;
+        internal System.Windows.Forms.Label label51;
+        internal System.Windows.Forms.Label label52;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private Guna2Button guna2Button5;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label55;
+        private Guna2TextBox txtMunicipalityNo;
+        private System.Windows.Forms.Label label54;
+        private Guna2TextBox txtBasinNo;
+        private System.Windows.Forms.Label label56;
+        private Guna2ComboBox cmbClassification;
+        private System.Windows.Forms.Label label58;
+        private Guna2ComboBox cmbPriorityColor;
+        private System.Windows.Forms.CheckBox chkStarred;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.DateTimePicker dtHandoverDate;
+        private Guna2TextBox txtOwner;
+        private System.Windows.Forms.Label label60;
+        private Guna2TextBox txtBankProjectNo;
+        private System.Windows.Forms.Label label57;
+        private Guna2TextBox txtPriority;
+        private System.Windows.Forms.Label label5;
+        private Guna2TextBox txtPartNo;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

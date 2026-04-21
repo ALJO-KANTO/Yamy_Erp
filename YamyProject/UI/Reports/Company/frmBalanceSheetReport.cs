@@ -29,8 +29,8 @@ namespace YamyProject
             else
                 headerUC1.FormText = this.Text;
         }
-        int RetainedEarningsId = 17; // Assuming this is the ID for Retained Earnings in your database
-        decimal retainedEarningsBalance = 0;
+        //int RetainedEarningsId = 17; // Assuming this is the ID for Retained Earnings in your database
+        //decimal retainedEarningsBalance = 0;
         private void frmBalanceSheetReport_Load(object sender, EventArgs e)
         {
             lblDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
@@ -58,7 +58,7 @@ namespace YamyProject
                 label1.Text = label1.Text + " By Class";
                 dateTimePicker2.Visible = false;
             }
-            retainedEarningsBalance = GetNetProfit(dateTimePicker1.Value, dateTimePicker2.Value);
+            //RetainedEarningsId = 17;
             LoadData();
         }
         private void LoadData()
@@ -156,6 +156,7 @@ namespace YamyProject
 
         public void BindDGV()
         {
+            //retainedEarningsBalance = GetNetProfit(dateTimePicker1.Value, dateTimePicker2.Value);
             dgvReport.Rows.Clear();
             string filterDate = (type == "detail" || type == "Prev Year Comparison")
                                 ? " AND t.date BETWEEN @fromDate AND @toDate"
@@ -1350,18 +1351,18 @@ namespace YamyProject
 
         private void ApplyRowStyle(DataGridViewRow row, int level)
         {
-            if (level == 2)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            else if (level == 3)
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            else
-                row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
+            //if (level == 2)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            //else if (level == 3)
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            //else
+            //    row.DefaultCellStyle.BackColor = row.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Silver;
         }
         private string GetBalanceData(int level, int id, DateTime fromDate, DateTime toDate)
         {
             string filterDate = (type == "detail")
                 ? " AND tt.date BETWEEN @fromDate AND @toDate"
-                : " AND tt.date <= @toDate";
+                : " AND tt.date <= @fromDate";
 
             string query = $@"
                             SELECT 
@@ -1405,20 +1406,20 @@ namespace YamyProject
             string bal = result?.ToString() ?? "0";
             decimal balance = Convert.ToDecimal(bal);
 
-            if (level == 3 && id == RetainedEarningsId)
-            {
-                balance = GetNetProfit(fromDate, toDate);
-            }
+            //if (level == 3 && id == RetainedEarningsId)
+            //{
+            //    balance = GetNetProfit(fromDate, toDate);
+            //}
 
-            object result0 = DBClass.ExecuteScalar("SELECT l1.id FROM tbl_coa_level_1 l1 Inner join tbl_coa_level_2 l2 ON l1.id = l2.main_id where category_code = 'EQUITY' and l2.id = @id", DBClass.CreateParameter("@id", id));
+            //object result0 = DBClass.ExecuteScalar("SELECT l1.id FROM tbl_coa_level_1 l1 Inner join tbl_coa_level_2 l2 ON l1.id = l2.main_id where category_code = 'EQUITY' and l2.id = @id", DBClass.CreateParameter("@id", id));
             
-            if(result0 != null)
-            {
-                if (retainedEarningsBalance > 0)
-                {
-                    balance = balance + retainedEarningsBalance;
-                }
-            }
+            //if(result0 != null)
+            //{
+            //    if (retainedEarningsBalance != 0)
+            //    {
+            //        balance = balance + retainedEarningsBalance;
+            //    }
+            //}
 
 
             return balance.ToString();
@@ -1552,11 +1553,11 @@ namespace YamyProject
                 if (read.Read())
                 {
                     decimal balance = Convert.ToDecimal(read[$"level{level}_balance"]);
-                    if(level == 3 && id == RetainedEarningsId)
-                    {
-                        decimal netProfit = GetNetProfit(cutoffDate, toDated);
-                        balance += netProfit;
-                    }
+                    //if(level == 3 && id == RetainedEarningsId)
+                    //{
+                    //    decimal netProfit = GetNetProfit(cutoffDate, toDated);
+                    //    balance += netProfit;
+                    //}
 
                     return balance.ToString();
                 }
@@ -1564,31 +1565,31 @@ namespace YamyProject
 
             return "0";
         }
-        private decimal GetNetProfit(DateTime fromDate, DateTime toDate)
-        {
-            string query = @"
-                            SELECT 
-                                COALESCE(SUM(CASE WHEN l1.category_code = 'INCOME' 
-                                                  THEN t.credit - t.debit ELSE 0 END),0)
-                              - COALESCE(SUM(CASE WHEN l1.category_code IN ('COST','EXPENSE') 
-                                                  THEN t.debit - t.credit ELSE 0 END),0)
-                            FROM tbl_transaction t
-                            JOIN tbl_coa_level_4 l4 ON l4.id = t.account_id
-                            JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
-                            JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
-                            JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
-                            WHERE t.state = 0
-                              AND t.date <= @toDate";
+        //private decimal GetNetProfit(DateTime fromDate, DateTime toDate)
+        //{
+        //    string query = @"
+        //                    SELECT 
+        //                        COALESCE(SUM(CASE WHEN l1.category_code = 'INCOME' 
+        //                                          THEN t.credit - t.debit ELSE 0 END),0)
+        //                      - COALESCE(SUM(CASE WHEN l1.category_code IN ('COST','EXPENSE') 
+        //                                          THEN t.debit - t.credit ELSE 0 END),0)
+        //                    FROM tbl_transaction t
+        //                    JOIN tbl_coa_level_4 l4 ON l4.id = t.account_id
+        //                    JOIN tbl_coa_level_3 l3 ON l3.id = l4.main_id
+        //                    JOIN tbl_coa_level_2 l2 ON l2.id = l3.main_id
+        //                    JOIN tbl_coa_level_1 l1 ON l1.id = l2.main_id
+        //                    WHERE t.state = 0
+        //                      AND t.date <= @toDate";
 
-            object result = DBClass.ExecuteScalar(
-                query,
-                DBClass.CreateParameter("@toDate", toDate)
-            );
-            if (result == null)
-                return 0;
-            else
-                return Convert.ToDecimal(result);
-        }
+        //    object result = DBClass.ExecuteScalar(
+        //        query,
+        //        DBClass.CreateParameter("@toDate", fromDate)
+        //    );
+        //    if (result == null)
+        //        return 0;
+        //    else
+        //        return Convert.ToDecimal(result);
+        //}
         private (decimal balance1, decimal balance2) GetBalanceData(int level, string name, DateTime currentFrom, DateTime currentTo, DateTime previousFrom, DateTime previousTo)
         {
             string query = $@"

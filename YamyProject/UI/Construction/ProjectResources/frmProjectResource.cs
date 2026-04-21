@@ -10,17 +10,15 @@ namespace YamyProject
     public partial class frmProjectResource : Form
     {
         private frmProjectAssignResource master;
-        int id, planningId, tenderId;
-        List<string> assignedTeam = new List<string>();
+        int id;
 
-        public frmProjectResource(frmProjectAssignResource _master, int _id, int _tenderId, int _planningId)
+        public frmProjectResource(frmProjectAssignResource _master, int _id)
         {
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
             this.master = _master;
             this.id = _id;
-            this.planningId = _planningId;
-            this.tenderId = _tenderId;
+
             if (id != 0)
                 this.Text = "Project Resource - Edit";
             else
@@ -75,6 +73,7 @@ namespace YamyProject
                 txtPriceUnit.Text = decimal.Parse(reader["price_unit"].ToString()).ToString("N2");
                 txtUnitTime.Text = decimal.Parse(reader["unit_time"].ToString()).ToString("N2");
                 txtMaxUnitTime.Text = decimal.Parse(reader["max_unit_time"].ToString()).ToString("N2");
+                btnDelete.Enabled = true;
             }
         }
 
@@ -90,7 +89,12 @@ namespace YamyProject
                 if (updateData())
                     this.Close();
             }
-            master.LoaddgvItems();
+            if(master == null)
+                EventHub.RefreshProjectViewResource();
+            else
+                master.LoaddgvItems();
+
+            btnDelete.Enabled = false;
         }
 
         private bool updateData()
@@ -141,7 +145,14 @@ namespace YamyProject
                 DBClass.CreateParameter("unitTime", string.IsNullOrEmpty(txtUnitTime.Text) ? "8" : txtUnitTime.Text),
                 DBClass.CreateParameter("maxUnitTime", string.IsNullOrEmpty(txtMaxUnitTime.Text) ? "8" : txtMaxUnitTime.Text),
                 DBClass.CreateParameter("empId", empId));
-            Utilities.LogAudit(frmLogin.userId, "Insert Project Resource", "Project Resource", refId, "Inserted Project Resource: " + txtName.Text);
+            if (refId > 0)
+                Utilities.LogAudit(frmLogin.userId, "Insert Project Resource", "Project Resource", refId, "Inserted Project Resource: " + txtName.Text);
+            else
+            {
+                string message = Utilities.LastLogError();
+                MessageBox.Show("Error Check your data" + message);
+                return false;
+            }
 
             return true;
         }
@@ -279,11 +290,16 @@ namespace YamyProject
                     DBClass.CreateParameter("@id", _id),
                     DBClass.CreateParameter("@name", name),
                     DBClass.CreateParameter("@code", code));
-                Utilities.LogAudit(frmLogin.userId, "Update Project Role", "Project Role", _id, "Updated Project Role: " + name);
-                if (res > 0)
-                {
+                if (res != 0) {
+                    Utilities.LogAudit(frmLogin.userId, "Update Project Role", "Project Role", _id, "Updated Project Role: " + name);
+                
                     MessageBox.Show("Role updated successfully.");
                     loadCombo();
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
                 }
             }
             else
@@ -297,6 +313,30 @@ namespace YamyProject
                 {
                     MessageBox.Show("Role inserted successfully.");
                     loadCombo();
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (id > 0)
+            {
+                var result = MessageBox.Show("Are you sure do you want to delete?", "Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    DBClass.ExecuteNonQuery("Delete from tbl_project_resource where id =@id", DBClass.CreateParameter("id", id));
+                    Utilities.LogAudit(frmLogin.userId, "Delete Project Resource", "Project Resource", id, "Deleted Project Resource: " + txtName.Text);
+                    MessageBox.Show("Deleted"); 
+                    btnDelete.Enabled = false;
+                    if (master == null)
+                        EventHub.RefreshProjectViewResource();
+                    else
+                        master.LoaddgvItems();
                 }
             }
         }

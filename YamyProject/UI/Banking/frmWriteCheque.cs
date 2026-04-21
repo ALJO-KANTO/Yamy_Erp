@@ -355,7 +355,7 @@ namespace YamyProject.UI.Banking
                 txtAmountInWord.Text = "";
                 return;
             }
-            txtAmountInWord.Text = GeneralConfiguration.NumberToWords(decimal.Parse(txtAmount.Text));
+            txtAmountInWord.Text = AmountToWordsHelper.ConvertToSelectedLanguage(decimal.Parse(txtAmount.Text));
         }
         decimal totalAmount = 0;
         private void calculateTotal()

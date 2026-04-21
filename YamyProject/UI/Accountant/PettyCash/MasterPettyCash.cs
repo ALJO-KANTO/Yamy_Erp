@@ -119,7 +119,9 @@ namespace YamyProject
                                 pc.voucher_date AS `Date`,
                                 pc.Code,
                                 ac.name AS `Account`,
-                                pc.Total as `Total With VAT`,
+                                pc.Amount as `Amount`,
+                                pc.vat as `Vat`,
+                                pc.Total as `Total`,
                                 pc.Notes,
                                 CASE 
                                     WHEN pc.`status` = 0 THEN 'Pending' 
@@ -145,10 +147,12 @@ namespace YamyProject
                 dgvInvoiceCash.Columns["Account"].HeaderText = "Account";
                 //dgvInvoiceCash.Columns["Category"].HeaderText = "Category";
                 //dgvInvoiceCash.Columns["Cost Center"].HeaderText = "Cost Center";
-                //dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Format = "N2";
-                //dgvInvoiceCash.Columns["VAT"].DefaultCellStyle.Format = "N2";
-                dgvInvoiceCash.Columns["Total With VAT"].DefaultCellStyle.Format = "N2";
-                dgvInvoiceCash.Columns["Total With VAT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Format = "N2";
+                dgvInvoiceCash.Columns["VAT"].DefaultCellStyle.Format = "N2";
+                dgvInvoiceCash.Columns["Vat"].DefaultCellStyle.Format = "N2";
+                dgvInvoiceCash.Columns["Vat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvInvoiceCash.Columns["VAT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                 dgvInvoiceCash.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvInvoiceCash.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -162,7 +166,7 @@ namespace YamyProject
                 dgvInvoiceCash.Rows.Clear();
                 string query = @"
                             SELECT 
-                            p.id,p.code as Code,p.voucher_date as Date,p.total as Total,
+                            p.id,p.code as Code,p.voucher_date as Date,p.amount as Amount,p.vat as Vat,p.total as Total,
                             CASE 
                                 WHEN p.`status` = 0 THEN 'Pending' 
                                 ELSE 'Confirmed' 
@@ -182,7 +186,11 @@ namespace YamyProject
                 }
 
                 dgvInvoiceCash.Columns["Date"].DefaultCellStyle.Format = "dd-MM-yyyy";
+                dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Format = "N2";
+                dgvInvoiceCash.Columns["Vat"].DefaultCellStyle.Format = "N2";
                 dgvInvoiceCash.Columns["Total"].DefaultCellStyle.Format = "N2";
+                dgvInvoiceCash.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvInvoiceCash.Columns["Vat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvInvoiceCash.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvInvoiceCash.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
                 dgvInvoiceCash.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;

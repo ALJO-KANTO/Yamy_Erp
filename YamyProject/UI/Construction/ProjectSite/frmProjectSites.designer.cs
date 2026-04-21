@@ -44,6 +44,7 @@
             this.btnAddLocation = new Guna.UI2.WinForms.Guna2Button();
             this.txtSiteName = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbProjectLocation = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.formLeftBoarder = new YamyProject.FormLeftBoarder();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 347);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(579, 33);
             this.panel1.TabIndex = 2;
@@ -72,7 +73,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.btnClose.Location = new System.Drawing.Point(438, 4);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(137, 27);
             this.btnClose.TabIndex = 7;
@@ -93,7 +94,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(296, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(137, 27);
             this.btnSave.TabIndex = 6;
@@ -107,7 +108,7 @@
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
             this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(2);
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(581, 30);
             this.headerUC1.TabIndex = 0;
@@ -115,7 +116,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(16, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -130,7 +131,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 380);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(579, 2);
             this.panel5.TabIndex = 124;
@@ -139,10 +140,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(579, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Location = new System.Drawing.Point(579, 30);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 345);
+            this.panel4.Size = new System.Drawing.Size(2, 352);
             this.panel4.TabIndex = 123;
             // 
             // txtSiteCode
@@ -184,7 +185,7 @@
             this.txtPlotNumber.ForeColor = System.Drawing.Color.Black;
             this.txtPlotNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPlotNumber.Location = new System.Drawing.Point(20, 227);
-            this.txtPlotNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPlotNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlotNumber.Name = "txtPlotNumber";
             this.txtPlotNumber.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtPlotNumber.PlaceholderText = "Plot Number";
@@ -196,7 +197,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label9.Location = new System.Drawing.Point(17, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -221,7 +222,7 @@
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
             this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAddress.Location = new System.Drawing.Point(20, 300);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtAddress.PlaceholderText = "Address";
@@ -233,7 +234,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(17, 268);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -247,7 +248,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(17, 123);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -267,7 +268,7 @@
             this.btnAddLocation.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddLocation.ForeColor = System.Drawing.Color.White;
             this.btnAddLocation.Location = new System.Drawing.Point(308, 156);
-            this.btnAddLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddLocation.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddLocation.Name = "btnAddLocation";
             this.btnAddLocation.Size = new System.Drawing.Size(35, 24);
             this.btnAddLocation.TabIndex = 132;
@@ -309,10 +310,20 @@
             this.cmbProjectLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbProjectLocation.ItemHeight = 18;
             this.cmbProjectLocation.Location = new System.Drawing.Point(17, 157);
-            this.cmbProjectLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbProjectLocation.Margin = new System.Windows.Forms.Padding(2);
             this.cmbProjectLocation.Name = "cmbProjectLocation";
             this.cmbProjectLocation.Size = new System.Drawing.Size(290, 24);
             this.cmbProjectLocation.TabIndex = 133;
+            // 
+            // formLeftBoarder
+            // 
+            this.formLeftBoarder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.formLeftBoarder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.formLeftBoarder.Location = new System.Drawing.Point(0, 30);
+            this.formLeftBoarder.Margin = new System.Windows.Forms.Padding(2);
+            this.formLeftBoarder.Name = "formLeftBoarder";
+            this.formLeftBoarder.Size = new System.Drawing.Size(2, 317);
+            this.formLeftBoarder.TabIndex = 150;
             // 
             // frmProjectSites
             // 
@@ -320,6 +331,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(581, 382);
+            this.Controls.Add(this.formLeftBoarder);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbProjectLocation);
             this.Controls.Add(this.btnAddLocation);
             this.Controls.Add(this.label3);
@@ -330,12 +343,11 @@
             this.Controls.Add(this.txtSiteCode);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSiteName);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmProjectSites";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add New Site";
@@ -362,5 +374,6 @@
         private Guna.UI2.WinForms.Guna2Button btnAddLocation;
         private Guna.UI2.WinForms.Guna2TextBox txtSiteName;
         private Guna.UI2.WinForms.Guna2ComboBox cmbProjectLocation;
+        private FormLeftBoarder formLeftBoarder;
     }
 }

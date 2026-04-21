@@ -58,14 +58,7 @@ namespace YamyProject
         private void btnPrint_Click(object sender, EventArgs e)
         {
             // Get company name from DB
-            string companyName = "Company Name";
-            using (var reader = DBClass.ExecuteReader("SELECT name FROM tbl_company LIMIT 1"))
-            {
-                if (reader.Read())
-                {
-                    companyName = reader["name"].ToString();
-                }
-            }
+            string companyName = guna2HtmlLabel8.Text;
 
             // Create PDF document
             Document doc = new Document();
@@ -207,7 +200,7 @@ namespace YamyProject
                     string date = row.Cells["Date"]?.Value?.ToString() ?? "";
                     string num = row.Cells["Num"]?.Value?.ToString() ?? "";
                     string account = row.Cells["Account"]?.Value?.ToString() ?? "";
-                    string amountStr = row.Cells["Amount"]?.Value?.ToString()?.Replace("◀", "").Trim() ?? "0";
+                    string amountStr = row.Cells["Total"]?.Value?.ToString()?.Replace("◀", "").Trim() ?? "0";
                     string balance = row.Cells["Balance"]?.Value?.ToString()?.Replace("◀", "").Trim() ?? "0";
 
                     if (account.ToUpper().Contains("TOTAL")) continue;
@@ -396,12 +389,16 @@ namespace YamyProject
                     dgvSales.Columns.Add("Description", "Description");
                     dgvSales.Columns.Add("Account", "Account");
                     dgvSales.Columns.Add("Amount", "Amount");
+                    dgvSales.Columns.Add("Vat", "Vat");
+                    dgvSales.Columns.Add("Total", "Total");
                     dgvSales.Columns.Add("Status", "Status");
                     LocalizationManager.LocalizeDataGridViewHeaders(dgvSales);
 
                     dgvSales.Columns["Amount"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                     dgvSales.Columns["Account"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     dgvSales.Columns["Amount"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                    dgvSales.Columns["Vat"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
+                    dgvSales.Columns["Total"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
                     dgvSales.Columns["Account"].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                     dgvSales.Columns["id"].Visible = false;
@@ -417,7 +414,7 @@ namespace YamyProject
                     dgvSales.RowHeadersVisible = false;
                 }
 
-                decimal totalAmount = 0;
+                decimal totalAmount = 0, totalVat = 0, totalTotal = 0;
                 List<MySqlParameter> parameters = new List<MySqlParameter>
                 {
                     DBClass.CreateParameter("startDate", dateTimePicker1.Value.Date),
@@ -431,6 +428,8 @@ namespace YamyProject
                             pd.description AS Description,
                             e.name AS Account,
                             pd.amount AS Amount,
+                            pd.vatP AS Vat,
+                            pd.total AS Total,
                             p.status AS Status
                         FROM 
                             tbl_petty_cash p
@@ -458,7 +457,10 @@ namespace YamyProject
                             continue;
 
                         decimal amount = Convert.ToDecimal(reader["Amount"]);
-
+                        decimal vat = Convert.ToDecimal(reader["Vat"]);
+                        decimal total = Convert.ToDecimal(reader["Total"]);
+                        string _status = reader["Status"]?.ToString() ?? "";
+                        string status = string.IsNullOrEmpty(_status) ? "No" : int.Parse(_status) == 1 ? "Ok" : "No";
                         int rowIndex = dgvSales.Rows.Add(
                             reader["id"].ToString(),
                             reader["Reference"].ToString(),
@@ -466,18 +468,22 @@ namespace YamyProject
                             reader["Description"].ToString(),
                             reader["Account"].ToString(),
                             amount.ToString("N2"),
-                            reader["Status"].ToString()
+                            vat.ToString("N2"),
+                            total.ToString("N2"),
+                            status
                         );
 
                         dgvSales.Rows[rowIndex].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
                         dgvSales.Rows[rowIndex].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Regular);
 
                         totalAmount += amount;
+                        totalVat += vat;
+                        totalTotal += amount;
                     }
                 }
 
                 // Add total row
-                int totalRow = dgvSales.Rows.Add(null, null, null, null, "TOTAL", totalAmount.ToString("N2"), null);
+                int totalRow = dgvSales.Rows.Add(null, null, null, null, "TOTAL", totalAmount.ToString("N2"), totalVat.ToString("N2"), totalTotal.ToString("N2"), null);
                 dgvSales.Rows[totalRow].DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 8F, FontStyle.Bold | FontStyle.Underline);
                 dgvSales.Rows[totalRow].DefaultCellStyle.BackColor = System.Drawing.Color.Gainsboro;
                 dgvSales.Rows[totalRow].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -569,7 +575,7 @@ namespace YamyProject
                             string date = row.Cells["Date"].Value?.ToString();
                             string description = row.Cells["Description"].Value?.ToString();
                             string account = row.Cells["Account"].Value?.ToString();
-                            string amount = row.Cells["Amount"].Value?.ToString();
+                            string amount = row.Cells["Total"].Value?.ToString();
                             string _status = row.Cells["Status"].Value?.ToString() ?? "";
                             string status = string.IsNullOrEmpty(_status) ? "No" : int.Parse(_status) == 1 ? "Ok" : "No";
 
@@ -637,7 +643,7 @@ namespace YamyProject
                             string date = row.Cells["Date"].Value?.ToString();
                             string num = row.Cells["Num"].Value?.ToString();
                             string account = row.Cells["Account"].Value?.ToString();
-                            string amount = row.Cells["Amount"].Value?.ToString();
+                            string amount = row.Cells["Total"].Value?.ToString();
                             string balance = row.Cells["Balance"].Value?.ToString();
 
                             worksheet.Cells[rowIndex, 1] = id;

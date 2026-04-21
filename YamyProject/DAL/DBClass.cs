@@ -121,6 +121,7 @@ namespace YamyProject
                 }
                 Utilities.LogError("ExecuteNonQuery", mysqlEx.Message, frmLogin.userId);
                 //throw; // rethrow to upper level
+
                 return 0;
             }
             catch (Exception ex)

@@ -9,16 +9,22 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 using YamyProject.RMS;
+using YamyProject.UI;
 using YamyProject.UI.Accountant;
 using YamyProject.UI.Banking;
+using YamyProject.UI.Construction.DailySiteWork;
 using YamyProject.UI.Construction.ProjectPlanning;
 using YamyProject.UI.CRM;
 using YamyProject.UI.Default;
 using YamyProject.UI.Default.Dashboard;
+using YamyProject.UI.EngineeringConsultancy.ViewForm;
+using YamyProject.UI.EngineeringConsultancy.ViewForm.ProjectPhase;
 using YamyProject.UI.Manufacturing;
 using YamyProject.UI.Project_Management;
+using YamyProject.UI.Project_Management.ProjectWBS;
 using YamyProject.UI.Reports;
 using YamyProject.UI.Reports.Bank;
 using YamyProject.UI.Reports.Construction;
@@ -38,7 +44,7 @@ namespace YamyProject
         bool IsClick = false;
         private Dictionary<string, List<SubMenu>> menuData = new Dictionary<string, List<SubMenu>>();
         EventHandler roleEvent;
-        private bool isNotificationAllowed = false;
+        private bool isNotificationAllowed = true;
         public MainForm()
         {
             InitializeComponent();
@@ -51,62 +57,181 @@ namespace YamyProject
             LoadAllMenuData();
 
             if (isNotificationAllowed)
-                loadNotification();
+                SetUpNotification();
+            //picNotification.Visible = false;
+            //lblNotificationsCount.Visible = false;
+            //isNotificationAllowed = true;
+            //SetupNotificationUI();
+
+            //if (isNotificationAllowed)
+            //    ShowPopup("Hi, Welcome");
         }
 
-        private void loadNotification()
+        Timer notificationTimer;
+        private void SetUpNotification()
         {
-            bool isViewLessStockItems = UserPermissions.canView("LessStockItem Notification");
-            bool isViewPurchaseOrder = UserPermissions.canView("PurchaseOrder Notification");
-            bool isViewProductionItemRequest = UserPermissions.canView("Production ItemRequest Notification");
-            //ShowToast("Item added successfully!", ToastType.Production, 3000, () =>
+            // Notification Icon
+            //picNotification = new PictureBox();
+            //picNotification.Image = Properties.Resources.bell; // add icon to resources
+            //picNotification.SizeMode = PictureBoxSizeMode.StretchImage;
+            //picNotification.Size = new Size(24, 24);
+            //picNotification.Location = new Point(1265, 6);
+            //picNotification.Cursor = Cursors.Hand;
+
+            // Badge
+            //lblCount = new Label();
+            //lblCount.BackColor = Color.Red;
+            //lblCount.ForeColor = Color.White;
+            //lblCount.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            //lblCount.AutoSize = false;
+            //lblCount.Size = new Size(18, 18);
+            //lblCount.TextAlign = ContentAlignment.MiddleCenter;
+            //lblCount.Location = new Point(picNotification.Right - 10, picNotification.Top - 5);
+
+            //this.Controls.Add(picNotification);
+            //this.Controls.Add(lblCount);
+
+            notificationTimer = new Timer();
+            notificationTimer.Enabled = true;
+
+            notificationTimer.Interval = 5000; // 5 sec
+            notificationTimer.Tick += (s, e) =>
+            {
+                int count = NotificationService.GetUnreadCount(frmLogin.userId);
+                lblCount.Text = count.ToString();
+                lblCount.Font = new Font("Segoe UI", 6, FontStyle.Regular);
+                lblCount.Visible = count > 0;
+            };
+            notificationTimer.Start();
+
+            //picNotification.Click += (s, e) =>
             //{
-            //    MessageBox.Show("You clicked Production toast!");
-            //});
-            if (isViewPurchaseOrder)
-            {
-                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_purchase_order WHERE tranfer_status=0;"))
-                {
-                    if (reader.Read())
-                    {
-                        int val = int.Parse(reader["c"].ToString());
-                        if (val <= 0)
-                            return;
-
-                        ShowToast(val + " Order are pending!", ToastType.PurchaseOrder, 10000, () =>
-                        {
-                            openChildFormX(new MasterPurchaseOrder());
-                            //MessageBox.Show("You clicked Purchase Order toast!");
-                        });
-                    }
-                }
-            }
-            if (isViewProductionItemRequest)
-            {
-                using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_manufacturer_batchdetails WHERE qty>0 and RequestQty>0 and ReceiveQty=0;"))
-                {
-                    if (reader.Read())
-                    {
-                        int val = int.Parse(reader["c"].ToString());
-                        if (val <= 0)
-                            return;
-
-                        ShowToast(val + "Production item request are pending!", ToastType.PurchaseOrder, 10000, () =>
-                        {
-                            openChildFormX(new frmPurchaseOrder());
-                            //MessageBox.Show("You clicked Purchase Order toast!");
-                        });
-                    }
-                }
-            }
-            if (isViewLessStockItems)
-            {
-                ShowToast("Stock is low!", ToastType.LowStock, 8000, () =>
-                {
-                    MessageBox.Show("Check Stock report");
-                });
-            }
+            //    frmNotifications frm = new frmNotifications();
+            //    frm.ShowDialog();
+            //};
         }
+
+        //private void loadNotification()
+        //{
+        //    bool isViewLessStockItems = UserPermissions.canView("LessStockItem Notification");
+        //    bool isViewPurchaseOrder = UserPermissions.canView("PurchaseOrder Notification");
+        //    bool isViewProductionItemRequest = UserPermissions.canView("Production ItemRequest Notification");
+        //    //ShowToast("Item added successfully!", ToastType.Production, 3000, () =>
+        //    //{
+        //    //    MessageBox.Show("You clicked Production toast!");
+        //    //});
+        //    if (isViewPurchaseOrder)
+        //    {
+        //        using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_purchase_order WHERE tranfer_status=0;"))
+        //        {
+        //            if (reader.Read())
+        //            {
+        //                int val = int.Parse(reader["c"].ToString());
+        //                if (val <= 0)
+        //                    return;
+
+        //                ShowToast(val + " Order are pending!", ToastType.PurchaseOrder, 10000, () =>
+        //                {
+        //                    openChildFormX(new MasterPurchaseOrder());
+        //                    //MessageBox.Show("You clicked Purchase Order toast!");
+        //                });
+        //            }
+        //        }
+        //    }
+        //    if (isViewProductionItemRequest)
+        //    {
+        //        using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT COUNT(*) c FROM tbl_manufacturer_batchdetails WHERE qty>0 and RequestQty>0 and ReceiveQty=0;"))
+        //        {
+        //            if (reader.Read())
+        //            {
+        //                int val = int.Parse(reader["c"].ToString());
+        //                if (val <= 0)
+        //                    return;
+
+        //                ShowToast(val + "Production item request are pending!", ToastType.PurchaseOrder, 10000, () =>
+        //                {
+        //                    openChildFormX(new frmPurchaseOrder());
+        //                    //MessageBox.Show("You clicked Purchase Order toast!");
+        //                });
+        //            }
+        //        }
+        //    }
+        //    if (isViewLessStockItems)
+        //    {
+        //        ShowToast("Stock is low!", ToastType.LowStock, 8000, () =>
+        //        {
+        //            MessageBox.Show("Check Stock report");
+        //        });
+        //    }
+        //}
+
+        //private Button btnNotifications;
+        //private Label lblCount;
+
+        //private void SetupNotificationUI()
+        //{
+        //    btnNotifications = new Button();
+        //    btnNotifications.Text = "🔔";
+        //    //btnNotifications.Width = 50;
+        //    //btnNotifications.Height = 40;
+        //    //btnNotifications.Top = 10;
+        //    btnNotifications.Size = new Size(24, 24);
+        //    //btnNotifications.Left = this.Width - 100;
+        //    btnNotifications.Location = new Point(this.Width - 80,10);
+
+        //    btnNotifications.Click += (s, e) =>
+        //    {
+        //        new frmNotifications().ShowDialog();
+        //        RefreshNotificationCount();
+        //    };
+
+        //    // Badge
+        //    lblCount = new Label();
+        //    lblCount.BackColor = Color.Red;
+        //    lblCount.ForeColor = Color.White;
+        //    lblCount.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+        //    lblCount.AutoSize = false;
+        //    lblCount.Size = new Size(18, 18);
+        //    lblCount.TextAlign = ContentAlignment.MiddleCenter;
+        //    lblCount.Location = new Point(picNotification.Right - 10, picNotification.Top - 5);
+
+        //    this.Controls.Add(btnNotifications);
+        //    this.Controls.Add(lblCount);
+
+        //    RefreshNotificationCount();
+        //}
+        //private void ShowPopup(string message)
+        //{
+        //    Form popup = new Form();
+        //    popup.StartPosition = FormStartPosition.Manual;
+        //    popup.Size = new Size(300, 100);
+        //    popup.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - 320,
+        //                               Screen.PrimaryScreen.WorkingArea.Height - 120);
+
+        //    Label lbl = new Label();
+        //    lbl.Text = message;
+        //    lbl.Dock = DockStyle.Fill;
+        //    lbl.TextAlign = ContentAlignment.MiddleCenter;
+
+        //    popup.Controls.Add(lbl);
+
+        //    popup.Show();
+
+        //    Timer t = new Timer();
+        //    t.Interval = 3000;
+        //    t.Tick += (s, e) =>
+        //    {
+        //        popup.Close();
+        //        t.Stop();
+        //    };
+        //    t.Start();
+        //}
+        //private void RefreshNotificationCount()
+        //{
+        //    int count = NotificationService.GetUnreadCount(frmLogin.userId);
+
+        //    lblCount.Text = count > 0 ? count.ToString() : "";
+        //}
 
         //private void ApplyTheme(Control parent)
         //{
@@ -314,22 +439,6 @@ namespace YamyProject
                 NavigationBar();
             };
             timer.Start();
-
-            if(frmLogin.userRole == "Engineer")
-            {
-                engineerActivityToolStripMenuItem.Visible = true;
-                ganttChartToolStripMenuItem.Visible = false;
-                projectProgressToolStripMenuItem.Visible = false;
-                projectDashBoardToolStripMenuItem.Visible = false;
-                projectManagementToolStripMenuItem.Visible = false;
-                projectWorkDoneToolStripMenuItem.Visible = false;
-                projectToolStripMenuItem1.Visible = false;
-                projectEstimateToolStripMenuItem.Visible = false;
-                projectSetupToolStripMenuItem.Visible = false;
-                // Open Project Center for engineers by default
-                openChildFormX(new frmEngineerActivity());
-                this.Hide();
-            }
         }
         public void openChildFormX(Form childForm)
         {
@@ -358,12 +467,12 @@ namespace YamyProject
         {
             //guna2Button12.Visible = true;
             //constructionToolStripMenuItem.Visible = false;
-            if (UserPermissions.ViewPermissions.Count>0)
+            if (UserPermissions.ViewPermissions.Count > 0)
             {
                 toolStripMenuItem5.Visible = UserPermissions.canView("Company List");
                 backUpCompanyToolStripMenuItem.Visible = UserPermissions.canView("Back Up Company");
                 restoreCompanyToolStripMenuItem.Visible = UserPermissions.canView("Restore Company");
-                chartOfAccountToolStripMenuItem.Visible = toolStripMenuItem2 .Visible = UserPermissions.canView("Chart Of Account");
+                chartOfAccountToolStripMenuItem.Visible = toolStripMenuItem2.Visible = UserPermissions.canView("Chart Of Account");
                 damageToolStripMenuItem.Visible = vatToolStripMenuItem.Visible = UserPermissions.canView("Inventory Items");
                 //itemCategoryListToolStripMenuItem.Visible = UserPermissions.canView("");
                 //itemVatListToolStripMenuItem.Visible = UserPermissions.canView("");
@@ -375,7 +484,7 @@ namespace YamyProject
                 payBillsToolStripMenuItem1.Visible = UserPermissions.canView("Vouchers");
                 prepaidExpenseToolStripMenuItem.Visible = UserPermissions.canView("Prepaid Expense");
                 pettyCashToolStripMenuItem.Visible = UserPermissions.canView("Petty Cash");
-                usersToolStripMenuItem.Visible = btnCompanyProfile.Visible = companyToolStripMenuItem1 .Visible= UserPermissions.canView("Company");
+                usersToolStripMenuItem.Visible = btnCompanyProfile.Visible = companyToolStripMenuItem1.Visible = UserPermissions.canView("Company");
                 inventoryCenterToolStripMenuItem1.Visible = itemListToolStripMenuItem.Visible = inventoryToolStripMenuItem2.Visible = UserPermissions.canView("Inventory Center");
                 stockManagementToolStripMenuItem.Visible = UserPermissions.canView("Stock Management");
                 warehouseToolStripMenuItem.Visible = UserPermissions.canView("Warehouse Center");
@@ -419,10 +528,10 @@ namespace YamyProject
                 changeCurrentPasswordToolStripMenuItem.Visible = UserPermissions.canView("Change Current Password");
                 clearDataToolStripMenuItem.Visible = UserPermissions.canView("Clear Data");
                 usersToolStripMenuItem1.Visible = UserPermissions.canView("Users");
-                projectDashBoardToolStripMenuItem.Visible = projectProgressToolStripMenuItem.Visible = ganttChartToolStripMenuItem.Visible = UserPermissions.canView("Project DashBoard");
-                projectToolStripMenuItem.Visible = UserPermissions.canView("Project Tender");
-                projectEstimateToolStripMenuItem.Visible = UserPermissions.canView("Project Estimate");
-                projectToolStripMenuItem1.Visible = projectWorkDoneToolStripMenuItem.Visible = UserPermissions.canView("Project Planning");
+                //projectDashBoardToolStripMenuItem.Visible = projectProgressToolStripMenuItem.Visible = ganttChartToolStripMenuItem.Visible = UserPermissions.canView("Project DashBoard");
+                //projectToolStripMenuItem.Visible = UserPermissions.canView("Project Tender");
+                //projectEstimateToolStripMenuItem.Visible = UserPermissions.canView("Project Estimate");
+                //projectToolStripMenuItem1.Visible = projectWorkDoneToolStripMenuItem.Visible = UserPermissions.canView("Project Planning");
                 //guna2Button5.Visible = UserPermissions.canView("No");
                 //guna2Button11.Visible = UserPermissions.canView("No");
                 if (frmLogin.RoleId == 1)
@@ -628,7 +737,7 @@ namespace YamyProject
         {
             if (this.WindowState == FormWindowState.Normal)
                 this.WindowState = FormWindowState.Maximized;
-            
+
             else
                 this.WindowState = FormWindowState.Normal;
         }
@@ -744,7 +853,7 @@ namespace YamyProject
                 }
             }
         }
-       
+
         private void MainForm_MouseClick(object sender, MouseEventArgs e)
         {
             pnlUser.Visible = false;
@@ -757,7 +866,8 @@ namespace YamyProject
                 pnlUser.Visible = false;
                 pnlUser.SendToBack();
             }
-            else {
+            else
+            {
                 pnlUser.Visible = true;
                 pnlUser.Parent.Controls.SetChildIndex(pnlUser, 0);
                 pnlUser.BringToFront();
@@ -927,7 +1037,7 @@ namespace YamyProject
 
         private void journalTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1017,13 +1127,13 @@ namespace YamyProject
 
         private void backupCurrentCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
         private void restorePreviousCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         public static bool RestoreDatabase(string backupFilePath)
@@ -1169,8 +1279,8 @@ namespace YamyProject
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
-            if (frmLogin.RoleId == 1)
-                openChildForm(new MasterSetting());
+            //if (frmLogin.RoleId == 1)
+            //    openChildForm(new MasterSetting());
         }
         private void damageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1330,7 +1440,7 @@ namespace YamyProject
         private void iNVENTORYCENTERToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new MasterInventory());
-        
+
         }
         private void salesTaxCodeListToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1630,7 +1740,7 @@ namespace YamyProject
             {
                 openChildForm(new MasterWarehouseNew());
             }
-            else if(comboBox1.Text == "Transactions Journal")
+            else if (comboBox1.Text == "Transactions Journal")
             {
                 openChildForm(new MasterTransactionJournal("0", ""));
             }
@@ -1700,7 +1810,7 @@ namespace YamyProject
 
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string selectedPath = folderDialog.SelectedPath.ToString()+@"\";
+                    string selectedPath = folderDialog.SelectedPath.ToString() + @"\";
                     if (string.IsNullOrEmpty(selectedPath))
                     {
                         selectedPath = @"C:\";
@@ -1754,15 +1864,10 @@ namespace YamyProject
         {
             openChildForm(new MasterVAT());
         }
-        
+
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterProjectTendering());
-        }
-
-        private void projectEstimateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openChildForm(new MasterProjectEstimating());
+            //openChildForm(new MasterProjectTendering());
         }
 
         private void projectToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1809,12 +1914,12 @@ namespace YamyProject
 
         private void userCenterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void usersToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (frmLogin.RoleId==1)
+            if (frmLogin.RoleId == 1)
                 openChildForm(new frmUserAccess());
         }
 
@@ -1861,7 +1966,6 @@ namespace YamyProject
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            //openChildForm(new frmAddProject(this, 0));
             openChildForm(new frmProjectsManage());
         }
 
@@ -1877,12 +1981,12 @@ namespace YamyProject
 
         private void siteCenterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterProjectSite());
+            //openChildForm(new MasterProjectSite());
         }
 
         private void newSiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmProjectSites(null, 0));
+            //openChildForm(new frmProjectSites(null, 0));
         }
 
         private void projectWorkDoneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2242,12 +2346,12 @@ namespace YamyProject
 
         private void pnlMain_SizeChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void pnlLeft_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void pnlLeft_SizeChanged(object sender, EventArgs e)
@@ -2488,11 +2592,6 @@ namespace YamyProject
             new frmSelectTimeSheetReport().ShowDialog();
         }
 
-        private void laborAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmLaborAttendance());
-        }
-
         private void auditTrailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmUserActivityReport());
@@ -2730,7 +2829,7 @@ namespace YamyProject
 
         private void toolStripMenuItemEngConsultancy_Click(object sender, EventArgs e)
         {
-            new frmMainEngineeringConsultancy().Show();
+            //new frmMainEngineeringConsultancy().Show();
         }
 
         private void toolStripMenuItemContracting_Click(object sender, EventArgs e)
@@ -2871,6 +2970,505 @@ namespace YamyProject
         private void engineerActivityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmEngineerActivity());
+        }
+
+        private void projectSitesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectSiteSetup());
+        }
+
+        private void projectCenterToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProject());
+        }
+
+        private void engineerActivityToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new frmEngineerActivity());
+            openChildForm(new frmEngineerTask());
+        }
+
+        private void milestonesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEngMilestones());
+        }
+
+        private void projectTenderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectTendering());
+        }
+
+        private void invoiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectsInvoice());
+        }
+
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPettyCashDetailEMPTransactions());
+        }
+
+        private void projectDailySiteWorkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectDailySiteWork());
+        }
+
+        private void billToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPurchase(0, "", 0, true));
+        }
+
+        private void paymentToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmViewPaymentVoucher(0, 0, true));
+        }
+
+        private void projectEstimateToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectEstimating());
+        }
+
+        private void estimateReviewSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectEstimateReviewSummary());
+        }
+
+        private void siteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectSite());
+        }
+
+        private void wBSActivitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectActivityPlanning());
+        }
+
+        private void projectEstimateToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectEstimating());
+        }
+
+        private void estimateReviewSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectEstimateReviewSummary());
+        }
+
+        private void projectScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lookaheadPlanningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resourceNeedsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void projectSiteSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectSiteSetup());
+        }
+        private void siteActivityPlanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new MasterProjectSiteSetup());
+        }
+
+        private void materialRequestToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmMaterialRequest());
+        }
+
+        private void materialRequestListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterMaterialRequest());
+        }
+
+        private void stockCheckAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialReservationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void procurementRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialDeliveryGRNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void qAInspectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialIssueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void siteMaterialReceiptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialReturnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stockAdjustmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void workOnSiteDailyWorkPlanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressUpdateWorkDoneEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialConsumptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dailySiteReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delayObstructionLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inspectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hSEChecksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nCRInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void subcontractorCenterToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterSubcontractor());
+        }
+
+        private void workAssignToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void materialSupplyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void measureApproveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void punchListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void testingAsBuiltToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void finalHandoverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void materialStatusRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void siteMaterialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void workDoneVsMaterialUsedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void dailyProgressReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void delaysReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void qAHSESummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void subcontractorProgressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void siteDashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void progressUpdateWorkDoneEntryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void materialConsumptionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void projectTenderBOQSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectTendering());
+        }
+
+        private void projectEstimateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectEstimating());
+        }
+
+        private void resourceMasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectResource());
+        }
+
+        private void projectTeamSupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void projectPlanningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dailySiteWorkEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialIssueToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialReceiptAtSiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialReturnToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialTransferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialConsumptionToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialReconciliationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stockLedgerBinBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labourAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmLaborAttendance());
+        }
+
+        private void workDoneWorkMeasurementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resourceDeploymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void equipmentUsageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delayHindranceLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void siteDiaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void qAQCInspectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void incidentAccidentRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void correctiveActionTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeoutRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void retentionBackChargeTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void subcontractorPaymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void projectSiteSetup0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectSiteSetup());
+        }
+
+        private void zoneListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectZone());
+        }
+
+        private void paymentToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new MasterProjectPaymentVoucher());
+        }
+
+        private void projectAndEngineerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectEngineerTreeReport());
+        }
+
+        private void phaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new frmEngProjectPhases());
+            //openChildForm(new frmProjectPhases());
+            //openChildForm(new frmProjectPhasesNew());
+            openChildForm(new frmProjectPhasesTemplateCenter());
+        }
+
+        private void phaseTemplatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProjectPhaseTemplate templateForm = new frmProjectPhaseTemplate();
+            templateForm.ShowDialog();
+        }
+
+        private void phaseTaskTemplatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //frmProjectPhaseTaskTemplate taskTemplateForm = new frmProjectPhaseTaskTemplate();
+            //taskTemplateForm.ShowDialog();
+        }
+
+        private void phaseWorkflowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectPhaseWorkflow());
+        }
+
+        private void projectPhaseChecklistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectPhaseChecklist());
+        }
+
+        private void projectReportSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectCenterReport());
+        }
+
+        private void managerReportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmManagerReports());
+        }
+
+        private void projectIncomeVsExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectIncomeVsExpense());
+        }
+
+        private void projectDashboardToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectDashboard());
+        }
+
+        private void projectGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProjectClassificationCenter());
+        }
+
+        private void lblCount_Click(object sender, EventArgs e)
+        {
+            navigateNotificationForm();
+        }
+
+        private void navigateNotificationForm()
+        {
+            frmNotifications frm = new frmNotifications();
+            frm.ShowDialog();
+        }
+
+        private void picNotification_Click(object sender, EventArgs e)
+        {
+            navigateNotificationForm();
         }
     }
 

@@ -183,6 +183,18 @@ namespace YamyProject
                 ex.ToString(); // Log or handle the exception as needed
             }
         }
+        internal static string LastLogError()
+        {
+            object result = DBClass.ExecuteScalar("SELECT error_message FROM tbl_error_log ORDER BY id desc LIMIT 1");
+            if (result == null)
+            {
+                return " unknown";
+            }
+            else
+            {
+                return " " + result.ToString();
+            }
+        }
 
         public static decimal ToDecimal(object input)
         {

@@ -178,7 +178,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 23);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 30);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(615, 147);
@@ -392,7 +392,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 170);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 177);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(615, 217);
@@ -533,6 +533,7 @@
             this.txtFax.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFax.Location = new System.Drawing.Point(427, 36);
             this.txtFax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFax.MaxLength = 15;
             this.txtFax.Name = "txtFax";
             this.txtFax.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtFax.PlaceholderText = "Mobile Or Fax";
@@ -556,6 +557,7 @@
             this.txtWorkPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkPhone.Location = new System.Drawing.Point(291, 36);
             this.txtWorkPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtWorkPhone.MaxLength = 15;
             this.txtWorkPhone.Name = "txtWorkPhone";
             this.txtWorkPhone.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtWorkPhone.PlaceholderText = "Work Phone";
@@ -579,6 +581,7 @@
             this.txtCCEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCCEmail.Location = new System.Drawing.Point(359, 70);
             this.txtCCEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCCEmail.MaxLength = 50;
             this.txtCCEmail.Name = "txtCCEmail";
             this.txtCCEmail.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCCEmail.PlaceholderText = "CC Email";
@@ -602,6 +605,7 @@
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.Location = new System.Drawing.Point(156, 71);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtEmail.PlaceholderText = "Email";
@@ -625,6 +629,7 @@
             this.txtMainPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMainPhone.Location = new System.Drawing.Point(156, 36);
             this.txtMainPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMainPhone.MaxLength = 15;
             this.txtMainPhone.Name = "txtMainPhone";
             this.txtMainPhone.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtMainPhone.PlaceholderText = "Main Phone";
@@ -714,10 +719,10 @@
             this.guna2GroupBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(2, 387);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(2, 394);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(615, 192);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(615, 185);
             this.guna2GroupBox3.TabIndex = 5;
             this.guna2GroupBox3.Text = "Account Settings & Other";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -5);
@@ -840,6 +845,7 @@
             this.txtTRN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTRN.Location = new System.Drawing.Point(156, 70);
             this.txtTRN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTRN.MaxLength = 20;
             this.txtTRN.Name = "txtTRN";
             this.txtTRN.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtTRN.PlaceholderText = "TRN";
@@ -897,20 +903,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(617, 23);
+            this.panel4.Location = new System.Drawing.Point(617, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 591);
+            this.panel4.Size = new System.Drawing.Size(2, 584);
             this.panel4.TabIndex = 13;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 23);
+            this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 591);
+            this.panel3.Size = new System.Drawing.Size(2, 584);
             this.panel3.TabIndex = 12;
             // 
             // headerUC1
@@ -919,10 +925,10 @@
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(498, 30);
+            this.headerUC1.Size = new System.Drawing.Size(619, 30);
             this.headerUC1.TabIndex = 238;
             // 
             // guna2Button2

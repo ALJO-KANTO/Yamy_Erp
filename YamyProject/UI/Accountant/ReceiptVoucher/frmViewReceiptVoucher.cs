@@ -1086,7 +1086,8 @@ namespace YamyProject
                 txtAmountInWord.Text = "";
                 return;
             }
-            txtAmountInWord.Text = GeneralConfiguration.NumberToWords(decimal.Parse(txtAmount.Text));
+            //txtAmountInWord.Text = AmountToWordsHelper.ConvertToSelectedLanguage(decimal.Parse(txtAmount.Text));
+            txtAmountInWord.Text = AmountToWordsHelper.ConvertToSelectedLanguage(decimal.Parse(txtAmount.Text));
         }
 
         bool isDebitAccountNameRefreshing = false;

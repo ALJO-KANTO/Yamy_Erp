@@ -261,18 +261,21 @@ namespace YamyProject
 
         private void BindCustomerInfo()
         {
-            var row = dgvCustomer.SelectedRows[0].Cells;
-            lblAddress.Text = string.IsNullOrWhiteSpace(row["address"].Value?.ToString()) ? "-" : row["address"].Value.ToString();
-            lblEmail.Text = string.IsNullOrWhiteSpace(row["Email"].Value?.ToString()) ? "-" : row["Email"].Value.ToString();
-            lblPhone.Text = string.IsNullOrWhiteSpace(row["phone"].Value?.ToString()) ? "-" : row["phone"].Value.ToString();
-            lblPosition.Text = string.IsNullOrWhiteSpace(row["Position"].Value?.ToString()) ? "-" : row["Position"].Value.ToString();
+            //var row = dgvCustomer.SelectedRows[0].Cells;
+            var eId = dgvCustomer.SelectedRows[0].Cells["id"].Value;
+            using (MySqlDataReader reader = DBClass.ExecuteReader("select e.code,e.name,e.address,e.Email,e.phone,e.Position_id,IFNULL((SELECT NAME FROM tbl_position WHERE id =e.Position_id),'') Position from tbl_employee e where e.id = @eId", DBClass.CreateParameter("@eId", eId)))
+            {
+                if (reader.Read())
+                {
+                    lblAddress.Text = string.IsNullOrWhiteSpace(reader["address"]?.ToString()) ? "-" : reader["address"].ToString();
+                    lblEmail.Text = string.IsNullOrWhiteSpace(reader["Email"]?.ToString()) ? "-" : reader["Email"].ToString();
+                    lblPhone.Text = string.IsNullOrWhiteSpace(reader["phone"]?.ToString()) ? "-" : reader["phone"].ToString();
+                    lblPosition.Text = string.IsNullOrWhiteSpace(reader["Position"]?.ToString()) ? "-" : reader["Position"].ToString();
 
-            lblCode.Text = row["code"].Value?.ToString().Split('-')[0];
-            string nameValue = row["name"].Value?.ToString();
-            var splitName = nameValue.Split('-');
-            lblCode.Text = splitName.Length > 0 ? splitName[0].Trim() : "-";
-            lblName.Text = splitName.Length > 1 ? splitName[1].Trim() : nameValue; // fallback to full name if not split
-
+                    lblCode.Text = reader["code"]?.ToString();
+                    lblName.Text = reader["name"]?.ToString();
+                }
+            }
         }
         private void ClearEmployeerDetails()
         {

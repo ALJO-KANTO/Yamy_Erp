@@ -35,8 +35,8 @@ namespace YamyProject
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtAmount = new Guna.UI2.WinForms.Guna2TextBox();
             this.BtnSaveNew = new Guna.UI2.WinForms.Guna2Button();
@@ -52,15 +52,6 @@ namespace YamyProject
             this.dtOpen = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvInv = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AC_Code = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.AC_Name = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CostCenter = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.humId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Navigate = new System.Windows.Forms.DataGridViewLinkColumn();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -79,6 +70,17 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AC_Code = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.AC_Name = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CostCenter = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.humId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Navigate = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel1.SuspendLayout();
             this.txtcostcenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).BeginInit();
@@ -367,6 +369,8 @@ namespace YamyProject
             this.AC_Name,
             this.CostCenter,
             this.Description,
+            this.amount,
+            this.vat,
             this.Debit,
             this.Credit,
             this.humId,
@@ -419,79 +423,6 @@ namespace YamyProject
             this.dgvInv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvInv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInv_CellContentClick);
             this.dgvInv.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInv_CellValueChanged);
-            // 
-            // no
-            // 
-            this.no.HeaderText = "No";
-            this.no.MinimumWidth = 6;
-            this.no.Name = "no";
-            this.no.ReadOnly = true;
-            this.no.Width = 45;
-            // 
-            // AC_Code
-            // 
-            this.AC_Code.HeaderText = "A/C Code";
-            this.AC_Code.Name = "AC_Code";
-            this.AC_Code.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AC_Code.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.AC_Code.Visible = false;
-            // 
-            // AC_Name
-            // 
-            this.AC_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AC_Name.HeaderText = "A/C Name";
-            this.AC_Name.Name = "AC_Name";
-            this.AC_Name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AC_Name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CostCenter
-            // 
-            this.CostCenter.HeaderText = "C.Center";
-            this.CostCenter.MinimumWidth = 6;
-            this.CostCenter.Name = "CostCenter";
-            this.CostCenter.ReadOnly = true;
-            this.CostCenter.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CostCenter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CostCenter.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Debit
-            // 
-            this.Debit.HeaderText = "Debit";
-            this.Debit.MinimumWidth = 6;
-            this.Debit.Name = "Debit";
-            this.Debit.ReadOnly = true;
-            this.Debit.Width = 125;
-            // 
-            // Credit
-            // 
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
-            this.Credit.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Credit.HeaderText = "Credit";
-            this.Credit.Name = "Credit";
-            this.Credit.ReadOnly = true;
-            // 
-            // humId
-            // 
-            this.humId.HeaderText = "humId";
-            this.humId.Name = "humId";
-            this.humId.ReadOnly = true;
-            this.humId.Visible = false;
-            // 
-            // Navigate
-            // 
-            this.Navigate.HeaderText = "View";
-            this.Navigate.Name = "Navigate";
-            this.Navigate.ReadOnly = true;
-            this.Navigate.Text = "View";
-            this.Navigate.Width = 60;
             // 
             // headerUC1
             // 
@@ -686,6 +617,93 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 125;
             // 
+            // no
+            // 
+            this.no.HeaderText = "No";
+            this.no.MinimumWidth = 6;
+            this.no.Name = "no";
+            this.no.ReadOnly = true;
+            this.no.Width = 45;
+            // 
+            // AC_Code
+            // 
+            this.AC_Code.HeaderText = "A/C Code";
+            this.AC_Code.Name = "AC_Code";
+            this.AC_Code.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AC_Code.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AC_Code.Visible = false;
+            // 
+            // AC_Name
+            // 
+            this.AC_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AC_Name.HeaderText = "A/C Name";
+            this.AC_Name.Name = "AC_Name";
+            this.AC_Name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AC_Name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CostCenter
+            // 
+            this.CostCenter.HeaderText = "C.Center";
+            this.CostCenter.MinimumWidth = 6;
+            this.CostCenter.Name = "CostCenter";
+            this.CostCenter.ReadOnly = true;
+            this.CostCenter.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CostCenter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CostCenter.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Visible = false;
+            // 
+            // vat
+            // 
+            this.vat.HeaderText = "vat";
+            this.vat.Name = "vat";
+            this.vat.ReadOnly = true;
+            this.vat.Visible = false;
+            // 
+            // Debit
+            // 
+            this.Debit.HeaderText = "Debit";
+            this.Debit.MinimumWidth = 6;
+            this.Debit.Name = "Debit";
+            this.Debit.ReadOnly = true;
+            this.Debit.Width = 125;
+            // 
+            // Credit
+            // 
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            this.Credit.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Credit.HeaderText = "Credit";
+            this.Credit.Name = "Credit";
+            this.Credit.ReadOnly = true;
+            // 
+            // humId
+            // 
+            this.humId.HeaderText = "humId";
+            this.humId.Name = "humId";
+            this.humId.ReadOnly = true;
+            this.humId.Visible = false;
+            // 
+            // Navigate
+            // 
+            this.Navigate.HeaderText = "View";
+            this.Navigate.Name = "Navigate";
+            this.Navigate.ReadOnly = true;
+            this.Navigate.Text = "View";
+            this.Navigate.Width = 60;
+            // 
             // frmViewPettyCashVoucherJournal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -754,6 +772,8 @@ namespace YamyProject
         private DataGridViewComboBoxColumn AC_Name;
         private DataGridViewComboBoxColumn CostCenter;
         private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn amount;
+        private DataGridViewTextBoxColumn vat;
         private DataGridViewTextBoxColumn Debit;
         private DataGridViewTextBoxColumn Credit;
         private DataGridViewTextBoxColumn humId;

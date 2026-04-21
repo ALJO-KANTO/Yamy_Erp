@@ -255,6 +255,9 @@
   <data name="Description" xml:space="preserve">
     <value>説明</value>
   </data>
+  <data name="Description_of_the_Project" xml:space="preserve">
+    <value>説明</value>
+  </data>
   <data name="Total_Vat" xml:space="preserve">
     <value>合計VAT</value>
   </data>
@@ -4450,6 +4453,739 @@
     <value />
   </data>
   <data name="Source" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Material_Request" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Salesman / Employee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Expected Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UOM" xml:space="preserve">
+    <value />
+  </data>
+  <data name="View_Doc" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Requsted By" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MR NO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="New MR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total Qty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Batch_Enter_Transactions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Available Columns" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chosen Columns" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Move Down" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&lt;_Remove" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Add_&gt;" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Move_Up" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Customize_Columns" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BANK ACCOUNT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Split" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TOTAL:" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Save_Transactions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Card_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GL Account" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Card_Account_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="VAT_Configuration" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Stamp" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Address_1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Petty_Cash_Voucher" xml:space="preserve">
+    <value />
+  </data>
+  <data name="New_Petty_Cash" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Edit_Petty_Cash" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete_Petty_Cash" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete_P.C_A/C" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Edit_P.C_A/C" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delivery_Note" xml:space="preserve">
+    <value />
+  </data>
+  <data name="transfer_status" xml:space="preserve">
+    <value />
+  </data>
+  <data name="P_-_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="New_PO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ReceivedQty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OrderedQty" xml:space="preserve">
+    <value />
+  </data>
+  <data name=".PO_no" xml:space="preserve">
+    <value />
+  </data>
+  <data name=".MR_no" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Purchase_Offers_Center" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Purchase_Offer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Material_Recevied_Center" xml:space="preserve">
+    <value />
+  </data>
+  <data name="P-Qty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Show_Bill" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Add_More_Items" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Inventory_Valuation_Methods" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Material_Received" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Write_Cheques" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Transfer_Funds" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Make_Deposits" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bank_Transactions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GanttChart_Sample" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineer_Activity" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Updated_On" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Name_(English)" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Name_(Arabic)" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Emirate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Execution_Period" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Extend_/_Delay" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contracting_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Building_Licensing_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contractor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Consultant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Additional_Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Deduction_Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Billed_To_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Expenses" xml:space="preserve">
+    <value />
+  </data>
+  <data name="End_Date_/_Extend_Delay_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Estimate_Budget" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Budget_Deviation_Report" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Accounts" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Create_Accounts" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Name_(Arabic)" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sub_Contractors" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Works" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contract_Period" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contract_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Works_En" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Engineers" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineer_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Add_Engineers" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Choose_File" xml:space="preserve">
+    <value />
+  </data>
+  <data name="project" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Work_En" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contact_Person_Number" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Block" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Sites" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="%_of_contract_value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Projects_Invoice_Center" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Import_Excel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phase" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Milestone_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Invoice_Amount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Vat_%" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Retention" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Custom_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Last_7_days" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Last_30_days" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Number_of_Sales" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Revenue" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Profit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Counter" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Number_of_Customers" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Products_Understock" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Number_of_Vendors" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Number_of_Products" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Site" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cum_Qty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Today_QTY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Prev_Done_QTY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BOQ_QTY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BOQ_Item" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sr" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Daily_Site_Work" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Today_Qty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Overall_Progress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Daily_Site_Work" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Subcontractor_Bill_/_Payment" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Supervisor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Tender" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Daily_Site_Work_Center" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_and_Engineer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design_Fee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Supervision_Fee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Retention_Amt" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design_Received" xml:space="preserve">
+    <value />
+  </data>
+  <data name="After_Retention" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Consultant_Fee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Consultant_%" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design_Tax" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Payment_Value" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sup._Tax" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Client_/_Owner" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Tax_Rec." xml:space="preserve">
+    <value />
+  </data>
+  <data name="Retention_%" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Payment_Source" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Rec._%" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sup._Tax_Rec." xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design_Balance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sup._Balance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Supervision" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Consultancy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Debit_Account_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Credit_Account_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Design_Revenue" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Supervision_Revenue" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineer_Task" xml:space="preserve">
+    <value />
+  </data>
+  <data name="File_Activity" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Municipality_Project_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Classification" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Plot_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activity_Log" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Owner_name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Is_Starred" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Municipality_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Basin_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bank_Project_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Priority_Color" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Handover_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phases" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phases_Templates" xml:space="preserve">
+    <value />
+  </data>
+  <data name="No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sort_Order" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phase_Tasks" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Stage_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Stage_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Task_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Mandatory" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phase_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_and_Phase" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Contact_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineers_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Engineers" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Phase_Checklist" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Stage_Templates" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phase_Workflow" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Template_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Phase_Color" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Add_Workflow" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activity_Type" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Completed_On" xml:space="preserve">
+    <value />
+  </data>
+  <data name="File_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Upload_File" xml:space="preserve">
+    <value />
+  </data>
+  <data name="File_Upload" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Tender_Center" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Fees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Submit_Date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Upload_BOQ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sr." xml:space="preserve">
+    <value />
+  </data>
+  <data name="Download_Sample" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Engineer_Report" xml:space="preserve">
+    <value />
+  </data>
+  <data name="All_Projects_/_Engineers" xml:space="preserve">
+    <value />
+  </data>
+  <data name="No_Engineer_Assigned" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Report_Summary" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Manager_Reports" xml:space="preserve">
+    <value />
+  </data>
+  <data name="⭐ Starred" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Last_Progress_Update" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Plot" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Basin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Current_Stage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Current_Phase" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delay_(Days)" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Stale" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Priority_Level" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Starred" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delay_Days" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activity_Status" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Tasks" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Completed_Tasks" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total_Files" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Waiting_Days" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Approvals" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Project_Income_Vs_Expense" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Part_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Implementation_period" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Project_Classification" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="message" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
 </root>

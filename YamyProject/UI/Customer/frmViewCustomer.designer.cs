@@ -156,7 +156,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 37);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(2, 30);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(615, 147);
@@ -370,7 +370,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 184);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(2, 177);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(615, 217);
@@ -510,6 +510,7 @@
             this.txtFax.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFax.Location = new System.Drawing.Point(427, 36);
             this.txtFax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFax.MaxLength = 15;
             this.txtFax.Name = "txtFax";
             this.txtFax.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtFax.PlaceholderText = "Mobile Or Fax";
@@ -533,6 +534,7 @@
             this.txtWorkPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtWorkPhone.Location = new System.Drawing.Point(291, 36);
             this.txtWorkPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtWorkPhone.MaxLength = 15;
             this.txtWorkPhone.Name = "txtWorkPhone";
             this.txtWorkPhone.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtWorkPhone.PlaceholderText = "Work Phone";
@@ -602,6 +604,7 @@
             this.txtMainPhone.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMainPhone.Location = new System.Drawing.Point(156, 36);
             this.txtMainPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMainPhone.MaxLength = 15;
             this.txtMainPhone.Name = "txtMainPhone";
             this.txtMainPhone.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtMainPhone.PlaceholderText = "Main Phone";
@@ -690,10 +693,10 @@
             this.guna2GroupBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(2, 401);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(2, 394);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(615, 181);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(615, 188);
             this.guna2GroupBox3.TabIndex = 5;
             this.guna2GroupBox3.Text = "Account Settings & Other";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -5);
@@ -873,20 +876,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(617, 37);
+            this.panel4.Location = new System.Drawing.Point(617, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 580);
+            this.panel4.Size = new System.Drawing.Size(2, 587);
             this.panel4.TabIndex = 13;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 580);
+            this.panel3.Size = new System.Drawing.Size(2, 587);
             this.panel3.TabIndex = 12;
             // 
             // headerUC1

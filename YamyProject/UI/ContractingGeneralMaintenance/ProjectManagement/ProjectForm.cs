@@ -53,19 +53,57 @@ namespace YamyProject.UI.ContractingGeneralMaintenance.ProjectManagement
 
             if (id == 0)
             {
-                int projectId = Convert.ToInt32(DBClass.ExecuteScalar(@"
-                                                    INSERT INTO tbl_projects (code, name, category, description, start_date, end_date, country_id, city_id) 
-                                                    VALUES (@code, @name, @category, @description, @start_date, @end_date, @country_id, @city_id);
-                                                    SELECT LAST_INSERT_ID();",
+                int projectId = Convert.ToInt32(
+                    DBClass.ExecuteScalar(//@"
+                                          //INSERT INTO tbl_projects (code, name, category, description, start_date, end_date, country_id, city_id) 
+                                          //VALUES (@code, @name, @category, @description, @start_date, @end_date, @country_id, @city_id);
+                                          //SELECT LAST_INSERT_ID();",
+                                          //DBClass.CreateParameter("@code", txtCode),
+                                          //DBClass.CreateParameter("@name", txtName.Text),
+                                          //DBClass.CreateParameter("@category", txtBudget.Text),
+                                          //DBClass.CreateParameter("@description", txtActualCost.Text),
+                                          //DBClass.CreateParameter("@start_date", dtStart.Value.Date),
+                                          //DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
+                                          //DBClass.CreateParameter("@country_id", 0),
+                                          //DBClass.CreateParameter("@city_id", 0)
+                                          //)
+
+                                        @"INSERT INTO tbl_projects(code, name, name_ar, category, description, start_date, end_date, country_id, city_id, emirate, status, type, extend_delay, execution_period_months, customer, contractor, consultant, location, details, contract_value, additional_value, deduction_value, total_value, billed_to_date, expenses, balance, area, plot_number, block, contact_person, contact_person_number)
+                                                    VALUES(@code, @name, @name_ar, @category, @description, @start_date, @end_date, @country_id, @city_id, @emirate, @status, @type, @extend_delay, @execution_period_months, @customer, @contractor, @consultant, @location, @details, @contract_value, @additional_value, @deduction_value, @total_value, @billed_to_date, @expenses, @balance, @area, @plot_number, @block, @contact_person, @contact_person_number);
+                                        SELECT LAST_INSERT_ID(); ",
                                                     DBClass.CreateParameter("@code", txtCode),
                                                     DBClass.CreateParameter("@name", txtName.Text),
-                                                    DBClass.CreateParameter("@category", txtBudget.Text),
+                                                    DBClass.CreateParameter("@name_ar", txtName.Text),
+                                                    DBClass.CreateParameter("@category", ""),
                                                     DBClass.CreateParameter("@description", txtActualCost.Text),
                                                     DBClass.CreateParameter("@start_date", dtStart.Value.Date),
                                                     DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
                                                     DBClass.CreateParameter("@country_id", 0),
-                                                    DBClass.CreateParameter("@city_id", 0)
-                                                ));
+                                                    DBClass.CreateParameter("@city_id", 0),
+                                                    DBClass.CreateParameter("@emirate", ""),
+                                                    DBClass.CreateParameter("@status", "Approved"),
+                                                    DBClass.CreateParameter("@type", "Project"),
+                                                    DBClass.CreateParameter("@extend_delay", DateTime.Now.Date),
+                                                    DBClass.CreateParameter("@execution_period_months", 0),
+                                                    DBClass.CreateParameter("@customer", 0),
+                                                    DBClass.CreateParameter("@contractor", ""),
+                                                    DBClass.CreateParameter("@consultant", ""),
+                                                    DBClass.CreateParameter("@location", ""),
+                                                    DBClass.CreateParameter("@details", ""),
+                                                    DBClass.CreateParameter("@contract_value", 0),
+                                                    DBClass.CreateParameter("@additional_value", 0),
+                                                    DBClass.CreateParameter("@deduction_value", 0),
+                                                    DBClass.CreateParameter("@total_value", 0),
+                                                    DBClass.CreateParameter("@billed_to_date", 0),
+                                                    DBClass.CreateParameter("@expenses", 0),
+                                                    DBClass.CreateParameter("@balance", 0),
+                                                    DBClass.CreateParameter("area", ""),
+                                                    DBClass.CreateParameter("plot_number", ""),
+                                                    DBClass.CreateParameter("block", ""),
+                                                    DBClass.CreateParameter("contact_person", ""),
+                                                    DBClass.CreateParameter("contact_person_number", "")
+                                                    )
+                    );
 
                 Utilities.LogAudit(frmLogin.userId, "Add Eng Project", "Eng Project", projectId,
                     "Added New Eng Project: " + txtName.Text + " (Code: " + txtCode + ")");
@@ -74,20 +112,60 @@ namespace YamyProject.UI.ContractingGeneralMaintenance.ProjectManagement
             }
             else
             {
+                //DBClass.ExecuteNonQuery(@"
+                //    UPDATE tbl_projects
+                //    SET code = @code, name = @name, category = @category, description = @description, 
+                //        start_date = @start_date, end_date = @end_date, country_id  = @country_id, city_id = @city_id, status = @status
+                //    WHERE id = @id;",
+                //    DBClass.CreateParameter("@code", txtCode),
+                //    DBClass.CreateParameter("@name", txtName.Text),
+                //    DBClass.CreateParameter("@category", txtBudget.Text),
+                //    DBClass.CreateParameter("@description", txtActualCost.Text),
+                //    DBClass.CreateParameter("@start_date", dtStart.Value.Date),
+                //    DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
+                //    DBClass.CreateParameter("@country_id", 0),
+                //    DBClass.CreateParameter("@city_id", 0),
+                //    DBClass.CreateParameter("@status", "Pending"),
+                //    DBClass.CreateParameter("@id", id)
+                //);
                 DBClass.ExecuteNonQuery(@"
                     UPDATE tbl_projects
-                    SET code = @code, name = @name, category = @category, description = @description, 
-                        start_date = @start_date, end_date = @end_date, country_id  = @country_id, city_id = @city_id, status = @status
+                    SET code = @code, name = @name, name_ar = @name_ar, category = @category, description = @description, 
+                        start_date = @start_date, end_date = @end_date, country_id  = @country_id, city_id = @city_id,emirate = @emirate , status = @status, type = @type, extend_delay = @extend_delay, execution_period_months = @execution_period_months, 
+                        customer = @customer, contractor = @contractor, consultant = @consultant, location = @location, details = @details, contract_value = @contract_value, additional_value = @additional_value, deduction_value = @deduction_value, total_value = @total_value, billed_to_date = @billed_to_date, expenses = @expenses, balance = @balance,
+                        area = @area,plot_number = @plot_number,block=@block,contact_person = @contact_person,contact_person_number = @contact_person_number
                     WHERE id = @id;",
-                    DBClass.CreateParameter("@code", txtCode),
-                    DBClass.CreateParameter("@name", txtName.Text),
-                    DBClass.CreateParameter("@category", txtBudget.Text),
-                    DBClass.CreateParameter("@description", txtActualCost.Text),
-                    DBClass.CreateParameter("@start_date", dtStart.Value.Date),
-                    DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
-                    DBClass.CreateParameter("@country_id", 0),
-                    DBClass.CreateParameter("@city_id", 0),
-                    DBClass.CreateParameter("@status", "Pending"),
+                                                    DBClass.CreateParameter("@code", txtCode),
+                                                    DBClass.CreateParameter("@name", txtName.Text),
+                                                    DBClass.CreateParameter("@name_ar", txtName.Text),
+                                                    DBClass.CreateParameter("@category", ""),
+                                                    DBClass.CreateParameter("@description", txtActualCost.Text),
+                                                    DBClass.CreateParameter("@start_date", dtStart.Value.Date),
+                                                    DBClass.CreateParameter("@end_date", dtEnd.Value.Date),
+                                                    DBClass.CreateParameter("@country_id", 0),
+                                                    DBClass.CreateParameter("@city_id", 0),
+                                                    DBClass.CreateParameter("@emirate", ""),
+                                                    DBClass.CreateParameter("@status", "Approved"),
+                                                    DBClass.CreateParameter("@type", "Project"),
+                                                    DBClass.CreateParameter("@extend_delay", DateTime.Now.Date),
+                                                    DBClass.CreateParameter("@execution_period_months", 0),
+                                                    DBClass.CreateParameter("@customer", 0),
+                                                    DBClass.CreateParameter("@contractor", ""),
+                                                    DBClass.CreateParameter("@consultant", ""),
+                                                    DBClass.CreateParameter("@location", ""),
+                                                    DBClass.CreateParameter("@details", ""),
+                                                    DBClass.CreateParameter("@contract_value", 0),
+                                                    DBClass.CreateParameter("@additional_value", 0),
+                                                    DBClass.CreateParameter("@deduction_value", 0),
+                                                    DBClass.CreateParameter("@total_value", 0),
+                                                    DBClass.CreateParameter("@billed_to_date", 0),
+                                                    DBClass.CreateParameter("@expenses", 0),
+                                                    DBClass.CreateParameter("@balance", 0),
+                                                    DBClass.CreateParameter("area", ""),
+                                                    DBClass.CreateParameter("plot_number", ""),
+                                                    DBClass.CreateParameter("block", ""),
+                                                    DBClass.CreateParameter("contact_person", ""),
+                                                    DBClass.CreateParameter("contact_person_number", ""),
                     DBClass.CreateParameter("@id", id)
                 );
 

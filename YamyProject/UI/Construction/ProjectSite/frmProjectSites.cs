@@ -61,7 +61,15 @@ namespace YamyProject
                             DBClass.CreateParameter("locationId", cmbProjectLocation.SelectedValue.ToString()),
                             DBClass.CreateParameter("plotNumber", txtPlotNumber.Text),
                             DBClass.CreateParameter("address", txtAddress.Text));
-                Utilities.LogAudit(frmLogin.userId, "Add Project Site", "Project Site", refId, "Added Project Site: " + txtSiteName.Text);
+                if (refId != 0)
+                {
+                    Utilities.LogAudit(frmLogin.userId, "Add Project Site", "Project Site", refId, "Added Project Site: " + txtSiteName.Text);
+                }
+                else
+                {
+                    string message = Utilities.LastLogError();
+                    MessageBox.Show("Error Check your data" + message);
+                }
             }
             else
             {

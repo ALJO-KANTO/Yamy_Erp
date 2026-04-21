@@ -17,6 +17,7 @@ namespace YamyProject.UI.Banking
         public frmCreditCardRegister(int _id=0)
         {
             InitializeComponent();
+            Localization.LocalizationManager.LocalizeForm(this);
             this.id = _id;
         }
         private void frmCreditCardRegister_Load(object sender, EventArgs e)

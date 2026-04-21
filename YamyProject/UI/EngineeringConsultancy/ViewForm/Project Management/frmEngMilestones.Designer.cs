@@ -53,15 +53,19 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpProject = new Guna.UI2.WinForms.Guna2GroupBox();
             this.lblProject = new System.Windows.Forms.Label();
             this.cmbProject = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblPhase = new System.Windows.Forms.Label();
             this.cmbPhase = new Guna.UI2.WinForms.Guna2ComboBox();
             this.grpMilestone = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAmount = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numValuePercentage = new System.Windows.Forms.NumericUpDown();
             this.lblMilestone = new System.Windows.Forms.Label();
             this.txtMilestone = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblDueDate = new System.Windows.Forms.Label();
@@ -76,8 +80,11 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.dgvMilestones = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFormName = new Guna.UI2.WinForms.Guna2Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtContractValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.grpProject.SuspendLayout();
             this.grpMilestone.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numValuePercentage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMilestones)).BeginInit();
             this.panel1.SuspendLayout();
@@ -118,6 +125,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.cmbProject.FocusedColor = System.Drawing.Color.Empty;
             this.cmbProject.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbProject.IntegralHeight = false;
             this.cmbProject.ItemHeight = 22;
             this.cmbProject.Location = new System.Drawing.Point(90, 45);
             this.cmbProject.Name = "cmbProject";
@@ -154,6 +162,10 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // grpMilestone
             // 
             this.grpMilestone.BorderRadius = 5;
+            this.grpMilestone.Controls.Add(this.txtContractValue);
+            this.grpMilestone.Controls.Add(this.label2);
+            this.grpMilestone.Controls.Add(this.txtAmount);
+            this.grpMilestone.Controls.Add(this.numValuePercentage);
             this.grpMilestone.Controls.Add(this.lblMilestone);
             this.grpMilestone.Controls.Add(this.txtMilestone);
             this.grpMilestone.Controls.Add(this.lblDueDate);
@@ -165,6 +177,8 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.grpMilestone.Controls.Add(this.btnAdd);
             this.grpMilestone.Controls.Add(this.btnUpdate);
             this.grpMilestone.Controls.Add(this.btnClear);
+            this.grpMilestone.Controls.Add(this.label1);
+            this.grpMilestone.Controls.Add(this.label3);
             this.grpMilestone.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.grpMilestone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.grpMilestone.Location = new System.Drawing.Point(20, 145);
@@ -174,11 +188,56 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.grpMilestone.TabStop = false;
             this.grpMilestone.Text = "Milestone Details";
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(823, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 23);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Amount";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtAmount.BorderRadius = 5;
+            this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAmount.DefaultText = "";
+            this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtAmount.Location = new System.Drawing.Point(896, 41);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.PlaceholderText = "";
+            this.txtAmount.SelectedText = "";
+            this.txtAmount.Size = new System.Drawing.Size(132, 24);
+            this.txtAmount.TabIndex = 14;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(641, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 23);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "% Of Contract Value";
+            // 
+            // numValuePercentage
+            // 
+            this.numValuePercentage.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.numValuePercentage.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.numValuePercentage.Location = new System.Drawing.Point(754, 42);
+            this.numValuePercentage.Name = "numValuePercentage";
+            this.numValuePercentage.Size = new System.Drawing.Size(63, 23);
+            this.numValuePercentage.TabIndex = 12;
+            this.numValuePercentage.ValueChanged += new System.EventHandler(this.numValuePercentage_ValueChanged);
+            // 
             // lblMilestone
             // 
             this.lblMilestone.BackColor = System.Drawing.Color.Transparent;
             this.lblMilestone.ForeColor = System.Drawing.Color.Black;
-            this.lblMilestone.Location = new System.Drawing.Point(37, 46);
+            this.lblMilestone.Location = new System.Drawing.Point(20, 45);
             this.lblMilestone.Name = "lblMilestone";
             this.lblMilestone.Size = new System.Drawing.Size(72, 23);
             this.lblMilestone.TabIndex = 0;
@@ -191,7 +250,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.txtMilestone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMilestone.DefaultText = "";
             this.txtMilestone.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMilestone.Location = new System.Drawing.Point(110, 45);
+            this.txtMilestone.Location = new System.Drawing.Point(90, 43);
             this.txtMilestone.Name = "txtMilestone";
             this.txtMilestone.PlaceholderText = "";
             this.txtMilestone.SelectedText = "";
@@ -202,7 +261,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // 
             this.lblDueDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDueDate.ForeColor = System.Drawing.Color.Black;
-            this.lblDueDate.Location = new System.Drawing.Point(430, 46);
+            this.lblDueDate.Location = new System.Drawing.Point(421, 84);
             this.lblDueDate.Name = "lblDueDate";
             this.lblDueDate.Size = new System.Drawing.Size(64, 23);
             this.lblDueDate.TabIndex = 2;
@@ -211,7 +270,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // dtDueDate
             // 
             this.dtDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDueDate.Location = new System.Drawing.Point(500, 46);
+            this.dtDueDate.Location = new System.Drawing.Point(491, 84);
             this.dtDueDate.Name = "dtDueDate";
             this.dtDueDate.Size = new System.Drawing.Size(120, 23);
             this.dtDueDate.TabIndex = 3;
@@ -220,7 +279,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // 
             this.lblPercent.BackColor = System.Drawing.Color.Transparent;
             this.lblPercent.ForeColor = System.Drawing.Color.Black;
-            this.lblPercent.Location = new System.Drawing.Point(33, 90);
+            this.lblPercent.Location = new System.Drawing.Point(20, 90);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(72, 23);
             this.lblPercent.TabIndex = 4;
@@ -228,19 +287,18 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // 
             // numPercent
             // 
-            //this.numPercent.BackColor = System.Drawing.Color.Transparent;
             this.numPercent.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.numPercent.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.numPercent.Location = new System.Drawing.Point(110, 86);
+            this.numPercent.Location = new System.Drawing.Point(98, 88);
             this.numPercent.Name = "numPercent";
-            this.numPercent.Size = new System.Drawing.Size(63, 25);
+            this.numPercent.Size = new System.Drawing.Size(63, 23);
             this.numPercent.TabIndex = 5;
             // 
             // lblStatus
             // 
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblStatus.Location = new System.Drawing.Point(261, 93);
+            this.lblStatus.Location = new System.Drawing.Point(177, 88);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(46, 23);
             this.lblStatus.TabIndex = 6;
@@ -256,7 +314,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.cmbStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbStatus.ItemHeight = 22;
-            this.cmbStatus.Location = new System.Drawing.Point(310, 86);
+            this.cmbStatus.Location = new System.Drawing.Point(226, 81);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(150, 28);
             this.cmbStatus.TabIndex = 7;
@@ -301,24 +359,24 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             // dgvMilestones
             // 
             this.dgvMilestones.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvMilestones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMilestones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMilestones.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.dgvMilestones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMilestones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMilestones.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvMilestones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvMilestones.Location = new System.Drawing.Point(20, 271);
             this.dgvMilestones.Name = "dgvMilestones";
@@ -380,6 +438,32 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.lblFormName.TabIndex = 4;
             this.lblFormName.Text = "Project Milestones";
             // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(413, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 23);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Contract Value";
+            // 
+            // txtContractValue
+            // 
+            this.txtContractValue.BackColor = System.Drawing.Color.Transparent;
+            this.txtContractValue.BorderRadius = 5;
+            this.txtContractValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtContractValue.DefaultText = "";
+            this.txtContractValue.Enabled = false;
+            this.txtContractValue.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContractValue.Location = new System.Drawing.Point(497, 42);
+            this.txtContractValue.Name = "txtContractValue";
+            this.txtContractValue.PlaceholderText = "";
+            this.txtContractValue.ReadOnly = true;
+            this.txtContractValue.SelectedText = "";
+            this.txtContractValue.Size = new System.Drawing.Size(132, 24);
+            this.txtContractValue.TabIndex = 16;
+            // 
             // frmEngMilestones
             // 
             this.ClientSize = new System.Drawing.Size(1084, 611);
@@ -395,6 +479,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
             this.Load += new System.EventHandler(this.frmEngMilestones_Load);
             this.grpProject.ResumeLayout(false);
             this.grpMilestone.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numValuePercentage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMilestones)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -406,5 +491,11 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
 
         private Panel panel1;
         private Guna.UI2.WinForms.Guna2Button lblFormName;
+        private Label label1;
+        private NumericUpDown numValuePercentage;
+        private Label label2;
+        private Guna.UI2.WinForms.Guna2TextBox txtAmount;
+        private Guna.UI2.WinForms.Guna2TextBox txtContractValue;
+        private Label label3;
     }
 }

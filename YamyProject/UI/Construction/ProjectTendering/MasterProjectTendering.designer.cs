@@ -121,6 +121,7 @@
             this.btnRestore.Size = new System.Drawing.Size(147, 27);
             this.btnRestore.TabIndex = 5;
             this.btnRestore.Text = "Restore";
+            this.btnRestore.Visible = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnDelete
@@ -141,6 +142,7 @@
             this.btnDelete.Size = new System.Drawing.Size(147, 27);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Tender";
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
@@ -161,6 +163,7 @@
             this.btnEdit.Size = new System.Drawing.Size(137, 27);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit Tender";
+            this.btnEdit.Visible = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dgView
@@ -208,8 +211,8 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgView.RowHeadersVisible = false;
-            this.dgView.RowTemplate.Height = 30;
-            this.dgView.Size = new System.Drawing.Size(1211, 328);
+            this.dgView.RowTemplate.Height = 25;
+            this.dgView.Size = new System.Drawing.Size(1211, 335);
             this.dgView.TabIndex = 6;
             this.dgView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgView.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -251,7 +254,7 @@
             this.panel2.Controls.Add(this.cmbProject);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 37);
+            this.panel2.Location = new System.Drawing.Point(2, 30);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1211, 54);
             this.panel2.TabIndex = 7;
@@ -296,7 +299,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(641, 1);
             this.label2.Name = "label2";
@@ -324,7 +327,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label11.Location = new System.Drawing.Point(473, 1);
             this.label11.Name = "label11";
@@ -454,9 +457,9 @@
             // 
             this.panel3.Controls.Add(this.dgView);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 91);
+            this.panel3.Location = new System.Drawing.Point(2, 84);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1211, 328);
+            this.panel3.Size = new System.Drawing.Size(1211, 335);
             this.panel3.TabIndex = 8;
             // 
             // panel4
@@ -513,7 +516,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvItems.RowHeadersVisible = false;
-            this.dgvItems.RowTemplate.Height = 30;
+            this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.Size = new System.Drawing.Size(1211, 145);
             this.dgvItems.TabIndex = 6;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -543,7 +546,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 600);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1211, 2);
             this.panel5.TabIndex = 14;
@@ -552,20 +555,20 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1213, 37);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Location = new System.Drawing.Point(1213, 30);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2, 565);
+            this.panel6.Size = new System.Drawing.Size(2, 572);
             this.panel6.TabIndex = 13;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(0, 37);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Location = new System.Drawing.Point(0, 30);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(2, 565);
+            this.panel7.Size = new System.Drawing.Size(2, 572);
             this.panel7.TabIndex = 12;
             // 
             // headerUC1
