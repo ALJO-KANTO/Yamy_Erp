@@ -181,32 +181,60 @@ namespace YamyProject
 
         public static object ExecuteScalar(string query, params MySqlParameter[] parameters)
         {
+            using (MySqlConnection connection = new MySqlConnection(GetConnectionString()))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    if (parameters != null)
+                        command.Parameters.AddRange(parameters);
+
+                    connection.Open();
+                    var result = command.ExecuteScalar();
+                    return result == DBNull.Value ? null : result;
+                }
+            }
+        }
+        public static object ExecuteScalarNew(MySqlConnection con, MySqlTransaction tran, string query, params MySqlParameter[] parameters)
+        {
+            // con, tran , query and parameters
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(GetConnectionString()))
+                using (MySqlCommand cmd = new MySqlCommand(query, con, tran))
                 {
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    if (parameters != null && parameters.Length > 0)
                     {
-                        if (parameters != null && parameters.Length > 0)
-                        {
-                            command.Parameters.AddRange(parameters);
-                        }
-
-                        connection.Open();
-
-                        var result = command.ExecuteScalar();
-
-                        return result == DBNull.Value ? null : result;
+                        cmd.Parameters.AddRange(parameters);
                     }
+
+                    object result = cmd.ExecuteScalar();
+
+                    return result == DBNull.Value ? null : result;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
-                return 0;
+                throw new Exception("Error executing scalar query: " + ex.Message, ex);
             }
         }
+        internal static MySqlDataReader ExecuteReaderNew(MySqlConnection con, MySqlTransaction tran, string query, params MySqlParameter[] parameters)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, con, tran);
 
+                if (parameters != null && parameters.Length > 0)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+
+                return cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("Error executing reader: " + ex.Message, ex);
+                return null;
+            }
+        }
 
         public static MySqlDataReader ExecuteReader(string query, params MySqlParameter[] prmArray)
         {
@@ -229,6 +257,22 @@ namespace YamyProject
             }
         }
 
+        internal static int ExecuteNonQueryNew(MySqlConnection con, MySqlTransaction tran, string query, params MySqlParameter[] parameters)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, con, tran);
+                if (parameters != null && parameters.Length > 0)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error executing non-query: " + ex.Message, ex);
+            }
+        }
         public static DataTable ExecuteDataTable(string query, params MySqlParameter[] prmArray)
         {
             DataTable dt = new DataTable();
@@ -397,6 +441,7 @@ namespace YamyProject
         {
             return new MySqlConnection(GetConnectionString());
         }
+
     }
 
     //class DBClass

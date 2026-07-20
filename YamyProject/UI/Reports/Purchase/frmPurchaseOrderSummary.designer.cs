@@ -491,8 +491,6 @@
             // 
             this.dgvPurchase.AllowUserToAddRows = false;
             this.dgvPurchase.AllowUserToDeleteRows = false;
-            this.dgvPurchase.AllowUserToResizeColumns = false;
-            this.dgvPurchase.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvPurchase.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPurchase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;

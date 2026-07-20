@@ -462,8 +462,6 @@
             // 
             this.dgvSales.AllowUserToAddRows = false;
             this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.AllowUserToResizeColumns = false;
-            this.dgvSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
@@ -497,7 +495,7 @@
             this.dgvSales.RowHeadersVisible = false;
             this.dgvSales.RowTemplate.Height = 25;
             this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSales.Size = new System.Drawing.Size(1317, 720);
+            this.dgvSales.Size = new System.Drawing.Size(1317, 614);
             this.dgvSales.TabIndex = 19;
             this.dgvSales.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSales.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -543,7 +541,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 174);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1317, 720);
+            this.panel2.Size = new System.Drawing.Size(1317, 614);
             this.panel2.TabIndex = 21;
             // 
             // headerUC1
@@ -563,7 +561,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1317, 894);
+            this.ClientSize = new System.Drawing.Size(1317, 788);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2Panel3);

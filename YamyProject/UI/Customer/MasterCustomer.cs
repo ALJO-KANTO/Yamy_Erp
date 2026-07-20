@@ -79,7 +79,9 @@ namespace YamyProject
                                     'Check Cancel (Customer)',
                                     'SalesReturn Invoice',
                                     'Credit Note',
-                                    'PDC Receivable'
+                                    'PDC Receivable',
+                                    'Project Invoice',
+                                    'Project Receipt'
                                 )
                             GROUP BY hum_id
                         ) t ON t.hum_id = c.id
@@ -138,11 +140,13 @@ namespace YamyProject
                                     -- Amount logic
                                     CASE 
 		                                WHEN t.type = 'Customer Receipt' THEN IF(t.debit = 0, t.credit, t.debit)
+		                                WHEN t.type = 'Project Receipt' THEN IF(t.debit = 0, t.credit, t.debit)
 		                                WHEN t.type = 'Sales Invoice Cash' THEN IF(t.debit = 0, t.credit, t.debit)
 		                                WHEN t.type = 'Customer Opening Balance' AND t.credit > 0 THEN -t.credit
 		                                WHEN t.type = 'Check Cancel (Customer)' THEN t.debit
                                         WHEN t.type = 'PDC Receivable' THEN IF(t.debit = 0, t.credit, t.debit)
                                         WHEN t.type = 'Credit Note' THEN IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'Project Invoice' THEN IF(t.debit = 0, t.credit, t.debit)
 		                                WHEN t.type LIKE 'Customer%' OR t.type LIKE 'Sales%' THEN 
 		                                    IF(t.debit = 0, t.credit, t.debit)
 		                                ELSE NULL 
@@ -151,6 +155,8 @@ namespace YamyProject
                                     CASE
                                         WHEN t.type = 'Sales Invoice Cash' THEN IF(t.debit = 0, t.credit, t.debit)
                                         WHEN t.type = 'Customer Receipt' THEN IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'Project Receipt' THEN IF(t.debit = 0, t.credit, t.debit)
+                                        WHEN t.type = 'Project Receipt' THEN IF(t.debit = 0, t.credit, t.debit)
                                         WHEN t.type = 'SalesReturn Invoice' THEN IF(t.debit = 0, t.credit, t.debit)
                                         WHEN t.type = 'Credit Note' THEN IF(t.debit = 0, t.credit, t.debit)
                                         ELSE 0
@@ -167,7 +173,9 @@ namespace YamyProject
                                     'Check Cancel (Customer)',
                                     'SalesReturn Invoice',
                                     'Credit Note',
-                                    'PDC Receivable'
+                                    'PDC Receivable',
+                                    'Project Invoice',
+                                    'Project Receipt'
                                 )
                             )
                             , Running_Balance AS (
@@ -214,7 +222,7 @@ namespace YamyProject
                 }
                 if (decimal.TryParse(row["Paid Amt"]?.ToString(), out paidAmount))
                 {
-                    if (_type == "Customer Receipt" || _type == "SalesReturn Invoice" || _type == "Credit Note" || _type == "PDC Receivable")
+                    if (_type == "Customer Receipt" || _type == "Project Receipt" || _type == "SalesReturn Invoice" || _type == "Credit Note" || _type == "PDC Receivable")
                     {
                         totalPaidAmount += paidAmount;
                         totalAmount = totalAmount - paidAmount;
@@ -280,7 +288,9 @@ namespace YamyProject
                                         'Check Cancel (Customer)', 
                                         'SalesReturn Invoice', 
                                         'Credit Note', 
-                                        'PDC Receivable'
+                                        'PDC Receivable',
+                                        'Project Invoice',
+                                        'Project Receipt'
                                     );
                                 ";     
             DataTable dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
@@ -319,10 +329,12 @@ namespace YamyProject
                             t.type, 
                             CASE 
                                 WHEN t.type = 'Customer Receipt' THEN -IF(t.debit = 0, t.credit, t.debit)
+                                WHEN t.type = 'Project Receipt' THEN -IF(t.debit = 0, t.credit, t.debit)
                                 WHEN t.type = 'Customer Advance Payment' THEN -IF(t.debit = 0, t.credit, t.debit)
                                 WHEN t.type = 'Sales Invoice Cash' THEN IF(t.debit = 0, t.credit, t.debit)
                                 WHEN t.type = 'Customer Opening Balance' AND t.credit > 0 THEN -t.credit
                                 WHEN t.type = 'Check Cancel (Customer)' THEN t.debit
+                                WHEN t.type = 'Project Invoice' THEN IF(t.debit = 0, t.credit, t.debit)
                                 WHEN t.type LIKE 'Customer%' OR t.type LIKE 'Sales%' THEN 
                                     IF(t.debit = 0, t.credit, t.debit)
                                 ELSE NULL 

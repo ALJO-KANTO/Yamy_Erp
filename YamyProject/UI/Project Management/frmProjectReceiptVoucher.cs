@@ -383,6 +383,9 @@ namespace YamyProject
             {
                 AddFileData(id);
             }
+
+            EventHub.RefreshProjectInvoice();
+
             return true;
         }
 
@@ -459,6 +462,11 @@ namespace YamyProject
                         DBClass.CreateParameter("id", currentInvId)
                     );
                     decimal totalPaid = result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                    object objAdvance = DBClass.ExecuteScalar("SELECT advance_amount FROM tbl_projects_invoices WHERE invoice_id = @id",
+                        DBClass.CreateParameter("id", currentInvId)
+                    );
+                    decimal advance = objAdvance != DBNull.Value ? Convert.ToDecimal(objAdvance) : 0;
+                    totalPaid += advance;
                     //decimal totalPaidInvoice = string.IsNullOrEmpty(txtPaid.Text) ? 0 : decimal.Parse(txtPaid.Text);
                     decimal remaining = net - totalPaid; //totalPaidInvoice;
 
@@ -471,14 +479,17 @@ namespace YamyProject
                 }
             }
 
-            insertJournals(voucherType, payment, description.ToString());
+            insertJournals(voucherType, payment, description.ToString(), hum);
+
+            EventHub.RefreshProjectInvoice();
         }
-        void insertJournals(string voucherType, string amount, string description)
+        void insertJournals(string voucherType, string amount, string description,int humId)
         {
             CommonInsert.addTransactionEntry(dtOpen.Value.Date,
                       cmbDebitAccountName.SelectedValue.ToString(),
-                      amount, "0", id.ToString(), "0", "Project Receipt", "PROJECT RECEIPT", "Receipt Voucher NO. " + code,
+                      amount, "0", id.ToString(), humId.ToString(), "Project Receipt", "PROJECT RECEIPT", "Receipt Voucher NO. " + code,
                        frmLogin.userId, DateTime.Now.Date, txtPVCode.Text, projectId);
+
             CommonInsert.addTransactionEntry(dtOpen.Value.Date,
                                   cmbCreditAccountName.SelectedValue.ToString(),
                                  "0", amount, id.ToString(), projectId.ToString(), "Project Receipt", "PROJECT RECEIPT", "Project Receipt Voucher NO. " + code,

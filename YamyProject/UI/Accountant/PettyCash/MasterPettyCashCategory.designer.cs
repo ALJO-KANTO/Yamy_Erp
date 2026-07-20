@@ -38,9 +38,9 @@
             this.dgvCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvPetty = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.headerUC1 = new YamyProject.HeaderUC();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNewRequest = new Guna.UI2.WinForms.Guna2Button();
-            this.headerUC1 = new YamyProject.HeaderUC();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPetty)).BeginInit();
@@ -86,7 +86,7 @@
             this.dgvCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowHeadersWidth = 51;
-            this.dgvCustomer.RowTemplate.Height = 30;
+            this.dgvCustomer.RowTemplate.Height = 25;
             this.dgvCustomer.Size = new System.Drawing.Size(601, 482);
             this.dgvCustomer.TabIndex = 6;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -113,8 +113,8 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.dgvPetty);
-            this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -167,7 +167,7 @@
             this.dgvPetty.RowTemplate.Height = 25;
             this.dgvPetty.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPetty.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvPetty.Size = new System.Drawing.Size(601, 446);
+            this.dgvPetty.Size = new System.Drawing.Size(601, 482);
             this.dgvPetty.TabIndex = 8;
             this.dgvPetty.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvPetty.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -191,6 +191,18 @@
             this.dgvPetty.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPetty.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // headerUC1
+            // 
+            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerUC1.FormText = "";
+            this.headerUC1.HeaderText = "";
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
+            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerUC1.Name = "headerUC1";
+            this.headerUC1.Size = new System.Drawing.Size(601, 30);
+            this.headerUC1.TabIndex = 239;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
@@ -200,7 +212,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(601, 36);
-            this.panel1.TabIndex = 9;
+            this.panel1.TabIndex = 240;
             // 
             // btnNewRequest
             // 
@@ -220,19 +232,6 @@
             this.btnNewRequest.Size = new System.Drawing.Size(133, 27);
             this.btnNewRequest.TabIndex = 4;
             this.btnNewRequest.Text = "Add New Category";
-            this.btnNewRequest.Click += new System.EventHandler(this.btnNewRequest_Click);
-            // 
-            // headerUC1
-            // 
-            this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
-            this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.headerUC1.FormText = "";
-            this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(0, 0);
-            this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(601, 30);
-            this.headerUC1.TabIndex = 239;
             // 
             // MasterPettyCashCategory
             // 
@@ -240,9 +239,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(601, 482);
-            this.Controls.Add(this.headerUC1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dgvCustomer);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MasterPettyCashCategory";
@@ -262,8 +261,8 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvCustomer;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2DataGridView dgvPetty;
+        private HeaderUC headerUC1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnNewRequest;
-        private HeaderUC headerUC1;
     }
 }

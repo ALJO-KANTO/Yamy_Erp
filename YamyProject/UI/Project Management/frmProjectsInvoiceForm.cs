@@ -9,18 +9,24 @@ namespace YamyProject.UI.Project_Management
     public partial class frmProjectsInvoiceForm : Form
     {
         int id;
+        private EventHandler customerUpdatedHandler;
+
         public frmProjectsInvoiceForm(int _id = 0)
         {
             InitializeComponent();
             this.id = _id;
+            headerUC1.FormText = this.Text;
             LocalizationManager.LocalizeForm(this);
+            customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
+            EventHub.Customer += customerUpdatedHandler;
         }
 
-        int level4PaymentCreditMethodId, level4VatId, level4RetentionAccount, level4DeductionAccount;
+        int level4PaymentCreditMethodId, level4VatId, level4RetentionAccount, level4DeductionAccount, level4AdvancePayment;
 
         private void frmInvoiceForm_Load(object sender, EventArgs e)
         {
             BindCombos.PopulateProjects(cmbProject);
+            BindCombos.PopulateCustomers(cmbCustomer);
             //cmbProject.DataSource = DBClass.ExecuteDataTable("SELECT CONCAT(CODE ,' - ' , name) as name ,id FROM tbl_projects where id IN (select project_id from tbl_eng_project_phases p)");
             //cmbProject.DisplayMember = "name";
             //cmbProject.ValueMember = "id";
@@ -46,6 +52,8 @@ namespace YamyProject.UI.Project_Management
             cmbAccountCashName.SelectedValue = frmLogin.defaultAccounts.ContainsKey("Sales") ? frmLogin.defaultAccounts["Sales"] : 0;
             level4RetentionAccount = frmLogin.defaultAccounts.ContainsKey("Retention") ? frmLogin.defaultAccounts["Retention"] : 0;
             level4DeductionAccount = frmLogin.defaultAccounts.ContainsKey("Deduction") ? frmLogin.defaultAccounts["Deduction"] : 0;
+            level4AdvancePayment = frmLogin.defaultAccounts.ContainsKey("Customer Advances") ? frmLogin.defaultAccounts["Customer Advances"] : 0;
+
 
             if (id > 0)
             {
@@ -90,7 +98,7 @@ namespace YamyProject.UI.Project_Management
         }
         private void BindInvoice()
         {
-            string query = "SELECT invoice_number as invoice_no,invoice_date,milestone_id,project_id,amount,vat,total,status,account_id,payment_status,paid_amount,description,cost_center_id,retention_amount,retention_percentage,deduction From tbl_projects_invoices WHERE invoice_id = @Id";
+            string query = "SELECT invoice_number as invoice_no,invoice_date,milestone_id,project_id,amount,vat,total,status,account_id,payment_status,paid_amount,description,cost_center_id,retention_amount,retention_percentage,deduction,advance_amount,advance_percentage From tbl_projects_invoices WHERE invoice_id = @Id";
             using (var reader = DBClass.ExecuteReader(query, DBClass.CreateParameter("@Id", id)))
             {
                 if (reader.Read())
@@ -98,6 +106,7 @@ namespace YamyProject.UI.Project_Management
                     txtInvoiceNo.Text = reader["invoice_no"].ToString();
                     dtpInvoiceDate.Text = reader["invoice_date"].ToString();
                     cmbProject.SelectedValue = Convert.ToInt32(reader["project_id"]);
+                    cmbCustomer.SelectedValue = Convert.ToInt32(reader["milestone_id"]);
                     txtAmount.Text = reader["amount"].ToString();
                     txtVatAmount.Text = reader["vat"].ToString();
                     TxtTotalAmount.Text = reader["total"].ToString();
@@ -130,6 +139,22 @@ namespace YamyProject.UI.Project_Management
                     else
                     {
                         txtDeductionAmount.Text = Convert.ToDecimal(reader["deduction"]).ToString("0.00");
+                    }
+                    if (string.IsNullOrEmpty(reader["advance_amount"].ToString()))
+                    {
+                        txtAdvancePayment.Text = "0";
+                    }
+                    else
+                    {
+                        txtAdvancePayment.Text = Convert.ToDecimal(reader["advance_amount"]).ToString("0.00");
+                    }
+                    if (string.IsNullOrEmpty(reader["advance_percentage"].ToString()))
+                    {
+                        txtAdvancePercent.Text = "0";
+                    }
+                    else
+                    {
+                        txtAdvancePercent.Text = Convert.ToDecimal(reader["advance_percentage"]).ToString("0.00");
                     }
                 }
             }
@@ -171,6 +196,12 @@ namespace YamyProject.UI.Project_Management
                 MessageBox.Show("Amount grater than Contract amount", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (cmbCustomer.SelectedValue == null)
+            {
+                MessageBox.Show("Customer Must be Selected.");
+                cmbCustomer.Focus();
+                return false;
+            }
 
             return true;
         }
@@ -203,27 +234,34 @@ namespace YamyProject.UI.Project_Management
                     return;
                 }
 
+                decimal advance = string.IsNullOrEmpty(txtAdvancePayment.Text) ? 0 : decimal.Parse(txtAdvancePayment.Text);
+                decimal paid = 0;
+
                 if (id == 0)
                 {
+                    paid = advance;
                     int invId = int.Parse(
-                        DBClass.ExecuteScalar(@"INSERT INTO tbl_projects_invoices (invoice_number, milestone_id, project_id, amount, status, invoice_date,vat,total,account_id,payment_status,paid_amount,description,cost_center_id,retention_percentage,retention_amount,deduction) 
-                            VALUES (@InvoiceNo, @CustomerId, @ProjectId, @Amount, @Status, @InvoiceDate,@vat,@total,@account_id,@payment_status,@paid_amount,@description,@cost_center_id,@retention_percentage,@retention_amount,@deduction);
+                        DBClass.ExecuteScalar(@"INSERT INTO tbl_projects_invoices (invoice_number, milestone_id, project_id, amount, status, invoice_date,vat_id,vat,total,account_id,payment_status,paid_amount,description,cost_center_id,retention_percentage,retention_amount,deduction,advance_amount,advance_percentage) 
+                            VALUES (@InvoiceNo, @CustomerId, @ProjectId, @Amount, @Status, @InvoiceDate,@vatId,@vat,@total,@account_id,@payment_status,@paid_amount,@description,@cost_center_id,@retention_percentage,@retention_amount,@deduction,@advance_amount,@advance_percentage);
                             SELECT LAST_INSERT_ID();",
                             DBClass.CreateParameter("@InvoiceNo", txtInvoiceNo.Text),
-                            DBClass.CreateParameter("@CustomerId", 0),
+                            DBClass.CreateParameter("@CustomerId", cmbCustomer.SelectedValue),
                             DBClass.CreateParameter("@ProjectId", cmbProject.SelectedValue),
                             DBClass.CreateParameter("@Amount", amount),
                             DBClass.CreateParameter("@Status", cmbStatus.SelectedItem.ToString()),
                             DBClass.CreateParameter("@InvoiceDate", dtpInvoiceDate.Value),
+                            DBClass.CreateParameter("@vatId", cmbVat.SelectedValue),
                             DBClass.CreateParameter("@vat", vatAmount),
                             DBClass.CreateParameter("@total", totalAmount),
                             DBClass.CreateParameter("@account_id", cmbAccountCashName.SelectedValue),
                             DBClass.CreateParameter("@payment_status", "Pending"),
-                            DBClass.CreateParameter("@paid_amount", "0"),
+                            DBClass.CreateParameter("@paid_amount", paid.ToString("0.00")),
                             DBClass.CreateParameter("@cost_center_id", cmbCostCenter.SelectedValue),
-                            DBClass.CreateParameter("retention_amount", string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text.Replace(",", ""))),
-                            DBClass.CreateParameter("retention_percentage", string.IsNullOrEmpty(txtRetentionPercent.Text) ? 0 : Convert.ToDecimal(txtRetentionPercent.Text.Replace(",", ""))),
-                            DBClass.CreateParameter("deduction", string.IsNullOrEmpty(txtDeductionAmount.Text) ? 0 : Convert.ToDecimal(txtDeductionAmount.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@retention_amount", string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@retention_percentage", string.IsNullOrEmpty(txtRetentionPercent.Text) ? 0 : Convert.ToDecimal(txtRetentionPercent.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@deduction", string.IsNullOrEmpty(txtDeductionAmount.Text) ? 0 : Convert.ToDecimal(txtDeductionAmount.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@advance_amount", string.IsNullOrEmpty(txtAdvancePayment.Text) ? 0 : Convert.ToDecimal(txtAdvancePayment.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@advance_percentage", string.IsNullOrEmpty(txtAdvancePercent.Text) ? 0 : Convert.ToDecimal(txtAdvancePercent.Text.Replace(",", ""))),
                             DBClass.CreateParameter("@description", richTextDescription.Text)).ToString());
 
 
@@ -238,24 +276,34 @@ namespace YamyProject.UI.Project_Management
                 }
                 else
                 {
+                    object result = DBClass.ExecuteScalar(
+                        "SELECT SUM(payment) FROM tbl_projects_receipt_voucher_details WHERE inv_id = @id",
+                        DBClass.CreateParameter("id", id)
+                    );
+                    decimal totalPaid = result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                    paid = advance + totalPaid;
+
                     // Update existing invoice logic
-                    DBClass.ExecuteNonQuery("UPDATE tbl_projects_invoices SET invoice_number = @InvoiceNo, milestone_id = @CustomerId, project_id = @ProjectId, amount = @Amount, status = @Status, invoice_date = @InvoiceDate, vat= @vat,total=@total,account_id=@account_id,payment_status=@payment_status,paid_amount=@paid_amount,description=@description,cost_center_id=@cost_center_id,retention_percentage=@retention_percentage,retention_amount=@retention_amount,deduction=@deduction WHERE invoice_id = @Id",
+                    DBClass.ExecuteNonQuery("UPDATE tbl_projects_invoices SET invoice_number = @InvoiceNo, milestone_id = @CustomerId, project_id = @ProjectId, amount = @Amount, status = @Status, invoice_date = @InvoiceDate, vat_id=@vatId, vat= @vat,total=@total,account_id=@account_id,payment_status=@payment_status,paid_amount=@paid_amount,description=@description,cost_center_id=@cost_center_id,retention_percentage=@retention_percentage,retention_amount=@retention_amount,deduction=@deduction,advance_amount=@advance_amount,advance_percentage=@advance_percentage WHERE invoice_id = @Id",
                             DBClass.CreateParameter("@InvoiceNo", txtInvoiceNo.Text),
-                            DBClass.CreateParameter("@CustomerId", 0),
+                            DBClass.CreateParameter("@CustomerId", cmbCustomer.SelectedValue),
                             DBClass.CreateParameter("@ProjectId", cmbProject.SelectedValue),
                             DBClass.CreateParameter("@Amount", amount),
                             DBClass.CreateParameter("@Status", cmbStatus.SelectedItem.ToString()),
                             DBClass.CreateParameter("@InvoiceDate", dtpInvoiceDate.Value),
+                            DBClass.CreateParameter("@vatId", cmbVat.SelectedValue),
                             DBClass.CreateParameter("@vat", vatAmount),
                             DBClass.CreateParameter("@total", totalAmount),
                             DBClass.CreateParameter("@account_id", cmbAccountCashName.SelectedValue),
                             DBClass.CreateParameter("@payment_status", "Pending"),
-                            DBClass.CreateParameter("@paid_amount", "0"),
+                            DBClass.CreateParameter("@paid_amount", paid.ToString("0.00")),
                             DBClass.CreateParameter("@cost_center_id", cmbCostCenter.SelectedValue),
                             DBClass.CreateParameter("@description", richTextDescription.Text),
                             DBClass.CreateParameter("retention_amount", string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text.Replace(",", ""))),
                             DBClass.CreateParameter("retention_percentage", string.IsNullOrEmpty(txtRetentionPercent.Text) ? 0 : Convert.ToDecimal(txtRetentionPercent.Text.Replace(",", ""))),
                             DBClass.CreateParameter("deduction", string.IsNullOrEmpty(txtDeductionAmount.Text) ? 0 : Convert.ToDecimal(txtDeductionAmount.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@advance_amount", string.IsNullOrEmpty(txtAdvancePayment.Text) ? 0 : Convert.ToDecimal(txtAdvancePayment.Text.Replace(",", ""))),
+                            DBClass.CreateParameter("@advance_percentage", string.IsNullOrEmpty(txtAdvancePercent.Text) ? 0 : Convert.ToDecimal(txtAdvancePercent.Text.Replace(",", ""))),
                             DBClass.CreateParameter("@Id", id)
                         );
 
@@ -295,7 +343,7 @@ namespace YamyProject.UI.Project_Management
                 string _accountId = level4PaymentCreditMethodId.ToString();
                 CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
                        _accountId,
-                       totalAmount.ToString(), "0", invId.ToString(), projectId.ToString(), "Project Invoice", "PROJECT INVOICE", "Project Invoice NO. " + txtInvoiceNo.Text,
+                       totalAmount.ToString(), "0", invId.ToString(), cmbCustomer.SelectedValue.ToString(), "Project Invoice", "PROJECT INVOICE", "Project Invoice NO. " + txtInvoiceNo.Text,
                        frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
 
                 CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
@@ -305,16 +353,16 @@ namespace YamyProject.UI.Project_Management
                 if (vatAmount > 0)
                 {
                     CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
-                  level4VatId.ToString(), "0", vatAmount.ToString(), invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
-                  "Vat Output For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
+                      level4VatId.ToString(), "0", vatAmount.ToString(), invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
+                      "Vat Output For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
                 }
                 if (txtRetentionAmount.Text != "0" && !string.IsNullOrEmpty(txtRetentionAmount.Text))
                 {
                     if (decimal.Parse(txtRetentionAmount.Text) > 0)
                     {
                         CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
-                      level4RetentionAccount.ToString(), txtRetentionAmount.Text.ToString().Replace(",", ""), "0", invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
-                      "Retention For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
+                          level4RetentionAccount.ToString(), txtRetentionAmount.Text.ToString().Replace(",", ""), "0", invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
+                          "Retention For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
                     }
                 }
                 if (txtDeductionAmount.Text != "0" && !string.IsNullOrEmpty(txtDeductionAmount.Text))
@@ -322,8 +370,25 @@ namespace YamyProject.UI.Project_Management
                     if (decimal.Parse(txtDeductionAmount.Text) > 0)
                     {
                         CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
-                  level4DeductionAccount.ToString(), txtDeductionAmount.Text.ToString().Replace(",", ""), "0", invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
-                  "Deduction For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
+                          level4DeductionAccount.ToString(), txtDeductionAmount.Text.ToString().Replace(",", ""), "0", invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE",
+                          "Deduction For Invoice No. " + txtInvoiceNo.Text, frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text, projectId);
+                    }
+                }
+                if (txtAdvancePayment.Text != "0" && !string.IsNullOrEmpty(txtAdvancePayment.Text))
+                {
+                    if (!string.IsNullOrEmpty(txtAdvancePayment.Text) && decimal.Parse(txtAdvancePayment.Text.Replace(",", "")) > 0)
+                    {
+                        CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
+                           level4AdvancePayment.ToString(),
+                           txtAdvancePayment.Text.Replace(",", ""), "0", invId.ToString(), "0", "Project Invoice", "PROJECT INVOICE", "Advance For Invoice NO. " + txtInvoiceNo.Text + " Advance Payment",
+                           frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text);
+
+                        CommonInsert.addTransactionEntry(dtpInvoiceDate.Value.Date,
+                           _accountId,
+                            "0", txtAdvancePayment.Text.Replace(",", ""), invId.ToString(), 
+                            cmbCustomer.SelectedValue.ToString(), 
+                            "Project Invoice", "PROJECT INVOICE", "Advance For Invoice NO. " + txtInvoiceNo.Text + " Advance Payment",
+                           frmLogin.userId, DateTime.Now.Date, txtInvoiceNo.Text);
                     }
                 }
             }
@@ -513,6 +578,68 @@ namespace YamyProject.UI.Project_Management
         }
 
         private bool isUpdatingRetention = false;
+        private bool isUpdatingAdvance = false;
+
+        private void txtAdvancePercent_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtAdvancePercent.Focused)
+                return;
+
+            if (decimal.TryParse(txtAdvancePercent.Text, out decimal percent))
+            {
+                isUpdatingAdvance = true;
+
+                decimal amountBeforeVat = string.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDecimal(txtAmount.Text);
+                decimal vat = string.IsNullOrEmpty(txtVatAmount.Text) ? 0 : Convert.ToDecimal(txtVatAmount.Text);
+                decimal retention = string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text);
+                decimal total = amountBeforeVat + vat + retention;
+                decimal advanceAmount = total * (percent / 100);
+
+                txtAdvancePayment.Text = advanceAmount.ToString("0.00");
+
+                isUpdatingAdvance = false;
+            }
+        }
+
+        private void txtAdvancePayment_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtAdvancePayment.Focused)
+                return;
+
+            if (isUpdatingAdvance) return;
+
+            if (decimal.TryParse(txtAdvancePayment.Text, out decimal amount))
+            {
+                isUpdatingAdvance = true;
+
+                decimal amountBeforeVat = string.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDecimal(txtAmount.Text);
+                decimal vat = string.IsNullOrEmpty(txtVatAmount.Text) ? 0 : Convert.ToDecimal(txtVatAmount.Text);
+                decimal retention = string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text);
+                decimal total = amountBeforeVat + vat + retention;
+
+                if (total > 0)
+                {
+                    decimal percent = (amount / total) * 100;
+                    txtAdvancePercent.Text = percent.ToString("0.00");
+                }
+
+                isUpdatingAdvance = false;
+            }
+        }
+
+        private void frmProjectsInvoiceForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            EventHub.Customer -= customerUpdatedHandler;
+        }
+
+        private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCustomer.SelectedValue == null)
+            {
+                MessageBox.Show("Customer Must be Selected.");
+                cmbCustomer.Focus();
+            }
+        }
 
         private void txtDeductionAmount_TextChanged(object sender, EventArgs e)
         {

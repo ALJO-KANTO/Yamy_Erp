@@ -51,6 +51,7 @@ namespace YamyProject
                     ROW_NUMBER() OVER (ORDER BY p.id) AS SN,
                     p.id,
                     p.Code,
+                    p.name Name, 
                     p.owner_name AS `Owner name`,
                     p.part_no AS `Part No`,
                     p.basin_number AS `Basin No`,
@@ -64,7 +65,8 @@ namespace YamyProject
                     p.end_date AS `End Date`,
                     IFNULL(p.last_progress_update,'') AS `Updated On`,
                     c.name_en,
-                    c.name_ar
+                    c.name_ar,
+                    p.priority_color
                     FROM tbl_projects p
                     LEFT JOIN tbl_project_classification c 
                     ON c.id = p.project_classification";
@@ -86,6 +88,7 @@ namespace YamyProject
                     condition += " AND ";
 
                 condition += @"(
+                                    p.name LIKE CONCAT('%', @search, '%') OR
                                     p.owner_name LIKE CONCAT('%', @search, '%') OR
                                     p.part_no LIKE CONCAT('%', @search, '%') OR
                                     p.basin_number LIKE CONCAT('%', @search, '%') OR
@@ -100,6 +103,7 @@ namespace YamyProject
 
             query += condition;
 
+            query += " ORDER BY p.priority_level ";
             DataTable dT = DBClass.ExecuteDataTable(query, parameters.ToArray());
             if (dT == null)
                 return;
@@ -111,10 +115,12 @@ namespace YamyProject
             dgvCustomer.Columns["Code"].Width = 100;
 
             dgvCustomer.Columns["Description of the Project"].MinimumWidth = 200;
+            dgvCustomer.Columns["Name"].MinimumWidth = 200;
             dgvCustomer.Columns["Owner name"].MinimumWidth = 200;
 
             dgvCustomer.Columns["Description of the Project"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvCustomer.Columns["Owner name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvCustomer.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             string savedCulture = Properties.Settings.Default.ApplicationLanguage ?? "ar";
             if (savedCulture == "ar")
@@ -129,6 +135,8 @@ namespace YamyProject
                 dgvCustomer.Columns["name_ar"].Visible = false;
                 dgvCustomer.Columns["name_en"].HeaderText = "Classification";
             }
+
+            dgvCustomer.Columns["priority_color"].Visible = true;
 
             LocalizationManager.LocalizeDataGridViewHeaders(dgvCustomer);
             //if (dgvCustomer.Rows != null && dgvCustomer.Rows.Count > 0)
@@ -415,6 +423,35 @@ namespace YamyProject
 
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
+            }
+        }
+
+        private void dgvCustomer_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvCustomer.Columns.Contains("priority_color"))
+            {
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    var val = row.Cells["priority_color"].Value;
+
+                    if (val != null && val != DBNull.Value)
+                    {
+                        string colorValue = val.ToString();
+
+                        System.Drawing.Color color = System.Drawing.Color.FromName(colorValue);
+
+                        // If color name is invalid, fallback
+                        if (!color.IsKnownColor)
+                            color = System.Drawing.Color.White;
+                        row.DefaultCellStyle.BackColor = color;
+
+                        // Improve readability
+                        if (color == System.Drawing.Color.Red || color == System.Drawing.Color.Green)
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                        else
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                    }
+                }
             }
         }
     }

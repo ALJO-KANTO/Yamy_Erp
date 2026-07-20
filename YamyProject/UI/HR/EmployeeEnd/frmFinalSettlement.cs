@@ -107,7 +107,7 @@ namespace YamyProject
                 }
             }
 
-            using (MySqlDataReader read = DBClass.ExecuteReader("SELECT SUM(Amount) AS amount FROM tbl_loan WHERE EmployeeID = @code AND loanDates >= CURDATE();",
+            using (MySqlDataReader read = DBClass.ExecuteReader("SELECT IFnull(SUM(Amount),0) AS amount FROM tbl_loan WHERE EmployeeID = @code AND loanDates >= CURDATE();",
                 DBClass.CreateParameter("code", txtEmpCode.Text)))
                 if (read.Read())
                     txtEmployeeAdvances.Text = decimal.Parse(read["amount"].ToString()).ToString("N2");

@@ -66,6 +66,7 @@ namespace YamyProject
                 { "Customer Advances", cmbCustomerAdvance },
                 { "Retention", cmbRetentionAccount },
                 { "Deduction", cmbDeductionAccount },
+                { "Retention Purchase", cmbPurchaseRetention },
             };
         }
 
@@ -101,14 +102,14 @@ namespace YamyProject
                 "Salaries", "Accrued Salaries", "Default Account For Cash", "Petty Cash Account",
                 "Opening Balance", "Opening Balance Equity", "PDC Receivable", "PDC Receivable Return", "PDC Receivable Hold",
                 "PDC Payable", "PDC Payable Return", "PDC Payable Hold", "Prepaid Expense Debit Account", "Prepaid Expense Credit Account",
-                "Fixed Asset Debit Account", "Fixed Asset Credit Account", "Retention", "Deduction"
+                "Fixed Asset Debit Account", "Fixed Asset Credit Account", "Deduction"
                 });
             }
             else if (panelToShow == pnlVendorPurchase)
             {
                 LoadCombos(new string[]
                 {
-                "Vendor", "Vat Input", "Purchase Payment Cash Method", "Purchase", "PurchaseReturn"
+                "Vendor", "Vat Input", "Purchase Payment Cash Method", "Purchase", "PurchaseReturn", "Retention Purchase"
                 });
             }
             else if (panelToShow == pnlinventory)
@@ -122,7 +123,7 @@ namespace YamyProject
             {
                 LoadCombos(new string[]
                 {
-                "Customer", "Invoice Payment Cash Method", "Vat Output", "Sales", "SalesReturn", "Customer Advances"
+                "Customer", "Invoice Payment Cash Method", "Vat Output", "Sales", "SalesReturn", "Customer Advances", "Retention"
                 });
             }
             else if (panelToShow == pnlEmplyee)

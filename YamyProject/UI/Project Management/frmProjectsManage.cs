@@ -91,7 +91,7 @@ namespace YamyProject.UI.Project_Management
                         txtContactPersonNumber.Text = reader["contact_person_number"].ToString();
                         cmbCountry.SelectedValue = Convert.ToInt32(reader["country_id"]);
                         cmbCity.SelectedValue = Convert.ToInt32(reader["city_id"]);
-                        cmbClassification.SelectedValue = reader["project_classification"].ToString();
+                        cmbClassification.SelectedValue = string.IsNullOrEmpty(reader["project_classification"].ToString()) ? "0" : reader["project_classification"].ToString();
                         txtPriority.Text = reader["priority_level"].ToString();
                         cmbPriorityColor.SelectedItem = reader["priority_color"].ToString();
                         chkStarred.Checked = reader["is_starred"].ToString() == "1" ? true : false;
@@ -108,6 +108,25 @@ namespace YamyProject.UI.Project_Management
             else
             {
                 txtCode.Text = GenerateNextCode();
+            }
+            UAEOnlyOptions();
+        }
+
+        private void UAEOnlyOptions()
+        {
+            object objOption = DBClass.ExecuteScalar("select country_id from tbl_company where id>0 limit 1");
+            if (objOption == null)
+            {
+                label2.Visible = false;
+                cmbEmirate.Visible = false;
+            }
+            else
+            {
+                if (objOption.ToString() != "182")
+                {
+                    label2.Visible = false;
+                    cmbEmirate.Visible = false;
+                }
             }
         }
 
@@ -208,7 +227,7 @@ namespace YamyProject.UI.Project_Management
                                                     INSERT INTO tbl_projects (code, name, name_ar, category, description, start_date, end_date, country_id, city_id, emirate, status, type, extend_delay, execution_period_months, customer, contractor, consultant, location, details, contract_value, additional_value, deduction_value, total_value, billed_to_date, expenses, balance, area,plot_number,block,contact_person,contact_person_number,
                                                     owner_name,part_no,basin_number,municipality_project_no, bank_project_no,project_classification,priority_level,priority_color,is_starred,last_progress_update,handover_date) 
                                                     VALUES (@code, @name, @name_ar, @category, @description, @start_date, @end_date, @country_id, @city_id, @emirate, @status, @type, @extend_delay, @execution_period_months, @customer, @contractor, @consultant, @location, @details, @contract_value, @additional_value, @deduction_value, @total_value, @billed_to_date, @expenses, @balance, @area,@plot_number,@block,@contact_person,@contact_person_number,
-                                                    @owner_name,@basin_number,@municipality_project_no, @bank_project_no,@project_classification,@priority_level,@priority_color,@is_starred,@last_progress_update,@handover_date);
+                                                    @owner_name,@part_no,@basin_number,@municipality_project_no, @bank_project_no,@project_classification,@priority_level,@priority_color,@is_starred,@last_progress_update,@handover_date);
                                                     SELECT LAST_INSERT_ID();",
                                                     DBClass.CreateParameter("@code", txtCode.Text.Trim()),
                                                     DBClass.CreateParameter("@name", txtProjectName.Text.Trim()),
@@ -1328,6 +1347,11 @@ namespace YamyProject.UI.Project_Management
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new frmProjectClassification().ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

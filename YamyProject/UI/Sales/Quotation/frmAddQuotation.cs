@@ -25,6 +25,7 @@ namespace YamyProject
         int level4PaymentCreditMethodId;
         int id;
         string formType = "";
+        string txtJNo = string.Empty;
 
         public frmAddQuotation(int _id = 0, string _formType = "")
         {
@@ -40,6 +41,10 @@ namespace YamyProject
             if (formType == "Proforma")
             {
                 txtPONO.Text = _id.ToString();
+            }
+            else if (formType == "JobCard")
+            {
+                txtJNo = _id.ToString();
             }
             else
             {
@@ -96,8 +101,85 @@ namespace YamyProject
                 {
                     loadSalesProformaData();
                 }
+                else if (id == 0 && formType == "JobCard")
+                {
+                    LoadJobCardData();
+                }
+            }
+            UAEOnlyOptions();
+        }
+
+        private void UAEOnlyOptions()
+        {
+            object objOption = DBClass.ExecuteScalar("select country_id from tbl_company where id>0 limit 1");
+            if (objOption == null)
+            {
+                label10.Visible = false;
+                cmbCity.Visible = false;
+            }
+            else
+            {
+                if (objOption.ToString() != "182")
+                {
+                    label10.Visible = false;
+                    cmbCity.Visible = false;
+                }
             }
         }
+
+        private void LoadJobCardData()
+        {
+            using (MySqlDataReader readerInfo = DBClass.ExecuteReader(" select * from tbl_job_card where id = @id",
+               DBClass.CreateParameter("id", txtJNo)))
+                if (readerInfo.Read())
+                {
+                    //txtId.Text = reader["id"].ToString();
+                    //txtCustCode.Text = reader["code"].ToString();
+                    cmbCustomer.SelectedValue = readerInfo["customer_id"];
+                    //cmbVehicle.SelectedValue = reader["vehicle_id"];
+                    cmbSalesMan.SelectedValue = readerInfo["advisor_id"];
+                    dtInv.Value = readerInfo.GetDateTime("job_date");
+                    //dtExpectedDelivery.Value = reader.GetDateTime("expected_delivery");
+                    //txtMileage.Text = reader["mileage"].ToString();
+                    //txtFuelLevel.Text = reader["fuel_type"].ToString();
+                    //txtPriority.Text = reader["priority"];
+                    //richTextCustomerComplaint.Text = reader["complaint"].ToString();
+                    //richTextBoxDiagnosis.Text = reader["diagnosis"].ToString();
+                    //richTextBoxWorkRequired.Text = reader["work_required"].ToString();
+                    //txtremarks.Text = reader["remarks"];
+                    //txtestimated_amount.Text = reader["estimated_amount"];
+                    //txtapproved_amount.Text = reader["approved_amount"];
+                    //cmbStatus.Text = reader["status"].ToString();
+                    //chkActive.Checked = reader.GetInt32("active") ==1? true : false;
+                    //created_by
+                    //created_date DATE,
+                    //state
+
+                    dgvItems.Rows.Clear();
+                    MySqlDataReader readerDetails = DBClass.ExecuteReader(@"SELECT tbl_job_card_parts.*,tbl_items.type,method, tbl_items.code ,tbl_items.name,tbl_items.cost_price FROM tbl_job_card_parts INNER JOIN 
+                                                                    tbl_items ON tbl_job_card_parts.item_id = tbl_items.id WHERE 
+                                                                    tbl_job_card_parts.jobcard_id = @id;",
+                                                                    DBClass.CreateParameter("id", txtJNo));
+                    while (readerDetails.Read())
+                    {
+                        dgvItems.Rows.Add(readerDetails["item_id"].ToString(), "", readerDetails["code"].ToString(), readerDetails["name"].ToString(), Utilities.FormatDecimal(readerDetails["qty"]),
+                        Utilities.FormatDecimal(readerDetails["cost_price"]), Utilities.FormatDecimal(readerDetails["unit_price"]));
+                        
+                        DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                        if (comboCell != null && readerDetails["vatP"].ToString() != "0")
+                        {
+                            comboCell.Value = int.Parse(readerDetails["vatP"].ToString());
+                            dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value = decimal.Parse(readerDetails["vat"].ToString());
+                        }
+                        decimal netPrice = (decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) * decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()));
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = (netPrice + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = readerDetails["method"].ToString();
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = readerDetails["type"].ToString();
+                    }
+                    CalculateTotal();
+                }
+        }
+
         private void loadSalesProformaData()
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader(" select * from tbl_sales_proforma where id = @id",
@@ -186,6 +268,12 @@ namespace YamyProject
                     richTextDescription.Text = reader["description"].ToString();
                     BindInvoiceItems();
                     CalculateTotal();
+
+                    object jobNo = DBClass.ExecuteScalar("Select id from tbl_job_card where quotation_id = @oId", DBClass.CreateParameter("oId", id));
+                    if (jobNo != null)
+                    {
+                        txtJNo = jobNo.ToString();
+                    }
                 }
         }
         private void BindInvoiceItems()
@@ -388,6 +476,7 @@ namespace YamyProject
             {
                 if (insertInvoice())
                 {
+                    UpdateJobCard();
                     EventHub.RefreshQuotation();
                     MessageBox.Show("The Quotation Invoice  Saved");
                     dgvItems.Rows.Clear();
@@ -402,6 +491,7 @@ namespace YamyProject
             {
                 if (updateInvoice())
                 {
+                    UpdateJobCard();
                     EventHub.RefreshQuotation();
                     MessageBox.Show("The Quotation Invoice  Update");
                     dgvItems.Rows.Clear();
@@ -414,6 +504,18 @@ namespace YamyProject
             }
           
         }
+
+        private void UpdateJobCard()
+        {
+            if (formType == "JobCard")
+            {
+                DBClass.ExecuteNonQuery("Update tbl_job_card set quotation_id = @qId, estimated_amount=@amount where id = @id",
+                    DBClass.CreateParameter("qId", invId),
+                    DBClass.CreateParameter("amount", txtTotal.Text.ToString()),
+                    DBClass.CreateParameter("id", txtJNo));
+            }
+        }
+
         private bool updateInvoice()
         {
             if (!chkRequiredDate())
@@ -586,7 +688,10 @@ namespace YamyProject
             if (id == 0)
             {
                 if (insertInvoice())
+                {
+                    UpdateJobCard();
                     resetTextBox();
+                }
             }
           
         }
@@ -1261,6 +1366,7 @@ namespace YamyProject
             {
                 if (insertInvoice())
                 {
+                    UpdateJobCard();
                     EventHub.RefreshQuotation();
                     MessageBox.Show("The Quotation Invoice  Saved");
                     dgvItems.Rows.Clear();

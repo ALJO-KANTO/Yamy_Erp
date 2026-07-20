@@ -12,36 +12,95 @@ namespace YamyProject
             InitializeComponent();
             LocalizationManager.LocalizeForm(this);
         }
-
+        bool isExist = false;
         private void frmDefaultDeductions_Load(object sender, EventArgs e)
         {
-            using (MySqlDataReader reader = DBClass.ExecuteReader("Select missedhoursdeduction, latearrivaldeduction, fulldaydeduction,delaytime from tbl_setting_deduction_config LIMIT 1"))
+            using (MySqlDataReader reader = DBClass.ExecuteReader("Select id, latearrivaldeduction, delaytime from tbl_setting_deduction_config LIMIT 1"))
                 if (reader.Read())
                 {
-                    txtMissedHours.Text = reader["missedhoursdeduction"].ToString();
+                    //txtMissedHours.Text = reader["missedhoursdeduction"].ToString();
                     txtLateArrival.Text = reader["latearrivaldeduction"].ToString();
-                    txtFullDay.Text = reader["fulldaydeduction"].ToString();
-                    txtdelaytime.Text = reader["delaytime"].ToString();
+                    //txtFullDay.Text = reader["fulldaydeduction"].ToString();
+                    string time = reader["delaytime"].ToString();
+                    int numH = 0, numM = 0, numS = 0;
+                    if (TimeSpan.TryParse(time, out TimeSpan ts))
+                    {
+                        numH = ts.Hours;
+                        numM = ts.Minutes;
+                        numS = ts.Seconds;
+                    }
+                    else
+                    {
+                        numH = 0;
+                        numM = 0;
+                        numS = 0;
+                    }
+                    numrH.Value = numH;
+                    numrM.Value = numM;
+                    numrS.Value = numS;
+                    isExist = true;
                 }
+
+            txtMissedHours.Enabled = txtFullDay.Enabled = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtMissedHours.Text.Trim() == "")
                 txtMissedHours.Text = "0";
+
             if (txtFullDay.Text.Trim() == "")
-                txtMissedHours.Text = "0";
+                txtFullDay.Text = "0";
+
             if (txtLateArrival.Text.Trim() == "")
-                txtMissedHours.Text = "0";
+                txtLateArrival.Text = "0";
 
-            DBClass.ExecuteNonQuery(@"UPDATE tbl_setting_deduction_config SET missedhoursdeduction = @missedhoursdeduction, 
-                                     latearrivaldeduction = @latearrivaldeduction, fulldaydeduction = @fulldaydeduction, delaytime=@delaytime",
-                                     DBClass.CreateParameter("missedhoursdeduction", txtMissedHours.Text),
-                                     DBClass.CreateParameter("latearrivaldeduction", txtLateArrival.Text),
-                                     DBClass.CreateParameter("fulldaydeduction", txtFullDay.Text),
-                                     DBClass.CreateParameter("delaytime", txtdelaytime.Text));
+            // Convert inputs to TimeSpan safely
+            TimeSpan missedHours = ParseToTimeSpan(txtMissedHours.Text);
+            TimeSpan fullDay = ParseToTimeSpan(txtFullDay.Text);
+            decimal lateArrival = Convert.ToDecimal(txtLateArrival.Text);
+            TimeSpan delaytime = new TimeSpan(
+                Convert.ToInt32(numrH.Value),
+                Convert.ToInt32(numrM.Value),
+                Convert.ToInt32(numrS.Value)
+            );
+            string query =
+                isExist 
+                ?   @"
+                    UPDATE tbl_setting_deduction_config 
+                    SET 
+                        -- missedhoursdeduction = @missedhoursdeduction, 
+                        latearrivaldeduction = @latearrivaldeduction, 
+                        -- fulldaydeduction = @fulldaydeduction, 
+                        delaytime = @delaytime"
+                :
+                    @"INSERT INTO tbl_setting_deduction_config (latearrivaldeduction, delaytime) Values(@latearrivaldeduction, @delaytime)";
+            DBClass.ExecuteNonQuery(query,
+                DBClass.CreateParameter("missedhoursdeduction", missedHours),
+                DBClass.CreateParameter("latearrivaldeduction", lateArrival),
+                DBClass.CreateParameter("fulldaydeduction", fullDay),
+                DBClass.CreateParameter("delaytime", delaytime)
+            );
 
-            MessageBox.Show("Deductions Updated Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Deductions Updated Successfully.", "Success",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Close();
+        }
+
+        private TimeSpan ParseToTimeSpan(string input)
+        {
+            input = input.Trim();
+
+            // Case: "1" => 01:00:00
+            if (int.TryParse(input, out int hours))
+                return new TimeSpan(hours, 0, 0);
+
+            // Case: "00:30" => 00:30:00
+            if (TimeSpan.TryParse(input, out TimeSpan ts))
+                return ts;
+
+            return TimeSpan.Zero;
         }
     }
 }

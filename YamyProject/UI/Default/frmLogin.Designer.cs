@@ -159,7 +159,7 @@ namespace YamyProject
             // 
             this.lblError.BackColor = System.Drawing.Color.Transparent;
             this.lblError.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.lblError.ForeColor = System.Drawing.Color.White;
             this.lblError.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblError.Location = new System.Drawing.Point(8, 608);
             this.lblError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);

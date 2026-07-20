@@ -155,6 +155,39 @@ namespace YamyProject
             //});
             //sw.Stop();
             //Console.WriteLine("Data loaded successfully. Time taken: " + sw.Elapsed.TotalSeconds + " seconds.");
+            try
+            {
+                string devicename = Environment.GetEnvironmentVariable(
+                    "yamy_device_name",
+                    EnvironmentVariableTarget.User);
+
+                if (!string.IsNullOrWhiteSpace(devicename))
+                {
+                    Utilities.MachineName = devicename;
+                }
+                else
+                {
+                    string inputName = PromptDeviceName();
+
+                    if (!string.IsNullOrWhiteSpace(inputName))
+                    {
+                        Environment.SetEnvironmentVariable(
+                            "yamy_device_name",
+                            inputName.Trim(),
+                            EnvironmentVariableTarget.User);
+
+                        Utilities.MachineName = inputName.Trim();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Device name is required to continue.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void lblLinkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -189,6 +222,50 @@ namespace YamyProject
             if (e.KeyCode == Keys.Enter)
                 btnLogin.PerformClick();
         }
+        private string PromptDeviceName()
+        {
+            Form prompt = new Form()
+            {
+                Width = 400,
+                Height = 180,
+                Text = "Device Setup",
+                StartPosition = FormStartPosition.CenterScreen
+            };
 
+            Label textLabel = new Label()
+            {
+                Left = 20,
+                Top = 20,
+                Text = "Enter Device Name:"
+            };
+
+            TextBox inputBox = new TextBox()
+            {
+                Left = 20,
+                Top = 50,
+                Width = 330
+            };
+
+            Button confirmation = new Button()
+            {
+                Text = "Save",
+                Left = 250,
+                Width = 100,
+                Top = 90,
+                DialogResult = DialogResult.OK
+            };
+
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+
+            prompt.Controls.Add(textLabel);
+            prompt.Controls.Add(inputBox);
+            prompt.Controls.Add(confirmation);
+
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK
+                ? inputBox.Text
+                : null;
+        }
     }
 }

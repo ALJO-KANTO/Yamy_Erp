@@ -25,6 +25,7 @@ namespace YamyProject.UI.Default
         public frmCompanyList(bool _idDefault = false)
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Font;
             LocalizationManager.LocalizeForm(this);
             this.idDefault = _idDefault;
             Region = Region.FromHrgn(CreateRoundRectRgn(0,0,Width,Height,25,25));
@@ -65,6 +66,7 @@ namespace YamyProject.UI.Default
             }
             dgvCompanyList.DataSource = table;
             dgvCompanyList.Columns["id"].Visible = dgvCompanyList.Columns["default_company"].Visible = dgvCompanyList.Columns["database_name"].Visible = false;
+            dgvCompanyList.Columns["Code"].Width = 30;
 
             dgvCompanyList.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
             dgvCompanyList.EnableHeadersVisualStyles = false;

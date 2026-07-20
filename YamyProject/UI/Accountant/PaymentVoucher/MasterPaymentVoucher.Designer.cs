@@ -207,7 +207,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomer.RowHeadersVisible = false;
-            this.dgvCustomer.RowTemplate.Height = 30;
+            this.dgvCustomer.RowTemplate.Height = 25;
             this.dgvCustomer.Size = new System.Drawing.Size(1036, 323);
             this.dgvCustomer.TabIndex = 6;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -268,7 +268,7 @@
             this.cmbType.Items.AddRange(new object[] {
             "Vendor",
             "Employee",
-            "General"});
+            "Petty Cash"});
             this.cmbType.Location = new System.Drawing.Point(3, 20);
             this.cmbType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbType.Name = "cmbType";
@@ -456,7 +456,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDetails.RowHeadersVisible = false;
-            this.dgvDetails.RowTemplate.Height = 30;
+            this.dgvDetails.RowTemplate.Height = 25;
             this.dgvDetails.Size = new System.Drawing.Size(1036, 163);
             this.dgvDetails.TabIndex = 15;
             this.dgvDetails.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;

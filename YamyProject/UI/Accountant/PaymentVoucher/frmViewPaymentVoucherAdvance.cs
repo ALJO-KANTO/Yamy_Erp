@@ -302,10 +302,10 @@ namespace YamyProject
             id = (int)decimal.Parse(DBClass.ExecuteScalar(@"
                 INSERT INTO tbl_advance_payment_voucher
                 (date, pv_code, type, method, amount, debit_account_id, debit_cost_center_id,
-                 description, credit_account_id, credit_cost_center_id, created_by, created_date, state)
+                 description, credit_account_id, credit_cost_center_id, created_by, created_date, state, GlobalId, DeviceId)
                 VALUES
                 (@date, @pv_code, @type, @method, @amount, @debit_account_id, @debit_cost_center_id,
-                 @description, @credit_account_id, @credit_cost_center_id, @created_by, @created_date, 0);
+                 @description, @credit_account_id, @credit_cost_center_id, @created_by, @created_date, 0, @GlobalId, @DeviceId);
                  SELECT LAST_INSERT_ID();",
 
                 DBClass.CreateParameter("date", dtOpen.Value.Date),
@@ -319,7 +319,9 @@ namespace YamyProject
                 DBClass.CreateParameter("credit_account_id", cmbCreditAccountName.SelectedValue ?? 0),
                 DBClass.CreateParameter("credit_cost_center_id", cmbCreditCostCenter.SelectedValue ?? 0),
                 DBClass.CreateParameter("created_by", frmLogin.userId),
-                DBClass.CreateParameter("created_date", DateTime.Now.Date)
+                DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)
             ).ToString());
             if (cmbMethod.Text == "Check")
             {
@@ -401,10 +403,10 @@ namespace YamyProject
                 // Insert into details table
                 DBClass.ExecuteNonQuery(@"INSERT INTO tbl_advance_payment_voucher_details
         (payment_id,name, bank_name, check_name, check_no, check_date, bank_account_name, book_no, 
-         trans_date, trans_name, trans_ref, description, amount) 
+         trans_date, trans_name, trans_ref, description, amount, GlobalId, DeviceId) 
          VALUES 
         (@payment_id,@name, @bank_name, @check_name, @check_no, @check_date, @bank_account_name, @book_no, 
-         @trans_date, @trans_name, @trans_ref, @description, @amount);",
+         @trans_date, @trans_name, @trans_ref, @description, @amount, @GlobalId, @DeviceId);",
                     DBClass.CreateParameter("@payment_id",pvId),
                     DBClass.CreateParameter("@name", name),
                     DBClass.CreateParameter("@bank_name", method == "Check" ? bankName : null),
@@ -417,7 +419,9 @@ namespace YamyProject
                     DBClass.CreateParameter("@trans_name", method == "Transfer" ? transName : null),
                     DBClass.CreateParameter("@trans_ref", method == "Transfer" ? transRef : null),
                     DBClass.CreateParameter("@description", description),
-                    DBClass.CreateParameter("@amount", amount)
+                    DBClass.CreateParameter("@amount", amount),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)
                 );
 
                 insertJournals(cmbPaymentType.Text, amount, description, humId);

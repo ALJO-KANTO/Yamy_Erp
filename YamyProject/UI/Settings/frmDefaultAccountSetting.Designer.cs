@@ -114,6 +114,8 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.pnlCommon = new System.Windows.Forms.Panel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.cmbDeductionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pnlVendorPurchase = new System.Windows.Forms.Panel();
             this.pnlinventory = new System.Windows.Forms.Panel();
             this.pnlCustomersales = new System.Windows.Forms.Panel();
@@ -121,10 +123,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.pnlEmplyee = new System.Windows.Forms.Panel();
             this.pnlBank = new System.Windows.Forms.Panel();
+            this.label42 = new System.Windows.Forms.Label();
+            this.cmbPurchaseRetention = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label40 = new System.Windows.Forms.Label();
             this.cmbRetentionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.cmbDeductionAccount = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlCommon.SuspendLayout();
@@ -1443,8 +1445,6 @@
             // 
             this.pnlCommon.Controls.Add(this.label41);
             this.pnlCommon.Controls.Add(this.cmbDeductionAccount);
-            this.pnlCommon.Controls.Add(this.label40);
-            this.pnlCommon.Controls.Add(this.cmbRetentionAccount);
             this.pnlCommon.Controls.Add(this.label30);
             this.pnlCommon.Controls.Add(this.cmbPettyCashAccount);
             this.pnlCommon.Controls.Add(this.label7);
@@ -1479,8 +1479,39 @@
             this.pnlCommon.Size = new System.Drawing.Size(1040, 540);
             this.pnlCommon.TabIndex = 169;
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label41.Location = new System.Drawing.Point(14, 422);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(106, 13);
+            this.label41.TabIndex = 192;
+            this.label41.Text = "Deduction Account";
+            // 
+            // cmbDeductionAccount
+            // 
+            this.cmbDeductionAccount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDeductionAccount.BorderRadius = 5;
+            this.cmbDeductionAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbDeductionAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDeductionAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbDeductionAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbDeductionAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDeductionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbDeductionAccount.ItemHeight = 23;
+            this.cmbDeductionAccount.Location = new System.Drawing.Point(14, 438);
+            this.cmbDeductionAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDeductionAccount.Name = "cmbDeductionAccount";
+            this.cmbDeductionAccount.Size = new System.Drawing.Size(418, 29);
+            this.cmbDeductionAccount.TabIndex = 191;
+            this.cmbDeductionAccount.Tag = "Gratuit";
+            // 
             // pnlVendorPurchase
             // 
+            this.pnlVendorPurchase.Controls.Add(this.label42);
+            this.pnlVendorPurchase.Controls.Add(this.cmbPurchaseRetention);
             this.pnlVendorPurchase.Controls.Add(this.cmbPurchaseReturnInvoice);
             this.pnlVendorPurchase.Controls.Add(this.cmbPurchaseInvoice);
             this.pnlVendorPurchase.Controls.Add(this.label37);
@@ -1515,6 +1546,8 @@
             // 
             // pnlCustomersales
             // 
+            this.pnlCustomersales.Controls.Add(this.label40);
+            this.pnlCustomersales.Controls.Add(this.cmbRetentionAccount);
             this.pnlCustomersales.Controls.Add(this.cmbCustomerAdvance);
             this.pnlCustomersales.Controls.Add(this.label25);
             this.pnlCustomersales.Controls.Add(this.cmbSalesReturnInvoice);
@@ -1599,15 +1632,44 @@
             this.pnlBank.Size = new System.Drawing.Size(1040, 541);
             this.pnlBank.TabIndex = 174;
             // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label42.Location = new System.Drawing.Point(7, 327);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(103, 13);
+            this.label42.TabIndex = 192;
+            this.label42.Text = "Retention Account";
+            // 
+            // cmbPurchaseRetention
+            // 
+            this.cmbPurchaseRetention.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPurchaseRetention.BorderRadius = 5;
+            this.cmbPurchaseRetention.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPurchaseRetention.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPurchaseRetention.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbPurchaseRetention.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbPurchaseRetention.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPurchaseRetention.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbPurchaseRetention.ItemHeight = 23;
+            this.cmbPurchaseRetention.Location = new System.Drawing.Point(7, 343);
+            this.cmbPurchaseRetention.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbPurchaseRetention.Name = "cmbPurchaseRetention";
+            this.cmbPurchaseRetention.Size = new System.Drawing.Size(418, 29);
+            this.cmbPurchaseRetention.TabIndex = 191;
+            this.cmbPurchaseRetention.Tag = "Gratuit";
+            // 
             // label40
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label40.Location = new System.Drawing.Point(14, 363);
+            this.label40.Location = new System.Drawing.Point(502, 30);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(103, 13);
-            this.label40.TabIndex = 190;
+            this.label40.TabIndex = 192;
             this.label40.Text = "Retention Account";
             // 
             // cmbRetentionAccount
@@ -1621,41 +1683,12 @@
             this.cmbRetentionAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRetentionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbRetentionAccount.ItemHeight = 23;
-            this.cmbRetentionAccount.Location = new System.Drawing.Point(14, 379);
+            this.cmbRetentionAccount.Location = new System.Drawing.Point(502, 46);
             this.cmbRetentionAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRetentionAccount.Name = "cmbRetentionAccount";
             this.cmbRetentionAccount.Size = new System.Drawing.Size(418, 29);
-            this.cmbRetentionAccount.TabIndex = 189;
+            this.cmbRetentionAccount.TabIndex = 191;
             this.cmbRetentionAccount.Tag = "Gratuit";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
-            this.label41.Location = new System.Drawing.Point(14, 422);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(106, 13);
-            this.label41.TabIndex = 192;
-            this.label41.Text = "Deduction Account";
-            // 
-            // cmbDeductionAccount
-            // 
-            this.cmbDeductionAccount.BackColor = System.Drawing.Color.Transparent;
-            this.cmbDeductionAccount.BorderRadius = 5;
-            this.cmbDeductionAccount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbDeductionAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDeductionAccount.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbDeductionAccount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbDeductionAccount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDeductionAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbDeductionAccount.ItemHeight = 23;
-            this.cmbDeductionAccount.Location = new System.Drawing.Point(14, 438);
-            this.cmbDeductionAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbDeductionAccount.Name = "cmbDeductionAccount";
-            this.cmbDeductionAccount.Size = new System.Drawing.Size(418, 29);
-            this.cmbDeductionAccount.TabIndex = 191;
-            this.cmbDeductionAccount.Tag = "Gratuit";
             // 
             // frmDefaultAccountSetting
             // 
@@ -1663,14 +1696,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1040, 626);
+            this.Controls.Add(this.pnlCustomersales);
+            this.Controls.Add(this.pnlCommon);
+            this.Controls.Add(this.pnlVendorPurchase);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlCommon);
             this.Controls.Add(this.pnlinventory);
             this.Controls.Add(this.pnlBank);
             this.Controls.Add(this.pnlEmplyee);
-            this.Controls.Add(this.pnlCustomersales);
-            this.Controls.Add(this.pnlVendorPurchase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDefaultAccountSetting";
@@ -1683,8 +1716,10 @@
             this.pnlCommon.ResumeLayout(false);
             this.pnlCommon.PerformLayout();
             this.pnlVendorPurchase.ResumeLayout(false);
+            this.pnlVendorPurchase.PerformLayout();
             this.pnlinventory.ResumeLayout(false);
             this.pnlCustomersales.ResumeLayout(false);
+            this.pnlCustomersales.PerformLayout();
             this.pnlEmplyee.ResumeLayout(false);
             this.pnlEmplyee.PerformLayout();
             this.pnlBank.ResumeLayout(false);
@@ -1787,9 +1822,11 @@
         public Guna.UI2.WinForms.Guna2ComboBox cmbStockSettlement;
         public Guna.UI2.WinForms.Guna2ComboBox cmbCustomerAdvance;
         private System.Windows.Forms.Label label25;
-        internal System.Windows.Forms.Label label40;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbRetentionAccount;
         internal System.Windows.Forms.Label label41;
         private Guna.UI2.WinForms.Guna2ComboBox cmbDeductionAccount;
+        internal System.Windows.Forms.Label label42;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbPurchaseRetention;
+        internal System.Windows.Forms.Label label40;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbRetentionAccount;
     }
 }

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using YamyProject.DAL;
@@ -25,6 +26,7 @@ namespace YamyProject
         int id,defaultCustomerId=0;
         bool AllowItemWithOutQty = true, EnableBarcode = false, ReceivePayments = false;
         string formType;
+        string txtJNo = string.Empty;
 
         public frmSales(int _id = 0, string _formType = "",int _customerId=0)
         {
@@ -140,6 +142,25 @@ namespace YamyProject
             {
                 txtBarcodeScan.Visible = true;
                 this.ActiveControl = txtBarcodeScan;
+            }
+            UAEOnlyOptions();
+        }
+
+        private void UAEOnlyOptions()
+        {
+            object objOption = DBClass.ExecuteScalar("select country_id from tbl_company where id>0 limit 1");
+            if (objOption == null)
+            {
+                label18.Visible = false;
+                cmbCity.Visible = false;
+            }
+            else
+            {
+                if (objOption.ToString() != "182")
+                {
+                    label18.Visible = false;
+                    cmbCity.Visible = false;
+                }
             }
         }
 
@@ -293,6 +314,20 @@ namespace YamyProject
 
                     BindInvoiceItems();
                     CalculateTotal();
+
+                    object jobNo = DBClass.ExecuteScalar("Select id from tbl_job_card where quotation_id = @oId", DBClass.CreateParameter("oId", txtSQNO.Text));
+                    if (jobNo != null)
+                    {
+                        txtJNo = jobNo.ToString();
+                    }
+                    else
+                    {
+                        jobNo = DBClass.ExecuteScalar("Select id from tbl_job_card where sales_order_id = @oId", DBClass.CreateParameter("oId", txtSONO.Text));
+                        if (jobNo != null)
+                        {
+                            txtJNo = jobNo.ToString();
+                        }
+                    }
                 }
         }
         private void BindInvoiceItems()
@@ -670,6 +705,7 @@ namespace YamyProject
             {
                 if (InsertInvoice())
                 {
+                    UpdateJobCard();
                     EventHub.RefreshSales();
                     //loadPrint();
                     EventHub.RefreshPurchase();
@@ -694,6 +730,7 @@ namespace YamyProject
             {
                 if (UpdateInvoice())
                 {
+                    UpdateJobCard();
                     EventHub.RefreshSales();
                     //loadPrint();
                     EventHub.RefreshPurchase();
@@ -718,6 +755,16 @@ namespace YamyProject
             }
         }
 
+        private void UpdateJobCard()
+        {
+            if (!string.IsNullOrEmpty(txtJNo))
+            {
+                DBClass.ExecuteNonQuery("Update tbl_job_card set invoice_id = @qId where id = @id",
+                    DBClass.CreateParameter("qId", id),
+                    DBClass.CreateParameter("id", txtJNo));
+            }
+        }
+
         private bool UpdateInvoice()
         {
             if (!ChkRequiredData())
@@ -726,6 +773,7 @@ namespace YamyProject
             decimal paidAmount = string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text);
             decimal changeAmount = string.IsNullOrEmpty(txtTotal.Text) ? 0 : Convert.ToDecimal(txtTotal.Text);
             decimal advancePayment = string.IsNullOrEmpty(txtAdvancePayment.Text) ? 0 : Convert.ToDecimal(txtAdvancePayment.Text);
+            string GlobalId = DBClass.ExecuteScalar("select GlobalId from tbl_sales WHERE id = @id", DBClass.CreateParameter("@id", id)).ToString();
             if (cmbPaymentMethod.Text != "Cash")
             {
                 object objOldPayment = DBClass.ExecuteScalar(@"SELECT IFNULL(sum(payment),0) amount FROM tbl_receipt_voucher_details WHERE inv_id =@id",
@@ -748,7 +796,7 @@ namespace YamyProject
                                      po_num = @po_num, bill_to = @bill_to, ship_date = @ship_date, 
                                      ship_via = @ship_via, ship_to = @ship_to, payment_method = @payment_method, account_cash_id = @account_cash_id, 
                                      payment_terms = @payment_terms, payment_date = @payment_date, total = @total, 
-                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description, retention_percentage = @retention_percentage, retention_amount = @retention_amount, advance_pay = @advance_pay, form_type = @form_type WHERE id = @id;",
+                                     vat = @vat, net = @net, pay = @pay, `change` = @change, city = @city, description = @description, retention_percentage = @retention_percentage, retention_amount = @retention_amount, advance_pay = @advance_pay, form_type = @form_type,LastModified=@LastModified,SyncStatus = 0 WHERE id = @id;",
                DBClass.CreateParameter("@id", id),
                DBClass.CreateParameter("@date", dtInv.Value.Date),
                DBClass.CreateParameter("@customer_id", cmbCustomer.SelectedValue),
@@ -771,6 +819,7 @@ namespace YamyProject
                DBClass.CreateParameter("@description", richTextDescription.Text),
                DBClass.CreateParameter("@modifiedBy", frmLogin.userId),
                DBClass.CreateParameter("@modifiedDate", DateTime.Now.Date),
+               DBClass.CreateParameter("@LastModified", DateTime.Now.Date),
                DBClass.CreateParameter("@pay", paidAmount),
                DBClass.CreateParameter("@change", changeAmount),
                DBClass.CreateParameter("retention_amount", string.IsNullOrEmpty(txtRetentionAmount.Text) ? 0 : Convert.ToDecimal(txtRetentionAmount.Text.Replace(",", ""))),
@@ -784,7 +833,7 @@ namespace YamyProject
                             WHERE trans_type = 'Sales Invoice' and trans_no=@invId", DBClass.CreateParameter("invId", id));
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Sales");
             CommonInsert.DeleteTransactionEntry(id, "SALES");
-            InsertInvItems();
+            InsertInvItems(GlobalId);
             Transaction();
             Utilities.LogAudit(frmLogin.userId, "Update Sales Invoice", "Sales Invoice", id, "Updated Sales Invoice: " + txtNextCode.Text);
 
@@ -916,12 +965,13 @@ namespace YamyProject
                 paidAmount = advancePayment > 0 ? advancePayment : totalAmount;
                 changeAmount = totalAmount - paidAmount;
             }
+            string GlobalId = Guid.NewGuid().ToString();
 
             invId = decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_sales (date, customer_id, invoice_id,warehouse_id, po_num, bill_to,city,sales_man,
                            ship_date,ship_via, ship_to, payment_method,account_cash_id, payment_terms, payment_date,  
-                           total,vat,net, pay, `change`, created_by, created_date, state, description,retention_percentage,retention_amount,advance_pay,form_type) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
+                           total,vat,net, pay, `change`, created_by, created_date, state, description,retention_percentage,retention_amount,advance_pay,form_type, GlobalId, DeviceId) VALUES (@DATE, @customer_id, @invoice_id,@warehouse_id,
                            @po_num, @bill_to,@city,@sales_man, @ship_date, @ship_via,@ship_to, @payment_method,@account_cash_id ,@payment_terms, @payment_date, 
-                           @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description, @retention_percentage, @retention_amount, @advance_pay, @form_type);
+                           @total,  @vat,@net, @pay, @change, @created_by, @created_date, @state, @description, @retention_percentage, @retention_amount, @advance_pay, @form_type, @GlobalId, @DeviceId);
                            SELECT LAST_INSERT_ID();",
                DBClass.CreateParameter("date", dtInv.Value.Date),
                DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue),
@@ -950,8 +1000,10 @@ namespace YamyProject
                DBClass.CreateParameter("advance_pay", advancePayment),
                DBClass.CreateParameter("created_by", frmLogin.userId),
                DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", GlobalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
                DBClass.CreateParameter("state", 0)).ToString());
-            InsertInvItems();
+            InsertInvItems(GlobalId);
             
             TransferSale();
             Transaction();
@@ -975,9 +1027,9 @@ namespace YamyProject
                        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
 
-                CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                  level4SalesInvoice.ToString(), "0", txtTotalBefore.Text, invId.ToString(), "0", cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES",
-                  "Sales Revenue For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+                //CommonInsert.addTransactionEntry(dtInv.Value.Date,
+                //  level4SalesInvoice.ToString(), "0", txtTotalBefore.Text, invId.ToString(), "0", cmbPaymentMethod.Text == "Credit" ? "Sales Invoice" : "Sales Invoice Cash", "SALES",
+                //  "Sales Revenue For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
                 if (decimal.Parse(txtTotalVat.Text) > 0)
                 {
@@ -1009,7 +1061,63 @@ namespace YamyProject
                        frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
                 }
             }
+
+            for (int i = 0; i < dgvItems.Rows.Count - 1; i++)
+            {
+                var row = dgvItems.Rows[i];
+                if (row.IsNewRow || string.IsNullOrWhiteSpace(row.Cells["itemId"].Value?.ToString()))
+                    continue;
+
+                PostItemInventoryAndCOGS(row, (int)invId);
+            }
         }
+        private void PostItemInventoryAndCOGS(DataGridViewRow row, int salesId)
+        {
+            string itemId = row.Cells["itemId"].Value.ToString();
+            decimal quantity = Convert.ToDecimal(row.Cells["qty"].Value ?? 0);
+            decimal costPrice = Convert.ToDecimal(row.Cells["cost_price"].Value ?? 0);
+            decimal discount = Convert.ToDecimal(row.Cells["discount"].Value ?? 0);
+            decimal price = Convert.ToDecimal(row.Cells["price"].Value ?? 0);
+            decimal total = Convert.ToDecimal(row.Cells["net_price"].Value ?? 0);
+            decimal itemCostTotal = costPrice * quantity;
+            decimal itemSalesTotal = (price * quantity) - discount;
+            decimal itemCogsTotal = total;
+
+            int assetAccountId = GetInventoryAccount(itemId);
+            int cogsAccountId = GetCOGSAccount(itemId);
+            int apAccountId = cmbAccountCashName.SelectedValue != null
+                                ? Convert.ToInt32(cmbAccountCashName.SelectedValue)
+                                : 0;
+
+            if (assetAccountId > 0 && itemSalesTotal > 0)
+            {
+                CommonInsert.addTransactionEntry(dtInv.Value.Date, assetAccountId.ToString(),
+                     "0", itemSalesTotal.ToString(CultureInfo.InvariantCulture),
+                    salesId.ToString(), "0", "Sales Invoice", "SALES",
+                    $"Inventory Asset Credit For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            }
+            else if (assetAccountId <= 0 && level4Inventory > 0 && itemSalesTotal > 0)
+            {
+                CommonInsert.addTransactionEntry(dtInv.Value.Date, level4Inventory.ToString(),
+                     "0", itemSalesTotal.ToString(CultureInfo.InvariantCulture),
+                    salesId.ToString(), "0", "Sales Invoice", "SALES",
+                    $"Sales For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            }
+        }
+        private int GetCOGSAccount(string itemId)
+        {
+            int ret = 0;
+            ret = Convert.ToInt32(DBClass.ExecuteScalar("select cogs_account_id from tbl_items where id=@id", DBClass.CreateParameter("id", itemId)));
+            return ret;
+        }
+
+        private int GetInventoryAccount(string itemId)
+        {
+            int ret = 0;
+            ret = Convert.ToInt32(DBClass.ExecuteScalar("select asset_account_id from tbl_items where id=@id", DBClass.CreateParameter("id", itemId)));
+            return ret;
+        }
+
         private void TransferSale()
         {
             if (formType == "SQ")
@@ -1082,7 +1190,7 @@ namespace YamyProject
             return true;
         }
         decimal itemInventoryCost = 0;
-        private void InsertInvItems()
+        private void InsertInvItems(string GlobalId)
         {
             decimal totalCostAllItems = 0;
             List<CostItem> costList = new List<CostItem>();
@@ -1096,8 +1204,8 @@ namespace YamyProject
                 decimal costAmount = 0;
 
                 DBClass.ExecuteNonQuery(@"
-                    INSERT INTO tbl_sales_details (sales_id, item_id, qty, cost_price, price,discount, vatp, vat, total,cost_center_id)
-                    VALUES (@sales_id, @item_id, @qty, @cost_price, @price,@discount, @vatp, @vat, @total,@costCenter);",
+                    INSERT INTO tbl_sales_details (sales_id, item_id, qty, cost_price, price,discount, vatp, vat, total,cost_center_id, GlobalId, DeviceId)
+                    VALUES (@sales_id, @item_id, @qty, @cost_price, @price,@discount, @vatp, @vat, @total,@costCenter, @GlobalId, @DeviceId);",
                         DBClass.CreateParameter("sales_id", invId),
                         DBClass.CreateParameter("item_id", itemId),
                         DBClass.CreateParameter("qty", qty),
@@ -1107,7 +1215,9 @@ namespace YamyProject
                         DBClass.CreateParameter("vat", dgvItems.Rows[i].Cells["vat"].Value ?? 0),
                         DBClass.CreateParameter("vatp", Convert.ToDecimal(dgvItems.Rows[i].Cells["vatp"].Value ?? 0)),
                         DBClass.CreateParameter("total", Convert.ToDecimal(dgvItems.Rows[i].Cells["total"].Value ?? 0)),
-                        DBClass.CreateParameter("@costCenter", dgvItems.Rows[i].Cells["cost_center"].Value ?? 0)
+                        DBClass.CreateParameter("@costCenter", dgvItems.Rows[i].Cells["cost_center"].Value ?? 0),
+                        DBClass.CreateParameter("GlobalId", GlobalId),
+                        DBClass.CreateParameter("DeviceId", Utilities.MachineName)
                     );
 
                 if (itemType == "12 - Service") continue;
@@ -1219,21 +1329,21 @@ namespace YamyProject
             //            );
             //    }
             //}
-            if (totalCostAllItems > 0)
-            {
-                itemInventoryCost = totalCostAllItems;
+            //if (totalCostAllItems > 0)
+            //{
+            //    itemInventoryCost = totalCostAllItems;
 
-                CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                    level4COGS.ToString(), totalCostAllItems.ToString(), "0", invId.ToString(),
-                    "0", "Sales Invoice", "SALES",
-                    "COGS For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            //    CommonInsert.addTransactionEntry(dtInv.Value.Date,
+            //        level4COGS.ToString(), totalCostAllItems.ToString(), "0", invId.ToString(),
+            //        "0", "Sales Invoice", "SALES",
+            //        "COGS For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
 
-                //Credit Inventory Asset
-                CommonInsert.addTransactionEntry(dtInv.Value.Date,
-                    level4Inventory.ToString(), "0", totalCostAllItems.ToString(),
-                    invId.ToString(), "0", "Sales Invoice", "SALES",
-                    "Inventory Reduction For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
-            }
+            //    //Credit Inventory Asset
+            //    CommonInsert.addTransactionEntry(dtInv.Value.Date,
+            //        level4Inventory.ToString(), "0", totalCostAllItems.ToString(),
+            //        invId.ToString(), "0", "Sales Invoice", "SALES",
+            //        "Inventory Reduction For Sales No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+            //}
 
         }
         private decimal InsertItemTransaction(DataGridViewRow row, int itemId, decimal qty, string method)
@@ -1719,7 +1829,10 @@ namespace YamyProject
             if (id == 0)
             {
                 if (InsertInvoice())
+                {
+                    UpdateJobCard();
                     ResetTextBox();
+                }
             }
            
         }
@@ -2170,6 +2283,7 @@ namespace YamyProject
             txtTotalBefore.Text = (total - vat).ToString("0.000");
             txtTotalVat.Text = vat.ToString("0.000");
             txtTotal.Text = total.ToString("0.000");
+            CalculateTotalAmount();
         }
 
         private void dgvItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -2967,7 +3081,7 @@ namespace YamyProject
             if (totalBeforeVat > 0)
                 newVat = vatTotalOfItems * (taxableAfterRetention / totalBeforeVat);
 
-            txtTotal.Text = (taxableAfterRetention + newVat).ToString("0.00");
+            txtTotal.Text = (taxableAfterRetention + vatTotalOfItems).ToString("0.00");
         }
 
         private void AddFileData(int fId)

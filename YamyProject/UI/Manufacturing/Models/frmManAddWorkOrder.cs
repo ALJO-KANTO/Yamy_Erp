@@ -864,9 +864,9 @@ namespace YamyProject.UI.Manufacturing.Models
 
                 // 1. Insert into item_transaction (Stock movement)
                 string stockQry = @"INSERT INTO tbl_item_transaction 
-                                    (item_id, qty, type, reference, date, extra, warehouse_id, price) 
+                                    (item_id, qty, type, reference, date, extra, warehouse_id, price, GlobalId, DeviceId) 
                                     VALUES 
-                                    (@item_id, @qty, 'Manufacturing', @reference, @date, @extra, @warehouse_id, @price)";
+                                    (@item_id, @qty, 'Manufacturing', @reference, @date, @extra, @warehouse_id, @price, @GlobalId, @DeviceId)";
 
                 DBClass.ExecuteNonQuery(stockQry,
                     DBClass.CreateParameter("@item_id", itemId),
@@ -875,7 +875,9 @@ namespace YamyProject.UI.Manufacturing.Models
                     DBClass.CreateParameter("@date", dtInv.Value),
                     DBClass.CreateParameter("@extra", "Material consumed for batch " + txtname.Text),
                     DBClass.CreateParameter("@warehouse_id", cmbWarehouseFrom.SelectedValue),
-                    DBClass.CreateParameter("@price", cost)
+                    DBClass.CreateParameter("@price", cost),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)
                 );
 
 

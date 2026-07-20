@@ -125,12 +125,11 @@ namespace YamyProject
                         lblCostcenter.Visible =
                         dgvInv.Visible = true;
                     }
-                    else if (cmbPaymentType.Text == "General")
+                    else if (cmbPaymentType.Text == "Petty Cash")
                     {
-                        txtAmount.Enabled = true;
-                        cmbCreditCostCenter.Visible = false;
-                        lblCostcenter.Visible = false;
-                        dgvInv.Visible = false;
+                        //txtAmount.Enabled = true;
+                        //cmbCreditCostCenter.Visible = false;
+                        //lblCostcenter.Visible = dgvInv.Visible = true;
                     }
 
                     loadPaymentDataDetails();
@@ -164,7 +163,7 @@ namespace YamyProject
                                 tbl_attendance_salary.net_salary net,tbl_attendance_salary.pay,tbl_attendance_salary.change FROM tbl_attendance_salary 
                                 WHERE emp_code = (SELECT CODE FROM tbl_employee where id=@id ) AND `change` <> 0";
                     }
-                    else if(cmbPaymentType.Text == "General")
+                    else if(cmbPaymentType.Text == "Petty Cash")
                     {
                         query = @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_petty_cash_request.request_date) AS SN, 
                                 tbl_petty_cash_request.request_date date,tbl_petty_cash_request.id,tbl_petty_cash_request.request_ref invoice_id,tbl_petty_cash_request.amount net,
@@ -186,7 +185,7 @@ namespace YamyProject
                     //    cbpettycash.Visible = true;
                     //    lstOfEmp.Enabled = true;
                     //}
-                    string _refId = (cmbPaymentType.Text == "Employee" ? reader["hum_id"].ToString() : cmbPaymentType.Text == "General" ? reader["hum_id"].ToString() : reader["inv_id"].ToString());
+                    string _refId = (cmbPaymentType.Text == "Employee" ? reader["hum_id"].ToString() : cmbPaymentType.Text == "Petty Cash" ? reader["hum_id"].ToString() : reader["inv_id"].ToString());
                     using (MySqlDataReader drSale = DBClass.ExecuteReader(query,
                         DBClass.CreateParameter("id", _refId)))
                         if (drSale.Read())
@@ -216,6 +215,11 @@ namespace YamyProject
             calculateTotal();
 
             if (cmbPaymentType.Text == "Employee")
+            {
+                if (id > 0)
+                    TickFillCheckNameEmployee();
+            }
+            else if(cmbPaymentType.Text == "Petty Cash")
             {
                 if (id > 0)
                     TickFillCheckNameEmployee();
@@ -311,10 +315,13 @@ namespace YamyProject
         {
             if (!chkRequireData())
                 return false;
+
+            string GlobalId = DBClass.ExecuteScalar("select GlobalId from tbl_payment_voucher where id=@id", DBClass.CreateParameter("id", id)).ToString();
+
             DBClass.ExecuteScalar(@"UPDATE tbl_payment_voucher SET date=@date, code=@code, type=@type, method=@method, amount=@amount,  
                                                             debit_account_id=@debit_account_id, debit_cost_center_id=@debit_cost_center_id, description=@description,credit_account_id=@credit_account_id,
                                                             credit_cost_center_id=@credit_cost_center_id,bank_id=@bank_id, bank_account_id=@bank_account_id, book_no=@book_no, check_name=@check_name, check_no=@check_no,
-                                                            check_date=@check_date, trans_date=@trans_date, trans_name=@trans_name, trans_ref=@trans_ref, modified_by=@modified_by, modified_date=@modified_date where id=@id",
+                                                            check_date=@check_date, trans_date=@trans_date, trans_name=@trans_name, trans_ref=@trans_ref, modified_by=@modified_by, modified_date=@modified_date,LastModified=@LastModified,SyncStatus = 0 where id=@id",
                                                             DBClass.CreateParameter("id", id),
                                                             DBClass.CreateParameter("date", dtOpen.Value.Date),
                                                             DBClass.CreateParameter("code", code),
@@ -336,7 +343,9 @@ namespace YamyProject
                                                             DBClass.CreateParameter("trans_name", txtTransName.Text),
                                                             DBClass.CreateParameter("trans_ref", txtTransRef.Text),
                                                             DBClass.CreateParameter("modified_by", frmLogin.userId),
-                                                            DBClass.CreateParameter("modified_date", DateTime.Now.Date));
+                                                            DBClass.CreateParameter("modified_date", DateTime.Now.Date),
+                                                            DBClass.CreateParameter("LastModified", DateTime.Now.Date));
+
             DBClass.ExecuteNonQuery("Delete from tbl_payment_voucher_details where payment_id=@id", DBClass.CreateParameter("id", id));
             CommonInsert.DeleteTransactionEntry(id, "PAYMENT");
 
@@ -395,7 +404,7 @@ namespace YamyProject
             {
             }
             //insertJournals();
-            insertINV(id);
+            insertINV(id, GlobalId);
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Payment");
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Payment", "Payment Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Payment", "Payment Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
@@ -412,14 +421,15 @@ namespace YamyProject
             if (!chkRequireData())
                 return false;
             code = GenerateNextPaymentCode();
+            string GlobalId = Guid.NewGuid().ToString();
             id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_payment_voucher(date, code, type, method, amount,  
                                                             debit_account_id, debit_cost_center_id, description,credit_account_id,
                                                             credit_cost_center_id,bank_id, bank_account_id, book_no, check_name, check_no,
-                                                            check_date, trans_date, trans_name, trans_ref, created_by, created_date, state) 
+                                                            check_date, trans_date, trans_name, trans_ref, created_by, created_date, state, GlobalId, DeviceId) 
                                                             VALUES (@date, @code, @type, @method, @amount, @debit_account_id, @debit_cost_center_id,
                                                             @description,@credit_account_id, @credit_cost_center_id, @bank_id, @bank_account_id, 
                                                             @book_no, @check_name, @check_no,@check_date, @trans_date, @trans_name, @trans_ref, 
-                                                            @created_by, @created_date, 0); SELECT LAST_INSERT_ID();",
+                                                            @created_by, @created_date, 0, @GlobalId, @DeviceId); SELECT LAST_INSERT_ID();",
                                                             DBClass.CreateParameter("date", dtOpen.Value.Date),
                                                             DBClass.CreateParameter("code", code),
                                                             DBClass.CreateParameter("type", cmbPaymentType.Text),
@@ -440,6 +450,8 @@ namespace YamyProject
                                                             DBClass.CreateParameter("trans_name", txtTransName.Text),
                                                             DBClass.CreateParameter("trans_ref", txtTransRef.Text),
                                                             DBClass.CreateParameter("created_by", frmLogin.userId),
+                DBClass.CreateParameter("GlobalId", GlobalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
                                                             DBClass.CreateParameter("created_date", DateTime.Now.Date)).ToString());
             if (cmbMethod.Text == "Cheque")
             {
@@ -462,7 +474,7 @@ namespace YamyProject
             {
             }
             //insertJournals();
-            insertINV(id);
+            insertINV(id, GlobalId);
             Utilities.LogAudit(frmLogin.userId, "Insert Payment Voucher", "Payment Voucher", id, "Inserted Payment Voucher: " + code);
 
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Payment", "Payment Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
@@ -520,7 +532,7 @@ namespace YamyProject
             }
             return true;
         }
-        private void insertINV(int pvId)
+        private void insertINV(int pvId, string globalId)
         {
             for (int i = 0; i < dgvInv.Rows.Count; i++)
             {
@@ -538,8 +550,8 @@ namespace YamyProject
 
                 DateTime date = DateTime.Parse(dgvInv.Rows[i].Cells["invDate"].Value.ToString());
 
-                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_payment_voucher_details(date,payment_id,hum_id, inv_id,inv_code,total, payment, description,voucher_type) 
-                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description,@voucher_type);",
+                DBClass.ExecuteNonQuery(@"INSERT INTO tbl_payment_voucher_details(date,payment_id,hum_id, inv_id,inv_code,total, payment, description,voucher_type, GlobalId, DeviceId) 
+                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description,@voucher_type, @GlobalId, @DeviceId);",
                                         DBClass.CreateParameter("@payment_id", pvId),
                                         DBClass.CreateParameter("@date", date),
                                         DBClass.CreateParameter("@hum_id", hum),
@@ -548,9 +560,11 @@ namespace YamyProject
                                         DBClass.CreateParameter("@inv_id", int.Parse(invId)),
                                         DBClass.CreateParameter("@payment", payment),
                                         DBClass.CreateParameter("@description", description),
-                                        DBClass.CreateParameter("@voucher_type", voucherType)
-
+                                        DBClass.CreateParameter("@voucher_type", voucherType),
+                DBClass.CreateParameter("GlobalId", globalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)
                                         );
+
                 if (cmbPaymentType.Text == "Employee")
                 {
                     if (dgvInv.Rows[i].Cells["voucherType"].Value != null &&
@@ -605,22 +619,23 @@ namespace YamyProject
                     );
 
                 }
-                else if (cmbPaymentType.Text == "General")
+                else if (cmbPaymentType.Text == "Petty Cash")
                 {
-                    //// Petty Cash Pay
+                    // Petty Cash Pay
                     //if (dgvInv.Rows[i].Cells["voucherType"].Value != null &&
                     //    dgvInv.Rows[i].Cells["voucherType"].Value.ToString() == "Petty Cash Request")
-                    //{
-                    //    int requestId = int.Parse(dgvInv.Rows[i].Cells["invId"].Value.ToString());
-                    //    if (cbpettycash.Checked)
-                    //    {
-                    //        DBClass.ExecuteNonQuery(
-                    //        "UPDATE tbl_petty_cash_request SET pay = pay + @pay, `change` = @change WHERE id = @id",
-                    //        DBClass.CreateParameter("pay", payment),
-                    //        DBClass.CreateParameter("change", change),
-                    //        DBClass.CreateParameter("id", requestId));
-                    //    }
-                    //}
+                    if(cbpettycash.Checked)
+                    {
+                        int requestId = int.Parse(dgvInv.Rows[i].Cells["invId"].Value.ToString());
+                        if (cbpettycash.Checked)
+                        {
+                            DBClass.ExecuteNonQuery(
+                            "UPDATE tbl_petty_cash_request SET pay = pay + @pay, `change` = @change WHERE id = @id",
+                            DBClass.CreateParameter("pay", payment),
+                            DBClass.CreateParameter("change", change),
+                            DBClass.CreateParameter("id", requestId));
+                        }
+                    }
                 }
                 insertJournals(cmbPaymentType.Text.ToString(), voucherType, payment, description);
             }
@@ -645,12 +660,12 @@ namespace YamyProject
                 //    tType = "Employee Loan Payment";
                 //}
             }
-            else if (cmbPaymentType.Text == "General")
+            else if (cmbPaymentType.Text == "Petty Cash")
             {
-                if (voucherType == "Petty Cash Request")
-                {
+                //if (voucherType == "Petty Cash Request")
+                //{
                     tType = "Employee Petty Cash Payment";
-                }
+                //}
             }
 
             CommonInsert.addTransactionEntry(dtOpen.Value.Date,
@@ -685,7 +700,7 @@ namespace YamyProject
                         }
                     }
 
-                //cbpettycash.Visible = false;
+                cbpettycash.Visible = false;
             }
             else if (cmbPaymentType.Text == "Employee")
             {
@@ -703,14 +718,38 @@ namespace YamyProject
                             cmbDebitAccountName.SelectedValue = int.Parse(accountId);
                         }
                     }
-                //cbpettycash.Visible = false;
+                cbpettycash.Visible = false;
 
             }
-            if (cmbPaymentType.Text == "General")
+            if (cmbPaymentType.Text == "Petty Cash")
             {
-                pnlCustomer.Visible = lstOfEmp.Visible = false;
-                txtAmount.Enabled = true;
-                //cbpettycash.Visible = true;
+                pnlCustomer.Visible = false;
+                txtAmount.Enabled = false;
+                lstOfEmp.Visible = true;
+                cbpettycash.Visible = true;
+                cbpettycash.Checked = true;
+                cbpettycash.Enabled = true;
+                dgvInv.Columns["InvNo"].HeaderText = "Petty Cash Ref";
+                // Debit = Cash / Bank if employee returns money
+                // OR employee advance account if expense settlement
+
+                using (MySqlDataReader reader =
+                    DBClass.ExecuteReader(@"
+                        SELECT id,code 
+                        FROM tbl_coa_level_4
+                        WHERE id = (
+                            SELECT account_id
+                            FROM tbl_coa_config
+                            WHERE category='Employee Advance'
+                        )"))
+                {
+                    if (reader.Read())
+                    {
+                        txtDebitCode.Text = reader["code"].ToString();
+                        cmbDebitAccountName.SelectedValue =
+                            Convert.ToInt32(reader["id"]);
+                    }
+                }
             }
         }
         private void LoadData()
@@ -764,9 +803,39 @@ namespace YamyProject
             {
                 //
             }
-            else if (cmbPaymentType.Text == "General")
+            else if (cmbPaymentType.Text == "Petty Cash")
             {
-                //
+                dgvInv.Rows.Clear();
+                int empId = 0; // GetSelectedEmployeeId();
+
+                using (var reader = DBClass.ExecuteReader(@"
+                    SELECT id,
+                           request_date,
+                           request_ref,
+                           `change`
+                    FROM tbl_petty_cash_request
+                    WHERE Petty_cash_name=@empId
+                    AND state='Approved'
+                    AND `change` > 0",
+                    DBClass.CreateParameter("@empId", empId)))
+                {
+                    int i = 1;
+
+                    while (reader.Read())
+                    {
+                        dgvInv.Rows.Add(
+                            i++,
+                            empId,
+                            reader["id"],
+                            Convert.ToDateTime(reader["request_date"]).ToShortDateString(),
+                            reader["request_ref"].ToString(),
+                            reader["change"].ToString(),
+                            0,
+                            0,
+                            "Outstanding Petty Cash"
+                        );
+                    }
+                }
             }
         }
         private void cmbTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -2298,33 +2367,31 @@ namespace YamyProject
                 /****Petty Cash****/
                 if (cbpettycash.Visible && cbpettycash.Enabled)
                 {
+                    using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change`,request_date,pcr.amount AS total FROM tbl_petty_cash_request pcr 
+                                                 INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
+                                                 WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
+                                             ))
 
-
-                    //using (MySqlDataReader pReader1 = DBClass.ExecuteReader(@"SELECT pcr.id, pcr.`change` AS total FROM tbl_petty_cash_request pcr 
-                    //                             INNER JOIN tbl_employee te ON pcr.Petty_cash_name = te.id
-                    //                             WHERE te.id = " + empId + " AND pcr.state = 'Approved'"
-                    //                         ))
-
-                    //    while (pReader1.Read())
-                    //    {
-                    //        decimal total = 0;
-                    //        if (pReader1["total"] != DBNull.Value &&
-                    //            decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
-                    //        {
-                    //            dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), DateTime.Now.Date,
-                    //                            rowView["name"].ToString(), total.ToString("F2"),
-                    //                            false, "", "", "Petty Cash Request");
-                    //        }
-                    //    }
+                        while (pReader1.Read())
+                        {
+                            decimal total = 0;
+                            if (pReader1["total"] != DBNull.Value &&
+                                decimal.TryParse(pReader1["total"].ToString(), out total) && total > 0)
+                            {
+                                dgvInv.Rows.Add(dgvInv.Rows.Count + 1, empId, pReader1["id"].ToString(), pReader1["request_date"].ToString(),
+                                                fullName.ToString(), Utilities.FormatDecimal(total),
+                                                0, 0, "", "Petty Cash Request");
+                            }
+                        }
                 }
                 else
                 {
 
                     using (MySqlDataReader reader = DBClass.ExecuteReader(
                         @"SELECT ROW_NUMBER() OVER (ORDER BY tbl_attendance_salary.id) AS SN,  
-              tbl_attendance_salary.* 
-              FROM tbl_attendance_salary 
-              WHERE emp_code = @code AND `change` <> 0",
+                          tbl_attendance_salary.* 
+                          FROM tbl_attendance_salary 
+                          WHERE emp_code = @code AND `change` <> 0",
                         DBClass.CreateParameter("code", empCode)))
                     {
                         while (reader.Read())

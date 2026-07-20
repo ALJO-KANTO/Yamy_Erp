@@ -29,7 +29,7 @@ namespace YamyProject
 
         private void LoadData()
         {
-            string queryProjects = "SELECT a.id, date, project_id, start_date, end_date, status, project_type, estimated_budget,b.name location, fund_account_id, created_by, description, fund_period FROM tbl_project_planning a LEFT JOIN tbl_project_sites b ON b.id = a.site WHERE a.state=0";
+            string queryProjects = "SELECT a.id, date, a.project_id, start_date, end_date, status, project_type, estimated_budget,b.name location, fund_account_id, created_by, description, fund_period FROM tbl_project_planning a LEFT JOIN tbl_project_sites b ON b.id = a.site WHERE a.state=0";
             string queryEstimates = "SELECT id,'' description FROM tbl_project_tender where state=0 and estimate_status > 0";
             string queryTenders = "SELECT a.id,b.name tender_name,b.code, amount bid_amount, submission_date,(SELECT CONCAT(ROUND(SUM(progress)/100, 2), '% / ', COUNT(*)) AS progress_summary FROM tbl_project_tender_details WHERE tender_id=a.id) status, DESCRIPTION FROM tbl_project_tender a LEFT JOIN tbl_tender_names b ON a.tender_name_id = b.id WHERE a.state=0";
 

@@ -271,7 +271,7 @@ namespace YamyProject
 
             return true;
         }
-        string getNextCode()
+        string getNextCodeOld()
         {
             string typeCategory = cmbType.Text.Split('-')[0].Trim() + cmbCategory.Text.Split('-')[0].Trim();
             string query = "SELECT MAX(RIGHT(code, 4)) FROM tbl_items WHERE LEFT(code, 5) = @typeCategory";
@@ -280,6 +280,21 @@ namespace YamyProject
             string formattedSerial = nextSerial.ToString().PadLeft(4, '0');
             string newItemCode = typeCategory + formattedSerial;
             return newItemCode;
+        }
+        string getNextCode()
+        {
+            string categoryCode = cmbCategory.Text.Split('-')[0].Trim();
+            string query = "SELECT MAX(RIGHT(code,3)) FROM tbl_items WHERE LEFT(code,@len)=@categoryCode";
+            object result = DBClass.ExecuteScalar(
+                query,
+                DBClass.CreateParameter("@len", categoryCode.Length),
+                DBClass.CreateParameter("@categoryCode", categoryCode)
+            );
+            int nextSerial = (result == DBNull.Value || result == null)
+                ? 1
+                : Convert.ToInt32(result) + 1;
+            string formattedSerial = nextSerial.ToString("D3");
+            return categoryCode + formattedSerial;
         }
         private bool insertItem()
         {
@@ -296,11 +311,11 @@ namespace YamyProject
             id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO `tbl_items`(`code`,`warehouse_id`,  `type`,category_id, `name`, `unit_id`, `barcode`, `cost_price`, 
                                     `cogs_account_id`, `vendor_id`, `sales_price`, `income_account_id`, `asset_account_id`, 
                                     `min_amount`, `max_amount`, `on_hand`,method, `total_value`, `date`, `img`, `active`, `state`, 
-                                    `created_By`, `created_date`,Item_type) VALUES (
+                                    `created_By`, `created_date`,Item_type, GlobalId, DeviceId) VALUES (
                                     @code, @warehouseId, @type,@category, @name, @unit_id, @barcode, @cost_price, 
                                     @cogs_account_id, @vendor_id, @sales_price, @income_account_id, @asset_account_id, 
                                     @min_amount, @max_amount, @on_hand,@method, @total_value, @date, @img, @active, @state, 
-                                    @created_By, @created_date,@Item_type); SELECT LAST_INSERT_ID();",
+                                    @created_By, @created_date,@Item_type, @GlobalId, @DeviceId); SELECT LAST_INSERT_ID();",
                              DBClass.CreateParameter("code", itemCode),
                              DBClass.CreateParameter("warehouseId", cmbWarehouse.SelectedValue.ToString()),
                              DBClass.CreateParameter("type", cmbType.Text),
@@ -322,7 +337,9 @@ namespace YamyProject
                              DBClass.CreateParameter("date", dtStart.Value.Date),
                              DBClass.CreateParameter("img", ""),
                              DBClass.CreateParameter("active", chkActive.Checked ? 0 : 1),
-                             DBClass.CreateParameter("state", 0),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
+                DBClass.CreateParameter("state", 0),
                              DBClass.CreateParameter("created_By", frmLogin.userId),
                              DBClass.CreateParameter("created_date", DateTime.Now.Date),
                              DBClass.CreateParameter("@Item_type", cmbPurchasetype.Text)).ToString());
@@ -383,7 +400,7 @@ namespace YamyProject
             if (cmbCategory.Text.Trim() == "")
             {
                 MessageBox.Show("Enter Category First");
-                cmbWarehouse.Focus();
+                cmbCategory.Focus();
                 return false;
             }
             if (txtOnHand.Text != "" && txtCostPrice.Text == "")
@@ -656,7 +673,11 @@ namespace YamyProject
 
         private void lnkCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLogin.frmMain.LoadFormIntoPanel(new frmViewCategory(0));
+            //frmLogin.frmMain.LoadFormIntoPanel(new frmViewCategory(0));
+            using (var frm = new frmViewCategory(0))
+            {
+                frm.ShowDialog(this);
+            }
             BindCombos.PopulateItemsCategory(cmbCategory, false, true);
         }
         

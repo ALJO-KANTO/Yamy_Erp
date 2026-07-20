@@ -136,7 +136,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -157,7 +157,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -182,7 +182,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -207,7 +207,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -248,7 +248,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -283,7 +283,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["sn"].Width = 50;
                 dgvJournal.Columns["A/C NAME"].AutoSizeMode = dgvJournal.Columns["Type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -335,7 +335,7 @@ namespace YamyProject
                 decimal totalDebit = dt.AsEnumerable().Sum(row => row.Field<decimal>("debit"));
                 decimal totalCredit = dt.AsEnumerable().Sum(row => row.Field<decimal>("credit"));
 
-                dt.Rows.Add(null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
+                dt.Rows.Add(null, null, null, null, null, null, null, "TOTAL", totalDebit, totalCredit);
                 dgvJournal.DataSource = dt;
                 dgvJournal.Columns["A/C name"].Width = 230;
                 dgvJournal.Columns["sn"].Width = 50;

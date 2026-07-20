@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.txtdelaytime = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtFullDay = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtLateArrival = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMissedHours = new Guna.UI2.WinForms.Guna2TextBox();
@@ -37,18 +36,34 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.numrH = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numrM = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numrS = new System.Windows.Forms.NumericUpDown();
             this.guna2GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numrH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrS)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderThickness = 0;
-            this.guna2GroupBox1.Controls.Add(this.txtdelaytime);
+            this.guna2GroupBox1.Controls.Add(this.numrS);
+            this.guna2GroupBox1.Controls.Add(this.numrM);
+            this.guna2GroupBox1.Controls.Add(this.label1);
+            this.guna2GroupBox1.Controls.Add(this.numrH);
             this.guna2GroupBox1.Controls.Add(this.txtFullDay);
             this.guna2GroupBox1.Controls.Add(this.txtLateArrival);
             this.guna2GroupBox1.Controls.Add(this.txtMissedHours);
             this.guna2GroupBox1.Controls.Add(this.btnSave);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.Controls.Add(this.label2);
+            this.guna2GroupBox1.Controls.Add(this.label3);
+            this.guna2GroupBox1.Controls.Add(this.label4);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.LightSteelBlue;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
@@ -60,29 +75,6 @@
             this.guna2GroupBox1.TabIndex = 4;
             this.guna2GroupBox1.Text = "Deductions ";
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -5);
-            // 
-            // txtdelaytime
-            // 
-            this.txtdelaytime.BackColor = System.Drawing.Color.Transparent;
-            this.txtdelaytime.BorderRadius = 5;
-            this.txtdelaytime.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtdelaytime.DefaultText = "";
-            this.txtdelaytime.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtdelaytime.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtdelaytime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtdelaytime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtdelaytime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtdelaytime.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtdelaytime.ForeColor = System.Drawing.Color.Black;
-            this.txtdelaytime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtdelaytime.Location = new System.Drawing.Point(13, 189);
-            this.txtdelaytime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtdelaytime.Name = "txtdelaytime";
-            this.txtdelaytime.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtdelaytime.PlaceholderText = "Delay Time";
-            this.txtdelaytime.SelectedText = "";
-            this.txtdelaytime.Size = new System.Drawing.Size(309, 24);
-            this.txtdelaytime.TabIndex = 122;
             // 
             // txtFullDay
             // 
@@ -179,7 +171,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 300);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(330, 2);
             this.panel5.TabIndex = 14;
@@ -189,7 +181,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(332, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 302);
             this.panel4.TabIndex = 13;
@@ -199,10 +191,75 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 302);
             this.panel3.TabIndex = 12;
+            // 
+            // numrH
+            // 
+            this.numrH.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numrH.Location = new System.Drawing.Point(26, 203);
+            this.numrH.Name = "numrH";
+            this.numrH.Size = new System.Drawing.Size(46, 22);
+            this.numrH.TabIndex = 123;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.TabIndex = 124;
+            this.label1.Text = "Delay Time";
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 205);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 20);
+            this.label2.TabIndex = 125;
+            this.label2.Text = "H";
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(78, 205);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 20);
+            this.label3.TabIndex = 127;
+            this.label3.Text = "M";
+            // 
+            // numrM
+            // 
+            this.numrM.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numrM.Location = new System.Drawing.Point(97, 203);
+            this.numrM.Name = "numrM";
+            this.numrM.Size = new System.Drawing.Size(46, 22);
+            this.numrM.TabIndex = 126;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(149, 207);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 20);
+            this.label4.TabIndex = 129;
+            this.label4.Text = "S";
+            // 
+            // numrS
+            // 
+            this.numrS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numrS.Location = new System.Drawing.Point(165, 205);
+            this.numrS.Name = "numrS";
+            this.numrS.Size = new System.Drawing.Size(46, 22);
+            this.numrS.TabIndex = 128;
             // 
             // frmDefaultDeductions
             // 
@@ -221,6 +278,10 @@
             this.Text = "Deductions Configration";
             this.Load += new System.EventHandler(this.frmDefaultDeductions_Load);
             this.guna2GroupBox1.ResumeLayout(false);
+            this.guna2GroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numrH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,9 +293,15 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMissedHours;
         private Guna.UI2.WinForms.Guna2TextBox txtFullDay;
         private Guna.UI2.WinForms.Guna2TextBox txtLateArrival;
-        private Guna.UI2.WinForms.Guna2TextBox txtdelaytime;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.NumericUpDown numrH;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numrS;
+        private System.Windows.Forms.NumericUpDown numrM;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -1,13 +1,17 @@
 ﻿using CrystalDecisions.Shared.Json;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.DAL;
 using YamyProject.Localization;
 
 namespace YamyProject
@@ -339,7 +343,7 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
 
                 query = @"
-                        CREATE TABLE tbl_petty_cash(
+                        CREATE TABLE IF NOT EXISTS tbl_petty_cash(
                             id int NOT NULL AUTO_INCREMENT,
                             code VARCHAR(50) NOT NULL,
                             voucher_date DATE NOT NULL,
@@ -383,7 +387,7 @@ namespace YamyProject
                 ");
 
                 query = @"
-                        CREATE TABLE tbl_petty_cash_details(
+                        CREATE TABLE IF NOT EXISTS tbl_petty_cash_details(
                             id int NOT NULL AUTO_INCREMENT,
                             petty_cash_id INT NOT NULL,
                             entry_date DATE NOT NULL,
@@ -404,7 +408,7 @@ namespace YamyProject
                         ";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE `tbl_item_serial` (
+                query = @"CREATE TABLE IF NOT EXISTS `tbl_item_serial` (
                             `id` INT(10) NOT NULL AUTO_INCREMENT,
                             `item_id` INT(10) NOT NULL,
                             `serial_number` VARCHAR(100) NOT NULL,
@@ -488,13 +492,13 @@ namespace YamyProject
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `block` varchar(50) DEFAULT '';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `contract_value` decimal(18,3) NOT NULL DEFAULT '0';";
-                DBClass.ExecuteNonQuery(query); 
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `additional_value` decimal(18,3) NOT NULL DEFAULT '0';";
-                DBClass.ExecuteNonQuery(query); 
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `deduction_value` decimal(18,3) NOT NULL DEFAULT '0';";
-                DBClass.ExecuteNonQuery(query); 
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `total_value` decimal(18,3) NOT NULL DEFAULT '0';";
-                DBClass.ExecuteNonQuery(query); 
+                DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `contact_person` varchar(150) DEFAULT '';";
                 DBClass.ExecuteNonQuery(query);
                 query = @"ALTER TABLE tbl_projects ADD COLUMN `contact_person_number` varchar(50) DEFAULT '';";
@@ -1477,6 +1481,8 @@ namespace YamyProject
                             retention_amount decimal(20,6) NOT NULL DEFAULT 0,
                             retention_percentage decimal(20,6) NOT NULL DEFAULT 0,
                             deduction decimal(20,6) NOT NULL DEFAULT 0,
+                            advance_amount decimal(20,6) NOT NULL DEFAULT 0,
+                            advance_percentage decimal(20,6) NOT NULL DEFAULT 0,
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1488,6 +1494,14 @@ namespace YamyProject
                 query = @"  ALTER TABLE tbl_projects_invoices ADD COLUMN retention_percentage decimal(20,6) NOT NULL DEFAULT 0; ";
                 DBClass.ExecuteNonQuery(query);
                 query = @"  ALTER TABLE tbl_projects_invoices ADD COLUMN deduction decimal(20,6) NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"  ALTER TABLE tbl_projects_invoices add advance_amount decimal(20,6) NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"  ALTER TABLE tbl_projects_invoices add advance_percentage decimal(20,6) NOT NULL DEFAULT 0;";
+                DBClass.ExecuteNonQuery(query);
+                query = @"  ALTER TABLE tbl_position
+                            ADD AnnualLeaveDays INT DEFAULT 30,
+                            ADD EOSDaysPerYear INT DEFAULT 0;";
                 DBClass.ExecuteNonQuery(query);
 
                 query = @"
@@ -1601,7 +1615,7 @@ namespace YamyProject
 
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE `tbl_project_resource_assignment` (
+                query = @"CREATE TABLE IF NOT EXISTS `tbl_project_resource_assignment` (
 	                        `id` INT(10) NOT NULL AUTO_INCREMENT,
 	                        `site_setup_id` INT(10) NOT NULL,
 	                        `resource_id` INT(10) NOT NULL,
@@ -1611,7 +1625,7 @@ namespace YamyProject
                         ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE `tbl_project_zone` (
+                query = @"CREATE TABLE IF NOT EXISTS `tbl_project_zone` (
                             `id` INT NOT NULL AUTO_INCREMENT,
                             `site_setup_id` INT NOT NULL,
                             `zone_code` VARCHAR(50) DEFAULT '',
@@ -1805,7 +1819,7 @@ namespace YamyProject
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE tbl_notification_users (
+                query = @"CREATE TABLE IF NOT EXISTS tbl_notification_users (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             notification_id INT NOT NULL,
                             user_id INT NOT NULL,
@@ -1822,7 +1836,7 @@ namespace YamyProject
                         CREATE INDEX idx_notifications_project ON tbl_notifications (project_id, is_read);";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE tbl_project_files (
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_files (
                             file_id INT AUTO_INCREMENT PRIMARY KEY,
                             project_id INT NOT NULL,
                             engineer_id INT NOT NULL,
@@ -1836,7 +1850,7 @@ namespace YamyProject
                         );";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE tbl_engineer_activity (
+                query = @"CREATE TABLE IF NOT EXISTS tbl_engineer_activity (
                             activity_id INT AUTO_INCREMENT PRIMARY KEY,
                             project_id INT NOT NULL,
                             engineer_id INT NOT NULL,
@@ -1847,7 +1861,7 @@ namespace YamyProject
                         );";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @"CREATE TABLE project_Classification (
+                query = @"CREATE TABLE IF NOT EXISTS project_Classification (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             name_ar VARCHAR(200) NOT NULL,
                             name_en VARCHAR(200) NOT NULL,
@@ -1855,6 +1869,898 @@ namespace YamyProject
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                         );";
                 DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_planning_new
+                        (
+                            plan_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            planning_no VARCHAR(30),
+                            plan_date DATE,
+                            start_date DATE,
+                            end_date DATE,
+                            total_days INT,
+                            planning_engineer VARCHAR(100),
+                            work_hours DECIMAL(10,2),
+                            weekly_off VARCHAR(30),
+                            priority_level VARCHAR(30),
+                            progress_percent DECIMAL(10,2),
+                            status VARCHAR(30),
+                            milestone VARCHAR(200),
+                            notes VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_lookahead
+                        (
+                            look_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            week_no INT,
+                            from_date DATE,
+                            to_date DATE,
+                            activity_name VARCHAR(200),
+                            zone_name VARCHAR(100),
+                            responsible_person VARCHAR(100),
+                            required_material VARCHAR(200),
+                            required_labor INT,
+                            required_equipment VARCHAR(200),
+                            priority_level VARCHAR(30),
+                            status VARCHAR(30),
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_resource_needs
+                        (
+                            resource_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            request_date DATE NOT NULL,
+                            need_type VARCHAR(30) NOT NULL,      -- Labor / Material / Equipment
+                            category_name VARCHAR(100),          -- Mason / Cement / Excavator
+                            item_name VARCHAR(150),
+                            unit_name VARCHAR(30),
+                            qty DECIMAL(18,2) NOT NULL,
+                            required_from DATE,
+                            required_to DATE,
+                            priority_level VARCHAR(20),
+                            zone_name VARCHAR(100),
+                            requested_by VARCHAR(100),
+                            approved_by VARCHAR(100),
+                            status VARCHAR(30),                  -- Draft/Pending/Approved/Issued/Closed
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_schedule
+                        (
+                            schedule_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            activity_code VARCHAR(30),
+                            activity_name VARCHAR(200),
+                            wbs_code VARCHAR(50),
+                            predecessor VARCHAR(50),
+                            duration_days INT,
+                            start_date DATE,
+                            end_date DATE,
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            responsible_person VARCHAR(100),
+                            resource_required VARCHAR(200),
+                            priority_level VARCHAR(30),
+                            status VARCHAR(30),
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_site_activity_plan
+                        (
+                            activity_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            activity_date DATE NOT NULL,
+                            zone_id INT NULL,
+                            zone_name VARCHAR(100),
+                            activity_name VARCHAR(200) NOT NULL,
+                            supervisor_name VARCHAR(100),
+                            labor_count INT DEFAULT 0,
+                            equipment_used VARCHAR(200),
+                            target_qty DECIMAL(18,2) DEFAULT 0,
+                            unit_name VARCHAR(30),
+                            actual_qty DECIMAL(18,2) DEFAULT 0,
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            weather_status VARCHAR(50),
+                            priority_level VARCHAR(30),
+                            status VARCHAR(30),
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_reservation
+                        (
+                            reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+                            reservation_no VARCHAR(30) NOT NULL,
+                            reservation_date DATE NOT NULL,
+                            mr_id INT NULL,
+                            project_id INT NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            reserved_by INT NOT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_reservation_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            reservation_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            requested_qty DECIMAL(18,4) DEFAULT 0,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            reserved_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_project_team 
+                        (
+                            team_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            emp_code VARCHAR(50) NOT NULL,
+                            emp_name VARCHAR(150) NOT NULL,
+                            role_name VARCHAR(100) NOT NULL,
+                            zone_id INT NOT NULL,
+                            mobile VARCHAR(30),
+                            join_date DATE NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_procurement_request
+                        (
+                            pr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            pr_no VARCHAR(30) NOT NULL,
+                            pr_date DATE NOT NULL,
+                            mr_id INT NULL,
+                            reservation_id INT NULL,
+                            project_id INT NOT NULL,
+                            supplier_id INT NULL,
+                            priority_level VARCHAR(30) DEFAULT 'Normal',
+                            required_date DATE NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            approved_by INT NULL,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_procurement_request_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            pr_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            requested_qty DECIMAL(18,4) DEFAULT 0,
+                            ordered_qty DECIMAL(18,4) DEFAULT 0,
+                            pending_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            est_rate DECIMAL(18,4) DEFAULT 0,
+                            est_amount DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_issue
+                        (
+                            issue_id INT AUTO_INCREMENT PRIMARY KEY,
+                            issue_no VARCHAR(30) NOT NULL,
+                            issue_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            reservation_id INT NULL,
+                            requested_by INT NULL,
+                            issued_to INT NULL,
+                            approved_by INT NULL,
+                            zone_id INT NULL,
+                            purpose VARCHAR(150),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_issue_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            issue_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            reserved_qty DECIMAL(18,4) DEFAULT 0,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            issue_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_receipt
+                        (
+                            receipt_id INT AUTO_INCREMENT PRIMARY KEY,
+                            receipt_no VARCHAR(30) NOT NULL,
+                            receipt_date DATE NOT NULL,
+                            po_id INT NULL,
+                            supplier_id INT NULL,
+                            project_id INT NULL,
+                            warehouse_id INT NOT NULL,
+                            invoice_no VARCHAR(50),
+                            invoice_date DATE NULL,
+                            received_by INT NULL,
+                            checked_by INT NULL,
+                            vehicle_no VARCHAR(50),
+                            driver_name VARCHAR(100),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            subtotal DECIMAL(18,4) DEFAULT 0,
+                            vat_amount DECIMAL(18,4) DEFAULT 0,
+                            net_amount DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            approved_by INT NULL,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_receipt_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            receipt_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            ordered_qty DECIMAL(18,4) DEFAULT 0,
+                            received_qty DECIMAL(18,4) DEFAULT 0,
+                            accepted_qty DECIMAL(18,4) DEFAULT 0,
+                            rejected_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            batch_no VARCHAR(50),
+                            expiry_date DATE NULL,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_return
+                        (
+                            return_id INT AUTO_INCREMENT PRIMARY KEY,
+                            return_no VARCHAR(30) NOT NULL,
+                            return_date DATE NOT NULL,
+                            issue_id INT NULL,
+                            project_id INT NOT NULL,
+                            from_warehouse_id INT NOT NULL,
+                            to_warehouse_id INT NOT NULL,
+                            returned_by INT NULL,
+                            received_by INT NULL,
+                            approved_by INT NULL,
+                            return_type VARCHAR(30) DEFAULT 'Site Return',
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_return_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            return_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            issued_qty DECIMAL(18,4) DEFAULT 0,
+                            return_qty DECIMAL(18,4) DEFAULT 0,
+                            damaged_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_transfer
+                        (
+                            transfer_id INT AUTO_INCREMENT PRIMARY KEY,
+                            transfer_no VARCHAR(30) NOT NULL,
+                            transfer_date DATE NOT NULL,
+                            transfer_type VARCHAR(30) DEFAULT 'Warehouse Transfer',
+                            from_warehouse_id INT NOT NULL,
+                            to_warehouse_id INT NOT NULL,
+                            from_project_id INT NULL,
+                            to_project_id INT NULL,
+                            requested_by INT NULL,
+                            approved_by INT NULL,
+                            received_by INT NULL,
+                            vehicle_no VARCHAR(50),
+                            driver_name VARCHAR(100),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_transfer_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            transfer_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            transfer_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_consumption
+                        (
+                            consumption_id INT AUTO_INCREMENT PRIMARY KEY,
+                            consumption_no VARCHAR(30) NOT NULL,
+                            consumption_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            zone_id INT NULL,
+                            activity_id INT NULL,
+                            wbs_id INT NULL,
+                            warehouse_id INT NOT NULL,
+                            consumed_by INT NULL,
+                            approved_by INT NULL,
+                            consumption_type VARCHAR(30) DEFAULT 'Site Consumption',
+                            reference_no VARCHAR(50),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_material_consumption_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            consumption_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            consumed_qty DECIMAL(18,4) DEFAULT 0,
+                            wastage_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_stock_reconciliation
+                        (
+                            reconciliation_id INT AUTO_INCREMENT PRIMARY KEY,
+                            reconciliation_no VARCHAR(30) NOT NULL,
+                            reconciliation_date DATE NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            project_id INT NULL,
+                            reconciliation_type VARCHAR(30) DEFAULT 'Periodic',
+                            checked_by INT NULL,
+                            approved_by INT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_stock_reconciliation_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            reconciliation_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            system_qty DECIMAL(18,4) DEFAULT 0,
+                            physical_qty DECIMAL(18,4) DEFAULT 0,
+                            variance_qty DECIMAL(18,4) DEFAULT 0,
+                            adjustment_type VARCHAR(20),
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            variance_value DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_site_entry
+                        (
+                            entry_id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_no VARCHAR(30) NOT NULL,
+                            entry_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            supervisor_id INT NULL,
+                            engineer_id INT NULL,
+                            shift_type VARCHAR(20),
+                            weather VARCHAR(50),
+                            overall_progress DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(20) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_site_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            actual_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(20),
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_labour
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            employee_id INT NULL,
+                            trade_name VARCHAR(50),
+                            attendance VARCHAR(20),
+                            ot_hours DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_equipment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            start_hour DECIMAL(10,2) DEFAULT 0,
+                            end_hour DECIMAL(10,2) DEFAULT 0,
+                            working_hours DECIMAL(10,2) DEFAULT 0,
+                            fuel_used DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_material
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            item_id INT NULL,
+                            qty_used DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_issue
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            issue_type VARCHAR(50),
+                            description VARCHAR(500),
+                            impact_level VARCHAR(20),
+                            action_taken VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_progress
+                        (
+                            progress_id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_no VARCHAR(30) NOT NULL,
+                            progress_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            prepared_by INT NULL,
+                            approved_by INT NULL,
+                            planned_progress DECIMAL(10,2) DEFAULT 0,
+                            actual_progress DECIMAL(10,2) DEFAULT 0,
+                            variance_progress DECIMAL(10,2) DEFAULT 0,
+                            overall_status VARCHAR(30),
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_progress_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            activity_name VARCHAR(250),
+                            unit VARCHAR(20),
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            actual_qty DECIMAL(18,4) DEFAULT 0,
+                            cumulative_qty DECIMAL(18,4) DEFAULT 0,
+                            planned_percent DECIMAL(10,2) DEFAULT 0,
+                            actual_percent DECIMAL(10,2) DEFAULT 0,
+                            variance_percent DECIMAL(10,2) DEFAULT 0,
+                            manpower_count INT DEFAULT 0,
+                            equipment_count INT DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_progress_delay
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            delay_type VARCHAR(100),
+                            delay_reason VARCHAR(500),
+                            affected_activity VARCHAR(250),
+                            impact_days DECIMAL(10,2) DEFAULT 0,
+                            corrective_action VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_daily_progress_photo
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            photo_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE IF NOT EXISTS tbl_work_measurement
+                        (
+                            measurement_id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_no VARCHAR(30) NOT NULL,
+                            measurement_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            contractor_id INT NULL,
+                            engineer_id INT NULL,
+                            consultant_id INT NULL,
+                            reference_type VARCHAR(50),
+                            reference_no VARCHAR(50),
+                            total_qty DECIMAL(18,4) DEFAULT 0,
+                            total_amount DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_work_measurement_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            boq_id INT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            item_code VARCHAR(50),
+                            description VARCHAR(500),
+                            unit VARCHAR(20),
+                            boq_qty DECIMAL(18,4) DEFAULT 0,
+                            previous_qty DECIMAL(18,4) DEFAULT 0,
+                            current_qty DECIMAL(18,4) DEFAULT 0,
+                            cumulative_qty DECIMAL(18,4) DEFAULT 0,
+                            balance_qty DECIMAL(18,4) DEFAULT 0,
+                            rate DECIMAL(18,4) DEFAULT 0,
+                            amount DECIMAL(18,2) DEFAULT 0,
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_work_measurement_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            file_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_work_measurement_approval
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            approval_level VARCHAR(50),
+                            approved_by INT,
+                            approval_date DATETIME,
+                            status VARCHAR(30),
+                            remarks VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_resource_deployment
+                        (
+                            deployment_id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_no VARCHAR(30) NOT NULL,
+                            deployment_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            deployment_type VARCHAR(30),
+                            requested_by INT NULL,
+                            approved_by INT NULL,
+                            start_date DATE NULL,
+                            end_date DATE NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_resource_deployment_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            resource_type VARCHAR(30),
+                            resource_id INT NULL,
+                            resource_name VARCHAR(250),
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            deployed_qty DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            deployment_days DECIMAL(10,2) DEFAULT 0,
+                            cost_per_day DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            utilization_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_resource_deployment_movement
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            movement_date DATETIME,
+                            from_location VARCHAR(250),
+                            to_location VARCHAR(250),
+                            moved_by INT NULL,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_resource_deployment_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            file_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_equipment_usage
+                        (
+                            usage_id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_no VARCHAR(30) NOT NULL,
+                            usage_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            operator_id INT NULL,
+                            shift_type VARCHAR(20),
+                            weather VARCHAR(50),
+                            total_working_hours DECIMAL(10,2) DEFAULT 0,
+                            total_fuel_used DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_equipment_usage_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            equipment_code VARCHAR(50),
+                            equipment_name VARCHAR(250),
+                            activity_id INT NULL,
+                            start_hour_meter DECIMAL(18,2) DEFAULT 0,
+                            end_hour_meter DECIMAL(18,2) DEFAULT 0,
+                            working_hours DECIMAL(18,2) DEFAULT 0,
+                            idle_hours DECIMAL(18,2) DEFAULT 0,
+                            breakdown_hours DECIMAL(18,2) DEFAULT 0,
+                            fuel_used DECIMAL(18,2) DEFAULT 0,
+                            fuel_rate DECIMAL(18,2) DEFAULT 0,
+                            fuel_cost DECIMAL(18,2) DEFAULT 0,
+                            operator_cost DECIMAL(18,2) DEFAULT 0,
+                            rental_cost DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            utilization_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_equipment_breakdown
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            breakdown_time DATETIME,
+                            resume_time DATETIME,
+                            breakdown_reason VARCHAR(500),
+                            corrective_action VARCHAR(500),
+                            maintenance_required VARCHAR(10)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_equipment_fuel_log
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            fuel_date DATETIME,
+                            fuel_qty DECIMAL(18,2),
+                            fuel_rate DECIMAL(18,2),
+                            amount DECIMAL(18,2),
+                            fuel_station VARCHAR(250),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report
+                        (
+                            report_id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_no VARCHAR(30) NOT NULL,
+                            report_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            engineer_id INT NULL,
+                            weather VARCHAR(50),
+                            temperature DECIMAL(10,2) DEFAULT 0,
+                            manpower_count INT DEFAULT 0,
+                            equipment_count INT DEFAULT 0,
+                            visitors_count INT DEFAULT 0,
+                            total_progress_percent DECIMAL(10,2) DEFAULT 0,
+                            safety_incidents INT DEFAULT 0,
+                            delay_hours DECIMAL(10,2) DEFAULT 0,
+                            overall_status VARCHAR(30) DEFAULT 'Normal',
+                            remarks VARCHAR(1000),
+                            prepared_by INT NULL,
+                            approved_by INT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            activity_id INT NULL,
+                            activity_name VARCHAR(250),
+                            location VARCHAR(250),
+                            work_description VARCHAR(1000),
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            completed_qty DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            manpower_used INT DEFAULT 0,
+                            equipment_used INT DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report_labour
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            trade_name VARCHAR(100),
+                            manpower_count INT DEFAULT 0,
+                            overtime_hours DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report_material
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            material_name VARCHAR(250),
+                            qty_used DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report_delay
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            delay_reason VARCHAR(500),
+                            affected_activity VARCHAR(250),
+                            delay_hours DECIMAL(10,2) DEFAULT 0,
+                            corrective_action VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_daily_site_report_visitor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            visitor_name VARCHAR(250),
+                            company_name VARCHAR(250),
+                            purpose VARCHAR(500),
+                            visit_time DATETIME
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_delay_hindrance
+                        (
+                            delay_id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_no VARCHAR(30) NOT NULL,
+                            delay_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            reported_by INT NULL,
+                            delay_category VARCHAR(100),
+                            severity VARCHAR(50),
+                            affected_area VARCHAR(250),
+                            affected_activity VARCHAR(250),
+                            start_datetime DATETIME,
+                            end_datetime DATETIME,
+                            total_delay_hours DECIMAL(18,2) DEFAULT 0,
+                            responsible_party VARCHAR(100),
+                            weather_condition VARCHAR(100),
+                            impact_description VARCHAR(1000),
+                            corrective_action VARCHAR(1000),
+                            preventive_action VARCHAR(1000),
+                            estimated_cost_impact DECIMAL(18,2) DEFAULT 0,
+                            extension_days DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Open',
+                            remarks VARCHAR(500),
+                            approved_by INT NULL,
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_delay_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_id INT NOT NULL,
+                            file_name VARCHAR(500),
+                            file_path VARCHAR(1000),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @"CREATE TABLE NOT EXISTS tbl_delay_followup
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_id INT NOT NULL,
+                            followup_date DATE,
+                            action_taken VARCHAR(1000),
+                            responsible_person VARCHAR(250),
+                            target_date DATE,
+                            status VARCHAR(50),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                AlterTablesWithDeviceIds();
 
                 MessageBox.Show("Database Updated");
             }
@@ -1868,5 +2774,292 @@ namespace YamyProject
         {
 
         }
+
+        private void BtnAlter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AlterTablesWithDeviceIds();
+                MessageBox.Show("Done");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void AlterTablesWithDeviceIds()
+        {
+            List<string> tables = new List<string>
+            {
+                "tbl_advance_payment_voucher",
+                "tbl_advance_payment_voucher_details",
+                "tbl_customer",
+                "tbl_items",
+                "tbl_item_transaction",
+                "tbl_journal_voucher",
+                "tbl_journal_voucher_details",
+                "tbl_payment_voucher",
+                "tbl_payment_voucher_details",
+                "tbl_purchase",
+                "tbl_purchase_details",
+                "tbl_purchase_order",
+                "tbl_purchase_order_details",
+                "tbl_purchase_return",
+                "tbl_purchase_return_details",
+                "tbl_receipt_voucher",
+                "tbl_receipt_voucher_details",
+                "tbl_sales",
+                "tbl_sales_details",
+                "tbl_transaction",
+                "tbl_vendor"
+            };
+
+
+            foreach (string table in tables)
+            {
+                DBClass.ExecuteNonQuery($@"
+                        ALTER TABLE {table}
+                        ADD COLUMN GlobalId VARCHAR(50) NULL;
+                ");
+
+                DBClass.ExecuteNonQuery($@"
+                        UPDATE {table}
+                        SET GlobalId = UUID()
+                        WHERE GlobalId IS NULL;
+                ");
+                HashSet<string> skipUniqueKeyTables = new HashSet<string>
+                {
+                    "tbl_advance_payment_voucher_details",
+                    "tbl_item_transaction",
+                    "tbl_journal_voucher_details",
+                    "tbl_payment_voucher_details",
+                    "tbl_purchase_details",
+                    "tbl_purchase_order_details",
+                    "tbl_purchase_return_details",
+                    "tbl_receipt_voucher_details",
+                    "tbl_sales_details",
+                    "tbl_transaction"
+                };
+
+                if (!skipUniqueKeyTables.Contains(table))
+                {
+                    DBClass.ExecuteNonQuery($@"
+                         ALTER TABLE {table}
+                         ADD UNIQUE KEY UK_{table}_GlobalId (GlobalId);
+                    ");
+                }
+
+                DBClass.ExecuteNonQuery($@"
+                         ALTER TABLE {table}
+                         ADD COLUMN DeviceId varchar(50) DEFAULT '';
+                ");
+
+                DBClass.ExecuteNonQuery($@"
+                         ALTER TABLE {table}
+                         ADD COLUMN LastModified datetime DEFAULT CURRENT_TIMESTAMP;
+                ");
+
+                DBClass.ExecuteNonQuery($@"
+                         ALTER TABLE {table}
+                         ADD COLUMN SyncStatus tinyint NOT NULL DEFAULT 0;
+                ");
+            }
+
+
+            DBClass.ExecuteNonQuery(@"ALTER TABLE tbl_purchase ADD COLUMN retention_percentage decimal(20,4) NOT NULL DEFAULT 0");
+            DBClass.ExecuteNonQuery(@"ALTER TABLE tbl_purchase ADD COLUMN retention_amount decimal(20,4) NOT NULL DEFAULT 0");
+
+            string query = "select 'a' a";
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code INT NOT NULL DEFAULT 0,
+                            customer_id INT NOT NULL,
+                            plate_no VARCHAR(30),
+                            chassis_no VARCHAR(50),
+                            vin_no VARCHAR(50),
+                            engine_no VARCHAR(50),
+                            make VARCHAR(100),
+                            model VARCHAR(100),
+                            variant VARCHAR(100),
+                            model_year INT,
+                            color VARCHAR(50),
+                            transmission VARCHAR(30),
+                            fuel_type VARCHAR(30),
+                            current_mileage INT,
+                            registration_expiry DATE,
+                            insurance_expiry DATE,
+                            warranty_expiry DATE,
+                            notes TEXT,
+                            active INT DEFAULT 1,
+                            created_by INT,
+                            created_date DATE,
+                            state INT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_card
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code VARCHAR(50) DEFAULT '0',
+                            customer_id INT NOT NULL,
+                            vehicle_id INT NOT NULL,
+                            advisor_id INT,
+                            job_date DATE,
+                            expected_delivery DATE,
+                            mileage INT,
+                            fuel_type VARCHAR(20),
+                            priority VARCHAR(20),
+                            complaint TEXT,
+                            diagnosis TEXT,
+                            work_required TEXT,
+                            remarks TEXT,
+                            estimated_amount DECIMAL(20,4),
+                            approved_amount DECIMAL(20,4),
+                            quotation_id INT DEFAULT 0,
+                            sales_order_id INT DEFAULT 0,
+                            invoice_id INT DEFAULT 0,
+                            status VARCHAR(30),
+                            active INT DEFAULT 1,
+                            created_by INT,
+                            created_date DATE,
+                            state INT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_card_parts
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            item_id INT,
+                            warehouse_id INT,
+                            qty DECIMAL(18,3),
+                            issued_qty DECIMAL(18,3),
+                            returned_qty DECIMAL(18,3),
+                            unit_price DECIMAL(20,4),
+                            discount DECIMAL(20,4),
+                            vatP INT,
+                            vat DECIMAL(20,4),
+                            total DECIMAL(20,4),
+                            remarks TEXT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_card_labor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            employee_id INT,
+                            labor_name VARCHAR(200),
+                            estimated_hours DECIMAL(10,2),
+                            actual_hours DECIMAL(10,2),
+                            hourly_rate DECIMAL(20,4),
+                            total DECIMAL(20,4),
+                            status VARCHAR(30),
+                            remarks TEXT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle_inspection
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            engine_oil TINYINT,
+                            brake_oil TINYINT,
+                            coolant TINYINT,
+                            battery TINYINT,
+                            tyres TINYINT,
+                            brake_pads TINYINT,
+                            steering TINYINT,
+                            suspension TINYINT,
+                            lights TINYINT,
+                            horn TINYINT,
+                            wiper TINYINT,
+                            ac TINYINT,
+                            interior TINYINT,
+                            exterior TINYINT,
+                            remarks TEXT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle_damage
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            damage_location VARCHAR(100),
+                            damage_type VARCHAR(100),
+                            severity VARCHAR(30),
+                            remarks TEXT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_status_history
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            status VARCHAR(30),
+                            employee_id INT,
+                            remarks TEXT,
+                            status_date DATETIME
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_service_package
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code INT,
+                            package_name VARCHAR(200),
+                            description TEXT,
+                            amount DECIMAL(20,4),
+                            active INT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_service_package_items
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            package_id INT,
+                            item_id INT,
+                            qty DECIMAL(18,3)
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_service_package_labor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            package_id INT,
+                            labor_name VARCHAR(200),
+                            hours DECIMAL(10,2),
+                            rate DECIMAL(20,4)
+                        );";
+            DBClass.ExecuteNonQuery(query);
+
+            query = @"
+                        CREATE TABLE IF NOT EXISTS tbl_job_qc
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            checked_by INT,
+                            road_test TINYINT,
+                            leak_check TINYINT,
+                            warning_lights TINYINT,
+                            final_cleaning TINYINT,
+                            remarks TEXT,
+                            approved TINYINT
+                        );";
+            DBClass.ExecuteNonQuery(query);
+        }
+
     }
 }

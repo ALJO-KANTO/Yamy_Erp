@@ -13,6 +13,7 @@ namespace YamyProject.UI.Project_Management.ProjectWBS
         public frmProjectActivityPlanning()
         {
             InitializeComponent();
+            headerUC1.FormText = this.Text;
         }
 
         private void frmProjectActivityPlanning_Load(object sender, EventArgs e)

@@ -285,18 +285,20 @@ namespace YamyProject
         private bool updateJV()
         {
             invCode = GenerateNextJournalCode();
+            string GlobalId = DBClass.ExecuteScalar("select GlobalId from tbl_journal_voucher where id=@id", DBClass.CreateParameter("id", id)).ToString();
 
-            DBClass.ExecuteNonQuery(@"UPDATE tbl_journal_voucher SET date=@date, code=@code, debit=@debit, credit=@credit, modified_by=@modified_by, modified_date=@modified_date WHERE id=@id",
+            DBClass.ExecuteNonQuery(@"UPDATE tbl_journal_voucher SET date=@date, code=@code, debit=@debit, credit=@credit, modified_by=@modified_by, modified_date=@modified_date,LastModified=@LastModified,SyncStatus = 0 WHERE id=@id",
                                                       DBClass.CreateParameter("id", id),
                                                       DBClass.CreateParameter("date", dtJV.Value.Date),
                                                       DBClass.CreateParameter("code", invCode),
                                                       DBClass.CreateParameter("debit", txtDebitAmount.Text.ToString()),
                                                       DBClass.CreateParameter("credit", txtCreditAmount.Text.ToString()),
                                                       DBClass.CreateParameter("modified_by", frmLogin.userId),
+                                                      DBClass.CreateParameter("LastModified", DateTime.Now.Date),
                                                       DBClass.CreateParameter("modified_date", DateTime.Now.Date));
             DBClass.ExecuteNonQuery(@"DELETE from tbl_journal_voucher_details where inv_id=@id;", DBClass.CreateParameter("id", id.ToString()));
             CommonInsert.DeleteTransactionEntry(id, "JOURNAL");
-            insertJvDetails(id.ToString());
+            insertJvDetails(id.ToString(), GlobalId);
             Utilities.LogAudit(frmLogin.userId, "Update Journal Voucher", "Journal Voucher", id, "Updated Journal Voucher: " + invCode);
             if (!string.IsNullOrEmpty(filePath))
             {
@@ -307,17 +309,22 @@ namespace YamyProject
         private bool insertJV()
         {
             invCode = GenerateNextReceiptCode();
+            string globalId = Guid.NewGuid().ToString();
+
             id = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_journal_voucher(
-                                                          date, code, debit,credit, created_by, created_date, state) 
-                                                          VALUES (@date, @code,@debit,@credit, @created_by, @created_date, 0);SELECT LAST_INSERT_ID();",
+                                                          date, code, debit,credit, created_by, created_date, state, GlobalId, DeviceId) 
+                                                          VALUES (@date, @code,@debit,@credit, @created_by, @created_date, 0, @GlobalId, @DeviceId);SELECT LAST_INSERT_ID();",
                                                           DBClass.CreateParameter("date", dtJV.Value.Date),
                                                           DBClass.CreateParameter("code", invCode),
                                                           DBClass.CreateParameter("debit", txtDebitAmount.Text.ToString()),
                                                           DBClass.CreateParameter("credit", txtCreditAmount.Text.ToString()),
                                                           DBClass.CreateParameter("created_by", frmLogin.userId),
                                                           DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", globalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
                                                           DBClass.CreateParameter("state", 0)).ToString());
-            insertJvDetails(id.ToString());
+
+            insertJvDetails(id.ToString(), globalId);
             Utilities.LogAudit(frmLogin.userId, "Create Journal Voucher", "Journal Voucher", id, "Created Journal Voucher: " + invCode);
             if (!string.IsNullOrEmpty(filePath))
             {
@@ -325,7 +332,7 @@ namespace YamyProject
             }
             return true;
         }
-        private void insertJvDetails(string inv_id)
+        private void insertJvDetails(string inv_id, string globalId)
         {
             for (int i = 0; i < dgvJV.Rows.Count; i++)
             {
@@ -346,15 +353,17 @@ namespace YamyProject
                     string hum_id = "0";
 
                     DBClass.ExecuteNonQuery(@"INSERT INTO tbl_journal_voucher_details
-                                        (date,debit,credit, inv_id, description, account_id,partner) 
-                                        VALUES (@date,@debit,@credit, @inv_id, @description, @account_id, @partner);",
+                                        (date,debit,credit, inv_id, description, account_id,partner, GlobalId, DeviceId) 
+                                        VALUES (@date,@debit,@credit, @inv_id, @description, @account_id, @partner, @GlobalId, @DeviceId);",
                         DBClass.CreateParameter("@date", date),
                         DBClass.CreateParameter("@debit", DebitAmount.ToString()),
                         DBClass.CreateParameter("@credit", CreditAmount.ToString()),
                         DBClass.CreateParameter("@inv_id", inv_id),
                         DBClass.CreateParameter("@description", description),
                         DBClass.CreateParameter("@partner", partner),
-                        DBClass.CreateParameter("@account_id", accountId));
+                        DBClass.CreateParameter("@account_id", accountId),
+                        DBClass.CreateParameter("GlobalId", globalId),
+                        DBClass.CreateParameter("DeviceId", Utilities.MachineName));
 
                     CommonInsert.addTransactionEntry(date,
                            accountId,

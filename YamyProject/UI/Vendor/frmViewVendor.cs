@@ -127,7 +127,7 @@ namespace YamyProject
             DBClass.ExecuteNonQuery(@"Update tbl_vendor Set code = @code,
                                 NAME=@NAME, Cat_id = @Cat_id, DATE=@date, main_phone=@main_phone, work_phone=@work_phone, mobile=@mobile, email=@email,
                                 ccemail=@ccemail, website=@website, country=@country, city=@city, region=@region, project_id=@project_id,
-                                building_name=@building_name, account_id=@account_id, trn=@trn, facilty_name=@facilty_name, active=@active,balance=@balance,type='Vendor' where id = @id",
+                                building_name=@building_name, account_id=@account_id, trn=@trn, facilty_name=@facilty_name, active=@active,balance=@balance,type='Vendor',LastModified=@LastModified,SyncStatus=0 where id = @id",
                                           DBClass.CreateParameter("code", txtCode.Text),
                                           DBClass.CreateParameter("name", txtName.Text),
                                           DBClass.CreateParameter("cat_id", cmbCategory.SelectedValue ?? 0),
@@ -146,6 +146,7 @@ namespace YamyProject
                                           DBClass.CreateParameter("account_id", cmbAccount.SelectedValue ?? 0),
                                           DBClass.CreateParameter("trn", txtTRN.Text),
                                           DBClass.CreateParameter("facilty_name", txtFacilty.Text),
+                                          DBClass.CreateParameter("LastModified", DateTime.Now),
                                           DBClass.CreateParameter("active", chkActive.Checked ? 0 : -1),
                                                           DBClass.CreateParameter("balance", decimal.Parse(txtCredit.Text) - decimal.Parse(txtDepit.Text)),
                                           DBClass.CreateParameter("id", id));
@@ -243,9 +244,9 @@ namespace YamyProject
         {
             int retId = Convert.ToInt32(DBClass.ExecuteScalar(@"INSERT INTO tbl_vendor(code,
                                 NAME, Cat_id, Balance, DATE, main_phone, work_phone, mobile, email, ccemail, website, country, city, region,
-                                building_name, account_id, trn, facilty_name, active, created_by, created_date, state,type,project_id)
+                                building_name, account_id, trn, facilty_name, active, created_by, created_date, state,type,project_id, GlobalId, DeviceId)
                                 VALUES(@code,@name, @cat_id, @balance, @date, @main_phone, @work_phone, @mobile, @email, @ccemail, @website, @country,
-                                @city, @region, @building_name, @account_id, @trn, @facilty_name, @active, @created_by, @created_date, @state,'Vendor',@project_id);SELECT LAST_INSERT_ID();",
+                                @city, @region, @building_name, @account_id, @trn, @facilty_name, @active, @created_by, @created_date, @state,'Vendor',@project_id,@GlobalId, @DeviceId);SELECT LAST_INSERT_ID();",
                                                           DBClass.CreateParameter("code", formattedCode),
                                                           DBClass.CreateParameter("name", txtName.Text),
                                                           DBClass.CreateParameter("cat_id", cmbCategory.SelectedValue ?? 0),
@@ -268,7 +269,10 @@ namespace YamyProject
                                                           DBClass.CreateParameter("active", chkActive.Checked ? 0 : -1),
                                                           DBClass.CreateParameter("created_by", frmLogin.userId),
                                                           DBClass.CreateParameter("created_date", DateTime.Now.Date),
-                                                          DBClass.CreateParameter("state", 0)).ToString());
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
+                                                          DBClass.CreateParameter("state", 0)).ToString()
+                                                          );
             Utilities.LogAudit(frmLogin.userId, "Add Vendor", "Vendor Center", retId, "Added Vendor: " + txtName.Text);
             return retId;
         }

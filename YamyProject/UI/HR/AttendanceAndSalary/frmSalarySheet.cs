@@ -109,7 +109,7 @@ namespace YamyProject
                         decimal totalLoan = GetTotalLoan(empCode, selectedYear, selectedMonth);
                         decimal totalDelay = GetTotalDelay(empCode, selectedYear, selectedMonth);
                         decimal totalWorkAbsence = GetTotalAbsence(empCode, selectedYear, selectedMonth);
-                        int ref_Id = int.Parse(areader["Ref_Code"].ToString());
+                        int ref_Id = string.IsNullOrEmpty(areader["Ref_Code"].ToString()) ? 0 : int.Parse(areader["Ref_Code"].ToString());
                         refCode = ref_Id.ToString();
                         decimal additions = GetSalaryAdjustment(empCode, ref_Id, "Additions");
                         decimal salik = GetSalaryAdjustment(empCode, ref_Id, "Salik");

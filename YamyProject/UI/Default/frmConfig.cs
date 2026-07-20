@@ -52,6 +52,7 @@ namespace YamyProject.UI.Default
 
             Environment.SetEnvironmentVariable("yamy_connection", CryptoHelper.Encrypt(connStr), EnvironmentVariableTarget.User);
             Environment.SetEnvironmentVariable("yamy_company_code", txtCompanyCode.Text.Trim(), EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable("yamy_device_name", txtDeviceName.Text.Trim(), EnvironmentVariableTarget.User);
             MessageBox.Show("Server connection saved. Please restart...", "Saved");
             createCompanyIfNot();
         }

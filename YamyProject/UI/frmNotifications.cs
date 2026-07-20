@@ -20,16 +20,17 @@ namespace YamyProject.UI
 
         private void LoadNotifications()
         {
-            dgv.DataSource = DBClass.ExecuteDataTable(@"
-            SELECT 
-                notification_id,
-                title,
-                message,
-                notification_type,
-                is_read,
-                created_at
-            FROM tbl_notifications
-            ORDER BY is_read ASC, created_at DESC");
+            string query = @"
+            SELECT n.notification_id,
+            n.title,
+            n.message,
+            n.notification_type,
+            nu.is_read,
+            n.created_at FROM tbl_notifications n INNER JOIN tbl_notification_users nu ON nu.notification_id = n.notification_id WHERE nu.user_id=@uId";
+
+            query += " ORDER BY nu.is_read ASC, n.created_at DESC";
+            
+            dgv.DataSource = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@uId", frmLogin.userId));
 
             FormatGrid();
         }
@@ -71,9 +72,9 @@ namespace YamyProject.UI
 
             int id = Convert.ToInt32(dgv.Rows[e.RowIndex].Cells["notification_id"].Value);
 
-            NotificationService.MarkAsRead(id);
+            //NotificationService.MarkAsRead(id);
 
-            LoadNotifications();
+            //LoadNotifications();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -84,6 +85,20 @@ namespace YamyProject.UI
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            //bool isRead = Convert.ToBoolean(row.Cells["is_read"].Value);
+
+            if (dgv.Columns[e.ColumnIndex].Name == "is_read")
+            {
+                int id = Convert.ToInt32(dgv.Rows[e.RowIndex].Cells["notification_id"].Value);
+                NotificationService.MarkAllAsRead(id, frmLogin.userId);
+
+                //LoadNotifications();
+            }
         }
     }
 }

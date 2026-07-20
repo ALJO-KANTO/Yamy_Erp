@@ -239,7 +239,26 @@ namespace YamyProject
             //loadNameList(buttonColumn);
             loadVat();
             LocalizationManager.LocalizeDataGridViewHeaders(dgvInv);
+
+            var opt = Utilities.GeneralSettingsState("ENABLE PETTYCASH APPROVAL");
+            if (!string.IsNullOrEmpty(opt) && int.Parse(opt) > 0)
+            {
+                EnableApproval = true;
+            }
+            else
+            {
+                EnableApproval = false;
+            }
+            if (EnableApproval)
+            {
+                BtnJournal.Enabled = true;
+            }
+            else
+            {
+                BtnJournal.Enabled = false;
+            }
         }
+        bool EnableApproval = false;
         private void loadVat()
         {
             DataTable dt = DBClass.ExecuteDataTable("SELECT id, CONCAT(name, '-', value, '%') AS display_text, value FROM tbl_tax");

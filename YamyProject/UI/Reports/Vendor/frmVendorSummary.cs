@@ -33,7 +33,7 @@ namespace YamyProject
             lblDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             lblTime.Text = DateTime.Now.ToString("hh:mm:tt");
 
-            CmbType.Text = "Vendor";
+            CmbType.Text = "All";
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {

@@ -60,8 +60,6 @@
             // 
             this.dgvItems.AllowUserToAddRows = false;
             this.dgvItems.AllowUserToDeleteRows = false;
-            this.dgvItems.AllowUserToResizeColumns = false;
-            this.dgvItems.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

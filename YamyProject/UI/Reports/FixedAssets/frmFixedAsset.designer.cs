@@ -53,11 +53,11 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dgvSales = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblCompany = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblDate = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblCompany = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.headerUC1 = new YamyProject.HeaderUC();
             this.panel2 = new System.Windows.Forms.Panel();
             this.contextMenuExport.SuspendLayout();
@@ -364,8 +364,6 @@
             // 
             this.dgvSales.AllowUserToAddRows = false;
             this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.AllowUserToResizeColumns = false;
-            this.dgvSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -439,36 +437,6 @@
             this.panel1.Size = new System.Drawing.Size(1317, 83);
             this.panel1.TabIndex = 21;
             // 
-            // lblCompany
-            // 
-            this.lblCompany.AutoSize = false;
-            this.lblCompany.BackColor = System.Drawing.Color.Transparent;
-            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(0, 0);
-            this.lblCompany.Margin = new System.Windows.Forms.Padding(2);
-            this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(1317, 22);
-            this.lblCompany.TabIndex = 19;
-            this.lblCompany.Text = "Company Name";
-            this.lblCompany.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.AutoSize = false;
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(0, 22);
-            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(1317, 32);
-            this.guna2HtmlLabel7.TabIndex = 18;
-            this.guna2HtmlLabel7.Text = "Fixed Asset Summary";
-            this.guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // lblDate
             // 
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
@@ -507,6 +475,36 @@
             this.guna2HtmlLabel10.TabIndex = 20;
             this.guna2HtmlLabel10.Text = "All Transaction";
             this.guna2HtmlLabel10.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // guna2HtmlLabel7
+            // 
+            this.guna2HtmlLabel7.AutoSize = false;
+            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(0, 22);
+            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(1317, 32);
+            this.guna2HtmlLabel7.TabIndex = 18;
+            this.guna2HtmlLabel7.Text = "Fixed Asset Summary";
+            this.guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblCompany
+            // 
+            this.lblCompany.AutoSize = false;
+            this.lblCompany.BackColor = System.Drawing.Color.Transparent;
+            this.lblCompany.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompany.ForeColor = System.Drawing.Color.Black;
+            this.lblCompany.Location = new System.Drawing.Point(0, 0);
+            this.lblCompany.Margin = new System.Windows.Forms.Padding(2);
+            this.lblCompany.Name = "lblCompany";
+            this.lblCompany.Size = new System.Drawing.Size(1317, 22);
+            this.lblCompany.TabIndex = 19;
+            this.lblCompany.Text = "Company Name";
+            this.lblCompany.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
             // headerUC1
             // 

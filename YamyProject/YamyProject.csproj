@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\yamy\publish\</PublishUrl>
+    <PublishUrl>D:\yamy\yamyERP\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>61</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -333,9 +333,16 @@
     <Compile Include="CrystalReport\MaterialRequest.cs">
       <DependentUpon>MaterialRequest.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\JobCard.cs">
+      <DependentUpon>JobCard.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PurchaseOrderARC.cs">
       <DependentUpon>PurchaseOrderARC.rpt</DependentUpon>
@@ -344,26 +351,33 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReport\SalaryTransferSheet1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalaryTransferSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="CrystalReport\SalesProformaInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesProformaInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\ThermalBill.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ThermalBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\ItemList.cs">
       <DependentUpon>ItemList.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DAL\AmountToWordsHelper.cs" />
     <Compile Include="DAL\AppTheme.cs" />
@@ -382,6 +396,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DataSet\DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\HRNotificationService.cs" />
     <Compile Include="DAL\NotificationService.cs" />
     <Compile Include="DAL\PasswordHelper.cs" />
     <Compile Include="DAL\CommonInsert.cs" />
@@ -392,6 +412,7 @@
     <Compile Include="DAL\PermissionsManager.cs" />
     <Compile Include="DAL\ReportPrinter.cs" />
     <Compile Include="DAL\SecurityConfig.cs" />
+    <Compile Include="DAL\SyncData.cs" />
     <Compile Include="DAL\Utilities.cs" />
     <Compile Include="Localization\LocalizationManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -556,10 +577,10 @@
     <Compile Include="UI\Accountant\PettyCash\frmPettyCashCategory.designer.cs">
       <DependentUpon>frmPettyCashCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Accountant\PettyCash\frmPettyCashRequest.cs">
+    <Compile Include="UI\Accountant\PettyCash\PettyCashRequest\frmPettyCashRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Accountant\PettyCash\frmPettyCashRequest.designer.cs">
+    <Compile Include="UI\Accountant\PettyCash\PettyCashRequest\frmPettyCashRequest.designer.cs">
       <DependentUpon>frmPettyCashRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accountant\PettyCash\frmPettyCashSubmition.cs">
@@ -603,6 +624,12 @@
     </Compile>
     <Compile Include="UI\Accountant\PettyCash\MasterPettyCashCategory.designer.cs">
       <DependentUpon>MasterPettyCashCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Accountant\PettyCash\PettyCashRequest\MasterPettyCashRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Accountant\PettyCash\PettyCashRequest\MasterPettyCashRequest.designer.cs">
+      <DependentUpon>MasterPettyCashRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Accountant\ReceiptVoucher\frmViewReceiptVoucher.cs">
       <SubType>Form</SubType>
@@ -706,6 +733,12 @@
     <Compile Include="UI\Construction\frmViewProjectDashBoard.designer.cs">
       <DependentUpon>frmViewProjectDashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Construction\LookAheadPlanning\frmLookAheadPlanning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\LookAheadPlanning\frmLookAheadPlanning.Designer.cs">
+      <DependentUpon>frmLookAheadPlanning.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Construction\ProjectEstimating\frmViewProjectEstimating.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -736,6 +769,12 @@
     </Compile>
     <Compile Include="UI\Construction\ProjectPlanning\frmActivity.designer.cs">
       <DependentUpon>frmActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectPlanning\frmProjectPlanningNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectPlanning\frmProjectPlanningNew.Designer.cs">
+      <DependentUpon>frmProjectPlanningNew.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Construction\ProjectPlanning\MasterActivity.cs">
       <SubType>Form</SubType>
@@ -803,11 +842,29 @@
     <Compile Include="UI\Construction\ProjectResources\frmLaborAttendance.designer.cs">
       <DependentUpon>frmLaborAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Construction\ProjectResources\frmResourceNeeds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectResources\frmResourceNeeds.Designer.cs">
+      <DependentUpon>frmResourceNeeds.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Construction\ProjectResources\MasterProjectResource.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Construction\ProjectResources\MasterProjectResource.designer.cs">
       <DependentUpon>MasterProjectResource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectSchedule\frmProjectSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectSchedule\frmProjectSchedule.Designer.cs">
+      <DependentUpon>frmProjectSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectSiteActivityPlan\frmSiteActivityPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectSiteActivityPlan\frmSiteActivityPlan.Designer.cs">
+      <DependentUpon>frmSiteActivityPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Construction\ProjectSite\frmProjectSites.cs">
       <SubType>Form</SubType>
@@ -869,6 +926,12 @@
     </Compile>
     <Compile Include="UI\Construction\ProjectRegister\MasterProject.Designer.cs">
       <DependentUpon>MasterProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectTeamSupervisor\frmProjectTeamSupervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Construction\ProjectTeamSupervisor\frmProjectTeamSupervisor.designer.cs">
+      <DependentUpon>frmProjectTeamSupervisor.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Construction\ProjectTendering\MasterProjectTender.cs">
       <SubType>Form</SubType>
@@ -1655,6 +1718,7 @@
     <Compile Include="UI\HR\Employee\frmViewEmployee.designer.cs">
       <DependentUpon>frmViewEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\HR\HRDocumentExpiryNotification.cs" />
     <Compile Include="UI\HR\Loan\frmViewLoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1781,6 +1845,42 @@
     <Compile Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.Designer.cs">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Inventory\StockReconciliation\frmStockReconciliation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Inventory\StockReconciliation\frmStockReconciliation.Designer.cs">
+      <DependentUpon>frmStockReconciliation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Inventory\StockReconciliation\MasterStockReconciliation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Inventory\StockReconciliation\MasterStockReconciliation.designer.cs">
+      <DependentUpon>MasterStockReconciliation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Job Card\frmJobCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Job Card\frmJobCard.Designer.cs">
+      <DependentUpon>frmJobCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Job Card\frmViewVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Job Card\frmViewVehicle.Designer.cs">
+      <DependentUpon>frmViewVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Job Card\MasterVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Job Card\MasterVehicle.designer.cs">
+      <DependentUpon>MasterVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Job Card\MasterJobCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Job Card\MasterJobCard.designer.cs">
+      <DependentUpon>MasterJobCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Manufacturing\Models\frmManAddProcessStage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1829,6 +1929,60 @@
     <Compile Include="UI\ContractingGeneralMaintenance\frmMainContracting.Designer.cs">
       <DependentUpon>frmMainContracting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyProgressUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyProgressUpdate.Designer.cs">
+      <DependentUpon>frmDailyProgressUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailySiteWorkEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailySiteWorkEntry.Designer.cs">
+      <DependentUpon>frmDailySiteWorkEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlan.Designer.cs">
+      <DependentUpon>frmDailyWorkPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlanList.Designer.cs">
+      <DependentUpon>frmDailyWorkPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDelayHindranceLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDelayHindranceLog.Designer.cs">
+      <DependentUpon>frmDelayHindranceLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmEquipmentUsage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmEquipmentUsage.Designer.cs">
+      <DependentUpon>frmEquipmentUsage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmResourceDeployment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmResourceDeployment.Designer.cs">
+      <DependentUpon>frmResourceDeployment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmSiteDiaryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmSiteDiaryList.Designer.cs">
+      <DependentUpon>frmSiteDiaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmWorkMeasurement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmWorkMeasurement.Designer.cs">
+      <DependentUpon>frmWorkMeasurement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Project Management\frmActivityMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1859,10 +2013,10 @@
     <Compile Include="UI\Project Management\frmConsumptionEntry.Designer.cs">
       <DependentUpon>frmConsumptionEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Project Management\frmDailySiteReport.cs">
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailySiteReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Project Management\frmDailySiteReport.Designer.cs">
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmDailySiteReport.Designer.cs">
       <DependentUpon>frmDailySiteReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Project Management\frmDailyWorkPlan.cs">
@@ -1936,6 +2090,12 @@
     </Compile>
     <Compile Include="UI\Project Management\frmProjectDataExport.designer.cs">
       <DependentUpon>frmProjectDataExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmSiteDiary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Project Management\DailySiteExcecution\frmSiteDiary.Designer.cs">
+      <DependentUpon>frmSiteDiary.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Project Management\ProjectClassification\frmProjectClassificationCenter.cs">
       <SubType>Form</SubType>
@@ -2112,6 +2272,60 @@
     <Compile Include="UI\Project Management\ReportCenter.designer.cs">
       <DependentUpon>ReportCenter.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Purchases\MaterialConsumption\frmMaterialConsumption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialConsumption\frmMaterialConsumption.Designer.cs">
+      <DependentUpon>frmMaterialConsumption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialConsumption\MasterMaterialConsumption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialConsumption\MasterMaterialConsumption.designer.cs">
+      <DependentUpon>MasterMaterialConsumption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialIssue\frmMaterialIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialIssue\frmMaterialIssue.Designer.cs">
+      <DependentUpon>frmMaterialIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialIssue\MasterMaterialIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialIssue\MasterMaterialIssue.designer.cs">
+      <DependentUpon>MasterMaterialIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialProcurementRequest\frmProcurementRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialProcurementRequest\frmProcurementRequest.Designer.cs">
+      <DependentUpon>frmProcurementRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialProcurementRequest\MasterProcurementRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialProcurementRequest\MasterProcurementRequest.designer.cs">
+      <DependentUpon>MasterProcurementRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReceipt\frmMaterialReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReceipt\frmMaterialReceipt.Designer.cs">
+      <DependentUpon>frmMaterialReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReceipt\MasterMaterialReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReceipt\MasterMaterialReceipt.designer.cs">
+      <DependentUpon>MasterMaterialReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReservation\frmMaterialReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReservation\frmMaterialReservation.Designer.cs">
+      <DependentUpon>frmMaterialReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Purchases\MaterialReceived\frmMaterialReceived.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2135,6 +2349,36 @@
     </Compile>
     <Compile Include="UI\Purchases\MaterialRequest\MasterMaterialRequest.designer.cs">
       <DependentUpon>MasterMaterialRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReservation\MasterMaterialReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReservation\MasterMaterialReservation.designer.cs">
+      <DependentUpon>MasterMaterialReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReturn\frmMaterialReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReturn\frmMaterialReturn.Designer.cs">
+      <DependentUpon>frmMaterialReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReturn\MasterMaterialReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialReturn\MasterMaterialReturn.designer.cs">
+      <DependentUpon>MasterMaterialReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialTransfer\frmMaterialTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialTransfer\frmMaterialTransfer.Designer.cs">
+      <DependentUpon>frmMaterialTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialTransfer\MasterMaterialTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchases\MaterialTransfer\MasterMaterialTransfer.designer.cs">
+      <DependentUpon>MasterMaterialTransfer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Purchases\PurchaseOffer\frmPurchaseOffer.cs">
       <SubType>Form</SubType>
@@ -2229,15 +2473,77 @@
     <Compile Include="CrystalReport\ReceiptVoucherMajestic.cs">
       <DependentUpon>ReceiptVoucherMajestic.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\frmSalaryBankTransferReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\frmSalaryBankTransferReport.designer.cs">
+      <DependentUpon>frmSalaryBankTransferReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\frmEmployeeSalaryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\frmEmployeeSalaryReport.designer.cs">
+      <DependentUpon>frmEmployeeSalaryReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Employee\frmStateMandatedRetirementReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Reports\Employee\frmStateMandatedRetirementReport.designer.cs">
       <DependentUpon>frmStateMandatedRetirementReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\SalaryTransferSheet\frmSalaryTransferSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\SalaryTransferSheet\frmSalaryTransferSheet.Designer.cs">
+      <DependentUpon>frmSalaryTransferSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Employee\SalaryTransferSheet\SalaryTransferSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalaryTransferSheet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\BalanceSheet\BalanceSheetRenderer.cs" />
+    <Compile Include="UI\Reports\FinancialReports\BalanceSheet\BalanceSheetReportEngine.cs" />
+    <Compile Include="UI\Reports\FinancialReports\BalanceSheet\BalanceSheetReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\BalanceSheet\BalanceSheetReport.designer.cs">
+      <DependentUpon>BalanceSheetReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\BalanceSheet\ReportRowBS.cs" />
+    <Compile Include="UI\Reports\FinancialReports\CashFlowReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\CashFlowReport.Designer.cs">
+      <DependentUpon>CashFlowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossRenderer.cs" />
+    <Compile Include="UI\Reports\FinancialReports\COANode.cs" />
+    <Compile Include="UI\Reports\FinancialReports\FinancialQueries.cs" />
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossReportEngine.cs" />
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossReport1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossReport1.Designer.cs">
+      <DependentUpon>ProfitLossReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\ProfitLossReport.Designer.cs">
+      <DependentUpon>ProfitLossReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\ReportRow.cs" />
+    <Compile Include="UI\Reports\FinancialReports\ReportStyles.cs" />
+    <Compile Include="UI\Reports\FinancialReports\TrialBalanceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\FinancialReports\TrialBalanceReport.Designer.cs">
+      <DependentUpon>TrialBalanceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\frmListReport.cs">
       <SubType>Form</SubType>
@@ -2310,6 +2616,18 @@
     </Compile>
     <Compile Include="UI\Reports\Inventory\frmInventoryValuationDetail.designer.cs">
       <DependentUpon>frmInventoryValuationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmStockCheckAvailability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmStockCheckAvailability.Designer.cs">
+      <DependentUpon>frmStockCheckAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmStockLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Inventory\frmStockLedger.Designer.cs">
+      <DependentUpon>frmStockLedger.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\Inventory\frmWarehouseDetail.cs">
       <SubType>Form</SubType>
@@ -2736,51 +3054,51 @@
     <Compile Include="CrystalReport\ItemTransfer.cs">
       <DependentUpon>ItemTransfer.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\SalesInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PaymentVoucherTransfer.cs">
       <DependentUpon>PaymentVoucherTransfer.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PaymentVoucherCheque.cs">
       <DependentUpon>PaymentVoucherCheque.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PurchaseReturn.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseReturn.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\SalesOrderInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesOrderInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\SalesReturnInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesReturnInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\Reports\FixedAssets\frmFixedAsset.cs">
       <SubType>Form</SubType>
@@ -2793,6 +3111,48 @@
     </Compile>
     <Compile Include="UI\Reports\FixedAssets\frmFixedAssetDetails.designer.cs">
       <DependentUpon>frmFixedAssetDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\JobCardRegisterReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\JobCardRegisterReport.designer.cs">
+      <DependentUpon>JobCardRegisterReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\CompletedJobCardsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\CompletedJobCardsReport.designer.cs">
+      <DependentUpon>CompletedJobCardsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\MechanicLaborReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\MechanicLaborReport.designer.cs">
+      <DependentUpon>MechanicLaborReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\PartsConsumptionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\PartsConsumptionReport.designer.cs">
+      <DependentUpon>PartsConsumptionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\JobCostAnalysisReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\JobCostAnalysisReport.designer.cs">
+      <DependentUpon>JobCostAnalysisReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\VehicleServiceHistoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\VehicleServiceHistoryReport.designer.cs">
+      <DependentUpon>VehicleServiceHistoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\OpenJobCardsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\OpenJobCardsReport.designer.cs">
+      <DependentUpon>OpenJobCardsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\PettyCash\frmPettyCashDetailEMPTransactions.cs">
       <SubType>Form</SubType>
@@ -2890,6 +3250,18 @@
     <Compile Include="UI\Reports\Sales\frmSalesByShipToAddress.designer.cs">
       <DependentUpon>frmSalesByShipToAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\Tax\frmVATDetailed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Tax\frmVATDetailed.Designer.cs">
+      <DependentUpon>frmVATDetailed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Reports\Tax\frmVATSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\Tax\frmVATSummary.Designer.cs">
+      <DependentUpon>frmVATSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\Vendor\frmExpenseByVendorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2900,78 +3272,78 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReceiptVoucher.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PaymentVoucherGeneral.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PaymentVoucherGeneral.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\CreditNote.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreditNote.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\DebitNote.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DebitNote.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\DeliveryNote.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DeliveryNote.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\JournalVoucher.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalVoucher.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PurchaseReturn1.cs">
       <DependentUpon>PurchaseReturn1.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PurchaseOrder.cs">
       <DependentUpon>PurchaseOrder.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\PurchaseInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\SalesQuotationInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesQuotationInvoice.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\ReceiverNote.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReceiverNote.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\Reports\Design\Vendor Details.cs">
       <AutoGen>True</AutoGen>
@@ -3241,22 +3613,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RollBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\rptBillKitchen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptBillKitchen.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReport\rptKitchen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptKitchen.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\RMS\UC\ucProduct.cs">
       <SubType>UserControl</SubType>
@@ -3492,6 +3864,12 @@
     <Compile Include="UI\Settings\MasterSetting.Designer.cs">
       <DependentUpon>MasterSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Settings\frmSyncData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Settings\frmSyncData.Designer.cs">
+      <DependentUpon>frmSyncData.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Settings\Usermenu\frmUserAccess.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3589,6 +3967,17 @@
       <LastGenOutput>PurchaseOrderARC.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="DAL\DataSet\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\DataSet\DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\DataSet\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
     <None Include="Resources\BOQ.xlsx" />
     <None Include="Resources\yamy.bmp" />
     <None Include="Resources\graph.png" />
@@ -3792,6 +4181,16 @@
       <LastGenOutput>MaterialRequest.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CrystalReport\JobCard.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>JobCard.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CrystalReport\SalaryTransferSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalaryTransferSheet1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Localization\Localization.ar.resx" />
     <EmbeddedResource Include="Localization\Localization.es.resx" />
     <EmbeddedResource Include="Localization\Localization.fil.resx" />
@@ -3885,7 +4284,7 @@
     <EmbeddedResource Include="UI\Accountant\PettyCash\frmPettyCashCategory.resx">
       <DependentUpon>frmPettyCashCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Accountant\PettyCash\frmPettyCashRequest.resx">
+    <EmbeddedResource Include="UI\Accountant\PettyCash\PettyCashRequest\frmPettyCashRequest.resx">
       <DependentUpon>frmPettyCashRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\PettyCash\frmPettyCashSubmition.resx">
@@ -3908,6 +4307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\PettyCash\MasterPettyCashCategory.resx">
       <DependentUpon>MasterPettyCashCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Accountant\PettyCash\PettyCashRequest\MasterPettyCashRequest.resx">
+      <DependentUpon>MasterPettyCashRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Accountant\ReceiptVoucher\frmViewReceiptVoucher.resx">
       <DependentUpon>frmViewReceiptVoucher.cs</DependentUpon>
@@ -3960,6 +4362,9 @@
     <EmbeddedResource Include="UI\Construction\frmViewProjectDashBoard.resx">
       <DependentUpon>frmViewProjectDashBoard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\LookAheadPlanning\frmLookAheadPlanning.resx">
+      <DependentUpon>frmLookAheadPlanning.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectEstimating\frmViewProjectEstimating.resx">
       <DependentUpon>frmViewProjectEstimating.cs</DependentUpon>
     </EmbeddedResource>
@@ -3974,6 +4379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmActivity.resx">
       <DependentUpon>frmActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectPlanning\frmProjectPlanningNew.resx">
+      <DependentUpon>frmProjectPlanningNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectPlanning\MasterActivity.resx">
       <DependentUpon>MasterActivity.cs</DependentUpon>
@@ -4008,8 +4416,17 @@
     <EmbeddedResource Include="UI\Construction\ProjectResources\frmLaborAttendance.resx">
       <DependentUpon>frmLaborAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectResources\frmResourceNeeds.resx">
+      <DependentUpon>frmResourceNeeds.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectResources\MasterProjectResource.resx">
       <DependentUpon>MasterProjectResource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectSchedule\frmProjectSchedule.resx">
+      <DependentUpon>frmProjectSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectSiteActivityPlan\frmSiteActivityPlan.resx">
+      <DependentUpon>frmSiteActivityPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectSite\frmProjectSites.resx">
       <DependentUpon>frmProjectSites.cs</DependentUpon>
@@ -4040,6 +4457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectRegister\MasterProject.resx">
       <DependentUpon>MasterProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Construction\ProjectTeamSupervisor\frmProjectTeamSupervisor.resx">
+      <DependentUpon>frmProjectTeamSupervisor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Construction\ProjectTendering\MasterProjectTender.resx">
       <DependentUpon>MasterProjectTender.cs</DependentUpon>
@@ -4499,6 +4919,24 @@
     <EmbeddedResource Include="UI\Inventory\InventoryManagement\Warehouse\MasterWarehouseNew.resx">
       <DependentUpon>MasterWarehouseNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Inventory\StockReconciliation\frmStockReconciliation.resx">
+      <DependentUpon>frmStockReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Inventory\StockReconciliation\MasterStockReconciliation.resx">
+      <DependentUpon>MasterStockReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Job Card\frmJobCard.resx">
+      <DependentUpon>frmJobCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Job Card\frmViewVehicle.resx">
+      <DependentUpon>frmViewVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Job Card\MasterVehicle.resx">
+      <DependentUpon>MasterVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Job Card\MasterJobCard.resx">
+      <DependentUpon>MasterJobCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Manufacturing\Models\frmManAddProcessStage.resx">
       <DependentUpon>frmManAddProcessStage.cs</DependentUpon>
     </EmbeddedResource>
@@ -4523,6 +4961,36 @@
     <EmbeddedResource Include="UI\ContractingGeneralMaintenance\frmMainContracting.resx">
       <DependentUpon>frmMainContracting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDailyProgressUpdate.resx">
+      <DependentUpon>frmDailyProgressUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDailySiteWorkEntry.resx">
+      <DependentUpon>frmDailySiteWorkEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlan.resx">
+      <DependentUpon>frmDailyWorkPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDailyWorkPlanList.resx">
+      <DependentUpon>frmDailyWorkPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDelayHindranceLog.resx">
+      <DependentUpon>frmDelayHindranceLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmEquipmentUsage.resx">
+      <DependentUpon>frmEquipmentUsage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmResourceDeployment.resx">
+      <DependentUpon>frmResourceDeployment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmSiteDiary.resx">
+      <DependentUpon>frmSiteDiary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmSiteDiaryList.resx">
+      <DependentUpon>frmSiteDiaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmWorkMeasurement.resx">
+      <DependentUpon>frmWorkMeasurement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Project Management\frmActivityMaster.resx">
       <DependentUpon>frmActivityMaster.cs</DependentUpon>
     </EmbeddedResource>
@@ -4535,7 +5003,7 @@
     <EmbeddedResource Include="UI\Project Management\frmConsumptionEntry.resx">
       <DependentUpon>frmConsumptionEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Project Management\frmDailySiteReport.resx">
+    <EmbeddedResource Include="UI\Project Management\DailySiteExcecution\frmDailySiteReport.resx">
       <DependentUpon>frmDailySiteReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Project Management\frmDailyWorkPlan.resx">
@@ -4658,6 +5126,33 @@
     <EmbeddedResource Include="UI\Project Management\ProjectZone\MasterProjectZone.resx">
       <DependentUpon>MasterProjectZone.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialConsumption\frmMaterialConsumption.resx">
+      <DependentUpon>frmMaterialConsumption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialConsumption\MasterMaterialConsumption.resx">
+      <DependentUpon>MasterMaterialConsumption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialIssue\frmMaterialIssue.resx">
+      <DependentUpon>frmMaterialIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialIssue\MasterMaterialIssue.resx">
+      <DependentUpon>MasterMaterialIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialProcurementRequest\frmProcurementRequest.resx">
+      <DependentUpon>frmProcurementRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialProcurementRequest\MasterProcurementRequest.resx">
+      <DependentUpon>MasterProcurementRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReceipt\frmMaterialReceipt.resx">
+      <DependentUpon>frmMaterialReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReceipt\MasterMaterialReceipt.resx">
+      <DependentUpon>MasterMaterialReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReservation\frmMaterialReservation.resx">
+      <DependentUpon>frmMaterialReservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchases\MaterialReceived\frmMaterialReceived.resx">
       <DependentUpon>frmMaterialReceived.cs</DependentUpon>
     </EmbeddedResource>
@@ -4669,6 +5164,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchases\MaterialRequest\MasterMaterialRequest.resx">
       <DependentUpon>MasterMaterialRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReservation\MasterMaterialReservation.resx">
+      <DependentUpon>MasterMaterialReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReturn\frmMaterialReturn.resx">
+      <DependentUpon>frmMaterialReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialReturn\MasterMaterialReturn.resx">
+      <DependentUpon>MasterMaterialReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialTransfer\frmMaterialTransfer.resx">
+      <DependentUpon>frmMaterialTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchases\MaterialTransfer\MasterMaterialTransfer.resx">
+      <DependentUpon>MasterMaterialTransfer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchases\PurchaseOffer\frmPurchaseOffer.resx">
       <DependentUpon>frmPurchaseOffer.cs</DependentUpon>
@@ -4721,8 +5231,26 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="UI\Reports\Design\Report1.rdlc" />
+    <EmbeddedResource Include="UI\Reports\Employee\frmSalaryBankTransferReport.resx">
+      <DependentUpon>frmSalaryBankTransferReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Employee\frmEmployeeSalaryReport.resx">
+      <DependentUpon>frmEmployeeSalaryReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Employee\frmStateMandatedRetirementReport.resx">
       <DependentUpon>frmStateMandatedRetirementReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Employee\SalaryTransferSheet\frmSalaryTransferSheet.resx">
+      <DependentUpon>frmSalaryTransferSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\FinancialReports\BalanceSheet\BalanceSheetReport.resx">
+      <DependentUpon>BalanceSheetReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\FinancialReports\ProfitLossReport1.resx">
+      <DependentUpon>ProfitLossReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\FinancialReports\ProfitLossReport.resx">
+      <DependentUpon>ProfitLossReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\frmListReport.resx">
       <DependentUpon>frmListReport.cs</DependentUpon>
@@ -4759,6 +5287,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Inventory\frmInventoryValuationDetail.resx">
       <DependentUpon>frmInventoryValuationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmStockCheckAvailability.resx">
+      <DependentUpon>frmStockCheckAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Inventory\frmStockLedger.resx">
+      <DependentUpon>frmStockLedger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Inventory\frmWarehouseDetail.resx">
       <DependentUpon>frmWarehouseDetail.cs</DependentUpon>
@@ -5011,6 +5545,27 @@
     <EmbeddedResource Include="UI\Reports\FixedAssets\frmFixedAssetDetails.resx">
       <DependentUpon>frmFixedAssetDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\JobCardRegisterReport.resx">
+      <DependentUpon>JobCardRegisterReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\CompletedJobCardsReport.resx">
+      <DependentUpon>CompletedJobCardsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\MechanicLaborReport.resx">
+      <DependentUpon>MechanicLaborReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\PartsConsumptionReport.resx">
+      <DependentUpon>PartsConsumptionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\JobCostAnalysisReport.resx">
+      <DependentUpon>JobCostAnalysisReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\VehicleServiceHistoryReport.resx">
+      <DependentUpon>VehicleServiceHistoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\OpenJobCardsReport.resx">
+      <DependentUpon>OpenJobCardsReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\PettyCash\frmPettyCashDetailEMPTransactions.resx">
       <DependentUpon>frmPettyCashDetailEMPTransactions.cs</DependentUpon>
     </EmbeddedResource>
@@ -5058,6 +5613,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Sales\frmSalesByShipToAddress.resx">
       <DependentUpon>frmSalesByShipToAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Tax\frmVATDetailed.resx">
+      <DependentUpon>frmVATDetailed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\Tax\frmVATSummary.resx">
+      <DependentUpon>frmVATSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\Vendor\frmExpenseByVendorDetails.resx">
       <DependentUpon>frmExpenseByVendorDetails.cs</DependentUpon>
@@ -5353,6 +5914,9 @@
     <EmbeddedResource Include="UI\Settings\frmOpeningBalanceEmployee.resx">
       <DependentUpon>frmOpeningBalanceEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Settings\frmSyncData.resx">
+      <DependentUpon>frmSyncData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Settings\frmUpdate.resx">
       <DependentUpon>frmUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -5440,6 +6004,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UI\Reports\Employee\SalaryTransferSheet\SalaryTransferSheet.xsc">
+      <DependentUpon>SalaryTransferSheet.xsd</DependentUpon>
+    </None>
+    <None Include="UI\Reports\Employee\SalaryTransferSheet\SalaryTransferSheet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalaryTransferSheet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\Reports\Employee\SalaryTransferSheet\SalaryTransferSheet.xss">
+      <DependentUpon>SalaryTransferSheet.xsd</DependentUpon>
+    </None>
     <None Include="UI\RMS\Dataset\RMSDataSet.xsc">
       <DependentUpon>RMSDataSet.xsd</DependentUpon>
     </None>

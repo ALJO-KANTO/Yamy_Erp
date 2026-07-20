@@ -62,12 +62,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblCompany = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblCompany = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.contextMenuExport.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -397,8 +397,6 @@
             // 
             this.dgvSales.AllowUserToAddRows = false;
             this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.AllowUserToResizeColumns = false;
-            this.dgvSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -556,14 +554,29 @@
             this.panel1.Size = new System.Drawing.Size(1284, 67);
             this.panel1.TabIndex = 25;
             // 
-            // panel2
+            // guna2HtmlLabel12
             // 
-            this.panel2.Controls.Add(this.dgvSales);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(2, 162);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1284, 438);
-            this.panel2.TabIndex = 26;
+            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel12.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(79, 38);
+            this.guna2HtmlLabel12.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
+            this.guna2HtmlLabel12.Size = new System.Drawing.Size(51, 14);
+            this.guna2HtmlLabel12.TabIndex = 22;
+            this.guna2HtmlLabel12.Text = "28/03/2025";
+            // 
+            // guna2HtmlLabel11
+            // 
+            this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel11.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel11.Location = new System.Drawing.Point(90, 18);
+            this.guna2HtmlLabel11.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
+            this.guna2HtmlLabel11.Size = new System.Drawing.Size(25, 14);
+            this.guna2HtmlLabel11.TabIndex = 21;
+            this.guna2HtmlLabel11.Text = "05:00";
             // 
             // lblCompany
             // 
@@ -595,30 +608,6 @@
             this.guna2HtmlLabel7.Text = "Customer Aging Detail";
             this.guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2HtmlLabel12
-            // 
-            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel12.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(79, 38);
-            this.guna2HtmlLabel12.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
-            this.guna2HtmlLabel12.Size = new System.Drawing.Size(51, 14);
-            this.guna2HtmlLabel12.TabIndex = 22;
-            this.guna2HtmlLabel12.Text = "28/03/2025";
-            // 
-            // guna2HtmlLabel11
-            // 
-            this.guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel11.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel11.Location = new System.Drawing.Point(90, 18);
-            this.guna2HtmlLabel11.Margin = new System.Windows.Forms.Padding(2);
-            this.guna2HtmlLabel11.Name = "guna2HtmlLabel11";
-            this.guna2HtmlLabel11.Size = new System.Drawing.Size(25, 14);
-            this.guna2HtmlLabel11.TabIndex = 21;
-            this.guna2HtmlLabel11.Text = "05:00";
-            // 
             // guna2HtmlLabel10
             // 
             this.guna2HtmlLabel10.AutoSize = false;
@@ -633,6 +622,15 @@
             this.guna2HtmlLabel10.TabIndex = 20;
             this.guna2HtmlLabel10.Text = "All Transaction";
             this.guna2HtmlLabel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvSales);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(2, 162);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1284, 438);
+            this.panel2.TabIndex = 26;
             // 
             // frmCustomerAgingDetails
             // 

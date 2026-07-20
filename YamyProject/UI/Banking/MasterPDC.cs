@@ -713,11 +713,11 @@ namespace YamyProject
                 if (reader.Read())
                 {
                     pdcAccountId = reader["id"].ToString();
-                    if (category != "PDC Payable")
-                    {
-                        debitAccountId = creditAccountId;
-                        creditAccountId = pdcAccountId;
-                    }
+                    //if (category != "PDC Payable")
+                    //{
+                    //    debitAccountId = creditAccountId;
+                    //    creditAccountId = pdcAccountId;
+                    //}
                 }
             }
 

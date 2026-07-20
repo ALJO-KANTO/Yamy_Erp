@@ -121,6 +121,10 @@ namespace YamyProject
                           `modified_date` date DEFAULT NULL,
                           `state` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+                          `GlobalId` varchar(36) NOT NULL DEFAULT '0',
+                          `DeviceId` varchar(50) DEFAULT '',
+                          `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+                          `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -140,6 +144,12 @@ namespace YamyProject
                           `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `amount` decimal(20,6) DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+
+    -- Sync columns (IMPORTANT)
+    `GlobalId` VARCHAR(36) NOT NULL,
+    `DeviceId` VARCHAR(50) DEFAULT NULL,
+    `LastModified` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `SyncStatus` TINYINT(1) NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -488,67 +498,69 @@ namespace YamyProject
                           `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                           `code` int NOT NULL,
                           `main_id` int NOT NULL,
+                          `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_coa_level_2` (`id`, `name`, `code`, `main_id`) VALUES
-	                        (1, 'Current Assets', 11, 1),
-	                        (2, 'Long-Term Assets', 12, 1),
-	                        (3, 'Current Liabilities', 21, 2),
-	                        (4, 'Long-Term Liabilities', 22, 2),
-	                        (5, 'Equity & Capital', 31, 3),
-	                        (6, 'Direct Income', 41, 4),
-	                        (7, 'Indirect Income', 42, 4),
-	                        (8, 'Cost', 51, 5),
-	                        (9, 'Direct Expenses', 61, 6),
-	                        (10, 'Operating Expenses', 62, 6),
-	                        (11, 'Inventory Adjustments', 63, 6),
-	                        (12, 'Other Income', 465, 4);
+                        INSERT INTO `tbl_coa_level_2` (`id`, `name`, `code`, `main_id`,`SyncStatus`) VALUES
+	                        (1, 'Current Assets', 11, 1, 1),
+	                        (2, 'Long-Term Assets', 12, 1, 1),
+	                        (3, 'Current Liabilities', 21, 2, 1),
+	                        (4, 'Long-Term Liabilities', 22, 2,1),
+	                        (5, 'Equity & Capital', 31, 3,1),
+	                        (6, 'Direct Income', 41, 4,1),
+	                        (7, 'Indirect Income', 42, 4,1),
+	                        (8, 'Cost', 51, 5,1),
+	                        (9, 'Direct Expenses', 61, 6,1),
+	                        (10, 'Operating Expenses', 62, 6,1),
+	                        (11, 'Inventory Adjustments', 63, 6,1),
+	                        (12, 'Other Income', 465, 4,1);
 
                         CREATE TABLE IF NOT EXISTS `tbl_coa_level_3` (
                           `id` int NOT NULL AUTO_INCREMENT,
                           `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
                           `code` int NOT NULL,
                           `main_id` int NOT NULL,
+                          `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_coa_level_3` (`id`, `name`, `code`, `main_id`) VALUES
-	                        (1, 'Banks', 1101, 1),
-	                        (2, 'Petty Cash', 1102, 1),
-	                        (3, 'Accounts Receivable', 1103, 1),
-	                        (4, 'Inventory', 1104, 1),
-	                        (5, 'Prepayment', 1105, 1),
-	                        (6, 'Other\'s Receivable', 1106, 1),
-	                        (7, 'Related parties Receivable', 1107, 1),
-	                        (8, 'Fixed Assets', 1201, 2),
-	                        (9, 'Suppliers', 2101, 3),
-	                        (10, 'Accrued Employee benefits Expense', 2102, 3),
-	                        (11, 'Other Current Liabilities', 2103, 3),
-	                        (12, 'Long-term employee benefits', 2201, 4),
-	                        (13, 'Capital', 3101, 5),
-	                        (14, 'Members Draw', 3102, 5),
-	                        (15, 'Opening Balance Equity', 3201, 5),
-	                        (16, 'Reserve', 3301, 5),
-	                        (17, 'Retained earnings', 3401, 5),
-	                        (18, 'Sales', 4101, 6),
-	                        (19, 'Sales Return', 4102, 6),
-	                        (20, 'Maintenance Income', 4201, 7),
-	                        (21, 'Cost of Goods Sold', 5101, 8),
-	                        (22, 'Freight Shipping Cost', 5102, 8),
-	                        (23, 'Customs & Clearance', 5103, 8),
-	                        (24, 'Other Cost', 5104, 8),
-	                        (25, 'General Expenses', 6101, 9),
-                            (26, 'Payroll Liabilities', 2104, 3),
-	                        (27, 'Employee Receivable', 1108, 1),
-	                        (28, 'Short Term Investment', 1109, 1),
-	                        (29, 'Other Payable', 2105, 3),
-	                        (30, 'Cash & Cash Equivalents', 1110, 1),
-	                        (31, 'Losses', 6201, 16),
-	                        (32, 'Stock Write-offs', 6387, 17),
-	                        (33, 'Stock Adjustments', 46501, 18),
-	                        (34, 'Accounts Payable', 1111, 1),
-	                        (35, 'Other Income', 46502, 12);
+                        INSERT INTO `tbl_coa_level_3` (`id`, `name`, `code`, `main_id`,`SyncStatus`) VALUES
+	                        (1, 'Banks', 1101, 1,1),
+	                        (2, 'Petty Cash', 1102, 1,1),
+	                        (3, 'Accounts Receivable', 1103, 1,1),
+	                        (4, 'Inventory', 1104, 1,1),
+	                        (5, 'Prepayment', 1105, 1,1),
+	                        (6, 'Other\'s Receivable', 1106, 1,1),
+	                        (7, 'Related parties Receivable', 1107, 1,1),
+	                        (8, 'Fixed Assets', 1201, 2,1),
+	                        (9, 'Suppliers', 2101, 3,1),
+	                        (10, 'Accrued Employee benefits Expense', 2102, 3,1),
+	                        (11, 'Other Current Liabilities', 2103, 3,1),
+	                        (12, 'Long-term employee benefits', 2201, 4,1),
+	                        (13, 'Capital', 3101, 5,1),
+	                        (14, 'Members Draw', 3102, 5,1),
+	                        (15, 'Opening Balance Equity', 3201, 5,1),
+	                        (16, 'Reserve', 3301, 5,1),
+	                        (17, 'Retained earnings', 3401, 5,1),
+	                        (18, 'Sales', 4101, 6,1),
+	                        (19, 'Sales Return', 4102, 6,1),
+	                        (20, 'Maintenance Income', 4201, 7,1),
+	                        (21, 'Cost of Goods Sold', 5101, 8,1),
+	                        (22, 'Freight Shipping Cost', 5102, 8,1),
+	                        (23, 'Customs & Clearance', 5103, 8,1),
+	                        (24, 'Other Cost', 5104, 8,1),
+	                        (25, 'General Expenses', 6101, 9,1),
+                            (26, 'Payroll Liabilities', 2104, 3,1),
+	                        (27, 'Employee Receivable', 1108, 1,1),
+	                        (28, 'Short Term Investment', 1109, 1,1),
+	                        (29, 'Other Payable', 2105, 3,1),
+	                        (30, 'Cash & Cash Equivalents', 1110, 1,1),
+	                        (31, 'Losses', 6201, 16,1),
+	                        (32, 'Stock Write-offs', 6387, 17,1),
+	                        (33, 'Stock Adjustments', 46501, 18,1),
+	                        (34, 'Accounts Payable', 1111, 1,1),
+	                        (35, 'Other Income', 46502, 12,1);
 
                         CREATE TABLE IF NOT EXISTS `tbl_coa_level_4` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -558,56 +570,57 @@ namespace YamyProject
                           `debit` decimal(20,3) DEFAULT '0.000',
                           `credit` decimal(20,3) DEFAULT '0.000',
                           `date` datetime DEFAULT NULL,
+                          `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-                        INSERT INTO `tbl_coa_level_4` (`id`, `name`, `code`, `main_id`, `debit`, `credit`, `date`) VALUES
-	                        (1, 'Bank Account', 1101001, 1, 0.000, 0.000, NULL),
-	                        (2, 'Petty Cash', 1102001, 2, 0.000, 0.000, NULL),
-	                        (3, 'Accounts Receivable', 1103001, 3, 0.000, 0.000, NULL),
-	                        (4, 'Raw Material Inventory', 1104001, 4, 0.000, 0.000, NULL),
-	                        (5, 'Finish Goods Inventory', 1104002, 4, 0.000, 0.000, NULL),
-	                        (6, 'Prepayment Government', 1105001, 5, 0.000, 0.000, NULL),
-	                        (7, 'Prepayment Rent', 1105002, 5, 0.000, 0.000, NULL),
-	                        (8, 'Prepayment Other\'s', 1105003, 5, 0.000, 0.000, NULL),
-	                        (9, 'Deposits', 1106001, 6, 0.000, 0.000, NULL),
-	                        (10, 'Taxes Paid (Input)', 1106002, 6, 0.000, 0.000, NULL),
-	                        (11, 'Advance payments to employees', 1106003, 6, 0.000, 0.000, NULL),
-	                        (12, 'Fixed Assets Net', 1201001, 8, 0.000, 0.000, NULL),
-	                        (13, 'Suppliers (Creditors)  Net', 2101001, 9, 0.000, 0.000, NULL),
-	                        (14, 'Accrued Salaries', 2102001, 10, 0.000, 0.000, NULL),
-	                        (15, 'Accrued Sales commission', 2102002, 10, 0.000, 0.000, NULL),
-	                        (16, 'Accrued Leave Salary', 2102003, 10, 0.000, 0.000, NULL),
-	                        (17, 'Sales Tax Payable', 2103001, 11, 0.000, 0.000, NULL),
-	                        (18, 'PDC CHQ', 2103002, 11, 0.000, 0.000, NULL),
-	                        (19, 'Advance from Customers', 2103004, 11, 0.000, 0.000, NULL),
-	                        (20, 'Gratuity Provision', 2201001, 12, 0.000, 0.000, NULL),
-	                        (21, 'Capital - Opening Balance', 3101001, 13, 0.000, 0.000, NULL),
-	                        (22, 'Opening Balance Equity', 3201001, 15, 0.000, 0.000, NULL),
-	                        (23, 'Sales - Local', 4101001, 18, 0.000, 0.000, NULL),
-	                        (24, 'Sales - GCC', 4101002, 18, 0.000, 0.000, NULL),
-	                        (25, 'Materials Purchased', 5101001, 21, 0.000, 0.000, NULL),
-	                        (26, 'Employee Salary Advance', 1108001, 27, 0.000, 0.000, NULL),
-	                        (27, 'Employee Loans', 1108002, 27, 0.000, 0.000, NULL),
-	                        (28, 'Other Employee Receivables', 1101002, 27, 0.000, 0.000, NULL),
-	                        (29, 'Accrued Salary', 2102004, 10, 0.000, 0.000, NULL),
-	                        (30, 'Employee Payables', 2105001, 29, 0.000, 0.000, NULL),
-	                        (31, 'Stock Settlement Gain', 46501001, 35, 0.000, 0.000, NULL),
-	                        (32, 'Accumulated Dep Fur', 1201002, 25, 0.000, 0.000, NULL),
-	                        (33, 'PDC Receivable', 1103002, 3, 0.000, 0.000, NULL),
-	                        (34, 'PDC Receivable Return', 1103003, 3, 0.000, 0.000, NULL),
-	                        (35, 'PDC Receivable Hold', 1103004, 3, 0.000, 0.000, NULL),
-	                        (36, 'PDC Receivable Cancel', 1103005, 3, 0.000, 0.000, NULL),
-	                        (37, 'PDC Payable', 1111001, 34, 0.000, 0.000, NULL),
-	                        (38, 'PDC Payable Return', 1111002, 34, 0.000, 0.000, NULL),
-	                        (39, 'PDC Payable Hold', 1111003, 34, 0.000, 0.000, NULL),
-	                        (40, 'PDC Payable Cancel', 1111003, 34, 0.000, 0.000, NULL),
-	                        (41, 'Sales Discount', 6101004, 25, 0.000, 0.000, NULL),
-	                        (42, 'Cash On Hand', 1103006, 3, 0.000, 0.000, NULL),
-	                        (43, 'Sales Return', 4101003, 19, 0.000, 0.000, NULL),
-	                        (44, 'Customer Advances', 2105002, 29, 0.000, 0.000, NULL),
-	                        (45, 'Retention Receivable', 1103007, 3, 0.000, 0.000, NULL),
-	                        (46, 'Retention Payable', 2105003, 29, 0.000, 0.000, NULL);
+                        INSERT INTO `tbl_coa_level_4` (`id`, `name`, `code`, `main_id`, `debit`, `credit`, `date`,`SyncStatus`) VALUES
+	                        (1, 'Bank Account', 1101001, 1, 0.000, 0.000, NULL,1),
+	                        (2, 'Petty Cash', 1102001, 2, 0.000, 0.000, NULL,1),
+	                        (3, 'Accounts Receivable', 1103001, 3, 0.000, 0.000, NULL,1),
+	                        (4, 'Raw Material Inventory', 1104001, 4, 0.000, 0.000, NULL,1),
+	                        (5, 'Finish Goods Inventory', 1104002, 4, 0.000, 0.000, NULL,1),
+	                        (6, 'Prepayment Government', 1105001, 5, 0.000, 0.000, NULL,1),
+	                        (7, 'Prepayment Rent', 1105002, 5, 0.000, 0.000, NULL,1),
+	                        (8, 'Prepayment Other\'s', 1105003, 5, 0.000, 0.000, NULL,1),
+	                        (9, 'Deposits', 1106001, 6, 0.000, 0.000, NULL,1),
+	                        (10, 'Taxes Paid (Input)', 1106002, 6, 0.000, 0.000, NULL,1),
+	                        (11, 'Advance payments to employees', 1106003, 6, 0.000, 0.000, NULL,1),
+	                        (12, 'Fixed Assets Net', 1201001, 8, 0.000, 0.000, NULL,1),
+	                        (13, 'Suppliers (Creditors)  Net', 2101001, 9, 0.000, 0.000, NULL,1),
+	                        (14, 'Accrued Salaries', 2102001, 10, 0.000, 0.000, NULL,1),
+	                        (15, 'Accrued Sales commission', 2102002, 10, 0.000, 0.000, NULL,1),
+	                        (16, 'Accrued Leave Salary', 2102003, 10, 0.000, 0.000, NULL,1),
+	                        (17, 'Sales Tax Payable', 2103001, 11, 0.000, 0.000, NULL,1),
+	                        (18, 'PDC CHQ', 2103002, 11, 0.000, 0.000, NULL,1),
+	                        (19, 'Advance from Customers', 2103004, 11, 0.000, 0.000, NULL,1),
+	                        (20, 'Gratuity Provision', 2201001, 12, 0.000, 0.000, NULL,1),
+	                        (21, 'Capital - Opening Balance', 3101001, 13, 0.000, 0.000, NULL,1),
+	                        (22, 'Opening Balance Equity', 3201001, 15, 0.000, 0.000, NULL,1),
+	                        (23, 'Sales - Local', 4101001, 18, 0.000, 0.000, NULL,1),
+	                        (24, 'Sales - GCC', 4101002, 18, 0.000, 0.000, NULL,1),
+	                        (25, 'Materials Purchased', 5101001, 21, 0.000, 0.000, NULL,1),
+	                        (26, 'Employee Salary Advance', 1108001, 27, 0.000, 0.000, NULL,1),
+	                        (27, 'Employee Loans', 1108002, 27, 0.000, 0.000, NULL,1),
+	                        (28, 'Other Employee Receivables', 1101002, 27, 0.000, 0.000, NULL,1),
+	                        (29, 'Accrued Salary', 2102004, 10, 0.000, 0.000, NULL,1),
+	                        (30, 'Employee Payables', 2105001, 29, 0.000, 0.000, NULL,1),
+	                        (31, 'Stock Settlement Gain', 46501001, 35, 0.000, 0.000, NULL,1),
+	                        (32, 'Accumulated Dep Fur', 1201002, 25, 0.000, 0.000, NULL,1),
+	                        (33, 'PDC Receivable', 1103002, 3, 0.000, 0.000, NULL,1),
+	                        (34, 'PDC Receivable Return', 1103003, 3, 0.000, 0.000, NULL,1),
+	                        (35, 'PDC Receivable Hold', 1103004, 3, 0.000, 0.000, NULL,1),
+	                        (36, 'PDC Receivable Cancel', 1103005, 3, 0.000, 0.000, NULL,1),
+	                        (37, 'PDC Payable', 1111001, 34, 0.000, 0.000, NULL,1),
+	                        (38, 'PDC Payable Return', 1111002, 34, 0.000, 0.000, NULL,1),
+	                        (39, 'PDC Payable Hold', 1111003, 34, 0.000, 0.000, NULL,1),
+	                        (40, 'PDC Payable Cancel', 1111003, 34, 0.000, 0.000, NULL,1),
+	                        (41, 'Sales Discount', 6101004, 25, 0.000, 0.000, NULL,1),
+	                        (42, 'Cash On Hand', 1103006, 3, 0.000, 0.000, NULL,1),
+	                        (43, 'Sales Return', 4101003, 19, 0.000, 0.000, NULL,1),
+	                        (44, 'Customer Advances', 2105002, 29, 0.000, 0.000, NULL,1),
+	                        (45, 'Retention Receivable', 1103007, 3, 0.000, 0.000, NULL,1),
+	                        (46, 'Retention Payable', 2105003, 29, 0.000, 0.000, NULL,1);
 
                         INSERT INTO `tbl_coa_config` (`id`, `account_id`, `category`) VALUES
 	                        (1, 23, 'Sales'),
@@ -651,7 +664,8 @@ namespace YamyProject
                             (39, 31, 'Stock Settlement'),
                             (40, 44, 'Customer Advances'),
                             (41, 45, 'Retention'),
-                            (42, 1, 'Deduction');
+                            (42, 1, 'Deduction'),
+                            (43, 46, 'Retention Purchase');
 
                         CREATE TABLE IF NOT EXISTS `tbl_company` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -951,6 +965,10 @@ namespace YamyProject
                           `state` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
                           `project_site` VARCHAR(150) DEFAULT '' COLLATE 'utf8mb4_general_ci',
+                          `GlobalId` varchar(36) NOT NULL DEFAULT '0',
+                          `DeviceId` varchar(50) DEFAULT NULL,
+                          `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+                          `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1212,7 +1230,13 @@ namespace YamyProject
 	                    `category_id` INT(10) NULL DEFAULT NULL,
 	                    `posItem` INT(10) NULL DEFAULT NULL,
                         `item_type` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'utf8mb4_general_ci',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
 	                    PRIMARY KEY (`id`) USING BTREE
+
                     )
                     COLLATE='utf8mb4_general_ci' ENGINE=InnoDB ;
 
@@ -1289,7 +1313,13 @@ namespace YamyProject
                           `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `warehouse_id` INT NOT NULL DEFAULT 0,
                           `project_id` INT NOT NULL DEFAULT 0,
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_item_warehouse_transaction` (
@@ -1318,7 +1348,13 @@ namespace YamyProject
                           `modified_date` date DEFAULT NULL,
                           `state` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+ `GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`) USING BTREE
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_journal_voucher_details` (
@@ -1330,8 +1366,14 @@ namespace YamyProject
                           `description` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
                           `partner` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
                           `account_id` int NOT NULL DEFAULT '0',
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0, 
+  `GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_leave_salary` (
@@ -1396,8 +1438,13 @@ namespace YamyProject
                           `modified_by` int DEFAULT NULL,
                           `modified_date` date DEFAULT NULL,
                           `state` int DEFAULT NULL,
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_payment_voucher_details` (
@@ -1413,7 +1460,13 @@ namespace YamyProject
                           `voucher_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           `cost_center_id` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_petty_cash_card` (
@@ -1521,6 +1574,8 @@ namespace YamyProject
                           `id` int NOT NULL AUTO_INCREMENT,
                           `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `department_id` int DEFAULT NULL,
+                          `AnnualLeaveDays` INT DEFAULT 30,
+                          `EOSDaysPerYear` INT DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1572,6 +1627,8 @@ namespace YamyProject
                           `net` decimal(20,4) NOT NULL DEFAULT '0.000',
                           `pay` decimal(20,4) NOT NULL DEFAULT '0.000',
                           `change` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `retention_percentage` decimal(20,4) NOT NULL DEFAULT '0.000',
+                          `retention_amount` decimal(20,4) NOT NULL DEFAULT '0.000',
                           `created_by` int NOT NULL DEFAULT '0',
                           `created_date` date NOT NULL,
                           `modified_by` int DEFAULT NULL,
@@ -1582,7 +1639,13 @@ namespace YamyProject
                           `project_id` INT NOT NULL DEFAULT 0,
                           `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
                           `reference_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_details` (
@@ -1597,8 +1660,12 @@ namespace YamyProject
                           `total` decimal(20,4) DEFAULT NULL,
                           `discount` decimal(20,4) DEFAULT NULL,
                           `cost_center_id` int DEFAULT NULL,
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_order` (
@@ -1631,8 +1698,13 @@ namespace YamyProject
                           `tranfer_status` int NOT NULL DEFAULT '0',
                           `purchase_id` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
-                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+                          `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`) USING BTREE
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_order_details` (
@@ -1648,7 +1720,13 @@ namespace YamyProject
                           `discount` decimal(20,4) DEFAULT NULL,
                           `cost_center_id` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`) USING BTREE
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_offer` (
@@ -1731,7 +1809,13 @@ namespace YamyProject
                           `state` int NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
                           `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`) USING BTREE
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_purchase_return_details` (
@@ -1747,7 +1831,13 @@ namespace YamyProject
                           `discount` decimal(20,4) DEFAULT NULL,
                           `cost_center_id` int DEFAULT NULL,
                           `project_id` INT NOT NULL DEFAULT 0,
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`) USING BTREE
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_receipt_voucher` (
@@ -1779,8 +1869,13 @@ namespace YamyProject
                           `state` int DEFAULT NULL,
                           `modified_by` int DEFAULT NULL,
                           `modified_date` date DEFAULT NULL,
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_receipt_voucher_details` (
@@ -1794,8 +1889,13 @@ namespace YamyProject
                           `payment` decimal(20,2) DEFAULT '0.00',
                           `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
                           `cost_center_id` int DEFAULT NULL,
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_rmsdetails` (
@@ -1896,6 +1996,11 @@ namespace YamyProject
                           `cost_center_id` decimal(20,6) NOT NULL DEFAULT '0',
                           `project_id` INT NOT NULL DEFAULT 0,
                           `description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
 
@@ -1914,8 +2019,13 @@ namespace YamyProject
                           `total` decimal(20,4) DEFAULT NULL,
                           `discount` decimal(20,4) DEFAULT NULL,
                           `cost_center_id` int DEFAULT NULL,
-                          `project_id` INT NOT NULL DEFAULT 0,
+                          `project_id` INT NOT NULL DEFAULT 0,`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_sales_order` (
@@ -2312,9 +2422,9 @@ namespace YamyProject
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         INSERT INTO `tbl_tax` (`id`, `name`, `value`, `description`, `state`) VALUES
-	                        (1, 'TAX', 5, '', 0),
-	                        (2, 'TAX', 0, '', 0),
-	                        (3, 'TAX', 15, '', 0);
+	                        (1, 'TAX', 5, 'Standard Rated', 0),
+	                        (2, 'TAX', 0, 'Zero Rated', 0),
+	                        (3, 'TAX', 15, 'Standard Rated', 0);
 
                         CREATE TABLE IF NOT EXISTS `tbl_tools` (
                           `id` int NOT NULL AUTO_INCREMENT,
@@ -2360,6 +2470,10 @@ namespace YamyProject
                           `modified_date` date DEFAULT NULL,
                           `state` int DEFAULT NULL,
                           `voucher_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
                           `project_id` INT NOT NULL DEFAULT 0,
                           PRIMARY KEY (`id`)
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -2416,7 +2530,13 @@ namespace YamyProject
                           `type` VARCHAR(150) NULL DEFAULT 'Vendor' COLLATE 'utf8mb4_general_ci',
                           `project_id` INT NOT NULL DEFAULT 0,
                           `project_site` VARCHAR(150) DEFAULT '' COLLATE 'utf8mb4_general_ci',
+`GlobalId` varchar(36) NOT NULL DEFAULT '0',
+  `DeviceId` varchar(50) DEFAULT NULL,
+  `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
+  `SyncStatus` tinyint NOT NULL DEFAULT 0,
+
                           PRIMARY KEY (`id`)
+
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
                         CREATE TABLE IF NOT EXISTS `tbl_vendor_category` (
@@ -3724,6 +3844,8 @@ namespace YamyProject
                             retention_amount decimal(20,6) NOT NULL DEFAULT 0,
                             retention_percentage decimal(20,6) NOT NULL DEFAULT 0,
                             deduction decimal(20,6) NOT NULL DEFAULT 0,
+                            advance_amount decimal(20,6) NOT NULL DEFAULT 0,
+                            advance_percentage decimal(20,6) NOT NULL DEFAULT 0,
                             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -3870,73 +3992,73 @@ namespace YamyProject
                         ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;";
                 DBClass.ExecuteNonQuery(query);
 
-                query = @" USE " + dbName + @"
-                        CREATE TABLE IF NOT EXISTS `tbl_project_wbs` (
-                          `id` INT NOT NULL AUTO_INCREMENT,
-                          `site_setup_id` INT NOT NULL DEFAULT 0,
-                          `project_id` INT NOT NULL DEFAULT 0,
-                          `parent_wbs_id` INT NOT NULL DEFAULT 0,
-                          `code` VARCHAR(50) NOT NULL DEFAULT '',
-                          `name` VARCHAR(300) NOT NULL DEFAULT '',
-                          `wbs_level` INT NOT NULL DEFAULT 1,
-                          `description` VARCHAR(500) DEFAULT '',
-                          `is_active` TINYINT(1) NOT NULL DEFAULT 1,
-                          `created_by` INT NOT NULL DEFAULT 0,
-                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                          PRIMARY KEY (`id`),
-                          UNIQUE KEY `uq_wbs_code_site` (`site_setup_id`, `code`)
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                DBClass.ExecuteNonQuery(query);
+                //query = @" USE " + dbName + @"
+                //        CREATE TABLE IF NOT EXISTS tbl_project_wbs (
+                //          `id` INT NOT NULL AUTO_INCREMENT,
+                //          `site_setup_id` INT NOT NULL DEFAULT 0,
+                //          `project_id` INT NOT NULL DEFAULT 0,
+                //          `parent_wbs_id` INT NOT NULL DEFAULT 0,
+                //          `code` VARCHAR(50) NOT NULL DEFAULT '',
+                //          `name` VARCHAR(300) NOT NULL DEFAULT '',
+                //          `wbs_level` INT NOT NULL DEFAULT 1,
+                //          `description` VARCHAR(500) DEFAULT '',
+                //          `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+                //          `created_by` INT NOT NULL DEFAULT 0,
+                //          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                //          PRIMARY KEY (`id`),
+                //          UNIQUE KEY `uq_wbs_code_site` (`site_setup_id`, `code`)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                //DBClass.ExecuteNonQuery(query);
 
-                query = @" USE " + dbName + @"
-                        CREATE TABLE `tbl_project_activity` (
-                            `id` INT NOT NULL AUTO_INCREMENT,
-                            `site_setup_id` INT NOT NULL,
-                            `zone_id` INT DEFAULT NULL,
-                            `wbs_id` INT NOT NULL,
-                            `activity_code` VARCHAR(50) DEFAULT '',
-                            `activity_name` VARCHAR(255) DEFAULT '',
-                            `activity_type` VARCHAR(100) DEFAULT '',
-                            `start_date` DATE DEFAULT NULL,
-                            `end_date` DATE DEFAULT NULL,
-                            `duration_days` INT DEFAULT 0,
-                            `dependency_activity_id` INT DEFAULT NULL,
-                            `responsible_engineer` VARCHAR(255) DEFAULT '',
-                            `planned_qty` DECIMAL(18,3) DEFAULT 0,
-                            `unit` VARCHAR(50) DEFAULT '',
-                            `status` VARCHAR(50) DEFAULT 'Planned',
-                            `progress_percent` DECIMAL(5,2) DEFAULT 0,
-                            `remarks` VARCHAR(500) DEFAULT '',
-                            `created_by` INT DEFAULT NULL,
-                            `modified_by` INT DEFAULT NULL,
-                            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                            PRIMARY KEY (`id`)
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"; 
-                DBClass.ExecuteNonQuery(query);
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE tbl_project_activity (
+                //            `id` INT NOT NULL AUTO_INCREMENT,
+                //            `site_setup_id` INT NOT NULL,
+                //            `zone_id` INT DEFAULT NULL,
+                //            `wbs_id` INT NOT NULL,
+                //            `activity_code` VARCHAR(50) DEFAULT '',
+                //            `activity_name` VARCHAR(255) DEFAULT '',
+                //            `activity_type` VARCHAR(100) DEFAULT '',
+                //            `start_date` DATE DEFAULT NULL,
+                //            `end_date` DATE DEFAULT NULL,
+                //            `duration_days` INT DEFAULT 0,
+                //            `dependency_activity_id` INT DEFAULT NULL,
+                //            `responsible_engineer` VARCHAR(255) DEFAULT '',
+                //            `planned_qty` DECIMAL(18,3) DEFAULT 0,
+                //            `unit` VARCHAR(50) DEFAULT '',
+                //            `status` VARCHAR(50) DEFAULT 'Planned',
+                //            `progress_percent` DECIMAL(5,2) DEFAULT 0,
+                //            `remarks` VARCHAR(500) DEFAULT '',
+                //            `created_by` INT DEFAULT NULL,
+                //            `modified_by` INT DEFAULT NULL,
+                //            `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                //            `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                //            PRIMARY KEY (`id`)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;"; 
+                //DBClass.ExecuteNonQuery(query);
 
-                query = @" USE " + dbName + @";
-                        CREATE TABLE IF NOT EXISTS `tbl_project_activity_plan` (
-                          `id` INT NOT NULL AUTO_INCREMENT,
-                          `site_setup_id` INT NOT NULL DEFAULT 0,
-                          `project_id` INT NOT NULL DEFAULT 0,
-                          `wbs_id` INT NOT NULL DEFAULT 0,
-                          `activity_code` VARCHAR(50) NOT NULL DEFAULT '',
-                          `activity_name` VARCHAR(300) NOT NULL DEFAULT '',
-                          `boq_item_id` INT NOT NULL DEFAULT 0,
-                          `planned_qty` DECIMAL(18,3) NOT NULL DEFAULT 0,
-                          `unit` VARCHAR(50) DEFAULT '',
-                          `start_date` DATE DEFAULT NULL,
-                          `end_date` DATE DEFAULT NULL,
-                          `dependency_activity_id` INT NOT NULL DEFAULT 0,
-                          `responsible_resource_id` INT NOT NULL DEFAULT 0,
-                          `remarks` VARCHAR(500) DEFAULT '',
-                          `status` VARCHAR(50) DEFAULT 'Planned',
-                          `created_by` INT NOT NULL DEFAULT 0,
-                          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                          PRIMARY KEY (`id`)
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                DBClass.ExecuteNonQuery(query);
+                //query = @" USE " + dbName + @";
+                //        CREATE TABLE IF NOT EXISTS tbl_project_activity_plan (
+                //          `id` INT NOT NULL AUTO_INCREMENT,
+                //          `site_setup_id` INT NOT NULL DEFAULT 0,
+                //          `project_id` INT NOT NULL DEFAULT 0,
+                //          `wbs_id` INT NOT NULL DEFAULT 0,
+                //          `activity_code` VARCHAR(50) NOT NULL DEFAULT '',
+                //          `activity_name` VARCHAR(300) NOT NULL DEFAULT '',
+                //          `boq_item_id` INT NOT NULL DEFAULT 0,
+                //          `planned_qty` DECIMAL(18,3) NOT NULL DEFAULT 0,
+                //          `unit` VARCHAR(50) DEFAULT '',
+                //          `start_date` DATE DEFAULT NULL,
+                //          `end_date` DATE DEFAULT NULL,
+                //          `dependency_activity_id` INT NOT NULL DEFAULT 0,
+                //          `responsible_resource_id` INT NOT NULL DEFAULT 0,
+                //          `remarks` VARCHAR(500) DEFAULT '',
+                //          `status` VARCHAR(50) DEFAULT 'Planned',
+                //          `created_by` INT NOT NULL DEFAULT 0,
+                //          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                //          PRIMARY KEY (`id`)
+                //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                //DBClass.ExecuteNonQuery(query);
 
                 /********************************************* Optional ******************************************/
 
@@ -4693,6 +4815,1214 @@ namespace YamyProject
                 DBClass.ExecuteNonQuery(query);
 
                 query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_planning_new
+                        (
+                            plan_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            planning_no VARCHAR(30),
+                            plan_date DATE,
+                            start_date DATE,
+                            end_date DATE,
+                            total_days INT,
+                            planning_engineer VARCHAR(100),
+                            work_hours DECIMAL(10,2),
+                            weekly_off VARCHAR(30),
+                            priority_level VARCHAR(30),
+                            progress_percent DECIMAL(10,2),
+                            status VARCHAR(30),
+                            milestone VARCHAR(200),
+                            notes VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_planning_new
+                        (
+                            plan_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            planning_no VARCHAR(30),
+                            plan_date DATE,
+                            start_date DATE,
+                            end_date DATE,
+                            total_days INT,
+                            planning_engineer VARCHAR(100),
+                            work_hours DECIMAL(10,2),
+                            weekly_off VARCHAR(30),
+                            priority_level VARCHAR(30),
+                            progress_percent DECIMAL(10,2),
+                            status VARCHAR(30),
+                            milestone VARCHAR(200),
+                            notes VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_lookahead
+                        (
+                            look_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            week_no INT,
+                            from_date DATE,
+                            to_date DATE,
+                            activity_name VARCHAR(200),
+                            zone_name VARCHAR(100),
+                            responsible_person VARCHAR(100),
+                            required_material VARCHAR(200),
+                            required_labor INT,
+                            required_equipment VARCHAR(200),
+                            priority_level VARCHAR(30),
+                            status VARCHAR(30),
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_resource_needs
+                        (
+                            resource_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            request_date DATE NOT NULL,
+                            need_type VARCHAR(30) NOT NULL,      -- Labor / Material / Equipment
+                            category_name VARCHAR(100),          -- Mason / Cement / Excavator
+                            item_name VARCHAR(150),
+                            unit_name VARCHAR(30),
+                            qty DECIMAL(18,2) NOT NULL,
+                            required_from DATE,
+                            required_to DATE,
+                            priority_level VARCHAR(20),
+                            zone_name VARCHAR(100),
+                            requested_by VARCHAR(100),
+                            approved_by VARCHAR(100),
+                            status VARCHAR(30),                  -- Draft/Pending/Approved/Issued/Closed
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_site_activity_plan
+                        (
+                            activity_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            activity_date DATE NOT NULL,
+                            zone_id INT NULL,
+                            zone_name VARCHAR(100),
+                            activity_name VARCHAR(200) NOT NULL,
+                            supervisor_name VARCHAR(100),
+                            labor_count INT DEFAULT 0,
+                            equipment_used VARCHAR(200),
+                            target_qty DECIMAL(18,2) DEFAULT 0,
+                            unit_name VARCHAR(30),
+                            actual_qty DECIMAL(18,2) DEFAULT 0,
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            weather_status VARCHAR(50),
+                            priority_level VARCHAR(30),
+                            status VARCHAR(30),
+                            remarks VARCHAR(350),
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_reservation
+                        (
+                            reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+                            reservation_no VARCHAR(30) NOT NULL,
+                            reservation_date DATE NOT NULL,
+                            mr_id INT NULL,
+                            project_id INT NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            reserved_by INT NOT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_reservation_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            reservation_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            requested_qty DECIMAL(18,4) DEFAULT 0,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            reserved_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_project_team 
+                        (
+                            team_id INT AUTO_INCREMENT PRIMARY KEY,
+                            project_id INT NOT NULL,
+                            emp_code VARCHAR(50) NOT NULL,
+                            emp_name VARCHAR(150) NOT NULL,
+                            role_name VARCHAR(100) NOT NULL,
+                            zone_id INT NOT NULL,
+                            mobile VARCHAR(30),
+                            join_date DATE NOT NULL,
+                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_procurement_request
+                        (
+                            pr_id INT AUTO_INCREMENT PRIMARY KEY,
+                            pr_no VARCHAR(30) NOT NULL,
+                            pr_date DATE NOT NULL,
+                            mr_id INT NULL,
+                            reservation_id INT NULL,
+                            project_id INT NOT NULL,
+                            supplier_id INT NULL,
+                            priority_level VARCHAR(30) DEFAULT 'Normal',
+                            required_date DATE NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            approved_by INT NULL,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_procurement_request_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            pr_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            requested_qty DECIMAL(18,4) DEFAULT 0,
+                            ordered_qty DECIMAL(18,4) DEFAULT 0,
+                            pending_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            est_rate DECIMAL(18,4) DEFAULT 0,
+                            est_amount DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_issue
+                        (
+                            issue_id INT AUTO_INCREMENT PRIMARY KEY,
+                            issue_no VARCHAR(30) NOT NULL,
+                            issue_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            reservation_id INT NULL,
+                            requested_by INT NULL,
+                            issued_to INT NULL,
+                            approved_by INT NULL,
+                            zone_id INT NULL,
+                            purpose VARCHAR(150),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_issue_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            issue_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            reserved_qty DECIMAL(18,4) DEFAULT 0,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            issue_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_receipt
+                        (
+                            receipt_id INT AUTO_INCREMENT PRIMARY KEY,
+                            receipt_no VARCHAR(30) NOT NULL,
+                            receipt_date DATE NOT NULL,
+                            po_id INT NULL,
+                            supplier_id INT NULL,
+                            project_id INT NULL,
+                            warehouse_id INT NOT NULL,
+                            invoice_no VARCHAR(50),
+                            invoice_date DATE NULL,
+                            received_by INT NULL,
+                            checked_by INT NULL,
+                            vehicle_no VARCHAR(50),
+                            driver_name VARCHAR(100),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            subtotal DECIMAL(18,4) DEFAULT 0,
+                            vat_amount DECIMAL(18,4) DEFAULT 0,
+                            net_amount DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            approved_by INT NULL,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_receipt_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            receipt_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            ordered_qty DECIMAL(18,4) DEFAULT 0,
+                            received_qty DECIMAL(18,4) DEFAULT 0,
+                            accepted_qty DECIMAL(18,4) DEFAULT 0,
+                            rejected_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            batch_no VARCHAR(50),
+                            expiry_date DATE NULL,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_return
+                        (
+                            return_id INT AUTO_INCREMENT PRIMARY KEY,
+                            return_no VARCHAR(30) NOT NULL,
+                            return_date DATE NOT NULL,
+                            issue_id INT NULL,
+                            project_id INT NOT NULL,
+                            from_warehouse_id INT NOT NULL,
+                            to_warehouse_id INT NOT NULL,
+                            returned_by INT NULL,
+                            received_by INT NULL,
+                            approved_by INT NULL,
+                            return_type VARCHAR(30) DEFAULT 'Site Return',
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_return_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            return_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            issued_qty DECIMAL(18,4) DEFAULT 0,
+                            return_qty DECIMAL(18,4) DEFAULT 0,
+                            damaged_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_transfer
+                        (
+                            transfer_id INT AUTO_INCREMENT PRIMARY KEY,
+                            transfer_no VARCHAR(30) NOT NULL,
+                            transfer_date DATE NOT NULL,
+                            transfer_type VARCHAR(30) DEFAULT 'Warehouse Transfer',
+                            from_warehouse_id INT NOT NULL,
+                            to_warehouse_id INT NOT NULL,
+                            from_project_id INT NULL,
+                            to_project_id INT NULL,
+                            requested_by INT NULL,
+                            approved_by INT NULL,
+                            received_by INT NULL,
+                            vehicle_no VARCHAR(50),
+                            driver_name VARCHAR(100),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_transfer_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            transfer_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            transfer_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_consumption
+                        (
+                            consumption_id INT AUTO_INCREMENT PRIMARY KEY,
+                            consumption_no VARCHAR(30) NOT NULL,
+                            consumption_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            zone_id INT NULL,
+                            activity_id INT NULL,
+                            wbs_id INT NULL,
+                            warehouse_id INT NOT NULL,
+                            consumed_by INT NULL,
+                            approved_by INT NULL,
+                            consumption_type VARCHAR(30) DEFAULT 'Site Consumption',
+                            reference_no VARCHAR(50),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+                
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_material_consumption_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            consumption_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            available_qty DECIMAL(18,4) DEFAULT 0,
+                            consumed_qty DECIMAL(18,4) DEFAULT 0,
+                            wastage_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            line_total DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_stock_reconciliation
+                        (
+                            reconciliation_id INT AUTO_INCREMENT PRIMARY KEY,
+                            reconciliation_no VARCHAR(30) NOT NULL,
+                            reconciliation_date DATE NOT NULL,
+                            warehouse_id INT NOT NULL,
+                            project_id INT NULL,
+                            reconciliation_type VARCHAR(30) DEFAULT 'Periodic',
+                            checked_by INT NULL,
+                            approved_by INT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_stock_reconciliation_item
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            reconciliation_id INT NOT NULL,
+                            item_id INT NOT NULL,
+                            system_qty DECIMAL(18,4) DEFAULT 0,
+                            physical_qty DECIMAL(18,4) DEFAULT 0,
+                            variance_qty DECIMAL(18,4) DEFAULT 0,
+                            adjustment_type VARCHAR(20),
+                            uom VARCHAR(30),
+                            unit_cost DECIMAL(18,4) DEFAULT 0,
+                            variance_value DECIMAL(18,4) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_entry
+                        (
+                            entry_id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_no VARCHAR(30) NOT NULL,
+                            entry_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            supervisor_id INT NULL,
+                            engineer_id INT NULL,
+                            shift_type VARCHAR(20),
+                            weather VARCHAR(50),
+                            overall_progress DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(20) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            actual_qty DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(20),
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_labour
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            employee_id INT NULL,
+                            trade_name VARCHAR(50),
+                            attendance VARCHAR(20),
+                            ot_hours DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_equipment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            start_hour DECIMAL(10,2) DEFAULT 0,
+                            end_hour DECIMAL(10,2) DEFAULT 0,
+                            working_hours DECIMAL(10,2) DEFAULT 0,
+                            fuel_used DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_material
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            item_id INT NULL,
+                            qty_used DECIMAL(18,4) DEFAULT 0,
+                            uom VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_issue
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            entry_id INT NOT NULL,
+                            issue_type VARCHAR(50),
+                            description VARCHAR(500),
+                            impact_level VARCHAR(20),
+                            action_taken VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_progress
+                        (
+                            progress_id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_no VARCHAR(30) NOT NULL,
+                            progress_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            prepared_by INT NULL,
+                            approved_by INT NULL,
+                            planned_progress DECIMAL(10,2) DEFAULT 0,
+                            actual_progress DECIMAL(10,2) DEFAULT 0,
+                            variance_progress DECIMAL(10,2) DEFAULT 0,
+                            overall_status VARCHAR(30),
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_progress_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            activity_name VARCHAR(250),
+                            unit VARCHAR(20),
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            actual_qty DECIMAL(18,4) DEFAULT 0,
+                            cumulative_qty DECIMAL(18,4) DEFAULT 0,
+                            planned_percent DECIMAL(10,2) DEFAULT 0,
+                            actual_percent DECIMAL(10,2) DEFAULT 0,
+                            variance_percent DECIMAL(10,2) DEFAULT 0,
+                            manpower_count INT DEFAULT 0,
+                            equipment_count INT DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_progress_delay
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            delay_type VARCHAR(100),
+                            delay_reason VARCHAR(500),
+                            affected_activity VARCHAR(250),
+                            impact_days DECIMAL(10,2) DEFAULT 0,
+                            corrective_action VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_progress_photo
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            progress_id INT NOT NULL,
+                            photo_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_work_measurement
+                        (
+                            measurement_id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_no VARCHAR(30) NOT NULL,
+                            measurement_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            contractor_id INT NULL,
+                            engineer_id INT NULL,
+                            consultant_id INT NULL,
+                            reference_type VARCHAR(50),
+                            reference_no VARCHAR(50),
+                            total_qty DECIMAL(18,4) DEFAULT 0,
+                            total_amount DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_work_measurement_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            boq_id INT NULL,
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            item_code VARCHAR(50),
+                            description VARCHAR(500),
+                            unit VARCHAR(20),
+                            boq_qty DECIMAL(18,4) DEFAULT 0,
+                            previous_qty DECIMAL(18,4) DEFAULT 0,
+                            current_qty DECIMAL(18,4) DEFAULT 0,
+                            cumulative_qty DECIMAL(18,4) DEFAULT 0,
+                            balance_qty DECIMAL(18,4) DEFAULT 0,
+                            rate DECIMAL(18,4) DEFAULT 0,
+                            amount DECIMAL(18,2) DEFAULT 0,
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_work_measurement_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            file_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_work_measurement_approval
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            measurement_id INT NOT NULL,
+                            approval_level VARCHAR(50),
+                            approved_by INT,
+                            approval_date DATETIME,
+                            status VARCHAR(30),
+                            remarks VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_resource_deployment
+                        (
+                            deployment_id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_no VARCHAR(30) NOT NULL,
+                            deployment_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            deployment_type VARCHAR(30),
+                            requested_by INT NULL,
+                            approved_by INT NULL,
+                            start_date DATE NULL,
+                            end_date DATE NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_resource_deployment_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            resource_type VARCHAR(30),
+                            resource_id INT NULL,
+                            resource_name VARCHAR(250),
+                            wbs_id INT NULL,
+                            activity_id INT NULL,
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            deployed_qty DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            deployment_days DECIMAL(10,2) DEFAULT 0,
+                            cost_per_day DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            utilization_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_resource_deployment_movement
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            movement_date DATETIME,
+                            from_location VARCHAR(250),
+                            to_location VARCHAR(250),
+                            moved_by INT NULL,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_resource_deployment_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            deployment_id INT NOT NULL,
+                            file_path VARCHAR(500),
+                            description VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_equipment_usage
+                        (
+                            usage_id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_no VARCHAR(30) NOT NULL,
+                            usage_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            operator_id INT NULL,
+                            shift_type VARCHAR(20),
+                            weather VARCHAR(50),
+                            total_working_hours DECIMAL(10,2) DEFAULT 0,
+                            total_fuel_used DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            remarks VARCHAR(500),
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_equipment_usage_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            equipment_code VARCHAR(50),
+                            equipment_name VARCHAR(250),
+                            activity_id INT NULL,
+                            start_hour_meter DECIMAL(18,2) DEFAULT 0,
+                            end_hour_meter DECIMAL(18,2) DEFAULT 0,
+                            working_hours DECIMAL(18,2) DEFAULT 0,
+                            idle_hours DECIMAL(18,2) DEFAULT 0,
+                            breakdown_hours DECIMAL(18,2) DEFAULT 0,
+                            fuel_used DECIMAL(18,2) DEFAULT 0,
+                            fuel_rate DECIMAL(18,2) DEFAULT 0,
+                            fuel_cost DECIMAL(18,2) DEFAULT 0,
+                            operator_cost DECIMAL(18,2) DEFAULT 0,
+                            rental_cost DECIMAL(18,2) DEFAULT 0,
+                            total_cost DECIMAL(18,2) DEFAULT 0,
+                            utilization_percent DECIMAL(10,2) DEFAULT 0,
+                            status VARCHAR(30),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_equipment_breakdown
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            breakdown_time DATETIME,
+                            resume_time DATETIME,
+                            breakdown_reason VARCHAR(500),
+                            corrective_action VARCHAR(500),
+                            maintenance_required VARCHAR(10)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_equipment_fuel_log
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            usage_id INT NOT NULL,
+                            equipment_id INT NULL,
+                            fuel_date DATETIME,
+                            fuel_qty DECIMAL(18,2),
+                            fuel_rate DECIMAL(18,2),
+                            amount DECIMAL(18,2),
+                            fuel_station VARCHAR(250),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report
+                        (
+                            report_id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_no VARCHAR(30) NOT NULL,
+                            report_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            engineer_id INT NULL,
+                            weather VARCHAR(50),
+                            temperature DECIMAL(10,2) DEFAULT 0,
+                            manpower_count INT DEFAULT 0,
+                            equipment_count INT DEFAULT 0,
+                            visitors_count INT DEFAULT 0,
+                            total_progress_percent DECIMAL(10,2) DEFAULT 0,
+                            safety_incidents INT DEFAULT 0,
+                            delay_hours DECIMAL(10,2) DEFAULT 0,
+                            overall_status VARCHAR(30) DEFAULT 'Normal',
+                            remarks VARCHAR(1000),
+                            prepared_by INT NULL,
+                            approved_by INT NULL,
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_activity
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            activity_id INT NULL,
+                            activity_name VARCHAR(250),
+                            location VARCHAR(250),
+                            work_description VARCHAR(1000),
+                            planned_qty DECIMAL(18,4) DEFAULT 0,
+                            completed_qty DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            progress_percent DECIMAL(10,2) DEFAULT 0,
+                            manpower_used INT DEFAULT 0,
+                            equipment_used INT DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_labour
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            trade_name VARCHAR(100),
+                            manpower_count INT DEFAULT 0,
+                            overtime_hours DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_equipment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            equipment_name VARCHAR(250),
+                            working_hours DECIMAL(10,2) DEFAULT 0,
+                            idle_hours DECIMAL(10,2) DEFAULT 0,
+                            breakdown_hours DECIMAL(10,2) DEFAULT 0,
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_material
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            material_name VARCHAR(250),
+                            qty_used DECIMAL(18,4) DEFAULT 0,
+                            unit VARCHAR(20),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_delay
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            delay_reason VARCHAR(500),
+                            affected_activity VARCHAR(250),
+                            delay_hours DECIMAL(10,2) DEFAULT 0,
+                            corrective_action VARCHAR(500)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_site_report_visitor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            report_id INT NOT NULL,
+                            visitor_name VARCHAR(250),
+                            company_name VARCHAR(250),
+                            purpose VARCHAR(500),
+                            visit_time DATETIME
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_delay_hindrance
+                        (
+                            delay_id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_no VARCHAR(30) NOT NULL,
+                            delay_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            reported_by INT NULL,
+                            delay_category VARCHAR(100),
+                            severity VARCHAR(50),
+                            affected_area VARCHAR(250),
+                            affected_activity VARCHAR(250),
+                            start_datetime DATETIME,
+                            end_datetime DATETIME,
+                            total_delay_hours DECIMAL(18,2) DEFAULT 0,
+                            responsible_party VARCHAR(100),
+                            weather_condition VARCHAR(100),
+                            impact_description VARCHAR(500),
+                            corrective_action VARCHAR(500),
+                            preventive_action VARCHAR(500),
+                            estimated_cost_impact DECIMAL(18,2) DEFAULT 0,
+                            extension_days DECIMAL(18,2) DEFAULT 0,
+                            status VARCHAR(30) DEFAULT 'Open',
+                            remarks VARCHAR(500),
+                            approved_by INT NULL,
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_delay_attachment
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_id INT NOT NULL,
+                            file_name VARCHAR(500),
+                            file_path VARCHAR(500),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_delay_followup
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            delay_id INT NOT NULL,
+                            followup_date DATE,
+                            action_taken VARCHAR(200),
+                            responsible_person VARCHAR(250),
+                            target_date DATE,
+                            status VARCHAR(50),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code INT NOT NULL DEFAULT 0,
+                            customer_id INT NOT NULL,
+                            plate_no VARCHAR(30),
+                            chassis_no VARCHAR(50),
+                            vin_no VARCHAR(50),
+                            engine_no VARCHAR(50),
+                            make VARCHAR(100),
+                            model VARCHAR(100),
+                            variant VARCHAR(100),
+                            model_year INT,
+                            color VARCHAR(50),
+                            transmission VARCHAR(30),
+                            fuel_type VARCHAR(30),
+                            current_mileage INT,
+                            registration_expiry DATE,
+                            insurance_expiry DATE,
+                            warranty_expiry DATE,
+                            notes TEXT,
+                            active INT DEFAULT 1,
+                            created_by INT,
+                            created_date DATE,
+                            state INT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_job_card
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code VARCHAR(50) DEFAULT '0',
+                            customer_id INT NOT NULL,
+                            vehicle_id INT NOT NULL,
+                            advisor_id INT,
+                            job_date DATE,
+                            expected_delivery DATE,
+                            mileage INT,
+                            fuel_type VARCHAR(20),
+                            priority VARCHAR(20),
+                            complaint TEXT,
+                            diagnosis TEXT,
+                            work_required TEXT,
+                            remarks TEXT,
+                            estimated_amount DECIMAL(20,4),
+                            approved_amount DECIMAL(20,4),
+                            quotation_id INT DEFAULT 0,
+                            sales_order_id INT DEFAULT 0,
+                            invoice_id INT DEFAULT 0,
+                            status VARCHAR(30),
+                            active INT DEFAULT 1,
+                            created_by INT,
+                            created_date DATE,
+                            state INT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_job_card_parts
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            item_id INT,
+                            warehouse_id INT,
+                            qty DECIMAL(18,3),
+                            issued_qty DECIMAL(18,3),
+                            returned_qty DECIMAL(18,3),
+                            unit_price DECIMAL(20,4),
+                            discount DECIMAL(20,4),
+                            vatP INT,
+                            vat DECIMAL(20,4),
+                            total DECIMAL(20,4),
+                            remarks TEXT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_job_card_labor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            employee_id INT,
+                            labor_name VARCHAR(200),
+                            estimated_hours DECIMAL(10,2),
+                            actual_hours DECIMAL(10,2),
+                            hourly_rate DECIMAL(20,4),
+                            total DECIMAL(20,4),
+                            status VARCHAR(30),
+                            remarks TEXT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle_inspection
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            engine_oil TINYINT,
+                            brake_oil TINYINT,
+                            coolant TINYINT,
+                            battery TINYINT,
+                            tyres TINYINT,
+                            brake_pads TINYINT,
+                            steering TINYINT,
+                            suspension TINYINT,
+                            lights TINYINT,
+                            horn TINYINT,
+                            wiper TINYINT,
+                            ac TINYINT,
+                            interior TINYINT,
+                            exterior TINYINT,
+                            remarks TEXT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_vehicle_damage
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            damage_location VARCHAR(100),
+                            damage_type VARCHAR(100),
+                            severity VARCHAR(30),
+                            remarks TEXT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_job_status_history
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            status VARCHAR(30),
+                            employee_id INT,
+                            remarks TEXT,
+                            status_date DATETIME
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_service_package
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            code INT,
+                            package_name VARCHAR(200),
+                            description TEXT,
+                            amount DECIMAL(20,4),
+                            active INT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_service_package_items
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            package_id INT,
+                            item_id INT,
+                            qty DECIMAL(18,3)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_service_package_labor
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            package_id INT,
+                            labor_name VARCHAR(200),
+                            hours DECIMAL(10,2),
+                            rate DECIMAL(20,4)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_job_qc
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            jobcard_id INT,
+                            checked_by INT,
+                            road_test TINYINT,
+                            leak_check TINYINT,
+                            warning_lights TINYINT,
+                            final_cleaning TINYINT,
+                            remarks TEXT,
+                            approved TINYINT
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_site_diary
+                        (
+                            diary_id INT AUTO_INCREMENT PRIMARY KEY,
+                            diary_no VARCHAR(30) NOT NULL,
+                            diary_date DATE NOT NULL,
+                            project_id INT NOT NULL,
+                            site_id INT NULL,
+                            zone_id INT NULL,
+                            engineer_id INT NULL,
+                            weather VARCHAR(100),
+                            work_done VARCHAR(1000),
+                            visitors VARCHAR(500),
+                            issues VARCHAR(1000),
+                            remarks VARCHAR(1000),
+                            status VARCHAR(30) DEFAULT 'Draft',
+                            approved_by INT NULL,
+                            created_by INT,
+                            created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );";
+
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                    CREATE TABLE IF NOT EXISTS tbl_daily_work_plan
+                    (
+                        workplan_id INT AUTO_INCREMENT PRIMARY KEY,
+                        workplan_no VARCHAR(30) NOT NULL,
+                        plan_date DATE NOT NULL,
+                        project_id INT NOT NULL,
+                        site_id INT NULL,
+                        zone_id INT NULL,
+                        engineer_id INT NULL,
+                        supervisor_id INT NULL,
+                        work_location VARCHAR(250),
+                        work_description VARCHAR(1000),
+                        planned_start_time TIME,
+                        planned_end_time TIME,
+                        priority VARCHAR(50),
+                        status VARCHAR(30) DEFAULT 'Planned',
+                        remarks VARCHAR(1000),
+                        approved_by INT NULL,
+                        created_by INT,
+                        created_date DATETIME DEFAULT CURRENT_TIMESTAMP
+                    );";
+                DBClass.ExecuteNonQuery(query);
+
+                query = @" USE " + dbName + @";
+                        CREATE TABLE IF NOT EXISTS tbl_daily_work_plan_details
+                        (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            workplan_id INT NOT NULL,
+                            activity VARCHAR(250),
+                            location VARCHAR(250),
+                            planned_qty DECIMAL(18,2) DEFAULT 0,
+                            unit VARCHAR(50),
+                            assigned_to VARCHAR(250),
+                            remarks VARCHAR(250)
+                        );";
+                DBClass.ExecuteNonQuery(query);
+
+                /****************************************/
+
+                query = @" USE " + dbName + @";
                         INSERT INTO tbl_form_configuration (form_name, affect_stock, affect_account)
                         VALUES
                         -- PURCHASE
@@ -4803,14 +6133,14 @@ namespace YamyProject
 	                        (@last_user_id, 59, 1, 0, 0);",DBClass.CreateParameter("last_user_id", recordId));
                 }
                 query = @"USE yamycompany ;
-                                          INSERT INTO `tbl_company` (
-                    `database_name`, `name`, `code`, `descriptions`,
-                    `phone1`, `phone2`, `gmail`, `mobile_number`,
-                    `website`, `address`, `trn_no`, `logoComp`,
-                    `default_company`,`customer_code`
-                )
-                VALUES (
-                    '" + dbName + "', '" + txtcompany.Text.Trim() + "','" + dbcode + "', '" + txtdescription.Text.Trim() + "', '" + txtphone1.Text.Trim() + "','','" + txtemail.Text.Trim() + "', '', '', '' , '' , NULL,' " + (guna2CustomCheckBox1.Checked ? 1 : 0) + "','"+ customerCode + "'); ";
+                    INSERT INTO `tbl_company` (
+                        `database_name`, `name`, `code`, `descriptions`,
+                        `phone1`, `phone2`, `gmail`, `mobile_number`,
+                        `website`, `address`, `trn_no`, `logoComp`,
+                        `default_company`,`customer_code`
+                    )
+                    VALUES (
+                        '" + dbName + "', '" + txtcompany.Text.Trim() + "','" + dbcode + "', '" + txtdescription.Text.Trim() + "', '" + txtphone1.Text.Trim() + "','','" + txtemail.Text.Trim() + "', '', '', '' , '' , NULL,' " + (guna2CustomCheckBox1.Checked ? 1 : 0) + "','"+ customerCode + "'); ";
                 
                 DBClass.ExecuteNonQuery(query);
 

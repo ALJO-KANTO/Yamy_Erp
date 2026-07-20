@@ -81,7 +81,7 @@
             this.guna2HtmlLabel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(0, 0);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(0, 24);
             this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(1386, 19);
@@ -494,7 +494,7 @@
             this.lblCompany.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompany.ForeColor = System.Drawing.Color.Black;
-            this.lblCompany.Location = new System.Drawing.Point(0, 19);
+            this.lblCompany.Location = new System.Drawing.Point(0, 0);
             this.lblCompany.Margin = new System.Windows.Forms.Padding(2);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(1386, 24);
@@ -506,8 +506,6 @@
             // 
             this.dgvSales.AllowUserToAddRows = false;
             this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.AllowUserToResizeColumns = false;
-            this.dgvSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

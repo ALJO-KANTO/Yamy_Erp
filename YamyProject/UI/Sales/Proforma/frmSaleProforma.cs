@@ -78,6 +78,25 @@ namespace YamyProject
                 btnSave.Enabled = UserPermissions.canEdit("Sales Proforma");
                 BindInvoice();
             }
+            UAEOnlyOptions();
+        }
+
+        private void UAEOnlyOptions()
+        {
+            object objOption = DBClass.ExecuteScalar("select country_id from tbl_company where id>0 limit 1");
+            if (objOption == null)
+            {
+                label4.Visible = false;
+                cmbCity.Visible = false;
+            }
+            else
+            {
+                if (objOption.ToString() != "182")
+                {
+                    label4.Visible = false;
+                    cmbCity.Visible = false;
+                }
+            }
         }
         private void BindInvoice()
         {

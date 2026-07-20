@@ -51,6 +51,8 @@ namespace YamyProject
         }
         public static int DecimalPlace = 2;
 
+        public static string MachineName { get; internal set; }
+
         public static string GeneralSettings(string name)
         {
             DataRow[] rows = BindDataTable.tableGeneralSettings.Select($"name = '" + name + "'");

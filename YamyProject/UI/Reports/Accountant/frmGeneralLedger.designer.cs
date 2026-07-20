@@ -210,8 +210,6 @@
             // 
             this.dgvSales.AllowUserToAddRows = false;
             this.dgvSales.AllowUserToDeleteRows = false;
-            this.dgvSales.AllowUserToResizeColumns = false;
-            this.dgvSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
@@ -251,9 +249,9 @@
             this.dgvSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSales.RowHeadersVisible = false;
             this.dgvSales.RowHeadersWidth = 51;
-            this.dgvSales.RowTemplate.Height = 30;
+            this.dgvSales.RowTemplate.Height = 25;
             this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSales.Size = new System.Drawing.Size(980, 421);
+            this.dgvSales.Size = new System.Drawing.Size(980, 418);
             this.dgvSales.TabIndex = 19;
             this.dgvSales.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSales.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -287,7 +285,7 @@
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 93);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 96);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1040, 88);
@@ -316,10 +314,10 @@
             this.guna2Panel4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.guna2Panel4.Location = new System.Drawing.Point(0, 181);
+            this.guna2Panel4.Location = new System.Drawing.Point(0, 184);
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(1040, 421);
+            this.guna2Panel4.Size = new System.Drawing.Size(1040, 418);
             this.guna2Panel4.TabIndex = 41;
             // 
             // panel1
@@ -328,7 +326,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 421);
+            this.panel1.Size = new System.Drawing.Size(30, 418);
             this.panel1.TabIndex = 45;
             // 
             // panel8
@@ -337,7 +335,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel8.Location = new System.Drawing.Point(1010, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(30, 421);
+            this.panel8.Size = new System.Drawing.Size(30, 418);
             this.panel8.TabIndex = 44;
             // 
             // headerUC1
@@ -346,10 +344,10 @@
             this.headerUC1.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerUC1.FormText = "";
             this.headerUC1.HeaderText = "";
-            this.headerUC1.Location = new System.Drawing.Point(2, 0);
+            this.headerUC1.Location = new System.Drawing.Point(0, 0);
             this.headerUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headerUC1.Name = "headerUC1";
-            this.headerUC1.Size = new System.Drawing.Size(637, 30);
+            this.headerUC1.Size = new System.Drawing.Size(1040, 30);
             this.headerUC1.TabIndex = 0;
             // 
             // guna2Button1
@@ -418,7 +416,7 @@
             this.guna2Panel3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 60);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 63);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(1040, 33);
@@ -606,7 +604,7 @@
             this.guna2Panel2.Controls.Add(this.guna2Button7);
             this.guna2Panel2.Controls.Add(this.panel3);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 27);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 30);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);

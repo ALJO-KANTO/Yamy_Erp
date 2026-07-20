@@ -53,6 +53,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCompanyCode = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDeviceName = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,7 +139,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(100, 115);
+            this.label1.Location = new System.Drawing.Point(100, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 17);
@@ -159,7 +161,7 @@
             this.txtServerName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServerName.ForeColor = System.Drawing.Color.Black;
             this.txtServerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtServerName.Location = new System.Drawing.Point(107, 136);
+            this.txtServerName.Location = new System.Drawing.Point(107, 115);
             this.txtServerName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtServerName.Name = "txtServerName";
             this.txtServerName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -182,10 +184,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(637, 37);
+            this.panel4.Location = new System.Drawing.Point(637, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 448);
+            this.panel4.Size = new System.Drawing.Size(2, 455);
             this.panel4.TabIndex = 130;
             // 
             // headerUC1
@@ -275,7 +277,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(100, 186);
+            this.label2.Location = new System.Drawing.Point(100, 165);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
@@ -298,7 +300,7 @@
             this.txtDataBaseName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataBaseName.ForeColor = System.Drawing.Color.Black;
             this.txtDataBaseName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDataBaseName.Location = new System.Drawing.Point(107, 207);
+            this.txtDataBaseName.Location = new System.Drawing.Point(107, 186);
             this.txtDataBaseName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtDataBaseName.Name = "txtDataBaseName";
             this.txtDataBaseName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -312,7 +314,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(100, 256);
+            this.label3.Location = new System.Drawing.Point(100, 235);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 17);
@@ -334,7 +336,7 @@
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUserName.Location = new System.Drawing.Point(107, 277);
+            this.txtUserName.Location = new System.Drawing.Point(107, 256);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -348,7 +350,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(100, 323);
+            this.label4.Location = new System.Drawing.Point(100, 302);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 17);
@@ -370,7 +372,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(107, 344);
+            this.txtPassword.Location = new System.Drawing.Point(107, 323);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -385,7 +387,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(100, 389);
+            this.label5.Location = new System.Drawing.Point(100, 368);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 17);
@@ -407,13 +409,13 @@
             this.txtCompanyCode.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompanyCode.ForeColor = System.Drawing.Color.Black;
             this.txtCompanyCode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCompanyCode.Location = new System.Drawing.Point(107, 410);
+            this.txtCompanyCode.Location = new System.Drawing.Point(107, 389);
             this.txtCompanyCode.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtCompanyCode.Name = "txtCompanyCode";
             this.txtCompanyCode.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtCompanyCode.PlaceholderText = "Company Code";
             this.txtCompanyCode.SelectedText = "";
-            this.txtCompanyCode.Size = new System.Drawing.Size(398, 29);
+            this.txtCompanyCode.Size = new System.Drawing.Size(130, 29);
             this.txtCompanyCode.TabIndex = 140;
             // 
             // panel3
@@ -421,10 +423,46 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = global::YamyProject.Properties.Resources.New_Project__2_;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(175, 54);
+            this.panel3.Location = new System.Drawing.Point(175, 33);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(288, 40);
             this.panel3.TabIndex = 142;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(295, 368);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(177, 17);
+            this.label6.TabIndex = 144;
+            this.label6.Text = "Device Name";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtDeviceName
+            // 
+            this.txtDeviceName.BackColor = System.Drawing.Color.Transparent;
+            this.txtDeviceName.BorderRadius = 5;
+            this.txtDeviceName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDeviceName.DefaultText = "";
+            this.txtDeviceName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDeviceName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDeviceName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDeviceName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDeviceName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDeviceName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeviceName.ForeColor = System.Drawing.Color.Black;
+            this.txtDeviceName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDeviceName.Location = new System.Drawing.Point(302, 389);
+            this.txtDeviceName.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtDeviceName.Name = "txtDeviceName";
+            this.txtDeviceName.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtDeviceName.PlaceholderText = "Device Name";
+            this.txtDeviceName.SelectedText = "";
+            this.txtDeviceName.Size = new System.Drawing.Size(203, 29);
+            this.txtDeviceName.TabIndex = 143;
             // 
             // frmConfig
             // 
@@ -432,6 +470,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::YamyProject.Properties.Resources.YAMY_Splash1;
             this.ClientSize = new System.Drawing.Size(639, 485);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtDeviceName);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCompanyCode);
@@ -484,5 +524,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCompanyCode;
         private Guna.UI2.WinForms.Guna2Button btnTest;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2TextBox txtDeviceName;
     }
 }

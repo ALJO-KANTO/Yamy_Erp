@@ -36,7 +36,7 @@ namespace YamyProject
                     var row = dt.Rows[0];
                     txtName.Text = row["name"].ToString();
                     txtValue.Text = row["value"].ToString();
-                    txtDescription.Text = row["description"].ToString();
+                    cmbType.Text = row["description"].ToString();
                 }
                 //btnSave.Enabled = UserPermissions.canEdit("MasterTax");
             }
@@ -84,7 +84,7 @@ namespace YamyProject
                 "INSERT INTO tbl_tax (name, value, description) VALUES (@name, @value, @description)",
                 DBClass.CreateParameter("name", txtName.Text),
                 DBClass.CreateParameter("value", txtValue.Text),
-                DBClass.CreateParameter("description", txtDescription.Text)
+                DBClass.CreateParameter("description", cmbType.Text)
             );
 
             Utilities.LogAudit(frmLogin.userId, "Insert Tax", "Tax", 0, "Inserted Tax: " + txtName.Text);
@@ -95,22 +95,22 @@ namespace YamyProject
         private bool updateTax()
         {
             // Check for duplicate value
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-                "SELECT * FROM tbl_tax WHERE value = @value",
-                DBClass.CreateParameter("value", txtValue.Text)))
+            //using (MySqlDataReader reader = DBClass.ExecuteReader(
+            //    "SELECT * FROM tbl_tax WHERE value = @value",
+            //    DBClass.CreateParameter("value", txtValue.Text)))
 
-                if (reader.Read() && id != int.Parse(reader["id"].ToString()))
-                {
-                    MessageBox.Show("Value already exists. Enter another value.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+            //    if (reader.Read() && id != int.Parse(reader["id"].ToString()))
+            //    {
+            //        MessageBox.Show("Value already exists. Enter another value.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return false;
+            //    }
 
             DBClass.ExecuteNonQuery(
                 "UPDATE tbl_tax SET name = @name, value = @value, description = @description WHERE id = @id",
                 DBClass.CreateParameter("id", id),
                 DBClass.CreateParameter("name", txtName.Text),
                 DBClass.CreateParameter("value", txtValue.Text),
-                DBClass.CreateParameter("description", txtDescription.Text)
+                DBClass.CreateParameter("description", cmbType.Text)
             );
             Utilities.LogAudit(frmLogin.userId, "Update Tax", "Tax", id, "Updated Tax: " + txtName.Text);
 

@@ -18,10 +18,7 @@ namespace YamyProject
         int _pageSize = 50; // Or any default rows per page
         int _totalRecords = 0;
         int _totalPages = 0;
-        // REQUIRED for Activator.CreateInstance
-        public MasterPurchases() : this(false)
-        {
-        }
+        
         public MasterPurchases(bool _cbSubcontractorsChecked=false)
         {
             InitializeComponent();

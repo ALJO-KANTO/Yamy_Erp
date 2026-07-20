@@ -160,8 +160,14 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
                 return;
 
             dgvProjects.DataSource = _projectTable;
-            //if (dgvProjects.Columns.Contains("id"))
-            //    dgvProjects.Columns["id"].Visible = false;
+            if (dgvProjects.Columns.Contains("id"))
+                dgvProjects.Columns["id"].Visible = false;
+            if (dgvProjects.Columns.Contains("days_idle"))
+                dgvProjects.Columns["days_idle"].Visible = false;
+            if (dgvProjects.Columns.Contains("priority_color"))
+                dgvProjects.Columns["priority_color"].Visible = false;
+            if (dgvProjects.Columns.Contains("priority_level"))
+                dgvProjects.Columns["priority_level"].Visible = false;
 
             //if (dgvProjects.Columns.Contains("Name"))
             //{
@@ -178,6 +184,12 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
 
             ApplySearchFilter(); // keep search after refresh
             LocalizationManager.LocalizeDataGridViewHeaders(dgvActivityLog);
+
+            //cell color based on priority_color
+            if (dgvProjects.Columns.Contains("priority_color"))
+            {
+
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -430,7 +442,7 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
                     DBClass.CreateParameter("@status", cmbStatus.Text),
                     DBClass.CreateParameter("@id", selectedFileId)
                 );
-
+                //30
                 string updateQuery = "UPDATE tbl_projects SET last_progress_update = NOW() WHERE id = @id";
                 DBClass.ExecuteNonQuery(updateQuery,
                     DBClass.CreateParameter("@description", txtDescription.Text.Trim()),
@@ -626,6 +638,36 @@ namespace YamyProject.UI.EngineeringConsultancy.ViewForm
         {
             frmNotifications frm = new frmNotifications();
             frm.ShowDialog();
+        }
+
+        private void dgvProjects_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvProjects.Columns.Contains("priority_color"))
+            {
+                foreach (DataGridViewRow row in dgvProjects.Rows)
+                {
+                    var val = row.Cells["priority_color"].Value;
+
+                    if (val != null && val != DBNull.Value)
+                    {
+                        string colorValue = val.ToString();
+
+                        Color color = Color.FromName(colorValue);
+
+                        // If color name is invalid, fallback
+                        if (!color.IsKnownColor)
+                            color = Color.White;
+
+                        row.DefaultCellStyle.BackColor = color;
+
+                        // Improve readability
+                        if (color == Color.Red || color == Color.Green)
+                            row.DefaultCellStyle.ForeColor = Color.White;
+                        else
+                            row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
         }
     }
 }

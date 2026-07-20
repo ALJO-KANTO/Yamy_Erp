@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SalaryTransferSheet" targetNamespace="http://tempuri.org/SalaryTransferSheet.xsd" xmlns:mstns="http://tempuri.org/SalaryTransferSheet.xsd" xmlns="http://tempuri.org/SalaryTransferSheet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SalaryTransferSheet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SalaryTransferSheet" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SalaryTransferSheet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SalaryMonth" msprop:Generator_UserColumnName="SalaryMonth" msprop:Generator_ColumnPropNameInTable="SalaryMonthColumn" msprop:Generator_ColumnPropNameInRow="SalaryMonth" msprop:Generator_ColumnVarNameInTable="columnSalaryMonth" type="xs:string" minOccurs="0" />
+              <xs:element name="Category" msprop:Generator_UserColumnName="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" type="xs:string" minOccurs="0" />
+              <xs:element name="code" msprop:Generator_UserColumnName="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnVarNameInTable="columncode" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname" type="xs:string" minOccurs="0" />
+              <xs:element name="Bank" msprop:Generator_UserColumnName="Bank" msprop:Generator_ColumnPropNameInTable="BankColumn" msprop:Generator_ColumnPropNameInRow="Bank" msprop:Generator_ColumnVarNameInTable="columnBank" type="xs:string" minOccurs="0" />
+              <xs:element name="Iban_Number" msprop:Generator_UserColumnName="Iban_Number" msprop:Generator_ColumnPropNameInTable="Iban_NumberColumn" msprop:Generator_ColumnPropNameInRow="Iban_Number" msprop:Generator_ColumnVarNameInTable="columnIban_Number" type="xs:string" minOccurs="0" />
+              <xs:element name="Bank_account_Number" msprop:Generator_UserColumnName="Bank_account_Number" msprop:Generator_ColumnPropNameInTable="Bank_account_NumberColumn" msprop:Generator_ColumnPropNameInRow="Bank_account_Number" msprop:Generator_ColumnVarNameInTable="columnBank_account_Number" type="xs:string" minOccurs="0" />
+              <xs:element name="net_salary" msprop:Generator_UserColumnName="net_salary" msprop:Generator_ColumnPropNameInTable="net_salaryColumn" msprop:Generator_ColumnPropNameInRow="net_salary" msprop:Generator_ColumnVarNameInTable="columnnet_salary" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

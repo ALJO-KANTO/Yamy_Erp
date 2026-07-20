@@ -2,7 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using YamyProject;
 using YamyProject.DAL;
@@ -267,7 +266,79 @@ namespace YamyProject
                 "0",
                 pettyCashAccountId.ToString()
             );
+
+            // update balance
+            //DBClass.ExecuteNonQuery(
+            //    "UPDATE tbl_petty_cash_request SET pay = pay + @pay, `change` = amount - @pay WHERE id (select employee_id from tbl_petty_cash perry_cash_name = @id)",
+            //    DBClass.CreateParameter("pay", totalCredit),
+            //    DBClass.CreateParameter("id", pettyCashId));
+            UpdateRequest(totalCredit);
+            
         }
+
+        private void UpdateRequest(decimal voucherTotal)
+        {
+            decimal settle = voucherTotal;
+
+            object empId = DBClass.ExecuteScalar("select employee_id from tbl_petty_cash where id = @id", DBClass.CreateParameter("id", id));
+            if (empId == null) return;
+
+            DBClass.ExecuteNonQuery(@"
+            CREATE TABLE IF NOT EXISTS `tbl_petty_cash_settlement` (
+                `id` INT NOT NULL AUTO_INCREMENT,
+                `request_id` INT NOT NULL,
+                `petty_cash_id` INT NOT NULL,
+                `settled_amount` DECIMAL(20,2) NOT NULL DEFAULT 0,
+                `created_by` INT DEFAULT NULL,
+                `created_date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB
+            DEFAULT CHARSET=utf8mb4
+            COLLATE=utf8mb4_general_ci;
+            ");
+
+            using (var rd = DBClass.ExecuteReader(@"
+                    SELECT id, `change`
+                    FROM tbl_petty_cash_request
+                    WHERE Petty_cash_name=@emp
+                    AND `change` > 0
+                    ORDER BY request_date,id",
+                DBClass.CreateParameter("@emp", empId)))
+            {
+                while (rd.Read() && settle > 0)
+                {
+                    int reqId = Convert.ToInt32(rd["id"]);
+                    decimal bal = Convert.ToDecimal(rd["change"]);
+
+                    decimal useAmt = Math.Min(settle, bal);
+
+                    // insert mapping
+                    DBClass.ExecuteNonQuery(@"
+                        INSERT INTO tbl_petty_cash_settlement
+                        (request_id, petty_cash_id, settled_amount)
+                        VALUES(@r,@p,@a)",
+                    DBClass.CreateParameter("@r", reqId),
+                    DBClass.CreateParameter("@p", pettyCashId),
+                    DBClass.CreateParameter("@a", useAmt));
+
+                    // update request
+                    DBClass.ExecuteNonQuery(@"
+                        UPDATE tbl_petty_cash_request
+                        SET pay = pay + @amt,
+                            `change` = `change` - @amt,
+                            state = CASE
+                                      WHEN (`change` - @amt)<=0 THEN 'Closed'
+                                      ELSE 'Partial'
+                                    END
+                        WHERE id=@id",
+                    DBClass.CreateParameter("@amt", useAmt),
+                    DBClass.CreateParameter("@id", reqId));
+
+                    settle -= useAmt;
+                }
+            }
+        }
+
         void InsertJournals(decimal vat, decimal amount, string description, string hum_id, string accountId)
         {
             string tType = "Petty Cash";

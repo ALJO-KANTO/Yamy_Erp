@@ -575,11 +575,11 @@ namespace YamyProject
             int _paymentId = (int)decimal.Parse(DBClass.ExecuteScalar(@"INSERT INTO tbl_payment_voucher(date, code, type, method, amount,  
                                                             debit_account_id, debit_cost_center_id, description,credit_account_id,
                                                             credit_cost_center_id,bank_id, bank_account_id, book_no, check_name, check_no,
-                                                            check_date, trans_date, trans_name, trans_ref, created_by, created_date, state) 
+                                                            check_date, trans_date, trans_name, trans_ref, created_by, created_date, state, GlobalId, DeviceId) 
                                                             VALUES (@date, @code, @type, @method, @amount, @debit_account_id, @debit_cost_center_id,
                                                             @description,@credit_account_id, @credit_cost_center_id, @bank_id, @bank_account_id, 
                                                             @book_no, @check_name, @check_no,@check_date, @trans_date, @trans_name, @trans_ref, 
-                                                            @created_by, @created_date, 0); SELECT LAST_INSERT_ID();",
+                                                            @created_by, @created_date, 0, @GlobalId, @DeviceId); SELECT LAST_INSERT_ID();",
                                                             DBClass.CreateParameter("date", dated),
                                                             DBClass.CreateParameter("code", newCode),
                                                             DBClass.CreateParameter("type", "Employee"),
@@ -600,7 +600,9 @@ namespace YamyProject
                                                             DBClass.CreateParameter("trans_name", ""),
                                                             DBClass.CreateParameter("trans_ref", ""),
                                                             DBClass.CreateParameter("created_by", frmLogin.userId),
-                                                            DBClass.CreateParameter("created_date", DateTime.Now.Date)).ToString());
+                                                            DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)).ToString());
 
             //insertJournals()
             CommonInsert.InsertTransactionEntry(dated,
@@ -620,8 +622,8 @@ namespace YamyProject
             var description = "";
             DateTime date = DateTime.Now.Date;
 
-            DBClass.ExecuteNonQuery(@"INSERT INTO tbl_payment_voucher_details(date,payment_id,hum_id, inv_id,inv_code,total, payment, description) 
-                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description);",
+            DBClass.ExecuteNonQuery(@"INSERT INTO tbl_payment_voucher_details(date,payment_id,hum_id, inv_id,inv_code,total, payment, description, GlobalId, DeviceId) 
+                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description, @GlobalId, @DeviceId);",
                                     DBClass.CreateParameter("@payment_id", _paymentId),
                                     DBClass.CreateParameter("@date", date),
                                     DBClass.CreateParameter("@hum_id", hum),
@@ -629,7 +631,9 @@ namespace YamyProject
                                     DBClass.CreateParameter("@inv_code", empcode + " " + empName),//dgvInv.Rows[i].Cells["InvNo"].Value.ToString()),
                                     DBClass.CreateParameter("@inv_id", int.Parse(invId)),
                                     DBClass.CreateParameter("@payment", payment),
-                                    DBClass.CreateParameter("@description", description));
+                                    DBClass.CreateParameter("@description", description),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName));
 
             DBClass.ExecuteNonQuery(" UPDATE tbl_attendance_salary SET tbl_attendance_salary.pay = tbl_attendance_salary.pay+@pay , tbl_attendance_salary.change = tbl_attendance_salary.change-@change where id = @id",
             DBClass.CreateParameter("pay", decimal.Parse(amount)),

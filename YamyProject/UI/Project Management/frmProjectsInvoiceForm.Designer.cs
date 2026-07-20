@@ -51,6 +51,7 @@ namespace YamyProject.UI.Project_Management
             this.label5 = new System.Windows.Forms.Label();
             this.cmbVat = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAdvancePayment = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtContractValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtDeductionAmount = new Guna.UI2.WinForms.Guna2TextBox();
@@ -102,7 +103,14 @@ namespace YamyProject.UI.Project_Management
             this.guna2TileButton24 = new Guna.UI2.WinForms.Guna2TileButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtAdvancePercent = new Guna.UI2.WinForms.Guna2TextBox();
             this.headerUC1 = new YamyProject.HeaderUC();
+            this.cmbCustomer = new System.Windows.Forms.ComboBox();
+            this.lnkNewCustomer = new System.Windows.Forms.LinkLabel();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -110,6 +118,7 @@ namespace YamyProject.UI.Project_Management
             this.guna2Panel1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblInv
@@ -161,7 +170,7 @@ namespace YamyProject.UI.Project_Management
             // 
             // lblAmt
             // 
-            this.lblAmt.Location = new System.Drawing.Point(778, 218);
+            this.lblAmt.Location = new System.Drawing.Point(778, 176);
             this.lblAmt.Name = "lblAmt";
             this.lblAmt.Size = new System.Drawing.Size(100, 14);
             this.lblAmt.TabIndex = 6;
@@ -174,7 +183,7 @@ namespace YamyProject.UI.Project_Management
             this.txtAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.DefaultText = "0";
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtAmount.Location = new System.Drawing.Point(903, 208);
+            this.txtAmount.Location = new System.Drawing.Point(903, 166);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.PlaceholderText = "";
             this.txtAmount.SelectedText = "";
@@ -260,7 +269,7 @@ namespace YamyProject.UI.Project_Management
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(778, 256);
+            this.label3.Location = new System.Drawing.Point(778, 214);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 14);
             this.label3.TabIndex = 36;
@@ -274,7 +283,7 @@ namespace YamyProject.UI.Project_Management
             this.txtVatAmount.DefaultText = "0";
             this.txtVatAmount.Enabled = false;
             this.txtVatAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtVatAmount.Location = new System.Drawing.Point(903, 246);
+            this.txtVatAmount.Location = new System.Drawing.Point(903, 204);
             this.txtVatAmount.Name = "txtVatAmount";
             this.txtVatAmount.PlaceholderText = "";
             this.txtVatAmount.ReadOnly = true;
@@ -312,7 +321,7 @@ namespace YamyProject.UI.Project_Management
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(667, 256);
+            this.label5.Location = new System.Drawing.Point(667, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 14);
             this.label5.TabIndex = 40;
@@ -328,7 +337,7 @@ namespace YamyProject.UI.Project_Management
             this.cmbVat.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbVat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbVat.ItemHeight = 20;
-            this.cmbVat.Location = new System.Drawing.Point(713, 246);
+            this.cmbVat.Location = new System.Drawing.Point(713, 204);
             this.cmbVat.Name = "cmbVat";
             this.cmbVat.Size = new System.Drawing.Size(90, 26);
             this.cmbVat.TabIndex = 41;
@@ -336,6 +345,10 @@ namespace YamyProject.UI.Project_Management
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbCustomer);
+            this.panel1.Controls.Add(this.lnkNewCustomer);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.txtContractValue);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtDeductionAmount);
@@ -367,13 +380,29 @@ namespace YamyProject.UI.Project_Management
             this.panel1.Size = new System.Drawing.Size(1044, 411);
             this.panel1.TabIndex = 45;
             // 
+            // txtAdvancePayment
+            // 
+            this.txtAdvancePayment.BorderRadius = 5;
+            this.txtAdvancePayment.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAdvancePayment.DefaultText = "0";
+            this.txtAdvancePayment.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtAdvancePayment.Location = new System.Drawing.Point(216, 17);
+            this.txtAdvancePayment.Name = "txtAdvancePayment";
+            this.txtAdvancePayment.PlaceholderText = "";
+            this.txtAdvancePayment.SelectedText = "";
+            this.txtAdvancePayment.Size = new System.Drawing.Size(128, 24);
+            this.txtAdvancePayment.TabIndex = 55;
+            this.txtAdvancePayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAdvancePayment.TextChanged += new System.EventHandler(this.txtAdvancePayment_TextChanged);
+            this.txtAdvancePayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
+            // 
             // txtContractValue
             // 
             this.txtContractValue.BorderRadius = 5;
             this.txtContractValue.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContractValue.DefaultText = "0";
             this.txtContractValue.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtContractValue.Location = new System.Drawing.Point(903, 168);
+            this.txtContractValue.Location = new System.Drawing.Point(617, 166);
             this.txtContractValue.Name = "txtContractValue";
             this.txtContractValue.PlaceholderText = "";
             this.txtContractValue.ReadOnly = true;
@@ -384,7 +413,7 @@ namespace YamyProject.UI.Project_Management
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(778, 176);
+            this.label9.Location = new System.Drawing.Point(492, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 14);
             this.label9.TabIndex = 52;
@@ -397,7 +426,7 @@ namespace YamyProject.UI.Project_Management
             this.txtDeductionAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDeductionAmount.DefaultText = "0";
             this.txtDeductionAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDeductionAmount.Location = new System.Drawing.Point(903, 334);
+            this.txtDeductionAmount.Location = new System.Drawing.Point(903, 338);
             this.txtDeductionAmount.Name = "txtDeductionAmount";
             this.txtDeductionAmount.PlaceholderText = "";
             this.txtDeductionAmount.SelectedText = "";
@@ -409,9 +438,9 @@ namespace YamyProject.UI.Project_Management
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(778, 344);
+            this.label8.Location = new System.Drawing.Point(809, 344);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 14);
+            this.label8.Size = new System.Drawing.Size(69, 14);
             this.label8.TabIndex = 50;
             this.label8.Text = "Deduction";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -424,7 +453,7 @@ namespace YamyProject.UI.Project_Management
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtRetentionPercent);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(687, 276);
+            this.groupBox1.Location = new System.Drawing.Point(687, 234);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(350, 48);
             this.groupBox1.TabIndex = 49;
@@ -520,14 +549,14 @@ namespace YamyProject.UI.Project_Management
             this.cmbCostCenter.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCostCenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbCostCenter.ItemHeight = 20;
-            this.cmbCostCenter.Location = new System.Drawing.Point(499, 127);
+            this.cmbCostCenter.Location = new System.Drawing.Point(497, 118);
             this.cmbCostCenter.Name = "cmbCostCenter";
             this.cmbCostCenter.Size = new System.Drawing.Size(410, 26);
             this.cmbCostCenter.TabIndex = 47;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(499, 110);
+            this.label6.Location = new System.Drawing.Point(497, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 14);
             this.label6.TabIndex = 46;
@@ -1265,6 +1294,66 @@ namespace YamyProject.UI.Project_Management
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.txtAdvancePayment);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.txtAdvancePercent);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(687, 281);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(350, 48);
+            this.groupBox2.TabIndex = 56;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Advance Payment";
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(91, 20);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 14);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "Amount";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label14.Location = new System.Drawing.Point(5, 14);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 29);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "%";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAdvancePercent
+            // 
+            this.txtAdvancePercent.BorderRadius = 5;
+            this.txtAdvancePercent.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAdvancePercent.DefaultText = "0";
+            this.txtAdvancePercent.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtAdvancePercent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAdvancePercent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAdvancePercent.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtAdvancePercent.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAdvancePercent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtAdvancePercent.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAdvancePercent.Location = new System.Drawing.Point(19, 14);
+            this.txtAdvancePercent.Name = "txtAdvancePercent";
+            this.txtAdvancePercent.PlaceholderText = "";
+            this.txtAdvancePercent.SelectedText = "";
+            this.txtAdvancePercent.Size = new System.Drawing.Size(55, 27);
+            this.txtAdvancePercent.TabIndex = 9;
+            this.txtAdvancePercent.TextChanged += new System.EventHandler(this.txtAdvancePercent_TextChanged);
+            this.txtAdvancePercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
+            // 
             // headerUC1
             // 
             this.headerUC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
@@ -1276,6 +1365,47 @@ namespace YamyProject.UI.Project_Management
             this.headerUC1.Name = "headerUC1";
             this.headerUC1.Size = new System.Drawing.Size(1055, 30);
             this.headerUC1.TabIndex = 35;
+            // 
+            // cmbCustomer
+            // 
+            this.cmbCustomer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCustomer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbCustomer.ItemHeight = 15;
+            this.cmbCustomer.Location = new System.Drawing.Point(71, 165);
+            this.cmbCustomer.Name = "cmbCustomer";
+            this.cmbCustomer.Size = new System.Drawing.Size(338, 23);
+            this.cmbCustomer.TabIndex = 58;
+            this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
+            // 
+            // lnkNewCustomer
+            // 
+            this.lnkNewCustomer.ActiveLinkColor = System.Drawing.Color.Green;
+            this.lnkNewCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.lnkNewCustomer.DisabledLinkColor = System.Drawing.Color.White;
+            this.lnkNewCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkNewCustomer.ForeColor = System.Drawing.Color.Black;
+            this.lnkNewCustomer.LinkColor = System.Drawing.Color.MediumBlue;
+            this.lnkNewCustomer.Location = new System.Drawing.Point(397, 167);
+            this.lnkNewCustomer.Name = "lnkNewCustomer";
+            this.lnkNewCustomer.Size = new System.Drawing.Size(50, 18);
+            this.lnkNewCustomer.TabIndex = 57;
+            this.lnkNewCustomer.TabStop = true;
+            this.lnkNewCustomer.Text = "New";
+            this.lnkNewCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(19, 167);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 16);
+            this.label11.TabIndex = 59;
+            this.label11.Text = "Customer";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmProjectsInvoiceForm
             // 
@@ -1290,7 +1420,8 @@ namespace YamyProject.UI.Project_Management
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProjectsInvoiceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Customer Invoice";
+            this.Text = "Project Invoice";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProjectsInvoiceForm_FormClosing);
             this.Load += new System.EventHandler(this.frmInvoiceForm_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -1300,6 +1431,7 @@ namespace YamyProject.UI.Project_Management
             this.guna2Panel1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1376,5 +1508,13 @@ namespace YamyProject.UI.Project_Management
         private Label label8;
         private Guna2TextBox txtContractValue;
         private Label label9;
+        private Guna2TextBox txtAdvancePayment;
+        private GroupBox groupBox2;
+        private Label label12;
+        private Label label14;
+        private Guna2TextBox txtAdvancePercent;
+        public ComboBox cmbCustomer;
+        private LinkLabel lnkNewCustomer;
+        private Label label11;
     }
 }

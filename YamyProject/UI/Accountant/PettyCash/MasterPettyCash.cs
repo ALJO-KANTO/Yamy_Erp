@@ -1,8 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using YamyProject.DAL;
 using YamyProject.Localization;
@@ -23,19 +21,37 @@ namespace YamyProject
         }
         public void BindEmployees()
         {
-            
-                string query = @"SELECT e.id, e.code, e.name AS 'Employee Name' 
-                              FROM tbl_employee e WHERE id  IN (SELECT CAST(name AS UNSIGNED) 
-                              FROM tbl_petty_cash_card) GROUP BY e.id, e.code, e.name, e.Department_id, e.email, e.phone;";
+            string query = @"SELECT 
+                                e.id, 
+                                e.code, 
+                                e.name AS 'Employee Name',
+                                COALESCE((SUM(pc.total)), 0) AS Amount
+                            FROM tbl_employee e
+                            INNER JOIN tbl_petty_cash pc ON pc.employee_id = e.id
+                            GROUP BY e.id, e.code, e.name";
 
-                DataTable dt = DBClass.ExecuteDataTable(query);
-                _dataView = dt.DefaultView;
-                dgvEmployees.DataSource = _dataView;
+            if (EnableApproval)
+                query = @"SELECT 
+                                e.id, 
+                                e.code, 
+                                e.name AS 'Employee Name',
+                                COALESCE(
+										  (select SUM(pcr.pay) FROM tbl_petty_cash_request pcr WHERE pcr.state != 'New' AND pcr.Petty_cash_name = e.id)
+										  - (SUM(pc.total)), 0) AS Amount
+                            FROM tbl_employee e
+                            INNER JOIN tbl_petty_cash pc ON pc.employee_id = e.id
+                            GROUP BY e.id, e.code, e.name";
 
-                dgvEmployees.Columns["id"].Visible = false;
-                dgvEmployees.Columns["code"].MinimumWidth = 100;
-                dgvEmployees.Columns["Employee Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            
+            DataTable dt = DBClass.ExecuteDataTable(query);
+            _dataView = dt.DefaultView;
+            dgvEmployees.DataSource = _dataView;
+
+            dgvEmployees.Columns["id"].Visible = false;
+            dgvEmployees.Columns["code"].Visible = false;
+            dgvEmployees.Columns["code"].MinimumWidth = 100;
+            dgvEmployees.Columns["Employee Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvEmployees.Columns["Amount"].DefaultCellStyle.Format = "N2";
+
             LocalizationManager.LocalizeDataGridViewHeaders(dgvEmployees);
             if (dt != null)
             {
@@ -47,8 +63,8 @@ namespace YamyProject
 
         private void MasterPettyCash_Load(object sender, EventArgs e)
         {
-            var barcodeS = Utilities.GeneralSettingsState("ENABLE PETTYCASH APPROVAL");
-            if (!string.IsNullOrEmpty(barcodeS) && int.Parse(barcodeS) > 0)
+            var opt = Utilities.GeneralSettingsState("ENABLE PETTYCASH APPROVAL");
+            if (!string.IsNullOrEmpty(opt) && int.Parse(opt) > 0)
             {
                 EnableApproval = true;
             }
@@ -63,12 +79,19 @@ namespace YamyProject
             else
             {
                 newPettyCashToolStripMenuItem.Visible = editPettyCashToolStripMenuItem.Visible = deletePettyCashToolStripMenuItem.Visible = true;
+                toolStripMenuItem30.Visible = toolStripMenuItem12.Visible = true;
+                if (frmLogin.userRole != "Admin" && frmLogin.userRole != "Manager")
+                {
+                    approvalToolStripMenuItem.Visible = false;
+                    approvalSubmitionToolStripMenuItem.Visible = false;
+                }
             }
 
             BindEmployees();
             dgvInvoice.ColumnHeadersVisible = false;
             AppTheme.DefaultFont(dgvInvoice);
             AppTheme.DefaultFont(dgvInvoiceCash);
+            AppTheme.DefaultFont(dgvRequest);
         }
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -78,8 +101,9 @@ namespace YamyProject
                 string empCode = dgvEmployees.Rows[e.RowIndex].Cells["code"].Value.ToString();
                 string empId = dgvEmployees.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 BindEmployeePettyCash(empId);
+                BindEmployeePettyCashRequest(empId);
                 BindEmployeePettyCashTransaction(empCode);
-            }   
+            }
         }
 
         private void BindEmployeePettyCash(string empId)
@@ -162,7 +186,8 @@ namespace YamyProject
 
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoiceCash);
             }
-            else {
+            else
+            {
                 dgvInvoiceCash.Rows.Clear();
                 string query = @"
                             SELECT 
@@ -199,6 +224,54 @@ namespace YamyProject
                 dgvInvoiceCash.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoiceCash);
+            }
+        }
+        private void BindEmployeePettyCashRequest(string empId)
+        {
+            dgvRequest.DataSource = null;
+            dgvRequest.ColumnHeadersVisible = true;
+
+            dgvRequest.EnableHeadersVisualStyles = false;
+            if (EnableApproval)
+            {
+                dgvRequest.DataSource = null;
+                dgvRequest.ColumnHeadersVisible = true;
+
+                dgvRequest.Rows.Clear();
+                string query = @"
+                                SELECT a.id,a.request_date `Date`,a.request_ref `No`,a.Amount,ifnull(cr.name,'') AS `Debit Account`,ifnull(dr.name,'') AS `Credit Account`,a.State,a.Pay,a.Change,a.Description FROM tbl_petty_cash_request a
+                                LEFT JOIN tbl_coa_level_4 dr ON dr.id = a.debit_account_id
+                                LEFT JOIN tbl_coa_level_4 cr ON cr.id = a.credit_account_id WHERE a.Petty_cash_name = @empId;
+                                ";
+
+                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empId", empId));
+                dgvRequest.DataSource = dt;
+
+                if (dt.Rows.Count == 0)
+                {
+                    dgvRequest.ColumnHeadersVisible = false;
+                    return;
+                }
+
+                dgvRequest.Columns["Date"].DefaultCellStyle.Format = "dd-MM-yyyy";
+
+                //dgvRequest.Columns["Account"].HeaderText = "Account";
+                //dgvRequest.Columns["Category"].HeaderText = "Category";
+                //dgvRequest.Columns["Cost Center"].HeaderText = "Cost Center";
+                dgvRequest.Columns["Amount"].DefaultCellStyle.Format = "N2";
+                dgvRequest.Columns["Change"].DefaultCellStyle.Format = "N2";
+                dgvRequest.Columns["Pay"].DefaultCellStyle.Format = "N2";
+                dgvRequest.Columns["Pay"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvRequest.Columns["Amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvRequest.Columns["Change"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvRequest.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+                dgvRequest.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                //dgvRequest.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+                //dgvRequest.DefaultCellStyle.Font = new Font("Times New Roman", 9);
+                dgvRequest.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                LocalizationManager.LocalizeDataGridViewHeaders(dgvRequest);
             }
         }
 
@@ -260,32 +333,32 @@ namespace YamyProject
             //else
             //{
             dgvInvoice.Rows.Clear();
-                dgvInvoice.Columns.Clear();
+            dgvInvoice.Columns.Clear();
 
-                // Define columns
-                dgvInvoice.Columns.Add("id", "Id");
-                dgvInvoice.Columns["id"].Visible = false;
+            // Define columns
+            dgvInvoice.Columns.Add("id", "Id");
+            dgvInvoice.Columns["id"].Visible = false;
 
-                dgvInvoice.Columns.Add("SN", "SN#");
-                dgvInvoice.Columns.Add("Date", "Date");
-                dgvInvoice.Columns.Add("No", "Voucher No");
-                dgvInvoice.Columns.Add("Type", "Type");
-                dgvInvoice.Columns.Add("InvoiceId", "Inv Id");
-                dgvInvoice.Columns.Add("Description", "Description");
-                dgvInvoice.Columns.Add("Debit", "Debit");
-                dgvInvoice.Columns.Add("Credit", "Credit");
-                dgvInvoice.Columns.Add("Balance", "Balance");
+            dgvInvoice.Columns.Add("SN", "SN#");
+            dgvInvoice.Columns.Add("Date", "Date");
+            dgvInvoice.Columns.Add("No", "Voucher No");
+            dgvInvoice.Columns.Add("Type", "Type");
+            dgvInvoice.Columns.Add("InvoiceId", "Inv Id");
+            dgvInvoice.Columns.Add("Description", "Description");
+            dgvInvoice.Columns.Add("Debit", "Debit");
+            dgvInvoice.Columns.Add("Credit", "Credit");
+            dgvInvoice.Columns.Add("Balance", "Balance");
 
             // Format numeric columns
             dgvInvoice.Columns["Debit"].DefaultCellStyle.Format = "N2";
-                dgvInvoice.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvInvoice.Columns["Credit"].DefaultCellStyle.Format = "N2";
-                dgvInvoice.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvInvoice.Columns["Balance"].DefaultCellStyle.Format = "N2";
-                dgvInvoice.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["Debit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["Credit"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["Credit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvInvoice.Columns["Balance"].DefaultCellStyle.Format = "N2";
+            dgvInvoice.Columns["Balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                // Query
-                string query = @"
+            // Query
+            string query = @"
                                 SELECT 
                                     t.id,
                                     t.`Date`,
@@ -310,43 +383,69 @@ namespace YamyProject
                                     AND t.type = 'Petty Cash'
                                 ORDER BY t.`Date`, t.id;
                                 ";
+            if (EnableApproval) 
+                query = @"
+                                SELECT 
+                                    t.id,
+                                    t.`Date`,
+                                    CAST(t.voucher_no AS CHAR CHARACTER SET utf8mb4) AS `No`,
+                                    CAST(t.type AS CHAR CHARACTER SET utf8mb4) AS `Type`,
+                                    t.transaction_id AS `Invoice Id`,
+                                    CAST(coa.name AS CHAR CHARACTER SET utf8mb4) AS `Description`,
+                                    t.debit AS `Debit`,
+                                    t.credit AS `Credit`
+                                FROM 
+                                    tbl_transaction t
+                                INNER JOIN 
+                                    tbl_coa_level_4 coa ON t.account_id = coa.id
+                                WHERE 
+                                    t.transaction_id IN (
+                                        SELECT pt.id 
+                                        FROM tbl_employee e
+                                        INNER JOIN tbl_petty_cash pt ON pt.employee_id = e.id
+                                        WHERE e.code = @empCode
+                                    )
+                                    AND t.state = 0
+                                    AND t.type IN ('Petty Cash','Employee Petty Cash Payment')
+                                ORDER BY t.`Date`, t.id;
+                                ";
 
-                // Fetch data
-                DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
+            // Fetch data
+            DataTable dt = DBClass.ExecuteDataTable(query, DBClass.CreateParameter("@empCode", empCode));
 
-                // Fill rows with running balance
-                decimal balance = 0;
-                int sn = 1;
+            // Fill rows with running balance
+            decimal balance = 0;
+            int sn = 1;
 
-                foreach (DataRow row in dt.Rows)
-                {
-                    decimal debit = row["Debit"] != DBNull.Value ? Convert.ToDecimal(row["Debit"]) : 0;
-                    decimal credit = row["Credit"] != DBNull.Value ? Convert.ToDecimal(row["Credit"]) : 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                decimal debit = row["Debit"] != DBNull.Value ? Convert.ToDecimal(row["Debit"]) : 0;
+                decimal credit = row["Credit"] != DBNull.Value ? Convert.ToDecimal(row["Credit"]) : 0;
                 balance += debit - credit;
 
-                    dgvInvoice.Rows.Add(
-                        row["id"],
-                        sn++,
-                        DateTime.Parse(row["Date"].ToString()).ToShortDateString(),
-                        string.IsNullOrEmpty(row["No"].ToString()) ? ("PC-00" + row["id"]) : row["No"],
-                        row["Type"],
-                        row["Invoice Id"] != DBNull.Value ? row["Invoice Id"].ToString() : null,
-                        row["Description"],
-                        debit,
-                        credit,
-                        balance
-                    );
-                }
+                dgvInvoice.Rows.Add(
+                    row["id"],
+                    sn++,
+                    DateTime.Parse(row["Date"].ToString()).ToShortDateString(),
+                    string.IsNullOrEmpty(row["No"].ToString()) ? ("PC-00" + row["id"]) : row["No"],
+                    row["Type"],
+                    row["Invoice Id"] != DBNull.Value ? row["Invoice Id"].ToString() : null,
+                    row["Description"],
+                    debit,
+                    credit,
+                    balance
+                );
+            }
 
-                // Styling
-                dgvInvoice.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
-                dgvInvoice.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-                //dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
-                //dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
+            // Styling
+            dgvInvoice.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+            dgvInvoice.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            //dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 9, FontStyle.Bold);
+            //dgvInvoice.DefaultCellStyle.Font = new Font("Times New Roman", 9);
 
-                dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                //LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
+            //LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
             //}
         }
 
@@ -382,7 +481,7 @@ namespace YamyProject
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             new frmPettyCashCard().ShowDialog();
-        
+
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
@@ -392,7 +491,7 @@ namespace YamyProject
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            new frmPettyCashRequest(0).ShowDialog();
+            frmLogin.frmMain.openChildForm(new frmPettyCashRequest(0));
         }
         private void dgvInvoice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -528,7 +627,7 @@ namespace YamyProject
                 //if (cell != null && cell.Value != null)
                 //{
                 //    int eId = Convert.ToInt32(cell.Value);
-                    
+
                 //}
                 //else
                 //{
@@ -582,7 +681,7 @@ namespace YamyProject
 
         private void editPCACToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if( dgvEmployees.SelectedRows.Count > 0)
+            if (dgvEmployees.SelectedRows.Count > 0)
             {
                 var cell = dgvEmployees.SelectedRows[0].Cells["id"];
                 if (cell != null && cell.Value != null)
@@ -609,7 +708,7 @@ namespace YamyProject
 
         private void dgvInvoiceCash_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 var cell = dgvInvoiceCash.Rows[e.RowIndex].Cells["id"];
                 if (cell != null && cell.Value != null)
@@ -621,7 +720,7 @@ namespace YamyProject
                     //}
                     //else
                     //{
-                        frmLogin.frmMain.openChildForm(new frmViewPettyCashVoucher(submissionId));
+                    frmLogin.frmMain.openChildForm(new frmViewPettyCashVoucher(submissionId));
                     //}
                 }
                 else
@@ -676,6 +775,30 @@ namespace YamyProject
 
                 int purchaseId = Convert.ToInt32(dgvInvoiceCash.Rows[e.RowIndex].Cells["id"].Value);
                 AttachmentManager.OpenAttachmentByType(purchaseId, "PETTY CASH");
+            }
+        }
+
+        private void dgvRequest_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var cell = dgvRequest.Rows[e.RowIndex].Cells["id"];
+                if (cell != null && cell.Value != null)
+                {
+                    if (dgvRequest.Rows[e.RowIndex].Cells["state"].Value.ToString().Contains("Closed"))
+                    {
+                        MessageBox.Show("Request already closed");
+                    }
+                    else {
+                        int id = Convert.ToInt32(cell.Value);
+                        frmPettyCashRequest frmPettyCash = new frmPettyCashRequest(id);
+                        frmPettyCash.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid or missing ID.");
+                }
             }
         }
     }

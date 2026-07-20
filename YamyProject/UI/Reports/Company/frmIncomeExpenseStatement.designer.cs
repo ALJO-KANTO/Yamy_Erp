@@ -463,8 +463,6 @@
             // 
             this.dgvReport.AllowUserToAddRows = false;
             this.dgvReport.AllowUserToDeleteRows = false;
-            this.dgvReport.AllowUserToResizeColumns = false;
-            this.dgvReport.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

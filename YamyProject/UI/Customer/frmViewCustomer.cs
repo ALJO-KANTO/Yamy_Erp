@@ -152,7 +152,7 @@ namespace YamyProject
             DBClass.ExecuteNonQuery(@"Update tbl_customer Set code = @code,
                                 NAME=@NAME, Cat_id = @Cat_id, DATE=@date, main_phone=@main_phone, work_phone=@work_phone, mobile=@mobile, email=@email,
                                 ccemail=@ccemail, website=@website, country=@country, city=@city, region=@region, project_id=@project_id,project_site=@project_site,
-                                building_name=@building_name, account_id=@account_id, trn=@trn, facilty_name=@facilty_name, active=@active,Balance=@Balance where id = @id",
+                                building_name=@building_name, account_id=@account_id, trn=@trn, facilty_name=@facilty_name, active=@active,Balance=@Balance,LastModified=@LastModified,SyncStatus=0 where id = @id",
                                           DBClass.CreateParameter("code", txtCode.Text),
                                           DBClass.CreateParameter("name", txtName.Text),
                                           DBClass.CreateParameter("cat_id", cmbCategory.SelectedValue ?? 0),
@@ -172,6 +172,7 @@ namespace YamyProject
                                           DBClass.CreateParameter("account_id", cmbAccount.SelectedValue ?? 0),
                                           DBClass.CreateParameter("trn", txtTRN.Text),
                                           DBClass.CreateParameter("facilty_name", txtFacilty.Text),
+                                          DBClass.CreateParameter("LastModified", DateTime.Now),
                                           DBClass.CreateParameter("active", chkActive.Checked ? 0 : -1),
                                           DBClass.CreateParameter("Balance", decimal.Parse(txtDepit.Text) - decimal.Parse(txtCredit.Text)),
                                           DBClass.CreateParameter("id", id));
@@ -271,9 +272,9 @@ namespace YamyProject
             string project_site = string.Join(",", ChkLBox.CheckedItems.Cast<object>().Select(item => item.GetType().GetProperty("Value").GetValue(item, null).ToString()));
             int customerId = Convert.ToInt32(DBClass.ExecuteScalar(@"INSERT INTO tbl_customer (code, NAME, Cat_id, Balance, DATE, 
                 main_phone, work_phone, mobile, email, ccemail, website, country, city, region, building_name, account_id, 
-                trn, facilty_name, active, created_by, created_date, state, project_id, project_site) 
+                trn, facilty_name, active, created_by, created_date, state, project_id, project_site, GlobalId, DeviceId, LastModified) 
                 VALUES(@code, @name, @cat_id, @balance, @date, @main_phone, @work_phone, @mobile, @email, @ccemail, @website, 
-                @country, @city, @region, @building_name, @account_id, @trn, @facilty_name, @active, @created_by, @created_date, @state, @project_id, @project_site);
+                @country, @city, @region, @building_name, @account_id, @trn, @facilty_name, @active, @created_by, @created_date, @state, @project_id, @project_site, @GlobalId, @DeviceId, @LastModified);
                 SELECT LAST_INSERT_ID();",
                 DBClass.CreateParameter("code", formattedCode),
                 DBClass.CreateParameter("name", txtName.Text),
@@ -298,6 +299,9 @@ namespace YamyProject
                 DBClass.CreateParameter("active", chkActive.Checked ? 0 : -1),
                 DBClass.CreateParameter("created_by", frmLogin.userId),
                 DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
+                DBClass.CreateParameter("LastModified", DateTime.Now),
                 DBClass.CreateParameter("state", 0)));
 
             Utilities.LogAudit(frmLogin.userId, "INSERT", "Customer Center", customerId, "New Customer Created - Code: " + formattedCode + ", Name: " + txtName.Text);

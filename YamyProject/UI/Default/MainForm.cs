@@ -1,5 +1,4 @@
 ﻿using Guna.UI2.WinForms;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,6 +7,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamyProject.DAL;
 using YamyProject.Localization;
@@ -16,18 +17,27 @@ using YamyProject.UI;
 using YamyProject.UI.Accountant;
 using YamyProject.UI.Banking;
 using YamyProject.UI.Construction.DailySiteWork;
+using YamyProject.UI.Construction.LookAheadPlanning;
 using YamyProject.UI.Construction.ProjectPlanning;
+using YamyProject.UI.Construction.ProjectResources;
+using YamyProject.UI.Construction.ProjectSchedule;
+using YamyProject.UI.Construction.ProjectSiteActivityPlan;
 using YamyProject.UI.CRM;
 using YamyProject.UI.Default;
 using YamyProject.UI.Default.Dashboard;
 using YamyProject.UI.EngineeringConsultancy.ViewForm;
 using YamyProject.UI.EngineeringConsultancy.ViewForm.ProjectPhase;
+using YamyProject.UI.HR;
 using YamyProject.UI.Manufacturing;
 using YamyProject.UI.Project_Management;
+using YamyProject.UI.Project_Management.DailySiteExcecution;
 using YamyProject.UI.Project_Management.ProjectWBS;
 using YamyProject.UI.Reports;
 using YamyProject.UI.Reports.Bank;
 using YamyProject.UI.Reports.Construction;
+using YamyProject.UI.Reports.Employee.SalaryTransferSheet;
+using YamyProject.UI.Reports.Inventory;
+using YamyProject.UI.Reports.Tax;
 using YamyProject.UI.Sales;
 using YamyProject.UI.Settings;
 using YamyProject.UI.Settings.Color_theme;
@@ -57,14 +67,15 @@ namespace YamyProject
             LoadAllMenuData();
 
             if (isNotificationAllowed)
+            {
                 SetUpNotification();
-            //picNotification.Visible = false;
-            //lblNotificationsCount.Visible = false;
-            //isNotificationAllowed = true;
-            //SetupNotificationUI();
-
-            //if (isNotificationAllowed)
-            //    ShowPopup("Hi, Welcome");
+                HRDocumentExpiryNotification.CheckExpiry();
+                //picNotification.Visible = false;
+                //lblNotificationsCount.Visible = false;
+                //isNotificationAllowed = true;
+                //SetupNotificationUI();
+                //    ShowPopup("Hi, Welcome");
+            }
         }
 
         Timer notificationTimer;
@@ -97,11 +108,26 @@ namespace YamyProject
             notificationTimer.Interval = 5000; // 5 sec
             notificationTimer.Tick += (s, e) =>
             {
-                int count = NotificationService.GetUnreadCount(frmLogin.userId);
-                lblCount.Text = count.ToString();
+                int systemCount = NotificationService.GetUnreadCount(frmLogin.userId);
+
+                int hrCount = HRNotificationService.GetExpiryDocumentCount();
+
+                int totalCount = systemCount + hrCount;
+
+
+                lblCount.Text = totalCount.ToString();
+
                 lblCount.Font = new Font("Segoe UI", 6, FontStyle.Regular);
-                lblCount.Visible = count > 0;
+
+                lblCount.Visible = totalCount > 0;
             };
+            //notificationTimer.Tick += (s, e) =>
+            //{
+            //    int count = NotificationService.GetUnreadCount(frmLogin.userId);
+            //    lblCount.Text = count.ToString();
+            //    lblCount.Font = new Font("Segoe UI", 6, FontStyle.Regular);
+            //    lblCount.Visible = count > 0;
+            //};
             notificationTimer.Start();
 
             //picNotification.Click += (s, e) =>
@@ -301,6 +327,11 @@ namespace YamyProject
                     }
                 }
             }
+            else if (keyData == (Keys.Control | Keys.X))
+            {
+                Application.Exit();
+                return true;
+            }
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -399,6 +430,8 @@ namespace YamyProject
             return f;
         }
 
+        private System.Windows.Forms.Timer syncTimer;
+        private bool isSyncRunning = false;
         private void MainForm_Load(object sender, EventArgs e)
         {
             //pnlLeft.Size = new Size(160, 704);
@@ -439,6 +472,41 @@ namespace YamyProject
                 NavigationBar();
             };
             timer.Start();
+
+            string syncStatus = Environment.GetEnvironmentVariable(
+                    "yamy_sync_status",
+                    EnvironmentVariableTarget.User);
+            bool isSyncData = true;
+            if (!string.IsNullOrWhiteSpace(syncStatus))
+            {
+                isSyncData = syncStatus == "1" ? true : false;
+                SyncData.hostedUrl = Environment.GetEnvironmentVariable("yamy_sync_url",
+                    EnvironmentVariableTarget.User);
+            }
+            else
+            {
+                Environment.SetEnvironmentVariable("yamy_sync_status", "0", EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable("yamy_sync_url", " ", EnvironmentVariableTarget.User);
+                SyncData.hostedUrl = Environment.GetEnvironmentVariable("yamy_sync_url",
+                    EnvironmentVariableTarget.User);
+            }
+
+            if (isSyncData)
+            {
+                string syncUrl = Environment.GetEnvironmentVariable(
+                    "yamy_sync_url",
+                    EnvironmentVariableTarget.User);
+                if (!string.IsNullOrWhiteSpace(syncUrl))
+                {
+                    syncTimer = new Timer();
+                    syncTimer.Interval = 2 * 60 * 1000; // 2 minutes
+                    syncTimer.Tick += SyncTimer_Tick;
+                    syncTimer.Start();
+
+                    // Run immediately on startup
+                    _ = StartSyncIfAvailable();
+                }
+            }
         }
         public void openChildFormX(Form childForm)
         {
@@ -961,18 +1029,21 @@ namespace YamyProject
 
         private void balanceSheetSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport("standard"));
+            //openChildForm(new frmBalanceSheetReport("standard"));
+            openChildForm(new BalanceSheetReport("standard"));
         }
 
         private void trialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new MasterTrialBalance());
+            //openChildForm(new MasterTrialBalance());
 
         }
 
         private void salesByCustomerSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSalesByCustomerSummary());
+            //openChildForm(new SalesSummaryReport());
         }
 
         private void purchaseByVendorSummaryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1538,7 +1609,7 @@ namespace YamyProject
 
         private void vATReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterVatReport());
+            
         }
 
         private void inventoryCenterToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1768,8 +1839,10 @@ namespace YamyProject
 
         private void profitLossToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("standard"));
+            //openChildForm(new ProfitandLossReport("standard"));
             //new ProfitandLossDetailReport("","2024-01-01","2026-12-31").Show();
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("standard"));
+            //openChildForm(new UI.Reports.FinancialReports.ProfitLossReport1());
         }
 
         private void customerBalanceSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1862,7 +1935,7 @@ namespace YamyProject
 
         private void vatCategoryReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new MasterVAT());
+            
         }
 
         private void projectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2374,27 +2447,32 @@ namespace YamyProject
 
         private void profitLossYTDComparisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("YTD Comparison"));
+            //openChildForm(new ProfitandLossReport("YTD Comparison"));
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("YTD Comparison"));
         }
 
         private void profitLossPrevYearComparisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("Prev Year Comparison"));
+            //openChildForm(new ProfitandLossReport("Prev Year Comparison"));
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("Prev Year Comparison"));
         }
 
         private void profitLossByJobToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("by Job"));
+            //openChildForm(new ProfitandLossReport("by Job"));
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("by Job"));
         }
 
         private void profitLossByClassToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("by Class"));
+            //openChildForm(new ProfitandLossReport("by Class"));
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("by Class"));
         }
 
         private void profitLossUnclassifiedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new ProfitandLossReport("Unclassified"));
+            //openChildForm(new ProfitandLossReport("Unclassified"));
+            openChildForm(new UI.Reports.FinancialReports.ProfitLossReport("Unclassified"));
         }
 
         private void incomeByCustomerDetailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2409,22 +2487,26 @@ namespace YamyProject
 
         private void balanceSheetDetailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport("detail"));
+            //openChildForm(new frmBalanceSheetReport("detail"));
+            openChildForm(new BalanceSheetReport("detail"));
         }
 
         private void balanceSheetSummaryToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport("summary"));
+            //openChildForm(new frmBalanceSheetReport("summary"));
+            openChildForm(new BalanceSheetReport("summary"));
         }
 
         private void balanceSheetPrevYearComparisonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport("Prev Year Comparison"));
+            //openChildForm(new frmBalanceSheetReport("Prev Year Comparison"));
+            openChildForm(new BalanceSheetReport("Prev Year Comparison"));
         }
 
         private void balanceSheetByClassToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmBalanceSheetReport("by Class"));
+            //openChildForm(new frmBalanceSheetReport("by Class"));
+            openChildForm(new BalanceSheetReport("by Class"));
         }
 
         private void cashFlowForecastToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3055,17 +3137,17 @@ namespace YamyProject
 
         private void projectScheduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmProjectSchedule());
         }
 
         private void lookaheadPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmLookAheadPlanning());
         }
 
         private void resourceNeedsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmResourceNeeds());
         }
         private void projectSiteSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3074,6 +3156,7 @@ namespace YamyProject
         private void siteActivityPlanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //openChildForm(new MasterProjectSiteSetup());
+            openChildForm(new frmSiteActivityPlan());
         }
 
         private void materialRequestToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -3088,17 +3171,17 @@ namespace YamyProject
 
         private void stockCheckAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmStockCheckAvailability());
         }
 
         private void materialReservationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialReservation());
         }
 
         private void procurementRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterProcurementRequest());
         }
 
         private void materialDeliveryGRNToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3133,12 +3216,12 @@ namespace YamyProject
 
         private void workOnSiteDailyWorkPlanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmDailyWorkPlanList());
         }
 
         private void progressUpdateWorkDoneEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmDailyProgressUpdate());
         }
 
         private void materialConsumptionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3148,7 +3231,7 @@ namespace YamyProject
 
         private void dailySiteReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmDailySiteReport());
         }
 
         private void delayObstructionLogToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3273,52 +3356,52 @@ namespace YamyProject
 
         private void projectTeamSupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmProjectTeamSupervisor());
         }
 
         private void projectPlanningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmProjectPlanningNew());
         }
 
         private void dailySiteWorkEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmDailySiteWorkEntry());
         }
 
         private void materialIssueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialIssue());
         }
 
         private void materialReceiptAtSiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialReceipt());
         }
 
         private void materialReturnToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialReturn());
         }
 
         private void materialTransferToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialTransfer());
         }
 
         private void materialConsumptionToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterMaterialConsumption());
         }
 
         private void materialReconciliationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new MasterStockReconciliation());
         }
 
         private void stockLedgerBinBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmStockLedger());
         }
 
         private void labourAttendanceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3328,56 +3411,56 @@ namespace YamyProject
 
         private void workDoneWorkMeasurementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmWorkMeasurement());
         }
 
         private void resourceDeploymentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmResourceDeployment());
         }
 
         private void equipmentUsageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmEquipmentUsage());
         }
 
         private void delayHindranceLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmDelayHindranceLog());
         }
 
         private void siteDiaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmSiteDiaryList());
         }
 
         private void qAQCInspectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void incidentAccidentRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void correctiveActionTrackingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void closeoutRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
         private void retentionBackChargeTrackingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void subcontractorPaymentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void projectSiteSetup0ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3470,6 +3553,197 @@ namespace YamyProject
         {
             navigateNotificationForm();
         }
+
+        private void projectDashboardToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmViewProjectDashBoard());
+        }
+
+        private void bOQProgressReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void materialRequestIssueReceiptConsumptionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void labourEquipmentUtilizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void costVsBudgetReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void subcontractorPerformanceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private async void SyncTimer_Tick(object sender, EventArgs e)
+        {
+            await StartSyncIfAvailable();
+        }
+        private async Task<bool> IsApiAvailable()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(10);
+
+                    // Your API health endpointp
+                    var response = await client.GetAsync(
+                        $"{SyncData.hostedUrl}WeatherForecast");
+
+                    return response.IsSuccessStatusCode; // 200-299
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private async Task StartSyncIfAvailable()
+        {
+            if (isSyncRunning)
+                return;
+
+            try
+            {
+                bool apiAvailable = await IsApiAvailable();
+
+                if (!apiAvailable)
+                    return;
+
+                isSyncRunning = true;
+
+                DateTime lastSync = SyncData.LoadLastSyncFromLocalStorage();
+
+                //**************** Upload *******************//
+                await SyncData.UploadCoaLevel2();
+                await SyncData.UploadCoaLevel3();
+                await SyncData.UploadCoaLevel4();
+                await SyncData.UploadCustomers();
+                await SyncData.UploadVendors();
+                await SyncData.UploadAdvancePaymentVouchers();
+                await SyncData.UploadJournalVoucher();
+                await SyncData.UploadItems();
+                await SyncData.UploadPurchases();
+                await SyncData.UploadPaymentVoucher();
+                await SyncData.UploadSales();
+                await SyncData.UploadReceiptVoucher();
+
+                //*************** Download ********************//
+
+                await SyncData.DownloadCoaLevel2();
+                await SyncData.DownloadCoaLevel3();
+                await SyncData.DownloadCoaLevel4();
+                await SyncData.DownloadCustomers(lastSync);
+                await SyncData.DownloadVendors(lastSync);
+                await SyncData.DownloadAdvancePaymentVouchers(lastSync);
+                await SyncData.DownloadJournalVoucher(lastSync);
+                await SyncData.DownloadItems(lastSync);
+                await SyncData.DownloadPurchases(lastSync);
+                await SyncData.DownloadPaymentVoucher(lastSync);
+                await SyncData.DownloadSales(lastSync);
+                await SyncData.DownloadReceiptVoucher(lastSync);
+
+                SyncData.SaveLastSyncToLocalStorage(DateTime.Now);
+                // Optional logging
+                Console.WriteLine("Sync completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                // Log error instead of MessageBox every 5 minutes
+            }
+            finally
+            {
+                isSyncRunning = false;
+            }
+        }
+
+        private void syncDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmSyncData().ShowDialog();
+        }
+
+        private void jobCardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterJobCard());
+        }
+
+        private void jobCardRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new JobCardRegisterReport());
+        }
+
+        private void openJobCardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new OpenJobCardsReport());
+        }
+
+        private void completedJobCardsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CompletedJobCardsReport());
+        }
+
+        private void vehicleServiceHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new VehicleServiceHistoryReport());
+        }
+
+        private void jobCostAnalysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new JobCostAnalysisReport());
+        }
+
+        private void partsConsumptionReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PartsConsumptionReport());
+        }
+
+        private void mechanicLaborReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MechanicLaborReport());
+        }
+
+        private void salaryBankTransferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //openChildForm(new frmSalaryBankTransferReport());
+            openChildForm(new frmSalaryTransferSheet());
+        }
+
+        private void salaryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEmployeeSalaryReport());
+        }
+
+        private void VATReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterVatReport());
+        }
+
+        private void VATCategoryReportToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MasterVAT());
+        }
+
+        private void VATSummaryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVATSummary());
+        }
+
+        private void VATDetailedReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVATDetailed());
+        }
+
     }
 
     public class SubMenu

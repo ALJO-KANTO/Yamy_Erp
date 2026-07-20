@@ -151,40 +151,93 @@ namespace YamyProject.RMS.Model
         //geting product from database
         private void loadProducts()
         {
-            string qry = "SELECT tbl_items.*, C.name as cat FROM tbl_items INNER JOIN tbl_item_category C ON C.id = tbl_items.category_id and tbl_items.posItem = 1;";
+            string qry = @"SELECT tbl_items.id, tbl_items.name, tbl_items.sales_price, C.name as cat
+                            FROM tbl_items 
+                            INNER JOIN tbl_item_category C ON C.id = tbl_items.category_id
+                            WHERE tbl_items.posItem = 1;";
+
             MySqlCommand cmd = new MySqlCommand(qry, RMSClass.conn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             foreach (DataRow item in dt.Rows)
             {
-                byte[] imagearray = item["ItemImg"] as byte[];
+                //byte[] imagearray = item["ItemImg"] as byte[];
 
-                Image itemImage;
+                //Image itemImage;
 
-                if (imagearray != null && imagearray.Length > 0)
+                //if (imagearray != null && imagearray.Length > 0)
+                //{
+                //    try
+                //    {
+                //        using (MemoryStream ms = new MemoryStream(imagearray))
+                //        {
+                //            itemImage = Image.FromStream(ms);
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        itemImage = Properties.Resources.Product;
+                //    }
+                //}
+                //else
+                //{
+                //    itemImage = Properties.Resources.Product;
+                //}
+
+                AddItems("0",item["id"].ToString(), item["name"].ToString(), item["cat"].ToString(),
+                    item["sales_price"].ToString(), Properties.Resources.Product);
+
+            }
+            //Load product images in background task
+            LoadProductImages();
+        }
+
+        private void LoadProductImages()
+        {
+            // Load product images in a background task to improve UI responsiveness
+            System.Threading.Tasks.Task.Run(() =>
+            {
+                foreach (ucProduct ctrl in ProductPanel.Controls)
                 {
+                    int productId = ctrl.id;
+
                     try
                     {
-                        using (MemoryStream ms = new MemoryStream(imagearray))
+                        using (MySqlConnection conn = new MySqlConnection(DBClass.GetConnectionString()))
                         {
-                            itemImage = Image.FromStream(ms);
+                            conn.Open();
+
+                            string imgQry = "SELECT ItemImg FROM tbl_items WHERE id = @id";
+                            using (MySqlCommand cmd = new MySqlCommand(imgQry, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@id", productId);
+
+                                object result = cmd.ExecuteScalar();
+
+                                if (result != null && result != DBNull.Value)
+                                {
+                                    byte[] imgBytes = (byte[])result;
+
+                                    using (MemoryStream ms = new MemoryStream(imgBytes))
+                                    {
+                                        Image img = Image.FromStream(ms);
+
+                                        ctrl.Invoke((MethodInvoker)(() =>
+                                        {
+                                            ctrl.Pimage = img;
+                                        }));
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)
                     {
-                        itemImage = Properties.Resources.Product;
+                        // optional log
                     }
                 }
-                else
-                {
-                    itemImage = Properties.Resources.Product;
-                }
-
-                AddItems("0",item["id"].ToString(), item["name"].ToString(), item["cat"].ToString(),
-                    item["sales_price"].ToString(), itemImage);
-
-            }
+            });
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

@@ -87,6 +87,25 @@ namespace YamyProject
                     FetchFromSalesInvoice(txtPONO.Text);
                 }
             }
+            UAEOnlyOptions();
+        }
+
+        private void UAEOnlyOptions()
+        {
+            object objOption = DBClass.ExecuteScalar("select country_id from tbl_company where id>0 limit 1");
+            if (objOption == null)
+            {
+                label10.Visible = false;
+                cmbCity.Visible = false;
+            }
+            else
+            {
+                if (objOption.ToString() != "182")
+                {
+                    label10.Visible = false;
+                    cmbCity.Visible = false;
+                }
+            }
         }
 
         private void BindInvoice()

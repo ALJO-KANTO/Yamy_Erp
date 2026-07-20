@@ -114,7 +114,11 @@ namespace YamyProject.Localization
                 // Handle Right-to-Left layout
                 if (Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
                 {
-                    control.RightToLeft = RightToLeft.Yes;
+                    // WebBrowser does not support RightToLeft
+                    if (!(control is WebBrowser))
+                    {
+                        control.RightToLeft = RightToLeft.Yes;
+                    }
 
                     if (control is Form form)
                         form.RightToLeftLayout = true;

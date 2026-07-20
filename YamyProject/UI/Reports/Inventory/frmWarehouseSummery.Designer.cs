@@ -57,8 +57,6 @@
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
-            this.dgvData.AllowUserToResizeColumns = false;
-            this.dgvData.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
@@ -91,8 +89,8 @@
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvData.RowHeadersVisible = false;
-            this.dgvData.RowTemplate.Height = 30;
-            this.dgvData.Size = new System.Drawing.Size(1103, 407);
+            this.dgvData.RowTemplate.Height = 25;
+            this.dgvData.Size = new System.Drawing.Size(1103, 414);
             this.dgvData.TabIndex = 6;
             this.dgvData.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvData.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -128,7 +126,7 @@
             this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 37);
+            this.panel2.Location = new System.Drawing.Point(2, 30);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1103, 55);
@@ -145,7 +143,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label4.Location = new System.Drawing.Point(185, 5);
             this.label4.Name = "label4";
@@ -259,10 +257,10 @@
             // 
             this.panel3.Controls.Add(this.dgvData);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 92);
+            this.panel3.Location = new System.Drawing.Point(2, 85);
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1103, 407);
+            this.panel3.Size = new System.Drawing.Size(1103, 414);
             this.panel3.TabIndex = 8;
             // 
             // panel5
@@ -279,20 +277,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1105, 37);
+            this.panel4.Location = new System.Drawing.Point(1105, 30);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 464);
+            this.panel4.Size = new System.Drawing.Size(2, 471);
             this.panel4.TabIndex = 13;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 37);
+            this.panel6.Location = new System.Drawing.Point(0, 30);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2, 464);
+            this.panel6.Size = new System.Drawing.Size(2, 471);
             this.panel6.TabIndex = 12;
             // 
             // headerUC1

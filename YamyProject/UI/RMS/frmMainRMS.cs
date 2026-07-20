@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YamyProject.Localization;
 using YamyProject.RMS.Model;
 using YamyProject.RMS.View;
 using YamyProject.UI.RMS.Model;
@@ -28,6 +29,7 @@ namespace YamyProject.RMS
         public frmMainRMS()
         {
             InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
         }
         
         static frmMainRMS _obj;

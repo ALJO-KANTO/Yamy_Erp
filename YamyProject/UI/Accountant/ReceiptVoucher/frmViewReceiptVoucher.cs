@@ -296,7 +296,7 @@ namespace YamyProject
                                                           date=@date, code=@code, type=@type, method=@method, amount=@amount,  debit_account_id=@debit_account_id,debit_cost_center_id=@debit_cost_center_id, 
                                                           description=@description,credit_account_id=@credit_account_id,credit_cost_center_id=@credit_cost_center_id,
                                                           bank_account_id=@bank_account, book_no=@book_no,bank_id=@bank_id, bank_code=@bank_code, check_name=@check_name, check_no=@check_no,
-                                                          check_date=@check_date,trans_date=@trans_date, trans_name=@trans_name, trans_ref=@trans_ref, modified_by=@modified_by, modified_date=@modified_date where id=@id",
+                                                          check_date=@check_date,trans_date=@trans_date, trans_name=@trans_name, trans_ref=@trans_ref, modified_by=@modified_by, modified_date=@modified_date,LastModified=@LastModified,SyncStatus = 0 where id=@id",
                                                           DBClass.CreateParameter("id", id),
                                                           DBClass.CreateParameter("date", dtOpen.Value.Date),
                    DBClass.CreateParameter("code", code),
@@ -319,7 +319,8 @@ namespace YamyProject
                    DBClass.CreateParameter("trans_name", string.IsNullOrWhiteSpace(txtTransName.Text) ? DBNull.Value : (object)txtTransName.Text),
                    DBClass.CreateParameter("trans_ref", string.IsNullOrWhiteSpace(txtTransRef.Text) ? DBNull.Value : (object)txtTransRef.Text),
                    DBClass.CreateParameter("modified_by", frmLogin.userId),
-                   DBClass.CreateParameter("modified_date", DateTime.Now.Date));
+                   DBClass.CreateParameter("modified_date", DateTime.Now.Date),
+                   DBClass.CreateParameter("LastModified", DateTime.Now.Date));
             DBClass.ExecuteNonQuery("Delete from tbl_receipt_voucher_details where payment_id=@id", DBClass.CreateParameter("id", id));
             CommonInsert.DeleteTransactionEntry(id, "RECEIPT");
             
@@ -376,8 +377,10 @@ namespace YamyProject
             else if (cmbMethod.Text == "Transfer")
             {
             }
+            string GlobalId = DBClass.ExecuteScalar(@"SELECT GlobalId FROM tbl_receipt_voucher WHERE id=@id", DBClass.CreateParameter("@id", id)).ToString();
+
             //insertJournals();
-            insertINV(id);
+            insertINV(id, GlobalId);
             CommonInsert.DeleteCostCenterTransactionEntry(id.ToString(), "Receipt");
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Receipt", "Receipt Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Receipt", "Receipt Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
@@ -395,20 +398,22 @@ namespace YamyProject
             if (!chkRequireData())
                 return false;
             code = GenerateNextReceiptCode();
+            string globalId = Guid.NewGuid().ToString();
+
             id = (int)decimal.Parse(DBClass.ExecuteScalar(@"
                     INSERT INTO tbl_receipt_voucher(
                         date, code, type, method, amount,  
                         debit_account_id, debit_cost_center_id, 
                         credit_account_id, credit_cost_center_id, description,
                         bank_id, bank_account_id, book_no, check_name, check_no, check_date,
-                        trans_date, trans_name, trans_ref, created_by, created_date, state
+                        trans_date, trans_name, trans_ref, created_by, created_date, state, GlobalId, DeviceId
                     ) 
                     VALUES (
                         @date, @code, @type, @method, @amount, 
                         @debit_account_id, @debit_cost_center_id, 
                         @credit_account_id, @credit_cost_center_id, @description,
                         @bank_id, @bank_account, @book_no, @check_name, @check_no, @check_date,
-                        @trans_date, @trans_name, @trans_ref, @created_by, @created_date, 0
+                        @trans_date, @trans_name, @trans_ref, @created_by, @created_date, 0, @GlobalId, @DeviceId
                     ); 
                     SELECT LAST_INSERT_ID();",
 
@@ -432,7 +437,9 @@ namespace YamyProject
                    DBClass.CreateParameter("trans_name", string.IsNullOrWhiteSpace(txtTransName.Text) ? DBNull.Value : (object)txtTransName.Text),
                    DBClass.CreateParameter("trans_ref", string.IsNullOrWhiteSpace(txtTransRef.Text) ? DBNull.Value : (object)txtTransRef.Text),
                    DBClass.CreateParameter("created_by", frmLogin.userId),
-                   DBClass.CreateParameter("created_date", DateTime.Now.Date)
+                   DBClass.CreateParameter("created_date", DateTime.Now.Date),
+                DBClass.CreateParameter("GlobalId", globalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName)
                ).ToString());
 
             if (cmbMethod.Text == "Cheque")
@@ -460,7 +467,7 @@ namespace YamyProject
             }
 
             //insertJournals();
-            insertINV(id);
+            insertINV(id, globalId);
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, txtAmount.Text.ToString(), "0", id.ToString(), "Receipt", "Receipt Debit Entry", cmbDebitCostCenter.SelectedValue.ToString());
             CommonInsert.InsertCostCenterTransaction(dtOpen.Value, "0", txtAmount.Text.ToString(), id.ToString(), "Receipt", "Receipt Credit Entry", cmbCreditCostCenter.SelectedValue.ToString());
             Utilities.LogAudit(frmLogin.userId, "Create Receipt Voucher", "Receipt Voucher", id, "Created Receipt Voucher: " + code);
@@ -566,7 +573,7 @@ namespace YamyProject
             }
             return true;
         }
-        private void insertINV(int pvId)
+        private void insertINV(int pvId, string globalId)
         {
             for (int i = 0; i < dgvInv.Rows.Count; i++)
             {
@@ -580,8 +587,8 @@ namespace YamyProject
                 string voucherType = "Customer";
                 DateTime date = DateTime.Parse(dgvInv.Rows[i].Cells["invDate"].Value.ToString());
                 DBClass.ExecuteNonQuery(@"INSERT INTO tbl_receipt_voucher_details
-                                        (date,payment_id,hum_id, inv_id,inv_code,total, payment, description) 
-                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description);",
+                                        (date,payment_id,hum_id, inv_id,inv_code,total, payment, description, GlobalId, DeviceId) 
+                                        VALUES (@date,@payment_id,@hum_id ,@inv_id,@inv_code,@total, @payment, @description, @GlobalId, @DeviceId);",
                     DBClass.CreateParameter("@payment_id", pvId),
                     DBClass.CreateParameter("@date", date.Date),
                     DBClass.CreateParameter("@hum_id", hum.ToString()),
@@ -589,7 +596,9 @@ namespace YamyProject
                     DBClass.CreateParameter("@total", total),
                     DBClass.CreateParameter("@inv_id", int.Parse(invId)),
                     DBClass.CreateParameter("@payment", payment),
-                    DBClass.CreateParameter("@description", description));
+                    DBClass.CreateParameter("@description", description),
+                DBClass.CreateParameter("GlobalId", globalId),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName));
 
                 if (invId != "")
                 {

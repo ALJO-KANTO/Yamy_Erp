@@ -4,6 +4,7 @@ namespace YamyProject
 {
     public static class EventHub
     {
+
         public static event EventHandler lvl1Account;
         public static event EventHandler lvl2Account;
         public static event EventHandler lvl3Account;
@@ -17,6 +18,7 @@ namespace YamyProject
         public static event EventHandler PaymentVoucher;
         public static event EventHandler PettyCashVoucher;
         public static event EventHandler SalesInv;
+        public static event EventHandler JobCard;
         public static event EventHandler SalesOrder;
         public static event EventHandler SalesQuotation;
         public static event EventHandler SalesProforma;
@@ -60,6 +62,15 @@ namespace YamyProject
         public static event EventHandler ProjectInvoice;
         public static event EventHandler ProjectClassification;
         public static event EventHandler ProjectPhase;
+        public static event EventHandler MaterialReservation;
+        public static event EventHandler MaterialProcurement;
+        public static event EventHandler MaterialIssue;
+        public static event EventHandler MaterialReceipt;
+        public static event EventHandler MaterialReturn;
+        public static event EventHandler MaterialTransfer;
+        public static event EventHandler MaterialConsumption;
+        public static event EventHandler StockReconciliation;
+
         private static void RaiseEvent(EventHandler handler)
         {
             handler?.Invoke(null, EventArgs.Empty);
@@ -74,6 +85,7 @@ namespace YamyProject
         public static void RefreshRoles() => RaiseEvent(Roles);
         public static void RefreshCustomer() => RaiseEvent(Customer);
         public static void RefreshCustomerCategory() => RaiseEvent(CustomerCategory);
+        public static void RefreshJobCard() => RaiseEvent(JobCard);
         public static void RefreshSales() => RaiseEvent(SalesInv);
         public static void RefreshSalesOrder() => RaiseEvent(SalesOrder);
         public static void RefreshQuotation() => RaiseEvent(SalesQuotation);
@@ -121,5 +133,13 @@ namespace YamyProject
         public static void RefreshProjectInvoice() => RaiseEvent(ProjectInvoice);
         public static void RefreshProjectClassification() => RaiseEvent(ProjectClassification);
         public static void RefreshPhase() => RaiseEvent(ProjectPhase);
+        public static void RefreshMaterialReservation() => RaiseEvent(MaterialReservation);
+        public static void RefreshMaterialProcurement() => RaiseEvent(MaterialProcurement);
+        public static void RefreshMaterialIssue() => RaiseEvent(MaterialIssue);
+        public static void RefreshMaterialReceipt() => RaiseEvent(MaterialReceipt);
+        public static void RefreshMaterialReturn() => RaiseEvent(MaterialReturn);
+        public static void RefreshMaterialTransfer() => RaiseEvent(MaterialTransfer);
+        public static void RefreshMaterialConsumption() => RaiseEvent(MaterialConsumption);
+        public static void RefreshStockReconciliation() => RaiseEvent(StockReconciliation);
     }
 }

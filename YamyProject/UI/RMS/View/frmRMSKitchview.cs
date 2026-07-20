@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
-using MySql.Data.MySqlClient;
+using YamyProject.Localization;
 using YamyProject.RMS.Class;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -21,6 +22,7 @@ namespace YamyProject.RMS.View
         public frmRMSKitchview()
         {
             InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
         }
 
         private void GetOrders()
@@ -72,10 +74,10 @@ namespace YamyProject.RMS.View
                 lb4.Margin = new Padding(10, 5, 30, 10);
                 lb4.AutoSize = true;
 
-                lb1.Text = "Table : " + dt1.Rows[i]["tableName"].ToString();
-                lb2.Text = "Waiter Name : " + dt1.Rows[i]["waiterName"].ToString();
-                lb3.Text = "Order Time : " + dt1.Rows[i]["time"].ToString();
-                lb4.Text = "Order Type : " + dt1.Rows[i]["orderType"].ToString();
+                lb1.Text = LocalizationManager.GetString("Table")+" : " + dt1.Rows[i]["tableName"].ToString();
+                lb2.Text = LocalizationManager.GetString("Waiter Name")+" : " + dt1.Rows[i]["waiterName"].ToString();
+                lb3.Text = LocalizationManager.GetString("Order Time")+" : " + dt1.Rows[i]["time"].ToString();
+                lb4.Text = LocalizationManager.GetString("Order Type")+" : " + dt1.Rows[i]["orderType"].ToString();
 
                 p2.Controls.Add(lb1);
                 p2.Controls.Add(lb2);
@@ -114,7 +116,7 @@ namespace YamyProject.RMS.View
                 b.Size = new System.Drawing.Size(100, 35);
                 b.FillColor = Color.FromArgb(241, 85, 126);
                 b.Margin = new Padding(30, 5, 3, 10);
-                b.Text = "Complete";
+                b.Text = LocalizationManager.GetString("Complete");
                 b.Tag = dt1.Rows[i]["MainId"].ToString();
 
                 b.Click += new EventHandler(b_click);

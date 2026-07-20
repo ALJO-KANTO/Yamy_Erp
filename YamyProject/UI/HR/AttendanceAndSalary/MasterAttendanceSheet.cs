@@ -22,6 +22,7 @@ namespace YamyProject
         bool isAllDataSucceed = true;
         DateTime ContractIssuse;
         TimeSpan defaultTimeIn = TimeSpan.Zero;
+        bool isManuaEntry = false;
 
         private Dictionary<string, DataTable> loadedExcelTables = new Dictionary<string, DataTable>();
 
@@ -36,6 +37,7 @@ namespace YamyProject
             headerUC1.FormText = this.Text;
             this.id = id;
         }
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             panel5.Visible = false;
@@ -184,35 +186,372 @@ namespace YamyProject
             }
             return true;
         }
+        // ===============================================
+        // PROFESSIONAL PAYROLL SAVE SYSTEM (ERP VERSION)
+        // ===============================================
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!isAllDataSucceed)
             {
-                MessageBox.Show("Check All Data Required First...");
+                MessageBox.Show("Check all required data first.");
                 return;
             }
-            using (MySqlDataReader reader = DBClass.ExecuteReader("select * from tbl_attendancesheet where code = @code and WorkDate=@date",
-                                             DBClass.CreateParameter("code", dgvAttendance.Rows[0].Cells[0].Value.ToString()),
-                                             DBClass.CreateParameter("date", DateTime.Parse(dgvAttendance.Rows[0].Cells[2].Value.ToString()).ToString("yyyy-MM-dd"))))
-                if (reader.Read())
-                {
-                    MessageBox.Show("Employee Month already saved before");
-                    return;
-                }
-            for (int i = 0; i < dgvAttendance.Rows.Count; i++)
-            {
 
-                if ((dgvAttendance.Rows[i].Cells["time in"].Value.ToString() == "" || dgvAttendance.Rows[i].Cells["time out"].Value.ToString() == "") && (dgvAttendance.Rows[i].Cells["status"].Value.ToString() == "p"))
+            if (dgvAttendance.Rows.Count == 0)
+                return;
+
+            try
+            {
+                SavePayrollMonth();
+                MessageBox.Show("Payroll saved successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // ===============================================
+        // MAIN SAVE
+        // ===============================================
+        private void SavePayrollMonth()
+        {
+            using (MySqlConnection con = new MySqlConnection(DBClass.GetConnectionString()))
+            {
+                con.Open();
+
+                using (MySqlTransaction tran = con.BeginTransaction())
                 {
-                    MessageBox.Show("Date " + dgvAttendance.Rows[i].Cells["work date"].Value.ToString() + " Does Not Contain Time, Please Check It.");
-                    return;
+                    try
+                    {
+                        string empCode = dgvAttendance.Rows[0].Cells["Emp ID"].Value.ToString();
+                        DateTime firstDate = Convert.ToDateTime(dgvAttendance.Rows[0].Cells["Work Date"].Value);
+
+                        int month = firstDate.Month;
+                        int year = firstDate.Year;
+
+                        // check duplicate
+                        object exists = DBClass.ExecuteScalarNew(con, tran,
+                            @"SELECT id FROM tbl_attendance_salary
+                              WHERE emp_code=@code
+                              AND YEAR(date)=@year
+                              AND MONTH(date)=@month LIMIT 1",
+                            DBClass.CreateParameter("@code", empCode),
+                            DBClass.CreateParameter("@year", year),
+                            DBClass.CreateParameter("@month", month));
+
+                        if (exists != null)
+                            throw new Exception("Employee month already saved.");
+
+                        // load employee
+                        EmployeePayroll emp = LoadEmployeePayroll(con, tran, empCode);
+
+                        // calculate
+                        PayrollResult result = CalculatePayroll(emp);
+
+                        // save header
+                        int attendanceSalaryId = SavePayrollHeader(con, tran, empCode, firstDate, result);
+
+                        // save detail rows
+                        SaveAttendanceRows(con, tran, attendanceSalaryId);
+
+                        // save LS
+                        SaveLeaveSalary(con, tran, emp, result, firstDate);
+
+                        // save EOS
+                        SaveEOS(con, tran, emp, result, firstDate);
+
+                        tran.Commit();
+                    }
+                    catch
+                    {
+                        tran.Rollback();
+                        throw;
+                    }
                 }
             }
-            SaveMultipleAttendanceRows();
-            SaveLS();
-            SaveEOS();
-            MessageBox.Show("Employee Month Saved Successfully");
         }
+
+        // ===============================================
+        // LOAD EMPLOYEE
+        // ===============================================
+        private EmployeePayroll LoadEmployeePayroll(MySqlConnection con, MySqlTransaction tran, string code)
+        {
+            EmployeePayroll emp = new EmployeePayroll();
+
+            using (MySqlDataReader rd = DBClass.ExecuteReaderNew(con, tran, @"SELECT e.*, p.AnnualLeaveDays, p.EOSDaysPerYear
+                        FROM tbl_employee e INNER JOIN tbl_position p ON e.Position_id = p.id
+                        WHERE e.code = @code", DBClass.CreateParameter("@code", code)))
+            {
+                if (rd.Read())
+                {
+                    emp.Code = code;
+                    emp.Basic = Convert.ToDecimal(rd["BasicSalary"]);
+                    emp.Housing = Convert.ToDecimal(rd["HousingAllowance"]);
+                    emp.Transport = Convert.ToDecimal(rd["TransportationAllowance"]);
+                    emp.Other = Convert.ToDecimal(rd["Other"]);
+                    emp.ContractDate = Convert.ToDateTime(rd["contractIssueDate"]);
+
+                    emp.PositionId = Convert.ToInt32(rd["Position_id"]);
+                    emp.AnnualLeaveDays = Convert.ToInt32(rd["AnnualLeaveDays"]);
+                    emp.EOSDaysPerYear = Convert.ToInt32(rd["EOSDaysPerYear"]);
+                }
+            }
+
+            emp.GrossSalary = emp.Basic + emp.Housing + emp.Transport + emp.Other;
+
+            return emp;
+        }
+
+        // ===============================================
+        // CALCULATE PAYROLL
+        // ===============================================
+        private PayrollResult CalculatePayroll(EmployeePayroll emp)
+        {
+            PayrollResult r = new PayrollResult();
+
+            int totalDays = 0;
+            int absentDays = 0;
+            int lateMinutes = 0;
+
+            decimal lateRate = GetLateRate();
+
+            foreach (DataGridViewRow row in dgvAttendance.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string status = row.Cells["Status"].Value.ToString().ToUpper();
+
+                totalDays++;
+
+                if (status == "A")
+                {
+                    absentDays++;
+                }
+
+                if (status == "P")
+                {
+                    TimeSpan defaultIn = TimeSpan.Parse("08:00:00");
+                    TimeSpan actualIn = TimeSpan.Parse(row.Cells["Time In"].Value.ToString() + ":00");
+
+                    if (actualIn > defaultIn)
+                        lateMinutes += (int)(actualIn - defaultIn).TotalMinutes;
+                }
+            }
+
+            decimal dailyRate = emp.GrossSalary / totalDays;
+            decimal absenceDeduction = dailyRate * absentDays;
+            decimal lateDeduction = lateMinutes * lateRate;
+
+            DateTime dt = Convert.ToDateTime(dgvAttendance.Rows[0].Cells["Work Date"].Value);
+
+            decimal loan = GetEmployeeLoan(emp.Code, dt.Month, dt.Year);
+
+            r.TotalDays = totalDays;
+            r.AbsentDays = absentDays;
+            r.LateMinutes = lateMinutes;
+            r.AbsenceDeduction = Math.Round(absenceDeduction, 2);
+            r.LateDeduction = Math.Round(lateDeduction, 2);
+            r.Loan = loan;
+
+            r.TotalDeduction = r.AbsenceDeduction + r.LateDeduction + r.Loan;
+            r.NetSalary = emp.GrossSalary - r.TotalDeduction;
+
+            return r;
+        }
+
+        // ===============================================
+        // SAVE HEADER
+        // ===============================================
+        private int SavePayrollHeader(MySqlConnection con, MySqlTransaction tran,
+            string empCode, DateTime dt, PayrollResult r)
+        {
+            object id = DBClass.ExecuteScalarNew(con, tran,
+                            @"INSERT INTO tbl_attendance_salary
+                            (
+                                date,
+                                emp_code,
+                                absence_days,
+                                total_absence,
+                                delay_minutes,
+                                total_delay,
+                                total_loan,
+                                net_salary,
+                                pay,
+                                `change`,
+                                created_by,
+                                created_date
+                            )
+                            VALUES
+                            (
+                                @date,@code,@abs,@totabs,@late,@totlate,@loan,@net,0,@net,@by,@cd
+                            );
+                            SELECT LAST_INSERT_ID();",
+                            DBClass.CreateParameter("@date", dt),
+                            DBClass.CreateParameter("@code", empCode),
+                            DBClass.CreateParameter("@abs", r.AbsentDays),
+                            DBClass.CreateParameter("@totabs", r.AbsenceDeduction),
+                            DBClass.CreateParameter("@late", r.LateMinutes),
+                            DBClass.CreateParameter("@totlate", r.LateDeduction),
+                            DBClass.CreateParameter("@loan", r.Loan),
+                            DBClass.CreateParameter("@net", r.NetSalary),
+                            DBClass.CreateParameter("@by", frmLogin.userId),
+                            DBClass.CreateParameter("@cd", DateTime.Now)
+                        );
+
+            return Convert.ToInt32(id);
+        }
+
+        // ===============================================
+        // SAVE DETAIL
+        // ===============================================
+        private void SaveAttendanceRows(MySqlConnection con, MySqlTransaction tran, int salaryId)
+        {
+            DateTime parseDateR = DateTime.Parse(dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString());
+            int _month = parseDateR.Month;
+            int _year = parseDateR.Year;
+
+            string refr = (parseDateR.Year % 100) + $"{parseDateR.Month:D2}";
+            object ref_no_result = DBClass.ExecuteScalar(@"SELECT Ref_Code FROM tbl_attendancesheet 
+                  WHERE YEAR(WorkDate) = @year AND MONTH(WorkDate) = @month 
+                  LIMIT 1",
+            DBClass.CreateParameter("@year", _year),
+            DBClass.CreateParameter("@month", _month));
+
+            int ref_no;
+            if (ref_no_result != null && ref_no_result != DBNull.Value && Convert.ToInt32(ref_no_result) > 0)
+            {
+                ref_no = Convert.ToInt32(ref_no_result);
+            }
+            else
+            {
+                object maxResult = DBClass.ExecuteScalar(@"SELECT MAX(Ref_Code) FROM tbl_attendancesheet");
+                int max = (maxResult != null && maxResult != DBNull.Value) ? Convert.ToInt32(maxResult) : 600000;
+                ref_no = max + 1;
+            }
+
+            foreach (DataGridViewRow row in dgvAttendance.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                DBClass.ExecuteNonQueryNew(con, tran,
+                    @"INSERT INTO tbl_attendancesheet
+                    (
+                        attendance_salary_id,
+                        code,
+                        WorkDate,
+                        TimeIn,
+                        TimeOut,
+                        DayOfWeek,
+                        Status, 
+                        Reference,
+                        Ref_Code
+                    )
+                    VALUES
+                    (
+                        @id,@code,@dt,@in,@out,@day,@st,@Reference,@Ref_Code
+                    )",
+                    DBClass.CreateParameter("@id", salaryId),
+                    DBClass.CreateParameter("@code", row.Cells["Emp ID"].Value),
+                    DBClass.CreateParameter("@dt", row.Cells["Work Date"].Value),
+                    DBClass.CreateParameter("@in", row.Cells["Time In"].Value),
+                    DBClass.CreateParameter("@out", row.Cells["Time Out"].Value),
+                    DBClass.CreateParameter("@day", row.Cells["Day Of Week"].Value),
+                    DBClass.CreateParameter("@st", row.Cells["Status"].Value),
+                    DBClass.CreateParameter("@Ref_Code", ref_no.ToString()),
+                    DBClass.CreateParameter("@Reference", refr.ToString())
+                );
+            }
+        }
+
+        // ===============================================
+        // SAVE LEAVE SALARY
+        // ===============================================
+        private void SaveLeaveSalary(MySqlConnection con, MySqlTransaction tran,
+            EmployeePayroll emp, PayrollResult r, DateTime dt)
+        {
+            decimal leaveDays = (decimal)(r.TotalDays - r.AbsentDays) / 365m * emp.AnnualLeaveDays;
+            decimal amount = emp.Basic * 12m / 365m * leaveDays;
+
+            DBClass.ExecuteNonQueryNew(con, tran,
+                @"INSERT INTO tbl_leave_salary
+                (date,code,leave_days,credit,created_by,created_date)
+                VALUES(@dt,@code,@days,@amt,@by,@cd)",
+                DBClass.CreateParameter("@dt", dt),
+                DBClass.CreateParameter("@code", emp.Code),
+                DBClass.CreateParameter("@days", Math.Round(leaveDays, 2)),
+                DBClass.CreateParameter("@amt", Math.Round(amount, 2)),
+                DBClass.CreateParameter("@by", frmLogin.userId),
+                DBClass.CreateParameter("@cd", DateTime.Now)
+            );
+        }
+
+        // ===============================================
+        // SAVE EOS
+        // ===============================================
+        private void SaveEOS(MySqlConnection con, MySqlTransaction tran,
+            EmployeePayroll emp, PayrollResult r, DateTime dt)
+        {
+            //int years = (int)((DateTime.Now - emp.ContractDate).TotalDays / 365);
+            //decimal eosDays = years < 5
+            //    ? ((decimal)(r.TotalDays - r.AbsentDays) / 365m * 21m)
+            //    : ((decimal)(r.TotalDays - r.AbsentDays) / 365m * emp.EOSDaysPerYear);
+            decimal eosDays = ((decimal)(r.TotalDays - r.AbsentDays) / 365m * emp.EOSDaysPerYear);
+
+            decimal amount = emp.Basic * 12m / 365m * eosDays;
+
+            DBClass.ExecuteNonQueryNew(con, tran,
+                @"INSERT INTO tbl_end_of_service
+                (date,code,leave_days,credit,created_by,created_date)
+                VALUES(@dt,@code,@days,@amt,@by,@cd)",
+
+            DBClass.CreateParameter("@dt", dt),
+            DBClass.CreateParameter("@code", emp.Code),
+            DBClass.CreateParameter("@days", Math.Round(eosDays, 2)),
+            DBClass.CreateParameter("@amt", Math.Round(amount, 2)),
+            DBClass.CreateParameter("@by", frmLogin.userId),
+            DBClass.CreateParameter("@cd", DateTime.Now));
+        }
+
+        // ===============================================
+        // HELPERS
+        // ===============================================
+        private decimal GetLateRate()
+        {
+            object x = DBClass.ExecuteScalar("SELECT latearrivaldeduction FROM tbl_setting_deduction_config LIMIT 1");
+            return x == null ? 0 : Convert.ToDecimal(x);
+        }
+
+        // ===============================================
+        private class EmployeePayroll
+        {
+            public string Code;
+            public decimal Basic;
+            public decimal Housing;
+            public decimal Transport;
+            public decimal Other;
+            public decimal GrossSalary;
+            public DateTime ContractDate;
+
+            public int PositionId;
+            public int AnnualLeaveDays;
+            public int EOSDaysPerYear;
+        }
+
+        private class PayrollResult
+        {
+            public int TotalDays;
+            public int AbsentDays;
+            public int LateMinutes;
+
+            public decimal AbsenceDeduction;
+            public decimal LateDeduction;
+            public decimal Loan;
+            public decimal TotalDeduction;
+            public decimal NetSalary;
+        }
+        
         private void SaveMultipleAttendanceRows()
         {
             DateTime workDate = DateTime.Parse(dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString());
@@ -561,115 +900,6 @@ namespace YamyProject
 
             RMSClass.loadData(qry, guna2DataGridView1, lb);
         }
-        private void SaveLS()
-        {
-            int debitAccountId = 0;
-            int creditAccountId = 0;
-
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-            "SELECT account_id FROM tbl_coa_config WHERE category = @cat",
-            DBClass.CreateParameter("@cat", "Leave Salary Debit")))
-            {
-                if (reader.Read())
-                    debitAccountId = Convert.ToInt32(reader["account_id"]);
-            }
-
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-            "SELECT account_id FROM tbl_coa_config WHERE category = @cat",
-            DBClass.CreateParameter("@cat", "Leave Salary Credit")))
-            {
-                if (reader.Read())
-                    creditAccountId = Convert.ToInt32(reader["account_id"]);
-            }
-            var empId = dgvAttendance.Rows[0].Cells["Emp ID"].Value ?? DBNull.Value;
-            DateTime parseDate = DateTime.Parse(dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString());
-            string description = "Leave Salary";
-            var empName = dgvAttendance.Rows[0].Cells["Emp Name"].Value ?? DBNull.Value;
-            string refr = (parseDate.Year % 100) + $"{parseDate.Month:D2}";
-            decimal leaveDays = ((decimal)workDays - (decimal)totalAbsence) / (decimal)365 * 30;
-            decimal leaveAmount = (decimal)((decimal)basicSalary * 12) / 365 * (decimal)leaveDays;
-            string voucherNote = "Leave Salary " + refr;
-            string empCode = dgvAttendance.Rows[0].Cells["Emp ID"].Value?.ToString();
-            object empIdResult = DBClass.ExecuteScalar("SELECT id FROM tbl_employee WHERE code = @code",
-                DBClass.CreateParameter("@code", empCode));
-            string employeeId = empIdResult.ToString();
-            DBClass.ExecuteNonQuery(@"INSERT INTO tbl_leave_salary(date,code,name ,Reference, 
-                                    description, leave_days, credit,created_by, created_date)
-                                VALUES (@date, @code,@name, @Reference, @description, @leave_days, @credit, @created_by, @created_date);",
-                        DBClass.CreateParameter("@date", DateTime.Parse(dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString()).ToString("MMM-yy")),
-                        DBClass.CreateParameter("@code", dgvAttendance.Rows[0].Cells["Emp ID"].Value ?? DBNull.Value),
-                        DBClass.CreateParameter("@Reference", refr),
-                        DBClass.CreateParameter("@name", empName),
-                        DBClass.CreateParameter("@description", description),
-                        DBClass.CreateParameter("@leave_days", Math.Round(leaveDays, 3)),
-                        DBClass.CreateParameter("@credit", Math.Round(leaveAmount, 3)),
-                        DBClass.CreateParameter("@created_by", frmLogin.userId),
-                        DBClass.CreateParameter("@created_date", DateTime.Now.Date));
-            Utilities.LogAudit(frmLogin.userId, "Save Leave Salary", "Leave Salary", int.Parse(refr), "Saved Leave Salary for Employee: " + empCode + " for Month: " + parseDate.ToString("MMMM yyyy"));
-            CommonInsert.addTransactionEntry(
-          DateTime.Now.Date, debitAccountId.ToString(), leaveAmount.ToString(), "0", id.ToString(), employeeId, description, "Leave Salary", voucherNote, frmLogin.userId, DateTime.Now.Date, "");
-
-            CommonInsert.addTransactionEntry(
-            DateTime.Now.Date, creditAccountId.ToString(), "0", leaveAmount.ToString(), id.ToString(), "0", description, "Leave Salary", voucherNote, frmLogin.userId, DateTime.Now.Date, "");
-        }
-
-        private void SaveEOS()
-        {
-            int debitAccountId = 0;
-            int creditAccountId = 0;
-
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-            "SELECT account_id FROM tbl_coa_config WHERE category = @cat",
-            DBClass.CreateParameter("@cat", "End of Service Debit")))
-            {
-                if (reader.Read())
-                    debitAccountId = Convert.ToInt32(reader["account_id"]);
-            }
-
-            using (MySqlDataReader reader = DBClass.ExecuteReader(
-            "SELECT account_id FROM tbl_coa_config WHERE category = @cat",
-            DBClass.CreateParameter("@cat", "End of Service Credit")))
-            {
-                if (reader.Read())
-                    creditAccountId = Convert.ToInt32(reader["account_id"]);
-            }
-            string empCode = dgvAttendance.Rows[0].Cells["Emp ID"].Value?.ToString();
-            object empIdResult = DBClass.ExecuteScalar("SELECT id FROM tbl_employee WHERE code = @code",
-                DBClass.CreateParameter("@code", empCode));
-            string employeeId = empIdResult.ToString();
-            string dateValue = dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString();
-            DateTime parseDate = DateTime.Parse(dateValue);
-            int month = parseDate.Month;
-            string Date = DateTime.Parse(dgvAttendance.Rows[0].Cells["Work Date"].Value.ToString()).ToString("MMM-yy");
-            var empId = dgvAttendance.Rows[0].Cells["Emp ID"].Value ?? DBNull.Value;
-            var empName = dgvAttendance.Rows[0].Cells["Emp Name"].Value ?? DBNull.Value;
-            string description = "End Of Service";
-            string refr = (parseDate.Year % 100) + $"0{month:D2}";
-            int yearsOfService = (int)((DateTime.Now - ContractIssuse).TotalDays / 365);
-            decimal endOfServiceDays = (yearsOfService < 5)? ((decimal)workDays - (decimal)totalAbsence) / 365 * 21: ((decimal)workDays - (decimal)totalAbsence) / 365 * 30;
-            decimal endOfServiceAmount = (decimal)((decimal)basicSalary * 12) / 365 * (decimal)endOfServiceDays;
-            string voucherNote = "End Of Services NO. " + refr;
-
-            DBClass.ExecuteNonQuery(@"INSERT INTO `tbl_end_of_service`(`date`, `code`, `name`, `Reference`, 
-                                    `description`, `debit`, `leave_days`, `credit`, `created_by`, `created_date`)
-                                VALUES(@date, @code, @name, @Reference, @description, @debit, @leave_days, @credit, @created_by, @created_date);",
-                        DBClass.CreateParameter("@date", Date),
-                        DBClass.CreateParameter("@code", empId),
-                        DBClass.CreateParameter("@name", empName),
-                        DBClass.CreateParameter("@Reference", refr),
-                        DBClass.CreateParameter("@description", description),
-                        DBClass.CreateParameter("@debit", 0),
-                        DBClass.CreateParameter("@leave_days", Math.Round(endOfServiceDays, 3)),
-                        DBClass.CreateParameter("@credit", Math.Round(endOfServiceAmount, 3)),
-                        DBClass.CreateParameter("@created_by", frmLogin.userId),
-                        DBClass.CreateParameter("@created_date", DateTime.Now.Date));
-            Utilities.LogAudit(frmLogin.userId, "Save End of Service", "End of Service", int.Parse(refr), "Saved End of Service for Employee: " + empCode + " for Month: " + parseDate.ToString("MMMM yyyy"));
-            CommonInsert.addTransactionEntry(
-           DateTime.Now.Date, debitAccountId.ToString(), endOfServiceAmount.ToString(), "0", id.ToString(), employeeId, description, "End Of Services", voucherNote, frmLogin.userId, DateTime.Now.Date, "");
-
-            CommonInsert.addTransactionEntry(
-            DateTime.Now.Date, creditAccountId.ToString(), "0", endOfServiceAmount.ToString(), id.ToString(), "0", description, "End Of Services", voucherNote, frmLogin.userId, DateTime.Now.Date, "");
-            }
         private int GetAccountIdByCategory(string category)
         {
             using (MySqlDataReader reader = DBClass.ExecuteReader("SELECT account_id FROM tbl_coa_config WHERE category = @category",

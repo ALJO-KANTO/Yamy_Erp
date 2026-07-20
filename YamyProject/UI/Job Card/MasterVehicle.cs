@@ -1,0 +1,250 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+using YamyProject.DAL;
+using YamyProject.Localization;
+using YamyProject.UI.Job_Card;
+namespace YamyProject
+{
+    public partial class MasterVehicle : Form
+    {
+        private EventHandler customerUpdatedHandler;
+        private EventHandler invoiceUpdatedHandler;
+
+        public MasterVehicle()
+        {
+            InitializeComponent();
+            LocalizationManager.LocalizeForm(this);
+            customerUpdatedHandler = (sender, args) => BindCombos.PopulateCustomers(cmbCustomer);
+            invoiceUpdatedHandler = (sender, args) => BindInvoices();
+            EventHub.CreditNote += invoiceUpdatedHandler;
+            headerUC1.FormText = this.Text;
+        }
+        private void MasterVehicle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            EventHub.Customer -= customerUpdatedHandler;
+            EventHub.JobCard -= invoiceUpdatedHandler;
+        }
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmJobCard(0));
+        }
+        private void MasterVehicle_Load(object sender, EventArgs e)
+        {
+            AppTheme.DefaultFont(dgvInvoice);
+            AppTheme.DefaultFont(dgvItems);
+            BindCombos.PopulateCustomers(cmbCustomer);
+            BindInvoices();
+        }
+        public void BindInvoices()
+        {
+            DataTable dt;
+            string query = @"
+                SELECT 
+                    ROW_NUMBER() OVER (ORDER BY v.id) AS SN,
+                    v.id Id,
+                    v.code AS Code,
+                    v.plate_no `Plate No`,
+                    v.make Make,
+                    v.chassis_no `Chassis No`,
+                    c.name Customer,
+                    v.model Model,
+                    v.created_date Date
+                FROM tbl_vehicle v
+                INNER JOIN tbl_customer c ON v.customer_id = c.id
+                WHERE v.state = 1
+                ";
+
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+
+            // Customer Filter
+            if (!string.IsNullOrWhiteSpace(cmbCustomer.Text) && !chkCustomer.Checked)
+            {
+                query += " AND c.id = @id";
+                parameters.Add(DBClass.CreateParameter("id", cmbCustomer.SelectedValue));
+            }
+
+            // Date Filter
+            if (!chkDate.Checked)
+            {
+                query += " AND c.created_date >= @dateFrom AND c.created_date <= @dateTo";
+
+                parameters.Add(DBClass.CreateParameter("dateFrom", dtFrom.Value.Date));
+                parameters.Add(DBClass.CreateParameter("dateTo", dtTo.Value.Date));
+            }
+
+            // Order By
+            query += " ORDER BY c.created_date;";
+
+            dt = DBClass.ExecuteDataTable(query, parameters.ToArray());
+            dgvInvoice.DataSource = dt;
+            dgvInvoice.Columns["id"].Visible = false;
+            //dgvInvoice.Columns["debit_account"].Visible = false;
+            //dgvInvoice.Columns["credit_account"].Visible = false;
+            dgvInvoice.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dgvInvoice.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            dgvInvoice.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvInvoice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvInvoice.ColumnHeadersHeight = 18;
+            dgvInvoice.EnableHeadersVisualStyles = false;
+            dgvInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgvInvoice.Columns["amount"].DefaultCellStyle.Alignment =
+            //dgvInvoice.Columns["vat"].DefaultCellStyle.Alignment = 
+            //dgvInvoice.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvInvoice.Columns["amount"].DefaultCellStyle.Format = "N2";
+            //dgvInvoice.Columns["vat"].DefaultCellStyle.Format = "N2";
+            //dgvInvoice.Columns["total"].DefaultCellStyle.Format = "N2";
+
+            //if (dgvInvoice.Rows.Count > 0 && cmbSelectionMethod.Text == "Default")
+            //    bindInvoiceItems();
+            //else
+            //    dgvItems.DataSource = null;
+
+            LocalizationManager.LocalizeDataGridViewHeaders(dgvInvoice);
+        }
+
+        private void bindInvoiceItems()
+        {
+            //DataTable dt = DBClass.ExecuteDataTable(@"select * from tbl_job_card where ref_id = @id",
+            //                                         DBClass.CreateParameter("id", dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString()));
+            //dgvItems.DataSource = dt;
+
+            ////dgvItems.Columns["invoice_type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgvItems.Columns["ref_id"].Visible = dgvItems.Columns["ref_id"].Visible = dgvItems.Columns["invoice_id"].Visible = false;
+            //dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Gray;
+            //dgvItems.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8, FontStyle.Bold);
+            //dgvItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            //dgvItems.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvItems.ColumnHeadersHeight = 18;
+            //dgvItems.EnableHeadersVisualStyles = false;
+            //dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgvItems.Columns["total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvItems.Columns["vat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvItems.Columns["amount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvItems.Columns["balance"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvItems.Columns["remaining"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvItems.Columns["total"].DefaultCellStyle.Format = "N2";
+            //dgvItems.Columns["vat"].DefaultCellStyle.Format = "N2";
+            //dgvItems.Columns["amount"].DefaultCellStyle.Format = "N2";
+            //dgvItems.Columns["balance"].DefaultCellStyle.Format = "N2";
+            //dgvItems.Columns["remaining"].DefaultCellStyle.Format = "N2";
+            //if (dgvItems.Rows.Count > 0)
+            //{
+            //    btnDelete.Enabled = btnRecycle.Enabled = UserPermissions.canDelete("Credit Note");
+            //    btnEdit.Enabled = UserPermissions.canEdit("Credit Note");
+            //}
+            //LocalizationManager.LocalizeDataGridViewHeaders(dgvItems);
+        }
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoice.Rows.Count == 0)
+                return;
+            frmLogin.frmMain.openChildForm(new frmViewVehicle(int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString())));
+        }
+        private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInvoice.Rows.Count == 0)
+                return;
+            //if (dgvInvoice.Columns["JV NO"].Index == e.ColumnIndex)
+            //    frmLogin.frmMain.openChildForm(new MasterTransactionJournal(null, dgvCustomer.CurrentRow.Cells["JV NO"].Value.ToString(), "Purchse"));
+            //else
+                frmLogin.frmMain.openChildForm(new frmViewVehicle(int.Parse(dgvInvoice.CurrentRow.Cells["id"].Value.ToString())));
+        }
+        private void dgvCustomer_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+        private void dgvCustomer_Leave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private void chkCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkCustomer.Checked)
+                cmbCustomer.Enabled = false;
+            else
+                cmbCustomer.Enabled = true;
+            BindInvoices();
+        }
+        private void chkPayment_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkPayment.Checked)
+                cmbPaymentMethod.Enabled = false;
+            else
+                cmbPaymentMethod.Enabled = true;
+            BindInvoices();
+        }
+        private void chkDate_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = chkDate.Checked;
+            dtFrom.Enabled = dtTo.Enabled = !isChecked;
+            BindInvoices();
+        }
+
+        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInvoice.Rows.Count > 0 && cmbSelectionMethod.Text == "Default")
+                bindInvoiceItems();
+            else
+                dgvItems.DataSource = null;
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoice.Rows.Count == 0)
+                return;
+            DBClass.ExecuteNonQuery("UPDATE tbl_credit_note SET state = -1 WHERE id = @id ",
+                                          DBClass.CreateParameter("id", dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString()));
+            Utilities.LogAudit(frmLogin.userId, "Delete Credit Note", "Credit Note", int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString()), "Deleted Credit Note: " + dgvInvoice.SelectedRows[0].Cells["INV NO"].Value.ToString());
+            BindInvoices();
+        }
+        private void btnRecycle_Click(object sender, EventArgs e)
+        {
+            //MasterRecycle restoreForm = new MasterRecycle("CreditNote");
+            //restoreForm.DataRestored += RestoreForm_DataRestored;
+            //restoreForm.ShowDialog();
+
+        }
+        private void RestoreForm_DataRestored(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            BindInvoices();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            frmLogin.frmMain.openChildForm(new frmViewVehicle(0));
+        }
+    }
+}

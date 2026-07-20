@@ -31,33 +31,33 @@ namespace YamyProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle123 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle124 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle125 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle111 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle112 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle113 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle114 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle115 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle116 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle117 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle118 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle119 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle120 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle121 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle122 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle126 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle127 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle128 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle129 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle130 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle131 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle132 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle133 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle134 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle135 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBarcodeScan = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSaveClose = new Guna.UI2.WinForms.Guna2Button();
@@ -194,6 +194,10 @@ namespace YamyProject
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtRetentionAmount = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtRetentionPercent = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -205,6 +209,7 @@ namespace YamyProject
             this.tabPage4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -315,21 +320,21 @@ namespace YamyProject
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AllowUserToResizeColumns = false;
             this.dgvItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle109.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle109.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle109.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle109.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle109.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle109;
             this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle110.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle110.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle110.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle110.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle110.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle110.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle110;
             this.dgvItems.ColumnHeadersHeight = 18;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -349,14 +354,14 @@ namespace YamyProject
             this.type,
             this.cost_center,
             this.delete});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle123.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle123.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle123.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle123.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle123.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle123.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle123.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle123;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -365,18 +370,18 @@ namespace YamyProject
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle124.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle124.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle124.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle124.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle124.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle124.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle124.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle124;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle125.Font = new System.Drawing.Font("Segoe UI", 7.8F);
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle125;
             this.dgvItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -432,8 +437,8 @@ namespace YamyProject
             // code
             // 
             this.code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.code.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle111.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code.DefaultCellStyle = dataGridViewCellStyle111;
             this.code.HeaderText = "Item Code";
             this.code.MinimumWidth = 100;
             this.code.Name = "code";
@@ -449,8 +454,8 @@ namespace YamyProject
             // qty
             // 
             this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle112.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle112;
             this.qty.FillWeight = 75F;
             this.qty.HeaderText = "Qty";
             this.qty.MinimumWidth = 55;
@@ -460,10 +465,10 @@ namespace YamyProject
             // cost_price
             // 
             this.cost_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.cost_price.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle113.Format = "N2";
+            dataGridViewCellStyle113.NullValue = "0";
+            this.cost_price.DefaultCellStyle = dataGridViewCellStyle113;
             this.cost_price.HeaderText = "Cost Price";
             this.cost_price.MinimumWidth = 100;
             this.cost_price.Name = "cost_price";
@@ -471,10 +476,10 @@ namespace YamyProject
             // 
             // price
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.price.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle114.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle114.Format = "N2";
+            dataGridViewCellStyle114.NullValue = "0";
+            this.price.DefaultCellStyle = dataGridViewCellStyle114;
             this.price.HeaderText = "Price";
             this.price.MinimumWidth = 6;
             this.price.Name = "price";
@@ -483,10 +488,10 @@ namespace YamyProject
             // discount
             // 
             this.discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.discount.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle115.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle115.Format = "N2";
+            dataGridViewCellStyle115.NullValue = "0";
+            this.discount.DefaultCellStyle = dataGridViewCellStyle115;
             this.discount.HeaderText = "Disc";
             this.discount.MinimumWidth = 100;
             this.discount.Name = "discount";
@@ -495,10 +500,10 @@ namespace YamyProject
             // net_price
             // 
             this.net_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = "0";
-            this.net_price.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle116.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle116.Format = "N2";
+            dataGridViewCellStyle116.NullValue = "0";
+            this.net_price.DefaultCellStyle = dataGridViewCellStyle116;
             this.net_price.HeaderText = "Net Price";
             this.net_price.MinimumWidth = 110;
             this.net_price.Name = "net_price";
@@ -508,8 +513,8 @@ namespace YamyProject
             // vat
             // 
             this.vat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.vat.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle117.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.vat.DefaultCellStyle = dataGridViewCellStyle117;
             this.vat.FillWeight = 75F;
             this.vat.HeaderText = "Vat";
             this.vat.MinimumWidth = 75;
@@ -520,10 +525,10 @@ namespace YamyProject
             // VatP
             // 
             this.VatP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.VatP.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle118.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle118.Format = "N2";
+            dataGridViewCellStyle118.NullValue = "0";
+            this.VatP.DefaultCellStyle = dataGridViewCellStyle118;
             this.VatP.HeaderText = "~";
             this.VatP.MinimumWidth = 100;
             this.VatP.Name = "VatP";
@@ -532,10 +537,10 @@ namespace YamyProject
             // total
             // 
             this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0";
-            this.total.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle119.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle119.Format = "N2";
+            dataGridViewCellStyle119.NullValue = "0";
+            this.total.DefaultCellStyle = dataGridViewCellStyle119;
             this.total.HeaderText = "Amount";
             this.total.MinimumWidth = 110;
             this.total.Name = "total";
@@ -545,8 +550,8 @@ namespace YamyProject
             // method
             // 
             this.method.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.method.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle120.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.method.DefaultCellStyle = dataGridViewCellStyle120;
             this.method.HeaderText = "method";
             this.method.MinimumWidth = 100;
             this.method.Name = "method";
@@ -556,8 +561,8 @@ namespace YamyProject
             // type
             // 
             this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.type.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.type.DefaultCellStyle = dataGridViewCellStyle121;
             this.type.HeaderText = "type";
             this.type.MinimumWidth = 100;
             this.type.Name = "type";
@@ -567,8 +572,8 @@ namespace YamyProject
             // cost_center
             // 
             this.cost_center.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.cost_center.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.cost_center.DefaultCellStyle = dataGridViewCellStyle122;
             this.cost_center.HeaderText = "Cost Center";
             this.cost_center.MinimumWidth = 100;
             this.cost_center.Name = "cost_center";
@@ -1134,6 +1139,7 @@ namespace YamyProject
             this.guna2GroupBox3.BackColor = System.Drawing.Color.Gainsboro;
             this.guna2GroupBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.guna2GroupBox3.BorderThickness = 2;
+            this.guna2GroupBox3.Controls.Add(this.groupBox1);
             this.guna2GroupBox3.Controls.Add(this.richTextDescription);
             this.guna2GroupBox3.Controls.Add(this.label29);
             this.guna2GroupBox3.Controls.Add(this.txtTotalVat);
@@ -2364,8 +2370,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle126.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle126;
             this.dataGridViewTextBoxColumn3.HeaderText = "Item Code";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -2383,9 +2389,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = "0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle127.Format = "N2";
+            dataGridViewCellStyle127.NullValue = "0";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle127;
             this.dataGridViewTextBoxColumn5.FillWeight = 75F;
             this.dataGridViewTextBoxColumn5.HeaderText = "cost_price";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
@@ -2395,9 +2401,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = "0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle128.Format = "N2";
+            dataGridViewCellStyle128.NullValue = "0";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle128;
             this.dataGridViewTextBoxColumn6.HeaderText = "Price";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -2406,9 +2412,9 @@ namespace YamyProject
             // 
             // dataGridViewTextBoxColumn7
             // 
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.NullValue = "0";
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle129.Format = "N2";
+            dataGridViewCellStyle129.NullValue = "0";
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle129;
             this.dataGridViewTextBoxColumn7.HeaderText = "Disc";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
@@ -2418,9 +2424,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Format = "N2";
-            dataGridViewCellStyle22.NullValue = "0";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle130.Format = "N2";
+            dataGridViewCellStyle130.NullValue = "0";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle130;
             this.dataGridViewTextBoxColumn8.HeaderText = "Net Price";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
@@ -2430,9 +2436,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.NullValue = "0";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle131.Format = "N2";
+            dataGridViewCellStyle131.NullValue = "0";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle131;
             this.dataGridViewTextBoxColumn9.HeaderText = "~";
             this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
@@ -2442,9 +2448,9 @@ namespace YamyProject
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.NullValue = "0";
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle132.Format = "N2";
+            dataGridViewCellStyle132.NullValue = "0";
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle132;
             this.dataGridViewTextBoxColumn10.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -2454,10 +2460,10 @@ namespace YamyProject
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = "0";
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle133.Format = "N2";
+            dataGridViewCellStyle133.NullValue = "0";
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle133;
             this.dataGridViewTextBoxColumn11.HeaderText = "method";
             this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
@@ -2468,8 +2474,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle134.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle134;
             this.dataGridViewTextBoxColumn12.HeaderText = "type";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
@@ -2479,8 +2485,8 @@ namespace YamyProject
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle135.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle135;
             this.dataGridViewTextBoxColumn13.HeaderText = "type";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -2490,6 +2496,75 @@ namespace YamyProject
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtRetentionAmount);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.txtRetentionPercent);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(768, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(223, 64);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Retention";
+            // 
+            // txtRetentionAmount
+            // 
+            this.txtRetentionAmount.BorderRadius = 5;
+            this.txtRetentionAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRetentionAmount.DefaultText = "";
+            this.txtRetentionAmount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRetentionAmount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtRetentionAmount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionAmount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionAmount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRetentionAmount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionAmount.Location = new System.Drawing.Point(86, 26);
+            this.txtRetentionAmount.Name = "txtRetentionAmount";
+            this.txtRetentionAmount.PlaceholderText = "";
+            this.txtRetentionAmount.SelectedText = "";
+            this.txtRetentionAmount.Size = new System.Drawing.Size(99, 27);
+            this.txtRetentionAmount.TabIndex = 10;
+            this.txtRetentionAmount.TextChanged += new System.EventHandler(this.txtRetentionAmount_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 6.75F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
+            this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label19.Location = new System.Drawing.Point(5, 24);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(14, 29);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "%";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtRetentionPercent
+            // 
+            this.txtRetentionPercent.BorderRadius = 5;
+            this.txtRetentionPercent.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRetentionPercent.DefaultText = "";
+            this.txtRetentionPercent.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtRetentionPercent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtRetentionPercent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionPercent.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtRetentionPercent.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionPercent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRetentionPercent.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtRetentionPercent.Location = new System.Drawing.Point(19, 26);
+            this.txtRetentionPercent.Name = "txtRetentionPercent";
+            this.txtRetentionPercent.PlaceholderText = "";
+            this.txtRetentionPercent.SelectedText = "";
+            this.txtRetentionPercent.Size = new System.Drawing.Size(55, 27);
+            this.txtRetentionPercent.TabIndex = 9;
+            this.txtRetentionPercent.TextChanged += new System.EventHandler(this.txtRetentionPercent_TextChanged);
             // 
             // frmPurchase
             // 
@@ -2530,6 +2605,7 @@ namespace YamyProject
             this.tabPage4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2671,5 +2747,9 @@ namespace YamyProject
         private Guna.UI2.WinForms.Guna2TextBox txtRefId;
         private Label label12;
         private OpenFileDialog openFileDialog1;
+        private GroupBox groupBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtRetentionAmount;
+        private Label label19;
+        private Guna.UI2.WinForms.Guna2TextBox txtRetentionPercent;
     }
 }

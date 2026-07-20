@@ -30,6 +30,7 @@
         {
             this.headerUC1 = new YamyProject.HeaderUC();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
+            this.BtnAlter = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // headerUC1
@@ -62,12 +63,31 @@
             this.btnUpdate.Text = "Update Database";
             this.btnUpdate.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // BtnAlter
+            // 
+            this.BtnAlter.BorderRadius = 5;
+            this.BtnAlter.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnAlter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BtnAlter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BtnAlter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BtnAlter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(41)))), ((int)(((byte)(83)))));
+            this.BtnAlter.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BtnAlter.ForeColor = System.Drawing.Color.White;
+            this.BtnAlter.Location = new System.Drawing.Point(104, 178);
+            this.BtnAlter.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnAlter.Name = "BtnAlter";
+            this.BtnAlter.Size = new System.Drawing.Size(135, 37);
+            this.BtnAlter.TabIndex = 3;
+            this.BtnAlter.Text = "Update Tables";
+            this.BtnAlter.Click += new System.EventHandler(this.BtnAlter_Click);
+            // 
             // frmUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(325, 251);
+            this.ClientSize = new System.Drawing.Size(325, 283);
+            this.Controls.Add(this.BtnAlter);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.headerUC1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -84,5 +104,6 @@
 
         private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button btnUpdate;
+        private Guna.UI2.WinForms.Guna2Button BtnAlter;
     }
 }

@@ -35,12 +35,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.headerUC1 = new YamyProject.HeaderUC();
-            this.txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.cmbType = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
@@ -102,7 +102,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label2.Location = new System.Drawing.Point(12, 119);
             this.label2.Name = "label2";
@@ -115,18 +115,18 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(473, 37);
+            this.panel2.Location = new System.Drawing.Point(473, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 330);
+            this.panel2.Size = new System.Drawing.Size(4, 337);
             this.panel2.TabIndex = 29;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(4, 330);
+            this.panel3.Size = new System.Drawing.Size(4, 337);
             this.panel3.TabIndex = 30;
             // 
             // headerUC1
@@ -141,37 +141,16 @@
             this.headerUC1.Size = new System.Drawing.Size(477, 30);
             this.headerUC1.TabIndex = 0;
             // 
-            // txtDescription
-            // 
-            this.txtDescription.BorderRadius = 5;
-            this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDescription.DefaultText = "";
-            this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDescription.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDescription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDescription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDescription.ForeColor = System.Drawing.Color.Black;
-            this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(12, 211);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtDescription.PlaceholderText = "";
-            this.txtDescription.SelectedText = "";
-            this.txtDescription.Size = new System.Drawing.Size(332, 24);
-            this.txtDescription.TabIndex = 6;
-            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(51)))), ((int)(((byte)(67)))));
             this.label3.Location = new System.Drawing.Point(12, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 24);
             this.label3.TabIndex = 28;
-            this.label3.Text = "Description";
+            this.label3.Text = "Type";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel5
@@ -235,12 +214,34 @@
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cmbType
+            // 
+            this.cmbType.BackColor = System.Drawing.Color.Transparent;
+            this.cmbType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbType.ItemHeight = 20;
+            this.cmbType.Items.AddRange(new object[] {
+            "Standard Rated",
+            "Zero Rated",
+            "Exempt",
+            "Out of Scope"});
+            this.cmbType.Location = new System.Drawing.Point(15, 223);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(329, 26);
+            this.cmbType.StartIndex = 0;
+            this.cmbType.TabIndex = 35;
+            // 
             // frmViewItemTaxCodes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(477, 367);
+            this.Controls.Add(this.cmbType);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
@@ -248,7 +249,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.headerUC1);
@@ -271,11 +271,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private Guna.UI2.WinForms.Guna2TextBox txtDescription;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnSave;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbType;
     }
 }

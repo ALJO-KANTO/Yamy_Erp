@@ -4,6 +4,10 @@
 
     partial class DataSet1
     {
+        partial class JobLaborDataTable
+        {
+        }
+
         partial class tbl_warehouse_transferDataTable
         {
         }
@@ -16,7 +20,7 @@
         {
         }
 
-        partial class DataTable1DataTable
+        partial class JobInfoDataTable
         {
         }
 

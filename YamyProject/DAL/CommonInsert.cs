@@ -15,8 +15,8 @@ namespace YamyProject
                                   string description,string warehouseId)
         {
             DBClass.ExecuteNonQuery(@"INSERT INTO tbl_item_transaction 
-                    (date, type, reference, item_id, cost_price, qty_in,sales_price, qty_out,qty_inc, description, warehouse_id ) 
-                    VALUES (@date, @type, @reference, @itemId, @costPrice, @qtyIn,@sales_price, @qtyOut,@qtyInc, @description, @warehouseId);",
+                    (date, type, reference, item_id, cost_price, qty_in,sales_price, qty_out,qty_inc, description, warehouse_id , GlobalId, DeviceId) 
+                    VALUES (@date, @type, @reference, @itemId, @costPrice, @qtyIn,@sales_price, @qtyOut,@qtyInc, @description, @warehouseId, @GlobalId, @DeviceId);",
                                     DBClass.CreateParameter("@date", date),
                                     DBClass.CreateParameter("@type", type),
                                     DBClass.CreateParameter("@reference", reference),
@@ -27,6 +27,8 @@ namespace YamyProject
                                     DBClass.CreateParameterNew("@qtyOut", qtyOut),
                                     DBClass.CreateParameterNew("@qtyInc", qtyInc),
                                     DBClass.CreateParameter("@description", description),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName),
                                     DBClass.CreateParameter("warehouseId", warehouseId));
 
             UpdateOnHandItem(itemId);
@@ -142,8 +144,8 @@ namespace YamyProject
                                string transactionId,string humId, string type, string description, int createdBy, DateTime createdDate)
         {
             DBClass.ExecuteNonQuery(@"INSERT INTO tbl_transaction 
-                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state) 
-                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0);",
+                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state, GlobalId, DeviceId) 
+                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0, @GlobalId, @DeviceId);",
             DBClass.CreateParameter("@date", date),
             DBClass.CreateParameter("@accountId", accountId),
             DBClass.CreateParameter("@debit", debit),
@@ -154,14 +156,16 @@ namespace YamyProject
             DBClass.CreateParameter("@hum_id", humId ),
             DBClass.CreateParameter("@description", description),
             DBClass.CreateParameter("@createdBy", createdBy),
-            DBClass.CreateParameter("@createdDate", createdDate));
+            DBClass.CreateParameter("@createdDate", createdDate),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName));
         }
         public static void addTransactionEntry(DateTime date, string accountId, string debit, string credit,
                                string transactionId, string humId, string type, string voucher_name, string description, int createdBy, DateTime createdDate,string VoucherNo,int projectId = 0)
         {
             DBClass.ExecuteNonQuery(@"INSERT INTO tbl_transaction 
-                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state,voucher_no,project_id) 
-                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0,@voucher_no,@projectId);",
+                    (date, account_id, debit, credit, transaction_id,hum_id,t_type,type, description, created_by, created_date, state,voucher_no,project_id, GlobalId, DeviceId) 
+                    VALUES (@date, @accountId, @debit, @credit, @transactionId,@hum_id,@tType,@type, @description, @createdBy, @createdDate, 0,@voucher_no,@projectId, @GlobalId, @DeviceId);",
             DBClass.CreateParameter("@date", date),
             DBClass.CreateParameter("@accountId", accountId),
             DBClass.CreateParameter("@debit", debit),
@@ -174,7 +178,9 @@ namespace YamyProject
             DBClass.CreateParameter("@createdBy", createdBy),
             DBClass.CreateParameter("@createdDate", createdDate),
             DBClass.CreateParameter("@projectId", projectId),
-            DBClass.CreateParameter("@voucher_no", VoucherNo));
+            DBClass.CreateParameter("@voucher_no", VoucherNo),
+                DBClass.CreateParameter("GlobalId", Guid.NewGuid().ToString()),
+                DBClass.CreateParameter("DeviceId", Utilities.MachineName));
         }
         public static void UpdateTransactionEntry(int journalId, DateTime date, string accountId, string debit, string credit,
                                       string transactionId, string humId, string type, string tType, string description, int modifiedBy, DateTime modifiedDate)
