@@ -13,8 +13,9 @@ namespace YamyProject.UI.Job_Card
         private EventHandler customerUpdatedHandler;
         private EventHandler warehouseUpdatedHandler;
         int jId;
-
-        public frmJobCard(int _id = 0)
+        string type = "";
+        string quotation_id = "0", sales_order_id = "0";
+        public frmJobCard(int _id = 0, string _type = "")
         {
             InitializeComponent();
             headerUC1.FormText = "Job Card";
@@ -24,6 +25,7 @@ namespace YamyProject.UI.Job_Card
             EventHub.Customer += customerUpdatedHandler;
             EventHub.wareHouse += warehouseUpdatedHandler;
             this.jId = _id;
+            _type = type;
         }
 
         private void frmJobCard_Load(object sender, EventArgs e)
@@ -41,6 +43,13 @@ namespace YamyProject.UI.Job_Card
             if (jId != 0)
             {
                 BindInvoice();
+            }
+            if (type == "SQ")
+            {
+                //
+            } else if (type == "SO")
+            {
+                //
             }
         }
         private void loadVat()
@@ -235,11 +244,11 @@ namespace YamyProject.UI.Job_Card
                 DBClass.ExecuteScalar(@"INSERT INTO tbl_job_card
                         (code,customer_id,vehicle_id,advisor_id,job_date,expected_delivery,mileage,fuel_type,priority,
                             complaint,diagnosis, work_required,remarks,estimated_amount,approved_amount,
-                            status,active,created_by,created_date,state) 
+                            status,active,created_by,created_date,state,quotation_id,sales_order_id) 
                     values(@code,@customer_id,@vehicle_id,@advisor_id,@job_date,@expected_delivery,
                             @mileage,@fuel_type,@priority, @complaint,@diagnosis, @work_required,@remarks,
                             @estimated_amount, @approved_amount,
-                            @status,@active,@created_by,@created_date,@state);
+                            @status,@active,@created_by,@created_date,@state,@quotation_id,@sales_order_id);
                     SELECT LAST_INSERT_ID();", 
                     DBClass.CreateParameter("code", txtJobCardNo.Text), 
                     DBClass.CreateParameter("customer_id", cmbCustomer.SelectedValue), 
@@ -260,7 +269,9 @@ namespace YamyProject.UI.Job_Card
                     DBClass.CreateParameter("active", "1"), 
                     DBClass.CreateParameter("created_by", frmLogin.userId), 
                     DBClass.CreateParameter("created_date", DateTime.Now.Date), 
-                    DBClass.CreateParameter("state","1")
+                    DBClass.CreateParameter("state","1"),
+                    DBClass.CreateParameter("quotation_id", , quotation_id),
+                    DBClass.CreateParameter("sales_order_id", sales_order_id)
                 )
             );
             SaveInspection();
@@ -535,21 +546,6 @@ namespace YamyProject.UI.Job_Card
                             DBClass.CreateParameter("@status", "Start"),
                             DBClass.CreateParameter("@remarks", richTextBoxLaborDescription.Text)
             );
-        }
-
-        private void PrintJobCard()
-        {
-            //
-        }
-
-        private void GenerateInvoice()
-        {
-            //
-        }
-
-        private void CloseJobCard()
-        {
-            //
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -957,8 +953,8 @@ namespace YamyProject.UI.Job_Card
                 cr.Subreports["JobLabor"].SetDataSource(jobLabor);
                 //cr.Subreports["JobParts"].SetDataSource(jobParts);
                 cr.Subreports["JobInspection"].SetDataSource(jobInspection);
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "JobCard_" + jId + "_" + cmbCustomer.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();
@@ -995,12 +991,12 @@ namespace YamyProject.UI.Job_Card
         {
             if (jId > 0)
             {
-                object objInvId = DBClass.ExecuteScalar("select quotation_id from tbl_job_card where id = @id", DBClass.CreateParameter("@id", jId));
+                object objInvId = DBClass.ExecuteScalar("select sales_order_id from tbl_job_card where id = @id", DBClass.CreateParameter("@id", jId));
                 if (objInvId != null)
                 {
                     if (Convert.ToInt32(objInvId) > 0)
                     {
-                        MessageBox.Show("Quotation Already Saved");
+                        MessageBox.Show("Sales Order Already Saved");
                         return;
                     }
                 }
@@ -1012,12 +1008,12 @@ namespace YamyProject.UI.Job_Card
         {
             if (jId > 0)
             {
-                object objInvId = DBClass.ExecuteScalar("select sales_order_id from tbl_job_card where id = @id", DBClass.CreateParameter("@id", jId));
+                object objInvId = DBClass.ExecuteScalar("select quotation_id from tbl_job_card where id = @id", DBClass.CreateParameter("@id", jId));
                 if (objInvId != null)
                 {
                     if (Convert.ToInt32(objInvId) > 0)
                     {
-                        MessageBox.Show("Sales Order Already Saved");
+                        MessageBox.Show("Quotation Already Saved");
                         return;
                     }
                 }

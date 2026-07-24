@@ -1161,8 +1161,8 @@ namespace YamyProject
                     MessageBox.Show("No data available for the report.");
                     return;
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "SaleProforma_" + id + "_" + cmbCustomer.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

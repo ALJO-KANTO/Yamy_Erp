@@ -1074,34 +1074,92 @@ namespace YamyProject
         private void PostItemInventoryAndCOGS(DataGridViewRow row, int salesId)
         {
             string itemId = row.Cells["itemId"].Value.ToString();
-            decimal quantity = Convert.ToDecimal(row.Cells["qty"].Value ?? 0);
+            string itemType = row.Cells["type"].Value.ToString();
+
             decimal costPrice = Convert.ToDecimal(row.Cells["cost_price"].Value ?? 0);
-            decimal discount = Convert.ToDecimal(row.Cells["discount"].Value ?? 0);
+            decimal quantity = Convert.ToDecimal(row.Cells["qty"].Value ?? 0);
             decimal price = Convert.ToDecimal(row.Cells["price"].Value ?? 0);
+            decimal discount = Convert.ToDecimal(row.Cells["discount"].Value ?? 0);
             decimal total = Convert.ToDecimal(row.Cells["net_price"].Value ?? 0);
-            decimal itemCostTotal = costPrice * quantity;
             decimal itemSalesTotal = (price * quantity) - discount;
-            decimal itemCogsTotal = total;
+            //decimal itemCostTotal = costPrice * quantity;
+            //decimal itemCogsTotal = total;
+            decimal itemCogsTotal = costPrice * quantity;
 
-            int assetAccountId = GetInventoryAccount(itemId);
-            int cogsAccountId = GetCOGSAccount(itemId);
-            int apAccountId = cmbAccountCashName.SelectedValue != null
-                                ? Convert.ToInt32(cmbAccountCashName.SelectedValue)
-                                : 0;
 
-            if (assetAccountId > 0 && itemSalesTotal > 0)
+            int incomeAccountId = GetIncomeAccount(itemId);
+
+
+            // SERVICE ITEM
+            if (itemType == "12 - Service")
             {
-                CommonInsert.addTransactionEntry(dtInv.Value.Date, assetAccountId.ToString(),
-                     "0", itemSalesTotal.ToString(CultureInfo.InvariantCulture),
-                    salesId.ToString(), "0", "Sales Invoice", "SALES",
-                    $"Inventory Asset Credit For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+                if (incomeAccountId > 0 && itemSalesTotal > 0)
+                {
+                    CommonInsert.addTransactionEntry(
+                        dtInv.Value.Date,
+                        incomeAccountId.ToString(),
+                        "0",
+                        itemSalesTotal.ToString(CultureInfo.InvariantCulture),
+                        salesId.ToString(),
+                        "0",
+                        "Sales Invoice",
+                        "SALES",
+                        $"Service Income For Invoice No. {txtNextCode.Text}",
+                        frmLogin.userId,
+                        DateTime.Now.Date,
+                        txtNextCode.Text
+                    );
+                }
+
+                return;
             }
-            else if (assetAccountId <= 0 && level4Inventory > 0 && itemSalesTotal > 0)
+
+
+            // INVENTORY ITEM
+            if (itemType == "11 - Inventory")
             {
-                CommonInsert.addTransactionEntry(dtInv.Value.Date, level4Inventory.ToString(),
-                     "0", itemSalesTotal.ToString(CultureInfo.InvariantCulture),
-                    salesId.ToString(), "0", "Sales Invoice", "SALES",
-                    $"Sales For Invoice No. " + txtNextCode.Text, frmLogin.userId, DateTime.Now.Date, txtNextCode.Text);
+                int assetAccountId = GetInventoryAccount(itemId);
+                int cogsAccountId = GetCOGSAccount(itemId);
+
+
+                if (assetAccountId > 0)
+                {
+                    // Credit Inventory
+                    CommonInsert.addTransactionEntry(
+                        dtInv.Value.Date,
+                        assetAccountId.ToString(),
+                        "0",
+                        itemSalesTotal.ToString(CultureInfo.InvariantCulture),
+                        salesId.ToString(),
+                        "0",
+                        "Sales Invoice",
+                        "SALES",
+                        $"Inventory Credit For Invoice No. {txtNextCode.Text}",
+                        frmLogin.userId,
+                        DateTime.Now.Date,
+                        txtNextCode.Text
+                    );
+                }
+
+
+                if (cogsAccountId > 0)
+                {
+                    // Debit COGS
+                    CommonInsert.addTransactionEntry(
+                        dtInv.Value.Date,
+                        cogsAccountId.ToString(),
+                        itemCogsTotal.ToString(CultureInfo.InvariantCulture),
+                        "0",
+                        salesId.ToString(),
+                        "0",
+                        "Sales Invoice",
+                        "COGS",
+                        $"COGS For Invoice No. {txtNextCode.Text}",
+                        frmLogin.userId,
+                        DateTime.Now.Date,
+                        txtNextCode.Text
+                    );
+                }
             }
         }
         private int GetCOGSAccount(string itemId)
@@ -1115,6 +1173,12 @@ namespace YamyProject
         {
             int ret = 0;
             ret = Convert.ToInt32(DBClass.ExecuteScalar("select asset_account_id from tbl_items where id=@id", DBClass.CreateParameter("id", itemId)));
+            return ret;
+        }
+        private int GetIncomeAccount(string itemId)
+        {
+            int ret = 0;
+            ret = Convert.ToInt32(DBClass.ExecuteScalar("select income_account_id from tbl_items where id=@id", DBClass.CreateParameter("id", itemId)));
             return ret;
         }
 
@@ -2743,28 +2807,16 @@ namespace YamyProject
 
         private void guna2TileButton18_Click(object sender, EventArgs e)
         {
-            //if (guna2Panel1.Height >= 44)
-            //    {
-            //    timer2.Start();
-            //    timer1.Stop();
-            //}
-            //else
-            //{
-            //    timer2.Stop();
-            //    timer1.Start();
-            //}
             ShowReport();
         }
 
         private void guna2TileButton30_Click(object sender, EventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new MasterReportView());
             ShowReport();
         }
 
         private void guna2TileButton31_Click(object sender, EventArgs e)
         {
-            //frmLogin.frmMain.openChildForm(new MasterReportView());
             ShowReportDelivery();
         }
 
@@ -2996,9 +3048,116 @@ namespace YamyProject
 
         public DataTable SalesDetails(string a1)
         {
-            return DBClass.ExecuteDataTable(@"SELECT s.id,s.date,s.customer_id,s.invoice_id,s.bill_to,s.city,s.sales_man,s.ship_date,s.ship_via,s.ship_to,(SELECT NAME FROM tbl_coa_level_4 WHERE id=s.account_cash_id) accountName,s.po_num,s.payment_method,s.payment_terms,s.payment_date,s.total,s.vat,s.net,s.pay,s.change 
-                                    ,c.name customerName,c.main_phone,c.email,c.trn FROM tbl_sales s,tbl_customer c WHERE s.customer_id = c.id AND s.id=@salesId;", DBClass.CreateParameter("@salesId", a1));
+            return DBClass.ExecuteDataTable(@"SELECT 
+                            s.id,
+                            s.date,
+                            s.customer_id,
+                            s.invoice_id,
+                            s.bill_to,
+                            s.city, 
+                            (SELECT name FROM tbl_employee e WHERE e.id = s.sales_man) AS sales_man,
+                            s.ship_date,
+                            s.ship_via,
+                            s.ship_to,
+                            (SELECT NAME FROM tbl_coa_level_4 WHERE id = s.account_cash_id) AS accountName,
+                            s.po_num,
+                            s.payment_method,
+                            s.payment_terms,
+                            s.payment_date,
+                            s.total,
+                            s.vat,
+                            s.net,
+                            s.pay,
+                            s.change,
+                            c.name AS customerName,
+                            c.main_phone,
+                            c.email,
+                            c.trn 
+                        FROM tbl_sales s
+                        JOIN tbl_customer c ON s.customer_id = c.id 
+                        WHERE s.id = @salesId;",
+            DBClass.CreateParameter("@salesId", a1));
         }
+
+        public DataTable FotterDetails(string a1)
+        {
+            DataTable dt = DBClass.ExecuteDataTable(@"
+                        SELECT 
+                            SUM(d.vatp) AS Vat,
+                            SUM(d.qty) AS TotalQty,
+                            SUM(d.qty * d.price) AS SubTotal,
+                            SUM(d.discount) AS Discount,
+                            SUM((d.qty * d.price) - d.discount) AS TaxableAmt,
+                            SUM(d.total) AS NetAmount
+                        FROM tbl_sales_details d
+                        WHERE d.sales_id = @salesId;",
+                DBClass.CreateParameter("@salesId", a1)
+            );
+
+            // ←←← Add this protection
+            if (dt == null)
+                dt = new DataTable();   // Create empty table to avoid null exception
+
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("Vat", typeof(decimal));
+            dt1.Columns.Add("Total Qty", typeof(decimal));
+            dt1.Columns.Add("Sub Total", typeof(decimal));
+            dt1.Columns.Add("Discount", typeof(decimal));
+            dt1.Columns.Add("Taxable Amt", typeof(decimal));
+            dt1.Columns.Add("Amt in Words", typeof(string));
+            dt1.Columns.Add("Net Amount", typeof(decimal));
+            dt1.Columns.Add("Received Amt", typeof(decimal));
+            dt1.Columns.Add("Sales_Man", typeof(string));
+
+            decimal vat = 0;
+            decimal totalQty = 0;
+            decimal subTotal = 0;
+            decimal discount = 0;
+            decimal taxableAmt = 0;
+            decimal netAmount = 0;
+            decimal receivedAmt = 0;
+            string salesMan = "";
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+
+                if (row["Vat"] != DBNull.Value)
+                    vat = Convert.ToDecimal(row["Vat"]);
+
+                if (row["TotalQty"] != DBNull.Value)
+                    totalQty = Convert.ToDecimal(row["TotalQty"]);
+
+                if (row["SubTotal"] != DBNull.Value)
+                    subTotal = Convert.ToDecimal(row["SubTotal"]);
+
+                if (row["Discount"] != DBNull.Value)
+                    discount = Convert.ToDecimal(row["Discount"]);
+
+                if (row["TaxableAmt"] != DBNull.Value)
+                    taxableAmt = Convert.ToDecimal(row["TaxableAmt"]);
+
+                if (row["NetAmount"] != DBNull.Value)
+                    netAmount = Convert.ToDecimal(row["NetAmount"]);
+
+                //if (row["SalesMan"] != DBNull.Value && row["SalesMan"] != null)
+                //    salesMan = row["SalesMan"].ToString();
+            }
+
+            decimal.TryParse(txtAdvancePayment.Text, out receivedAmt);
+            salesMan = cmbSalesMan.Text;
+
+            string amountInWords = AmountToWordsHelper.ConvertToSelectedLanguage(netAmount);
+
+            dt1.Rows.Add(
+                vat, totalQty, subTotal, discount,
+                taxableAmt, amountInWords, netAmount,
+                receivedAmt, salesMan
+            );
+
+            return dt1;
+        }
+
         string filePath = "";
         private void guna2TileButton16_Click(object sender, EventArgs e)
         {
@@ -3119,6 +3278,7 @@ namespace YamyProject
                 DataTable companyData = COMPANYINFO(1);
                 DataTable salesData = SalesDetails(invId.ToString());
                 DataTable itemData = ItemDetails(invId.ToString());
+                DataTable footerData = FotterDetails(invId.ToString());
 
                 if (companyData == null || companyData.Rows.Count == 0)
                 {
@@ -3141,8 +3301,9 @@ namespace YamyProject
                 cr.Subreports[companySubReportName].SetDataSource(companyData);
                 cr.Subreports[salesSubReportName].SetDataSource(salesData);
                 cr.Subreports[itemsSubReportName].SetDataSource(itemData);
-
-                using (var reportForm = new MasterReportView())
+                cr.SetDataSource(footerData);
+                string fileName = "Sales_"+id+"_"+cmbCustomer.Text.Trim();
+                using (var reportForm = new MasterReportView(cr, fileName))
                 {
                     reportForm.crReportViewer.ReportSource = cr;
                     reportForm.crReportViewer.RefreshReport();
@@ -3155,72 +3316,5 @@ namespace YamyProject
             }
         }
 
-        public void ShowReportOld()
-        {
-            try
-            {
-                string reportPath = Path.Combine(Application.StartupPath, "CrystalReport", "SalesInvoice.rpt");
-                // Load the report file from disk
-                ReportDocument cr = new ReportDocument();
-                cr.Load(reportPath);
-                DataTable companyData = COMPANYINFO(1);
-                DataTable salesData = SalesDetails(invId.ToString());
-                DataTable itemData = ItemDetails(invId.ToString());
-                if (companyData != null)
-                {
-                    cr.Subreports["CompanyHeader"].SetDataSource(companyData);
-                    cr.Subreports["InfoHeader"].SetDataSource(salesData);
-                    cr.Subreports["ItemHeader"].SetDataSource(itemData);
-                }
-                else
-                {
-                    MessageBox.Show("No data available for the report.");
-                    return;
-                }
-
-                MasterReportView reportForm = new MasterReportView();
-                reportForm.crReportViewer.ReportSource = cr;
-                reportForm.crReportViewer.RefreshReport();
-                reportForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        public void ShowReportDeliveryOld()
-        {
-            try
-            {
-                string reportPath = Path.Combine(Application.StartupPath, "CrystalReport", "DeliveryNote.rpt");
-                // Load the report file from disk
-                ReportDocument cr = new ReportDocument();
-                cr.Load(reportPath);
-                DataTable companyData = COMPANYINFO(1);
-                DataTable salesData = SalesDetails(invId.ToString());
-                DataTable itemData = ItemDetails(invId.ToString());
-                if (companyData != null)
-                {
-                    cr.Subreports["CompanyHeader"].SetDataSource(companyData);
-                    cr.Subreports["SalesHeader"].SetDataSource(salesData);
-                    cr.Subreports["ItemsHeader"].SetDataSource(itemData);
-                }
-                else
-                {
-                    MessageBox.Show("No data available for the report.");
-                    return;
-                }
-
-                MasterReportView reportForm = new MasterReportView();
-                reportForm.crReportViewer.ReportSource = cr;
-                reportForm.crReportViewer.RefreshReport();
-                reportForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
     }
 }

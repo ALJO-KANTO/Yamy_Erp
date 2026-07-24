@@ -904,7 +904,8 @@ namespace YamyProject
                 }
 
                 // Assign the main report to the viewer
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "DebitNote_" + id + "_" + cmbCustomer.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

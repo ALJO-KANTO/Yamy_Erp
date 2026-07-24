@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Forms;
 using YamyProject.DAL;
 using YamyProject.Localization;
+using YamyProject.UI.Job_Card;
 using YamyProject.UI.Reports.Design;
 using YamyProject.UI.Sales;
 using YamyProject.UI.Settings;
@@ -1335,8 +1336,8 @@ namespace YamyProject
                     MessageBox.Show("No data available for the report.");
                     return;
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "Quotation_" + id + "_" + cmbCustomer.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();
@@ -1564,6 +1565,28 @@ namespace YamyProject
             using (var paymentForm = new frmReceivePayments(0,invoiceId, customerId, customerName, invoiceNumber, totalAmount, 0, "SALES QUOTATION"))
             {
                 paymentForm.ShowDialog();
+            }
+        }
+
+        private void guna2TileButton1_Click(object sender, EventArgs e)
+        {
+            if (id == 0) {
+                frmLogin.frmMain.openChildForm(new frmJobCard(0));
+            }
+            else
+            {
+                object objInvId = DBClass.ExecuteScalar("select id from tbl_job_card where quotation_id = @id", DBClass.CreateParameter("@id", id));
+                if (objInvId != null)
+                {
+                    if (Convert.ToInt32(objInvId) > 0)
+                        frmLogin.frmMain.openChildForm(new frmJobCard(Convert.ToInt32(objInvId), "SQ"));
+                    else
+                        frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                }
+                else
+                {
+                    frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                }
             }
         }
     }

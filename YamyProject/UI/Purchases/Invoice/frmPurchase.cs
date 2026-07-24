@@ -2319,8 +2319,8 @@ namespace YamyProject
                 cr.Subreports["Company"].SetDataSource(companyData);
                 cr.Subreports["Vendor"].SetDataSource(VendorData);
                 cr.Subreports["Details"].SetDataSource(PurchaseData);
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "Purchase_" + id + "_" + cmbVendor.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();
@@ -2359,8 +2359,8 @@ namespace YamyProject
                     MessageBox.Show("No data available for the report.");
                     return;  // Exit the method if no data is available
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "Purchase_" + id + "_" + cmbVendor.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

@@ -908,8 +908,8 @@ namespace YamyProject
                     MessageBox.Show("No data available for the report.");
                     return;
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "MaterialReceived_" + id + "_" + cmbVendor.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

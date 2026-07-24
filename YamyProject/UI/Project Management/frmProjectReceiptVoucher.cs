@@ -834,7 +834,8 @@ namespace YamyProject
                         return;  // Exit the method if no data is available
                     }
                 }
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "ProjectReceiptVoucher_" + id + "_" + cmbCreditAccountName.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

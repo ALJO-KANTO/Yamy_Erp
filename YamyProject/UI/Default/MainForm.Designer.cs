@@ -161,6 +161,103 @@
             this.transferFundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.constructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tenderCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newTenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectTenderBOQSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectEstimationBudgetingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectEstimateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estimateReviewSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siteCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoneListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resourceMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectSiteSetup0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wBSActivitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectTeamSupervisorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectPlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lookaheadPlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resourceNeedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siteActivityPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sitePlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialRequestToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialRequestListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockCheckAvailabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialReservationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procurementRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialIssueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialReceiptAtSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialReturnToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialConsumptionToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialReconciliationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockLedgerBinBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailyExecutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailySiteWorkEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressUpdateWorkDoneEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.workDoneWorkMeasurementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resourceDeploymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labourAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equipmentUsageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailySiteReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delayHindranceLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siteDiaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.workOnSiteDailyWorkPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.qualityHSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.qAQCInspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hSEChecksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nCRInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incidentAccidentRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.correctiveActionTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeoutRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcontractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcontractorCenterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.workAssignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialSupplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.measureApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcontractorPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retentionBackChargeTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.handoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.punchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.snagDefectListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testingAsBuiltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asBuiltSubmissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.finalInspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.practicalCompletionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.finalHandoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectDashboardToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bOQProgressReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailyProgressReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labourEquipmentUtilizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.costVsBudgetReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialReconciliationReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delayHindranceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.qualityNCRSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hSESummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcontractorPerformanceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectCompletionHandoverSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectActivitySummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectAssignSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectResourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectProgressSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectWorkProgressSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectDashBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectDashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timelineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeSheetReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectProgressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ganttChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.engineerActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.companyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -281,7 +378,7 @@
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costCenterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TaxReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VATSummaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VATDetailedReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VATReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -361,103 +458,6 @@
             this.statementOfFinancialPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statementOfFunctionalExpenses990ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionJournalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.constructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tenderCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newTenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectTenderBOQSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectEstimationBudgetingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectEstimateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estimateReviewSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siteCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoneListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resourceMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectSiteSetup0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wBSActivitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectTeamSupervisorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectPlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lookaheadPlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resourceNeedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siteActivityPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sitePlanningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialRequestToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialRequestListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockCheckAvailabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialReservationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procurementRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialIssueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialReceiptAtSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialReturnToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialConsumptionToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialReconciliationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockLedgerBinBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailyExecutionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailySiteWorkEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.progressUpdateWorkDoneEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.workDoneWorkMeasurementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resourceDeploymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labourAttendanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.equipmentUsageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailySiteReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delayHindranceLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siteDiaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.workOnSiteDailyWorkPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.qualityHSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.qAQCInspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hSEChecksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nCRInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.incidentAccidentRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.correctiveActionTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeoutRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subcontractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subcontractorCenterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.workAssignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialSupplyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.measureApproveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subcontractorPaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.retentionBackChargeTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.handoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.punchListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.snagDefectListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testingAsBuiltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asBuiltSubmissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.finalInspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.practicalCompletionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.finalHandoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectDashboardToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bOQProgressReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailyProgressReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labourEquipmentUtilizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.costVsBudgetReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialReconciliationReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delayHindranceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.qualityNCRSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hSESummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subcontractorPerformanceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectCompletionHandoverSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectActivitySummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectAssignSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectResourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectProgressSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectWorkProgressSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectDashBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectDashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timelineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timeSheetReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectProgressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ganttChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.engineerActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemEngConsultancy = new System.Windows.Forms.ToolStripMenuItem();
             this.projectGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectCenterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -2137,6 +2137,814 @@
             this.bankTransactionsToolStripMenuItem.Text = "Bank Transactions";
             this.bankTransactionsToolStripMenuItem.Click += new System.EventHandler(this.bankTransactionsToolStripMenuItem_Click);
             // 
+            // constructionToolStripMenuItem
+            // 
+            this.constructionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectSetupToolStripMenuItem,
+            this.projectToolStripMenuItem1,
+            this.sitePlanningToolStripMenuItem,
+            this.dailyExecutionToolStripMenuItem,
+            this.qualityHSEToolStripMenuItem,
+            this.subcontractorsToolStripMenuItem,
+            this.handoverToolStripMenuItem,
+            this.reportsControlsToolStripMenuItem,
+            this.projectManagementToolStripMenuItem,
+            this.projectDashBoardToolStripMenuItem,
+            this.projectProgressToolStripMenuItem,
+            this.ganttChartToolStripMenuItem,
+            this.engineerActivityToolStripMenuItem});
+            this.constructionToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.constructionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.constructionToolStripMenuItem.Name = "constructionToolStripMenuItem";
+            this.constructionToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.constructionToolStripMenuItem.Text = "Construction";
+            this.constructionToolStripMenuItem.Click += new System.EventHandler(this.constructionToolStripMenuItem_Click);
+            // 
+            // projectSetupToolStripMenuItem
+            // 
+            this.projectSetupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectCenterToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.tenderCenterToolStripMenuItem,
+            this.newTenderToolStripMenuItem,
+            this.projectTenderBOQSetupToolStripMenuItem,
+            this.projectEstimationBudgetingToolStripMenuItem1,
+            this.siteCenterToolStripMenuItem,
+            this.resourceMasterToolStripMenuItem,
+            this.projectSiteSetup0ToolStripMenuItem,
+            this.wBSActivitiesToolStripMenuItem,
+            this.projectTeamSupervisorsToolStripMenuItem});
+            this.projectSetupToolStripMenuItem.Name = "projectSetupToolStripMenuItem";
+            this.projectSetupToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.projectSetupToolStripMenuItem.Text = "Project Setup";
+            this.projectSetupToolStripMenuItem.Click += new System.EventHandler(this.projectSetupToolStripMenuItem_Click);
+            // 
+            // projectCenterToolStripMenuItem
+            // 
+            this.projectCenterToolStripMenuItem.Name = "projectCenterToolStripMenuItem";
+            this.projectCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.projectCenterToolStripMenuItem.Text = "Project Center";
+            this.projectCenterToolStripMenuItem.Click += new System.EventHandler(this.projectCenterToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(231, 22);
+            this.toolStripMenuItem3.Text = "New Project";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // tenderCenterToolStripMenuItem
+            // 
+            this.tenderCenterToolStripMenuItem.Name = "tenderCenterToolStripMenuItem";
+            this.tenderCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.tenderCenterToolStripMenuItem.Text = "Tender Center";
+            this.tenderCenterToolStripMenuItem.Click += new System.EventHandler(this.tenderCenterToolStripMenuItem_Click);
+            // 
+            // newTenderToolStripMenuItem
+            // 
+            this.newTenderToolStripMenuItem.Name = "newTenderToolStripMenuItem";
+            this.newTenderToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.newTenderToolStripMenuItem.Text = "New Tender";
+            this.newTenderToolStripMenuItem.Click += new System.EventHandler(this.newTenderToolStripMenuItem_Click);
+            // 
+            // projectTenderBOQSetupToolStripMenuItem
+            // 
+            this.projectTenderBOQSetupToolStripMenuItem.Name = "projectTenderBOQSetupToolStripMenuItem";
+            this.projectTenderBOQSetupToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.projectTenderBOQSetupToolStripMenuItem.Text = "Project Tender";
+            this.projectTenderBOQSetupToolStripMenuItem.Click += new System.EventHandler(this.projectTenderBOQSetupToolStripMenuItem_Click);
+            // 
+            // projectEstimationBudgetingToolStripMenuItem1
+            // 
+            this.projectEstimationBudgetingToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectEstimateToolStripMenuItem,
+            this.estimateReviewSummaryToolStripMenuItem});
+            this.projectEstimationBudgetingToolStripMenuItem1.Name = "projectEstimationBudgetingToolStripMenuItem1";
+            this.projectEstimationBudgetingToolStripMenuItem1.Size = new System.Drawing.Size(231, 22);
+            this.projectEstimationBudgetingToolStripMenuItem1.Text = "Project Estimation / Budgeting";
+            // 
+            // projectEstimateToolStripMenuItem
+            // 
+            this.projectEstimateToolStripMenuItem.Name = "projectEstimateToolStripMenuItem";
+            this.projectEstimateToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.projectEstimateToolStripMenuItem.Text = "Project Estimate";
+            this.projectEstimateToolStripMenuItem.Click += new System.EventHandler(this.projectEstimateToolStripMenuItem_Click);
+            // 
+            // estimateReviewSummaryToolStripMenuItem
+            // 
+            this.estimateReviewSummaryToolStripMenuItem.Name = "estimateReviewSummaryToolStripMenuItem";
+            this.estimateReviewSummaryToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.estimateReviewSummaryToolStripMenuItem.Text = "Estimate Review / Summary";
+            this.estimateReviewSummaryToolStripMenuItem.Click += new System.EventHandler(this.estimateReviewSummaryToolStripMenuItem_Click);
+            // 
+            // siteCenterToolStripMenuItem
+            // 
+            this.siteCenterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.siteToolStripMenuItem,
+            this.zoneListToolStripMenuItem});
+            this.siteCenterToolStripMenuItem.Name = "siteCenterToolStripMenuItem";
+            this.siteCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.siteCenterToolStripMenuItem.Text = "Site && Zones";
+            this.siteCenterToolStripMenuItem.Click += new System.EventHandler(this.siteCenterToolStripMenuItem_Click);
+            // 
+            // siteToolStripMenuItem
+            // 
+            this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
+            this.siteToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.siteToolStripMenuItem.Text = "Site List";
+            this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
+            // 
+            // zoneListToolStripMenuItem
+            // 
+            this.zoneListToolStripMenuItem.Name = "zoneListToolStripMenuItem";
+            this.zoneListToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.zoneListToolStripMenuItem.Text = "Zone List";
+            this.zoneListToolStripMenuItem.Click += new System.EventHandler(this.zoneListToolStripMenuItem_Click);
+            // 
+            // resourceMasterToolStripMenuItem
+            // 
+            this.resourceMasterToolStripMenuItem.Name = "resourceMasterToolStripMenuItem";
+            this.resourceMasterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.resourceMasterToolStripMenuItem.Text = "Resource Master";
+            this.resourceMasterToolStripMenuItem.Click += new System.EventHandler(this.resourceMasterToolStripMenuItem_Click);
+            // 
+            // projectSiteSetup0ToolStripMenuItem
+            // 
+            this.projectSiteSetup0ToolStripMenuItem.Name = "projectSiteSetup0ToolStripMenuItem";
+            this.projectSiteSetup0ToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.projectSiteSetup0ToolStripMenuItem.Text = "Project Site Setup";
+            this.projectSiteSetup0ToolStripMenuItem.Click += new System.EventHandler(this.projectSiteSetup0ToolStripMenuItem_Click);
+            // 
+            // wBSActivitiesToolStripMenuItem
+            // 
+            this.wBSActivitiesToolStripMenuItem.Name = "wBSActivitiesToolStripMenuItem";
+            this.wBSActivitiesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.wBSActivitiesToolStripMenuItem.Text = "WBS && Activities Setup";
+            this.wBSActivitiesToolStripMenuItem.Click += new System.EventHandler(this.wBSActivitiesToolStripMenuItem_Click);
+            // 
+            // projectTeamSupervisorsToolStripMenuItem
+            // 
+            this.projectTeamSupervisorsToolStripMenuItem.Name = "projectTeamSupervisorsToolStripMenuItem";
+            this.projectTeamSupervisorsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.projectTeamSupervisorsToolStripMenuItem.Text = "Project Team / Supervisors";
+            this.projectTeamSupervisorsToolStripMenuItem.Click += new System.EventHandler(this.projectTeamSupervisorsToolStripMenuItem_Click);
+            // 
+            // projectToolStripMenuItem1
+            // 
+            this.projectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectPlanningToolStripMenuItem,
+            this.projectScheduleToolStripMenuItem,
+            this.lookaheadPlanningToolStripMenuItem,
+            this.resourceNeedsToolStripMenuItem,
+            this.siteActivityPlanToolStripMenuItem});
+            this.projectToolStripMenuItem1.Name = "projectToolStripMenuItem1";
+            this.projectToolStripMenuItem1.Size = new System.Drawing.Size(229, 22);
+            this.projectToolStripMenuItem1.Text = "Project Planning";
+            this.projectToolStripMenuItem1.Visible = false;
+            this.projectToolStripMenuItem1.Click += new System.EventHandler(this.projectToolStripMenuItem1_Click);
+            // 
+            // projectPlanningToolStripMenuItem
+            // 
+            this.projectPlanningToolStripMenuItem.Name = "projectPlanningToolStripMenuItem";
+            this.projectPlanningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.projectPlanningToolStripMenuItem.Text = "Project Planning";
+            this.projectPlanningToolStripMenuItem.Click += new System.EventHandler(this.projectPlanningToolStripMenuItem_Click);
+            // 
+            // projectScheduleToolStripMenuItem
+            // 
+            this.projectScheduleToolStripMenuItem.Name = "projectScheduleToolStripMenuItem";
+            this.projectScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.projectScheduleToolStripMenuItem.Text = "Project Schedule";
+            this.projectScheduleToolStripMenuItem.Click += new System.EventHandler(this.projectScheduleToolStripMenuItem_Click);
+            // 
+            // lookaheadPlanningToolStripMenuItem
+            // 
+            this.lookaheadPlanningToolStripMenuItem.Name = "lookaheadPlanningToolStripMenuItem";
+            this.lookaheadPlanningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lookaheadPlanningToolStripMenuItem.Text = "Lookahead Planning";
+            this.lookaheadPlanningToolStripMenuItem.Click += new System.EventHandler(this.lookaheadPlanningToolStripMenuItem_Click);
+            // 
+            // resourceNeedsToolStripMenuItem
+            // 
+            this.resourceNeedsToolStripMenuItem.Name = "resourceNeedsToolStripMenuItem";
+            this.resourceNeedsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resourceNeedsToolStripMenuItem.Text = "Resource Needs";
+            this.resourceNeedsToolStripMenuItem.Click += new System.EventHandler(this.resourceNeedsToolStripMenuItem_Click);
+            // 
+            // siteActivityPlanToolStripMenuItem
+            // 
+            this.siteActivityPlanToolStripMenuItem.Name = "siteActivityPlanToolStripMenuItem";
+            this.siteActivityPlanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.siteActivityPlanToolStripMenuItem.Text = "Site Activity Plan";
+            this.siteActivityPlanToolStripMenuItem.Click += new System.EventHandler(this.siteActivityPlanToolStripMenuItem_Click);
+            // 
+            // sitePlanningToolStripMenuItem
+            // 
+            this.sitePlanningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.materialRequestToolStripMenuItem1,
+            this.materialRequestListToolStripMenuItem,
+            this.stockCheckAvailabilityToolStripMenuItem,
+            this.materialReservationToolStripMenuItem,
+            this.procurementRequestToolStripMenuItem,
+            this.materialIssueToolStripMenuItem1,
+            this.materialReceiptAtSiteToolStripMenuItem,
+            this.materialReturnToolStripMenuItem1,
+            this.materialTransferToolStripMenuItem,
+            this.materialConsumptionToolStripMenuItem2,
+            this.materialReconciliationToolStripMenuItem,
+            this.stockLedgerBinBalanceToolStripMenuItem});
+            this.sitePlanningToolStripMenuItem.Name = "sitePlanningToolStripMenuItem";
+            this.sitePlanningToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.sitePlanningToolStripMenuItem.Text = "Material Management";
+            // 
+            // materialRequestToolStripMenuItem1
+            // 
+            this.materialRequestToolStripMenuItem1.Name = "materialRequestToolStripMenuItem1";
+            this.materialRequestToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.materialRequestToolStripMenuItem1.Text = "Material Request";
+            this.materialRequestToolStripMenuItem1.Click += new System.EventHandler(this.materialRequestToolStripMenuItem1_Click);
+            // 
+            // materialRequestListToolStripMenuItem
+            // 
+            this.materialRequestListToolStripMenuItem.Name = "materialRequestListToolStripMenuItem";
+            this.materialRequestListToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.materialRequestListToolStripMenuItem.Text = "Material Request List";
+            this.materialRequestListToolStripMenuItem.Click += new System.EventHandler(this.materialRequestListToolStripMenuItem_Click);
+            // 
+            // stockCheckAvailabilityToolStripMenuItem
+            // 
+            this.stockCheckAvailabilityToolStripMenuItem.Name = "stockCheckAvailabilityToolStripMenuItem";
+            this.stockCheckAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.stockCheckAvailabilityToolStripMenuItem.Text = "Stock Check / Availability";
+            this.stockCheckAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.stockCheckAvailabilityToolStripMenuItem_Click);
+            // 
+            // materialReservationToolStripMenuItem
+            // 
+            this.materialReservationToolStripMenuItem.Name = "materialReservationToolStripMenuItem";
+            this.materialReservationToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.materialReservationToolStripMenuItem.Text = "Material Reservation";
+            this.materialReservationToolStripMenuItem.Click += new System.EventHandler(this.materialReservationToolStripMenuItem_Click);
+            // 
+            // procurementRequestToolStripMenuItem
+            // 
+            this.procurementRequestToolStripMenuItem.Name = "procurementRequestToolStripMenuItem";
+            this.procurementRequestToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.procurementRequestToolStripMenuItem.Text = "Procurement Request";
+            this.procurementRequestToolStripMenuItem.Click += new System.EventHandler(this.procurementRequestToolStripMenuItem_Click);
+            // 
+            // materialIssueToolStripMenuItem1
+            // 
+            this.materialIssueToolStripMenuItem1.Name = "materialIssueToolStripMenuItem1";
+            this.materialIssueToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.materialIssueToolStripMenuItem1.Text = "Material Issue";
+            this.materialIssueToolStripMenuItem1.Click += new System.EventHandler(this.materialIssueToolStripMenuItem1_Click);
+            // 
+            // materialReceiptAtSiteToolStripMenuItem
+            // 
+            this.materialReceiptAtSiteToolStripMenuItem.Name = "materialReceiptAtSiteToolStripMenuItem";
+            this.materialReceiptAtSiteToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.materialReceiptAtSiteToolStripMenuItem.Text = "Material Receipt at Site";
+            this.materialReceiptAtSiteToolStripMenuItem.Click += new System.EventHandler(this.materialReceiptAtSiteToolStripMenuItem_Click);
+            // 
+            // materialReturnToolStripMenuItem1
+            // 
+            this.materialReturnToolStripMenuItem1.Name = "materialReturnToolStripMenuItem1";
+            this.materialReturnToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.materialReturnToolStripMenuItem1.Text = "Material Return";
+            this.materialReturnToolStripMenuItem1.Click += new System.EventHandler(this.materialReturnToolStripMenuItem1_Click);
+            // 
+            // materialTransferToolStripMenuItem
+            // 
+            this.materialTransferToolStripMenuItem.Name = "materialTransferToolStripMenuItem";
+            this.materialTransferToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.materialTransferToolStripMenuItem.Text = "Material Transfer";
+            this.materialTransferToolStripMenuItem.Click += new System.EventHandler(this.materialTransferToolStripMenuItem_Click);
+            // 
+            // materialConsumptionToolStripMenuItem2
+            // 
+            this.materialConsumptionToolStripMenuItem2.Name = "materialConsumptionToolStripMenuItem2";
+            this.materialConsumptionToolStripMenuItem2.Size = new System.Drawing.Size(210, 22);
+            this.materialConsumptionToolStripMenuItem2.Text = "Material Consumption";
+            this.materialConsumptionToolStripMenuItem2.Click += new System.EventHandler(this.materialConsumptionToolStripMenuItem2_Click);
+            // 
+            // materialReconciliationToolStripMenuItem
+            // 
+            this.materialReconciliationToolStripMenuItem.Name = "materialReconciliationToolStripMenuItem";
+            this.materialReconciliationToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.materialReconciliationToolStripMenuItem.Text = "Material Reconciliation";
+            this.materialReconciliationToolStripMenuItem.Click += new System.EventHandler(this.materialReconciliationToolStripMenuItem_Click);
+            // 
+            // stockLedgerBinBalanceToolStripMenuItem
+            // 
+            this.stockLedgerBinBalanceToolStripMenuItem.Name = "stockLedgerBinBalanceToolStripMenuItem";
+            this.stockLedgerBinBalanceToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.stockLedgerBinBalanceToolStripMenuItem.Text = "Stock Ledger / Bin Balance";
+            this.stockLedgerBinBalanceToolStripMenuItem.Click += new System.EventHandler(this.stockLedgerBinBalanceToolStripMenuItem_Click);
+            // 
+            // dailyExecutionToolStripMenuItem
+            // 
+            this.dailyExecutionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dailySiteWorkEntryToolStripMenuItem,
+            this.progressUpdateWorkDoneEntryToolStripMenuItem,
+            this.workDoneWorkMeasurementToolStripMenuItem,
+            this.resourceDeploymentToolStripMenuItem,
+            this.labourAttendanceToolStripMenuItem,
+            this.equipmentUsageToolStripMenuItem,
+            this.dailySiteReportToolStripMenuItem,
+            this.delayHindranceLogToolStripMenuItem,
+            this.siteDiaryToolStripMenuItem,
+            this.workOnSiteDailyWorkPlanToolStripMenuItem});
+            this.dailyExecutionToolStripMenuItem.Name = "dailyExecutionToolStripMenuItem";
+            this.dailyExecutionToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.dailyExecutionToolStripMenuItem.Text = "Daily Site Execution";
+            // 
+            // dailySiteWorkEntryToolStripMenuItem
+            // 
+            this.dailySiteWorkEntryToolStripMenuItem.Name = "dailySiteWorkEntryToolStripMenuItem";
+            this.dailySiteWorkEntryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.dailySiteWorkEntryToolStripMenuItem.Text = "Daily Site Work Entry";
+            this.dailySiteWorkEntryToolStripMenuItem.Click += new System.EventHandler(this.dailySiteWorkEntryToolStripMenuItem_Click);
+            // 
+            // progressUpdateWorkDoneEntryToolStripMenuItem
+            // 
+            this.progressUpdateWorkDoneEntryToolStripMenuItem.Name = "progressUpdateWorkDoneEntryToolStripMenuItem";
+            this.progressUpdateWorkDoneEntryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.progressUpdateWorkDoneEntryToolStripMenuItem.Text = "Daily Progress Update";
+            this.progressUpdateWorkDoneEntryToolStripMenuItem.Click += new System.EventHandler(this.progressUpdateWorkDoneEntryToolStripMenuItem_Click);
+            // 
+            // workDoneWorkMeasurementToolStripMenuItem
+            // 
+            this.workDoneWorkMeasurementToolStripMenuItem.Name = "workDoneWorkMeasurementToolStripMenuItem";
+            this.workDoneWorkMeasurementToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.workDoneWorkMeasurementToolStripMenuItem.Text = "Work Done / Work Measurement";
+            this.workDoneWorkMeasurementToolStripMenuItem.Click += new System.EventHandler(this.workDoneWorkMeasurementToolStripMenuItem_Click);
+            // 
+            // resourceDeploymentToolStripMenuItem
+            // 
+            this.resourceDeploymentToolStripMenuItem.Name = "resourceDeploymentToolStripMenuItem";
+            this.resourceDeploymentToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.resourceDeploymentToolStripMenuItem.Text = "Resource Deployment";
+            this.resourceDeploymentToolStripMenuItem.Click += new System.EventHandler(this.resourceDeploymentToolStripMenuItem_Click);
+            // 
+            // labourAttendanceToolStripMenuItem
+            // 
+            this.labourAttendanceToolStripMenuItem.Name = "labourAttendanceToolStripMenuItem";
+            this.labourAttendanceToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.labourAttendanceToolStripMenuItem.Text = "Labour Attendance";
+            this.labourAttendanceToolStripMenuItem.Click += new System.EventHandler(this.labourAttendanceToolStripMenuItem_Click);
+            // 
+            // equipmentUsageToolStripMenuItem
+            // 
+            this.equipmentUsageToolStripMenuItem.Name = "equipmentUsageToolStripMenuItem";
+            this.equipmentUsageToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.equipmentUsageToolStripMenuItem.Text = "Equipment Usage";
+            this.equipmentUsageToolStripMenuItem.Click += new System.EventHandler(this.equipmentUsageToolStripMenuItem_Click);
+            // 
+            // dailySiteReportToolStripMenuItem
+            // 
+            this.dailySiteReportToolStripMenuItem.Name = "dailySiteReportToolStripMenuItem";
+            this.dailySiteReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.dailySiteReportToolStripMenuItem.Text = "Daily Site Report";
+            this.dailySiteReportToolStripMenuItem.Click += new System.EventHandler(this.dailySiteReportToolStripMenuItem_Click);
+            // 
+            // delayHindranceLogToolStripMenuItem
+            // 
+            this.delayHindranceLogToolStripMenuItem.Name = "delayHindranceLogToolStripMenuItem";
+            this.delayHindranceLogToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.delayHindranceLogToolStripMenuItem.Text = "Delay / Hindrance Log";
+            this.delayHindranceLogToolStripMenuItem.Click += new System.EventHandler(this.delayHindranceLogToolStripMenuItem_Click);
+            // 
+            // siteDiaryToolStripMenuItem
+            // 
+            this.siteDiaryToolStripMenuItem.Name = "siteDiaryToolStripMenuItem";
+            this.siteDiaryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.siteDiaryToolStripMenuItem.Text = "Site Diary";
+            this.siteDiaryToolStripMenuItem.Click += new System.EventHandler(this.siteDiaryToolStripMenuItem_Click);
+            // 
+            // workOnSiteDailyWorkPlanToolStripMenuItem
+            // 
+            this.workOnSiteDailyWorkPlanToolStripMenuItem.Name = "workOnSiteDailyWorkPlanToolStripMenuItem";
+            this.workOnSiteDailyWorkPlanToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.workOnSiteDailyWorkPlanToolStripMenuItem.Text = "Work On Site / Daily Work Plan";
+            this.workOnSiteDailyWorkPlanToolStripMenuItem.Click += new System.EventHandler(this.workOnSiteDailyWorkPlanToolStripMenuItem_Click);
+            // 
+            // qualityHSEToolStripMenuItem
+            // 
+            this.qualityHSEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inspectionToolStripMenuItem,
+            this.qAQCInspectionToolStripMenuItem,
+            this.hSEChecksToolStripMenuItem,
+            this.nCRInToolStripMenuItem,
+            this.incidentAccidentRegisterToolStripMenuItem,
+            this.correctiveActionTrackingToolStripMenuItem,
+            this.closeoutRegisterToolStripMenuItem});
+            this.qualityHSEToolStripMenuItem.Name = "qualityHSEToolStripMenuItem";
+            this.qualityHSEToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.qualityHSEToolStripMenuItem.Text = "Quality && HSE";
+            this.qualityHSEToolStripMenuItem.Visible = false;
+            // 
+            // inspectionToolStripMenuItem
+            // 
+            this.inspectionToolStripMenuItem.Name = "inspectionToolStripMenuItem";
+            this.inspectionToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.inspectionToolStripMenuItem.Text = "Inspection Request";
+            this.inspectionToolStripMenuItem.Visible = false;
+            this.inspectionToolStripMenuItem.Click += new System.EventHandler(this.inspectionToolStripMenuItem_Click);
+            // 
+            // qAQCInspectionToolStripMenuItem
+            // 
+            this.qAQCInspectionToolStripMenuItem.Name = "qAQCInspectionToolStripMenuItem";
+            this.qAQCInspectionToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.qAQCInspectionToolStripMenuItem.Text = "QA/QC Inspection";
+            this.qAQCInspectionToolStripMenuItem.Visible = false;
+            this.qAQCInspectionToolStripMenuItem.Click += new System.EventHandler(this.qAQCInspectionToolStripMenuItem_Click);
+            // 
+            // hSEChecksToolStripMenuItem
+            // 
+            this.hSEChecksToolStripMenuItem.Name = "hSEChecksToolStripMenuItem";
+            this.hSEChecksToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.hSEChecksToolStripMenuItem.Text = "HSE Checklist";
+            this.hSEChecksToolStripMenuItem.Visible = false;
+            this.hSEChecksToolStripMenuItem.Click += new System.EventHandler(this.hSEChecksToolStripMenuItem_Click);
+            // 
+            // nCRInToolStripMenuItem
+            // 
+            this.nCRInToolStripMenuItem.Name = "nCRInToolStripMenuItem";
+            this.nCRInToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.nCRInToolStripMenuItem.Text = "NCR / Non-Conformance";
+            this.nCRInToolStripMenuItem.Visible = false;
+            this.nCRInToolStripMenuItem.Click += new System.EventHandler(this.nCRInToolStripMenuItem_Click);
+            // 
+            // incidentAccidentRegisterToolStripMenuItem
+            // 
+            this.incidentAccidentRegisterToolStripMenuItem.Name = "incidentAccidentRegisterToolStripMenuItem";
+            this.incidentAccidentRegisterToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.incidentAccidentRegisterToolStripMenuItem.Text = "Incident / Accident Register";
+            this.incidentAccidentRegisterToolStripMenuItem.Visible = false;
+            this.incidentAccidentRegisterToolStripMenuItem.Click += new System.EventHandler(this.incidentAccidentRegisterToolStripMenuItem_Click);
+            // 
+            // correctiveActionTrackingToolStripMenuItem
+            // 
+            this.correctiveActionTrackingToolStripMenuItem.Name = "correctiveActionTrackingToolStripMenuItem";
+            this.correctiveActionTrackingToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.correctiveActionTrackingToolStripMenuItem.Text = "Corrective Action Tracking";
+            this.correctiveActionTrackingToolStripMenuItem.Visible = false;
+            this.correctiveActionTrackingToolStripMenuItem.Click += new System.EventHandler(this.correctiveActionTrackingToolStripMenuItem_Click);
+            // 
+            // closeoutRegisterToolStripMenuItem
+            // 
+            this.closeoutRegisterToolStripMenuItem.Name = "closeoutRegisterToolStripMenuItem";
+            this.closeoutRegisterToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.closeoutRegisterToolStripMenuItem.Text = "Closeout Register";
+            this.closeoutRegisterToolStripMenuItem.Visible = false;
+            this.closeoutRegisterToolStripMenuItem.Click += new System.EventHandler(this.closeoutRegisterToolStripMenuItem_Click);
+            // 
+            // subcontractorsToolStripMenuItem
+            // 
+            this.subcontractorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subcontractorCenterToolStripMenuItem1,
+            this.workAssignToolStripMenuItem,
+            this.materialSupplyToolStripMenuItem,
+            this.measureApproveToolStripMenuItem,
+            this.subcontractorPaymentToolStripMenuItem,
+            this.retentionBackChargeTrackingToolStripMenuItem});
+            this.subcontractorsToolStripMenuItem.Name = "subcontractorsToolStripMenuItem";
+            this.subcontractorsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.subcontractorsToolStripMenuItem.Text = "Subcontractors";
+            // 
+            // subcontractorCenterToolStripMenuItem1
+            // 
+            this.subcontractorCenterToolStripMenuItem1.Name = "subcontractorCenterToolStripMenuItem1";
+            this.subcontractorCenterToolStripMenuItem1.Size = new System.Drawing.Size(244, 22);
+            this.subcontractorCenterToolStripMenuItem1.Text = "Subcontractor Center";
+            this.subcontractorCenterToolStripMenuItem1.Click += new System.EventHandler(this.subcontractorCenterToolStripMenuItem1_Click);
+            // 
+            // workAssignToolStripMenuItem
+            // 
+            this.workAssignToolStripMenuItem.Name = "workAssignToolStripMenuItem";
+            this.workAssignToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.workAssignToolStripMenuItem.Text = "Work Assignment";
+            this.workAssignToolStripMenuItem.Visible = false;
+            this.workAssignToolStripMenuItem.Click += new System.EventHandler(this.workAssignToolStripMenuItem_Click);
+            // 
+            // materialSupplyToolStripMenuItem
+            // 
+            this.materialSupplyToolStripMenuItem.Name = "materialSupplyToolStripMenuItem";
+            this.materialSupplyToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.materialSupplyToolStripMenuItem.Text = "Material Supply";
+            this.materialSupplyToolStripMenuItem.Visible = false;
+            this.materialSupplyToolStripMenuItem.Click += new System.EventHandler(this.materialSupplyToolStripMenuItem_Click);
+            // 
+            // measureApproveToolStripMenuItem
+            // 
+            this.measureApproveToolStripMenuItem.Name = "measureApproveToolStripMenuItem";
+            this.measureApproveToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.measureApproveToolStripMenuItem.Text = "Measurement && Approval";
+            this.measureApproveToolStripMenuItem.Visible = false;
+            this.measureApproveToolStripMenuItem.Click += new System.EventHandler(this.measureApproveToolStripMenuItem_Click);
+            // 
+            // subcontractorPaymentToolStripMenuItem
+            // 
+            this.subcontractorPaymentToolStripMenuItem.Name = "subcontractorPaymentToolStripMenuItem";
+            this.subcontractorPaymentToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.subcontractorPaymentToolStripMenuItem.Text = "Subcontractor Payment";
+            this.subcontractorPaymentToolStripMenuItem.Visible = false;
+            this.subcontractorPaymentToolStripMenuItem.Click += new System.EventHandler(this.subcontractorPaymentToolStripMenuItem_Click);
+            // 
+            // retentionBackChargeTrackingToolStripMenuItem
+            // 
+            this.retentionBackChargeTrackingToolStripMenuItem.Name = "retentionBackChargeTrackingToolStripMenuItem";
+            this.retentionBackChargeTrackingToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.retentionBackChargeTrackingToolStripMenuItem.Text = "Retention / Back Charge Tracking";
+            this.retentionBackChargeTrackingToolStripMenuItem.Visible = false;
+            this.retentionBackChargeTrackingToolStripMenuItem.Click += new System.EventHandler(this.retentionBackChargeTrackingToolStripMenuItem_Click);
+            // 
+            // handoverToolStripMenuItem
+            // 
+            this.handoverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.punchListToolStripMenuItem,
+            this.snagDefectListToolStripMenuItem,
+            this.testingAsBuiltToolStripMenuItem,
+            this.asBuiltSubmissionToolStripMenuItem,
+            this.finalInspectionToolStripMenuItem,
+            this.practicalCompletionToolStripMenuItem,
+            this.finalHandoverToolStripMenuItem});
+            this.handoverToolStripMenuItem.Name = "handoverToolStripMenuItem";
+            this.handoverToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.handoverToolStripMenuItem.Text = "Handover && Closeout";
+            this.handoverToolStripMenuItem.Visible = false;
+            // 
+            // punchListToolStripMenuItem
+            // 
+            this.punchListToolStripMenuItem.Name = "punchListToolStripMenuItem";
+            this.punchListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.punchListToolStripMenuItem.Text = "Punch List";
+            this.punchListToolStripMenuItem.Visible = false;
+            this.punchListToolStripMenuItem.Click += new System.EventHandler(this.punchListToolStripMenuItem_Click);
+            // 
+            // snagDefectListToolStripMenuItem
+            // 
+            this.snagDefectListToolStripMenuItem.Name = "snagDefectListToolStripMenuItem";
+            this.snagDefectListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.snagDefectListToolStripMenuItem.Text = "Snag / Defect List";
+            this.snagDefectListToolStripMenuItem.Visible = false;
+            // 
+            // testingAsBuiltToolStripMenuItem
+            // 
+            this.testingAsBuiltToolStripMenuItem.Name = "testingAsBuiltToolStripMenuItem";
+            this.testingAsBuiltToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.testingAsBuiltToolStripMenuItem.Text = "Testing && Commissioning";
+            this.testingAsBuiltToolStripMenuItem.Visible = false;
+            this.testingAsBuiltToolStripMenuItem.Click += new System.EventHandler(this.testingAsBuiltToolStripMenuItem_Click);
+            // 
+            // asBuiltSubmissionToolStripMenuItem
+            // 
+            this.asBuiltSubmissionToolStripMenuItem.Name = "asBuiltSubmissionToolStripMenuItem";
+            this.asBuiltSubmissionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.asBuiltSubmissionToolStripMenuItem.Text = "As-Built Submission";
+            this.asBuiltSubmissionToolStripMenuItem.Visible = false;
+            // 
+            // finalInspectionToolStripMenuItem
+            // 
+            this.finalInspectionToolStripMenuItem.Name = "finalInspectionToolStripMenuItem";
+            this.finalInspectionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.finalInspectionToolStripMenuItem.Text = "Final Inspection";
+            this.finalInspectionToolStripMenuItem.Visible = false;
+            // 
+            // practicalCompletionToolStripMenuItem
+            // 
+            this.practicalCompletionToolStripMenuItem.Name = "practicalCompletionToolStripMenuItem";
+            this.practicalCompletionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.practicalCompletionToolStripMenuItem.Text = "Practical Completion";
+            this.practicalCompletionToolStripMenuItem.Visible = false;
+            // 
+            // finalHandoverToolStripMenuItem
+            // 
+            this.finalHandoverToolStripMenuItem.Name = "finalHandoverToolStripMenuItem";
+            this.finalHandoverToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.finalHandoverToolStripMenuItem.Text = "Final Handover";
+            this.finalHandoverToolStripMenuItem.Visible = false;
+            this.finalHandoverToolStripMenuItem.Click += new System.EventHandler(this.finalHandoverToolStripMenuItem_Click);
+            // 
+            // reportsControlsToolStripMenuItem
+            // 
+            this.reportsControlsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectDashboardToolStripMenuItem2,
+            this.bOQProgressReportToolStripMenuItem,
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem,
+            this.dailyProgressReportToolStripMenuItem,
+            this.labourEquipmentUtilizationToolStripMenuItem,
+            this.costVsBudgetReportToolStripMenuItem,
+            this.materialReconciliationReportToolStripMenuItem,
+            this.delayHindranceReportToolStripMenuItem,
+            this.qualityNCRSummaryToolStripMenuItem,
+            this.hSESummaryToolStripMenuItem,
+            this.subcontractorPerformanceReportToolStripMenuItem,
+            this.projectCompletionHandoverSToolStripMenuItem});
+            this.reportsControlsToolStripMenuItem.Name = "reportsControlsToolStripMenuItem";
+            this.reportsControlsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.reportsControlsToolStripMenuItem.Text = "Reports && Dashboards";
+            // 
+            // projectDashboardToolStripMenuItem2
+            // 
+            this.projectDashboardToolStripMenuItem2.Name = "projectDashboardToolStripMenuItem2";
+            this.projectDashboardToolStripMenuItem2.Size = new System.Drawing.Size(325, 22);
+            this.projectDashboardToolStripMenuItem2.Text = "Project Dashboard";
+            this.projectDashboardToolStripMenuItem2.Click += new System.EventHandler(this.projectDashboardToolStripMenuItem2_Click);
+            // 
+            // bOQProgressReportToolStripMenuItem
+            // 
+            this.bOQProgressReportToolStripMenuItem.Name = "bOQProgressReportToolStripMenuItem";
+            this.bOQProgressReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.bOQProgressReportToolStripMenuItem.Text = "BOQ Progress Report";
+            this.bOQProgressReportToolStripMenuItem.Visible = false;
+            this.bOQProgressReportToolStripMenuItem.Click += new System.EventHandler(this.bOQProgressReportToolStripMenuItem_Click);
+            // 
+            // materialRequestIssueReceiptConsumptionToolStripMenuItem
+            // 
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Name = "materialRequestIssueReceiptConsumptionToolStripMenuItem";
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Text = "Material Request - Issue - Receipt - Consumption";
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Visible = false;
+            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Click += new System.EventHandler(this.materialRequestIssueReceiptConsumptionToolStripMenuItem_Click);
+            // 
+            // dailyProgressReportToolStripMenuItem
+            // 
+            this.dailyProgressReportToolStripMenuItem.Name = "dailyProgressReportToolStripMenuItem";
+            this.dailyProgressReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.dailyProgressReportToolStripMenuItem.Text = "Daily Progress Report";
+            this.dailyProgressReportToolStripMenuItem.Visible = false;
+            this.dailyProgressReportToolStripMenuItem.Click += new System.EventHandler(this.dailyProgressReportToolStripMenuItem_Click);
+            // 
+            // labourEquipmentUtilizationToolStripMenuItem
+            // 
+            this.labourEquipmentUtilizationToolStripMenuItem.Name = "labourEquipmentUtilizationToolStripMenuItem";
+            this.labourEquipmentUtilizationToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.labourEquipmentUtilizationToolStripMenuItem.Text = "Labour && Equipment Utilization";
+            this.labourEquipmentUtilizationToolStripMenuItem.Visible = false;
+            this.labourEquipmentUtilizationToolStripMenuItem.Click += new System.EventHandler(this.labourEquipmentUtilizationToolStripMenuItem_Click);
+            // 
+            // costVsBudgetReportToolStripMenuItem
+            // 
+            this.costVsBudgetReportToolStripMenuItem.Name = "costVsBudgetReportToolStripMenuItem";
+            this.costVsBudgetReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.costVsBudgetReportToolStripMenuItem.Text = "Cost vs Budget Report";
+            this.costVsBudgetReportToolStripMenuItem.Visible = false;
+            this.costVsBudgetReportToolStripMenuItem.Click += new System.EventHandler(this.costVsBudgetReportToolStripMenuItem_Click);
+            // 
+            // materialReconciliationReportToolStripMenuItem
+            // 
+            this.materialReconciliationReportToolStripMenuItem.Name = "materialReconciliationReportToolStripMenuItem";
+            this.materialReconciliationReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.materialReconciliationReportToolStripMenuItem.Text = "Material Reconciliation Report";
+            this.materialReconciliationReportToolStripMenuItem.Visible = false;
+            // 
+            // delayHindranceReportToolStripMenuItem
+            // 
+            this.delayHindranceReportToolStripMenuItem.Name = "delayHindranceReportToolStripMenuItem";
+            this.delayHindranceReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.delayHindranceReportToolStripMenuItem.Text = "Delay / Hindrance Report";
+            this.delayHindranceReportToolStripMenuItem.Visible = false;
+            // 
+            // qualityNCRSummaryToolStripMenuItem
+            // 
+            this.qualityNCRSummaryToolStripMenuItem.Name = "qualityNCRSummaryToolStripMenuItem";
+            this.qualityNCRSummaryToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.qualityNCRSummaryToolStripMenuItem.Text = "Quality / NCR Summary";
+            this.qualityNCRSummaryToolStripMenuItem.Visible = false;
+            // 
+            // hSESummaryToolStripMenuItem
+            // 
+            this.hSESummaryToolStripMenuItem.Name = "hSESummaryToolStripMenuItem";
+            this.hSESummaryToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.hSESummaryToolStripMenuItem.Text = "HSE Summary";
+            this.hSESummaryToolStripMenuItem.Visible = false;
+            // 
+            // subcontractorPerformanceReportToolStripMenuItem
+            // 
+            this.subcontractorPerformanceReportToolStripMenuItem.Name = "subcontractorPerformanceReportToolStripMenuItem";
+            this.subcontractorPerformanceReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.subcontractorPerformanceReportToolStripMenuItem.Text = "Subcontractor Performance Report";
+            this.subcontractorPerformanceReportToolStripMenuItem.Visible = false;
+            this.subcontractorPerformanceReportToolStripMenuItem.Click += new System.EventHandler(this.subcontractorPerformanceReportToolStripMenuItem_Click);
+            // 
+            // projectCompletionHandoverSToolStripMenuItem
+            // 
+            this.projectCompletionHandoverSToolStripMenuItem.Name = "projectCompletionHandoverSToolStripMenuItem";
+            this.projectCompletionHandoverSToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
+            this.projectCompletionHandoverSToolStripMenuItem.Text = "Project Completion / Handover Status";
+            this.projectCompletionHandoverSToolStripMenuItem.Visible = false;
+            // 
+            // projectManagementToolStripMenuItem
+            // 
+            this.projectManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectSummaryToolStripMenuItem,
+            this.projectActivitySummaryToolStripMenuItem,
+            this.projectAssignSummaryToolStripMenuItem,
+            this.projectResourceToolStripMenuItem,
+            this.projectProgressSummaryToolStripMenuItem,
+            this.projectWorkProgressSummaryToolStripMenuItem});
+            this.projectManagementToolStripMenuItem.Name = "projectManagementToolStripMenuItem";
+            this.projectManagementToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.projectManagementToolStripMenuItem.Text = "Project Management";
+            this.projectManagementToolStripMenuItem.Visible = false;
+            // 
+            // projectSummaryToolStripMenuItem
+            // 
+            this.projectSummaryToolStripMenuItem.Name = "projectSummaryToolStripMenuItem";
+            this.projectSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectSummaryToolStripMenuItem.Text = "Project Summary";
+            this.projectSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectSummaryToolStripMenuItem_Click);
+            // 
+            // projectActivitySummaryToolStripMenuItem
+            // 
+            this.projectActivitySummaryToolStripMenuItem.Name = "projectActivitySummaryToolStripMenuItem";
+            this.projectActivitySummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectActivitySummaryToolStripMenuItem.Text = "Project Activity Summary";
+            this.projectActivitySummaryToolStripMenuItem.Click += new System.EventHandler(this.projectActivityToolStripMenuItem_Click);
+            // 
+            // projectAssignSummaryToolStripMenuItem
+            // 
+            this.projectAssignSummaryToolStripMenuItem.Name = "projectAssignSummaryToolStripMenuItem";
+            this.projectAssignSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectAssignSummaryToolStripMenuItem.Text = "Project Assign Summary";
+            this.projectAssignSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectAssignSummaryToolStripMenuItem_Click);
+            // 
+            // projectResourceToolStripMenuItem
+            // 
+            this.projectResourceToolStripMenuItem.Name = "projectResourceToolStripMenuItem";
+            this.projectResourceToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectResourceToolStripMenuItem.Text = "Project Resource Summary";
+            this.projectResourceToolStripMenuItem.Click += new System.EventHandler(this.projectResourceToolStripMenuItem_Click);
+            // 
+            // projectProgressSummaryToolStripMenuItem
+            // 
+            this.projectProgressSummaryToolStripMenuItem.Name = "projectProgressSummaryToolStripMenuItem";
+            this.projectProgressSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectProgressSummaryToolStripMenuItem.Text = "Project Progress Summary";
+            this.projectProgressSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectProgressSummaryToolStripMenuItem_Click);
+            // 
+            // projectWorkProgressSummaryToolStripMenuItem
+            // 
+            this.projectWorkProgressSummaryToolStripMenuItem.Name = "projectWorkProgressSummaryToolStripMenuItem";
+            this.projectWorkProgressSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.projectWorkProgressSummaryToolStripMenuItem.Text = "Project Work Progress Summary";
+            this.projectWorkProgressSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectWorkProgressSummaryToolStripMenuItem_Click);
+            // 
+            // projectDashBoardToolStripMenuItem
+            // 
+            this.projectDashBoardToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.projectDashboardToolStripMenuItem1,
+            this.timelineToolStripMenuItem,
+            this.timeSheetReportToolStripMenuItem});
+            this.projectDashBoardToolStripMenuItem.Name = "projectDashBoardToolStripMenuItem";
+            this.projectDashBoardToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.projectDashBoardToolStripMenuItem.Text = "Project Dashboards && Reports";
+            this.projectDashBoardToolStripMenuItem.Visible = false;
+            // 
+            // projectDashboardToolStripMenuItem1
+            // 
+            this.projectDashboardToolStripMenuItem1.Name = "projectDashboardToolStripMenuItem1";
+            this.projectDashboardToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.projectDashboardToolStripMenuItem1.Text = "Project Dashboard";
+            this.projectDashboardToolStripMenuItem1.Click += new System.EventHandler(this.projectDashboardToolStripMenuItem1_Click);
+            // 
+            // timelineToolStripMenuItem
+            // 
+            this.timelineToolStripMenuItem.Name = "timelineToolStripMenuItem";
+            this.timelineToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.timelineToolStripMenuItem.Text = "Timeline";
+            this.timelineToolStripMenuItem.Click += new System.EventHandler(this.timelineToolStripMenuItem_Click);
+            // 
+            // timeSheetReportToolStripMenuItem
+            // 
+            this.timeSheetReportToolStripMenuItem.Name = "timeSheetReportToolStripMenuItem";
+            this.timeSheetReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.timeSheetReportToolStripMenuItem.Text = "TimeSheet Report";
+            this.timeSheetReportToolStripMenuItem.Click += new System.EventHandler(this.timeSheetReportToolStripMenuItem_Click);
+            // 
+            // projectProgressToolStripMenuItem
+            // 
+            this.projectProgressToolStripMenuItem.Name = "projectProgressToolStripMenuItem";
+            this.projectProgressToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.projectProgressToolStripMenuItem.Text = "Project Time Line";
+            this.projectProgressToolStripMenuItem.Click += new System.EventHandler(this.projectProgressToolStripMenuItem_Click);
+            // 
+            // ganttChartToolStripMenuItem
+            // 
+            this.ganttChartToolStripMenuItem.Name = "ganttChartToolStripMenuItem";
+            this.ganttChartToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.ganttChartToolStripMenuItem.Text = "GanttChart Sample";
+            this.ganttChartToolStripMenuItem.Click += new System.EventHandler(this.ganttChartToolStripMenuItem_Click);
+            // 
+            // engineerActivityToolStripMenuItem
+            // 
+            this.engineerActivityToolStripMenuItem.Name = "engineerActivityToolStripMenuItem";
+            this.engineerActivityToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.engineerActivityToolStripMenuItem.Text = "Engineer Activity";
+            this.engineerActivityToolStripMenuItem.Visible = false;
+            this.engineerActivityToolStripMenuItem.Click += new System.EventHandler(this.engineerActivityToolStripMenuItem_Click);
+            // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3026,7 +3834,7 @@
             this.auditTrailToolStripMenuItem,
             this.pettyCashToolStripMenuItem1,
             this.costCenterToolStripMenuItem1,
-            this.toolStripMenuItem8,
+            this.TaxReportToolStripMenuItem,
             this.fixedAssetToolStripMenuItem,
             this.toolStripMenuItem4,
             this.closingDateExceptionReportToolStripMenuItem,
@@ -3045,45 +3853,45 @@
             // adjustedTrialBalanceToolStripMenuItem
             // 
             this.adjustedTrialBalanceToolStripMenuItem.Name = "adjustedTrialBalanceToolStripMenuItem";
-            this.adjustedTrialBalanceToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.adjustedTrialBalanceToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.adjustedTrialBalanceToolStripMenuItem.Text = "Adjusted Trial Balance";
             // 
             // trialBalanceToolStripMenuItem
             // 
             this.trialBalanceToolStripMenuItem.Name = "trialBalanceToolStripMenuItem";
-            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.trialBalanceToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.trialBalanceToolStripMenuItem.Text = "Trial Balance";
             this.trialBalanceToolStripMenuItem.Click += new System.EventHandler(this.trialBalanceToolStripMenuItem_Click);
             // 
             // generalLedgerToolStripMenuItem
             // 
             this.generalLedgerToolStripMenuItem.Name = "generalLedgerToolStripMenuItem";
-            this.generalLedgerToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.generalLedgerToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.generalLedgerToolStripMenuItem.Text = "General Ledger";
             this.generalLedgerToolStripMenuItem.Click += new System.EventHandler(this.generalLedgerToolStripMenuItem_Click);
             // 
             // transactionDetailByAccountToolStripMenuItem
             // 
             this.transactionDetailByAccountToolStripMenuItem.Name = "transactionDetailByAccountToolStripMenuItem";
-            this.transactionDetailByAccountToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.transactionDetailByAccountToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.transactionDetailByAccountToolStripMenuItem.Text = "Transaction Detail by Account";
             // 
             // adjustingJournalEntriesToolStripMenuItem
             // 
             this.adjustingJournalEntriesToolStripMenuItem.Name = "adjustingJournalEntriesToolStripMenuItem";
-            this.adjustingJournalEntriesToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.adjustingJournalEntriesToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.adjustingJournalEntriesToolStripMenuItem.Text = "Adjusting Journal Entries";
             // 
             // journalToolStripMenuItem
             // 
             this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
-            this.journalToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.journalToolStripMenuItem.Text = "Journal";
             // 
             // auditTrailToolStripMenuItem
             // 
             this.auditTrailToolStripMenuItem.Name = "auditTrailToolStripMenuItem";
-            this.auditTrailToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.auditTrailToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.auditTrailToolStripMenuItem.Text = "Audit Trail Report";
             this.auditTrailToolStripMenuItem.Click += new System.EventHandler(this.auditTrailToolStripMenuItem_Click);
             // 
@@ -3094,7 +3902,7 @@
             this.detailToolStripMenuItem,
             this.transactionToolStripMenuItem});
             this.pettyCashToolStripMenuItem1.Name = "pettyCashToolStripMenuItem1";
-            this.pettyCashToolStripMenuItem1.Size = new System.Drawing.Size(269, 30);
+            this.pettyCashToolStripMenuItem1.Size = new System.Drawing.Size(269, 22);
             this.pettyCashToolStripMenuItem1.Text = "Petty Cash";
             this.pettyCashToolStripMenuItem1.Click += new System.EventHandler(this.pettyCashToolStripMenuItem1_Click);
             // 
@@ -3122,29 +3930,29 @@
             // costCenterToolStripMenuItem1
             // 
             this.costCenterToolStripMenuItem1.Name = "costCenterToolStripMenuItem1";
-            this.costCenterToolStripMenuItem1.Size = new System.Drawing.Size(269, 30);
+            this.costCenterToolStripMenuItem1.Size = new System.Drawing.Size(269, 22);
             this.costCenterToolStripMenuItem1.Text = "Cost Center";
             this.costCenterToolStripMenuItem1.Click += new System.EventHandler(this.costCenterToolStripMenuItem1_Click);
             // 
-            // toolStripMenuItem8
+            // TaxReportToolStripMenuItem
             // 
-            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TaxReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VATSummaryReportToolStripMenuItem,
             this.VATDetailedReportToolStripMenuItem,
             this.VATReportToolStripMenuItem,
             this.VATCategoryReportToolStripMenuItem1});
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(269, 30);
-            this.toolStripMenuItem8.Text = "Tax Reports\n";
+            this.TaxReportToolStripMenuItem.Name = "TaxReportToolStripMenuItem";
+            this.TaxReportToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.TaxReportToolStripMenuItem.Text = "Tax Reports";
             // 
-            // zToolStripMenuItem
+            // VATSummaryReportToolStripMenuItem
             // 
             this.VATSummaryReportToolStripMenuItem.Name = "VATSummaryReportToolStripMenuItem";
             this.VATSummaryReportToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.VATSummaryReportToolStripMenuItem.Text = "VAT Summary Report (FTA)";
             this.VATSummaryReportToolStripMenuItem.Click += new System.EventHandler(this.VATSummaryReportToolStripMenuItem_Click);
             // 
-            // VATReportToolStripMenuItem1
+            // VATDetailedReportToolStripMenuItem
             // 
             this.VATDetailedReportToolStripMenuItem.Name = "VATDetailedReportToolStripMenuItem";
             this.VATDetailedReportToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
@@ -3168,69 +3976,70 @@
             // fixedAssetToolStripMenuItem
             // 
             this.fixedAssetToolStripMenuItem.Name = "fixedAssetToolStripMenuItem";
-            this.fixedAssetToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.fixedAssetToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.fixedAssetToolStripMenuItem.Text = "Fixed Asset";
             this.fixedAssetToolStripMenuItem.Click += new System.EventHandler(this.fixedAssetToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(269, 30);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(269, 22);
             this.toolStripMenuItem4.Text = "Prepaid Expense";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // closingDateExceptionReportToolStripMenuItem
             // 
             this.closingDateExceptionReportToolStripMenuItem.Name = "closingDateExceptionReportToolStripMenuItem";
-            this.closingDateExceptionReportToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.closingDateExceptionReportToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.closingDateExceptionReportToolStripMenuItem.Text = "Closing Date Exception Report";
             // 
             // voidedDeletedTrnasactionsSummaryToolStripMenuItem
             // 
             this.voidedDeletedTrnasactionsSummaryToolStripMenuItem.Name = "voidedDeletedTrnasactionsSummaryToolStripMenuItem";
-            this.voidedDeletedTrnasactionsSummaryToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.voidedDeletedTrnasactionsSummaryToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.voidedDeletedTrnasactionsSummaryToolStripMenuItem.Text = "Voided/Deleted Transactions Summary";
             // 
             // voidedDeletedTrnasactionsDetailsToolStripMenuItem
             // 
             this.voidedDeletedTrnasactionsDetailsToolStripMenuItem.Name = "voidedDeletedTrnasactionsDetailsToolStripMenuItem";
-            this.voidedDeletedTrnasactionsDetailsToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.voidedDeletedTrnasactionsDetailsToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.voidedDeletedTrnasactionsDetailsToolStripMenuItem.Text = "Voided/Deleted Transactions Details";
             // 
             // transactionListByDateToolStripMenuItem
             // 
             this.transactionListByDateToolStripMenuItem.Name = "transactionListByDateToolStripMenuItem";
-            this.transactionListByDateToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.transactionListByDateToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.transactionListByDateToolStripMenuItem.Text = "Transaction List by Date";
             // 
             // accountListingToolStripMenuItem
             // 
             this.accountListingToolStripMenuItem.Name = "accountListingToolStripMenuItem";
-            this.accountListingToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.accountListingToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.accountListingToolStripMenuItem.Text = "Account Listing";
             // 
             // fixedAssetListingToolStripMenuItem
             // 
             this.fixedAssetListingToolStripMenuItem.Name = "fixedAssetListingToolStripMenuItem";
-            this.fixedAssetListingToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.fixedAssetListingToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.fixedAssetListingToolStripMenuItem.Text = "Fixed Asset Listing";
             // 
             // incomeTaxPreparationToolStripMenuItem
             // 
             this.incomeTaxPreparationToolStripMenuItem.Name = "incomeTaxPreparationToolStripMenuItem";
-            this.incomeTaxPreparationToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.incomeTaxPreparationToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.incomeTaxPreparationToolStripMenuItem.Text = "Income Tax Preparation";
+            this.incomeTaxPreparationToolStripMenuItem.Click += new System.EventHandler(this.incomeTaxPreparationToolStripMenuItem_Click);
             // 
             // incomeTaxSummaryToolStripMenuItem
             // 
             this.incomeTaxSummaryToolStripMenuItem.Name = "incomeTaxSummaryToolStripMenuItem";
-            this.incomeTaxSummaryToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.incomeTaxSummaryToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.incomeTaxSummaryToolStripMenuItem.Text = "Income Tax Summary";
             // 
             // incomeTaxDetailToolStripMenuItem
             // 
             this.incomeTaxDetailToolStripMenuItem.Name = "incomeTaxDetailToolStripMenuItem";
-            this.incomeTaxDetailToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
+            this.incomeTaxDetailToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.incomeTaxDetailToolStripMenuItem.Text = "Income Tax Detail";
             // 
             // jobCardToolStripMenuItem1
@@ -3724,814 +4533,6 @@
             this.transactionJournalToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.transactionJournalToolStripMenuItem.Text = "Transaction Journal";
             this.transactionJournalToolStripMenuItem.Click += new System.EventHandler(this.transactionJournalToolStripMenuItem_Click);
-            // 
-            // constructionToolStripMenuItem
-            // 
-            this.constructionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectSetupToolStripMenuItem,
-            this.projectToolStripMenuItem1,
-            this.sitePlanningToolStripMenuItem,
-            this.dailyExecutionToolStripMenuItem,
-            this.qualityHSEToolStripMenuItem,
-            this.subcontractorsToolStripMenuItem,
-            this.handoverToolStripMenuItem,
-            this.reportsControlsToolStripMenuItem,
-            this.projectManagementToolStripMenuItem,
-            this.projectDashBoardToolStripMenuItem,
-            this.projectProgressToolStripMenuItem,
-            this.ganttChartToolStripMenuItem,
-            this.engineerActivityToolStripMenuItem});
-            this.constructionToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.constructionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.constructionToolStripMenuItem.Name = "constructionToolStripMenuItem";
-            this.constructionToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.constructionToolStripMenuItem.Text = "Construction";
-            this.constructionToolStripMenuItem.Click += new System.EventHandler(this.constructionToolStripMenuItem_Click);
-            // 
-            // projectSetupToolStripMenuItem
-            // 
-            this.projectSetupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectCenterToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.tenderCenterToolStripMenuItem,
-            this.newTenderToolStripMenuItem,
-            this.projectTenderBOQSetupToolStripMenuItem,
-            this.projectEstimationBudgetingToolStripMenuItem1,
-            this.siteCenterToolStripMenuItem,
-            this.resourceMasterToolStripMenuItem,
-            this.projectSiteSetup0ToolStripMenuItem,
-            this.wBSActivitiesToolStripMenuItem,
-            this.projectTeamSupervisorsToolStripMenuItem});
-            this.projectSetupToolStripMenuItem.Name = "projectSetupToolStripMenuItem";
-            this.projectSetupToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.projectSetupToolStripMenuItem.Text = "Project Setup";
-            this.projectSetupToolStripMenuItem.Click += new System.EventHandler(this.projectSetupToolStripMenuItem_Click);
-            // 
-            // projectCenterToolStripMenuItem
-            // 
-            this.projectCenterToolStripMenuItem.Name = "projectCenterToolStripMenuItem";
-            this.projectCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.projectCenterToolStripMenuItem.Text = "Project Center";
-            this.projectCenterToolStripMenuItem.Click += new System.EventHandler(this.projectCenterToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(231, 22);
-            this.toolStripMenuItem3.Text = "New Project";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // tenderCenterToolStripMenuItem
-            // 
-            this.tenderCenterToolStripMenuItem.Name = "tenderCenterToolStripMenuItem";
-            this.tenderCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.tenderCenterToolStripMenuItem.Text = "Tender Center";
-            this.tenderCenterToolStripMenuItem.Click += new System.EventHandler(this.tenderCenterToolStripMenuItem_Click);
-            // 
-            // newTenderToolStripMenuItem
-            // 
-            this.newTenderToolStripMenuItem.Name = "newTenderToolStripMenuItem";
-            this.newTenderToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.newTenderToolStripMenuItem.Text = "New Tender";
-            this.newTenderToolStripMenuItem.Click += new System.EventHandler(this.newTenderToolStripMenuItem_Click);
-            // 
-            // projectTenderBOQSetupToolStripMenuItem
-            // 
-            this.projectTenderBOQSetupToolStripMenuItem.Name = "projectTenderBOQSetupToolStripMenuItem";
-            this.projectTenderBOQSetupToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.projectTenderBOQSetupToolStripMenuItem.Text = "Project Tender";
-            this.projectTenderBOQSetupToolStripMenuItem.Click += new System.EventHandler(this.projectTenderBOQSetupToolStripMenuItem_Click);
-            // 
-            // projectEstimationBudgetingToolStripMenuItem1
-            // 
-            this.projectEstimationBudgetingToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectEstimateToolStripMenuItem,
-            this.estimateReviewSummaryToolStripMenuItem});
-            this.projectEstimationBudgetingToolStripMenuItem1.Name = "projectEstimationBudgetingToolStripMenuItem1";
-            this.projectEstimationBudgetingToolStripMenuItem1.Size = new System.Drawing.Size(231, 22);
-            this.projectEstimationBudgetingToolStripMenuItem1.Text = "Project Estimation / Budgeting";
-            // 
-            // projectEstimateToolStripMenuItem
-            // 
-            this.projectEstimateToolStripMenuItem.Name = "projectEstimateToolStripMenuItem";
-            this.projectEstimateToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.projectEstimateToolStripMenuItem.Text = "Project Estimate";
-            this.projectEstimateToolStripMenuItem.Click += new System.EventHandler(this.projectEstimateToolStripMenuItem_Click);
-            // 
-            // estimateReviewSummaryToolStripMenuItem
-            // 
-            this.estimateReviewSummaryToolStripMenuItem.Name = "estimateReviewSummaryToolStripMenuItem";
-            this.estimateReviewSummaryToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.estimateReviewSummaryToolStripMenuItem.Text = "Estimate Review / Summary";
-            this.estimateReviewSummaryToolStripMenuItem.Click += new System.EventHandler(this.estimateReviewSummaryToolStripMenuItem_Click);
-            // 
-            // siteCenterToolStripMenuItem
-            // 
-            this.siteCenterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.siteToolStripMenuItem,
-            this.zoneListToolStripMenuItem});
-            this.siteCenterToolStripMenuItem.Name = "siteCenterToolStripMenuItem";
-            this.siteCenterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.siteCenterToolStripMenuItem.Text = "Site && Zones";
-            this.siteCenterToolStripMenuItem.Click += new System.EventHandler(this.siteCenterToolStripMenuItem_Click);
-            // 
-            // siteToolStripMenuItem
-            // 
-            this.siteToolStripMenuItem.Name = "siteToolStripMenuItem";
-            this.siteToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.siteToolStripMenuItem.Text = "Site List";
-            this.siteToolStripMenuItem.Click += new System.EventHandler(this.siteToolStripMenuItem_Click);
-            // 
-            // zoneListToolStripMenuItem
-            // 
-            this.zoneListToolStripMenuItem.Name = "zoneListToolStripMenuItem";
-            this.zoneListToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.zoneListToolStripMenuItem.Text = "Zone List";
-            this.zoneListToolStripMenuItem.Click += new System.EventHandler(this.zoneListToolStripMenuItem_Click);
-            // 
-            // resourceMasterToolStripMenuItem
-            // 
-            this.resourceMasterToolStripMenuItem.Name = "resourceMasterToolStripMenuItem";
-            this.resourceMasterToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.resourceMasterToolStripMenuItem.Text = "Resource Master";
-            this.resourceMasterToolStripMenuItem.Click += new System.EventHandler(this.resourceMasterToolStripMenuItem_Click);
-            // 
-            // projectSiteSetup0ToolStripMenuItem
-            // 
-            this.projectSiteSetup0ToolStripMenuItem.Name = "projectSiteSetup0ToolStripMenuItem";
-            this.projectSiteSetup0ToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.projectSiteSetup0ToolStripMenuItem.Text = "Project Site Setup";
-            this.projectSiteSetup0ToolStripMenuItem.Click += new System.EventHandler(this.projectSiteSetup0ToolStripMenuItem_Click);
-            // 
-            // wBSActivitiesToolStripMenuItem
-            // 
-            this.wBSActivitiesToolStripMenuItem.Name = "wBSActivitiesToolStripMenuItem";
-            this.wBSActivitiesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.wBSActivitiesToolStripMenuItem.Text = "WBS && Activities Setup";
-            this.wBSActivitiesToolStripMenuItem.Click += new System.EventHandler(this.wBSActivitiesToolStripMenuItem_Click);
-            // 
-            // projectTeamSupervisorsToolStripMenuItem
-            // 
-            this.projectTeamSupervisorsToolStripMenuItem.Name = "projectTeamSupervisorsToolStripMenuItem";
-            this.projectTeamSupervisorsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.projectTeamSupervisorsToolStripMenuItem.Text = "Project Team / Supervisors";
-            this.projectTeamSupervisorsToolStripMenuItem.Click += new System.EventHandler(this.projectTeamSupervisorsToolStripMenuItem_Click);
-            // 
-            // projectToolStripMenuItem1
-            // 
-            this.projectToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectPlanningToolStripMenuItem,
-            this.projectScheduleToolStripMenuItem,
-            this.lookaheadPlanningToolStripMenuItem,
-            this.resourceNeedsToolStripMenuItem,
-            this.siteActivityPlanToolStripMenuItem});
-            this.projectToolStripMenuItem1.Name = "projectToolStripMenuItem1";
-            this.projectToolStripMenuItem1.Size = new System.Drawing.Size(229, 22);
-            this.projectToolStripMenuItem1.Text = "Project Planning";
-            this.projectToolStripMenuItem1.Visible = false;
-            this.projectToolStripMenuItem1.Click += new System.EventHandler(this.projectToolStripMenuItem1_Click);
-            // 
-            // projectPlanningToolStripMenuItem
-            // 
-            this.projectPlanningToolStripMenuItem.Name = "projectPlanningToolStripMenuItem";
-            this.projectPlanningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.projectPlanningToolStripMenuItem.Text = "Project Planning";
-            this.projectPlanningToolStripMenuItem.Click += new System.EventHandler(this.projectPlanningToolStripMenuItem_Click);
-            // 
-            // projectScheduleToolStripMenuItem
-            // 
-            this.projectScheduleToolStripMenuItem.Name = "projectScheduleToolStripMenuItem";
-            this.projectScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.projectScheduleToolStripMenuItem.Text = "Project Schedule";
-            this.projectScheduleToolStripMenuItem.Click += new System.EventHandler(this.projectScheduleToolStripMenuItem_Click);
-            // 
-            // lookaheadPlanningToolStripMenuItem
-            // 
-            this.lookaheadPlanningToolStripMenuItem.Name = "lookaheadPlanningToolStripMenuItem";
-            this.lookaheadPlanningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lookaheadPlanningToolStripMenuItem.Text = "Lookahead Planning";
-            this.lookaheadPlanningToolStripMenuItem.Click += new System.EventHandler(this.lookaheadPlanningToolStripMenuItem_Click);
-            // 
-            // resourceNeedsToolStripMenuItem
-            // 
-            this.resourceNeedsToolStripMenuItem.Name = "resourceNeedsToolStripMenuItem";
-            this.resourceNeedsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.resourceNeedsToolStripMenuItem.Text = "Resource Needs";
-            this.resourceNeedsToolStripMenuItem.Click += new System.EventHandler(this.resourceNeedsToolStripMenuItem_Click);
-            // 
-            // siteActivityPlanToolStripMenuItem
-            // 
-            this.siteActivityPlanToolStripMenuItem.Name = "siteActivityPlanToolStripMenuItem";
-            this.siteActivityPlanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.siteActivityPlanToolStripMenuItem.Text = "Site Activity Plan";
-            this.siteActivityPlanToolStripMenuItem.Click += new System.EventHandler(this.siteActivityPlanToolStripMenuItem_Click);
-            // 
-            // sitePlanningToolStripMenuItem
-            // 
-            this.sitePlanningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.materialRequestToolStripMenuItem1,
-            this.materialRequestListToolStripMenuItem,
-            this.stockCheckAvailabilityToolStripMenuItem,
-            this.materialReservationToolStripMenuItem,
-            this.procurementRequestToolStripMenuItem,
-            this.materialIssueToolStripMenuItem1,
-            this.materialReceiptAtSiteToolStripMenuItem,
-            this.materialReturnToolStripMenuItem1,
-            this.materialTransferToolStripMenuItem,
-            this.materialConsumptionToolStripMenuItem2,
-            this.materialReconciliationToolStripMenuItem,
-            this.stockLedgerBinBalanceToolStripMenuItem});
-            this.sitePlanningToolStripMenuItem.Name = "sitePlanningToolStripMenuItem";
-            this.sitePlanningToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.sitePlanningToolStripMenuItem.Text = "Material Management";
-            // 
-            // materialRequestToolStripMenuItem1
-            // 
-            this.materialRequestToolStripMenuItem1.Name = "materialRequestToolStripMenuItem1";
-            this.materialRequestToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.materialRequestToolStripMenuItem1.Text = "Material Request";
-            this.materialRequestToolStripMenuItem1.Click += new System.EventHandler(this.materialRequestToolStripMenuItem1_Click);
-            // 
-            // materialRequestListToolStripMenuItem
-            // 
-            this.materialRequestListToolStripMenuItem.Name = "materialRequestListToolStripMenuItem";
-            this.materialRequestListToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.materialRequestListToolStripMenuItem.Text = "Material Request List";
-            this.materialRequestListToolStripMenuItem.Click += new System.EventHandler(this.materialRequestListToolStripMenuItem_Click);
-            // 
-            // stockCheckAvailabilityToolStripMenuItem
-            // 
-            this.stockCheckAvailabilityToolStripMenuItem.Name = "stockCheckAvailabilityToolStripMenuItem";
-            this.stockCheckAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.stockCheckAvailabilityToolStripMenuItem.Text = "Stock Check / Availability";
-            this.stockCheckAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.stockCheckAvailabilityToolStripMenuItem_Click);
-            // 
-            // materialReservationToolStripMenuItem
-            // 
-            this.materialReservationToolStripMenuItem.Name = "materialReservationToolStripMenuItem";
-            this.materialReservationToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.materialReservationToolStripMenuItem.Text = "Material Reservation";
-            this.materialReservationToolStripMenuItem.Click += new System.EventHandler(this.materialReservationToolStripMenuItem_Click);
-            // 
-            // procurementRequestToolStripMenuItem
-            // 
-            this.procurementRequestToolStripMenuItem.Name = "procurementRequestToolStripMenuItem";
-            this.procurementRequestToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.procurementRequestToolStripMenuItem.Text = "Procurement Request";
-            this.procurementRequestToolStripMenuItem.Click += new System.EventHandler(this.procurementRequestToolStripMenuItem_Click);
-            // 
-            // materialIssueToolStripMenuItem1
-            // 
-            this.materialIssueToolStripMenuItem1.Name = "materialIssueToolStripMenuItem1";
-            this.materialIssueToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.materialIssueToolStripMenuItem1.Text = "Material Issue";
-            this.materialIssueToolStripMenuItem1.Click += new System.EventHandler(this.materialIssueToolStripMenuItem1_Click);
-            // 
-            // materialReceiptAtSiteToolStripMenuItem
-            // 
-            this.materialReceiptAtSiteToolStripMenuItem.Name = "materialReceiptAtSiteToolStripMenuItem";
-            this.materialReceiptAtSiteToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.materialReceiptAtSiteToolStripMenuItem.Text = "Material Receipt at Site";
-            this.materialReceiptAtSiteToolStripMenuItem.Click += new System.EventHandler(this.materialReceiptAtSiteToolStripMenuItem_Click);
-            // 
-            // materialReturnToolStripMenuItem1
-            // 
-            this.materialReturnToolStripMenuItem1.Name = "materialReturnToolStripMenuItem1";
-            this.materialReturnToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.materialReturnToolStripMenuItem1.Text = "Material Return";
-            this.materialReturnToolStripMenuItem1.Click += new System.EventHandler(this.materialReturnToolStripMenuItem1_Click);
-            // 
-            // materialTransferToolStripMenuItem
-            // 
-            this.materialTransferToolStripMenuItem.Name = "materialTransferToolStripMenuItem";
-            this.materialTransferToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.materialTransferToolStripMenuItem.Text = "Material Transfer";
-            this.materialTransferToolStripMenuItem.Click += new System.EventHandler(this.materialTransferToolStripMenuItem_Click);
-            // 
-            // materialConsumptionToolStripMenuItem2
-            // 
-            this.materialConsumptionToolStripMenuItem2.Name = "materialConsumptionToolStripMenuItem2";
-            this.materialConsumptionToolStripMenuItem2.Size = new System.Drawing.Size(210, 22);
-            this.materialConsumptionToolStripMenuItem2.Text = "Material Consumption";
-            this.materialConsumptionToolStripMenuItem2.Click += new System.EventHandler(this.materialConsumptionToolStripMenuItem2_Click);
-            // 
-            // materialReconciliationToolStripMenuItem
-            // 
-            this.materialReconciliationToolStripMenuItem.Name = "materialReconciliationToolStripMenuItem";
-            this.materialReconciliationToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.materialReconciliationToolStripMenuItem.Text = "Material Reconciliation";
-            this.materialReconciliationToolStripMenuItem.Click += new System.EventHandler(this.materialReconciliationToolStripMenuItem_Click);
-            // 
-            // stockLedgerBinBalanceToolStripMenuItem
-            // 
-            this.stockLedgerBinBalanceToolStripMenuItem.Name = "stockLedgerBinBalanceToolStripMenuItem";
-            this.stockLedgerBinBalanceToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.stockLedgerBinBalanceToolStripMenuItem.Text = "Stock Ledger / Bin Balance";
-            this.stockLedgerBinBalanceToolStripMenuItem.Click += new System.EventHandler(this.stockLedgerBinBalanceToolStripMenuItem_Click);
-            // 
-            // dailyExecutionToolStripMenuItem
-            // 
-            this.dailyExecutionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dailySiteWorkEntryToolStripMenuItem,
-            this.progressUpdateWorkDoneEntryToolStripMenuItem,
-            this.workDoneWorkMeasurementToolStripMenuItem,
-            this.resourceDeploymentToolStripMenuItem,
-            this.labourAttendanceToolStripMenuItem,
-            this.equipmentUsageToolStripMenuItem,
-            this.dailySiteReportToolStripMenuItem,
-            this.delayHindranceLogToolStripMenuItem,
-            this.siteDiaryToolStripMenuItem,
-            this.workOnSiteDailyWorkPlanToolStripMenuItem});
-            this.dailyExecutionToolStripMenuItem.Name = "dailyExecutionToolStripMenuItem";
-            this.dailyExecutionToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.dailyExecutionToolStripMenuItem.Text = "Daily Site Execution";
-            // 
-            // dailySiteWorkEntryToolStripMenuItem
-            // 
-            this.dailySiteWorkEntryToolStripMenuItem.Name = "dailySiteWorkEntryToolStripMenuItem";
-            this.dailySiteWorkEntryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.dailySiteWorkEntryToolStripMenuItem.Text = "Daily Site Work Entry";
-            this.dailySiteWorkEntryToolStripMenuItem.Click += new System.EventHandler(this.dailySiteWorkEntryToolStripMenuItem_Click);
-            // 
-            // progressUpdateWorkDoneEntryToolStripMenuItem
-            // 
-            this.progressUpdateWorkDoneEntryToolStripMenuItem.Name = "progressUpdateWorkDoneEntryToolStripMenuItem";
-            this.progressUpdateWorkDoneEntryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.progressUpdateWorkDoneEntryToolStripMenuItem.Text = "Daily Progress Update";
-            this.progressUpdateWorkDoneEntryToolStripMenuItem.Click += new System.EventHandler(this.progressUpdateWorkDoneEntryToolStripMenuItem_Click);
-            // 
-            // workDoneWorkMeasurementToolStripMenuItem
-            // 
-            this.workDoneWorkMeasurementToolStripMenuItem.Name = "workDoneWorkMeasurementToolStripMenuItem";
-            this.workDoneWorkMeasurementToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.workDoneWorkMeasurementToolStripMenuItem.Text = "Work Done / Work Measurement";
-            this.workDoneWorkMeasurementToolStripMenuItem.Click += new System.EventHandler(this.workDoneWorkMeasurementToolStripMenuItem_Click);
-            // 
-            // resourceDeploymentToolStripMenuItem
-            // 
-            this.resourceDeploymentToolStripMenuItem.Name = "resourceDeploymentToolStripMenuItem";
-            this.resourceDeploymentToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.resourceDeploymentToolStripMenuItem.Text = "Resource Deployment";
-            this.resourceDeploymentToolStripMenuItem.Click += new System.EventHandler(this.resourceDeploymentToolStripMenuItem_Click);
-            // 
-            // labourAttendanceToolStripMenuItem
-            // 
-            this.labourAttendanceToolStripMenuItem.Name = "labourAttendanceToolStripMenuItem";
-            this.labourAttendanceToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.labourAttendanceToolStripMenuItem.Text = "Labour Attendance";
-            this.labourAttendanceToolStripMenuItem.Click += new System.EventHandler(this.labourAttendanceToolStripMenuItem_Click);
-            // 
-            // equipmentUsageToolStripMenuItem
-            // 
-            this.equipmentUsageToolStripMenuItem.Name = "equipmentUsageToolStripMenuItem";
-            this.equipmentUsageToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.equipmentUsageToolStripMenuItem.Text = "Equipment Usage";
-            this.equipmentUsageToolStripMenuItem.Click += new System.EventHandler(this.equipmentUsageToolStripMenuItem_Click);
-            // 
-            // dailySiteReportToolStripMenuItem
-            // 
-            this.dailySiteReportToolStripMenuItem.Name = "dailySiteReportToolStripMenuItem";
-            this.dailySiteReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.dailySiteReportToolStripMenuItem.Text = "Daily Site Report";
-            this.dailySiteReportToolStripMenuItem.Click += new System.EventHandler(this.dailySiteReportToolStripMenuItem_Click);
-            // 
-            // delayHindranceLogToolStripMenuItem
-            // 
-            this.delayHindranceLogToolStripMenuItem.Name = "delayHindranceLogToolStripMenuItem";
-            this.delayHindranceLogToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.delayHindranceLogToolStripMenuItem.Text = "Delay / Hindrance Log";
-            this.delayHindranceLogToolStripMenuItem.Click += new System.EventHandler(this.delayHindranceLogToolStripMenuItem_Click);
-            // 
-            // siteDiaryToolStripMenuItem
-            // 
-            this.siteDiaryToolStripMenuItem.Name = "siteDiaryToolStripMenuItem";
-            this.siteDiaryToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.siteDiaryToolStripMenuItem.Text = "Site Diary";
-            this.siteDiaryToolStripMenuItem.Click += new System.EventHandler(this.siteDiaryToolStripMenuItem_Click);
-            // 
-            // workOnSiteDailyWorkPlanToolStripMenuItem
-            // 
-            this.workOnSiteDailyWorkPlanToolStripMenuItem.Name = "workOnSiteDailyWorkPlanToolStripMenuItem";
-            this.workOnSiteDailyWorkPlanToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.workOnSiteDailyWorkPlanToolStripMenuItem.Text = "Work On Site / Daily Work Plan";
-            this.workOnSiteDailyWorkPlanToolStripMenuItem.Click += new System.EventHandler(this.workOnSiteDailyWorkPlanToolStripMenuItem_Click);
-            // 
-            // qualityHSEToolStripMenuItem
-            // 
-            this.qualityHSEToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inspectionToolStripMenuItem,
-            this.qAQCInspectionToolStripMenuItem,
-            this.hSEChecksToolStripMenuItem,
-            this.nCRInToolStripMenuItem,
-            this.incidentAccidentRegisterToolStripMenuItem,
-            this.correctiveActionTrackingToolStripMenuItem,
-            this.closeoutRegisterToolStripMenuItem});
-            this.qualityHSEToolStripMenuItem.Name = "qualityHSEToolStripMenuItem";
-            this.qualityHSEToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.qualityHSEToolStripMenuItem.Text = "Quality && HSE";
-            this.qualityHSEToolStripMenuItem.Visible = false;
-            // 
-            // inspectionToolStripMenuItem
-            // 
-            this.inspectionToolStripMenuItem.Name = "inspectionToolStripMenuItem";
-            this.inspectionToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.inspectionToolStripMenuItem.Text = "Inspection Request";
-            this.inspectionToolStripMenuItem.Visible = false;
-            this.inspectionToolStripMenuItem.Click += new System.EventHandler(this.inspectionToolStripMenuItem_Click);
-            // 
-            // qAQCInspectionToolStripMenuItem
-            // 
-            this.qAQCInspectionToolStripMenuItem.Name = "qAQCInspectionToolStripMenuItem";
-            this.qAQCInspectionToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.qAQCInspectionToolStripMenuItem.Text = "QA/QC Inspection";
-            this.qAQCInspectionToolStripMenuItem.Visible = false;
-            this.qAQCInspectionToolStripMenuItem.Click += new System.EventHandler(this.qAQCInspectionToolStripMenuItem_Click);
-            // 
-            // hSEChecksToolStripMenuItem
-            // 
-            this.hSEChecksToolStripMenuItem.Name = "hSEChecksToolStripMenuItem";
-            this.hSEChecksToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.hSEChecksToolStripMenuItem.Text = "HSE Checklist";
-            this.hSEChecksToolStripMenuItem.Visible = false;
-            this.hSEChecksToolStripMenuItem.Click += new System.EventHandler(this.hSEChecksToolStripMenuItem_Click);
-            // 
-            // nCRInToolStripMenuItem
-            // 
-            this.nCRInToolStripMenuItem.Name = "nCRInToolStripMenuItem";
-            this.nCRInToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.nCRInToolStripMenuItem.Text = "NCR / Non-Conformance";
-            this.nCRInToolStripMenuItem.Visible = false;
-            this.nCRInToolStripMenuItem.Click += new System.EventHandler(this.nCRInToolStripMenuItem_Click);
-            // 
-            // incidentAccidentRegisterToolStripMenuItem
-            // 
-            this.incidentAccidentRegisterToolStripMenuItem.Name = "incidentAccidentRegisterToolStripMenuItem";
-            this.incidentAccidentRegisterToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.incidentAccidentRegisterToolStripMenuItem.Text = "Incident / Accident Register";
-            this.incidentAccidentRegisterToolStripMenuItem.Visible = false;
-            this.incidentAccidentRegisterToolStripMenuItem.Click += new System.EventHandler(this.incidentAccidentRegisterToolStripMenuItem_Click);
-            // 
-            // correctiveActionTrackingToolStripMenuItem
-            // 
-            this.correctiveActionTrackingToolStripMenuItem.Name = "correctiveActionTrackingToolStripMenuItem";
-            this.correctiveActionTrackingToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.correctiveActionTrackingToolStripMenuItem.Text = "Corrective Action Tracking";
-            this.correctiveActionTrackingToolStripMenuItem.Visible = false;
-            this.correctiveActionTrackingToolStripMenuItem.Click += new System.EventHandler(this.correctiveActionTrackingToolStripMenuItem_Click);
-            // 
-            // closeoutRegisterToolStripMenuItem
-            // 
-            this.closeoutRegisterToolStripMenuItem.Name = "closeoutRegisterToolStripMenuItem";
-            this.closeoutRegisterToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.closeoutRegisterToolStripMenuItem.Text = "Closeout Register";
-            this.closeoutRegisterToolStripMenuItem.Visible = false;
-            this.closeoutRegisterToolStripMenuItem.Click += new System.EventHandler(this.closeoutRegisterToolStripMenuItem_Click);
-            // 
-            // subcontractorsToolStripMenuItem
-            // 
-            this.subcontractorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.subcontractorCenterToolStripMenuItem1,
-            this.workAssignToolStripMenuItem,
-            this.materialSupplyToolStripMenuItem,
-            this.measureApproveToolStripMenuItem,
-            this.subcontractorPaymentToolStripMenuItem,
-            this.retentionBackChargeTrackingToolStripMenuItem});
-            this.subcontractorsToolStripMenuItem.Name = "subcontractorsToolStripMenuItem";
-            this.subcontractorsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.subcontractorsToolStripMenuItem.Text = "Subcontractors";
-            // 
-            // subcontractorCenterToolStripMenuItem1
-            // 
-            this.subcontractorCenterToolStripMenuItem1.Name = "subcontractorCenterToolStripMenuItem1";
-            this.subcontractorCenterToolStripMenuItem1.Size = new System.Drawing.Size(244, 22);
-            this.subcontractorCenterToolStripMenuItem1.Text = "Subcontractor Center";
-            this.subcontractorCenterToolStripMenuItem1.Click += new System.EventHandler(this.subcontractorCenterToolStripMenuItem1_Click);
-            // 
-            // workAssignToolStripMenuItem
-            // 
-            this.workAssignToolStripMenuItem.Name = "workAssignToolStripMenuItem";
-            this.workAssignToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.workAssignToolStripMenuItem.Text = "Work Assignment";
-            this.workAssignToolStripMenuItem.Visible = false;
-            this.workAssignToolStripMenuItem.Click += new System.EventHandler(this.workAssignToolStripMenuItem_Click);
-            // 
-            // materialSupplyToolStripMenuItem
-            // 
-            this.materialSupplyToolStripMenuItem.Name = "materialSupplyToolStripMenuItem";
-            this.materialSupplyToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.materialSupplyToolStripMenuItem.Text = "Material Supply";
-            this.materialSupplyToolStripMenuItem.Visible = false;
-            this.materialSupplyToolStripMenuItem.Click += new System.EventHandler(this.materialSupplyToolStripMenuItem_Click);
-            // 
-            // measureApproveToolStripMenuItem
-            // 
-            this.measureApproveToolStripMenuItem.Name = "measureApproveToolStripMenuItem";
-            this.measureApproveToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.measureApproveToolStripMenuItem.Text = "Measurement && Approval";
-            this.measureApproveToolStripMenuItem.Visible = false;
-            this.measureApproveToolStripMenuItem.Click += new System.EventHandler(this.measureApproveToolStripMenuItem_Click);
-            // 
-            // subcontractorPaymentToolStripMenuItem
-            // 
-            this.subcontractorPaymentToolStripMenuItem.Name = "subcontractorPaymentToolStripMenuItem";
-            this.subcontractorPaymentToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.subcontractorPaymentToolStripMenuItem.Text = "Subcontractor Payment";
-            this.subcontractorPaymentToolStripMenuItem.Visible = false;
-            this.subcontractorPaymentToolStripMenuItem.Click += new System.EventHandler(this.subcontractorPaymentToolStripMenuItem_Click);
-            // 
-            // retentionBackChargeTrackingToolStripMenuItem
-            // 
-            this.retentionBackChargeTrackingToolStripMenuItem.Name = "retentionBackChargeTrackingToolStripMenuItem";
-            this.retentionBackChargeTrackingToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.retentionBackChargeTrackingToolStripMenuItem.Text = "Retention / Back Charge Tracking";
-            this.retentionBackChargeTrackingToolStripMenuItem.Visible = false;
-            this.retentionBackChargeTrackingToolStripMenuItem.Click += new System.EventHandler(this.retentionBackChargeTrackingToolStripMenuItem_Click);
-            // 
-            // handoverToolStripMenuItem
-            // 
-            this.handoverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.punchListToolStripMenuItem,
-            this.snagDefectListToolStripMenuItem,
-            this.testingAsBuiltToolStripMenuItem,
-            this.asBuiltSubmissionToolStripMenuItem,
-            this.finalInspectionToolStripMenuItem,
-            this.practicalCompletionToolStripMenuItem,
-            this.finalHandoverToolStripMenuItem});
-            this.handoverToolStripMenuItem.Name = "handoverToolStripMenuItem";
-            this.handoverToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.handoverToolStripMenuItem.Text = "Handover && Closeout";
-            this.handoverToolStripMenuItem.Visible = false;
-            // 
-            // punchListToolStripMenuItem
-            // 
-            this.punchListToolStripMenuItem.Name = "punchListToolStripMenuItem";
-            this.punchListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.punchListToolStripMenuItem.Text = "Punch List";
-            this.punchListToolStripMenuItem.Visible = false;
-            this.punchListToolStripMenuItem.Click += new System.EventHandler(this.punchListToolStripMenuItem_Click);
-            // 
-            // snagDefectListToolStripMenuItem
-            // 
-            this.snagDefectListToolStripMenuItem.Name = "snagDefectListToolStripMenuItem";
-            this.snagDefectListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.snagDefectListToolStripMenuItem.Text = "Snag / Defect List";
-            this.snagDefectListToolStripMenuItem.Visible = false;
-            // 
-            // testingAsBuiltToolStripMenuItem
-            // 
-            this.testingAsBuiltToolStripMenuItem.Name = "testingAsBuiltToolStripMenuItem";
-            this.testingAsBuiltToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.testingAsBuiltToolStripMenuItem.Text = "Testing && Commissioning";
-            this.testingAsBuiltToolStripMenuItem.Visible = false;
-            this.testingAsBuiltToolStripMenuItem.Click += new System.EventHandler(this.testingAsBuiltToolStripMenuItem_Click);
-            // 
-            // asBuiltSubmissionToolStripMenuItem
-            // 
-            this.asBuiltSubmissionToolStripMenuItem.Name = "asBuiltSubmissionToolStripMenuItem";
-            this.asBuiltSubmissionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.asBuiltSubmissionToolStripMenuItem.Text = "As-Built Submission";
-            this.asBuiltSubmissionToolStripMenuItem.Visible = false;
-            // 
-            // finalInspectionToolStripMenuItem
-            // 
-            this.finalInspectionToolStripMenuItem.Name = "finalInspectionToolStripMenuItem";
-            this.finalInspectionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.finalInspectionToolStripMenuItem.Text = "Final Inspection";
-            this.finalInspectionToolStripMenuItem.Visible = false;
-            // 
-            // practicalCompletionToolStripMenuItem
-            // 
-            this.practicalCompletionToolStripMenuItem.Name = "practicalCompletionToolStripMenuItem";
-            this.practicalCompletionToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.practicalCompletionToolStripMenuItem.Text = "Practical Completion";
-            this.practicalCompletionToolStripMenuItem.Visible = false;
-            // 
-            // finalHandoverToolStripMenuItem
-            // 
-            this.finalHandoverToolStripMenuItem.Name = "finalHandoverToolStripMenuItem";
-            this.finalHandoverToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.finalHandoverToolStripMenuItem.Text = "Final Handover";
-            this.finalHandoverToolStripMenuItem.Visible = false;
-            this.finalHandoverToolStripMenuItem.Click += new System.EventHandler(this.finalHandoverToolStripMenuItem_Click);
-            // 
-            // reportsControlsToolStripMenuItem
-            // 
-            this.reportsControlsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectDashboardToolStripMenuItem2,
-            this.bOQProgressReportToolStripMenuItem,
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem,
-            this.dailyProgressReportToolStripMenuItem,
-            this.labourEquipmentUtilizationToolStripMenuItem,
-            this.costVsBudgetReportToolStripMenuItem,
-            this.materialReconciliationReportToolStripMenuItem,
-            this.delayHindranceReportToolStripMenuItem,
-            this.qualityNCRSummaryToolStripMenuItem,
-            this.hSESummaryToolStripMenuItem,
-            this.subcontractorPerformanceReportToolStripMenuItem,
-            this.projectCompletionHandoverSToolStripMenuItem});
-            this.reportsControlsToolStripMenuItem.Name = "reportsControlsToolStripMenuItem";
-            this.reportsControlsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.reportsControlsToolStripMenuItem.Text = "Reports && Dashboards";
-            // 
-            // projectDashboardToolStripMenuItem2
-            // 
-            this.projectDashboardToolStripMenuItem2.Name = "projectDashboardToolStripMenuItem2";
-            this.projectDashboardToolStripMenuItem2.Size = new System.Drawing.Size(325, 22);
-            this.projectDashboardToolStripMenuItem2.Text = "Project Dashboard";
-            this.projectDashboardToolStripMenuItem2.Click += new System.EventHandler(this.projectDashboardToolStripMenuItem2_Click);
-            // 
-            // bOQProgressReportToolStripMenuItem
-            // 
-            this.bOQProgressReportToolStripMenuItem.Name = "bOQProgressReportToolStripMenuItem";
-            this.bOQProgressReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.bOQProgressReportToolStripMenuItem.Text = "BOQ Progress Report";
-            this.bOQProgressReportToolStripMenuItem.Visible = false;
-            this.bOQProgressReportToolStripMenuItem.Click += new System.EventHandler(this.bOQProgressReportToolStripMenuItem_Click);
-            // 
-            // materialRequestIssueReceiptConsumptionToolStripMenuItem
-            // 
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Name = "materialRequestIssueReceiptConsumptionToolStripMenuItem";
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Text = "Material Request - Issue - Receipt - Consumption";
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Visible = false;
-            this.materialRequestIssueReceiptConsumptionToolStripMenuItem.Click += new System.EventHandler(this.materialRequestIssueReceiptConsumptionToolStripMenuItem_Click);
-            // 
-            // dailyProgressReportToolStripMenuItem
-            // 
-            this.dailyProgressReportToolStripMenuItem.Name = "dailyProgressReportToolStripMenuItem";
-            this.dailyProgressReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.dailyProgressReportToolStripMenuItem.Text = "Daily Progress Report";
-            this.dailyProgressReportToolStripMenuItem.Visible = false;
-            this.dailyProgressReportToolStripMenuItem.Click += new System.EventHandler(this.dailyProgressReportToolStripMenuItem_Click);
-            // 
-            // labourEquipmentUtilizationToolStripMenuItem
-            // 
-            this.labourEquipmentUtilizationToolStripMenuItem.Name = "labourEquipmentUtilizationToolStripMenuItem";
-            this.labourEquipmentUtilizationToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.labourEquipmentUtilizationToolStripMenuItem.Text = "Labour && Equipment Utilization";
-            this.labourEquipmentUtilizationToolStripMenuItem.Visible = false;
-            this.labourEquipmentUtilizationToolStripMenuItem.Click += new System.EventHandler(this.labourEquipmentUtilizationToolStripMenuItem_Click);
-            // 
-            // costVsBudgetReportToolStripMenuItem
-            // 
-            this.costVsBudgetReportToolStripMenuItem.Name = "costVsBudgetReportToolStripMenuItem";
-            this.costVsBudgetReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.costVsBudgetReportToolStripMenuItem.Text = "Cost vs Budget Report";
-            this.costVsBudgetReportToolStripMenuItem.Visible = false;
-            this.costVsBudgetReportToolStripMenuItem.Click += new System.EventHandler(this.costVsBudgetReportToolStripMenuItem_Click);
-            // 
-            // materialReconciliationReportToolStripMenuItem
-            // 
-            this.materialReconciliationReportToolStripMenuItem.Name = "materialReconciliationReportToolStripMenuItem";
-            this.materialReconciliationReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.materialReconciliationReportToolStripMenuItem.Text = "Material Reconciliation Report";
-            this.materialReconciliationReportToolStripMenuItem.Visible = false;
-            // 
-            // delayHindranceReportToolStripMenuItem
-            // 
-            this.delayHindranceReportToolStripMenuItem.Name = "delayHindranceReportToolStripMenuItem";
-            this.delayHindranceReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.delayHindranceReportToolStripMenuItem.Text = "Delay / Hindrance Report";
-            this.delayHindranceReportToolStripMenuItem.Visible = false;
-            // 
-            // qualityNCRSummaryToolStripMenuItem
-            // 
-            this.qualityNCRSummaryToolStripMenuItem.Name = "qualityNCRSummaryToolStripMenuItem";
-            this.qualityNCRSummaryToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.qualityNCRSummaryToolStripMenuItem.Text = "Quality / NCR Summary";
-            this.qualityNCRSummaryToolStripMenuItem.Visible = false;
-            // 
-            // hSESummaryToolStripMenuItem
-            // 
-            this.hSESummaryToolStripMenuItem.Name = "hSESummaryToolStripMenuItem";
-            this.hSESummaryToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.hSESummaryToolStripMenuItem.Text = "HSE Summary";
-            this.hSESummaryToolStripMenuItem.Visible = false;
-            // 
-            // subcontractorPerformanceReportToolStripMenuItem
-            // 
-            this.subcontractorPerformanceReportToolStripMenuItem.Name = "subcontractorPerformanceReportToolStripMenuItem";
-            this.subcontractorPerformanceReportToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.subcontractorPerformanceReportToolStripMenuItem.Text = "Subcontractor Performance Report";
-            this.subcontractorPerformanceReportToolStripMenuItem.Visible = false;
-            this.subcontractorPerformanceReportToolStripMenuItem.Click += new System.EventHandler(this.subcontractorPerformanceReportToolStripMenuItem_Click);
-            // 
-            // projectCompletionHandoverSToolStripMenuItem
-            // 
-            this.projectCompletionHandoverSToolStripMenuItem.Name = "projectCompletionHandoverSToolStripMenuItem";
-            this.projectCompletionHandoverSToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.projectCompletionHandoverSToolStripMenuItem.Text = "Project Completion / Handover Status";
-            this.projectCompletionHandoverSToolStripMenuItem.Visible = false;
-            // 
-            // projectManagementToolStripMenuItem
-            // 
-            this.projectManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectSummaryToolStripMenuItem,
-            this.projectActivitySummaryToolStripMenuItem,
-            this.projectAssignSummaryToolStripMenuItem,
-            this.projectResourceToolStripMenuItem,
-            this.projectProgressSummaryToolStripMenuItem,
-            this.projectWorkProgressSummaryToolStripMenuItem});
-            this.projectManagementToolStripMenuItem.Name = "projectManagementToolStripMenuItem";
-            this.projectManagementToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.projectManagementToolStripMenuItem.Text = "Project Management";
-            this.projectManagementToolStripMenuItem.Visible = false;
-            // 
-            // projectSummaryToolStripMenuItem
-            // 
-            this.projectSummaryToolStripMenuItem.Name = "projectSummaryToolStripMenuItem";
-            this.projectSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectSummaryToolStripMenuItem.Text = "Project Summary";
-            this.projectSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectSummaryToolStripMenuItem_Click);
-            // 
-            // projectActivitySummaryToolStripMenuItem
-            // 
-            this.projectActivitySummaryToolStripMenuItem.Name = "projectActivitySummaryToolStripMenuItem";
-            this.projectActivitySummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectActivitySummaryToolStripMenuItem.Text = "Project Activity Summary";
-            this.projectActivitySummaryToolStripMenuItem.Click += new System.EventHandler(this.projectActivityToolStripMenuItem_Click);
-            // 
-            // projectAssignSummaryToolStripMenuItem
-            // 
-            this.projectAssignSummaryToolStripMenuItem.Name = "projectAssignSummaryToolStripMenuItem";
-            this.projectAssignSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectAssignSummaryToolStripMenuItem.Text = "Project Assign Summary";
-            this.projectAssignSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectAssignSummaryToolStripMenuItem_Click);
-            // 
-            // projectResourceToolStripMenuItem
-            // 
-            this.projectResourceToolStripMenuItem.Name = "projectResourceToolStripMenuItem";
-            this.projectResourceToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectResourceToolStripMenuItem.Text = "Project Resource Summary";
-            this.projectResourceToolStripMenuItem.Click += new System.EventHandler(this.projectResourceToolStripMenuItem_Click);
-            // 
-            // projectProgressSummaryToolStripMenuItem
-            // 
-            this.projectProgressSummaryToolStripMenuItem.Name = "projectProgressSummaryToolStripMenuItem";
-            this.projectProgressSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectProgressSummaryToolStripMenuItem.Text = "Project Progress Summary";
-            this.projectProgressSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectProgressSummaryToolStripMenuItem_Click);
-            // 
-            // projectWorkProgressSummaryToolStripMenuItem
-            // 
-            this.projectWorkProgressSummaryToolStripMenuItem.Name = "projectWorkProgressSummaryToolStripMenuItem";
-            this.projectWorkProgressSummaryToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.projectWorkProgressSummaryToolStripMenuItem.Text = "Project Work Progress Summary";
-            this.projectWorkProgressSummaryToolStripMenuItem.Click += new System.EventHandler(this.projectWorkProgressSummaryToolStripMenuItem_Click);
-            // 
-            // projectDashBoardToolStripMenuItem
-            // 
-            this.projectDashBoardToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.projectDashboardToolStripMenuItem1,
-            this.timelineToolStripMenuItem,
-            this.timeSheetReportToolStripMenuItem});
-            this.projectDashBoardToolStripMenuItem.Name = "projectDashBoardToolStripMenuItem";
-            this.projectDashBoardToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.projectDashBoardToolStripMenuItem.Text = "Project Dashboards && Reports";
-            this.projectDashBoardToolStripMenuItem.Visible = false;
-            // 
-            // projectDashboardToolStripMenuItem1
-            // 
-            this.projectDashboardToolStripMenuItem1.Name = "projectDashboardToolStripMenuItem1";
-            this.projectDashboardToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.projectDashboardToolStripMenuItem1.Text = "Project Dashboard";
-            this.projectDashboardToolStripMenuItem1.Click += new System.EventHandler(this.projectDashboardToolStripMenuItem1_Click);
-            // 
-            // timelineToolStripMenuItem
-            // 
-            this.timelineToolStripMenuItem.Name = "timelineToolStripMenuItem";
-            this.timelineToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.timelineToolStripMenuItem.Text = "Timeline";
-            this.timelineToolStripMenuItem.Click += new System.EventHandler(this.timelineToolStripMenuItem_Click);
-            // 
-            // timeSheetReportToolStripMenuItem
-            // 
-            this.timeSheetReportToolStripMenuItem.Name = "timeSheetReportToolStripMenuItem";
-            this.timeSheetReportToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.timeSheetReportToolStripMenuItem.Text = "TimeSheet Report";
-            this.timeSheetReportToolStripMenuItem.Click += new System.EventHandler(this.timeSheetReportToolStripMenuItem_Click);
-            // 
-            // projectProgressToolStripMenuItem
-            // 
-            this.projectProgressToolStripMenuItem.Name = "projectProgressToolStripMenuItem";
-            this.projectProgressToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.projectProgressToolStripMenuItem.Text = "Project Time Line";
-            this.projectProgressToolStripMenuItem.Click += new System.EventHandler(this.projectProgressToolStripMenuItem_Click);
-            // 
-            // ganttChartToolStripMenuItem
-            // 
-            this.ganttChartToolStripMenuItem.Name = "ganttChartToolStripMenuItem";
-            this.ganttChartToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.ganttChartToolStripMenuItem.Text = "GanttChart Sample";
-            this.ganttChartToolStripMenuItem.Click += new System.EventHandler(this.ganttChartToolStripMenuItem_Click);
-            // 
-            // engineerActivityToolStripMenuItem
-            // 
-            this.engineerActivityToolStripMenuItem.Name = "engineerActivityToolStripMenuItem";
-            this.engineerActivityToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.engineerActivityToolStripMenuItem.Text = "Engineer Activity";
-            this.engineerActivityToolStripMenuItem.Visible = false;
-            this.engineerActivityToolStripMenuItem.Click += new System.EventHandler(this.engineerActivityToolStripMenuItem_Click);
             // 
             // toolStripMenuItemEngConsultancy
             // 
@@ -5549,7 +5550,7 @@
         private System.Windows.Forms.ToolStripMenuItem mechanicLaborReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salaryBankTransferToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salaryReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem TaxReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VATSummaryReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VATDetailedReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VATReportToolStripMenuItem;

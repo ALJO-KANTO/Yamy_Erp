@@ -945,7 +945,8 @@ namespace YamyProject
                 }
 
                 // Assign the main report to the viewer
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "JournalVoucher_" +id;
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

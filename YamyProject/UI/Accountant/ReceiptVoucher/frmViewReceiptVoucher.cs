@@ -1333,8 +1333,8 @@ namespace YamyProject
                     MessageBox.Show("No data available for the report.");
                     return;  // Exit the method if no data is available
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "ReceiptVoucher_" + id + "_" + cmbCustomer.Text.Trim();
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();

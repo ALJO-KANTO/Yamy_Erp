@@ -69,7 +69,6 @@ namespace YamyProject
             if (isNotificationAllowed)
             {
                 SetUpNotification();
-                HRDocumentExpiryNotification.CheckExpiry();
                 //picNotification.Visible = false;
                 //lblNotificationsCount.Visible = false;
                 //isNotificationAllowed = true;
@@ -3744,6 +3743,10 @@ namespace YamyProject
             openChildForm(new frmVATDetailed());
         }
 
+        private void incomeTaxPreparationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class SubMenu

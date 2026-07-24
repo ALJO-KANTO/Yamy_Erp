@@ -1126,8 +1126,8 @@ namespace YamyProject
                 cr.Subreports[companySubReportName].SetDataSource(companyData);
                 cr.Subreports[salesSubReportName].SetDataSource(salesData);
                 cr.Subreports[itemsSubReportName].SetDataSource(itemData);
-
-                using (var reportForm = new MasterReportView())
+                string fileName = "DeliveryNote_" + id + "_" + cmbCustomer.Text.Trim();
+                using (var reportForm = new MasterReportView(cr, fileName))
                 {
                     reportForm.crReportViewer.ReportSource = cr;
                     reportForm.crReportViewer.RefreshReport();

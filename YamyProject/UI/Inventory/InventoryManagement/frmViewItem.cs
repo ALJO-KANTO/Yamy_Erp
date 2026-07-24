@@ -525,7 +525,10 @@ namespace YamyProject
             if (cmbType.Text == "12 - Service")
             {
                 //this.Height = 765 - pnlAssembly.Height - pnlOP.Height - pnlSub.Height;
-                pnlSub.Visible = pnlAssembly.Visible = pnlOP.Visible = false;
+                //pnlSub.Visible = pnlAssembly.Visible = pnlOP.Visible = false;
+                txtCostPrice.Enabled = true;
+                pnlAssembly.Visible = false;
+                pnlSub.Visible = pnlOP.Visible = true;
             }
             else if (cmbType.Text == "11 - Inventory Part")
             {

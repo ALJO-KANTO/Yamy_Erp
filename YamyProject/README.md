@@ -125,75 +125,34 @@ vbnet
 Copy
 Edit
 
-new columns 
+Option 1 (Recommended): Install MySQL as a Windows Service
 
-tbl_items 
-ALTER TABLE tbl_items MODIFY COLUMN name VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci'
+After installing Laragon:
 
-table tbl_project_tender
-`estimate_status` INT(10) NULL DEFAULT '0',
+Step 1
 
-table tbl_project_tender_details
-`length` DECIMAL(20,4) NOT NULL DEFAULT '0.0000',
-`width` DECIMAL(20,4) NOT NULL DEFAULT '0.0000',
-`thickness` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-`note` VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+Open Command Prompt as Administrator.
 
-table tbl_items_boq
-`length` decimal(10,2) DEFAULT NULL,
-`width` decimal(10,2) DEFAULT NULL,
-`thickness` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-`note` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+Step 2
 
-new tables/****************/
+Go to the MySQL bin folder:
 
+cd C:\laragon\bin\mysql\mysql-8.0.xx-winx64\bin
 
-                        CREATE TABLE `tbl_project_material_requests` (
-	                        `id` INT(10) NOT NULL AUTO_INCREMENT,
-	                        `tender_id` INT(10) NOT NULL DEFAULT '0',
-	                        `planning_id` INT(10) NOT NULL DEFAULT '0',
-	                        `RequestedDate` DATE NULL DEFAULT NULL,
-	                        `IssuedDate` DATE NULL DEFAULT NULL,
-	                        `ReceivedDate` DATE NULL DEFAULT NULL,
-	                        `itemId` INT(10) NOT NULL DEFAULT '0',
-	                        `unit` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'utf8mb4_general_ci',
-	                        `RequestedQty` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
-                            `IssuedQty` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
-                            `ReceivedQty` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
-	                        PRIMARY KEY (`id`) USING BTREE
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+Replace 8.0.xx with your installed version.
 
-						CREATE TABLE tbl_project_resource (
-                            `id` int NOT NULL AUTO_INCREMENT,
-                            `code` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                            `date` date DEFAULT NULL,
-                            `name` VARCHAR(200) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                            `role` VARCHAR(80) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                            `phone` VARCHAR(20) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-                            `type` VARCHAR(80) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
-	                        `price_unit` DECIMAL(20,4) NOT NULL DEFAULT '0.0000',
-	                        `unit_time` DECIMAL(20,4) NOT NULL DEFAULT '0.0000',
-	                        `max_unit_time` DECIMAL(20,4) NOT NULL DEFAULT '0.0000',
-							`employee_id` INT,
-                          PRIMARY KEY (`id`)
-                        );
+Step 3
 
-						CREATE TABLE tbl_project_role (
-                            id INT AUTO_INCREMENT PRIMARY KEY,
-                            code VARCHAR(50) NOT NULL UNIQUE COLLATE 'utf8mb4_general_ci',
-                            name VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci'
-                        );
+Install the service:
 
-                        'Assets', 'Liabilities', 'Equity'
+mysqld --install MySQL80
+Step 4
 
-'Income', 'Cost', 'General & Direct Expenses'
+Start the service:
 
+net start MySQL80
+Step 5
 
-= "ASSET"; 
-= "LIABILITY";
-= "EQUITY";
- = "INCOME";
-= "COST";
-= "EXPENSE";
+Set it to start automatically (usually done automatically, but you can ensure it):
 
-category_code
+sc config MySQL80 start= auto

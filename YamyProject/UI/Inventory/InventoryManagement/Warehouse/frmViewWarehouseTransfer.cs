@@ -54,8 +54,8 @@ namespace YamyProject
                     MessageBox.Show("No transfer available for the report.");
                     return;
                 }
-
-                MasterReportView reportForm = new MasterReportView();
+                string fileName = "WharehouseTransfer_" + id;
+                MasterReportView reportForm = new MasterReportView(cr, fileName);
                 reportForm.crReportViewer.ReportSource = cr;
                 reportForm.crReportViewer.RefreshReport();
                 reportForm.ShowDialog();
