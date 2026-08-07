@@ -183,6 +183,8 @@ namespace YamyProject
 
         public void ExportToExcel(string filePath)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Sheet1");

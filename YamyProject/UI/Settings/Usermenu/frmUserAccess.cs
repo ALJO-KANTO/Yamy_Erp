@@ -125,16 +125,13 @@ namespace YamyProject
         }
         private void loadUserPermission()
         {
+            clearOption();
             object netResult = DBClass.ExecuteScalar("SELECT count(*) FROM tbl_user_permissions where user_id = @user_id", DBClass.CreateParameter("user_id", userId));
             int count = netResult != DBNull.Value ? Convert.ToInt32(netResult) : 0;
             if (count>0)
             {
                 DataTable userTable = DBClass.ExecuteDataTable("SELECT p.id,p.user_id,s.id AS sub_menu_id,s.name AS sub_menu_name,m.id AS main_menu_id,m.name AS main_menu_name,p.can_view,p.can_edit,p.can_delete from tbl_user_permissions p,tbl_main_menus m,tbl_sub_menus s WHERE m.id= s.m_id AND p.sub_menu_id=s.id and p.user_id = @user_id", DBClass.CreateParameter("user_id", userId));
                 setUserOption(table, userTable);
-            }
-            else
-            {
-                setOption(table);
             }
         }
 
@@ -546,40 +543,269 @@ namespace YamyProject
 
         }
 
-        private void setOption(DataTable table)
+        private void clearOption()
         {
-            //foreach (DataRow row in table.Select("main_name = 'Accountant'"))
-            //{
-            //    string menu = row["main_name"].ToString();
-            //    string sub_menu = row["sub_name"].ToString();
-            //    if (sub_menu.Equals("Chart Of Account"))
-            //    {
-            //        bool canOption = Convert.ToBoolean(row["can_view"]);
-            //        CBChartofaccount.Checked = canOption;
-            //        bool canView = Convert.ToBoolean(row["can_view"]);
-            //        bool canEdit = Convert.ToBoolean(row["can_edit"]);
-            //        bool canDelete = Convert.ToBoolean(row["can_delete"]);
-            //    }
-            //    var ooo = "";
-            //}
-        }
-        //private void setUserOption(DataTable table, DataTable userTable)
-        //{
-        //    foreach (DataRow row in userTable.Select("main_menu_name = 'Accountant'"))
-        //    {
-        //        string menu = row["main_menu_name"].ToString();
-        //        string sub_menu = row["sub_menu_name"].ToString();
-        //        if (sub_menu.Equals("Chart Of Account", StringComparison.OrdinalIgnoreCase))
-        //        {
-        //            CBChartofaccount.Checked = Convert.ToBoolean(row["can_view"]);
-        //            CBChartofaccountEdit.Checked = Convert.ToBoolean(row["can_edit"]);
-        //            CBChartofaccountDelete.Checked = Convert.ToBoolean(row["can_delete"]);
-        //            CBChartofaccountEdit.Enabled = CBChartofaccount.Checked;
-        //            CBChartofaccountDelete.Enabled = CBChartofaccount.Checked;
-        //        }
-        //    }
-        //}
+            bool status = false;
+            CBChartofaccount.Checked = status;
+            CBChartofaccountEdit.Checked = status;
+            CBChartofaccountDelete.Checked = status;
+            CBChartofaccountEdit.Enabled = CBChartofaccount.Checked;
+            CBChartofaccountDelete.Enabled = CBChartofaccount.Checked;
 
+            CBCostCenter.Checked = status;
+            CBCostCenterEdit.Checked = status;
+            CBCostCenterDelete.Checked = status;
+            CBCostCenterEdit.Enabled = CBCostCenter.Checked;
+            CBCostCenterDelete.Enabled = CBCostCenter.Checked;
+
+            CBTransactionsJ.Checked = status;
+            CBTransactionsJEdit.Checked = status;
+            CBTransactionsJDelete.Checked = status;
+            CBTransactionsJEdit.Enabled = CBTransactionsJ.Checked;
+            CBTransactionsJDelete.Enabled = CBTransactionsJ.Checked;
+
+            CBFixedAssets.Checked = status;
+            CBFixedAssetsEdit.Checked = status;
+            CBFixedAssetsDelete.Checked = status;
+            CBFixedAssetsEdit.Enabled = CBFixedAssets.Checked;
+            CBFixedAssetsDelete.Enabled = CBFixedAssets.Checked;
+
+            CBVouchers.Checked = status;
+            CBVouchersEdit.Checked = status;
+            CBVouchersDelete.Checked = status;
+            CBVouchersEdit.Enabled = CBVouchers.Checked;
+            CBVouchersDelete.Enabled = CBVouchers.Checked;
+
+            CBPrepaid.Checked = status;
+            CBPrepaidEdit.Checked = status;
+            CBPrepaidDelete.Checked = status;
+            CBPrepaidEdit.Enabled = CBPrepaid.Checked;
+            CBPrepaidDelete.Enabled = CBPrepaid.Checked;
+
+            CBPetty.Checked = status;
+            CBPettyEdit.Checked = status;
+            CBPettyDelete.Checked = status;
+            CBPettyEdit.Enabled = CBPetty.Checked;
+            CBPettyDelete.Enabled = CBPetty.Checked;
+
+            CBInventory.Checked = status;
+            CBInventoryCenterEdit.Checked = status;
+            CBInventoryCenterDelete.Checked = status;
+            CBInventoryCenterEdit.Enabled = CBInventory.Checked;
+            CBInventoryCenterDelete.Enabled = CBInventory.Checked;
+
+            CBSTOCK.Checked = status;
+            CBSTOCKEdit.Checked = status;
+            CBSTOCKDelete.Checked = status;
+            CBSTOCKEdit.Enabled = CBSTOCK.Checked;
+            CBSTOCKDelete.Enabled = CBSTOCK.Checked;
+
+            CBInventoryCenter.Checked = status;
+            CBInventoryCenterEdit.Checked = status;
+            CBInventoryCenterDelete.Checked = status;
+            CBInventoryCenterEdit.Enabled = CBInventoryCenter.Checked;
+            CBInventoryCenterDelete.Enabled = CBInventoryCenter.Checked;
+
+            CBWarehouseCenter.Checked = status;
+            CBWarehouseCenterEdit.Checked = status;
+            CBWarehouseCenterDelete.Checked = status;
+            CBWarehouseCenterEdit.Enabled = CBWarehouseCenter.Checked;
+            CBWarehouseCenterDelete.Enabled = CBWarehouseCenter.Checked;
+
+            CBCustomerCenter.Checked = status;
+            CBCustomerCenterEdit.Checked = status;
+            CBCustomerCenterDelete.Checked = status;
+            CBCustomerCenterEdit.Enabled = CBCustomerCenter.Checked;
+            CBCustomerCenterDelete.Enabled = CBCustomerCenter.Checked;
+
+            CBSalesCenter.Checked = status;
+            CBSalesCenterEdit.Checked = status;
+            CBSalesCenterDelete.Checked = status;
+            CBSalesCenterEdit.Enabled = CBSalesCenter.Checked;
+            CBSalesCenterDelete.Enabled = CBSalesCenter.Checked;
+
+            CBCreditNote.Checked = status;
+            CBCreditNoteEdit.Checked = status;
+            CBCreditNoteDelete.Checked = status;
+            CBCreditNoteEdit.Enabled = CBCreditNote.Checked;
+            CBCreditNoteDelete.Enabled = CBCreditNote.Checked;
+
+            CBQuotation.Checked = status;
+            CBQuotationEdit.Checked = status;
+            CBQuotationDelete.Checked = status;
+            CBQuotationEdit.Enabled = CBQuotation.Checked;
+            CBQuotationDelete.Enabled = CBQuotation.Checked;
+
+            CBSalesOrder.Checked = status;
+            CBSalesOrderEdit.Checked = status;
+            CBSalesOrderDelete.Checked = status;
+            CBSalesOrderEdit.Enabled = CBSalesOrder.Checked;
+            CBSalesOrderDelete.Enabled = CBSalesOrder.Checked;
+
+            CBSalesReturn.Checked = status;
+            CBSalesReturnEdit.Checked = status;
+            CBSalesReturnDelete.Checked = status;
+            CBSalesReturnEdit.Enabled = CBSalesReturn.Checked;
+            CBSalesReturnDelete.Enabled = CBSalesReturn.Checked;
+
+            CBSalesProforma.Checked = status;
+            CBSalesProformaEdit.Checked = status;
+            CBSalesProformaDelete.Checked = status;
+            CBSalesProformaEdit.Enabled = CBSalesProforma.Checked;
+            CBSalesProformaDelete.Enabled = CBSalesProforma.Checked;
+
+            CBReceiveVoucher.Checked = status;
+
+            CBCreateInvoice.Checked = status;
+
+            CBCreatePurchase.Checked = status;
+
+            CBVendorCenter.Checked = status;
+            CBVendorCenterEdit.Checked = status;
+            CBVendorCenterDelete.Checked = status;
+            CBVendorCenterEdit.Enabled = CBVendorCenter.Checked;
+            CBVendorCenterDelete.Enabled = CBVendorCenter.Checked;
+
+            CBPurchasesCenter.Checked = status;
+            CBPurchasesCenterEdit.Checked = status;
+            CBPurchasesCenterDelete.Checked = status;
+            CBPurchasesCenterEdit.Enabled = CBPurchasesCenter.Checked;
+            CBPurchasesCenterDelete.Enabled = CBPurchasesCenter.Checked;
+
+
+            CBPaymentVoucher.Checked = status;
+
+            CBPaymentVoucher2.Checked = status;
+
+            CBDebitNote.Checked = status;
+            CBDebitNoteEdit.Checked = status;
+            CBDebitNoteDelete.Checked = status;
+            CBDebitNoteEdit.Enabled = CBDebitNote.Checked;
+            CBDebitNoteDelete.Enabled = CBDebitNote.Checked;
+
+            CBPurchaseOrder.Checked = status;
+            CBPurchaseOrderEdit.Checked = status;
+            CBPurchaseOrderDelete.Checked = status;
+            CBPurchaseOrderEdit.Enabled = CBPurchaseOrder.Checked;
+            CBPurchaseOrderDelete.Enabled = CBPurchaseOrder.Checked;
+
+            CBPurchaseReturn.Checked = status;
+            CBPurchaseReturnEdit.Checked = status;
+            CBPurchaseReturnDelete.Checked = status;
+            CBPurchaseReturnEdit.Enabled = CBPurchaseReturn.Checked;
+            CBPurchaseReturnDelete.Enabled = CBPurchaseReturn.Checked;
+
+            CBHumanResourceCenter.Checked = status;
+            CBHumanResourceCenterEdit.Checked = status;
+            CBHumanResourceCenterDelete.Checked = status;
+            CBHumanResourceCenterEdit.Enabled = CBHumanResourceCenter.Checked;
+            CBHumanResourceCenterDelete.Enabled = CBHumanResourceCenter.Checked;
+
+            CBLoans.Checked = status;
+            CBLoansEdit.Checked = status;
+            CBLoansDelete.Checked = status;
+            CBLoansEdit.Enabled = CBLoans.Checked;
+            CBLoansDelete.Enabled = CBLoans.Checked;
+
+            CBAttendanceSheet.Checked = status;
+            CBAttendanceSheetEdit.Checked = status;
+            CBAttendanceSheetDelete.Checked = status;
+            CBAttendanceSheetEdit.Enabled = CBAttendanceSheet.Checked;
+            CBAttendanceSheetDelete.Enabled = CBAttendanceSheet.Checked;
+
+            CBSalarySheet.Checked = status;
+
+            CBLeaveSalary.Checked = status;
+
+            CBEndOfServices.Checked = status;
+
+            CBFinalSettlement.Checked = status;
+            CBFinalSettlementEdit.Checked = status;
+            CBFinalSettlementDelete.Checked = status;
+            CBFinalSettlementEdit.Enabled = CBFinalSettlement.Checked;
+            CBFinalSettlementDelete.Enabled = CBFinalSettlement.Checked;
+
+            CBBankCenter.Checked = status;
+            CBBankCenterDelete.Checked = status;
+            CBBankCenterDelete.Enabled = CBBankCenter.Checked;
+
+            CBOpenBankCard.Checked = status;
+            CBOpenBankCardEdit.Checked = status;
+            CBOpenBankCardDelete.Checked = status;
+            CBOpenBankCardEdit.Enabled = CBOpenBankCard.Checked;
+            CBOpenBankCardDelete.Enabled = CBOpenBankCard.Checked;
+
+            CBCheques.Checked = status;
+
+            CBPDC.Checked = status;
+
+            CBCompany.Checked = status;
+
+            CBCustomerReceivable.Checked = status;
+
+            CBSales.Checked = status;
+
+            CBVendorPayable.Checked = status;
+
+            CBPurchases.Checked = status;
+
+            CBEmployees.Checked = status;
+
+            CBAccountant.Checked = status;
+
+            CBInventory2.Checked = status;
+
+            CBList.Checked = status;
+
+            cbSettings.Checked = status;
+
+            CBChangeCurrentPassword.Checked = status;
+
+            CBClearData.Checked = status;
+
+            CBUsers.Checked = status;
+
+            CBCompanyList.Checked = status;
+
+            CBBackUpCompany.Checked = status;
+
+            CBRestoreCompany.Checked = status;
+
+            CBProjectDashBoard.Checked = status;
+
+            CBProjectTender.Checked = status;
+
+            CBProjectEstimate.Checked = status;
+
+            CBProjectPlanning.Checked = status;
+
+            CKBLessStockItem.Checked = status;
+
+            CKBLpo.Checked = status;
+
+            CKBRequest.Checked = status;
+
+
+            CBSELECTALLACCOUNT.Checked = status;
+
+            CBSELECTALLInventory.Checked = status;
+
+            CBAllCustomer.Checked = status;
+
+            CBALLSELECTVENDOR.Checked = status;
+
+            CBSelectAllHr.Checked = status;
+
+            CBSelectAllBank.Checked = status;
+
+            CBSelectAllReport.Checked = status;
+
+            CBSelectAllSetting.Checked = status;
+
+            CBSelectAllFile.Checked = status;
+
+            CBSelectAllConstruction.Checked = status;
+        }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             _dataView.RowFilter = "name like '%" + txtSearch.Text + "%'";

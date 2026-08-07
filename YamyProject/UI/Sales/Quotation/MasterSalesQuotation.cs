@@ -349,5 +349,13 @@ namespace YamyProject
         {
             BindInvoices();
         }
+
+        private void btnCreateOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvInvoice.Rows.Count == 0)
+                return;
+            
+            frmLogin.frmMain.openChildForm(new frmAddSalesOrder(0, "SQ-"+ int.Parse(dgvInvoice.SelectedRows[0].Cells["id"].Value.ToString())));
+        }
     }
 }

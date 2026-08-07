@@ -70,9 +70,26 @@ namespace YamyProject.UI.Project_Management
         {
             if (e.RowIndex >= 0 && dgvPhaseTemplates.Columns[e.ColumnIndex].Name == "Edit")
             {
-                int tempId = Convert.ToInt32(dgvPhaseTemplates.Rows[e.RowIndex].Cells["template_id"].Value);
+                int tempId = Convert.ToInt32(dgvPhaseTemplates.Rows[e.RowIndex].Cells["task_template_id"].Value);
                 new frmProjectPhaseTaskTemplate(tempId).ShowDialog();
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvPhaseTemplates == null)
+                return;
+
+            if (dgvPhaseTemplates.CurrentRow == null)
+                return;
+
+            int tempId = Convert.ToInt32(
+                dgvPhaseTemplates.CurrentRow.Cells["task_template_id"].Value
+            );
+
+            DBClass.ExecuteNonQuery("Delete from tbl_project_phase_task_templates WHERE task_template_id=@id", DBClass.CreateParameter("id", tempId));
+
+            LoadPhases();
         }
     }
 

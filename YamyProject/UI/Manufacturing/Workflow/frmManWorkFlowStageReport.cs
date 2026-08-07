@@ -174,7 +174,7 @@ namespace YamyProject.UI.Manufacturing.Viewform
             int stageId = Convert.ToInt32(dgvItems.Rows[e.RowIndex].Cells["id"].Value);
             string stageName = dgvItems.Rows[e.RowIndex].Cells["Stage Name"].Value.ToString();
 
-            int nextStageId = Convert.ToInt32(dgvItems.Rows[e.RowIndex+1].Cells["id"].Value);
+            int nextStageId = dgvItems.Rows.Count == e.RowIndex +1 ? Convert.ToInt32(dgvItems.Rows[e.RowIndex].Cells["id"].Value) + 1 : Convert.ToInt32(dgvItems.Rows[e.RowIndex+1].Cells["id"].Value);
             ShowCompleteStageDialog(stageId, stageName, nextStageId);
         }
 

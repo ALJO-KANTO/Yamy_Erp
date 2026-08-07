@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Guna.UI2.WinForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using YamyProject.Localization;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace YamyProject
 {
@@ -557,17 +559,138 @@ namespace YamyProject
 
         private void btnToExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
             {
-                Filter = "Excel Files|*.xlsx",
-                Title = "Save Excel File"
-            };
+                saveDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+                saveDialog.Title = "Save Excel File";
+                saveDialog.FileName = label2.Text.Replace(" ", "") + ".xlsx";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                ExcelExporter exporter = new ExcelExporter(dgvCustomer);
-                exporter.ExportToExcel(saveFileDialog.FileName);
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Excel.Application excelApp = new Excel.Application();
+                    excelApp.Visible = false;
+
+                    Excel.Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+                    Excel.Worksheet worksheet =
+                        (Excel.Worksheet)workbook.Sheets[1];
+
+                    worksheet.Name = label2.Text.Replace(" ", "");
+
+                    Excel.Range headerRange0 = worksheet.Range["A1", "C1"];
+                    headerRange0.Merge();
+                    headerRange0.Value = label3.Text;
+                    headerRange0.Font.Bold = true;
+                    headerRange0.Font.Name = "Times New Roman";
+                    headerRange0.Font.Size = 12;
+                    headerRange0.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange1 = worksheet.Range["A2", "C2"];
+                    headerRange1.Merge();
+                    headerRange1.Value = label2.Text;
+                    headerRange1.Font.Bold = true;
+                    headerRange1.Font.Name = "Times New Roman";
+                    headerRange1.Font.Size = 11;
+                    headerRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range headerRange2 = worksheet.Range["A3", "C3"];
+                    headerRange2.Merge();
+                    headerRange2.Value = "From " + dtFrom.Text + " - To " + dtTo.Text;
+                    headerRange2.Font.Bold = false;
+                    headerRange2.Font.Name = "Times New Roman";
+                    headerRange2.Font.Size = 9;
+                    headerRange2.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    // Merge and format header row (Date)
+                    Excel.Range headerRange3 = worksheet.Range["A4", "B4"];
+                    headerRange3.Merge();
+                    headerRange3.Value = DateTime.Now.ToString("MMM dd, yy");
+                    headerRange3.Font.Bold = false;
+                    headerRange3.Font.Name = "Times New Roman";
+                    headerRange3.Font.Size = 9;
+                    headerRange3.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                    int rowIndex = 5;
+
+                    int colIndex = 1;
+
+
+                    // ===========================
+                    // Export Visible Headers
+                    // ===========================
+
+                    foreach (DataGridViewColumn col in dgvCustomer.Columns)
+                    {
+                        if (col.Visible)
+                        {
+                            worksheet.Cells[rowIndex, colIndex] = col.HeaderText;
+                            colIndex++;
+                        }
+                    }
+
+
+                    rowIndex++;
+
+
+                    // ===========================
+                    // Export Visible Rows
+                    // ===========================
+
+                    foreach (DataGridViewRow row in dgvCustomer.Rows)
+                    {
+                        if (row.IsNewRow)
+                            continue;
+
+
+                        colIndex = 1;
+
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (dgvCustomer.Columns[cell.ColumnIndex].Visible)
+                            {
+                                worksheet.Cells[rowIndex, colIndex] =
+                                    cell.Value?.ToString();
+
+                                colIndex++;
+                            }
+                        }
+
+
+                        rowIndex++;
+                    }
+
+
+                    // Auto fit columns
+
+                    worksheet.Columns.AutoFit();
+
+
+                    workbook.SaveAs(saveDialog.FileName);
+
+                    workbook.Close();
+                    excelApp.Quit();
+
+
+                    Marshal.ReleaseComObject(worksheet);
+                    Marshal.ReleaseComObject(workbook);
+                    Marshal.ReleaseComObject(excelApp);
+
+
+                    MessageBox.Show(
+                        "Export completed successfully",
+                        "Excel",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
             }
+            //SaveFileDialog saveFileDialog = new SaveFileDialog
+            //{
+            //    Filter = "Excel Files|*.xlsx",
+            //    Title = "Save Excel File"
+            //};
+
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    ExcelExporter exporter = new ExcelExporter(dgvCustomer);
+            //    exporter.ExportToExcel(saveFileDialog.FileName);
+            //}
         }
 
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

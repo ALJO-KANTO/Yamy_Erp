@@ -36,7 +36,7 @@ namespace YamyProject.UI.Project_Management
                 {
                     cmbPhaseTemplate.SelectedValue = reader.GetInt32("template_id");
                     txtTaskName.Text = reader.GetString("task_name");
-                    txtSortOrder.Text = reader.GetString("sort_order");
+                    txtSortOrder.Text = reader["sort_order"].ToString();
                     ChkMandatory.Checked = reader.GetBoolean("is_mandatory");
                     ChkActive.Checked = reader.GetBoolean("is_active");
                 }
@@ -46,6 +46,11 @@ namespace YamyProject.UI.Project_Management
         private void btnSave_Click(object sender, EventArgs e)
         {
             string query = "";
+            if(cmbPhaseTemplate.SelectedValue == null)
+            {
+                MessageBox.Show("select or add phase template");
+                return;
+            }
             if (id == 0)
             {
                 query = "INSERT INTO tbl_project_phase_task_templates (template_id, task_name, sort_order, is_mandatory, is_active) VALUES (@templateId,@name,@order, @is_mandatory,@is_active)";

@@ -32,14 +32,21 @@ namespace YamyProject.DAL
 
         public static int GetUnreadCount(int userId)
         {
-            object result = DBClass.ExecuteScalar(@"
+            try
+            {
+                object result = DBClass.ExecuteScalar(@"
                 SELECT COUNT(*)
                 FROM tbl_notification_users nu
                 INNER JOIN tbl_notifications n ON n.notification_id = nu.notification_id
                 WHERE nu.user_id = @uId AND nu.is_read = 0",
-                DBClass.CreateParameter("@uId", userId));
+                    DBClass.CreateParameter("@uId", userId));
 
-            return Convert.ToInt32(result);
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
 
         public static void MarkAsRead(int notificationId)

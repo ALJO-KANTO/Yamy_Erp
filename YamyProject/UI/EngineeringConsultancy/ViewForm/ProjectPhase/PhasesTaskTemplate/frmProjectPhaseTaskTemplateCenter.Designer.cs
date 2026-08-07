@@ -153,6 +153,7 @@
             this.btnRemove.Size = new System.Drawing.Size(165, 27);
             this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "Delete";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // panel3
             // 

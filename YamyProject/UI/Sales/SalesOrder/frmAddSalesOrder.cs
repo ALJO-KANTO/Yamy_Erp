@@ -100,12 +100,78 @@ namespace YamyProject
             }
             else
             {
-                if (id == 0 && formType == "JobCard")
+                if (id == 0 && formType.StartsWith("SQ"))
+                {
+                    string a, b;
+                    a = formType.Split('-')[0];
+                    b = formType.Split('-')[1];
+                    LoadSalesQuotationData(b);
+                } else if (id == 0 && formType == "JobCard")
                 {
                     LoadJobCardData();
                 }
             }
             UAEOnlyOptions();
+        }
+
+        private void LoadSalesQuotationData(string SQNO)
+        {
+            using (MySqlDataReader reader = DBClass.ExecuteReader(" select * from tbl_sales_quotation where id = @id",
+                DBClass.CreateParameter("id", SQNO)))
+                if (reader.Read())
+                {
+                    //txtSQNO.Text = reader["id"].ToString();
+                    cmbCustomer.SelectedValue = reader["customer_id"].ToString();
+                    cmbPaymentMethod.Text = reader["payment_method"].ToString();
+                    if (reader["payment_method"].ToString() == "Cash")
+                        cmbAccountCashName.SelectedValue = reader["account_cash_id"].ToString();
+                    else
+                    {
+                        cmbPaymentTerms.Text = reader["payment_terms"].ToString();
+                        dtPaymentTerms.Value = DateTime.Parse(reader["payment_date"].ToString());
+                    }
+                    cmbShipVia.Text = reader["ship_via"].ToString();
+                    richTextDescription.Text = reader["description"].ToString();
+                    cmbWarehouse.SelectedValue = reader["warehouse_id"].ToString();
+                    if (int.TryParse(reader["sales_man"]?.ToString(), out int salesManId))
+                    {
+                        if (salesManId > 0)
+                            cmbSalesMan.SelectedValue = salesManId;
+                    }
+                    //txtNextCode.Text = reader["invoice_id"].ToString();
+                    invId = id;
+                    txtBillTo.Text = reader["bill_to"].ToString();
+                    txtShipTo.Text = reader["ship_to"].ToString();
+
+                    dgvItems.Rows.Clear();
+                    MySqlDataReader readerDetails = DBClass.ExecuteReader(@"SELECT tbl_sales_quotation_details.*,tbl_items.type,method, tbl_items.code , tbl_items.name FROM tbl_sales_quotation_details INNER JOIN 
+                                                                    tbl_items ON tbl_sales_quotation_details.item_id = tbl_items.id WHERE 
+                                                                    tbl_sales_quotation_details.sales_id = @id;",
+                                                                    DBClass.CreateParameter("id", SQNO));
+                    while (readerDetails.Read())
+                    {
+                        dgvItems.Rows.Add(readerDetails["item_id"].ToString(), "", readerDetails["code"].ToString(), readerDetails["name"].ToString(), readerDetails["qty"].ToString(),
+                            readerDetails["cost_price"].ToString(), readerDetails["price"].ToString(), "0");
+                        DataGridViewComboBoxCell comboCell = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vat"] as DataGridViewComboBoxCell;
+                        if (comboCell != null && readerDetails["vat"].ToString() != "0")
+                        {
+                            comboCell.Value = int.Parse(readerDetails["vat"].ToString());
+                            dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value = (decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) *
+                            decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()) * decimal.Parse(readerDetails["vat"].ToString()) / 100);
+                        }
+                        //DataGridViewComboBoxCell comboCellCostCenter = dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["cost_center"] as DataGridViewComboBoxCell;
+                        //if (comboCellCostCenter != null && readerDetails["cost_center_id"].ToString() != "0")
+                        //{
+                        //    comboCellCostCenter.Value = int.Parse(readerDetails["cost_center_id"].ToString());
+                        //}
+                        decimal netPrice = (decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["qty"].Value.ToString()) * decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["price"].Value.ToString()));
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["total"].Value = (netPrice + decimal.Parse(dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value == null ? "0" : dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["vatp"].Value.ToString()));
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["method"].Value = readerDetails["method"].ToString();
+                        dgvItems.Rows[dgvItems.Rows.Count - 2].Cells["type"].Value = readerDetails["type"].ToString();
+                    }
+
+                    CalculateTotal();
+                }
         }
 
         private void UAEOnlyOptions()
@@ -1497,13 +1563,13 @@ namespace YamyProject
                 if (objInvId != null)
                 {
                     if (Convert.ToInt32(objInvId) > 0)
-                        frmLogin.frmMain.openChildForm(new frmJobCard(Convert.ToInt32(objInvId)));
+                        frmLogin.frmMain.openChildForm(new frmJobCard(Convert.ToInt32(objInvId), "SO-" + id));
                     else
-                        frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                        frmLogin.frmMain.openChildForm(new frmJobCard(0, "SO-" + id));
                 }
                 else
                 {
-                    frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                    frmLogin.frmMain.openChildForm(new frmJobCard(0, "SO-" + id));
                 }
             }
         }

@@ -1234,9 +1234,7 @@ namespace YamyProject
   `DeviceId` varchar(50) DEFAULT NULL,
   `LastModified` datetime DEFAULT CURRENT_TIMESTAMP,
   `SyncStatus` tinyint NOT NULL DEFAULT 0,
-
 	                    PRIMARY KEY (`id`) USING BTREE
-
                     )
                     COLLATE='utf8mb4_general_ci' ENGINE=InnoDB ;
 
@@ -5843,6 +5841,7 @@ namespace YamyProject
                             discount DECIMAL(20,4),
                             vatP INT,
                             vat DECIMAL(20,4),
+                            charge DECIMAL(20,4),
                             total DECIMAL(20,4),
                             remarks TEXT
                         );";

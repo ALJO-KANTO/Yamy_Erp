@@ -25,7 +25,7 @@ namespace YamyProject.UI.Job_Card
             EventHub.Customer += customerUpdatedHandler;
             EventHub.wareHouse += warehouseUpdatedHandler;
             this.jId = _id;
-            _type = type;
+            type = _type;
         }
 
         private void frmJobCard_Load(object sender, EventArgs e)
@@ -44,17 +44,19 @@ namespace YamyProject.UI.Job_Card
             {
                 BindInvoice();
             }
-            if (type == "SQ")
+            if (type.StartsWith("SQ"))
             {
-                //
-            } else if (type == "SO")
+                string typeOf = type.Split('-')[0];
+                quotation_id = type.Split('-')[1];
+            } else if (type.StartsWith("SO"))
             {
-                //
+                string typeOf = type.Split('-')[0];
+                sales_order_id = type.Split('-')[1];
             }
         }
         private void loadVat()
         {
-            // ColumnPartCode, ColumnDescription, ColumnWarehouse, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnTotal
+            // ColumnPartCode, ColumnDescription, ColumnWarehouse, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnCharge, ColumnTotal
 
             DataTable dtItem = DBClass.ExecuteDataTable("select id,name from tbl_items");
             DataGridViewComboBoxColumn itemCol = (DataGridViewComboBoxColumn)dgvParts.Columns["ColumnDescription"];
@@ -270,7 +272,7 @@ namespace YamyProject.UI.Job_Card
                     DBClass.CreateParameter("created_by", frmLogin.userId), 
                     DBClass.CreateParameter("created_date", DateTime.Now.Date), 
                     DBClass.CreateParameter("state","1"),
-                    DBClass.CreateParameter("quotation_id", , quotation_id),
+                    DBClass.CreateParameter("quotation_id", quotation_id),
                     DBClass.CreateParameter("sales_order_id", sales_order_id)
                 )
             );
@@ -427,9 +429,9 @@ namespace YamyProject.UI.Job_Card
                 while (reader.Read())
                 {
                     //jobcard_id, item_id, warehouse_id, qty, issued_qty, returned_qty,
-                    //unit_price, discount, vat, total, remarks
-                    //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVatP, ColumnVAT, ColumnTotal
-                    dgvParts.Rows.Add("", null, Utilities.FormatDecimal(reader["qty"]), Utilities.FormatDecimal(reader["unit_price"]), Utilities.FormatDecimal(reader["discount"]), null, Utilities.FormatDecimal(reader["vat"]), Utilities.FormatDecimal(reader["total"]));
+                    //unit_price, discount, vat, charge, total, remarks
+                    //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVatP, ColumnVAT, ColumnCharge, ColumnTotal
+                    dgvParts.Rows.Add("", null, Utilities.FormatDecimal(reader["qty"]), Utilities.FormatDecimal(reader["unit_price"]), Utilities.FormatDecimal(reader["discount"]), null, Utilities.FormatDecimal(reader["vat"]), Utilities.FormatDecimal(reader["charge"] ?? "0"), Utilities.FormatDecimal(reader["total"]));
                     DataGridViewComboBoxCell comboNameCell = dgvParts.Rows[dgvParts.Rows.Count - 2].Cells["ColumnDescription"] as DataGridViewComboBoxCell;
                     if (comboNameCell != null && reader["item_id"].ToString() != "0")
                     {
@@ -459,6 +461,7 @@ namespace YamyProject.UI.Job_Card
                     string description = row.Cells["ColumnDescription"].Value?.ToString();
                     string qtyText = row.Cells["ColumnQty"].Value?.ToString();
                     string priceText = row.Cells["ColumnPrice"].Value?.ToString();
+                    string chargeText = row.Cells["ColumnCharge"].Value?.ToString();
 
                     if (!string.IsNullOrWhiteSpace(description) &&
                         !string.IsNullOrWhiteSpace(qtyText) &&
@@ -467,6 +470,7 @@ namespace YamyProject.UI.Job_Card
                         int itemId = Convert.ToInt32(row.Cells["ColumnDescription"].Value);
                         decimal qty = string.IsNullOrWhiteSpace(qtyText) ? 0 : Convert.ToDecimal(qtyText);
                         decimal price = string.IsNullOrWhiteSpace(priceText) ? 0 : Convert.ToDecimal(priceText);
+                        decimal charge = string.IsNullOrWhiteSpace(chargeText) ? 0 : Convert.ToDecimal(chargeText);
                         decimal discount = string.IsNullOrWhiteSpace(row.Cells["ColumnDiscount"].Value?.ToString())
                             ? 0
                             : Convert.ToDecimal(row.Cells["ColumnDiscount"].Value);
@@ -486,12 +490,12 @@ namespace YamyProject.UI.Job_Card
                             @"INSERT INTO tbl_job_card_parts
                             (
                                 jobcard_id, item_id, warehouse_id, qty, issued_qty, returned_qty,
-                                unit_price, discount, vatP, vat, total, remarks
+                                unit_price, discount, vatP, vat, charge, total, remarks
                             )
                             VALUES
                             (
                                 @jobcard_id, @item_id, @warehouse_id, @qty, @issued_qty, @returned_qty,
-                                @unit_price, @discount, @vatP, @vat, @total, @remarks
+                                @unit_price, @discount, @vatP, @vat, @charge, @total, @remarks
                             )",
                             DBClass.CreateParameter("@jobcard_id", jId),
                             DBClass.CreateParameter("@item_id", itemId),
@@ -503,6 +507,7 @@ namespace YamyProject.UI.Job_Card
                             DBClass.CreateParameter("@discount", discount),
                             DBClass.CreateParameter("@vatP", vatP),
                             DBClass.CreateParameter("@vat", vat),
+                            DBClass.CreateParameter("@charge", charge),
                             DBClass.CreateParameter("@total", total),
                             DBClass.CreateParameter("@remarks", "")
                         );
@@ -764,11 +769,12 @@ namespace YamyProject.UI.Job_Card
 
         private void dgvParts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnTotal
+            //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnCharge, ColumnTotal
             if (dgvParts.Rows.Count > 1)
             {
                 var row = dgvParts.Rows[e.RowIndex];
                 decimal price = GetDecimalValue(row, "ColumnPrice");
+                decimal charge = GetDecimalValue(row, "ColumnCharge");
                 decimal qty = GetDecimalValue(row, "ColumnQty");
                 decimal discount = GetDecimalValue(row, "ColumnDiscount");
 
@@ -780,7 +786,7 @@ namespace YamyProject.UI.Job_Card
         private void dgvParts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             int colIndex = dgvParts.CurrentCell.ColumnIndex;
-            //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnTotal
+            //ColumnPartCode, ColumnDescription, ColumnQty, ColumnPrice, ColumnDiscount, ColumnVAT, ColumnVatP, ColumnCharge, ColumnTotal
 
             //if (e.Control is TextBox textBoxBase)
             //{
@@ -807,7 +813,8 @@ namespace YamyProject.UI.Job_Card
             }
             else if (dgvParts.CurrentCell.OwningColumn.Name == "ColumnQty" ||
                      dgvParts.CurrentCell.OwningColumn.Name == "ColumnPrice" ||
-                     dgvParts.CurrentCell.OwningColumn.Name == "ColumnDiscount")
+                     dgvParts.CurrentCell.OwningColumn.Name == "ColumnDiscount" ||
+                     dgvParts.CurrentCell.OwningColumn.Name == "ColumnCharge")
             {
                 if (e.Control is TextBox textBox)
                 {
@@ -845,12 +852,13 @@ namespace YamyProject.UI.Job_Card
                 string taxP = selectedRow["value"].ToString();
 
                 decimal price = GetDecimalValue(row, "ColumnPrice");
+                decimal charge = GetDecimalValue(row, "ColumnCharge");
                 decimal qty = GetDecimalValue(row, "ColumnQty");
                 decimal discount = GetDecimalValue(row, "ColumnDiscount");
 
                 if (price == 0 || qty == 0)
                 {
-                    row.Cells["ColumnVAT"].Value = row.Cells["ColumnDiscount"].Value = row.Cells["ColumnTotal"].Value = "0";
+                    row.Cells["ColumnVAT"].Value = row.Cells["ColumnDiscount"].Value = row.Cells["ColumnCharge"].Value = row.Cells["ColumnTotal"].Value = "0";
                 }
                 else
                 {
@@ -858,7 +866,7 @@ namespace YamyProject.UI.Job_Card
                     //row.Cells["net_price"].Value = net;
                     row.Cells["ColumnVatP"].Value = Convert.ToInt32(taxId);
                     row.Cells["ColumnVAT"].Value = (net * decimal.Parse(taxP) / 100);
-                    row.Cells["ColumnTotal"].Value = net + Convert.ToDecimal(row.Cells["ColumnVAT"].Value);
+                    row.Cells["ColumnTotal"].Value = net + Convert.ToDecimal(row.Cells["ColumnVAT"].Value) + charge;
                 }
 
                 ChkRowValidity(row);
@@ -870,6 +878,7 @@ namespace YamyProject.UI.Job_Card
             if (row == null) return;
 
             decimal price = GetDecimalValue(row, "ColumnPrice");
+            decimal charge = GetDecimalValue(row, "ColumnCharge");
             decimal qty = GetDecimalValue(row, "ColumnQty");
             decimal discount = GetDecimalValue(row, "ColumnDiscount");
 
@@ -877,6 +886,7 @@ namespace YamyProject.UI.Job_Card
             {
                 row.Cells["ColumnVAT"].Value = "0";
                 row.Cells["ColumnTotal"].Value = "0";
+                row.Cells["ColumnCharge"].Value = "0";
                 return;
             }
 
@@ -901,7 +911,7 @@ namespace YamyProject.UI.Job_Card
 
                 decimal vatValue = netPrice * Convert.ToDecimal(vP) / 100;
                 row.Cells["ColumnVAT"].Value = vatValue;
-                row.Cells["ColumnTotal"].Value = netPrice + vatValue;
+                row.Cells["ColumnTotal"].Value = netPrice + vatValue + charge;
             }
             catch (Exception ex)
             {
@@ -975,7 +985,7 @@ namespace YamyProject.UI.Job_Card
         }
         private DataTable JobParts()
         {
-            return DBClass.ExecuteDataTable(@"SELECT jp.id,i.name item, jp.qty,jp.issued_qty,jp.returned_qty,jp.unit_price,jp.discount,t.name vatP, jp.vat ,jp.total,jp.remarks FROM tbl_job_card_parts jp INNER JOIN tbl_items i ON i.id = jp.item_id INNER JOIN tbl_tax t ON t.id = jp.vatP WHERE jp.jobcard_id = @jId", DBClass.CreateParameter("@jId", jId));
+            return DBClass.ExecuteDataTable(@"SELECT jp.id,i.name item, jp.qty,jp.issued_qty,jp.returned_qty,jp.unit_price,jp.discount,t.name vatP, jp.vat , jp.charge, jp.total,jp.remarks FROM tbl_job_card_parts jp INNER JOIN tbl_items i ON i.id = jp.item_id INNER JOIN tbl_tax t ON t.id = jp.vatP WHERE jp.jobcard_id = @jId", DBClass.CreateParameter("@jId", jId));
         }
         private DataTable JobInspection()
         {

@@ -1506,6 +1506,12 @@ namespace YamyProject
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            if (cmbVendor.SelectedValue == null)
+            {
+                MessageBox.Show("Please Select a vendor first.");
+                return;
+            }
+
             frmViewPurchaseList selectPurchaseForm = new frmViewPurchaseList(0, int.Parse(cmbVendor.SelectedValue.ToString()));
             if (selectPurchaseForm.ShowDialog() == DialogResult.OK)
             {

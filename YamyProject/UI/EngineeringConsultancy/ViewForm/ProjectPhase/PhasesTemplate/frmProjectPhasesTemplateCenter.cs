@@ -52,7 +52,7 @@ namespace YamyProject.UI.Project_Management
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            new frmProjectPhaseTaskTemplate(0).ShowDialog();
+            new frmProjectPhaseTemplate(0).ShowDialog();
         }
 
         private void dgvPhaseTemplates_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -69,7 +69,58 @@ namespace YamyProject.UI.Project_Management
             if (e.RowIndex >= 0 && dgvPhaseTemplates.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int tempId = Convert.ToInt32(dgvPhaseTemplates.Rows[e.RowIndex].Cells["template_id"].Value);
-                new frmProjectPhaseTaskTemplate(tempId).ShowDialog();
+                new frmProjectPhaseTemplate(tempId).ShowDialog();
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvPhaseTemplates == null)
+                return;
+
+            if (dgvPhaseTemplates.CurrentRow == null)
+                return;
+
+            int tempId = Convert.ToInt32(
+                dgvPhaseTemplates.CurrentRow.Cells["template_id"].Value
+            );
+
+            // Check if template has child tasks
+            int existCount = Convert.ToInt32(
+                DBClass.ExecuteScalar(
+                    "SELECT COUNT(*) FROM tbl_project_phase_task_templates WHERE template_id=@id",
+                    DBClass.CreateParameter("id", tempId)
+                )
+            );
+
+            if (existCount > 0)
+            {
+                MessageBox.Show(
+                    "Cannot delete this template because it has task templates.",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            // Delete template if no child records exist
+            int result = DBClass.ExecuteNonQuery(
+                "DELETE FROM tbl_project_phase_templates WHERE template_id=@id",
+                DBClass.CreateParameter("id", tempId)
+            );
+
+            if (result > 0)
+            {
+                MessageBox.Show(
+                    "Template deleted successfully.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Refresh grid
+                LoadPhases();
             }
         }
     }

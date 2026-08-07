@@ -202,8 +202,8 @@ namespace YamyProject
             dgvReport.Columns.Add("ContributionAmount", "Contribution Amount");
             dgvReport.Columns.Add("ExternalPayrollID", "External Payroll ID");
 
-            dgvReport.Columns["Blank"].Width = 30;
-            dgvReport.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvReport.Columns["Blank"].Width = 30;
+            //dgvReport.Columns["Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void SavePDF_Click(object sender, EventArgs e)

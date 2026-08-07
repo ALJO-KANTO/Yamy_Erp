@@ -115,15 +115,6 @@ namespace YamyProject.UI.Job_Card
             this.chk_engine_oil = new System.Windows.Forms.CheckBox();
             this.tabPageParts = new System.Windows.Forms.TabPage();
             this.dgvParts = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ColumnPartCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDescription = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnVatP = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnVAT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageLabor = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtLaborHours = new Guna.UI2.WinForms.Guna2TextBox();
@@ -146,6 +137,16 @@ namespace YamyProject.UI.Job_Card
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPartCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDescription = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnVatP = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnVAT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -1504,6 +1505,7 @@ namespace YamyProject.UI.Job_Card
             this.ColumnDiscount,
             this.ColumnVatP,
             this.ColumnVAT,
+            this.ColumnCharge,
             this.ColumnTotal,
             this.ColumnDel});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1546,65 +1548,6 @@ namespace YamyProject.UI.Job_Card
             this.dgvParts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParts_CellValueChanged);
             this.dgvParts.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvParts_DefaultValuesNeeded);
             this.dgvParts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvParts_EditingControlShowing);
-            // 
-            // ColumnPartCode
-            // 
-            this.ColumnPartCode.FillWeight = 21.95344F;
-            this.ColumnPartCode.HeaderText = "Part Code";
-            this.ColumnPartCode.Name = "ColumnPartCode";
-            this.ColumnPartCode.Visible = false;
-            // 
-            // ColumnDescription
-            // 
-            this.ColumnDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnDescription.HeaderText = "Description";
-            this.ColumnDescription.Name = "ColumnDescription";
-            this.ColumnDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnQty
-            // 
-            this.ColumnQty.FillWeight = 18.81723F;
-            this.ColumnQty.HeaderText = "Qty";
-            this.ColumnQty.Name = "ColumnQty";
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.FillWeight = 18.81723F;
-            this.ColumnPrice.HeaderText = "Price";
-            this.ColumnPrice.Name = "ColumnPrice";
-            // 
-            // ColumnDiscount
-            // 
-            this.ColumnDiscount.FillWeight = 18.81723F;
-            this.ColumnDiscount.HeaderText = "Disc";
-            this.ColumnDiscount.Name = "ColumnDiscount";
-            // 
-            // ColumnVatP
-            // 
-            this.ColumnVatP.FillWeight = 18.81723F;
-            this.ColumnVatP.HeaderText = "VAT %";
-            this.ColumnVatP.Name = "ColumnVatP";
-            // 
-            // ColumnVAT
-            // 
-            this.ColumnVAT.FillWeight = 18.81723F;
-            this.ColumnVAT.HeaderText = "VAT";
-            this.ColumnVAT.Name = "ColumnVAT";
-            // 
-            // ColumnTotal
-            // 
-            this.ColumnTotal.FillWeight = 30.10757F;
-            this.ColumnTotal.HeaderText = "Total";
-            this.ColumnTotal.Name = "ColumnTotal";
-            // 
-            // ColumnDel
-            // 
-            this.ColumnDel.FillWeight = 20F;
-            this.ColumnDel.HeaderText = "Del";
-            this.ColumnDel.Name = "ColumnDel";
-            this.ColumnDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnDel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // tabPageLabor
             // 
@@ -1850,6 +1793,72 @@ namespace YamyProject.UI.Job_Card
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 193;
             // 
+            // ColumnPartCode
+            // 
+            this.ColumnPartCode.FillWeight = 21.95344F;
+            this.ColumnPartCode.HeaderText = "Part Code";
+            this.ColumnPartCode.Name = "ColumnPartCode";
+            this.ColumnPartCode.Visible = false;
+            // 
+            // ColumnDescription
+            // 
+            this.ColumnDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDescription.FillWeight = 90.67828F;
+            this.ColumnDescription.HeaderText = "Description";
+            this.ColumnDescription.Name = "ColumnDescription";
+            this.ColumnDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnQty
+            // 
+            this.ColumnQty.FillWeight = 17.06314F;
+            this.ColumnQty.HeaderText = "Qty";
+            this.ColumnQty.Name = "ColumnQty";
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.FillWeight = 17.06314F;
+            this.ColumnPrice.HeaderText = "Price";
+            this.ColumnPrice.Name = "ColumnPrice";
+            // 
+            // ColumnDiscount
+            // 
+            this.ColumnDiscount.FillWeight = 17.06314F;
+            this.ColumnDiscount.HeaderText = "Disc";
+            this.ColumnDiscount.Name = "ColumnDiscount";
+            // 
+            // ColumnVatP
+            // 
+            this.ColumnVatP.FillWeight = 17.06314F;
+            this.ColumnVatP.HeaderText = "VAT %";
+            this.ColumnVatP.Name = "ColumnVatP";
+            // 
+            // ColumnVAT
+            // 
+            this.ColumnVAT.FillWeight = 17.06314F;
+            this.ColumnVAT.HeaderText = "VAT";
+            this.ColumnVAT.Name = "ColumnVAT";
+            // 
+            // ColumnCharge
+            // 
+            this.ColumnCharge.FillWeight = 17.06314F;
+            this.ColumnCharge.HeaderText = "Charge";
+            this.ColumnCharge.Name = "ColumnCharge";
+            // 
+            // ColumnTotal
+            // 
+            this.ColumnTotal.FillWeight = 27.30103F;
+            this.ColumnTotal.HeaderText = "Total";
+            this.ColumnTotal.Name = "ColumnTotal";
+            // 
+            // ColumnDel
+            // 
+            this.ColumnDel.FillWeight = 18.13566F;
+            this.ColumnDel.HeaderText = "Del";
+            this.ColumnDel.Name = "ColumnDel";
+            this.ColumnDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnDel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // frmJobCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1981,15 +1990,6 @@ namespace YamyProject.UI.Job_Card
         private Guna2TextBox txtLaborHours;
         private Guna2ComboBox cmbWarehouse;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPartCode;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscount;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnVatP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVAT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2001,5 +2001,15 @@ namespace YamyProject.UI.Job_Card
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private Guna2TileButton BtnSalesOrder;
         private Guna2TileButton BtnQuotation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPartCode;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscount;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnVatP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVAT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCharge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDel;
     }
 }

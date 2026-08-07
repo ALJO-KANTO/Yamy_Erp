@@ -85,7 +85,7 @@ namespace YamyProject.UI.Project_Management
             if (e.RowIndex >= 0)
             {
                 int classificationId = Convert.ToInt32(dgvCustomer.Rows[e.RowIndex].Cells["id"].Value);
-                frmLogin.frmMain.openChildForm(new MasterProject(classificationId));
+                new frmProjectClassification(classificationId).ShowDialog();
             }
         }
 

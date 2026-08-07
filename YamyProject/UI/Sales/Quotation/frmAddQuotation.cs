@@ -1579,13 +1579,13 @@ namespace YamyProject
                 if (objInvId != null)
                 {
                     if (Convert.ToInt32(objInvId) > 0)
-                        frmLogin.frmMain.openChildForm(new frmJobCard(Convert.ToInt32(objInvId), "SQ"));
+                        frmLogin.frmMain.openChildForm(new frmJobCard(Convert.ToInt32(objInvId), "SQ-" + id));
                     else
-                        frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                        frmLogin.frmMain.openChildForm(new frmJobCard(0, "SQ-" + id));
                 }
                 else
                 {
-                    frmLogin.frmMain.openChildForm(new frmJobCard(0));
+                    frmLogin.frmMain.openChildForm(new frmJobCard(0, "SQ-" + id));
                 }
             }
         }

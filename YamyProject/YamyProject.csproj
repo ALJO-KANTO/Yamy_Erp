@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\yamy\yamyERP\</PublishUrl>
+    <PublishUrl>D:\Shared Folder\yamy files\YamyERP\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -29,7 +29,7 @@
     <SupportUrl>https://yamyco.co</SupportUrl>
     <ProductName>YamyERP</ProductName>
     <PublisherName>Yamy</PublisherName>
-    <ApplicationRevision>61</ApplicationRevision>
+    <ApplicationRevision>64</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -3130,6 +3130,12 @@
     <Compile Include="UI\Reports\JobCard\MechanicLaborReport.designer.cs">
       <DependentUpon>MechanicLaborReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\JobCard\PartsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\JobCard\PartsReport.designer.cs">
+      <DependentUpon>PartsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reports\JobCard\PartsConsumptionReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -5553,6 +5559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\JobCard\MechanicLaborReport.resx">
       <DependentUpon>MechanicLaborReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\JobCard\PartsReport.resx">
+      <DependentUpon>PartsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\JobCard\PartsConsumptionReport.resx">
       <DependentUpon>PartsConsumptionReport.cs</DependentUpon>

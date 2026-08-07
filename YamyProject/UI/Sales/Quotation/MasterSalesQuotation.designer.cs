@@ -66,6 +66,7 @@
             this.headerUC1 = new YamyProject.HeaderUC();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnCreateOrder = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoice)).BeginInit();
             this.panel2.SuspendLayout();
@@ -97,6 +98,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.btnCreateOrder);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnRecycle);
             this.panel1.Controls.Add(this.btnCreateInvoice);
@@ -236,7 +238,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInvoice.RowHeadersVisible = false;
-            this.dgvInvoice.RowTemplate.Height = 30;
+            this.dgvInvoice.RowTemplate.Height = 25;
             this.dgvInvoice.Size = new System.Drawing.Size(1211, 335);
             this.dgvInvoice.TabIndex = 6;
             this.dgvInvoice.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -586,7 +588,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvItems.RowHeadersVisible = false;
-            this.dgvItems.RowTemplate.Height = 30;
+            this.dgvItems.RowTemplate.Height = 25;
             this.dgvItems.Size = new System.Drawing.Size(1211, 145);
             this.dgvItems.TabIndex = 6;
             this.dgvItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -684,6 +686,26 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(15, 15);
             this.guna2ControlBox1.TabIndex = 0;
             // 
+            // btnCreateOrder
+            // 
+            this.btnCreateOrder.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnCreateOrder.BorderRadius = 5;
+            this.btnCreateOrder.BorderThickness = 1;
+            this.btnCreateOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCreateOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCreateOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCreateOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCreateOrder.FillColor = System.Drawing.Color.White;
+            this.btnCreateOrder.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
+            this.btnCreateOrder.Location = new System.Drawing.Point(329, 5);
+            this.btnCreateOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateOrder.Name = "btnCreateOrder";
+            this.btnCreateOrder.Size = new System.Drawing.Size(99, 27);
+            this.btnCreateOrder.TabIndex = 11;
+            this.btnCreateOrder.Text = "Create Order";
+            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            // 
             // MasterSalesQuotation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -748,5 +770,6 @@
         private HeaderUC headerUC1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2Button btnCreateOrder;
     }
 }

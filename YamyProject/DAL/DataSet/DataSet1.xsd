@@ -566,8 +566,8 @@
               <xs:element name="diagnosis" msprop:Generator_ColumnPropNameInTable="diagnosisColumn" msprop:Generator_ColumnPropNameInRow="diagnosis" msprop:Generator_UserColumnName="diagnosis" msprop:Generator_ColumnVarNameInTable="columndiagnosis" type="xs:string" minOccurs="0" />
               <xs:element name="work_required" msprop:Generator_ColumnPropNameInTable="work_requiredColumn" msprop:Generator_ColumnPropNameInRow="work_required" msprop:Generator_UserColumnName="work_required" msprop:Generator_ColumnVarNameInTable="columnwork_required" type="xs:string" minOccurs="0" />
               <xs:element name="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_UserColumnName="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" type="xs:string" minOccurs="0" />
-              <xs:element name="phone" msprop:Generator_UserColumnName="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_ColumnVarNameInTable="columnphone" type="xs:string" minOccurs="0" />
-              <xs:element name="trn" msprop:Generator_UserColumnName="trn" msprop:Generator_ColumnPropNameInTable="trnColumn" msprop:Generator_ColumnPropNameInRow="trn" msprop:Generator_ColumnVarNameInTable="columntrn" type="xs:string" minOccurs="0" />
+              <xs:element name="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_UserColumnName="phone" msprop:Generator_ColumnVarNameInTable="columnphone" type="xs:string" minOccurs="0" />
+              <xs:element name="trn" msprop:Generator_ColumnPropNameInTable="trnColumn" msprop:Generator_ColumnPropNameInRow="trn" msprop:Generator_UserColumnName="trn" msprop:Generator_ColumnVarNameInTable="columntrn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -621,6 +621,21 @@
               <xs:element name="interior" msprop:Generator_ColumnPropNameInTable="interiorColumn" msprop:Generator_ColumnPropNameInRow="interior" msprop:Generator_UserColumnName="interior" msprop:Generator_ColumnVarNameInTable="columninterior" type="xs:int" minOccurs="0" />
               <xs:element name="exterior" msprop:Generator_ColumnPropNameInTable="exteriorColumn" msprop:Generator_ColumnPropNameInRow="exterior" msprop:Generator_UserColumnName="exterior" msprop:Generator_ColumnVarNameInTable="columnexterior" type="xs:int" minOccurs="0" />
               <xs:element name="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_UserColumnName="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tbl_Footer" msprop:Generator_RowEvHandlerName="Tbl_FooterRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_FooterRowDeleted" msprop:Generator_RowDeletingName="Tbl_FooterRowDeleting" msprop:Generator_RowEvArgName="Tbl_FooterRowChangeEvent" msprop:Generator_TablePropName="Tbl_Footer" msprop:Generator_RowChangedName="Tbl_FooterRowChanged" msprop:Generator_RowChangingName="Tbl_FooterRowChanging" msprop:Generator_TableClassName="Tbl_FooterDataTable" msprop:Generator_RowClassName="Tbl_FooterRow" msprop:Generator_TableVarName="tableTbl_Footer" msprop:Generator_UserTableName="Tbl_Footer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Vat" msprop:Generator_ColumnPropNameInRow="Vat" msprop:Generator_ColumnPropNameInTable="VatColumn" msprop:Generator_ColumnVarNameInTable="columnVat" msprop:Generator_UserColumnName="Vat" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_x0020_Qty" msprop:Generator_ColumnPropNameInRow="Total_Qty" msprop:Generator_ColumnPropNameInTable="Total_QtyColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Qty" msprop:Generator_UserColumnName="Total Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Sub_x0020_Total" msprop:Generator_ColumnPropNameInRow="Sub_Total" msprop:Generator_ColumnPropNameInTable="Sub_TotalColumn" msprop:Generator_ColumnVarNameInTable="columnSub_Total" msprop:Generator_UserColumnName="Sub Total" type="xs:string" minOccurs="0" />
+              <xs:element name="discout" msprop:Generator_ColumnPropNameInRow="discout" msprop:Generator_ColumnPropNameInTable="discoutColumn" msprop:Generator_ColumnVarNameInTable="columndiscout" msprop:Generator_UserColumnName="discout" type="xs:string" minOccurs="0" />
+              <xs:element name="Taxable_x0020_Amt" msprop:Generator_ColumnPropNameInRow="Taxable_Amt" msprop:Generator_ColumnPropNameInTable="Taxable_AmtColumn" msprop:Generator_ColumnVarNameInTable="columnTaxable_Amt" msprop:Generator_UserColumnName="Taxable Amt" type="xs:string" minOccurs="0" />
+              <xs:element name="Amt_x0020_in_x0020_Words" msprop:Generator_ColumnPropNameInRow="Amt_in_Words" msprop:Generator_ColumnPropNameInTable="Amt_in_WordsColumn" msprop:Generator_ColumnVarNameInTable="columnAmt_in_Words" msprop:Generator_UserColumnName="Amt in Words" type="xs:string" minOccurs="0" />
+              <xs:element name="Net_x0020_Amount" msprop:Generator_ColumnPropNameInRow="Net_Amount" msprop:Generator_ColumnPropNameInTable="Net_AmountColumn" msprop:Generator_ColumnVarNameInTable="columnNet_Amount" msprop:Generator_UserColumnName="Net Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Received_x0020_Amt" msprop:Generator_ColumnPropNameInRow="Received_Amt" msprop:Generator_ColumnPropNameInTable="Received_AmtColumn" msprop:Generator_ColumnVarNameInTable="columnReceived_Amt" msprop:Generator_UserColumnName="Received Amt" type="xs:string" minOccurs="0" />
+              <xs:element name="Sales_Man" msprop:Generator_ColumnPropNameInRow="Sales_Man" msprop:Generator_ColumnPropNameInTable="Sales_ManColumn" msprop:Generator_ColumnVarNameInTable="columnSales_Man" msprop:Generator_UserColumnName="Sales_Man" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

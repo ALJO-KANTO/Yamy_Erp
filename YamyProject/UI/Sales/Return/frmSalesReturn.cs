@@ -1162,6 +1162,12 @@ namespace YamyProject
         int salesId = 0;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            if (cmbCustomer.SelectedValue == null)
+            {
+                MessageBox.Show("Please Select a customer first.");
+                return;
+            }
+
             frmViewSalesList selectSalesForm = new frmViewSalesList(0,int.Parse(cmbCustomer.SelectedValue.ToString()));
             if (selectSalesForm.ShowDialog() == DialogResult.OK)
             {

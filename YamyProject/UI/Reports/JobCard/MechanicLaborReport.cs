@@ -103,6 +103,7 @@ namespace YamyProject
             string query = $@"
                             SELECT
                                 ROW_NUMBER() OVER(ORDER BY jc.job_date) AS SN,
+                                jc.id,
                                 jc.code,
                                 jc.job_date,
                                 e.name Mechanic,
@@ -142,7 +143,7 @@ namespace YamyProject
                         Convert.ToDateTime(reader["job_date"]).ToString("dd/MM/yyyy"),
                         reader["Mechanic"].ToString(),
                         reader["Customer"].ToString(),
-                        reader["Vehicle"].ToString(),
+                        reader["plate_no"].ToString(),
                         reader["labor_name"].ToString(),
                         reader["estimated_hours"].ToString(),
                         reader["actual_hours"].ToString(),

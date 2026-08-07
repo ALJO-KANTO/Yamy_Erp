@@ -539,7 +539,7 @@ namespace YamyProject
                 toolStripMenuItem5.Visible = UserPermissions.canView("Company List");
                 backUpCompanyToolStripMenuItem.Visible = UserPermissions.canView("Back Up Company");
                 restoreCompanyToolStripMenuItem.Visible = UserPermissions.canView("Restore Company");
-                chartOfAccountToolStripMenuItem.Visible = toolStripMenuItem2.Visible = UserPermissions.canView("Chart Of Account");
+                toolStripMenuItem2.Visible = UserPermissions.canView("Chart Of Account");
                 damageToolStripMenuItem.Visible = vatToolStripMenuItem.Visible = UserPermissions.canView("Inventory Items");
                 //itemCategoryListToolStripMenuItem.Visible = UserPermissions.canView("");
                 //itemVatListToolStripMenuItem.Visible = UserPermissions.canView("");
@@ -552,7 +552,7 @@ namespace YamyProject
                 prepaidExpenseToolStripMenuItem.Visible = UserPermissions.canView("Prepaid Expense");
                 pettyCashToolStripMenuItem.Visible = UserPermissions.canView("Petty Cash");
                 usersToolStripMenuItem.Visible = btnCompanyProfile.Visible = companyToolStripMenuItem1.Visible = UserPermissions.canView("Company");
-                inventoryCenterToolStripMenuItem1.Visible = itemListToolStripMenuItem.Visible = inventoryToolStripMenuItem2.Visible = UserPermissions.canView("Inventory Center");
+                inventoryCenterToolStripMenuItem1.Visible = inventoryToolStripMenuItem2.Visible = UserPermissions.canView("Inventory Center");
                 stockManagementToolStripMenuItem.Visible = UserPermissions.canView("Stock Management");
                 warehouseToolStripMenuItem.Visible = UserPermissions.canView("Warehouse Center");
                 customerCenterToolStripMenuItem.Visible = btnCustomer.Visible = UserPermissions.canView("Customer Center");
@@ -590,7 +590,6 @@ namespace YamyProject
                 employeeToolStripMenuItem.Visible = UserPermissions.canView("Employees");
                 accountantToolStripMenuItem1.Visible = btnAccount.Visible = UserPermissions.canView("Accountant");
                 inventoryToolStripMenuItem.Visible = btnInventory.Visible = UserPermissions.canView("Inventory");
-                listToolStripMenuItem.Visible = UserPermissions.canView("List");
                 settingsToolStripMenuItem1.Visible = guna2Button8.Visible = UserPermissions.canView("Setting");
                 changeCurrentPasswordToolStripMenuItem.Visible = UserPermissions.canView("Change Current Password");
                 clearDataToolStripMenuItem.Visible = UserPermissions.canView("Clear Data");
@@ -3746,6 +3745,11 @@ namespace YamyProject
         private void incomeTaxPreparationToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void partsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PartsReport());
         }
     }
 

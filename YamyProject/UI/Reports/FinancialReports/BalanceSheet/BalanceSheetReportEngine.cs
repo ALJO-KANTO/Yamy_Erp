@@ -72,7 +72,8 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
                         Code = reader["code"].ToString(),
                         Level = Convert.ToInt32(reader["level"]),
                         ParentId = Convert.ToInt32(reader["parent_id"]),
-                        Category = reader["category_code"].ToString()
+                        Category = reader["category_code"].ToString(),
+                        CategoryCode = reader["category_code"].ToString()
                     };
 
                     switch (node.Level)
@@ -143,8 +144,16 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
                     break;
             }
         }
+
+        decimal totalAssets = 0;
+        decimal totalLiabilities = 0;
+        decimal totalEquity = 0;
+
         private void BuildStandard()
         {
+            totalAssets = 0;
+            totalLiabilities = 0;
+            totalEquity = 0;
             Rows.Clear();
 
             foreach (COANode root in Level1Nodes.Values.OrderBy(x => x.Code))
@@ -156,13 +165,43 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
 
                 ReportRowBS row = BuildNode(root);
 
+                switch (root.Category)
+                {
+                    case "ASSET":
+                        totalAssets += row.Balance;
+                        break;
+
+                    case "LIABILITY":
+                        totalLiabilities += row.Balance;
+                        break;
+
+                    case "EQUITY":
+                        totalEquity += row.Balance;
+                        break;
+                }
+
                 AddVisibleRows(row);
             }
 
             AddRetainedEarnings();
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL ASSETS",
+                Balance = totalAssets
+            });
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL LIABILITIES & EQUITY",
+                Balance = totalLiabilities + totalEquity
+            });
         }
         private void BuildPreviousYear()
         {
+            totalAssets = 0;
+            totalLiabilities = 0;
+            totalEquity = 0;
             Rows.Clear();
 
             foreach (COANode root in Level1Nodes.Values.OrderBy(x => x.Code))
@@ -174,13 +213,43 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
 
                 ReportRowBS row = BuildNodePrevious(root);
 
+                switch (root.Category)
+                {
+                    case "ASSET":
+                        totalAssets += row.Balance;
+                        break;
+
+                    case "LIABILITY":
+                        totalLiabilities += row.Balance;
+                        break;
+
+                    case "EQUITY":
+                        totalEquity += row.Balance;
+                        break;
+                }
+
                 AddVisibleRows(row);
             }
 
             AddRetainedEarningsPrevious();
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL ASSETS",
+                Balance = totalAssets
+            });
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL LIABILITIES & EQUITY",
+                Balance = totalLiabilities + totalEquity
+            });
         }
         private void BuildDetail()
         {
+            totalAssets = 0;
+            totalLiabilities = 0;
+            totalEquity = 0;
             Rows.Clear();
 
             foreach (COANode root in Level1Nodes.Values.OrderBy(x => x.Code))
@@ -192,14 +261,89 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
 
                 ReportRowBS row = BuildNodeDetail(root);
 
+                switch (root.Category)
+                {
+                    case "ASSET":
+                        totalAssets += row.Balance;
+                        break;
+
+                    case "LIABILITY":
+                        totalLiabilities += row.Balance;
+                        break;
+
+                    case "EQUITY":
+                        totalEquity += row.Balance;
+                        break;
+                }
+
                 AddVisibleRows(row);
             }
 
             AddRetainedEarningsDetail();
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL ASSETS",
+                Balance = totalAssets
+            });
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL LIABILITIES & EQUITY",
+                Balance = totalLiabilities + totalEquity
+            });
+        }
+        private void BuildByClass()
+        {
+            totalAssets = 0;
+            totalLiabilities = 0;
+            totalEquity = 0;
+            Rows.Clear();
+
+            foreach (COANode root in Level1Nodes.Values.OrderBy(x => x.Code))
+            {
+                if (root.Category != "ASSET" &&
+                    root.Category != "LIABILITY" &&
+                    root.Category != "EQUITY")
+                    continue;
+
+                ReportRowBS row = BuildNodeByClass(root);
+
+                switch (root.Category)
+                {
+                    case "ASSET":
+                        totalAssets += row.Balance;
+                        break;
+
+                    case "LIABILITY":
+                        totalLiabilities += row.Balance;
+                        break;
+
+                    case "EQUITY":
+                        totalEquity += row.Balance;
+                        break;
+                }
+
+                AddVisibleRows(row);
+            }
+
+            AddRetainedEarningsByClass();
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL ASSETS",
+                Balance = totalAssets
+            });
+
+            Rows.Add(new ReportRowBS
+            {
+                Text = "TOTAL LIABILITIES & EQUITY",
+                Balance = totalLiabilities + totalEquity
+            });
         }
         private void AddRetainedEarningsDetail()
         {
-            ReportRowBS equity = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
+            COANode equity = Level1Nodes.Values.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
             if (equity == null)
                 return;
@@ -209,16 +353,22 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
             ReportRowBS retained = new ReportRowBS()
             {
                 Id = -1,
-                Text = "Retained Earnings",
+                Text = "Retained Earnings / Current Year Profit",
                 AccountName = "Retained Earnings",
                 Level = 2,
                 CategoryCode = "EQUITY",
                 Balance = profit,
                 IsParent = false
             };
+            ReportRowBS equityRow = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
-            equity.Children.Add(retained);
-            equity.Balance += profit;
+            if (equityRow != null)
+            {
+                equityRow.Children.Add(retained);
+                equityRow.Balance += profit;
+                totalEquity += profit;
+                Rows.Add(retained);
+            }
         }
         private decimal GetRetainedEarningsDetail()
         {
@@ -246,24 +396,6 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
                 DBClass.CreateParameter("@toDate", ToDate));
 
             return Convert.ToDecimal(result ?? 0);
-        }
-        private void BuildByClass()
-        {
-            Rows.Clear();
-
-            foreach (COANode root in Level1Nodes.Values.OrderBy(x => x.Code))
-            {
-                if (root.Category != "ASSET" &&
-                    root.Category != "LIABILITY" &&
-                    root.Category != "EQUITY")
-                    continue;
-
-                ReportRowBS row = BuildNodeByClass(root);
-
-                AddVisibleRows(row);
-            }
-
-            AddRetainedEarningsByClass();
         }
         private ReportRowBS BuildNodePrevious(COANode node)
         {
@@ -365,8 +497,7 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
         }
         private void AddRetainedEarningsPrevious()
         {
-            ReportRowBS equity =
-                Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
+            COANode equity = Level1Nodes.Values.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
             if (equity == null)
                 return;
@@ -380,63 +511,64 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
             ReportRowBS retained = new ReportRowBS
             {
                 Id = -1,
-                Text = "Retained Earnings",
+                Text = "Retained Earnings / Current Year Profit",
                 AccountName = "Retained Earnings",
                 Level = 2,
                 CategoryCode = "EQUITY",
                 Balance = current,
-                PreviousBalance = previous
+                PreviousBalance = previous,
+                IsParent = false
             };
 
-            equity.Children.Add(retained);
+            ReportRowBS equityRow = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
-            equity.Balance += current;
-            equity.PreviousBalance += previous;
+            if (equityRow != null)
+            {
+                equityRow.Children.Add(retained);
+
+                equityRow.Balance += current;
+                equityRow.PreviousBalance += previous;
+                Rows.Add(retained);
+                totalEquity += current;
+            }
         }
         private void AddRetainedEarnings()
         {
-
-            COANode equity =
-                Level1Nodes.Values
-                .FirstOrDefault(x =>
-                x.CategoryCode == "EQUITY");
-
+            COANode equity = Level1Nodes.Values.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
             if (equity == null)
                 return;
 
 
-
-            decimal profit =
-                GetRetainedEarnings();
+            decimal profit = GetRetainedEarnings();
 
 
-
-            ReportRowBS retained =
-                new ReportRowBS()
-                {
-                    Id = -1,
-                    Text = "Retained Earnings",
-                    AccountName = "Retained Earnings",
-                    Level = 2,
-                    CategoryCode = "EQUITY",
-                    Balance = profit,
-                    IsParent = false
-                };
-
-            foreach (var row in Rows)
+            ReportRowBS retained = new ReportRowBS()
             {
-                if (row.CategoryCode == "EQUITY")
-                {
-                    row.Children.Add(retained);
-                    row.Balance += profit;
-                    break;
-                }
+                Id = -1,
+                Text = "Retained Earnings / Current Year Profit",
+                AccountName = "Retained Earnings",
+                Level = 2,
+                CategoryCode = "EQUITY",
+                Balance = profit,
+                IsParent = false
+            };
+
+            ReportRowBS equityRow = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
+
+            if (equityRow != null)
+            {
+                equityRow.Children.Add(retained);
+                equityRow.Balance += profit;
+
+                Rows.Add(retained);
+
+                totalEquity += profit;
             }
         }
         private void AddRetainedEarningsByClass()
         {
-            ReportRowBS equity = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
+            COANode equity = Level1Nodes.Values.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
             if (equity == null)
                 return;
@@ -444,23 +576,29 @@ namespace YamyProject.UI.Reports.FinancialReports.BalanceSheet
             ReportRowBS retained = new ReportRowBS()
             {
                 Id = -1,
-                Text = "Retained Earnings",
+                Text = "Retained Earnings / Current Year Profit",
                 AccountName = "Retained Earnings",
                 Level = 2,
                 CategoryCode = "EQUITY",
                 IsParent = false
             };
 
-            Dictionary<int, decimal> balances = GetRetainedEarningsByClass();
+            ReportRowBS equityRow = Rows.FirstOrDefault(x => x.CategoryCode == "EQUITY");
 
-            foreach (var item in balances)
+            if (equityRow != null)
             {
-                retained.ClassBalances[item.Key] = item.Value;
-                retained.Balance += item.Value;
-            }
+                Dictionary<int, decimal> balances = GetRetainedEarningsByClass();
+                decimal profit = 0;
+                foreach (var item in balances)
+                {
+                    retained.ClassBalances[item.Key] = item.Value;
+                    retained.Balance += item.Value;
+                    profit += item.Value;
+                }
 
-            equity.Children.Add(retained);
-            equity.Balance += retained.Balance;
+                Rows.Add(retained);
+                totalEquity += profit;
+            }
         }
         private Dictionary<int, decimal> GetRetainedEarningsByClass()
         {
